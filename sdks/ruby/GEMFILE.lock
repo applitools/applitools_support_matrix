@@ -58,6 +58,7 @@ GEM
     faraday-retry (1.0.3)
     faraday_middleware (1.2.0)
       faraday (~> 1.0)
+    ffi (1.15.5)
     http-cookie (1.0.5)
       domain_name (~> 0.5)
     multipart-post (2.2.3)
@@ -111,6 +112,7 @@ PLATFORMS
 
 DEPENDENCIES
   eyes_selenium (= 4.1.0.alpha)
+  ffi
   parallel_tests
   rake
   rspec

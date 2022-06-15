@@ -1,18 +1,17 @@
 require 'eyes_selenium'
 
 RSpec.shared_context "Common" do
-  let(:options) {
-    options = Selenium::WebDriver::Chrome::Options.new
-    options.add_argument('--headless')
+  let(:caps) {
+    caps = Selenium::WebDriver::Remote::Capabilities.chrome
+    caps['goog:chromeOptions'] = {
+      args: ['headless']
+    }
+    caps
   }
   let(:driver) {
     if ENV.key?('CI')
-      driver = Selenium::WebDriver.for :chrome, options: options
+      driver = Selenium::WebDriver.for :chrome, capabilities: caps
     else
-      caps = Selenium::WebDriver::Remote::Capabilities.chrome
-      caps['goog:chromeOptions'] = {
-        args: ['headless']
-      }
       driver = Selenium::WebDriver.for :remote, capabilities: caps, url: 'http://localhost:4444/wd/hub'
     end
     driver
