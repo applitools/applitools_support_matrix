@@ -9,7 +9,6 @@ permissions:
   
 jobs:
   test:
-    needs: dist-build
     runs-on: windows-latest
     strategy:
       matrix:
