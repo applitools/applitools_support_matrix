@@ -1,0 +1,117 @@
+GEM
+  remote: https://rubygems.org/
+  specs:
+    addressable (2.8.0)
+      public_suffix (>= 2.0.2, < 5.0)
+    childprocess (4.1.0)
+    colorize (0.8.1)
+    crass (1.0.6)
+    css_parser (1.11.0)
+      addressable
+    date (3.2.2)
+    diff-lcs (1.5.0)
+    domain_name (0.5.20190701)
+      unf (>= 0.0.5, < 1.0.0)
+    eyes_core (4.1.0.alpha)
+      colorize
+      eyes_universal (~> 2.7.2)
+      faraday
+      faraday-cookie_jar
+      faraday_middleware
+      oj
+      sorted_set
+      websocket
+    eyes_selenium (4.1.0.alpha)
+      crass
+      css_parser
+      eyes_core (= 4.1.0.alpha)
+      selenium-webdriver (>= 3)
+      state_machine
+    eyes_universal (2.7.2)
+      open-uri (~> 0.1, >= 0.1.0)
+      stringio
+    faraday (1.10.0)
+      faraday-em_http (~> 1.0)
+      faraday-em_synchrony (~> 1.0)
+      faraday-excon (~> 1.1)
+      faraday-httpclient (~> 1.0)
+      faraday-multipart (~> 1.0)
+      faraday-net_http (~> 1.0)
+      faraday-net_http_persistent (~> 1.0)
+      faraday-patron (~> 1.0)
+      faraday-rack (~> 1.0)
+      faraday-retry (~> 1.0)
+      ruby2_keywords (>= 0.0.4)
+    faraday-cookie_jar (0.0.7)
+      faraday (>= 0.8.0)
+      http-cookie (~> 1.0.0)
+    faraday-em_http (1.0.0)
+    faraday-em_synchrony (1.0.0)
+    faraday-excon (1.1.0)
+    faraday-httpclient (1.0.1)
+    faraday-multipart (1.0.4)
+      multipart-post (~> 2)
+    faraday-net_http (1.0.1)
+    faraday-net_http_persistent (1.2.0)
+    faraday-patron (1.0.0)
+    faraday-rack (1.0.0)
+    faraday-retry (1.0.3)
+    faraday_middleware (1.2.0)
+      faraday (~> 1.0)
+    http-cookie (1.0.5)
+      domain_name (~> 0.5)
+    multipart-post (2.2.3)
+    oj (3.13.14)
+    open-uri (0.2.0)
+      stringio
+      time
+      uri
+    parallel (1.22.1)
+    parallel_tests (3.11.0)
+      parallel
+    public_suffix (4.0.7)
+    rbtree (0.4.5)
+    rexml (3.2.5)
+    rspec (3.11.0)
+      rspec-core (~> 3.11.0)
+      rspec-expectations (~> 3.11.0)
+      rspec-mocks (~> 3.11.0)
+    rspec-core (3.11.0)
+      rspec-support (~> 3.11.0)
+    rspec-expectations (3.11.0)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.11.0)
+    rspec-mocks (3.11.1)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.11.0)
+    rspec-support (3.11.0)
+    ruby2_keywords (0.0.5)
+    rubyzip (2.3.2)
+    selenium-webdriver (4.1.0)
+      childprocess (>= 0.5, < 5.0)
+      rexml (~> 3.2, >= 3.2.5)
+      rubyzip (>= 1.2.2)
+    set (1.0.2)
+    sorted_set (1.0.3)
+      rbtree
+      set (~> 1.0)
+    state_machine (1.2.0)
+    stringio (3.0.2)
+    time (0.2.0)
+      date
+    unf (0.1.4)
+      unf_ext
+    unf_ext (0.0.8.2)
+    uri (0.11.0)
+    websocket (1.2.9)
+
+PLATFORMS
+  x86_64-darwin-20
+
+DEPENDENCIES
+  eyes_selenium (= 4.1.0.alpha)
+  parallel_tests
+  rspec
+
+BUNDLED WITH
+   2.2.27
