@@ -35,7 +35,7 @@ public class GlobalSetup {
         GlobalSetup.CI = CI != null && CI.equals("true");
     }
 
-//    @AfterSuite
+   @AfterSuite
     public void closeBatch() {
         try {
             String server = "eyesapi.applitools.com";
