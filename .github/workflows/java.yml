@@ -1,4 +1,4 @@
-name: Ruby
+name: Java
 
 on:
   workflow_dispatch:
@@ -12,22 +12,19 @@ jobs:
     runs-on: windows-latest
     strategy:
       matrix:
-        ruby-version: [ '2.6' ]
+        java-version: [ '8' ]
     env:
       APPLITOOLS_API_KEY: ${{ secrets.APPLITOOLS_API_KEY }}
     
     steps:
       - uses: actions/checkout@v3
-      - name: Set up Ruby
-        uses: ruby/setup-ruby@v1
+      - name: Set up Java
+        uses: actions/setup-java@v3
         with:
-          ruby-version: ${{ matrix.ruby-version }}
-          bundler-cache: true
-      - name: Install gems
-        working-directory: sdks/ruby
-        run: |
-          bundle install
+          distribution: 'temurin'
+          java-version: ${{ matrix.java-version }}
+          cache: 'maven'
       - name: Run tests
         working-directory: sdks/ruby
         run: |
-          bundle exec rake
+          mvn test
