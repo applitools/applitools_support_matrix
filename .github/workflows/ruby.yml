@@ -2,7 +2,6 @@ name: Ruby
 
 on:
   workflow_dispatch:
-  push:
 
 permissions:
   contents: read

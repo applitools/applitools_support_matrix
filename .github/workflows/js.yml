@@ -2,7 +2,6 @@ name: JS selenium
 
 on:
   workflow_dispatch:
-  push:
 
 permissions:
   contents: read
@@ -22,7 +21,6 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
-          cache: 'npm'
       - name: Run tests
         working-directory: sdks/java
         run: |
