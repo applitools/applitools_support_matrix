@@ -1,0 +1,3 @@
+eyes-selenium>=5.7.0
+pytest>=6.2.5
+selenium~=4.1.5
