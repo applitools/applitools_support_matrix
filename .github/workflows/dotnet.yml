@@ -1,4 +1,4 @@
-name: Python
+name: Dotnet
 
 on:
   workflow_dispatch:
@@ -9,24 +9,23 @@ on:
 
 permissions:
   contents: read
-  
+
 jobs:
   test:
     strategy:
       matrix:
-        python-version: [ '3.10' ]
+        dotnet-version: [ '3.1.x' ]
     runs-on: windows-latest
     env:
       APPLITOOLS_API_KEY: ${{ secrets.APPLITOOLS_API_KEY }}
-    name: Python ${{ python-version }}
+    name: Dotnet ${{ dotnet-version }}
     steps:
       - uses: actions/checkout@v3
-      - name: Set up Python
-        uses: actions/setup-python@v4
+      - name: Setup dotnet
+        uses: actions/setup-dotnet@v2
         with:
-          python-version: ${{ matrix.python-version }}
+          dotnet-version: ${{ matrix.dotnet }}
       - name: Run tests
-        working-directory: sdks/python
+        working-directory: sdks/dotnet
         run: |
-          pip install -r requirements.txt
-          pytest -n 2
+          dotnet test -- NUnit.NumberOfTestWorkers=2

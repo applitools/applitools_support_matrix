@@ -12,13 +12,13 @@ permissions:
   
 jobs:
   test:
-    runs-on: windows-latest
     strategy:
       matrix:
         node-version: [ '16' ]
+    runs-on: windows-latest
     env:
       APPLITOOLS_API_KEY: ${{ secrets.APPLITOOLS_API_KEY }}
-    
+    name: JS Selenium nodejs = ${{ node-version }}
     steps:
       - uses: actions/checkout@v3
       - name: Setup node

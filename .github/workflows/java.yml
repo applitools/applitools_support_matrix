@@ -12,13 +12,13 @@ permissions:
   
 jobs:
   test:
-    runs-on: windows-latest
     strategy:
       matrix:
         java-version: [ '8' ]
+    runs-on: windows-latest
     env:
       APPLITOOLS_API_KEY: ${{ secrets.APPLITOOLS_API_KEY }}
-    
+    name: Java ${{ java-version }}
     steps:
       - uses: actions/checkout@v3
       - name: Set up Java
