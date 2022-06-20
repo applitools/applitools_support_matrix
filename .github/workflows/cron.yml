@@ -1,0 +1,22 @@
+name: Support_Matrix_Execution
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 10 * * *'
+
+permissions:
+  contents: read
+
+jobs:
+
+  java:
+    uses: ./.github/workflows/java.yml
+  js:
+    uses: ./.github/workflows/js.yml
+  ruby:
+    uses: ./.github/workflows/ruby.yml
+  python:
+    uses: ./.github/workflows/python.yml
+
+
