@@ -62,6 +62,8 @@ namespace Applitools.Support.Matrix.Tests
                 case browserType.Chrome:
                     var chromeOptions = new ChromeOptions();
                     chromeOptions.AddArgument("headless");
+                    chromeOptions.AddArgument("--no-sandbox");
+                    chromeOptions.AddArgument("--disable-dev-shm-usage");
                     if (CI)
                     {
                         driver = new ChromeDriver(chromeOptions);
@@ -116,6 +118,7 @@ namespace Applitools.Support.Matrix.Tests
         public void TearDown()
         {
             driver?.Quit();
+            driver.Dispose();
             eyes?.AbortIfNotClosed();
             runner?.GetAllTestResults(false);
         }
