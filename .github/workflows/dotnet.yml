@@ -28,4 +28,4 @@ jobs:
       - name: Run tests
         working-directory: sdks/dotnet
         run: |
-          dotnet test -- NUnit.NumberOfTestWorkers=2
+          dotnet test -- NUnit.NumberOfTestWorkers=1
