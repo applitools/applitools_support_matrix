@@ -18,7 +18,7 @@ jobs:
     runs-on: windows-latest
     env:
       APPLITOOLS_API_KEY: ${{ secrets.APPLITOOLS_API_KEY }}
-    name: Dotnet ${{ dotnet-version }}
+    name: Dotnet ${{ matrix.dotnet-version }}
     steps:
       - uses: actions/checkout@v3
       - name: Setup dotnet
