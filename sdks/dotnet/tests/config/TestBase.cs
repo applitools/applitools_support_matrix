@@ -111,7 +111,7 @@ namespace Applitools.Support.Matrix.Tests
         public void TimeSetup()
         {   
             driverSetup();
-            initEyes();
+            // initEyes();
         }
       
         [TearDown]
