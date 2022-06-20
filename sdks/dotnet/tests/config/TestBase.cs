@@ -98,18 +98,20 @@ namespace Applitools.Support.Matrix.Tests
         [OneTimeSetUp]
         public void OneTimeSetup()
         {
-           
+            Applitools.UniversalSdkNativeLoader.Start();
         }
       
         [OneTimeTearDown]
         public void OneTearDown()
         {
-
+            var loader = new Applitools.UniversalSdkNativeLoader();
+            loader.Stop();
         }
 
         [SetUp]
         public void TimeSetup()
         {   
+
             driverSetup();
             // initEyes();
         }
