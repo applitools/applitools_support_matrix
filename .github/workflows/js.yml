@@ -3,6 +3,9 @@ name: JS selenium
 on:
   workflow_dispatch:
   workflow_call:
+    secrets:
+      APPLITOOLS_API_KEY:
+        required: true
 
 permissions:
   contents: read
