@@ -26,7 +26,14 @@ jobs:
         uses: actions/setup-dotnet@v2
         with:
           dotnet-version: ${{ matrix.dotnet-version }}
-      - name: Run tests
+      - name: Check bin
         working-directory: sdks/dotnet
-        run: |
-          dotnet test -- NUnit.NumberOfTestWorkers=1
+        shell: bash
+        run: |    
+          dotnet build 
+          ls bin/Debug/netcoreapp3.1/runtimes/win-x64/native 
+
+#      - name: Run tests
+#        working-directory: sdks/dotnet
+#        run: |
+#          dotnet test -- NUnit.NumberOfTestWorkers=1
