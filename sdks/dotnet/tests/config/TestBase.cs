@@ -101,15 +101,11 @@ namespace Applitools.Support.Matrix.Tests
         [OneTimeSetUp]
         public void OneTimeSetup()
         {
-            Applitools.UniversalSdkNativeLoader.Start();
-            Thread.Sleep(20000);
         }
       
         [OneTimeTearDown]
         public void OneTearDown()
         {
-            var loader = new Applitools.UniversalSdkNativeLoader();
-            loader.Stop();
         }
 
         [SetUp]

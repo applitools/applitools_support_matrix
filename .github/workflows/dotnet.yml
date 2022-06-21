@@ -29,4 +29,5 @@ jobs:
       - name: Run tests
         working-directory: sdks/dotnet
         run: |
+          dotnet add package Eyes.Selenium
           dotnet test -- NUnit.NumberOfTestWorkers=1
