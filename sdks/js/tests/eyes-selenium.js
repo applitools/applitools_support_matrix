@@ -1,4 +1,4 @@
-const {Eyes, VisualGridRunner} = require("@applitools/eyes-selenium")
+const {Eyes, VisualGridRunner, Target} = require("@applitools/eyes-selenium")
 const {Builder} = require('selenium-webdriver');
 const chrome = require('selenium-webdriver/chrome');
 
@@ -37,5 +37,6 @@ function setupEyes({vg, ...config}) {
 
 module.exports = {
     setupEyes,
-    setupDriver
+    setupDriver,
+    Target,
 }

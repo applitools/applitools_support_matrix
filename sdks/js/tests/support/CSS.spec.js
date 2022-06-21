@@ -1,5 +1,4 @@
-const {setupEyes, setupDriver} = require("../configuration")
-const {Target} = require("@applitools/eyes-selenium");
+const {setupEyes, setupDriver, Target} = require(`../${process.env.JS_TESTS_CONFIG_NAME}`)
 
 describe('Support Matrix CSS', () => {
     let driver, eyes
