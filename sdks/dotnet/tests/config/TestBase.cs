@@ -22,6 +22,8 @@ namespace Applitools.Support.Matrix.Tests
         public static readonly string LOCAL_CHROME_URL = "http://localhost:4444/wd/hub";
         public static readonly string LOCAL_FIREFOX_URL = "http://localhost:4445/wd/hub";
 
+        public static readonly StdoutLogHandler logger = new StdoutLogHandler();
+
         public virtual StitchModes getStitchMode() 
         {
             return StitchModes.CSS;
@@ -44,8 +46,8 @@ namespace Applitools.Support.Matrix.Tests
 
         protected void initEyes()
         {
-            runner = isUFG() ? (EyesRunner)(new VisualGridRunner(10)) : new ClassicRunner();
-            eyes = new Applitools.Selenium.Eyes(runner);
+            runner = isUFG() ? (EyesRunner)(new VisualGridRunner(10, logger)) : new ClassicRunner(logger);
+            eyes = new Applitools.Selenium.Eyes(runner, logHandler:logger);
             eyes.Batch = getBatch();
             eyes.StitchMode = getStitchMode();
             eyes.BranchName = "master";
