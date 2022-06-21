@@ -28,7 +28,7 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
       - name: Run tests
-        working-directory: sdks/js
+        working-directory: sdks/js/eyes-selenium
         run: |
           npm install
           npm test

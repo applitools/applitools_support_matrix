@@ -1,4 +1,4 @@
-const {setupEyes, setupDriver, Target} = require(`../${process.env.JS_TESTS_CONFIG_NAME}`)
+const {setupEyes, setupDriver, Target} = require(`../../${process.env.JS_TESTS_CONFIG_NAME}`)
 describe('Support Matrix UFG', () => {
     let driver, eyes
 
