@@ -8,6 +8,7 @@ using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Firefox;
 using OpenQA.Selenium.Remote;
 using OpenQA.Selenium.Safari;
+using System.Threading;
 namespace Applitools.Support.Matrix.Tests
 {
         public abstract class BaseTest 
@@ -99,6 +100,7 @@ namespace Applitools.Support.Matrix.Tests
         public void OneTimeSetup()
         {
             Applitools.UniversalSdkNativeLoader.Start();
+            Thread.Sleep(20000);
         }
       
         [OneTimeTearDown]
@@ -113,7 +115,7 @@ namespace Applitools.Support.Matrix.Tests
         {   
 
             driverSetup();
-            // initEyes();
+            initEyes();
         }
       
         [TearDown]
