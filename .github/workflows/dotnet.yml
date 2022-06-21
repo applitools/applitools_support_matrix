@@ -15,10 +15,11 @@ jobs:
     strategy:
       matrix:
         dotnet-version: [ '3.1.x' ]
-    runs-on: windows-latest
+        os: [windows-latest, ubuntu-latest, macos-latest]
+    runs-on: ${{ matrix.os }}
     env:
       APPLITOOLS_API_KEY: ${{ secrets.APPLITOOLS_API_KEY }}
-    name: Dotnet ${{ matrix.dotnet-version }}
+    name: Dotnet ${{ matrix.dotnet-version }} ${{matrix.os}}
     steps:
       - uses: actions/checkout@v3
       - name: Setup dotnet
