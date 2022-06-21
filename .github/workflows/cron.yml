@@ -9,7 +9,6 @@ permissions:
   contents: read
 
 jobs:
-
   java:
     uses: ./.github/workflows/java.yml
     secrets:
@@ -24,6 +23,10 @@ jobs:
       APPLITOOLS_API_KEY: ${{ secrets.APPLITOOLS_API_KEY }}
   python:
     uses: ./.github/workflows/python.yml
+    secrets:
+      APPLITOOLS_API_KEY: ${{ secrets.APPLITOOLS_API_KEY }}
+  dotnet:
+    uses: ./.github/workflows/dotnet.yml
     secrets:
       APPLITOOLS_API_KEY: ${{ secrets.APPLITOOLS_API_KEY }}
 
