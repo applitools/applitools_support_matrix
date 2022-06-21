@@ -15,10 +15,11 @@ jobs:
     strategy:
       matrix:
         python-version: [ '3.10' ]
-    runs-on: windows-latest
+        os: [windows-latest, ubuntu-latest, macos-latest]
+    runs-on: ${{ matrix.os }}
     env:
       APPLITOOLS_API_KEY: ${{ secrets.APPLITOOLS_API_KEY }}
-    name: Python ${{ python-version }}
+    name: Python ${{ python-version }} ${{matrix.os}}
     steps:
       - uses: actions/checkout@v3
       - name: Set up Python
