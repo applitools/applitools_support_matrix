@@ -10,10 +10,10 @@ jobs:
   selenium:
     strategy:
       matrix:
-        os: [macos-latest]
+        os: [windows-latest, ubuntu-latest, macos-latest]
     runs-on: ${{ matrix.os }}
     name: check | os = ${{matrix.os}}
     steps:
       - name: Run checks
         run: |
-          selenium-server --version
+          selenium-server info
