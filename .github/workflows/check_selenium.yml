@@ -10,11 +10,12 @@ jobs:
   selenium:
     strategy:
       matrix:
-        os: [ubuntu-latest, macos-latest]
+        os: [macos-latest]
     runs-on: ${{ matrix.os }}
     name: check | os = ${{matrix.os}}
     steps:
       - name: Run checks
         run: |
           env
-          ls /usr/share/java
+          brew list 
+          brew list --cask
