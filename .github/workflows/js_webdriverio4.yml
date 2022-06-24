@@ -15,7 +15,7 @@ jobs:
     strategy:
       matrix:
         node-version: [ '16' ]
-        os: [ubuntu-latest]
+        os: [windows-latest, ubuntu-latest, macos-latest]
     runs-on: ${{ matrix.os }}
     name: JS Selenium nodejs = ${{ matrix.node-version }} | os = ${{matrix.os}}
     env:
@@ -41,5 +41,5 @@ jobs:
       - name: Close Batch
         uses: ./.github/actions/close_batch
         with:
-          api_key: env.APPLITOOLS_API_KEY
-          batch_id: env.APPLITOOLS_BATCH_ID
+          api_key: ${{env.APPLITOOLS_API_KEY}}
+          batch_id: ${{env.APPLITOOLS_BATCH_ID}}
