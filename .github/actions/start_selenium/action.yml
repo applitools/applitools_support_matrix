@@ -16,5 +16,5 @@ runs:
       shell: bash
     - run: sleep 10
       shell: bash
-    - run: echo "Selenium server started
+    - run: echo "Selenium server started"
       shell: bash
