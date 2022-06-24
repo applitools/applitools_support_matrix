@@ -14,6 +14,11 @@ jobs:
     runs-on: ${{ matrix.os }}
     name: check | os = ${{matrix.os}}
     steps:
-      - name: Run checks
+      - name: Run Mac checks
+        if: runner.os == macOS
         run: |
-          selenium-server info
+          selenium-server -Dwebdriver.chrome.driver=${{ env.CHROMEWEBDRIVER }}
+      - name: Run not on Mac checks
+        if: runner.os != macOS
+        run: |
+          java -jar ${SELENIUM_JAR_PATH} -Dwebdriver.chrome.driver=${CHROMEWEBDRIVER}
