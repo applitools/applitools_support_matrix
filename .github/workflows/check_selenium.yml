@@ -19,4 +19,4 @@ jobs:
     name: check | os = ${{matrix.os}}
     steps:
       - name: Run Selenium
-        uses: ./.github/actions/start_selenium.yml
+        uses: ./.github/actions/start_selenium
