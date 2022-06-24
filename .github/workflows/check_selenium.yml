@@ -16,6 +16,4 @@ jobs:
     steps:
       - name: Run checks
         run: |
-          env
-          brew list 
-          brew list --cask
+          selenium-server --version
