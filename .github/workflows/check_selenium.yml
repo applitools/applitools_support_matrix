@@ -17,8 +17,8 @@ jobs:
       - name: Run Mac checks
         if: matrix.os == 'macos-latest'
         run: |
-          selenium-server -Dwebdriver.chrome.driver=${{ env.CHROMEWEBDRIVER }}
+          selenium-server standalone
       - name: Run not on Mac checks
-        if: runner.os != 'macos-latest'
+        if: matrix.os != 'macos-latest'
         run: |
-          java -jar ${SELENIUM_JAR_PATH} -Dwebdriver.chrome.driver=${CHROMEWEBDRIVER}
+          java -jar ${SELENIUM_JAR_PATH} standalone
