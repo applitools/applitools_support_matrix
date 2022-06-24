@@ -15,7 +15,7 @@ jobs:
     strategy:
       matrix:
         node-version: [ '16' ]
-        os: [windows-latest, ubuntu-latest, macos-latest]
+        os: [ubuntu-latest]
     runs-on: ${{ matrix.os }}
     name: JS Selenium nodejs = ${{ matrix.node-version }} | os = ${{matrix.os}}
     env:
