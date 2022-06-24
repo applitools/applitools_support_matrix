@@ -1,0 +1,20 @@
+name: 'Start selenium'
+description: 'Command to start selenium server on different platforms'
+outputs:
+  random-number:
+    description: "Random number"
+    value: ${{ steps.random-number-generator.outputs.random-number }}
+runs:
+  using: "composite"
+  steps:
+    - run: |
+        if [ "$RUNNER_OS" == "macOS" ]; then
+              selenium-server standalone &
+        else
+              java -jar ${SELENIUM_JAR_PATH} standalone &
+        fi
+      shell: bash
+    - run: sleep 10
+      shell: bash
+    - run: echo "Selenium server started
+      shell: bash

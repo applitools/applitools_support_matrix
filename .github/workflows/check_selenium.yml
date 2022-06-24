@@ -18,15 +18,5 @@ jobs:
     runs-on: ${{ matrix.os }}
     name: check | os = ${{matrix.os}}
     steps:
-      - name: Run Mac checks
-        if: matrix.os == 'macos-latest'
-        run: |
-          selenium-server standalone &
-          sleep 10
-          echo 'Let end'
-      - name: Run not on Mac checks
-        if: matrix.os != 'macos-latest'
-        run: |
-          java -jar ${SELENIUM_JAR_PATH} standalone &
-          sleep 10
-          echo 'Let end'
+      - name: Run Selenium
+        uses: ./.github/actions/start_selenium.yml
