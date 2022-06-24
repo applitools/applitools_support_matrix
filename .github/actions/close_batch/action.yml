@@ -14,5 +14,5 @@ inputs:
 runs:
   using: "composite"
   steps:
-    - run: curl -v -X DELETE "${{inputs.server}}/api/sessions/batches/${{inputs.batch_id}}/close/bypointerid?apiKey=${{inputs.api_key}}"
+    - run: curl -v -X --show-error --fail DELETE "${{inputs.server}}/api/sessions/batches/${{inputs.batch_id}}/close/bypointerid?apiKey=${{inputs.api_key}}"
       shell: bash
