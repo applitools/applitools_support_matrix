@@ -10,6 +10,9 @@ on:
 permissions:
   contents: read
 
+env:
+  APPLITOOLS_DONT_CLOSE_BATCHES: true
+
 jobs:
   test:
     strategy:
