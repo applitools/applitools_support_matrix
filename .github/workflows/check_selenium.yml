@@ -7,7 +7,11 @@ permissions:
   contents: read
   
 jobs:
+
   selenium:
+    defaults:
+      run:
+        shell: bash
     strategy:
       matrix:
         os: [windows-latest, ubuntu-latest, macos-latest]
@@ -20,7 +24,5 @@ jobs:
           selenium-server standalone
       - name: Run not on Mac checks
         if: matrix.os != 'macos-latest'
-        shell: bash
         run: |
-          env
           java -jar ${SELENIUM_JAR_PATH} standalone
