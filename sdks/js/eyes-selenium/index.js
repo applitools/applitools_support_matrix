@@ -18,6 +18,10 @@ async function teardownDriver(driver) {
     await driver.quit();
 }
 
+async function open(driver, url) {
+    await driver.get(url)
+}
+
 const batch = {
     name: process.env.APPLITOOLS_BATCH_NAME || 'JS Support Matrix Eyes Selenium',
 }
@@ -43,5 +47,6 @@ module.exports = {
     setupEyes,
     setupDriver,
     teardownDriver,
+    open,
     Target,
 }

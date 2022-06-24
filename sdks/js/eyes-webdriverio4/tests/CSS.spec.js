@@ -1,10 +1,20 @@
-const {setupEyes, setupDriver, teardownDriver, open, Target} = require(`../../${process.env.JS_TESTS_CONFIG_NAME}`)
+const {setupEyes, Target} = require("../index")
+const webdriverio = require('webdriverio');
 
 describe('Support Matrix CSS', () => {
     let driver, eyes
-
     beforeEach(async () => {
-        driver = await setupDriver();
+        const chrome = {
+            desiredCapabilities: {
+                browserName: 'chrome',
+                'goog:chromeOptions': {
+                    args: ['headless']
+                }
+            },
+            host: '127.0.0.1'
+        };
+        driver = webdriverio.remote(chrome);
+        await driver.init()
         eyes = setupEyes({
             stitchMode: "CSS",
         })
@@ -15,13 +25,13 @@ describe('Support Matrix CSS', () => {
         try {
             await eyes.abort()
         } finally {
-            await teardownDriver(driver)
+            await driver.end()
         }
 
     })
 
     it('window', async () => {
-        await open(driver, "https://applitools.github.io/demo/TestPages/FramesTestPage/")
+        await driver.url("https://applitools.github.io/demo/TestPages/FramesTestPage/")
         await eyes.open(driver, "Eyes Selenium SDK - Classic API", "CheckWindowDefaultFully", {
             width: 700,
             height: 460
@@ -32,7 +42,7 @@ describe('Support Matrix CSS', () => {
 
 
     it('region', async () => {
-        await open(driver, "https://applitools.github.io/demo/TestPages/FramesTestPage/")
+        await driver.url("https://applitools.github.io/demo/TestPages/FramesTestPage/")
         await eyes.open(driver, "Eyes Selenium SDK - Fluent API", "TestCheckRegionByCoordinates_Fluent", {
             width: 700,
             height: 460
@@ -42,7 +52,7 @@ describe('Support Matrix CSS', () => {
     })
 
     it('frame', async () => {
-        await open(driver, "https://applitools.github.io/demo/TestPages/FramesTestPage/")
+        await driver.url("https://applitools.github.io/demo/TestPages/FramesTestPage/")
         eyes.setBranchName("universal-sdk")
         await eyes.open(driver, "Eyes Selenium SDK - Fluent API", "TestCheckFrame_Fluent", {width: 700, height: 460},)
         await eyes.check({frames: ["[name=\"frame1\"]"]})

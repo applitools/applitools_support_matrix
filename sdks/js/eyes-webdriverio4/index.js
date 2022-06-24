@@ -1,29 +1,7 @@
 const {Eyes, VisualGridRunner, Target} = require("@applitools/eyes.webdriverio")
-const webdriverio = require('webdriverio');
-
-async function setupDriver() {
-    // Use Chrome browser
-    const chrome = {
-        desiredCapabilities: {
-            browserName: 'chrome',
-            'goog:chromeOptions': {
-                args: ['headless']
-            }
-        },
-        host: '127.0.0.1'
-    };
-
-    // Use Chrome browser
-    const driver = webdriverio.remote(chrome);
-    return driver.init();
-}
-
-async function teardownDriver(driver) {
-    await driver.end();
-}
 
 const batch = {
-    name: process.env.APPLITOOLS_BATCH_NAME || 'JS Support Matrix Eyes Selenium',
+    name: process.env.APPLITOOLS_BATCH_NAME || 'JS Support Matrix Eyes WebdriverIO',
 }
 
 function setupEyes({vg, ...config}) {
@@ -45,7 +23,5 @@ function setupEyes({vg, ...config}) {
 
 module.exports = {
     setupEyes,
-    setupDriver,
-    teardownDriver,
     Target,
 }
