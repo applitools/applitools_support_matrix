@@ -21,8 +21,12 @@ jobs:
       - name: Run Mac checks
         if: matrix.os == 'macos-latest'
         run: |
-          selenium-server standalone
+          selenium-server standalone &
+          sleep 10
+          echo 'Let end'
       - name: Run not on Mac checks
         if: matrix.os != 'macos-latest'
         run: |
-          java -jar ${SELENIUM_JAR_PATH} standalone
+          java -jar ${SELENIUM_JAR_PATH} standalone &
+          sleep 10
+          echo 'Let end'
