@@ -21,4 +21,5 @@ jobs:
       - name: Run not on Mac checks
         if: matrix.os != 'macos-latest'
         run: |
+          env
           java -jar ${SELENIUM_JAR_PATH} standalone
