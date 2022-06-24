@@ -1,0 +1,20 @@
+name: Check selenium server
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  
+jobs:
+  selenium:
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+    runs-on: ${{ matrix.os }}
+    name: check | os = ${{matrix.os}}
+    steps:
+      - name: Run checks
+        run: |
+          env
+          ls /usr/share/java

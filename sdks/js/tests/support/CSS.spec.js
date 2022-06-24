@@ -1,4 +1,4 @@
-const {setupEyes, setupDriver, Target} = require(`../../${process.env.JS_TESTS_CONFIG_NAME}`)
+const {setupEyes, setupDriver, teardownDriver, Target} = require(`../../${process.env.JS_TESTS_CONFIG_NAME}`)
 
 describe('Support Matrix CSS', () => {
     let driver, eyes
@@ -16,7 +16,7 @@ describe('Support Matrix CSS', () => {
         try {
             await eyes.abort()
         } finally {
-            await driver.quit()
+            await teardownDriver(driver)
         }
 
     })

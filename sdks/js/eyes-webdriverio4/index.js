@@ -1,21 +1,25 @@
-const {Eyes, VisualGridRunner, Target} = require("@applitools/eyes-selenium")
-const {Builder} = require('selenium-webdriver');
-const chrome = require('selenium-webdriver/chrome');
+const {Eyes, VisualGridRunner, Target} = require("@applitools/eyes.webdriverio")
+const webdriverio = require('webdriverio');
 
 async function setupDriver() {
     // Use Chrome browser
-    const options = new chrome.Options();
-    options.headless();
+    const chrome = {
+        desiredCapabilities: {
+            browserName: 'chrome',
+            'goog:chromeOptions': {
+                args: ['headless']
+            }
+        },
+        host: '127.0.0.1'
+    };
 
-    const builder = new Builder()
-        .forBrowser('chrome')
-        .setChromeOptions(options)
-    if (process.env.CI !== 'true') builder.usingServer("http://localhost:4444/wd/hub")
-    return builder.build();
+    // Use Chrome browser
+    const driver = webdriverio.remote(chrome);
+    return driver.init();
 }
 
 async function teardownDriver(driver) {
-    await driver.quit();
+    await driver.end();
 }
 
 const batch = {
