@@ -13,8 +13,8 @@ jobs:
     uses: ./.github/workflows/java.yml
     secrets:
       APPLITOOLS_API_KEY: ${{ secrets.APPLITOOLS_API_KEY }}
-  js:
-    uses: ./.github/workflows/js.yml
+  js_selenium:
+    uses: ./.github/workflows/js_selenium.yml
     secrets:
       APPLITOOLS_API_KEY: ${{ secrets.APPLITOOLS_API_KEY }}
   ruby:
