@@ -11,6 +11,7 @@ permissions:
   contents: read
 
 env:
+  APPLITOOLS_BATCH_ID: ${{  github.sha }}
   APPLITOOLS_DONT_CLOSE_BATCHES: true
 
 jobs:
