@@ -18,8 +18,13 @@ jobs:
   tests:
     strategy:
       matrix:
-        node-version: [ '16' ]
-        os: [windows-latest, ubuntu-latest, macos-latest]
+        include:
+          - node-version: '16'
+            os: windows-latest
+          - node-version: '16'
+            os: ubuntu-latest
+          - node-version: '16'
+            os: macos-latest
     runs-on: ${{ matrix.os }}
     name: ${{ matrix.node-version }} | ${{matrix.os}} | ${{matrix.webdriverio-version}}
     env:
