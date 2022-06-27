@@ -17,6 +17,7 @@ env:
 jobs:
   selenium:
     strategy:
+      fail-fast: false
       matrix:
         include:
           - node-version: '16'
