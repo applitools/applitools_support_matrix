@@ -19,7 +19,7 @@ jobs:
     strategy:
       matrix:
         node-version: [ '16' ]
-        os: [windows-latest, ubuntu-latest, macos-latest]
+        os: [windows-latest]
     runs-on: ${{ matrix.os }}
     name: ${{ matrix.node-version }} | ${{matrix.os}} | ${{matrix.webdriverio-version}}
     env:
@@ -38,6 +38,7 @@ jobs:
           ls
       - name: Run check
         if: runner.os == 'Windows'
+        shell: powershell
         run: |
           Invoke-WebRequest -O selenium-server.jar https://selenium-release.storage.googleapis.com/3.141/selenium-server-standalone-3.141.59.jar
           ls  
