@@ -19,8 +19,8 @@ test.describe('Support Matrix UFG', () => {
         await page.goto( "https://applitools.github.io/demo/TestPages/FramesTestPage/")
         await eyes.open(
             page,
-            "Eyes Selenium SDK - Classic API",
-            "CheckWindowDefaultFully_VG",
+            "Support Matrix",
+            "Check Window",
             {width: 700, height: 460},
         )
         await eyes.check('',Target.window().fully(true))
@@ -32,8 +32,8 @@ test.describe('Support Matrix UFG', () => {
         await page.goto( "https://applitools.github.io/demo/TestPages/FramesTestPage/")
         await eyes.open(
             page,
-            "Eyes Selenium SDK - Fluent API",
-            "TestCheckRegionByCoordinates_Fluent_VG",
+            "Support Matrix",
+            "Check Region",
             {width: 700, height: 460},
         )
         await eyes.check({region: {x: 50, y: 70, width: 90, height: 110}})
@@ -42,11 +42,10 @@ test.describe('Support Matrix UFG', () => {
 
     test('frame', async ({page}) => {
         await page.goto( "https://applitools.github.io/demo/TestPages/FramesTestPage/")
-        eyes.setBranchName("universal-sdk")
         await eyes.open(
             page,
-            "Eyes Selenium SDK - Classic API",
-            "TestCheckFrame_VG",
+            "Support Matrix",
+            "Check Frame",
             {width: 700, height: 460},
         )
         await eyes.check({frames: ["[name=\"frame1\"]"]})

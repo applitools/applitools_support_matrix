@@ -8,26 +8,29 @@ on:
 permissions:
   contents: read
 
+env:
+  APPLITOOLS_SERVER_URL: 'https://testeyes.applitools.com/'
+
 jobs:
   java:
     uses: ./.github/workflows/java.yml
     secrets:
-      APPLITOOLS_API_KEY: ${{ secrets.APPLITOOLS_API_KEY }}
+      APPLITOOLS_API_KEY: ${{ secrets.TEST_API_KEY }}
   js_selenium:
     uses: ./.github/workflows/js_selenium.yml
     secrets:
-      APPLITOOLS_API_KEY: ${{ secrets.APPLITOOLS_API_KEY }}
+      APPLITOOLS_API_KEY: ${{ secrets.TEST_API_KEY }}
   ruby:
     uses: ./.github/workflows/ruby.yml
     secrets:
-      APPLITOOLS_API_KEY: ${{ secrets.APPLITOOLS_API_KEY }}
+      APPLITOOLS_API_KEY: ${{ secrets.TEST_API_KEY }}
   python:
     uses: ./.github/workflows/python.yml
     secrets:
-      APPLITOOLS_API_KEY: ${{ secrets.APPLITOOLS_API_KEY }}
+      APPLITOOLS_API_KEY: ${{ secrets.TEST_API_KEY }}
   dotnet:
     uses: ./.github/workflows/dotnet.yml
     secrets:
-      APPLITOOLS_API_KEY: ${{ secrets.APPLITOOLS_API_KEY }}
+      APPLITOOLS_API_KEY: ${{ secrets.TEST_API_KEY }}
 
 
