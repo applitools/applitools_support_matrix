@@ -32,6 +32,12 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Run check
+        if: runner.os != 'Windows'
         run: |
-          wget --version 
-          curl --version
+          wget -OutFile selenium-server.jar https://selenium-release.storage.googleapis.com/3.141/selenium-server-standalone-3.141.59.jar
+          ls
+      - name: Run check
+        if: runner.os == 'Windows'
+        run: |
+          Invoke-WebRequest -OutFile selenium-server.jar https://selenium-release.storage.googleapis.com/3.141/selenium-server-standalone-3.141.59.jar
+          ls  
