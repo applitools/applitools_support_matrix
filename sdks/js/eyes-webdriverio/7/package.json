@@ -1,0 +1,12 @@
+{
+  "name": "support-matrix-eyes-webdriverio-7",
+  "version": "1.0.0",
+  "dependencies": {
+    "@applitools/eyes-webdriverio": "latest",
+    "mocha": "^9.1.3",
+    "webdriverio": "^7.20.5"
+  },
+  "scripts": {
+    "test": "mocha --config ../.mocharc.js"
+  }
+}
