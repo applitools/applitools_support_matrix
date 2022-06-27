@@ -27,7 +27,7 @@ jobs:
       APPLITOOLS_DONT_CLOSE_BATCHES: true
     defaults:
       run:
-        working-directory: ${{format('sdks/js/eyes-webdriverio/${0}', matrix.webdriverio-version)}}
+        working-directory: ${{format('sdks/js/eyes-webdriverio/{0}', matrix.webdriverio-version)}}
         shell: bash
     steps:
       - uses: actions/checkout@v3
