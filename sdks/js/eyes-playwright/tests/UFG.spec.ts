@@ -20,7 +20,7 @@ test.describe('Support Matrix UFG', () => {
         await eyes.open(
             page,
             "Support Matrix - Playwright",
-            "Check Window",
+            "Check Window UFG",
             {width: 700, height: 460},
         )
         await eyes.check('',Target.window().fully(true))
@@ -33,7 +33,7 @@ test.describe('Support Matrix UFG', () => {
         await eyes.open(
             page,
             "Support Matrix - Playwright",
-            "Check Region",
+            "Check Region UFG",
             {width: 700, height: 460},
         )
         await eyes.check({region: {x: 50, y: 70, width: 90, height: 110}})
@@ -45,7 +45,7 @@ test.describe('Support Matrix UFG', () => {
         await eyes.open(
             page,
             "Support Matrix - Playwright",
-            "Check Frame",
+            "Check Frame UFG",
             {width: 700, height: 460},
         )
         await eyes.check({frames: ["[name=\"frame1\"]"]})
