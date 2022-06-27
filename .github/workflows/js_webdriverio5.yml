@@ -19,7 +19,7 @@ jobs:
     strategy:
       matrix:
         node-version: [ '16' ]
-        os: [windows-latest]
+        os: [windows-latest, ubuntu-latest, macos-latest]
     runs-on: ${{ matrix.os }}
     name: ${{ matrix.node-version }} | ${{matrix.os}} | ${{matrix.webdriverio-version}}
     env:
@@ -35,3 +35,7 @@ jobs:
         uses: ./.github/actions/start_selenium
         with:
           legacy: 'true'
+      - name: Run tests
+        run: |
+          npm install
+          npm test    
