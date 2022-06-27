@@ -19,7 +19,7 @@ test.describe('Support Matrix UFG', () => {
         await page.goto( "https://applitools.github.io/demo/TestPages/FramesTestPage/")
         await eyes.open(
             page,
-            "Support Matrix",
+            "Support Matrix - Playwright",
             "Check Window",
             {width: 700, height: 460},
         )
@@ -32,7 +32,7 @@ test.describe('Support Matrix UFG', () => {
         await page.goto( "https://applitools.github.io/demo/TestPages/FramesTestPage/")
         await eyes.open(
             page,
-            "Support Matrix",
+            "Support Matrix - Playwright",
             "Check Region",
             {width: 700, height: 460},
         )
@@ -44,7 +44,7 @@ test.describe('Support Matrix UFG', () => {
         await page.goto( "https://applitools.github.io/demo/TestPages/FramesTestPage/")
         await eyes.open(
             page,
-            "Support Matrix",
+            "Support Matrix - Playwright",
             "Check Frame",
             {width: 700, height: 460},
         )

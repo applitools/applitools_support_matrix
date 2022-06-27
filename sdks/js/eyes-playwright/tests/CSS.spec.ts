@@ -19,7 +19,7 @@ test.describe('Support Matrix CSS', () => {
 
     test('window', async ({page}) => {
         await page.goto( "https://applitools.github.io/demo/TestPages/FramesTestPage/")
-        await eyes.open(page, "Support Matrix", "Check Window", {
+        await eyes.open(page, "Support Matrix - Playwright", "Check Window", {
             width: 700,
             height: 460
         },)
@@ -30,7 +30,7 @@ test.describe('Support Matrix CSS', () => {
 
     test('region', async ({page}) => {
         await page.goto( "https://applitools.github.io/demo/TestPages/FramesTestPage/")
-        await eyes.open(page, "Support Matrix", "Check Region", {
+        await eyes.open(page, "Support Matrix - Playwright", "Check Region", {
             width: 700,
             height: 460
         },)
@@ -40,7 +40,7 @@ test.describe('Support Matrix CSS', () => {
 
     test('frame', async ({page}) => {
         await page.goto( "https://applitools.github.io/demo/TestPages/FramesTestPage/")
-        await eyes.open(page, "Support Matrix", "Check Frame", {width: 700, height: 460},)
+        await eyes.open(page, "Support Matrix - Playwright", "Check Frame", {width: 700, height: 460},)
         await eyes.check({frames: ["[name=\"frame1\"]"]})
         await eyes.close()
     })
