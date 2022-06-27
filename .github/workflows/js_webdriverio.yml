@@ -25,6 +25,7 @@ jobs:
     name: JS Selenium nodejs = ${{ matrix.node-version }} | os = ${{matrix.os}} | webdriverio version = ${{matrix.webdriverio-version}}
     env:
       APPLITOOLS_DONT_CLOSE_BATCHES: true
+      JS_TESTS_CONFIG_NAME: ${{format('eyes-webdriverio/{0}', matrix.webdriverio-version)}}
     defaults:
       run:
         working-directory: ${{format('sdks/js/eyes-webdriverio/{0}', matrix.webdriverio-version)}}
