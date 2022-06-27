@@ -22,7 +22,7 @@ jobs:
         os: [windows-latest, ubuntu-latest, macos-latest]
         webdriverio-version: ['6','7']
     runs-on: ${{ matrix.os }}
-    name: JS Selenium nodejs = ${{ matrix.node-version }} | os = ${{matrix.os}} | webdriverio version = ${{matrix.webdriverio-version}}
+    name:  ${{ matrix.node-version }} | ${{matrix.os}} | ${{matrix.webdriverio-version}}
     env:
       APPLITOOLS_DONT_CLOSE_BATCHES: true
       JS_TESTS_CONFIG_NAME: ${{format('eyes-webdriverio/{0}', matrix.webdriverio-version)}}
