@@ -25,6 +25,10 @@ jobs:
       APPLITOOLS_API_KEY: ${{ secrets.APPLITOOLS_API_KEY }}
       JS_TESTS_CONFIG_NAME: 'eyes-selenium'
     name: ${{ matrix.node-version }} | ${{matrix.os}}
+    defaults:
+      run:
+        working-directory: 'sdks/js/eyes-selenium'
+        shell: bash
     steps:
       - uses: actions/checkout@v3
       - name: Setup node
@@ -32,7 +36,6 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
       - name: Run tests
-        working-directory: sdks/js/eyes-selenium
         run: |
           npm install
           npm test

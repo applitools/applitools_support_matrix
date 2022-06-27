@@ -1,0 +1,11 @@
+{
+  "name": "support-matrix-eyes-nightwatch",
+  "version": "1.0.0",
+  "dependencies": {
+    "@applitools/eyes-nightwatch": "latest",
+    "nightwatch": "^2.2.2"
+  },
+  "scripts": {
+    "test": "nightwatch"
+  }
+}
