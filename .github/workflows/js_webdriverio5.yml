@@ -31,14 +31,7 @@ jobs:
         shell: bash
     steps:
       - uses: actions/checkout@v3
-      - name: Run check
-        if: runner.os != 'Windows'
-        run: |
-          wget -O selenium-server.jar https://selenium-release.storage.googleapis.com/3.141/selenium-server-standalone-3.141.59.jar
-          ls
-      - name: Run check
-        if: runner.os == 'Windows'
-        shell: powershell
-        run: |
-          Invoke-WebRequest -O selenium-server.jar https://selenium-release.storage.googleapis.com/3.141/selenium-server-standalone-3.141.59.jar
-          ls  
+      - name: Run Selenium
+        uses: ./.github/actions/start_selenium
+        with:
+          legacy: 'true'
