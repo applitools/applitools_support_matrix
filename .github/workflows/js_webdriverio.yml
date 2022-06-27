@@ -20,7 +20,7 @@ jobs:
       matrix:
         node-version: [ '16' ]
         os: [windows-latest, ubuntu-latest, macos-latest]
-        webdriverio-version: ['5','6','7']
+        webdriverio-version: ['6','7']
     runs-on: ${{ matrix.os }}
     name: JS Selenium nodejs = ${{ matrix.node-version }} | os = ${{matrix.os}} | webdriverio version = ${{matrix.webdriverio-version}}
     env:
