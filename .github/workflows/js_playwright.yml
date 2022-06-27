@@ -1,4 +1,4 @@
-name: JS WebdriverIO5
+name: JS Playwright
 
 on:
   workflow_dispatch:
@@ -11,11 +11,10 @@ permissions:
   contents: read
 
 env:
-  APPLITOOLS_BATCH_ID: ${{  github.sha }}
-  APPLITOOLS_API_KEY: ${{ secrets.APPLITOOLS_API_KEY }}
+  APPLITOOLS_DONT_CLOSE_BATCHES: true
 
 jobs:
-  tests:
+  selenium:
     strategy:
       matrix:
         include:
@@ -26,21 +25,18 @@ jobs:
           - node-version: '16'
             os: macos-latest
     runs-on: ${{ matrix.os }}
-    name: ${{ matrix.node-version }} | ${{matrix.os}} | 5
     env:
-      APPLITOOLS_DONT_CLOSE_BATCHES: true
-      JS_TESTS_CONFIG_NAME: 'eyes-webdriverio/5'
-    defaults:
-      run:
-        working-directory: 'sdks/js/eyes-webdriverio/5'
-        shell: bash
+      APPLITOOLS_API_KEY: ${{ secrets.APPLITOOLS_API_KEY }}
+    name: JS Selenium nodejs = ${{ matrix.node-version }} | os = ${{matrix.os}}
     steps:
       - uses: actions/checkout@v3
-      - name: Run Selenium
-        uses: ./.github/actions/start_selenium
+      - name: Setup node
+        uses: actions/setup-node@v3
         with:
-          legacy: 'true'
+          node-version: ${{ matrix.node-version }}
       - name: Run tests
+        working-directory: sdks/js/eyes-playwright
         run: |
           npm install
-          npm test    
+          npx playwright install --with-deps
+          npm test
