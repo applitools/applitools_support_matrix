@@ -61,13 +61,13 @@ jobs:
       - name: Send mail
         uses: dawidd6/action-send-mail@v3
         with:
-          server_address: smtp.gmail.com
-          server_port: 465
-          username: ${{ secrets.EMAIL_USERNAME }}
-          password: ${{ secrets.EMAIL_PASSWORD }}
-          subject: SUPPORT MATRIX run has failed job
-          body: Worflow ${{ github.workflow }} of ${{ github.repository }}
-            java has status ${{needs.java.result}}
+            server_address: smtp.gmail.com
+            server_port: 465
+            username: ${{ secrets.EMAIL_USERNAME }}
+            password: ${{ secrets.EMAIL_PASSWORD }}
+            subject: SUPPORT MATRIX run has failed job
+            body: Worflow ${{ github.workflow }} of ${{ github.repository }}
+              java has status ${{needs.java.result}}
 #            ruby has status ${{needs.ruby.result}}
 #            python has status ${{needs.python.result}}
 #            dotnet has status ${{needs.dotnet.result}}
@@ -76,15 +76,15 @@ jobs:
 #            js_webdriverio has status ${{needs.js_webdriverio.result}}
 #            js_webdriverio4 has status ${{needs.js_webdriverio4.result}}
 #            js_webdriverio5 has status ${{needs.js_webdriverio5.result}}
-          html_body: Worflow ${{ github.workflow }} of ${{ github.repository }} <br>
-            java has status ${{needs.java.result}} <br>
+            html_body: Worflow ${{ github.workflow }} of ${{ github.repository }} <br>
+              java has status ${{needs.java.result}} <br>
 #            ruby has status ${{needs.ruby.result}} <br>
-            python has status ${{needs.python.result}} <br>
+             python has status ${{needs.python.result}} <br>
 #            dotnet has status ${{needs.dotnet.result}} <br>
 #            js_selenium has status ${{needs.js_selenium.result}} <br>
 #            js_playwright has status ${{needs.js_playwright.result}} <br>
 #            js_webdriverio has status ${{needs.js_webdriverio.result}} <br>
 #            js_webdriverio4 has status ${{needs.js_webdriverio4.result}} <br>
 #            js_webdriverio5 has status ${{needs.js_webdriverio5.result}} <br>
-          to: tranduil15@gmail.com
-          from: Artem
+            to: tranduil15@gmail.com
+            from: Artem
