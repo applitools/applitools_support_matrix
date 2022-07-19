@@ -45,4 +45,33 @@ jobs:
     uses: ./.github/workflows/js_webdriverio5.yml
     secrets:
       APPLITOOLS_API_KEY: ${{ secrets.APPLITOOLS_API_KEY }}
-
+  email_notification:
+#    if: ${{always() && (needs.java.result=='failure' || needs.ruby.result=='failure' ||
+#      needs.python.result=='failure' || needs.dotnet.result=='failure' ||
+#      needs.js_selenium.result=='failure' || needs.js_playwright.result=='failure' ||
+#      needs.js_webdriverio.result=='failure' || needs.js_webdriverio4.result=='failure' ||
+#      needs.js_webdriverio5.result=='failure')}}
+    needs: [java, ruby, python, dotnet, js_selenium, js_playwright, js_webdriverio, js_webdriverio4, js_webdriverio5]
+    runs-on: ubuntu-latest
+    steps:
+        - run: echo Reporting a failure
+        - name: Send mail
+          uses: dawidd6/action-send-mail@v2
+          with:
+            server_address: smtp.gmail.com
+            server_port: 465
+            username: ${{ secrets.EMAIL_USERNAME }}
+            password: ${{ secrets.EMAIL_PASSWORD }}
+            subject: SUPPORT MATRIX run has failed job
+            body: Worflow ${{ github.workflow }} of ${{ github.repository }}
+            java has status ${{needs.java.result}}
+            ruby has status ${{needs.ruby.result}}
+            python has status ${{needs.python.result}}
+            dotnet has status ${{needs.dotnet.result}}
+            js_selenium has status ${{needs.js_selenium.result}}
+            js_playwright has status ${{needs.js_playwright.result}}
+            js_webdriverio has status ${{needs.js_webdriverio.result}}
+            js_webdriverio4 has status ${{needs.js_webdriverio4.result}}
+            js_webdriverio5 has status ${{needs.js_webdriverio5.result}}
+            to: tranduil15@gmail.com
+            from: Artem
