@@ -83,5 +83,5 @@ jobs:
               js_webdriverio has status ${{needs.js_webdriverio.result}} <br>
               js_webdriverio4 has status ${{needs.js_webdriverio4.result}} <br>
               js_webdriverio5 has status ${{needs.js_webdriverio5.result}} <br>
-            to: yarden.ingber@applitools.com
+            to: yarden.ingber@applitools.com,adam.carmi@applitools.com,amit.zur@applitools.com,kyrylo.onufriiev@applitools.com,daniel.puterman@applitools.com
             from: Artem
