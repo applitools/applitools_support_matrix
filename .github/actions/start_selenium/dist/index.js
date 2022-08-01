@@ -29,8 +29,7 @@ const options = {detached: true, stdio: 'ignore'}
 let selenium;
 try {
     const legacy = _actions_core__WEBPACK_IMPORTED_MODULE_0__.getInput('legacy');
-    console.log(process.env)
-    console.log(`Selenium version is set to ${legacy ? "3" : "4"}!`);
+    console.log(`Selenium version is set to ${legacy === 'true' ? "3" : "4"}!`);
     if (legacy === 'true') {
         await downloadSelenium(URL_3)
         selenium = (0,child_process__WEBPACK_IMPORTED_MODULE_2__.spawn)("java", ["-jar", DOWNLOADED_SELENIUM_JAR, "standalone"], options)
@@ -39,6 +38,12 @@ try {
             (0,child_process__WEBPACK_IMPORTED_MODULE_2__.spawn)("selenium-server", ["standalone"], options) :
             (0,child_process__WEBPACK_IMPORTED_MODULE_2__.spawn)("java", ["-jar", process.env.SELENIUM_JAR_PATH, "standalone"], options)
     }
+    selenium.stdout.on('data', (data) => {
+        console.log(data)
+    })
+    selenium.stderr.on('data', (data) => {
+        console.log(data)
+    })
     selenium.unref();
     const time = (new Date()).toTimeString();
     _actions_core__WEBPACK_IMPORTED_MODULE_0__.setOutput("time", time);

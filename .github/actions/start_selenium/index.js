@@ -10,8 +10,7 @@ const options = {detached: true, stdio: 'ignore'}
 let selenium;
 try {
     const legacy = core.getInput('legacy');
-    console.log(process.env)
-    console.log(`Selenium version is set to ${legacy ? "3" : "4"}!`);
+    console.log(`Selenium version is set to ${legacy === 'true' ? "3" : "4"}!`);
     if (legacy === 'true') {
         await downloadSelenium(URL_3)
         selenium = spawn("java", ["-jar", DOWNLOADED_SELENIUM_JAR, "standalone"], options)
@@ -20,6 +19,12 @@ try {
             spawn("selenium-server", ["standalone"], options) :
             spawn("java", ["-jar", process.env.SELENIUM_JAR_PATH, "standalone"], options)
     }
+    selenium.stdout.on('data', (data) => {
+        console.log(data)
+    })
+    selenium.stderr.on('data', (data) => {
+        console.log(data)
+    })
     selenium.unref();
     const time = (new Date()).toTimeString();
     core.setOutput("time", time);
