@@ -33,17 +33,15 @@ try {
     if (legacy === 'true') {
         await downloadSelenium(URL_3)
         selenium = (0,child_process__WEBPACK_IMPORTED_MODULE_2__.spawn)("java", ["-jar", DOWNLOADED_SELENIUM_JAR, "standalone"], options)
+        selenium.once("close", (code) => {
+            console.log(`Process was closed with the code: ${code}`)
+        })
     } else {
         selenium = process.env.RUNNER_OS === "macOS" ?
             (0,child_process__WEBPACK_IMPORTED_MODULE_2__.spawn)("selenium-server", ["standalone"], options) :
             (0,child_process__WEBPACK_IMPORTED_MODULE_2__.spawn)("java", ["-jar", process.env.SELENIUM_JAR_PATH, "standalone"], options)
     }
-    selenium.stdout.on('data', (data) => {
-        console.log(data)
-    })
-    selenium.stderr.on('data', (data) => {
-        console.log(data)
-    })
+    console.log(selenium)
     selenium.unref();
     const time = (new Date()).toTimeString();
     _actions_core__WEBPACK_IMPORTED_MODULE_0__.setOutput("time", time);
