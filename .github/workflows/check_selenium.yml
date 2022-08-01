@@ -26,5 +26,6 @@ jobs:
           legacy: ${{matrix.legacy}}
       - name: Check Selenium
         run: |
+          ls
           sleep 30
           wget http://localhost:4444
