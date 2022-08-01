@@ -14,10 +14,10 @@ jobs:
         shell: bash
     strategy:
       matrix:
-        os: [ubuntu-latest]
+        os: [windows-latest, ubuntu-latest, macos-latest]
         legacy: ['true', 'false']
     runs-on: ${{ matrix.os }}
-    name: check | os = ${{matrix.os}}
+    name: ${{matrix.os}} | ${{matrix.legacy}}
     steps:
       - uses: actions/checkout@v3
       - name: Run Selenium
