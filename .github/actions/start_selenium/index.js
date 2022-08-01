@@ -14,17 +14,15 @@ try {
     if (legacy === 'true') {
         await downloadSelenium(URL_3)
         selenium = spawn("java", ["-jar", DOWNLOADED_SELENIUM_JAR, "standalone"], options)
+        selenium.once("close", (code) => {
+            console.log(`Process was closed with the code: ${code}`)
+        })
     } else {
         selenium = process.env.RUNNER_OS === "macOS" ?
             spawn("selenium-server", ["standalone"], options) :
             spawn("java", ["-jar", process.env.SELENIUM_JAR_PATH, "standalone"], options)
     }
-    selenium.stdout.on('data', (data) => {
-        console.log(data)
-    })
-    selenium.stderr.on('data', (data) => {
-        console.log(data)
-    })
+    console.log(selenium)
     selenium.unref();
     const time = (new Date()).toTimeString();
     core.setOutput("time", time);
