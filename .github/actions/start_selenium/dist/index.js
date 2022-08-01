@@ -25,7 +25,7 @@ __nccwpck_require__.r(__webpack_exports__);
 
 const DOWNLOADED_SELENIUM_JAR = "selenium-server.jar";
 const URL_3 = "https://selenium-release.storage.googleapis.com/3.141/selenium-server-standalone-3.141.59.jar"
-const options = {detached: true}
+const options = {detached: true, stdio: 'ignore'}
 let selenium;
 try {
     const legacy = _actions_core__WEBPACK_IMPORTED_MODULE_0__.getInput('legacy');
