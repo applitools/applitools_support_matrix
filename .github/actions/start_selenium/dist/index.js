@@ -11,12 +11,15 @@ __nccwpck_require__.r(__webpack_exports__);
 /* harmony import */ var _actions_core__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__nccwpck_require__.n(_actions_core__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _actions_github__WEBPACK_IMPORTED_MODULE_1__ = __nccwpck_require__(2566);
 /* harmony import */ var _actions_github__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__nccwpck_require__.n(_actions_github__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var child_process__WEBPACK_IMPORTED_MODULE_2__ = __nccwpck_require__(2081);
-/* harmony import */ var child_process__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__nccwpck_require__.n(child_process__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var https__WEBPACK_IMPORTED_MODULE_3__ = __nccwpck_require__(5687);
-/* harmony import */ var https__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__nccwpck_require__.n(https__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var fs__WEBPACK_IMPORTED_MODULE_4__ = __nccwpck_require__(7147);
-/* harmony import */ var fs__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__nccwpck_require__.n(fs__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var node_fetch__WEBPACK_IMPORTED_MODULE_2__ = __nccwpck_require__(8991);
+/* harmony import */ var node_fetch__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__nccwpck_require__.n(node_fetch__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var child_process__WEBPACK_IMPORTED_MODULE_3__ = __nccwpck_require__(2081);
+/* harmony import */ var child_process__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__nccwpck_require__.n(child_process__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var https__WEBPACK_IMPORTED_MODULE_4__ = __nccwpck_require__(5687);
+/* harmony import */ var https__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__nccwpck_require__.n(https__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var fs__WEBPACK_IMPORTED_MODULE_5__ = __nccwpck_require__(7147);
+/* harmony import */ var fs__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__nccwpck_require__.n(fs__WEBPACK_IMPORTED_MODULE_5__);
+
 
 
 
@@ -25,6 +28,7 @@ __nccwpck_require__.r(__webpack_exports__);
 
 const DOWNLOADED_SELENIUM_JAR = "selenium-server.jar";
 const URL_3 = "https://selenium-release.storage.googleapis.com/3.141/selenium-server-standalone-3.141.59.jar"
+const CHECK_URL = "http://localhost:4444"
 const options = {detached: true, stdio: 'ignore'}
 let selenium;
 try {
@@ -32,17 +36,15 @@ try {
     console.log(`Selenium version is set to ${legacy === 'true' ? "3" : "4"}!`);
     if (legacy === 'true') {
         await downloadSelenium(URL_3)
-        selenium = (0,child_process__WEBPACK_IMPORTED_MODULE_2__.spawn)("java", ["-jar", DOWNLOADED_SELENIUM_JAR], options)
-        selenium.once("close", (code) => {
-            console.log(`Process was closed with the code: ${code}`)
-        })
+        selenium = (0,child_process__WEBPACK_IMPORTED_MODULE_3__.spawn)("java", ["-jar", DOWNLOADED_SELENIUM_JAR], options)
     } else {
         selenium = process.env.RUNNER_OS === "macOS" ?
-            (0,child_process__WEBPACK_IMPORTED_MODULE_2__.spawn)("selenium-server", ["standalone"], options) :
-            (0,child_process__WEBPACK_IMPORTED_MODULE_2__.spawn)("java", ["-jar", process.env.SELENIUM_JAR_PATH, "standalone"], options)
+            (0,child_process__WEBPACK_IMPORTED_MODULE_3__.spawn)("selenium-server", ["standalone"], options) :
+            (0,child_process__WEBPACK_IMPORTED_MODULE_3__.spawn)("java", ["-jar", process.env.SELENIUM_JAR_PATH, "standalone"], options)
     }
-    console.log(selenium)
     selenium.unref();
+    await waitForSeleniumStart(60)
+    console.log("Selenium server started successfully")
     const time = (new Date()).toTimeString();
     _actions_core__WEBPACK_IMPORTED_MODULE_0__.setOutput("time", time);
 } catch (error) {
@@ -51,8 +53,8 @@ try {
 
 async function downloadSelenium(url) {
     return new Promise((resolve, reject) => {
-        const file = fs__WEBPACK_IMPORTED_MODULE_4__.createWriteStream(DOWNLOADED_SELENIUM_JAR);
-        (0,https__WEBPACK_IMPORTED_MODULE_3__.get)(url, function (response) {
+        const file = fs__WEBPACK_IMPORTED_MODULE_5__.createWriteStream(DOWNLOADED_SELENIUM_JAR);
+        (0,https__WEBPACK_IMPORTED_MODULE_4__.get)(url, function (response) {
             response.pipe(file);
 
             // after download completed close filestream
@@ -67,6 +69,27 @@ async function downloadSelenium(url) {
         });
     })
 }
+
+async function waitForSeleniumStart(retries) {
+    while(retries > 0) {
+        try {
+            const result = await node_fetch__WEBPACK_IMPORTED_MODULE_2__(CHECK_URL)
+            if (result.status === 200) return
+            await sleep(1000)
+        } catch (ex) {
+            await sleep(1000)
+        }
+    }
+    if (retries === 0) throw new Error('Selenium server failed to start')
+}
+
+async function sleep(ms) {
+    return new Promise((resolve) => {
+        setTimeout(resolve, ms);
+    });
+}
+
+
 __webpack_handle_async_dependencies__();
 }, 1);
 
