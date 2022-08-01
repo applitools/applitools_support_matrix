@@ -14,10 +14,17 @@ jobs:
         shell: bash
     strategy:
       matrix:
-        os: [windows-latest, ubuntu-latest, macos-latest]
+        os: [ubuntu-latest, macos-latest]
+        legacy: ['true', 'false']
     runs-on: ${{ matrix.os }}
     name: check | os = ${{matrix.os}}
     steps:
       - uses: actions/checkout@v3
       - name: Run Selenium
         uses: ./.github/actions/start_selenium
+        with:
+          legacy: ${{matrix.legacy}}
+      - name: Check Selenium
+        run: |
+          sleep 10
+          wget http://localhost:4444
