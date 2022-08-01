@@ -32,7 +32,7 @@ try {
     console.log(`Selenium version is set to ${legacy === 'true' ? "3" : "4"}!`);
     if (legacy === 'true') {
         await downloadSelenium(URL_3)
-        selenium = (0,child_process__WEBPACK_IMPORTED_MODULE_2__.spawn)("java", ["-jar", DOWNLOADED_SELENIUM_JAR, "standalone"], options)
+        selenium = (0,child_process__WEBPACK_IMPORTED_MODULE_2__.spawn)("java", ["-jar", DOWNLOADED_SELENIUM_JAR], options)
         selenium.once("close", (code) => {
             console.log(`Process was closed with the code: ${code}`)
         })

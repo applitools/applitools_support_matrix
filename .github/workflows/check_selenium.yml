@@ -28,4 +28,4 @@ jobs:
         run: |
           ls
           sleep 30
-          wget http://localhost:4444/wd/hub
+          wget http://localhost:4444
