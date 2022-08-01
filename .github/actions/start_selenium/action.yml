@@ -5,31 +5,6 @@ inputs:
     description: "Flag to use legacy version of the server (3.149.59)"
     required: true
     default: 'false'
-outputs:
-  random-number:
-    description: "Random number"
-    value: ${{ steps.random-number-generator.outputs.random-number }}
 runs:
-  using: "composite"
-  steps:
-    - if: inputs.legacy != 'true'
-      run: |
-        if [ "$RUNNER_OS" == "macOS" ]; then
-              selenium-server standalone &
-        else
-              java -jar ${SELENIUM_JAR_PATH} standalone &
-        fi
-      shell: bash
-    - if: ${{inputs.legacy == 'true' && runner.os == 'Windows'}}
-      run: Invoke-WebRequest -O selenium-server.jar https://selenium-release.storage.googleapis.com/3.141/selenium-server-standalone-3.141.59.jar
-      shell: powershell
-    - if: ${{inputs.legacy == 'true' && runner.os != 'Windows'}}
-      run: wget -O selenium-server.jar https://selenium-release.storage.googleapis.com/3.141/selenium-server-standalone-3.141.59.jar
-      shell: bash
-    - if: inputs.legacy == 'true'
-      run: java -jar selenium-server.jar &
-      shell: bash
-    - run: sleep 10
-      shell: bash
-    - run: echo "Selenium server started"
-      shell: bash
+  using: "node16"
+  main: "dist/index.js"
