@@ -45,6 +45,7 @@ try {
     selenium.unref();
     await waitForSeleniumStart(60)
     console.log("Selenium server started successfully")
+    console.log(`Process pid ${selenium.pid}`)
     const time = (new Date()).toTimeString();
     _actions_core__WEBPACK_IMPORTED_MODULE_0__.setOutput("time", time);
 } catch (error) {
