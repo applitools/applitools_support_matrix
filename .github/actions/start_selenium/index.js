@@ -3,20 +3,21 @@ import * as github from '@actions/github'
 import {spawn} from 'child_process'
 import {get} from 'https'
 import * as fs from 'fs'
+
 const DOWNLOADED_SELENIUM_JAR = "selenium-server.jar";
 const URL_3 = "https://selenium-release.storage.googleapis.com/3.141/selenium-server-standalone-3.141.59.jar"
-const options = {detached: true }
+const options = {detached: true}
 let selenium;
 try {
     const legacy = core.getInput('legacy');
     console.log(process.env)
     console.log(`Selenium version is set to ${legacy ? "3" : "4"}!`);
-    if(legacy === 'true') {
+    if (legacy === 'true') {
         await downloadSelenium(URL_3)
-        spawn("java", ["-jar", DOWNLOADED_SELENIUM_JAR, "standalone"], options)
+        selenium = spawn("java", ["-jar", DOWNLOADED_SELENIUM_JAR, "standalone"], options)
     } else {
-        selenium =  process.env.RUNNER_OS === "macOS" ?
-            spawn("selenium-server",["standalone"], options) :
+        selenium = process.env.RUNNER_OS === "macOS" ?
+            spawn("selenium-server", ["standalone"], options) :
             spawn("java", ["-jar", process.env.SELENIUM_JAR_PATH, "standalone"], options)
     }
     selenium.unref();
