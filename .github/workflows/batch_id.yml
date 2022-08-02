@@ -1,0 +1,16 @@
+name: Generate Batch id
+
+on:
+  workflow_call:
+
+jobs:
+  batch_id:
+    name: Batch_id
+    runs-on: ubuntu-latest
+    outputs:
+      uuid: ${{ steps.uuid.outputs.uuid }}
+    steps:
+      - name: generate uuid
+        id: uuid
+        run: |
+          echo "::set-output name=uuid::$(uuidgen)"
