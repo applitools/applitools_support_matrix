@@ -18,7 +18,7 @@ public class GlobalSetup {
     protected static String apiKey;
     protected static String serverUrl;
 
-    protected final static String CHROME_DOCKER = "http://localhost:4444/wd/hub";
+    protected final static String SELENIUM_URL = "http://localhost:4444/wd/hub";
     public static boolean CI;
 
 
