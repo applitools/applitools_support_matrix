@@ -1,4 +1,4 @@
-const {Eyes, VisualGridRunner, Target} = require("@applitools/eyes-selenium")
+const {Eyes, VisualGridRunner, Target} = require("@applitools/eyes-puppeteer")
 const puppeteer = require('puppeteer')
 
 async function setupDriver() {
