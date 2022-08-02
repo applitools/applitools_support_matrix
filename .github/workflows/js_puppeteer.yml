@@ -11,12 +11,12 @@ permissions:
   contents: read
 
 env:
-  APPLITOOLS_BATCH_ID: ${{  github.sha }}
   APPLITOOLS_DONT_CLOSE_BATCHES: true
 
 jobs:
   selenium:
     strategy:
+      fail-fast: false
       matrix:
         node-version: [ '16' ]
         os: [windows-latest, ubuntu-latest, macos-latest]
