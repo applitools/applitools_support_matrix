@@ -35,6 +35,8 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
+      - name: Start Selenium Server
+        uses: ./.github/actions/start_selenium
       - name: Run tests
         run: |
           npm install

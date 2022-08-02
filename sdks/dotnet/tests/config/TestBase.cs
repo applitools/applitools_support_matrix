@@ -19,7 +19,7 @@ namespace Applitools.Support.Matrix.Tests
         
         public static readonly BatchInfo batch = new BatchInfo("Support Matrix");
         public static readonly bool CI = Environment.GetEnvironmentVariable("CI") == "true";
-        public static readonly string LOCAL_CHROME_URL = "http://localhost:4444/wd/hub";
+        public static readonly string LOCAL_SELENIUM_URL = "http://localhost:4444/wd/hub";
         public static readonly string LOCAL_FIREFOX_URL = "http://localhost:4445/wd/hub";
 
         public static readonly StdoutLogHandler logger = new StdoutLogHandler();
@@ -67,21 +67,14 @@ namespace Applitools.Support.Matrix.Tests
                     chromeOptions.AddArgument("headless");
                     chromeOptions.AddArgument("--no-sandbox");
                     chromeOptions.AddArgument("--disable-dev-shm-usage");
-                    if (CI)
-                    {
-                        driver = new ChromeDriver(chromeOptions);
-                    }
-                    else
-                    {
-
-                        driver = new RemoteWebDriver(new Uri(LOCAL_CHROME_URL), chromeOptions);
-                    }
+                    chromeOptions.AddArgument("--disable-gpu");
+                    driver = new RemoteWebDriver(new Uri(LOCAL_SELENIUM_URL), chromeOptions);
                     break;
                 case browserType.Firefox:
                     var firefoxOptions = new FirefoxOptions();
                     if (CI) 
                     {
-                        driver = new FirefoxDriver(firefoxOptions);
+                        driver = new RemoteWebDriver(new Uri(LOCAL_SELENIUM_URL), firefoxOptions);
                     }
                     else
                     {

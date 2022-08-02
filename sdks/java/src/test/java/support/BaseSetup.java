@@ -7,7 +7,6 @@ import com.applitools.eyes.selenium.Eyes;
 import com.applitools.eyes.selenium.StitchMode;
 import com.applitools.eyes.visualgrid.services.VisualGridRunner;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.annotations.AfterMethod;
@@ -61,12 +60,8 @@ public class BaseSetup extends GlobalSetup{
 
     public void buildDriver() throws MalformedURLException {
         ChromeOptions options = new ChromeOptions().setHeadless(true);
-        if (GlobalSetup.CI) {
-            options.addArguments("--no-sandbox", "--disable-gpu");
-            driver = new ChromeDriver(options);
-        } else {
-            driver = new RemoteWebDriver(new URL(GlobalSetup.CHROME_DOCKER), options);
-        }
+        options.addArguments("--no-sandbox", "--disable-gpu", "--disable-dev-shm-usage");
+        driver = new RemoteWebDriver(new URL(GlobalSetup.SELENIUM_URL), options);
     }
 
 }

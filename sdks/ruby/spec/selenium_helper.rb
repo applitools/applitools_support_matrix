@@ -4,16 +4,12 @@ RSpec.shared_context "Common" do
   let(:caps) {
     caps = Selenium::WebDriver::Remote::Capabilities.chrome
     caps['goog:chromeOptions'] = {
-      args: ['headless']
+      args: %w[headless --no-sandbox --disable-gpu --disable-dev-shm-usage]
     }
     caps
   }
   let(:driver) {
-    if ENV.key?('CI')
-      driver = Selenium::WebDriver.for :chrome, capabilities: caps
-    else
-      driver = Selenium::WebDriver.for :remote, capabilities: caps, url: 'http://localhost:4444/wd/hub'
-    end
+    driver = Selenium::WebDriver.for :remote, capabilities: caps, url: 'http://localhost:4444/wd/hub'
     driver
   }
   let(:ufg) { false }

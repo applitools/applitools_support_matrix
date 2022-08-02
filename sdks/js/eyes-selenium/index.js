@@ -6,11 +6,12 @@ async function setupDriver() {
     // Use Chrome browser
     const options = new chrome.Options();
     options.headless();
+    options.addArguments("--no-sandbox", "--disable-gpu", "--disable-dev-shm-usage")
 
     const builder = new Builder()
         .forBrowser('chrome')
         .setChromeOptions(options)
-    if (process.env.CI !== 'true') builder.usingServer("http://localhost:4444/wd/hub")
+    builder.usingServer("http://localhost:4444/wd/hub")
     return builder.build();
 }
 
