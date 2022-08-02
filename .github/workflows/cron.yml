@@ -29,6 +29,10 @@ jobs:
     uses: ./.github/workflows/js_selenium.yml
     secrets:
       APPLITOOLS_API_KEY: ${{ secrets.APPLITOOLS_API_KEY }}
+  js_nightwatch:
+    uses: ./.github/workflows/js_nightwatch.yml
+    secrets:
+      APPLITOOLS_API_KEY: ${{ secrets.APPLITOOLS_API_KEY }}
   js_playwright:
     uses: ./.github/workflows/js_playwright.yml
     secrets:
