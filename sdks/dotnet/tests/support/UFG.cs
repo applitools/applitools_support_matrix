@@ -17,7 +17,7 @@ public class UFG : BaseTest
     public void window()
     {
         driver.Navigate().GoToUrl("https://applitools.github.io/demo/TestPages/FramesTestPage/");
-        eyes.Open(driver, "Eyes Selenium SDK - Classic API", "CheckWindowDefaultFully_VG", new RectangleSize(width:700, height:460));
+        eyes.Open(driver, "Applitools Support Matrix", "Window - UFG", new RectangleSize(width:700, height:460));
         eyes.Check(Target.Window());
         eyes.Close(true);
     }
@@ -26,7 +26,7 @@ public class UFG : BaseTest
     public void region()
     {
         driver.Navigate().GoToUrl("https://applitools.github.io/demo/TestPages/FramesTestPage/");
-        eyes.Open(driver, "Eyes Selenium SDK - Fluent API", "TestCheckRegionByCoordinates_Fluent_VG", new RectangleSize(width:700, height:460));
+        eyes.Open(driver, "Applitools Support Matrix", "Region - UFG", new RectangleSize(width:700, height:460));
         eyes.Check(Target.Region(new System.Drawing.Rectangle(50, 70, 90, 110)));
         eyes.Close(true);
     }
@@ -34,9 +34,8 @@ public class UFG : BaseTest
     [Test]
     public void frame()
     {
-        eyes.BranchName = "universal-sdk";
         driver.Navigate().GoToUrl("https://applitools.github.io/demo/TestPages/FramesTestPage/");
-        eyes.Open(driver, "Eyes Selenium SDK - Classic API", "TestCheckFrame_VG", new RectangleSize(width:700, height:460));
+        eyes.Open(driver, "Applitools Support Matrix", "Frame - UFG", new RectangleSize(width:700, height:460));
         eyes.Check(Target.Frame("frame1"));
         eyes.Close(true);
     }

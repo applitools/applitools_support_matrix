@@ -30,6 +30,8 @@ module.exports = {
         useVisualGrid: process.env.USE_UFG !== undefined,
         concurrency: 5,
         dontCloseBatches: true,
+        branchName: 'master',
+        parentBranchName: 'master',
         // enableEyesLogs: true
     }
 }

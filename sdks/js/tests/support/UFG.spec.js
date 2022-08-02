@@ -22,8 +22,8 @@ describe('Support Matrix UFG', () => {
         await open(driver, "https://applitools.github.io/demo/TestPages/FramesTestPage/")
         await eyes.open(
             driver,
-            "Eyes Selenium SDK - Classic API",
-            "CheckWindowDefaultFully_VG",
+            "Applitools Support Matrix",
+            "Window - UFG",
             {width: 700, height: 460},
         )
         await eyes.check(Target.window().fully(true))
@@ -35,8 +35,8 @@ describe('Support Matrix UFG', () => {
         await open(driver, "https://applitools.github.io/demo/TestPages/FramesTestPage/")
         await eyes.open(
             driver,
-            "Eyes Selenium SDK - Fluent API",
-            "TestCheckRegionByCoordinates_Fluent_VG",
+            "Applitools Support Matrix",
+            "Region - UFG",
             {width: 700, height: 460},
         )
         await eyes.check({region: {x: 50, y: 70, width: 90, height: 110}})
@@ -45,11 +45,10 @@ describe('Support Matrix UFG', () => {
 
     it('frame', async () => {
         await open(driver, "https://applitools.github.io/demo/TestPages/FramesTestPage/")
-        eyes.setBranchName("universal-sdk")
         await eyes.open(
             driver,
-            "Eyes Selenium SDK - Classic API",
-            "TestCheckFrame_VG",
+            "Applitools Support Matrix",
+            "Frame - UFG",
             {width: 700, height: 460},
         )
         await eyes.check({frames: ["[name=\"frame1\"]"]})

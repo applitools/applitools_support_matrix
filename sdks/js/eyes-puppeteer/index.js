@@ -28,8 +28,8 @@ function setupEyes({vg, ...config}) {
     const configuration = {
         apiKey: process.env.APPLITOOLS_API_KEY,
         batch,
-        parentBranchName: 'master',
-        branchName: 'master',
+        parentBranchName: 'puppeteer',
+        branchName: 'puppeteer',
         dontCloseBatches: true,
         matchTimeout: 0,
         saveNewTests: false,

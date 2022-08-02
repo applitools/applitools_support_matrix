@@ -17,7 +17,7 @@ public class CSS : BaseTest
     public void window()
     {
         driver.Navigate().GoToUrl("https://applitools.github.io/demo/TestPages/FramesTestPage/");
-        eyes.Open(driver, "Eyes Selenium SDK - Classic API", "CheckWindowDefaultFully", new RectangleSize(width:700, height:460));
+        eyes.Open(driver, "Applitools Support Matrix", "Window - Classic", new RectangleSize(width:700, height:460));
         eyes.Check(Target.Window());
         eyes.Close(true);
     }
@@ -26,7 +26,7 @@ public class CSS : BaseTest
     public void region()
     {
         driver.Navigate().GoToUrl("https://applitools.github.io/demo/TestPages/FramesTestPage/");
-        eyes.Open(driver, "Eyes Selenium SDK - Fluent API", "TestCheckRegionByCoordinates_Fluent", new RectangleSize(width:700, height:460));
+        eyes.Open(driver, "Applitools Support Matrix", "Region - Classic", new RectangleSize(width:700, height:460));
         eyes.Check(Target.Region(new System.Drawing.Rectangle(50, 70, 90, 110)));
         eyes.Close(true);
     }
@@ -34,9 +34,8 @@ public class CSS : BaseTest
     [Test]
     public void frame()
     {
-        eyes.BranchName = "universal-sdk";
         driver.Navigate().GoToUrl("https://applitools.github.io/demo/TestPages/FramesTestPage/");
-        eyes.Open(driver, "Eyes Selenium SDK - Fluent API", "TestCheckFrame_Fluent", new RectangleSize(width:700, height:460));
+        eyes.Open(driver, "Applitools Support Matrix", "Frame - Classic", new RectangleSize(width:700, height:460));
         eyes.Check(Target.Frame("frame1"));
         eyes.Close(true);
     }

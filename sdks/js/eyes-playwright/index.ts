@@ -11,8 +11,8 @@ export function setupEyes({vg, ...config}) {
     const configuration = {
         apiKey: process.env.APPLITOOLS_API_KEY,
         batch,
-        parentBranchName: 'master',
-        branchName: 'master',
+        parentBranchName: 'playwright',
+        branchName: 'playwright',
         dontCloseBatches: true,
         matchTimeout: 0,
         saveNewTests: false,

@@ -10,12 +10,19 @@ on:
 permissions:
   contents: read
 
-env:
-  APPLITOOLS_BATCH_ID: ${{  github.sha }}
-  APPLITOOLS_API_KEY: ${{ secrets.APPLITOOLS_API_KEY }}
-
 jobs:
+  batch_id:
+    name: Batch_id
+    runs-on: ubuntu-latest
+    outputs:
+      uuid: ${{ steps.uuid.outputs.uuid }}
+    steps:
+      - name: generate uuid
+        id: uuid
+        run: |
+          echo "::set-output name=uuid::$(uuidgen)"
   tests:
+    needs: batch_id
     strategy:
       matrix:
         node-version: [ '16' ]
@@ -24,6 +31,8 @@ jobs:
     name:  ${{ matrix.node-version }} | ${{matrix.os}}
     env:
       APPLITOOLS_DONT_CLOSE_BATCHES: true
+      APPLITOOLS_API_KEY: ${{ secrets.APPLITOOLS_API_KEY }}
+      APPLITOOLS_BATCH_ID: ${{needs.batch_id.outputs.uuid}}
     defaults:
       run:
         working-directory: sdks/js/eyes-webdriverio4
