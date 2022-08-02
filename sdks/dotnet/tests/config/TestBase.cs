@@ -67,6 +67,7 @@ namespace Applitools.Support.Matrix.Tests
                     chromeOptions.AddArgument("headless");
                     chromeOptions.AddArgument("--no-sandbox");
                     chromeOptions.AddArgument("--disable-dev-shm-usage");
+                    chromeOptions.AddArgument("--disable-gpu");
                     driver = new RemoteWebDriver(new Uri(LOCAL_SELENIUM_URL), chromeOptions);
                     break;
                 case browserType.Firefox:

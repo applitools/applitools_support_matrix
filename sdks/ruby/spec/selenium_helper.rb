@@ -4,7 +4,7 @@ RSpec.shared_context "Common" do
   let(:caps) {
     caps = Selenium::WebDriver::Remote::Capabilities.chrome
     caps['goog:chromeOptions'] = {
-      args: %w[headless --disable-gpu]
+      args: %w[headless --no-sandbox --disable-gpu --disable-dev-shm-usage]
     }
     caps
   }

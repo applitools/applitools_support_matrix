@@ -60,7 +60,7 @@ public class BaseSetup extends GlobalSetup{
 
     public void buildDriver() throws MalformedURLException {
         ChromeOptions options = new ChromeOptions().setHeadless(true);
-        options.addArguments("--no-sandbox", "--disable-gpu");
+        options.addArguments("--no-sandbox", "--disable-gpu", "--disable-dev-shm-usage");
         driver = new RemoteWebDriver(new URL(GlobalSetup.SELENIUM_URL), options);
     }
 
