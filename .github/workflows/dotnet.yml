@@ -30,6 +30,8 @@ jobs:
         uses: actions/setup-dotnet@v2
         with:
           dotnet-version: ${{ matrix.dotnet-version }}
+      - name: Start Selenium Server
+        uses: ./.github/actions/start_selenium
       - name: Run tests
         working-directory: sdks/dotnet
         run: |

@@ -32,6 +32,8 @@ jobs:
           distribution: 'temurin'
           java-version: ${{ matrix.java-version }}
           cache: 'maven'
+      - name: Start Selenium Server
+        uses: ./.github/actions/start_selenium
       - name: Run tests
         working-directory: sdks/java
         run: |
