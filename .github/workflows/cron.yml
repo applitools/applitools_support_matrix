@@ -74,6 +74,7 @@ jobs:
               dotnet has status ${{needs.dotnet.result}}
               js_selenium has status ${{needs.js_selenium.result}}
               js_playwright has status ${{needs.js_playwright.result}}
+              js_nightwatch has status ${{needs.js_nightwatch.result}}
               js_webdriverio has status ${{needs.js_webdriverio.result}}
               js_webdriverio4 has status ${{needs.js_webdriverio4.result}}
               js_webdriverio5 has status ${{needs.js_webdriverio5.result}}
@@ -84,6 +85,7 @@ jobs:
               dotnet has status ${{needs.dotnet.result}} <br>
               js_selenium has status ${{needs.js_selenium.result}} <br>
               js_playwright has status ${{needs.js_playwright.result}} <br>
+              js_nightwatch has status ${{needs.js_nightwatch.result}} <br>
               js_webdriverio has status ${{needs.js_webdriverio.result}} <br>
               js_webdriverio4 has status ${{needs.js_webdriverio4.result}} <br>
               js_webdriverio5 has status ${{needs.js_webdriverio5.result}} <br>
