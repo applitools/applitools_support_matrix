@@ -1,6 +1,7 @@
 const {Eyes, VisualGridRunner, Target} = require("@applitools/eyes-protractor")
 
 async function setupDriver() {
+    browser.waitForAngularEnabled(false)
     return browser;
 }
 
