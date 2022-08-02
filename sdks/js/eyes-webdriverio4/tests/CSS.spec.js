@@ -32,7 +32,7 @@ describe('Support Matrix CSS', () => {
 
     it('window', async () => {
         await driver.url("https://applitools.github.io/demo/TestPages/FramesTestPage/")
-        await eyes.open(driver, "Eyes Selenium SDK - Classic API", "CheckWindowDefaultFully", {
+        await eyes.open(driver, "Applitools Support Matrix", "Window - Classic", {
             width: 700,
             height: 460
         },)
@@ -43,7 +43,7 @@ describe('Support Matrix CSS', () => {
 
     it('region', async () => {
         await driver.url("https://applitools.github.io/demo/TestPages/FramesTestPage/")
-        await eyes.open(driver, "Eyes Selenium SDK - Fluent API", "TestCheckRegionByCoordinates_Fluent", {
+        await eyes.open(driver, "Applitools Support Matrix", "Region - Classic", {
             width: 700,
             height: 460
         },)
@@ -53,8 +53,7 @@ describe('Support Matrix CSS', () => {
 
     it('frame', async () => {
         await driver.url("https://applitools.github.io/demo/TestPages/FramesTestPage/")
-        eyes.setBranchName("universal-sdk")
-        await eyes.open(driver, "Eyes Selenium SDK - Fluent API", "TestCheckFrame_Fluent", {width: 700, height: 460},)
+        await eyes.open(driver, "Applitools Support Matrix", "Frame - Classic", {width: 700, height: 460},)
         await eyes.check({frames: ["[name=\"frame1\"]"]})
         await eyes.close()
     })

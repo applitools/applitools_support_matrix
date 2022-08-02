@@ -8,8 +8,8 @@ RSpec.describe 'Coverage Tests' do
   it 'CheckWindowWithDefaultFullyWithVg' do
     driver.get('https://applitools.github.io/demo/TestPages/FramesTestPage/')
     eyes.configure do |conf|
-      conf.app_name = 'Eyes Selenium SDK - Classic API'
-      conf.test_name = 'CheckWindowDefaultFully_VG'
+      conf.app_name = 'Applitools Support Matrix'
+      conf.test_name = 'Window - UFG'
       conf.viewport_size = Applitools::RectangleSize.new(700, 460)
     end
     eyes.open(driver: driver)
@@ -20,8 +20,8 @@ RSpec.describe 'Coverage Tests' do
   it 'CheckRegionByCoordinatesWithVg' do
     driver.get('https://applitools.github.io/demo/TestPages/FramesTestPage/')
     eyes.configure do |conf|
-      conf.app_name = 'Eyes Selenium SDK - Fluent API'
-      conf.test_name = 'TestCheckRegionByCoordinates_Fluent_VG'
+      conf.app_name = 'Applitools Support Matrix'
+      conf.test_name = 'Region - UFG'
       conf.viewport_size = Applitools::RectangleSize.new(700, 460)
     end
     eyes.open(driver: driver)
@@ -30,11 +30,10 @@ RSpec.describe 'Coverage Tests' do
   end
 
   it 'CheckFrameWithVg' do
-    eyes.branch_name = "universal-sdk"
     driver.get('https://applitools.github.io/demo/TestPages/FramesTestPage/')
     eyes.configure do |conf|
-      conf.app_name = 'Eyes Selenium SDK - Classic API'
-      conf.test_name = 'TestCheckFrame_VG'
+      conf.app_name = 'Applitools Support Matrix'
+      conf.test_name = 'Frame - UFG'
       conf.viewport_size = Applitools::RectangleSize.new(700, 460)
     end
     eyes.open(driver: driver)

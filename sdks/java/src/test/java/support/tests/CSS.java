@@ -20,7 +20,7 @@ public class CSS extends BaseSetup {
     @Test
     public void window() {
         driver.get("https://applitools.github.io/demo/TestPages/FramesTestPage/");
-        eyes.open(driver, "Eyes Selenium SDK - Classic API", "CheckWindowDefaultFully", new RectangleSize(700, 460));
+        eyes.open(driver, "Applitools Support Matrix", "Window - Classic", new RectangleSize(700, 460));
         eyes.check(Target.window());
         eyes.close(true);
     }
@@ -28,16 +28,15 @@ public class CSS extends BaseSetup {
     @Test
     public void region() {
         driver.get("https://applitools.github.io/demo/TestPages/FramesTestPage/");
-        eyes.open(driver, "Eyes Selenium SDK - Fluent API", "TestCheckRegionByCoordinates_Fluent", new RectangleSize(700, 460));
+        eyes.open(driver, "Applitools Support Matrix", "Region - Classic", new RectangleSize(700, 460));
         eyes.check(Target.region(new Region(50, 70, 90, 110)));
         eyes.close(true);
     }
 
     @Test
     public void frame() {
-        eyes.setBranchName("universal-sdk");
         driver.get("https://applitools.github.io/demo/TestPages/FramesTestPage/");
-        eyes.open(driver, "Eyes Selenium SDK - Fluent API", "TestCheckFrame_Fluent", new RectangleSize(700, 460));
+        eyes.open(driver, "Applitools Support Matrix", "Frame - Classic", new RectangleSize(700, 460));
         eyes.check(Target.frame(By.cssSelector("[name=\"frame1\"]")));
         eyes.close(true);
     }

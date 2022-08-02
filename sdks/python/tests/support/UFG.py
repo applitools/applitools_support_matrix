@@ -10,8 +10,8 @@ def eyes_runner_class():
 def window(driver, eyes):
     driver.get("https://applitools.github.io/demo/TestPages/FramesTestPage/")
     conf = eyes.get_configuration()
-    conf.test_name = "CheckWindowDefaultFully_VG"
-    conf.app_name = "Eyes Selenium SDK - Classic API"
+    conf.test_name = "Window - UFG"
+    conf.app_name = "Applitools Support Matrix"
     conf.viewport_size = {"width": 700, "height": 460}
     eyes.set_configuration(conf)
     eyes.open(driver)
@@ -22,8 +22,8 @@ def window(driver, eyes):
 def region(driver, eyes):
     driver.get("https://applitools.github.io/demo/TestPages/FramesTestPage/")
     conf = eyes.get_configuration()
-    conf.test_name = "TestCheckRegionByCoordinates_Fluent_VG"
-    conf.app_name = "Eyes Selenium SDK - Fluent API"
+    conf.test_name = "Region - UFG"
+    conf.app_name = "Applitools Support Matrix"
     conf.viewport_size = {"width": 700, "height": 460}
     eyes.set_configuration(conf)
     eyes.open(driver)
@@ -34,9 +34,8 @@ def region(driver, eyes):
 def frame(driver, eyes):
     driver.get("https://applitools.github.io/demo/TestPages/FramesTestPage/")
     conf = eyes.get_configuration()
-    conf.branch_name = "universal-sdk"
-    conf.test_name = "TestCheckFrame_VG"
-    conf.app_name = "Eyes Selenium SDK - Classic API"
+    conf.test_name = "Frame - UFG"
+    conf.app_name = "Applitools Support Matrix"
     conf.viewport_size = {"width": 700, "height": 460}
     eyes.set_configuration(conf)
     eyes.open(driver)
