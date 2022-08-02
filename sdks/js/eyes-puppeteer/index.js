@@ -33,6 +33,7 @@ function setupEyes({vg, ...config}) {
         dontCloseBatches: true,
         matchTimeout: 0,
         saveNewTests: false,
+        hideScrollbars: false,
         ...config,
     }
     const eyes = new Eyes(runner)
