@@ -12,7 +12,15 @@ permissions:
 
 jobs:
   batch_id:
-    uses: ./.github/workflows/batch_id.yml
+    name: Batch_id
+    runs-on: ubuntu-latest
+    outputs:
+      uuid: ${{ steps.uuid.outputs.uuid }}
+    steps:
+      - name: generate uuid
+        id: uuid
+        run: |
+          echo "::set-output name=uuid::$(uuidgen)"
   test:
     needs: batch_id
     strategy:
