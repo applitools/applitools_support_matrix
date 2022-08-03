@@ -8,5 +8,4 @@ module.exports = {
   browser: [
     {width: 700, height: 460, name: 'chrome'},
   ],
-
 }
