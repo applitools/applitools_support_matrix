@@ -1,0 +1,11 @@
+{
+  "name": "support-matrix-eyes-cypress",
+  "version": "1.0.0",
+  "dependencies": {
+    "@applitools/eyes-cypress": "latest",
+    "cypress": "^10.4.0"
+  },
+  "scripts": {
+    "test": "cypress run --browser chrome"
+  }
+}
