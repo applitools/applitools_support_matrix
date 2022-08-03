@@ -29,6 +29,18 @@ jobs:
     uses: ./.github/workflows/js_playwright.yml
     secrets:
       APPLITOOLS_API_KEY: ${{ secrets.APPLITOOLS_API_KEY }}
+  js_cypress:
+    uses: ./.github/workflows/js_cypress.yml
+    secrets:
+      APPLITOOLS_API_KEY: ${{ secrets.APPLITOOLS_API_KEY }}
+  js_testcafe:
+    uses: ./.github/workflows/js_testcafe.yml
+    secrets:
+      APPLITOOLS_API_KEY: ${{ secrets.APPLITOOLS_API_KEY }}
+  js_storybook:
+    uses: ./.github/workflows/js_storybook.yml
+    secrets:
+      APPLITOOLS_API_KEY: ${{ secrets.APPLITOOLS_API_KEY }}
   js_selenium:
     uses: ./.github/workflows/js_selenium.yml
     secrets:
@@ -59,7 +71,7 @@ jobs:
       APPLITOOLS_API_KEY: ${{ secrets.APPLITOOLS_API_KEY }}
   email_notification:
     if: ${{failure()}}
-    needs: [ java, ruby, python, dotnet, js_selenium, js_playwright, js_webdriverio, js_webdriverio4, js_webdriverio5, js_nightwatch, js_protractor, js_puppeteer ]
+    needs: [ java, ruby, python, dotnet, js_selenium, js_playwright, js_webdriverio, js_webdriverio4, js_webdriverio5, js_nightwatch, js_protractor, js_puppeteer, js_cypress, js_testcafe, js_storybook ]
     runs-on: ubuntu-latest
     steps:
       - run: echo Reporting a failure
@@ -76,8 +88,11 @@ jobs:
               python has status ${{needs.python.result}}
               ruby has status ${{needs.ruby.result}}
               dotnet has status ${{needs.dotnet.result}}
-              js_selenium has status ${{needs.js_selenium.result}}
               js_playwright has status ${{needs.js_playwright.result}}
+              js_cypress has status ${{needs.js_cypress.result}}
+              js_testcafe has status ${{needs.js_testcafe.result}}
+              js_storybook has status ${{needs.js_storybook.result}}
+              js_selenium has status ${{needs.js_selenium.result}}
               js_nightwatch has status ${{needs.js_nightwatch.result}}
               js_protractor has status ${{needs.js_protractor.result}}
               js_webdriverio has status ${{needs.js_webdriverio.result}}
@@ -88,8 +103,11 @@ jobs:
               python has status ${{needs.python.result}} <br>
               ruby has status ${{needs.ruby.result}} <br>
               dotnet has status ${{needs.dotnet.result}} <br>
-              js_selenium has status ${{needs.js_selenium.result}} <br>
               js_playwright has status ${{needs.js_playwright.result}} <br>
+              js_cypress has status ${{needs.js_cypress.result}} <br>
+              js_testcafe has status ${{needs.js_testcafe.result}} <br>
+              js_storybook has status ${{needs.js_storybook.result}} <br>
+              js_selenium has status ${{needs.js_selenium.result}} <br>
               js_nightwatch has status ${{needs.js_nightwatch.result}} <br>
               js_protractor has status ${{needs.js_protractor.result}} <br>
               js_webdriverio has status ${{needs.js_webdriverio.result}} <br>
