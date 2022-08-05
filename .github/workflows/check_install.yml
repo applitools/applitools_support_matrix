@@ -30,8 +30,8 @@ jobs:
           package: cypress
           major: 1
           minor: -1
-          patch: "Text"
-          working-directory: "check"
+          patch: "1"
+          working-directory: "sdks/js/eyes-selenium"
       - name: Check install
         working-directory: 'sdks/js/eyes-selenium'
         run: |
