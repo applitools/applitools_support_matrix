@@ -27,8 +27,20 @@ jobs:
       - name: Latest
         uses: ./.github/actions/install_npm_package
         with:
-          package: cypress
+          package: webdriverio
+          working-directory: "sdks/js/eyes-selenium"
       - name: Check latest
+        working-directory: 'sdks/js/eyes-selenium'
+        run: |
+          pwd
+          npm ls
+      - name: Major 0
+        uses: ./.github/actions/install_npm_package
+        with:
+          package: webdriverio
+          major: 0
+          working-directory: "sdks/js/eyes-selenium"
+      - name: Check major 0
         working-directory: 'sdks/js/eyes-selenium'
         run: |
           pwd
@@ -36,7 +48,7 @@ jobs:
       - name: Major -1
         uses: ./.github/actions/install_npm_package
         with:
-          package: cypress
+          package: webdriverio
           major: -1
           working-directory: "sdks/js/eyes-selenium"
       - name: Check major -1
