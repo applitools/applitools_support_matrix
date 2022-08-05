@@ -9052,8 +9052,6 @@ var core = __nccwpck_require__(810);
 var github = __nccwpck_require__(2566);
 // EXTERNAL MODULE: ./node_modules/node-fetch/lib/index.js
 var lib = __nccwpck_require__(8991);
-;// CONCATENATED MODULE: external "child_process"
-const external_child_process_namespaceObject = require("child_process");
 // EXTERNAL MODULE: external "https"
 var external_https_ = __nccwpck_require__(5687);
 // EXTERNAL MODULE: external "fs"
@@ -9061,6 +9059,71 @@ var external_fs_ = __nccwpck_require__(7147);
 // EXTERNAL MODULE: external "path"
 var external_path_ = __nccwpck_require__(1017);
 var external_path_default = /*#__PURE__*/__nccwpck_require__.n(external_path_);
+;// CONCATENATED MODULE: external "child_process"
+const external_child_process_namespaceObject = require("child_process");
+;// CONCATENATED MODULE: ./util.js
+
+;
+class Version {
+    constructor({major, minor, patch}) {
+        this.major = strToNum(major);
+        this.minor = strToNum(minor);
+        this.patch = strToNum(patch);
+    }
+
+    compare(another) {
+        let result = compareNums(this.major, another.major)
+        if (result === 0) result = compareNums(this.minor, another.minor)
+        if (result === 0) result = compareNums(this.patch, another.patch)
+        return result
+
+        function compareNums(a, b) {
+            if (a > b) return -1
+            else if (a < b) return 1
+            else return 0
+        }
+    }
+
+}
+
+function parseVersion(versionString) {
+    const reg_version_parse = /(\d+).(\d+).(\d+)/gm
+    const arr = reg_version_parse.exec(versionString);
+    if (arr === null) {
+        console.log(versionString)
+        throw new Error("failed to parse")
+    }
+    return new Version({
+        major: arr[1],
+        minor: arr[2],
+        patch: arr[3],
+    })
+}
+
+
+function strToNum(str) {
+    const parsed = parseInt(str)
+    if (isNaN(parsed)) {
+        throw new Error(`Tried to parse string [${str}] to the num`)
+    }
+    return parsed
+}
+
+function shellCommand(command, cwd) {
+    return  (0,external_child_process_namespaceObject.execSync)(command, {cwd}).toString();
+}
+
+function getLatest(packageName, cwd) {
+    return parseVersion(shellCommand(`npm show ${packageName} version`, cwd))
+}
+
+function getAllVersions(packageName, cwd) {
+    const commandRes = shellCommand(`npm show ${packageName} versions`, cwd);
+    const reg_versions = /'\d+.\d+.\d+'/gm;
+    return commandRes.match(reg_versions).map(parseVersion).sort((a,b) => a.compare(b));
+}
+
+
 ;// CONCATENATED MODULE: ./index.js
 
 
@@ -9072,16 +9135,23 @@ var external_path_default = /*#__PURE__*/__nccwpck_require__.n(external_path_);
 
 try {
     const packageName = core.getInput('package');
-    const major = core.getInput('major');
-    const minor = core.getInput('minor');
-    const patch = core.getInput('patch');
+    const major = strToNum(core.getInput('major'));
+    const minor = strToNum(core.getInput('minor'));
+    const patch = strToNum(core.getInput('patch'));
     const dir = core.getInput('working-directory');
+    const cwd = external_path_default().join(process.cwd(), dir)
     console.log(`Package name: ${packageName} | type: ${typeof packageName}`)
     console.log(`Major: ${major} | type: ${typeof major}`)
     console.log(`Minor: ${minor} | type: ${typeof minor}`)
     console.log(`Patch: ${patch} | type: ${typeof patch}`)
     console.log(`Dir: ${dir} | type: ${typeof dir}`)
-    console.log(external_path_default().join(process.cwd(), dir))
+    console.log(cwd)
+    const latest = getLatest(packageName, cwd)
+    console.log(latest)
+    const all = getAllVersions(packageName, cwd)
+    console.log(all[0])
+    console.log(all[1])
+    console.log(all[2])
     const time = (new Date()).toTimeString();
     core.setOutput("time", time);
 } catch (error) {
