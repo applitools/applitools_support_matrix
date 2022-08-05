@@ -27,7 +27,7 @@ jobs:
       - name: Run install
         uses: ./.github/actions/install_npm_package
         with:
-          package: test
+          package: cypress
           major: 1
           minor: -1
           patch: "Text"
@@ -40,7 +40,7 @@ jobs:
       - name: Run install
         uses: ./.github/actions/install_npm_package
         with:
-          package: test
+          package: cypress
       - name: Check install
         working-directory: 'sdks/js/eyes-selenium'
         run: |
