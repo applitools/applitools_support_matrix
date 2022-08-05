@@ -21,6 +21,10 @@ class Version {
         }
     }
 
+    toString() {
+        return `${this.major}.${this.minor}.${this.patch}`
+    }
+
 }
 
 function parseVersion(versionString) {
@@ -63,6 +67,37 @@ function getAllVersions(packageName, cwd) {
     return commandRes.match(reg_versions).map(parseVersion).sort((a, b) => a.compare(b));
 }
 
+function getMajorMinus({packageName, cwd, minus}) {
+    const latest = getLatest(packageName, cwd);
+    const newMajor = latest.major + minus;
+    if (newMajor < 0) throw new Error(`Package [${packageName}] latest version is [${latest.toString()}] there a no major version as ${newMajor}`)
+    const all = getAllVersions(packageName, cwd);
+    return all.filter(ver => ver.major === newMajor)
+        .sort((a, b) => a.compare(b))[0]
+}
+
+function getMinorMinus({packageName, cwd, minus}) {
+    const latest = getLatest(packageName, cwd);
+    const newMinor = latest.minor + minus;
+    if (newMinor < 0) throw new Error(`Package [${packageName}] latest version is [${latest.toString()}] there a no minor version as ${newMinor}`)
+    const all = getAllVersions(packageName, cwd);
+    return all
+        .filter(ver => ver.major === latest.major)
+        .filter(ver => ver.minor === newMinor)
+        .sort((a, b) => a.compare(b))[0]
+}
+
+function getPatchMinus({packageName, cwd, minus}) {
+    const latest = getLatest(packageName, cwd);
+    const newPatch = latest.patch + minus;
+    if (newPatch < 0) throw new Error(`Package [${packageName}] latest version is [${latest.toString()}] there a no patch version as ${newPatch}`)
+    const all = getAllVersions(packageName, cwd);
+    return all
+        .filter(ver => ver.major === latest.major)
+        .filter(ver => ver.minor === latest.minor)
+        .filter(ver => ver.patch === newPatch)[0]
+}
+
 export {
     Version,
     parseVersion,
@@ -70,4 +105,7 @@ export {
     shellCommand,
     getLatest,
     getAllVersions,
+    getMajorMinus,
+    getMinorMinus,
+    getPatchMinus,
 }

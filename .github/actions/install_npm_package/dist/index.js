@@ -9085,6 +9085,10 @@ class Version {
         }
     }
 
+    toString() {
+        return `${this.major}.${this.minor}.${this.patch}`
+    }
+
 }
 
 function parseVersion(versionString) {
@@ -9127,6 +9131,37 @@ function getAllVersions(packageName, cwd) {
     return commandRes.match(reg_versions).map(parseVersion).sort((a, b) => a.compare(b));
 }
 
+function getMajorMinus({packageName, cwd, minus}) {
+    const latest = getLatest(packageName, cwd);
+    const newMajor = latest.major + minus;
+    if (newMajor < 0) throw new Error(`Package [${packageName}] latest version is [${latest.toString()}] there a no major version as ${newMajor}`)
+    const all = getAllVersions(packageName, cwd);
+    return all.filter(ver => ver.major === newMajor)
+        .sort((a, b) => a.compare(b))[0]
+}
+
+function getMinorMinus({packageName, cwd, minus}) {
+    const latest = getLatest(packageName, cwd);
+    const newMinor = latest.minor + minus;
+    if (newMinor < 0) throw new Error(`Package [${packageName}] latest version is [${latest.toString()}] there a no minor version as ${newMinor}`)
+    const all = getAllVersions(packageName, cwd);
+    return all
+        .filter(ver => ver.major === latest.major)
+        .filter(ver => ver.minor === newMinor)
+        .sort((a, b) => a.compare(b))[0]
+}
+
+function getPatchMinus({packageName, cwd, minus}) {
+    const latest = getLatest(packageName, cwd);
+    const newPatch = latest.patch + minus;
+    if (newPatch < 0) throw new Error(`Package [${packageName}] latest version is [${latest.toString()}] there a no patch version as ${newPatch}`)
+    const all = getAllVersions(packageName, cwd);
+    return all
+        .filter(ver => ver.major === latest.major)
+        .filter(ver => ver.minor === latest.minor)
+        .filter(ver => ver.patch === newPatch)[0]
+}
+
 
 ;// CONCATENATED MODULE: ./index.js
 
@@ -9139,34 +9174,43 @@ function getAllVersions(packageName, cwd) {
 
 try {
     const packageName = core.getInput('package');
-    const major = checkInput(core.getInput('major'));
-    const minor = checkInput(core.getInput('minor'));
-    const patch = checkInput(core.getInput('patch'));
     const dir = core.getInput('working-directory');
     const cwd = external_path_default().join(process.cwd(), dir)
+    let major, minor, patch, version;
+    major = checkInput(core.getInput('major'));
+    minor = checkInput(core.getInput('minor'));
+    patch = checkInput(core.getInput('patch'));
+    const exact = core.getInput("exact")
+    if (exact.length > 0) {
+        version = exact;
+    } else if(major) {
+        version = getMajorMinus({packageName, cwd, minus: major}).toString()
+    } else if (minor) {
+        version = getMinorMinus({packageName, cwd, minus: minor}).toString()
+    } else if (patch) {
+        version = getPatchMinus({packageName, cwd, minus: patch}).toString()
+    } else {
+        version = getLatest(packageName, cwd).toString()
+    }
+
     console.log(`Package name: ${packageName} | type: ${typeof packageName}`)
     console.log(`Major: ${major} | type: ${typeof major}`)
     console.log(`Minor: ${minor} | type: ${typeof minor}`)
     console.log(`Patch: ${patch} | type: ${typeof patch}`)
     console.log(`Dir: ${dir} | type: ${typeof dir}`)
     console.log(cwd)
-    const latest = getLatest(packageName, cwd)
-    console.log(latest)
-    const all = getAllVersions(packageName, cwd)
-    console.log(all[0])
-    console.log(all[1])
-    console.log(all[2])
+    shellCommand(`npm install ${packageName}@${version}`, cwd)
     const time = (new Date()).toTimeString();
     core.setOutput("time", time);
 } catch (error) {
     core.setFailed(error.message);
 }
 
-async function sleep(ms) {
-    return new Promise((resolve) => {
-        setTimeout(resolve, ms);
-    });
+function installLatest(latest, packageName) {
+
 }
+
+
 
 
 })();

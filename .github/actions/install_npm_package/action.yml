@@ -4,6 +4,12 @@ inputs:
   package:
     description: "Package name"
     required: true
+  working-directory:
+    description: "Relative path to the directory where package should be installed"
+    required: true
+  exact:
+    description: "Install version specified in input, not related to the latest"
+    required: false
   major:
     description: "Check major package version diff with latest"
     required: false
@@ -12,9 +18,6 @@ inputs:
     required: false
   patch:
     description: "Check patch package version diff with latest"
-    required: false
-  working-directory:
-    description: "Relative path to the directory where package should be installed"
     required: false
 runs:
   using: "node16"

@@ -24,24 +24,55 @@ jobs:
         run: |
           npm install
           npm ls
-      - name: Run install
+      - name: Latest
         uses: ./.github/actions/install_npm_package
         with:
           package: cypress
-          major: 1
-          minor: -1
-          patch: "1"
-          working-directory: "sdks/js/eyes-selenium"
-      - name: Check install
+      - name: Check latest
         working-directory: 'sdks/js/eyes-selenium'
         run: |
           pwd
           npm ls
-      - name: Run install
+      - name: Major -1
         uses: ./.github/actions/install_npm_package
         with:
           package: cypress
-      - name: Check install
+          major: -1
+          working-directory: "sdks/js/eyes-selenium"
+      - name: Check major -1
+        working-directory: 'sdks/js/eyes-selenium'
+        run: |
+          pwd
+          npm ls
+      - name: Minor -1
+        uses: ./.github/actions/install_npm_package
+        with:
+          package: webdriverio
+          minor: -1
+          working-directory: "sdks/js/eyes-selenium"
+      - name: Check minor -1
+        working-directory: 'sdks/js/eyes-selenium'
+        run: |
+          pwd
+          npm ls    
+      - name: Patch -1
+        uses: ./.github/actions/install_npm_package
+        with:
+          package: webdriverio
+          patch: -1
+          working-directory: "sdks/js/eyes-selenium"
+      - name: Check patch -1
+        working-directory: 'sdks/js/eyes-selenium'
+        run: |
+          pwd
+          npm ls
+      - name: Exact
+        uses: ./.github/actions/install_npm_package
+        with:
+          package: webdriverio
+          exact: "5.23.0"
+          working-directory: "sdks/js/eyes-selenium"
+      - name: Check Exact
         working-directory: 'sdks/js/eyes-selenium'
         run: |
           pwd
