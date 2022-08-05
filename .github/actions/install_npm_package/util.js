@@ -36,6 +36,9 @@ function parseVersion(versionString) {
     })
 }
 
+function checkInput(str) {
+    return str? strToNum(str) : str;
+}
 
 function strToNum(str) {
     const parsed = parseInt(str)
@@ -62,7 +65,7 @@ function getAllVersions(packageName, cwd) {
 export {
     Version,
     parseVersion,
-    strToNum,
+    checkInput,
     shellCommand,
     getLatest,
     getAllVersions,

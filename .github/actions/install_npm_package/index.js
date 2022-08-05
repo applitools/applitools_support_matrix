@@ -4,13 +4,13 @@ import * as fetch from 'node-fetch'
 import {get} from 'https'
 import * as fs from 'fs'
 import path from 'path'
-import {Version, parseVersion, strToNum, shellCommand, getLatest, getAllVersions} from "./util";
+import {Version, parseVersion, checkInput, shellCommand, getLatest, getAllVersions} from "./util";
 
 try {
     const packageName = core.getInput('package');
-    const major = strToNum(core.getInput('major'));
-    const minor = strToNum(core.getInput('minor'));
-    const patch = strToNum(core.getInput('patch'));
+    const major = checkInput(core.getInput('major'));
+    const minor = checkInput(core.getInput('minor'));
+    const patch = checkInput(core.getInput('patch'));
     const dir = core.getInput('working-directory');
     const cwd = path.join(process.cwd(), dir)
     console.log(`Package name: ${packageName} | type: ${typeof packageName}`)
