@@ -31,7 +31,7 @@ jobs:
         include:
           - node-version: '16'
             os: ubuntu-latest
-            major: -1
+            minor: -1
     runs-on: ${{ matrix.os }}
     env:
       APPLITOOLS_DONT_CLOSE_BATCHES: true
@@ -54,7 +54,7 @@ jobs:
         uses: ./.github/actions/install_npm_package
         with:
           package: cypress
-          major: ${{matrix.major}}
+          minor: ${{matrix.minor}}
           working-directory: 'sdks/js/eyes-cypress'
       - name: Log installed packages
         run: npm ls

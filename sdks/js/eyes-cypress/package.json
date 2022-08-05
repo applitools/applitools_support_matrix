@@ -3,9 +3,9 @@
   "version": "1.0.0",
   "dependencies": {
     "@applitools/eyes-cypress": "latest",
-    "cypress": "^10.4.0"
+    "cypress": "latest"
   },
   "scripts": {
-    "test": "cypress run --spec cypress/e2e/spec.cy.js --browser chrome"
+    "test": "cypress run --browser chrome"
   }
 }
