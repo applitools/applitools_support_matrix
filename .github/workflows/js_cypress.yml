@@ -27,7 +27,7 @@ jobs:
       matrix:
         node-version: [ '16' ]
         os: [windows-latest, ubuntu-latest, macos-latest]
-        major: [0]
+        minor: [0]
         include:
           - node-version: '16'
             os: ubuntu-latest
