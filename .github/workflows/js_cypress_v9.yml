@@ -1,4 +1,4 @@
-name: JS Cypress
+name: JS Cypress v9
 
 on:
   workflow_dispatch:
