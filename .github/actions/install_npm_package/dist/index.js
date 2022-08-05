@@ -9064,6 +9064,7 @@ const external_child_process_namespaceObject = require("child_process");
 ;// CONCATENATED MODULE: ./util.js
 
 ;
+
 class Version {
     constructor({major, minor, patch}) {
         this.major = strToNum(major);
@@ -9100,6 +9101,9 @@ function parseVersion(versionString) {
     })
 }
 
+function checkInput(str) {
+    return str && str.length > 0 ? strToNum(str) : str;
+}
 
 function strToNum(str) {
     const parsed = parseInt(str)
@@ -9110,7 +9114,7 @@ function strToNum(str) {
 }
 
 function shellCommand(command, cwd) {
-    return  (0,external_child_process_namespaceObject.execSync)(command, {cwd}).toString();
+    return (0,external_child_process_namespaceObject.execSync)(command, {cwd}).toString();
 }
 
 function getLatest(packageName, cwd) {
@@ -9120,7 +9124,7 @@ function getLatest(packageName, cwd) {
 function getAllVersions(packageName, cwd) {
     const commandRes = shellCommand(`npm show ${packageName} versions`, cwd);
     const reg_versions = /'\d+.\d+.\d+'/gm;
-    return commandRes.match(reg_versions).map(parseVersion).sort((a,b) => a.compare(b));
+    return commandRes.match(reg_versions).map(parseVersion).sort((a, b) => a.compare(b));
 }
 
 
@@ -9135,9 +9139,9 @@ function getAllVersions(packageName, cwd) {
 
 try {
     const packageName = core.getInput('package');
-    const major = strToNum(core.getInput('major'));
-    const minor = strToNum(core.getInput('minor'));
-    const patch = strToNum(core.getInput('patch'));
+    const major = checkInput(core.getInput('major'));
+    const minor = checkInput(core.getInput('minor'));
+    const patch = checkInput(core.getInput('patch'));
     const dir = core.getInput('working-directory');
     const cwd = external_path_default().join(process.cwd(), dir)
     console.log(`Package name: ${packageName} | type: ${typeof packageName}`)

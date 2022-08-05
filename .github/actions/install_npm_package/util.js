@@ -1,5 +1,6 @@
 'use strict'
 import {execSync} from 'child_process'
+
 class Version {
     constructor({major, minor, patch}) {
         this.major = strToNum(major);
@@ -37,7 +38,7 @@ function parseVersion(versionString) {
 }
 
 function checkInput(str) {
-    return str? strToNum(str) : str;
+    return str && str.length > 0 ? strToNum(str) : str;
 }
 
 function strToNum(str) {
@@ -49,7 +50,7 @@ function strToNum(str) {
 }
 
 function shellCommand(command, cwd) {
-    return  execSync(command, {cwd}).toString();
+    return execSync(command, {cwd}).toString();
 }
 
 function getLatest(packageName, cwd) {
@@ -59,7 +60,7 @@ function getLatest(packageName, cwd) {
 function getAllVersions(packageName, cwd) {
     const commandRes = shellCommand(`npm show ${packageName} versions`, cwd);
     const reg_versions = /'\d+.\d+.\d+'/gm;
-    return commandRes.match(reg_versions).map(parseVersion).sort((a,b) => a.compare(b));
+    return commandRes.match(reg_versions).map(parseVersion).sort((a, b) => a.compare(b));
 }
 
 export {
