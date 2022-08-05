@@ -6,6 +6,6 @@
     "cypress": "^10.4.0"
   },
   "scripts": {
-    "test": "cypress run --browser chrome"
+    "test": "cypress run --spec cypress/e2e/spec.cy.js --browser chrome"
   }
 }
