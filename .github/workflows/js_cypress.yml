@@ -27,6 +27,11 @@ jobs:
       matrix:
         node-version: [ '16' ]
         os: [windows-latest, ubuntu-latest, macos-latest]
+        major: [0]
+        include:
+          - node-version: '16'
+            os: ubuntu-latest
+            major: -1
     runs-on: ${{ matrix.os }}
     env:
       APPLITOOLS_DONT_CLOSE_BATCHES: true
@@ -43,7 +48,15 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
+      - name: Default install
+        run: npm install
+      - name: Framework install
+        uses: ./.github/actions/install_npm_package
+        with:
+          package: cypress
+          major: ${{matrix.major}}
+          working-directory: 'sdks/js/eyes-cypress'
+      - name: Log installed packages
+        run: npm ls
       - name: Run tests
-        run: |
-          npm install
-          npm test
+        run: npm test
