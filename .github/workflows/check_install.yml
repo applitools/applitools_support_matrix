@@ -1,0 +1,32 @@
+name: Check install actions
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  
+jobs:
+
+  selenium:
+    defaults:
+      run:
+        shell: bash
+    strategy:
+      matrix:
+        os: [ubuntu-latest]
+    runs-on: ${{ matrix.os }}
+    name: ${{matrix.os}} | ${{matrix.legacy}}
+    steps:
+      - uses: actions/checkout@v3
+      - name: Run Selenium
+        uses: ./.github/actions/install_npm_package
+        with:
+          package: test
+          major: 1
+          minor: -1
+          patch: "Text"
+      - name: Check Selenium
+        working-directory: 'sdks/js/eyes-selenium'
+        run: |
+          pwd

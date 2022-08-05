@@ -1,0 +1,18 @@
+name: 'Install package'
+description: 'Command to install package with the version'
+inputs:
+  package:
+    description: "Package name"
+    required: true
+  major:
+    description: "Check major package version diff with latest"
+    required: false
+  minor:
+    description: "Check minor package version diff with latest"
+    required: false
+  patch:
+    description: "Check patch package version diff with latest"
+    required: false
+runs:
+  using: "node16"
+  main: "dist/index.js"
