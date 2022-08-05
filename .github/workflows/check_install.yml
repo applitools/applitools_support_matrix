@@ -19,14 +19,25 @@ jobs:
     name: ${{matrix.os}} | ${{matrix.legacy}}
     steps:
       - uses: actions/checkout@v3
-      - name: Run Selenium
+      - name: Run install
         uses: ./.github/actions/install_npm_package
         with:
           package: test
           major: 1
           minor: -1
           patch: "Text"
+          working-directory: "check"
       - name: Check Selenium
         working-directory: 'sdks/js/eyes-selenium'
         run: |
           pwd
+          npm ls
+      - name: Run install
+        uses: ./.github/actions/install_npm_package
+        with:
+          package: test
+      - name: Check Selenium
+        working-directory: 'sdks/js/eyes-selenium'
+        run: |
+          pwd
+          npm ls

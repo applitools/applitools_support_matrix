@@ -13,6 +13,9 @@ inputs:
   patch:
     description: "Check patch package version diff with latest"
     required: false
+  working-directory:
+    description: "Relative path to the directory where package should be installed"
+    required: false
 runs:
   using: "node16"
   main: "dist/index.js"

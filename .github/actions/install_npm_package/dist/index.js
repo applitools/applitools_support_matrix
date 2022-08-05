@@ -8994,6 +8994,35 @@ module.exports = JSON.parse('[[[0,44],"disallowed_STD3_valid"],[[45,46],"valid"]
 /******/ 	}
 /******/ 	
 /************************************************************************/
+/******/ 	/* webpack/runtime/compat get default export */
+/******/ 	(() => {
+/******/ 		// getDefaultExport function for compatibility with non-harmony modules
+/******/ 		__nccwpck_require__.n = (module) => {
+/******/ 			var getter = module && module.__esModule ?
+/******/ 				() => (module['default']) :
+/******/ 				() => (module);
+/******/ 			__nccwpck_require__.d(getter, { a: getter });
+/******/ 			return getter;
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/define property getters */
+/******/ 	(() => {
+/******/ 		// define getter functions for harmony exports
+/******/ 		__nccwpck_require__.d = (exports, definition) => {
+/******/ 			for(var key in definition) {
+/******/ 				if(__nccwpck_require__.o(definition, key) && !__nccwpck_require__.o(exports, key)) {
+/******/ 					Object.defineProperty(exports, key, { enumerable: true, get: definition[key] });
+/******/ 				}
+/******/ 			}
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/hasOwnProperty shorthand */
+/******/ 	(() => {
+/******/ 		__nccwpck_require__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
+/******/ 	})();
+/******/ 	
 /******/ 	/* webpack/runtime/make namespace object */
 /******/ 	(() => {
 /******/ 		// define __esModule on exports
@@ -9029,7 +9058,11 @@ const external_child_process_namespaceObject = require("child_process");
 var external_https_ = __nccwpck_require__(5687);
 // EXTERNAL MODULE: external "fs"
 var external_fs_ = __nccwpck_require__(7147);
+// EXTERNAL MODULE: external "path"
+var external_path_ = __nccwpck_require__(1017);
+var external_path_default = /*#__PURE__*/__nccwpck_require__.n(external_path_);
 ;// CONCATENATED MODULE: ./index.js
+
 
 
 
@@ -9042,11 +9075,13 @@ try {
     const major = core.getInput('major');
     const minor = core.getInput('minor');
     const patch = core.getInput('patch');
+    const dir = core.getInput('working-directory');
     console.log(`Package name: ${packageName} | type: ${typeof packageName}`)
     console.log(`Major: ${major} | type: ${typeof major}`)
     console.log(`Minor: ${minor} | type: ${typeof minor}`)
     console.log(`Patch: ${patch} | type: ${typeof patch}`)
-    console.log(process.cwd())
+    console.log(`Dir: ${dir} | type: ${typeof dir}`)
+    console.log(external_path_default().join(process.cwd(), dir))
     const time = (new Date()).toTimeString();
     core.setOutput("time", time);
 } catch (error) {
