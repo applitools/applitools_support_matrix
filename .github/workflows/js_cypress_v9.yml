@@ -1,4 +1,4 @@
-name: JS Testcafe
+name: JS Cypress
 
 on:
   workflow_dispatch:
@@ -26,15 +26,8 @@ jobs:
     strategy:
       matrix:
         node-version: [ '16' ]
-        os: [windows-latest, ubuntu-latest]
-        minor: [0]
-        include:
-          - node-version: '16'
-            os: ubuntu-latest
-            minor: -1
-          - node-version: '16'
-            os: ubuntu-latest
-            minor: -2
+        os: [ubuntu-latest]
+        exact: ["9.7.0", "9.6.1" "8.7.0", "7.7.0", "6.9.1"]
     runs-on: ${{ matrix.os }}
     env:
       APPLITOOLS_DONT_CLOSE_BATCHES: true
@@ -43,7 +36,7 @@ jobs:
     name: ${{ matrix.node-version }} | ${{matrix.os}}
     defaults:
       run:
-        working-directory: 'sdks/js/eyes-testcafe'
+        working-directory: 'sdks/js/eyes-cypress/v9'
         shell: bash
     steps:
       - uses: actions/checkout@v3
@@ -56,9 +49,9 @@ jobs:
       - name: Framework install
         uses: ./.github/actions/install_npm_package
         with:
-          package: testcafe
-          minor: ${{matrix.minor}}
-          working-directory: 'sdks/js/eyes-testcafe'
+          package: cypress
+          exact: ${{matrix.exact}}
+          working-directory: 'sdks/js/eyes-cypress/v9'
       - name: Log installed packages
         run: npm ls
       - name: Run tests
