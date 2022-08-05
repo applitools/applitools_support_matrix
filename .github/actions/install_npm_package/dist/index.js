@@ -9046,6 +9046,7 @@ try {
     console.log(`Major: ${major} | type: ${typeof major}`)
     console.log(`Minor: ${minor} | type: ${typeof minor}`)
     console.log(`Patch: ${patch} | type: ${typeof patch}`)
+    console.log(process.cwd())
     const time = (new Date()).toTimeString();
     core.setOutput("time", time);
 } catch (error) {
