@@ -10,6 +10,9 @@ on:
 permissions:
   contents: read
 
+env:
+  work_dir: 'sdks/js/eyes-cypress/v9'
+
 jobs:
   batch_id:
     name: Batch_id
@@ -35,7 +38,7 @@ jobs:
     name: ${{matrix.os}} | ${{matrix.exact}}
     defaults:
       run:
-        working-directory: 'sdks/js/eyes-cypress/v9'
+        working-directory:  ${{env.work_dir}}
         shell: bash
     steps:
       - uses: actions/checkout@v3
@@ -50,7 +53,7 @@ jobs:
         with:
           package: cypress
           exact: ${{matrix.exact}}
-          working-directory: 'sdks/js/eyes-cypress/v9'
+          working-directory:  ${{env.work_dir}}
       - name: Log installed packages
         run: npm ls
       - name: Run tests

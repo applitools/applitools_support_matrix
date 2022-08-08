@@ -10,6 +10,10 @@ on:
 permissions:
   contents: read
 
+env:
+  work_dir: 'sdks/js/eyes-nightwatch'
+
+
 jobs:
   batch_id:
     name: Batch_id
@@ -27,6 +31,11 @@ jobs:
       matrix:
         node-version: [ '16' ]
         os: [windows-latest, ubuntu-latest, macos-latest]
+        major: [ 0 ]
+        include:
+          - node-version: '16'
+            os: ubuntu-latest
+            major: -1
     runs-on: ${{ matrix.os }}
     env:
       APPLITOOLS_DONT_CLOSE_BATCHES: true
@@ -35,7 +44,7 @@ jobs:
     name: ${{ matrix.os }} |
     defaults:
       run:
-        working-directory: 'sdks/js/eyes-nightwatch'
+        working-directory: ${{env.work_dir}}
         shell: bash
     steps:
       - uses: actions/checkout@v3
@@ -47,8 +56,17 @@ jobs:
         uses: ./.github/actions/start_selenium
         with:
           legacy: 'true'
+      - name: Framework install
+        uses: ./.github/actions/install_npm_package
+        with:
+          package: nightwatch
+          major: ${{matrix.major}}
+          working-directory: ${{env.work_dir}}
+      - name: Run Install
+        run: npm install
+      - name: Log installed packages
+        run: npm ls
       - name: Run tests
         run: |
-          npm install
           npm test
-          USE_UFG=true npm test
+          USE_UFG=true npm test~
