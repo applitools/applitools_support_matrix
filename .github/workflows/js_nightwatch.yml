@@ -54,6 +54,10 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
       - name: Run Selenium
+        if: matrix.major == 0
+        uses: ./.github/actions/start_selenium
+      - name: Run Selenium
+        if: matrix.major != 0
         uses: ./.github/actions/start_selenium
         with:
           legacy: 'true'
