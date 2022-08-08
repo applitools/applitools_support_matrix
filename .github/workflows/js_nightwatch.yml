@@ -53,10 +53,10 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
-      - name: Run Selenium
+      - name: Run Selenium 4
         if: matrix.major == 0
         uses: ./.github/actions/start_selenium
-      - name: Run Selenium
+      - name: Run Selenium 3
         if: matrix.major != 0
         uses: ./.github/actions/start_selenium
         with:
@@ -71,7 +71,7 @@ jobs:
         run: npm install
       - name: Log installed packages
         run: npm ls
-      - name: Run tests
-        run: |
-          npm test
-          USE_UFG=true npm test
+      - name: Run classic tests
+        run: npm test
+      - name: Run ufg tests
+        run: USE_UFG=true npm test
