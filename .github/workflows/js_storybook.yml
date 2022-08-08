@@ -54,7 +54,7 @@ jobs:
       - name: Framework install
         uses: ./.github/actions/install_npm_package
         with:
-          package: @storybook/react
+          package: '@storybook/react'
           major: ${{matrix.major}}
           working-directory: ${{env.work_dir}}
       - name: Run Install
