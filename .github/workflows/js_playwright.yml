@@ -59,7 +59,7 @@ jobs:
         uses: ./.github/actions/install_npm_package
         with:
           package: playwright
-          major: ${{matrix.minor}}
+          minor: ${{matrix.minor}}
           working-directory: ${{env.work_dir}}
       - name: Run Install
         run: |
