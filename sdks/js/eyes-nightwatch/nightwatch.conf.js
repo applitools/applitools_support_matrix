@@ -9,7 +9,7 @@ module.exports = {
                 browserName : 'chrome',
                 'goog:chromeOptions': {
                     w3c: false,
-                    args: ["headless"],
+                    args: ["headless", "--no-sandbox", "--disable-gpu", "--disable-dev-shm-usage"],
                 },
             },
             webdriver: {
