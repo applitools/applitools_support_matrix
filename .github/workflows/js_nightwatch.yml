@@ -69,4 +69,4 @@ jobs:
       - name: Run tests
         run: |
           npm test
-          USE_UFG=true npm test~
+          USE_UFG=true npm test
