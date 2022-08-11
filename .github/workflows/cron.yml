@@ -73,13 +73,52 @@ jobs:
     uses: ./.github/workflows/js_webdriverio5.yml
     secrets:
       APPLITOOLS_API_KEY: ${{ secrets.APPLITOOLS_API_KEY }}
+  report_generation:
+    if: always()
+    needs: [ java,
+             ruby,
+             python,
+             dotnet,
+             js_selenium,
+             js_playwright,
+             js_webdriverio,
+             js_webdriverio4,
+             js_webdriverio5,
+             js_nightwatch,
+             js_protractor,
+             js_puppeteer,
+             js_cypress,
+             js_cypress_v9-,
+             js_testcafe,
+             js_storybook ]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Empty for the future
+        run: echo "Reporting isn't finished yet"
   email_notification:
     if: ${{failure()}}
-    needs: [ java, ruby, python, dotnet, js_selenium, js_playwright, js_webdriverio, js_webdriverio4, js_webdriverio5, js_nightwatch, js_protractor, js_puppeteer, js_cypress, js_cypress_v9-, js_testcafe, js_storybook ]
+    needs: [ java,
+             ruby,
+             python,
+             dotnet,
+             js_selenium,
+             js_playwright,
+             js_webdriverio,
+             js_webdriverio4,
+             js_webdriverio5,
+             js_nightwatch,
+             js_protractor,
+             js_puppeteer,
+             js_cypress,
+             js_cypress_v9-,
+             js_testcafe,
+             js_storybook,
+    ]
     runs-on: ubuntu-latest
     steps:
       - run: echo Reporting a failure
       - name: Send mail
+        if: github.run_attempt > 1
         uses: dawidd6/action-send-mail@v3
         with:
             server_address: smtp.gmail.com
@@ -121,3 +160,11 @@ jobs:
               js_webdriverio5 has status ${{needs.js_webdriverio5.result}} <br>
             to: yarden.ingber@applitools.com
             from: Artem
+  rerun:
+    if: failure()
+    runs-on: ubuntu-latest
+    needs: [report_generation, email_notification]
+    steps:
+      - name: rerun
+        if: github.run_attempt == 1
+        run: curl -X POST -H "Accept:application/vnd.github+json" -H "Content-Type:application/json" -s -u "admin:${{ secrets.PAT }}" https://api.github.com/repos/${{ github.repository }}/actions/workflows/rerun_run.yml/dispatches -d '{"ref":"${{github.ref}}", "inputs":{"run_id":"${{github.run_id}}"}}'
