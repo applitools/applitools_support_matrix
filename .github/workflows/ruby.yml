@@ -24,6 +24,7 @@ jobs:
   test:
     needs: batch_id
     strategy:
+      fail-fast: false
       matrix:
         ruby-version: [ '2.6' ]
         os: [windows-latest, ubuntu-latest, macos-latest]

@@ -10,6 +10,9 @@ on:
 permissions:
   contents: read
 
+env:
+  work_dir: 'sdks/js/eyes-playwright'
+
 jobs:
   batch_id:
     name: Batch_id
@@ -26,28 +29,43 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
+        node-version: [ '16' ]
+        os: [windows-latest, ubuntu-latest, macos-latest]
+        minor: [ 0 ]
         include:
           - node-version: '16'
-            os: windows-latest
+            os: ubuntu-latest
+            minor: -1
           - node-version: '16'
             os: ubuntu-latest
-          - node-version: '16'
-            os: macos-latest
+            minor: -2
     runs-on: ${{ matrix.os }}
     env:
       APPLITOOLS_DONT_CLOSE_BATCHES: true
       APPLITOOLS_API_KEY: ${{ secrets.APPLITOOLS_API_KEY }}
       APPLITOOLS_BATCH_ID: ${{needs.batch_id.outputs.uuid}}
-    name: ${{ matrix.node-version }} | ${{matrix.os}}
+    name: ${{matrix.os}} | minor ${{matrix.minor}}
+    defaults:
+      run:
+        working-directory:  ${{env.work_dir}}
+        shell: bash
     steps:
       - uses: actions/checkout@v3
       - name: Setup node
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
-      - name: Run tests
-        working-directory: sdks/js/eyes-playwright
+      - name: Framework install
+        uses: ./.github/actions/install_npm_package
+        with:
+          package: playwright
+          minor: ${{matrix.minor}}
+          working-directory: ${{env.work_dir}}
+      - name: Run Install
         run: |
           npm install
           npx playwright install --with-deps
-          npm test
+      - name: Log installed packages
+        run: npm ls
+      - name: Run tests
+        run:  npm test

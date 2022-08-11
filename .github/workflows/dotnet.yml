@@ -24,6 +24,7 @@ jobs:
   test:
     needs: batch_id
     strategy:
+      fail-fast: false
       matrix:
         dotnet-version: [ '3.1.x' ]
         os: [windows-latest, ubuntu-latest, macos-latest]

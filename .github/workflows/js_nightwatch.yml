@@ -10,6 +10,10 @@ on:
 permissions:
   contents: read
 
+env:
+  work_dir: 'sdks/js/eyes-nightwatch'
+
+
 jobs:
   batch_id:
     name: Batch_id
@@ -24,18 +28,20 @@ jobs:
   test:
     needs: batch_id
     strategy:
+      fail-fast: false
       matrix:
         node-version: [ '16' ]
         os: [windows-latest, ubuntu-latest, macos-latest]
+        exact: [ 1.7.13 ]
     runs-on: ${{ matrix.os }}
     env:
       APPLITOOLS_DONT_CLOSE_BATCHES: true
       APPLITOOLS_API_KEY: ${{ secrets.APPLITOOLS_API_KEY }}
       APPLITOOLS_BATCH_ID: ${{needs.batch_id.outputs.uuid}}
-    name: ${{ matrix.os }} |
+    name: ${{ matrix.os }} | major ${{matrix.exact}}
     defaults:
       run:
-        working-directory: 'sdks/js/eyes-nightwatch'
+        working-directory: ${{env.work_dir}}
         shell: bash
     steps:
       - uses: actions/checkout@v3
@@ -43,12 +49,25 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
-      - name: Run Selenium
+      - name: Run Selenium 4
+        if: matrix.major == 0
+        uses: ./.github/actions/start_selenium
+      - name: Run Selenium 3
+        if: matrix.major != 0
         uses: ./.github/actions/start_selenium
         with:
           legacy: 'true'
-      - name: Run tests
-        run: |
-          npm install
-          npm test
-          USE_UFG=true npm test
+      - name: Framework install
+        uses: ./.github/actions/install_npm_package
+        with:
+          package: nightwatch
+          exact: ${{matrix.exact}}
+          working-directory: ${{env.work_dir}}
+      - name: Run Install
+        run: npm install
+      - name: Log installed packages
+        run: npm ls
+      - name: Run classic tests
+        run: npm test
+      - name: Run ufg tests
+        run: USE_UFG=true npm test
