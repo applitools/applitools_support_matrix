@@ -25,7 +25,7 @@ jobs:
       - name: Report generation
         uses: ./.github/actions/report_json
         with:
-          token: ${{github.token}}
+          token: ${{secrets.PAT}}
           run_id: ${{github.event.inputs.run_id}}
       - name: Check Exact
         run: |
