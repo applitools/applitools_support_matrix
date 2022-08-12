@@ -1,0 +1,33 @@
+name: Check report actions
+
+on:
+  workflow_dispatch:
+    inputs:
+      run_id:
+        description: "Set run id"
+        required: false
+
+permissions:
+  contents: read
+  
+jobs:
+  report:
+    defaults:
+      run:
+        shell: bash
+    strategy:
+      matrix:
+        os: [ubuntu-latest]
+    runs-on: ${{ matrix.os }}
+    name: ${{matrix.os}} | ${{matrix.legacy}}
+    steps:
+      - uses: actions/checkout@v3
+      - name: Report generation
+        uses: ./.github/actions/report_run
+        with:
+          token: ${{github.token}}
+          run_id: ${{github.event.inputs.run_id}}
+      - name: Check Exact
+        run: |
+          pwd
+          ls
