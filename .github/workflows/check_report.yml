@@ -23,7 +23,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Report generation
-        uses: ./.github/actions/report_json
+        uses: ./.github/actions/report
         with:
           token: ${{secrets.PAT}}
           run_id: ${{github.event.inputs.run_id}}
