@@ -23,11 +23,16 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Report generation
-        uses: ./.github/actions/report_run
+        uses: ./.github/actions/report
         with:
-          token: ${{github.token}}
+          token: ${{secrets.PAT}}
           run_id: ${{github.event.inputs.run_id}}
-      - name: Check Exact
+      - name: Check files
         run: |
           pwd
           ls
+      - name: Upload report as artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: report
+          path: report.html

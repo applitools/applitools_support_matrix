@@ -5,7 +5,7 @@ import {Report, Suite, Test} from './src/json'
 import {getDuration} from'./src/util/date'
 import {Octokit} from '@octokit/rest'
 import * as fs from 'fs'
-import generator from './src/generation/generator'
+import {generator} from './src/generation/generator'
 
 try {
 
@@ -20,9 +20,9 @@ try {
     const owner = process.env.GITHUB_REPOSITORY.split('/')[0];
     const repo = process.env.GITHUB_REPOSITORY.split('/')[1];
     const jobs = await getALlJobs({octokit, owner, repo, run_id});
-    const start = jobs[0].started_at;
-    const end = jobs[jobs.length-1].completed_at;
     const filtered = jobs.filter(filterTestsJobs)
+    const start = filtered[0].started_at;
+    const end = filtered[filtered.length-1].completed_at;
     const suites = getJobsBySuites(filtered)
     // Organise and parse raw data Reporting
     const report = new Report({start, end})

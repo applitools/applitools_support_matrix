@@ -93,8 +93,21 @@ jobs:
              js_storybook ]
     runs-on: ubuntu-latest
     steps:
-      - name: Empty for the future
-        run: echo "Reporting isn't finished yet"
+      - uses: actions/checkout@v3
+      - name: Report generation
+        uses: ./.github/actions/report
+        with:
+          token: ${{secrets.PAT}}
+          run_id: ${{github.run_id}}
+      - name: Check files
+        run: |
+          pwd
+          ls
+      - name: Upload report as artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: report
+          path: report.html
   email_notification:
     if: ${{failure()}}
     needs: [ java,

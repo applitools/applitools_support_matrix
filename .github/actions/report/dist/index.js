@@ -17,7 +17,6 @@ __nccwpck_require__.r(__webpack_exports__);
 /* harmony import */ var fs__WEBPACK_IMPORTED_MODULE_4__ = __nccwpck_require__(7147);
 /* harmony import */ var fs__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__nccwpck_require__.n(fs__WEBPACK_IMPORTED_MODULE_4__);
 /* harmony import */ var _src_generation_generator__WEBPACK_IMPORTED_MODULE_5__ = __nccwpck_require__(7240);
-/* harmony import */ var _src_generation_generator__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__nccwpck_require__.n(_src_generation_generator__WEBPACK_IMPORTED_MODULE_5__);
 
 ;
 
@@ -40,9 +39,9 @@ try {
     const owner = process.env.GITHUB_REPOSITORY.split('/')[0];
     const repo = process.env.GITHUB_REPOSITORY.split('/')[1];
     const jobs = await (0,_src_util_actions__WEBPACK_IMPORTED_MODULE_1__/* .getALlJobs */ .RE)({octokit, owner, repo, run_id});
-    const start = jobs[0].started_at;
-    const end = jobs[jobs.length-1].completed_at;
     const filtered = jobs.filter(_src_util_actions__WEBPACK_IMPORTED_MODULE_1__/* .filterTestsJobs */ .My)
+    const start = filtered[0].started_at;
+    const end = filtered[filtered.length-1].completed_at;
     const suites = (0,_src_util_actions__WEBPACK_IMPORTED_MODULE_1__/* .getJobsBySuites */ .lA)(filtered)
     // Organise and parse raw data Reporting
     const report = new _src_json__WEBPACK_IMPORTED_MODULE_2__.Report({start, end})
@@ -60,7 +59,7 @@ try {
     // Make json file
     fs__WEBPACK_IMPORTED_MODULE_4__.writeFileSync('data.json', JSON.stringify(report, undefined, 2))
     // Make html report
-    await _src_generation_generator__WEBPACK_IMPORTED_MODULE_5___default().generate()
+    await _src_generation_generator__WEBPACK_IMPORTED_MODULE_5__/* .generator.generate */ .R.generate()
     console.log(1)
 } catch (error) {
     _actions_core__WEBPACK_IMPORTED_MODULE_0__.setFailed(error.message);
@@ -25519,9 +25518,12 @@ function wrappy (fn, cb) {
 /***/ }),
 
 /***/ 7240:
-/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
+/***/ ((__unused_webpack_module, __webpack_exports__, __nccwpck_require__) => {
 
 "use strict";
+/* harmony export */ __nccwpck_require__.d(__webpack_exports__, {
+/* harmony export */   "R": () => (/* binding */ generator)
+/* harmony export */ });
 
 const marge = __nccwpck_require__(8422)
 const options = {
@@ -25579,7 +25581,7 @@ const generator = {
     }
 }
 
-module.exports = generator
+
 
 /***/ }),
 
@@ -25702,7 +25704,6 @@ module.exports = Stats
 "use strict";
 
 const uuid = __nccwpck_require__(9747)
-const {getDuration, compareDates} = __nccwpck_require__(4602)
 
 class Suite {
     constructor({title, file, duration}) {
