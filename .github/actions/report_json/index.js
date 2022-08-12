@@ -5,7 +5,6 @@ import {Report, Suite, Test} from './src/json'
 import {getDuration} from'./src/util/date'
 import {Octokit} from '@octokit/rest'
 import * as fs from 'fs'
-import generator from './src/generation/generator'
 
 try {
 
@@ -39,8 +38,6 @@ try {
     })
     // Make json file
     fs.writeFileSync('data.json', JSON.stringify(report, undefined, 2))
-    // Make html report
-    await generator.generate()
     console.log(1)
 } catch (error) {
     core.setFailed(error.message);

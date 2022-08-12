@@ -1,4 +1,4 @@
-name: 'Generate report'
+name: 'Generate report json'
 description: 'Github action to generate report for the run'
 inputs:
   run_id:

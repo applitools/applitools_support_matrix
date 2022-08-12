@@ -1,5 +1,5 @@
 'use strict'
-const marge = require('../../node_modules/mochawesome-report-generator/bin/cli-main')
+// const marge = require('../../node_modules/mochawesome-report-generator/bin/cli-main')
 const options = {
     "_": [
         "data.json"
@@ -49,10 +49,12 @@ const options = {
     "dev": false,
 };
 
-const generator = {
-    generate:async function() {
-        await marge(options)
-    }
-}
+// const generator = {
+//     generate:async function() {
+//         await marge(options)
+//     }
+// }
 
-module.exports = generator
+export {
+    options
+}
