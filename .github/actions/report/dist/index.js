@@ -39,9 +39,9 @@ try {
     const owner = process.env.GITHUB_REPOSITORY.split('/')[0];
     const repo = process.env.GITHUB_REPOSITORY.split('/')[1];
     const jobs = await (0,_src_util_actions__WEBPACK_IMPORTED_MODULE_1__/* .getALlJobs */ .RE)({octokit, owner, repo, run_id});
-    const start = jobs[0].started_at;
-    const end = jobs[jobs.length-1].completed_at;
     const filtered = jobs.filter(_src_util_actions__WEBPACK_IMPORTED_MODULE_1__/* .filterTestsJobs */ .My)
+    const start = filtered[0].started_at;
+    const end = filtered[filtered.length-1].completed_at;
     const suites = (0,_src_util_actions__WEBPACK_IMPORTED_MODULE_1__/* .getJobsBySuites */ .lA)(filtered)
     // Organise and parse raw data Reporting
     const report = new _src_json__WEBPACK_IMPORTED_MODULE_2__.Report({start, end})
