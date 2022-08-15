@@ -11,7 +11,10 @@ inputs:
     description: "Current job os"
     required: false
   selenium:
-    description: "Package name"
+    description: "Framework selenium usage"
+    required: false
+  title:
+    description: "Custom title name"
     required: false
 
 runs:

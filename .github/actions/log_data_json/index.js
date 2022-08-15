@@ -7,7 +7,7 @@ try {
     const selenium = core.getInput('selenium');
     const title = core.getInput('title');
     const data = {
-        pack,
+        package: pack,
         version,
         os,
         selenium,
