@@ -5,6 +5,16 @@ import {compareDates, getDuration} from "./date";
 
 function getJobsBySuites(arr) {
     const result = [];
+    const other = {
+        name: 'Other',
+        jobs: arr.filter(({name}) => {
+            let result = true;
+            TEST_MATRIX.forEach(matrix => {
+                if(name === matrix) result = false
+            })
+            return result;
+        })
+    }
     TEST_MATRIX.forEach(matrix => {
         const suite = {
             name: matrix,
@@ -17,6 +27,7 @@ function getJobsBySuites(arr) {
         }
         result.push(suite)
     })
+    result.push(other)
     return result
 }
 

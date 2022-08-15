@@ -40,8 +40,8 @@ try {
     const repo = process.env.GITHUB_REPOSITORY.split('/')[1];
     const jobs = await (0,_src_util_actions__WEBPACK_IMPORTED_MODULE_1__/* .getALlJobs */ .RE)({octokit, owner, repo, run_id});
     const filtered = jobs.filter(_src_util_actions__WEBPACK_IMPORTED_MODULE_1__/* .filterTestsJobs */ .My)
-    const start = filtered[0].started_at;
-    const end = filtered[filtered.length-1].completed_at;
+    const start = jobs[0].started_at;
+    const end = jobs[jobs.length-1].completed_at;
     const suites = (0,_src_util_actions__WEBPACK_IMPORTED_MODULE_1__/* .getJobsBySuites */ .lA)(filtered)
     // Organise and parse raw data Reporting
     const report = new _src_json__WEBPACK_IMPORTED_MODULE_2__.Report({start, end})
@@ -25744,7 +25744,7 @@ module.exports = Suite
 const uuid = __nccwpck_require__(9747)
 
 class Test {
-    constructor({title, fullTitle, duration, passed}) {
+    constructor({title, fullTitle, duration, passed, code}) {
         this.title = title || "Empty title";
         this.fullTitle = fullTitle || "Empty fullTitle";
         this.timedOut = null;
@@ -25755,7 +25755,7 @@ class Test {
         this.fail = !passed;
         this.pending = false;
         this.context = null;
-        this.code = "Extra field with info";
+        this.code = code || "Extra field with info";
         this.err = {};
         this.uuid = uuid();
         this.parentUUID = null;
@@ -25812,16 +25812,29 @@ var date = __nccwpck_require__(4602);
 
 function getJobsBySuites(arr) {
     const result = [];
+    const other = {
+        name: 'Other',
+        jobs: arr.filter(({name}) => {
+            let result = true;
+            TEST_MATRIX.forEach(matrix => {
+                if(name === matrix) result = false
+            })
+            return result;
+        })
+    }
     TEST_MATRIX.forEach(matrix => {
         const suite = {
             name: matrix,
             jobs: arr.filter(({name})=> name.split("/")[0].trim() === matrix)
         }
-        const start = suite.jobs.map(test => test.started_at).sort(date.compareDates)[0]
-        const end = suite.jobs.map(test => test.completed_at).sort(date.compareDates)[suite.jobs.length - 1]
-        suite.duration = (0,date.getDuration)(start, end)
+        if(suite.jobs.length !== 0) {
+            const start = suite.jobs.map(test => test.started_at).sort(date.compareDates)[0]
+            const end = suite.jobs.map(test => test.completed_at).sort(date.compareDates)[suite.jobs.length - 1]
+            suite.duration = (0,date.getDuration)(start, end)
+        }
         result.push(suite)
     })
+    result.push(other)
     return result
 }
 
