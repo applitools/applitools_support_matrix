@@ -79,11 +79,20 @@ jobs:
           pwd
           npm ls
       - name: Exact
+        id: install
         uses: ./.github/actions/install_npm_package
         with:
           package: webdriverio
           exact: "5.23.0"
           working-directory: "sdks/js/eyes-selenium"
+      - name: Logging version generation
+        uses: ./.github/actions/log_data_json
+        with:
+          package: 'Webdriverio'
+          version: ${{ steps.install.outputs.package_version }}
+          os: ${{runner.os}}
+          title: 'Custom title'
+          selenium: 'None'
       - name: Check Exact
         working-directory: 'sdks/js/eyes-selenium'
         run: |

@@ -1,8 +1,4 @@
 import * as core from '@actions/core'
-import * as github from '@actions/github'
-import * as fetch from 'node-fetch'
-import {get} from 'https'
-import * as fs from 'fs'
 import path from 'path'
 import {checkInput, shellCommand, getLatest, getPatchMinus, getMinorMinus, getMajorMinus} from "./util";
 
@@ -36,12 +32,9 @@ try {
     shellCommand(`npm install ${packageName}@${version}`, cwd)
     const time = (new Date()).toTimeString();
     core.setOutput("time", time);
+    core.setOutput("package_version", version)
 } catch (error) {
     core.setFailed(error.message);
-}
-
-function installLatest(latest, packageName) {
-
 }
 
 

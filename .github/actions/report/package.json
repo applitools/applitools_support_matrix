@@ -1,0 +1,19 @@
+{
+  "name": "package_install",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "ncc build -a index.js",
+    "report": "marge -f report -o '' -t 'Support Matrix' -p 'Support Matrix' -i data.json"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@actions/core": "^1.9.0",
+    "@actions/github": "^5.0.3",
+    "@octokit/rest": "^19.0.3",
+    "mochawesome-report-generator": "6.2.0"
+  }
+}

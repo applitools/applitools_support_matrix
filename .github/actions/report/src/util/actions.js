@@ -10,9 +10,11 @@ function getJobsBySuites(arr) {
             name: matrix,
             jobs: arr.filter(({name})=> name.split("/")[0].trim() === matrix)
         }
-        const start = suite.jobs.map(test => test.started_at).sort(compareDates)[0]
-        const end = suite.jobs.map(test => test.completed_at).sort(compareDates)[suite.jobs.length - 1]
-        suite.duration = getDuration(start, end)
+        if(suite.jobs.length !== 0) {
+            const start = suite.jobs.map(test => test.started_at).sort(compareDates)[0]
+            const end = suite.jobs.map(test => test.completed_at).sort(compareDates)[suite.jobs.length - 1]
+            suite.duration = getDuration(start, end)
+        }
         result.push(suite)
     })
     return result

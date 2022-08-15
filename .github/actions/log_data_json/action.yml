@@ -1,0 +1,19 @@
+name: 'Install package'
+description: 'Command to install package with the version'
+inputs:
+  package:
+    description: "Package name"
+    required: false
+  version:
+    description: "Package version"
+    required: false
+  os:
+    description: "Current job os"
+    required: false
+  selenium:
+    description: "Package name"
+    required: false
+
+runs:
+  using: "node16"
+  main: "dist/index.js"
