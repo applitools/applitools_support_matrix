@@ -2855,7 +2855,7 @@ try {
     const selenium = _actions_core__WEBPACK_IMPORTED_MODULE_0__.getInput('selenium');
     const title = _actions_core__WEBPACK_IMPORTED_MODULE_0__.getInput('title');
     const data = {
-        pack,
+        package: pack,
         version,
         os,
         selenium,
