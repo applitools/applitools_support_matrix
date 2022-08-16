@@ -2861,7 +2861,7 @@ try {
         selenium,
         title,
     }
-    console.log(`####[Start_json_data]${JSON.stringify(data, undefined, 3)}[End_json_data]####`)
+    console.log(`####[Start_json_data]${JSON.stringify(data)}[End_json_data]####`)
 } catch (error) {
     _actions_core__WEBPACK_IMPORTED_MODULE_0__.setFailed(error.message);
 }

@@ -13,7 +13,7 @@ try {
         selenium,
         title,
     }
-    console.log(`####[Start_json_data]${JSON.stringify(data, undefined, 3)}[End_json_data]####`)
+    console.log(`####[Start_json_data]${JSON.stringify(data)}[End_json_data]####`)
 } catch (error) {
     core.setFailed(error.message);
 }
