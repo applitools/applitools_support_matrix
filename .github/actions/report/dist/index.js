@@ -13,15 +13,12 @@ __nccwpck_require__.r(__webpack_exports__);
 /* harmony import */ var _src_json__WEBPACK_IMPORTED_MODULE_2__ = __nccwpck_require__(6103);
 /* harmony import */ var _src_util_date__WEBPACK_IMPORTED_MODULE_3__ = __nccwpck_require__(4602);
 /* harmony import */ var _src_util_date__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__nccwpck_require__.n(_src_util_date__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _octokit_rest__WEBPACK_IMPORTED_MODULE_7__ = __nccwpck_require__(5294);
+/* harmony import */ var _octokit_rest__WEBPACK_IMPORTED_MODULE_6__ = __nccwpck_require__(5294);
 /* harmony import */ var fs__WEBPACK_IMPORTED_MODULE_4__ = __nccwpck_require__(7147);
 /* harmony import */ var fs__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__nccwpck_require__.n(fs__WEBPACK_IMPORTED_MODULE_4__);
 /* harmony import */ var _src_generation_generator__WEBPACK_IMPORTED_MODULE_5__ = __nccwpck_require__(7240);
-/* harmony import */ var https__WEBPACK_IMPORTED_MODULE_6__ = __nccwpck_require__(5687);
-/* harmony import */ var https__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__nccwpck_require__.n(https__WEBPACK_IMPORTED_MODULE_6__);
 
 ;
-
 
 
 
@@ -36,7 +33,7 @@ try {
     const run_id = input_run_id && input_run_id.length > 0 ? input_run_id : process.env.GITHUB_RUN_ID
     console.log(`Run id used for this run is [${run_id}]`)
     const pat = _actions_core__WEBPACK_IMPORTED_MODULE_0__.getInput('token')
-    const octokit = new _octokit_rest__WEBPACK_IMPORTED_MODULE_7__/* .Octokit */ .v({
+    const octokit = new _octokit_rest__WEBPACK_IMPORTED_MODULE_6__/* .Octokit */ .v({
         auth: pat,
     });
     const owner = process.env.GITHUB_REPOSITORY.split('/')[0];
@@ -58,26 +55,14 @@ try {
                 passed: job.conclusion === 'success'
             }
             const regex = /####\[Start_json_data](.*)\[End_json_data]####/
-            console.log(job.id)
-            // const response = await octokit.rest.actions.downloadJobLogsForWorkflowRun({owner, repo, job_id: job.id})
-            console.log("NODE__________________________________________________________________________________________")
-            console.log("NODE__________________________________________________________________________________________")
-            console.log("NODE__________________________________________________________________________________________")
-            await testGetLog({owner, repo, job_id: job.id, pat})
-            console.log("GIT__________________________________________________________________________________________")
-            console.log("GIT__________________________________________________________________________________________")
-            console.log("GIT__________________________________________________________________________________________")
-            const response = await octokit.rest.actions.downloadJobLogsForWorkflowRun({
-                owner, repo, job_id: job.id
-            })
-            console.log(response.status)
-            console.log(regex.test(response.data))
-            console.log(response)
-            // if(response.status === 200 && regex.test(response.data)) {
-            //     const json_data = JSON.parse(regex.exec(response.data)[1])
-            //     console.log(json_data)
-            //     testData.code = json_data;
-            // }
+            const logs = await (0,_src_util_actions__WEBPACK_IMPORTED_MODULE_1__/* .jobLog */ .T1)({owner, repo, job_id: job.id, pat})
+            if (logs && typeof logs === 'string') {
+                if (regex.test(logs)) {
+                    const json_data = JSON.parse(regex.exec(logs)[1])
+                    console.log(json_data)
+                    testData.code = json_data;
+                }
+            }
             suite.addTest(new _src_json__WEBPACK_IMPORTED_MODULE_2__.Test(testData))
         }
         report.addSuite(suite);
@@ -89,48 +74,6 @@ try {
     console.log(1)
 } catch (error) {
     _actions_core__WEBPACK_IMPORTED_MODULE_0__.setFailed(error.message);
-}
-
-
-async function testGetLog({owner, repo, job_id, pat}) {
-    const options = {
-        hostname: 'api.github.com',
-        path: `/repos/${owner}/${repo}/actions/jobs/${job_id}/logs`,
-        port: 443,
-        method: 'GET',
-        headers: {
-            'Accept': 'application/vnd.github+json',
-            'Authorization': `token ${pat}`,
-            'User-Agent': 'applitools',
-        }
-    }
-    const getLocation = new Promise((resolve, reject) => {
-        const req = https__WEBPACK_IMPORTED_MODULE_6___default().request(options, (res) => {
-            console.log('statusCode:', res.statusCode);
-            console.log('headers:', res.headers);
-            res.on('data', (d) => {
-                process.stdout.write(d);
-            });
-            resolve(res.headers.location)
-        }).on('error', (e) => {
-            console.error(e);
-            reject(e)
-        });
-        req.end()
-    })
-    const location = await getLocation
-    console.log(location)
-    https__WEBPACK_IMPORTED_MODULE_6___default().get(location, (res) => {
-        console.log('statusCode:', res.statusCode);
-        console.log('headers:', res.headers);
-
-        res.on('data', (d) => {
-            process.stdout.write(d);
-        });
-
-    }).on('error', (e) => {
-        console.error(e);
-    });
 }
 __webpack_handle_async_dependencies__();
 }, 1);
@@ -25845,7 +25788,8 @@ module.exports = Test
 __nccwpck_require__.d(__webpack_exports__, {
   "My": () => (/* binding */ filterTestsJobs),
   "RE": () => (/* binding */ getALlJobs),
-  "lA": () => (/* binding */ getJobsBySuites)
+  "lA": () => (/* binding */ getJobsBySuites),
+  "T1": () => (/* binding */ jobLog)
 });
 
 ;// CONCATENATED MODULE: ./src/enums/testMatrix.js
@@ -25872,10 +25816,14 @@ const TEST_MATRIX = [
 
 // EXTERNAL MODULE: ./src/util/date.js
 var date = __nccwpck_require__(4602);
+// EXTERNAL MODULE: external "https"
+var external_https_ = __nccwpck_require__(5687);
+var external_https_default = /*#__PURE__*/__nccwpck_require__.n(external_https_);
 ;// CONCATENATED MODULE: ./src/util/actions.js
 
 
 ;
+
 
 
 function getJobsBySuites(arr) {
@@ -25931,6 +25879,55 @@ async function getALlJobs({octokit, owner, repo, run_id}) {
         page++
     } while (jobs.length < totalCount)
     return jobs;
+}
+
+async function jobLog({owner, repo, job_id, pat}) {
+    const options = {
+        hostname: 'api.github.com',
+        path: `/repos/${owner}/${repo}/actions/jobs/${job_id}/logs`,
+        port: 443,
+        method: 'GET',
+        headers: {
+            'Accept': 'application/vnd.github+json',
+            'Authorization': `token ${pat}`,
+            'User-Agent': 'applitools',
+        }
+    }
+    const getLocation = new Promise((resolve) => {
+        const req = external_https_default().request(options, (res) => {
+            console.log('statusCode:', res.statusCode);
+            res.on('data', (d) => {
+                process.stdout.write(d);
+            });
+            resolve(res.headers.location)
+        }).on('error', (e) => {
+            console.error(e);
+            resolve()
+        });
+        req.end()
+    })
+    const location = await getLocation
+    let url
+    try {
+        url = new URL(location)
+    } catch (e) {
+        return;
+    }
+    return new Promise((resolve) => {
+        let body = []
+        external_https_default().get(url, (res) => {
+            console.log('statusCode:', res.statusCode);
+            res.on('data', (d) => {
+                body.push(d)
+            });
+            res.on('end', ()=> {
+                resolve(Buffer.concat(body).toString());
+            });
+        }).on('error', (e) => {
+            console.error(e);
+        })
+    })
+
 }
 
 

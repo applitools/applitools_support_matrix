@@ -1,12 +1,11 @@
 'use strict'
 import * as core from '@actions/core'
-import {getALlJobs, getJobsBySuites, filterTestsJobs} from './src/util/actions'
+import {getALlJobs, getJobsBySuites, filterTestsJobs, jobLog} from './src/util/actions'
 import {Report, Suite, Test} from './src/json'
 import {getDuration} from './src/util/date'
 import {Octokit} from '@octokit/rest'
 import * as fs from 'fs'
 import {generator} from './src/generation/generator'
-import https from "https";
 
 try {
 
@@ -37,26 +36,14 @@ try {
                 passed: job.conclusion === 'success'
             }
             const regex = /####\[Start_json_data](.*)\[End_json_data]####/
-            console.log(job.id)
-            // const response = await octokit.rest.actions.downloadJobLogsForWorkflowRun({owner, repo, job_id: job.id})
-            console.log("NODE__________________________________________________________________________________________")
-            console.log("NODE__________________________________________________________________________________________")
-            console.log("NODE__________________________________________________________________________________________")
-            await testGetLog({owner, repo, job_id: job.id, pat})
-            console.log("GIT__________________________________________________________________________________________")
-            console.log("GIT__________________________________________________________________________________________")
-            console.log("GIT__________________________________________________________________________________________")
-            const response = await octokit.rest.actions.downloadJobLogsForWorkflowRun({
-                owner, repo, job_id: job.id
-            })
-            console.log(response.status)
-            console.log(regex.test(response.data))
-            console.log(response)
-            // if(response.status === 200 && regex.test(response.data)) {
-            //     const json_data = JSON.parse(regex.exec(response.data)[1])
-            //     console.log(json_data)
-            //     testData.code = json_data;
-            // }
+            const logs = await jobLog({owner, repo, job_id: job.id, pat})
+            if (logs && typeof logs === 'string') {
+                if (regex.test(logs)) {
+                    const json_data = JSON.parse(regex.exec(logs)[1])
+                    console.log(json_data)
+                    testData.code = json_data;
+                }
+            }
             suite.addTest(new Test(testData))
         }
         report.addSuite(suite);
@@ -68,46 +55,4 @@ try {
     console.log(1)
 } catch (error) {
     core.setFailed(error.message);
-}
-
-
-async function testGetLog({owner, repo, job_id, pat}) {
-    const options = {
-        hostname: 'api.github.com',
-        path: `/repos/${owner}/${repo}/actions/jobs/${job_id}/logs`,
-        port: 443,
-        method: 'GET',
-        headers: {
-            'Accept': 'application/vnd.github+json',
-            'Authorization': `token ${pat}`,
-            'User-Agent': 'applitools',
-        }
-    }
-    const getLocation = new Promise((resolve, reject) => {
-        const req = https.request(options, (res) => {
-            console.log('statusCode:', res.statusCode);
-            console.log('headers:', res.headers);
-            res.on('data', (d) => {
-                process.stdout.write(d);
-            });
-            resolve(res.headers.location)
-        }).on('error', (e) => {
-            console.error(e);
-            reject(e)
-        });
-        req.end()
-    })
-    const location = await getLocation
-    console.log(location)
-    https.get(location, (res) => {
-        console.log('statusCode:', res.statusCode);
-        console.log('headers:', res.headers);
-
-        res.on('data', (d) => {
-            process.stdout.write(d);
-        });
-
-    }).on('error', (e) => {
-        console.error(e);
-    });
 }
