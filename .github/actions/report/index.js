@@ -38,6 +38,8 @@ try {
             const regex = /####\[Start_json_data](.*)\[End_json_data]####/
             const response = await octokit.rest.actions.downloadJobLogsForWorkflowRun({owner, repo, job_id: job.id})
             console.log(response.status)
+            console.log(regex.test(response.data))
+            console.log(response)
             if(response.status === 200 && regex.test(response.data)) {
                 const json_data = JSON.parse(regex.exec(response.data)[1])
                 console.log(json_data)
