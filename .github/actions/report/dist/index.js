@@ -56,7 +56,6 @@ try {
             }
             const regex = /####\[Start_json_data](.*)\[End_json_data]####/
             const logs = await (0,_src_util_actions__WEBPACK_IMPORTED_MODULE_1__/* .jobLog */ .T1)({owner, repo, job_id: job.id, pat})
-            console.log(logs)
             if (logs && typeof logs === 'string') {
                 if (regex.test(logs)) {
                     const json_data = JSON.parse(regex.exec(logs)[1])
