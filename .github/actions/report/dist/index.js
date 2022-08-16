@@ -56,7 +56,12 @@ try {
             }
             const regex = /####\[Start_json_data](.*)\[End_json_data]####/
             console.log(job.id)
-            const response = await octokit.rest.actions.downloadJobLogsForWorkflowRun({owner, repo, job_id: job.id})
+            // const response = await octokit.rest.actions.downloadJobLogsForWorkflowRun({owner, repo, job_id: job.id})
+            const response = await octokit.rest.actions.downloadJobLogsForWorkflowRun({
+                owner: "applitools",
+                repo: "applitools_support_matrix",
+                job_id: "7836143014"
+            })
             console.log(response.status)
             console.log(regex.test(response.data))
             console.log(response)
