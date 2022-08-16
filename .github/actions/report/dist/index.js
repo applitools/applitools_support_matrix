@@ -55,6 +55,7 @@ try {
                 passed: job.conclusion === 'success'
             }
             const regex = /####\[Start_json_data](.*)\[End_json_data]####/
+            console.log(job.id)
             const response = await octokit.rest.actions.downloadJobLogsForWorkflowRun({owner, repo, job_id: job.id})
             console.log(response.status)
             console.log(regex.test(response.data))
