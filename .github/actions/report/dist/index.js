@@ -41,21 +41,29 @@ try {
     const jobs = await (0,_src_util_actions__WEBPACK_IMPORTED_MODULE_1__/* .getALlJobs */ .RE)({octokit, owner, repo, run_id});
     const filtered = jobs.filter(_src_util_actions__WEBPACK_IMPORTED_MODULE_1__/* .filterTestsJobs */ .My)
     const start = jobs[0].started_at;
-    const end = jobs[jobs.length-1].completed_at;
+    const end = jobs[jobs.length - 1].completed_at;
     const suites = (0,_src_util_actions__WEBPACK_IMPORTED_MODULE_1__/* .getJobsBySuites */ .lA)(filtered)
     // Organise and parse raw data Reporting
     const report = new _src_json__WEBPACK_IMPORTED_MODULE_2__.Report({start, end})
-    suites.forEach(suiteData => {
-        const suite = new _src_json__WEBPACK_IMPORTED_MODULE_2__.Suite({title:suiteData.name, duration:suiteData.duration})
-        const tests = suiteData.jobs.map(job => new _src_json__WEBPACK_IMPORTED_MODULE_2__.Test({
-            title: job.name.split('/')[1],
-            fullTitle: job.name,
-            duration: (0,_src_util_date__WEBPACK_IMPORTED_MODULE_3__.getDuration)(job.started_at, job.completed_at),
-            passed: job.conclusion === 'success'
-        }))
-        tests.forEach(test => suite.addTest(test));
+    for(const suiteData of suites) {
+        const suite = new _src_json__WEBPACK_IMPORTED_MODULE_2__.Suite({title: suiteData.name, duration: suiteData.duration})
+        for (const job of suiteData.jobs) {
+            const testData = {
+                title: job.name.split('/')[1],
+                fullTitle: job.name,
+                duration: (0,_src_util_date__WEBPACK_IMPORTED_MODULE_3__.getDuration)(job.started_at, job.completed_at),
+                passed: job.conclusion === 'success'
+            }
+            const regex = /####\[Start_json_data](.*)\[End_json_data]####/
+            const response = await octokit.rest.actions.downloadJobLogsForWorkflowRun({owner, repo, job_id: job.id})
+            if(response.status === 200 && regex.test(response.data)) {
+                const json_data = JSON.parse(regex.exec(response.data)[1])
+                testData.code = json_data;
+            }
+            suite.addTest(new _src_json__WEBPACK_IMPORTED_MODULE_2__.Test(testData))
+        }
         report.addSuite(suite);
-    })
+    }
     // Make json file
     fs__WEBPACK_IMPORTED_MODULE_4__.writeFileSync('data.json', JSON.stringify(report, undefined, 2))
     // Make html report

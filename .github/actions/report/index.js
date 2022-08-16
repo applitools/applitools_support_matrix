@@ -2,7 +2,7 @@
 import * as core from '@actions/core'
 import {getALlJobs, getJobsBySuites, filterTestsJobs} from './src/util/actions'
 import {Report, Suite, Test} from './src/json'
-import {getDuration} from'./src/util/date'
+import {getDuration} from './src/util/date'
 import {Octokit} from '@octokit/rest'
 import * as fs from 'fs'
 import {generator} from './src/generation/generator'
@@ -22,21 +22,29 @@ try {
     const jobs = await getALlJobs({octokit, owner, repo, run_id});
     const filtered = jobs.filter(filterTestsJobs)
     const start = jobs[0].started_at;
-    const end = jobs[jobs.length-1].completed_at;
+    const end = jobs[jobs.length - 1].completed_at;
     const suites = getJobsBySuites(filtered)
     // Organise and parse raw data Reporting
     const report = new Report({start, end})
-    suites.forEach(suiteData => {
-        const suite = new Suite({title:suiteData.name, duration:suiteData.duration})
-        const tests = suiteData.jobs.map(job => new Test({
-            title: job.name.split('/')[1],
-            fullTitle: job.name,
-            duration: getDuration(job.started_at, job.completed_at),
-            passed: job.conclusion === 'success'
-        }))
-        tests.forEach(test => suite.addTest(test));
+    for(const suiteData of suites) {
+        const suite = new Suite({title: suiteData.name, duration: suiteData.duration})
+        for (const job of suiteData.jobs) {
+            const testData = {
+                title: job.name.split('/')[1],
+                fullTitle: job.name,
+                duration: getDuration(job.started_at, job.completed_at),
+                passed: job.conclusion === 'success'
+            }
+            const regex = /####\[Start_json_data](.*)\[End_json_data]####/
+            const response = await octokit.rest.actions.downloadJobLogsForWorkflowRun({owner, repo, job_id: job.id})
+            if(response.status === 200 && regex.test(response.data)) {
+                const json_data = JSON.parse(regex.exec(response.data)[1])
+                testData.code = json_data;
+            }
+            suite.addTest(new Test(testData))
+        }
         report.addSuite(suite);
-    })
+    }
     // Make json file
     fs.writeFileSync('data.json', JSON.stringify(report, undefined, 2))
     // Make html report
