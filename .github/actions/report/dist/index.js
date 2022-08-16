@@ -62,7 +62,7 @@ try {
                     const json_data = JSON.parse(regex.exec(logs)[1])
                     console.log("Passed regex test")
                     console.log(json_data)
-                    testData.code = json_data;
+                    testData.code = JSON.stringify(json_data, undefined, 2);
                 }
             }
             suite.addTest(new _src_json__WEBPACK_IMPORTED_MODULE_2__.Test(testData))
