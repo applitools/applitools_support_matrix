@@ -41,7 +41,7 @@ try {
             const response = await octokit.rest.actions.downloadJobLogsForWorkflowRun({
                 owner: "applitools",
                 repo: "applitools_support_matrix",
-                job_id: "7836143014"
+                job_id: 7856180471
             })
             console.log(response.status)
             console.log(regex.test(response.data))
