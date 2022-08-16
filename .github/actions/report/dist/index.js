@@ -48,7 +48,7 @@ try {
     const suites = (0,_src_util_actions__WEBPACK_IMPORTED_MODULE_1__/* .getJobsBySuites */ .lA)(filtered)
     // Organise and parse raw data Reporting
     const report = new _src_json__WEBPACK_IMPORTED_MODULE_2__.Report({start, end})
-    for(const suiteData of suites) {
+    for (const suiteData of suites) {
         const suite = new _src_json__WEBPACK_IMPORTED_MODULE_2__.Suite({title: suiteData.name, duration: suiteData.duration})
         for (const job of suiteData.jobs) {
             const testData = {
@@ -60,15 +60,19 @@ try {
             const regex = /####\[Start_json_data](.*)\[End_json_data]####/
             console.log(job.id)
             // const response = await octokit.rest.actions.downloadJobLogsForWorkflowRun({owner, repo, job_id: job.id})
-            await testGetLog({owner, repo, job_id: '7856180471', pat})
-            // const response = await octokit.rest.actions.downloadJobLogsForWorkflowRun({
-            //     owner: "applitools",
-            //     repo: "applitools_support_matrix",
-            //     job_id: 7856180471
-            // })
-            // console.log(response.status)
-            // console.log(regex.test(response.data))
-            // console.log(response)
+            console.log("NODE__________________________________________________________________________________________")
+            console.log("NODE__________________________________________________________________________________________")
+            console.log("NODE__________________________________________________________________________________________")
+            await testGetLog({owner, repo, job_id: job.id, pat})
+            console.log("GIT__________________________________________________________________________________________")
+            console.log("GIT__________________________________________________________________________________________")
+            console.log("GIT__________________________________________________________________________________________")
+            const response = await octokit.rest.actions.downloadJobLogsForWorkflowRun({
+                owner, repo, job_id: job.id
+            })
+            console.log(response.status)
+            console.log(regex.test(response.data))
+            console.log(response)
             // if(response.status === 200 && regex.test(response.data)) {
             //     const json_data = JSON.parse(regex.exec(response.data)[1])
             //     console.log(json_data)
