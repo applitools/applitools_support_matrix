@@ -41,8 +41,7 @@ try {
             if (logs && typeof logs === 'string') {
                 if (regex.test(logs)) {
                     const json_data = JSON.parse(regex.exec(logs)[1])
-                    console.log("Passed regex test")
-                    console.log(json_data)
+                    if(json_data.title) testData.title = json_data.title;
                     testData.code = JSON.stringify(json_data, undefined, 2);
                 }
             }

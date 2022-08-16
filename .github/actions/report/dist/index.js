@@ -60,8 +60,7 @@ try {
             if (logs && typeof logs === 'string') {
                 if (regex.test(logs)) {
                     const json_data = JSON.parse(regex.exec(logs)[1])
-                    console.log("Passed regex test")
-                    console.log(json_data)
+                    if(json_data.title) testData.title = json_data.title;
                     testData.code = JSON.stringify(json_data, undefined, 2);
                 }
             }
@@ -25814,6 +25813,25 @@ const TEST_MATRIX = [
     'js_testcafe',
     'js_storybook']
 
+const MATRIX_MAPPING = {
+    'java' : 'Java',
+    'ruby' : 'Ruby',
+    'python': 'Python',
+    'dotnet': 'Dotnet',
+    'js_selenium': 'JS Selenium',
+    'js_playwright': 'JS Playwright',
+    'js_webdriverio': 'JS Webdriverio',
+    'js_webdriverio4': 'JS Webdriverio 4',
+    'js_webdriverio5': 'JS Webdriverio 5',
+    'js_nightwatch': 'JS Nightwatch',
+    'js_protractor': 'JS Protractor',
+    'js_puppeteer': 'JS Puppeteer',
+    'js_cypress': 'JS Cypress',
+    'js_cypress_v9-': 'JS Cypress legacy',
+    'js_testcafe': 'JS Testcafe',
+    'js_storybook': 'JS Storybook',
+
+}
 
 
 // EXTERNAL MODULE: ./src/util/date.js
@@ -25842,7 +25860,7 @@ function getJobsBySuites(arr) {
     }
     TEST_MATRIX.forEach(matrix => {
         const suite = {
-            name: matrix,
+            name: MATRIX_MAPPING[matrix],
             jobs: arr.filter(({name})=> name.split("/")[0].trim() === matrix)
         }
         if(suite.jobs.length !== 0) {
