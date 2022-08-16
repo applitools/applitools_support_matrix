@@ -11,7 +11,7 @@ function getJobsBySuites(arr) {
         jobs: arr.filter(({name}) => {
             let result = true;
             TEST_MATRIX.forEach(matrix => {
-                if(name === matrix) result = false
+                if(name.split("/")[0].trim() === matrix) result = false
             })
             return result;
         })
