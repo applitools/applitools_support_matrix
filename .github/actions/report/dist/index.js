@@ -58,6 +58,7 @@ try {
             const response = await octokit.rest.actions.downloadJobLogsForWorkflowRun({owner, repo, job_id: job.id})
             if(response.status === 200 && regex.test(response.data)) {
                 const json_data = JSON.parse(regex.exec(response.data)[1])
+                console.log(json_data)
                 testData.code = json_data;
             }
             suite.addTest(new _src_json__WEBPACK_IMPORTED_MODULE_2__.Test(testData))
