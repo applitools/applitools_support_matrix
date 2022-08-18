@@ -51,11 +51,20 @@ jobs:
         run: npm install
       - name: Framework install
         uses: ./.github/actions/install_npm_package
+        id: install
         with:
           package: cypress
           exact: ${{matrix.exact}}
           working-directory:  ${{env.work_dir}}
       - name: Log installed packages
         run: npm ls
+      - name: Logging version generation
+        uses: ./.github/actions/log_data_json
+        with:
+          package: 'Cypress'
+          version: ${{ steps.install.outputs.package_version }}
+          os: ${{runner.os}}
+          title: ${{ format('{0} | {1}', runner.os, steps.install.outputs.package_version) }}
+          selenium: 'None'
       - name: Run tests
         run: npm test

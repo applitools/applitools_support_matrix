@@ -48,6 +48,14 @@ jobs:
           node-version: ${{ matrix.node-version }}
       - name: Run Selenium
         uses: ./.github/actions/start_selenium
+      - name: Logging version generation
+        uses: ./.github/actions/log_data_json
+        with:
+          package: 'Webdriverio'
+          version: ${{ matrix.webdriverio-version }}
+          os: ${{runner.os}}
+          title: ${{ format('{0} | {1}', runner.os, matrix.webdriverio-version) }}
+          selenium: '4'
       - name: Run tests
         run: |
           npm install

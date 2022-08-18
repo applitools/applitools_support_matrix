@@ -56,6 +56,7 @@ jobs:
       - name: Start Selenium Server
         uses: ./.github/actions/start_selenium
       - name: Framework install
+        id: install
         uses: ./.github/actions/install_npm_package
         with:
           package: protractor
@@ -65,5 +66,13 @@ jobs:
         run: npm install
       - name: Log installed packages
         run: npm ls
+      - name: Logging version generation
+        uses: ./.github/actions/log_data_json
+        with:
+          package: 'Protractor'
+          version: ${{ steps.install.outputs.package_version }}
+          os: ${{runner.os}}
+          title: ${{ format('{0} | {1}', runner.os, steps.install.outputs.package_version) }}
+          selenium: '4'
       - name: Run tests
         run: npm test

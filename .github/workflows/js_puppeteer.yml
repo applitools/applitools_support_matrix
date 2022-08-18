@@ -60,6 +60,7 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
       - name: Framework install
+        id: install
         uses: ./.github/actions/install_npm_package
         with:
           package: puppeteer
@@ -69,5 +70,13 @@ jobs:
         run: npm install
       - name: Log installed packages
         run: npm ls
+      - name: Logging version generation
+        uses: ./.github/actions/log_data_json
+        with:
+          package: 'Puppeteer'
+          version: ${{ steps.install.outputs.package_version }}
+          os: ${{runner.os}}
+          title: ${{ format('{0} | {1}', runner.os, steps.install.outputs.package_version) }}
+          selenium: 'uses direct local driver'
       - name: Run tests
         run: npm test
