@@ -71,7 +71,7 @@ jobs:
       - name: Logging version generation
         uses: ./.github/actions/log_data_json
         with:
-          package: 'Nightwatch'
+          package: 'Playwright'
           version: ${{ steps.install.outputs.package_version }}
           os: ${{runner.os}}
           title: ${{ format('{0} | {1}', runner.os, steps.install.outputs.package_version) }}
