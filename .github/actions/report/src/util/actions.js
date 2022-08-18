@@ -1,7 +1,7 @@
 'use strict'
 
 import {TEST_MATRIX, MATRIX_MAPPING} from "../enums/testMatrix";
-import {compareDates, getDuration} from "./date";
+import {getJobsDuration} from "./date";
 import https from "https";
 
 function getJobsBySuites(arr) {
@@ -16,15 +16,16 @@ function getJobsBySuites(arr) {
             return result;
         })
     }
+    if(other.jobs.length !== 0) {
+        other.duration = getJobsDuration(other.jobs)
+    }
     TEST_MATRIX.forEach(matrix => {
         const suite = {
             name: MATRIX_MAPPING[matrix],
             jobs: arr.filter(({name})=> name.split("/")[0].trim() === matrix)
         }
         if(suite.jobs.length !== 0) {
-            const start = suite.jobs.map(test => test.started_at).sort(compareDates)[0]
-            const end = suite.jobs.map(test => test.completed_at).sort(compareDates)[suite.jobs.length - 1]
-            suite.duration = getDuration(start, end)
+            suite.duration = getJobsDuration(suite.jobs)
         }
         result.push(suite)
     })

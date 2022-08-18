@@ -40,8 +40,8 @@ try {
     const repo = process.env.GITHUB_REPOSITORY.split('/')[1];
     const jobs = await (0,_src_util_actions__WEBPACK_IMPORTED_MODULE_1__/* .getALlJobs */ .RE)({octokit, owner, repo, run_id});
     const filtered = jobs.filter(_src_util_actions__WEBPACK_IMPORTED_MODULE_1__/* .filterTestsJobs */ .My)
-    const start = jobs[0].started_at;
-    const end = jobs[jobs.length - 1].completed_at;
+    const start = jobs.map(test => test.started_at).sort(_src_util_date__WEBPACK_IMPORTED_MODULE_3__.compareDates)[0]
+    const end = jobs.map(test => test.completed_at).sort(_src_util_date__WEBPACK_IMPORTED_MODULE_3__.compareDates)[jobs.length - 1]
     const suites = (0,_src_util_actions__WEBPACK_IMPORTED_MODULE_1__/* .getJobsBySuites */ .lA)(filtered)
     // Organise and parse raw data Reporting
     const report = new _src_json__WEBPACK_IMPORTED_MODULE_2__.Report({start, end})
@@ -25857,15 +25857,16 @@ function getJobsBySuites(arr) {
             return result;
         })
     }
+    if(other.jobs.length !== 0) {
+        other.duration = (0,date.getJobsDuration)(other.jobs)
+    }
     TEST_MATRIX.forEach(matrix => {
         const suite = {
             name: MATRIX_MAPPING[matrix],
             jobs: arr.filter(({name})=> name.split("/")[0].trim() === matrix)
         }
         if(suite.jobs.length !== 0) {
-            const start = suite.jobs.map(test => test.started_at).sort(date.compareDates)[0]
-            const end = suite.jobs.map(test => test.completed_at).sort(date.compareDates)[suite.jobs.length - 1]
-            suite.duration = (0,date.getDuration)(start, end)
+            suite.duration = (0,date.getJobsDuration)(suite.jobs)
         }
         result.push(suite)
     })
@@ -25967,9 +25968,19 @@ function compareDates(a,b) {
     return Date.parse(a) - Date.parse(b)
 }
 
+function getJobsDuration(jobs){
+    if(jobs && Array.isArray(jobs) && jobs.length !== 0) {
+        const start = jobs.map(test => test.started_at).sort(compareDates)[0]
+        const end = jobs.map(test => test.completed_at).sort(compareDates)[jobs.length - 1]
+        return getDuration(start, end)
+    }
+    return 0;
+}
+
 module.exports = {
     getDuration,
     compareDates,
+    getJobsDuration,
 }
 
 /***/ }),

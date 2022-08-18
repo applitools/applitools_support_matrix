@@ -2,7 +2,7 @@
 import * as core from '@actions/core'
 import {getALlJobs, getJobsBySuites, filterTestsJobs, jobLog} from './src/util/actions'
 import {Report, Suite, Test} from './src/json'
-import {getDuration} from './src/util/date'
+import {getDuration, compareDates} from './src/util/date'
 import {Octokit} from '@octokit/rest'
 import * as fs from 'fs'
 import {generator} from './src/generation/generator'
@@ -21,8 +21,8 @@ try {
     const repo = process.env.GITHUB_REPOSITORY.split('/')[1];
     const jobs = await getALlJobs({octokit, owner, repo, run_id});
     const filtered = jobs.filter(filterTestsJobs)
-    const start = jobs[0].started_at;
-    const end = jobs[jobs.length - 1].completed_at;
+    const start = jobs.map(test => test.started_at).sort(compareDates)[0]
+    const end = jobs.map(test => test.completed_at).sort(compareDates)[jobs.length - 1]
     const suites = getJobsBySuites(filtered)
     // Organise and parse raw data Reporting
     const report = new Report({start, end})
