@@ -79,6 +79,7 @@ jobs:
       - name: Check files
         run: |
           pwd
+          sleep 60
           exit 1
   report_generation:
     if: always()
@@ -111,6 +112,7 @@ jobs:
       - name: Check files
         run: |
           pwd
+          sleep 20
           ls
       - name: Upload report as artifact
         uses: actions/upload-artifact@v3
