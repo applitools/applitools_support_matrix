@@ -137,8 +137,8 @@ jobs:
             username: ${{ secrets.EMAIL_USERNAME }}
             password: ${{ secrets.EMAIL_PASSWORD }}
             subject: SUPPORT MATRIX run has failed job
-            body: Worflow ${{ github.workflow }} of ${{ github.repository }}. See attachments for the report to the results
-            html_body: Worflow ${{ github.workflow }} of ${{ github.repository }} <br>
+            body: Test run check  !!!!!! Workflow ${{ github.workflow }} of ${{ github.repository }}. See attachments for the report to the results
+            html_body: Test run check !!!!!!! Workflow ${{ github.workflow }} of ${{ github.repository }} <br>
                        See attachments for the report to the results
             attachments: report.html
             to: yarden.ingber@applitools.com, tranduil15@gmail.com
