@@ -20,6 +20,9 @@ try {
     const owner = process.env.GITHUB_REPOSITORY.split('/')[0];
     const repo = process.env.GITHUB_REPOSITORY.split('/')[1];
     let jobs = await getALlJobs({octokit, owner, repo, run_id});
+    jobs.forEach(job => {
+        console.log(`${job.name} has status ${job.status} | ${job.started_at} | ${job.completed_at}`)
+    })
     jobs = jobs.filter(job => job.status === 'completed')
     const filtered = jobs.filter(filterTestsJobs)
     const start = jobs.map(test => test.started_at).sort(compareDates)[0]

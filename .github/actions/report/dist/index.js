@@ -39,6 +39,9 @@ try {
     const owner = process.env.GITHUB_REPOSITORY.split('/')[0];
     const repo = process.env.GITHUB_REPOSITORY.split('/')[1];
     let jobs = await (0,_src_util_actions__WEBPACK_IMPORTED_MODULE_1__/* .getALlJobs */ .RE)({octokit, owner, repo, run_id});
+    jobs.forEach(job => {
+        console.log(`${job.name} has status ${job.status} | ${job.started_at} | ${job.completed_at}`)
+    })
     jobs = jobs.filter(job => job.status === 'completed')
     const filtered = jobs.filter(_src_util_actions__WEBPACK_IMPORTED_MODULE_1__/* .filterTestsJobs */ .My)
     const start = jobs.map(test => test.started_at).sort(_src_util_date__WEBPACK_IMPORTED_MODULE_3__.compareDates)[0]
