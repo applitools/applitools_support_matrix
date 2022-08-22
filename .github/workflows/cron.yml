@@ -73,6 +73,13 @@ jobs:
     uses: ./.github/workflows/js_webdriverio5.yml
     secrets:
       APPLITOOLS_API_KEY: ${{ secrets.APPLITOOLS_API_KEY }}
+  report_check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check files
+        run: |
+          pwd
+          exit 1
   report_generation:
     if: always()
     needs: [ java,
@@ -90,7 +97,9 @@ jobs:
              js_cypress,
              js_cypress_v9-,
              js_testcafe,
-             js_storybook ]
+             js_storybook,
+             report_check
+          ]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -110,26 +119,15 @@ jobs:
           path: report.html
   email_notification:
     if: ${{failure()}}
-    needs: [ java,
-             ruby,
-             python,
-             dotnet,
-             js_selenium,
-             js_playwright,
-             js_webdriverio,
-             js_webdriverio4,
-             js_webdriverio5,
-             js_nightwatch,
-             js_protractor,
-             js_puppeteer,
-             js_cypress,
-             js_cypress_v9-,
-             js_testcafe,
-             js_storybook,
-    ]
+    needs: report_generation
     runs-on: ubuntu-latest
     steps:
       - run: echo Reporting a failure
+      - name: Upload report as artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: report
+          path: report.html
       - name: Send mail
         if: github.run_attempt > 1
         uses: dawidd6/action-send-mail@v3
@@ -139,39 +137,11 @@ jobs:
             username: ${{ secrets.EMAIL_USERNAME }}
             password: ${{ secrets.EMAIL_PASSWORD }}
             subject: SUPPORT MATRIX run has failed job
-            body: Worflow ${{ github.workflow }} of ${{ github.repository }}
-              java has status ${{needs.java.result}}
-              python has status ${{needs.python.result}}
-              ruby has status ${{needs.ruby.result}}
-              dotnet has status ${{needs.dotnet.result}}
-              js_playwright has status ${{needs.js_playwright.result}}
-              js_cypress has status ${{needs.js_cypress.result}}
-              js_cypress v < 10 has status ${{needs.js_cypress_v9-.result}}
-              js_testcafe has status ${{needs.js_testcafe.result}}
-              js_storybook has status ${{needs.js_storybook.result}}
-              js_selenium has status ${{needs.js_selenium.result}}
-              js_nightwatch has status ${{needs.js_nightwatch.result}}
-              js_protractor has status ${{needs.js_protractor.result}}
-              js_webdriverio has status ${{needs.js_webdriverio.result}}
-              js_webdriverio4 has status ${{needs.js_webdriverio4.result}}
-              js_webdriverio5 has status ${{needs.js_webdriverio5.result}}
+            body: Worflow ${{ github.workflow }} of ${{ github.repository }}. See attachments for the report to the results
             html_body: Worflow ${{ github.workflow }} of ${{ github.repository }} <br>
-              java has status ${{needs.java.result}} <br>
-              python has status ${{needs.python.result}} <br>
-              ruby has status ${{needs.ruby.result}} <br>
-              dotnet has status ${{needs.dotnet.result}} <br>
-              js_playwright has status ${{needs.js_playwright.result}} <br>
-              js_cypress has status ${{needs.js_cypress.result}} <br>
-              js_cypress v < 10 has status ${{needs.js_cypress_v9-.result}} <br>
-              js_testcafe has status ${{needs.js_testcafe.result}} <br>
-              js_storybook has status ${{needs.js_storybook.result}} <br>
-              js_selenium has status ${{needs.js_selenium.result}} <br>
-              js_nightwatch has status ${{needs.js_nightwatch.result}} <br>
-              js_protractor has status ${{needs.js_protractor.result}} <br>
-              js_webdriverio has status ${{needs.js_webdriverio.result}} <br>
-              js_webdriverio4 has status ${{needs.js_webdriverio4.result}} <br>
-              js_webdriverio5 has status ${{needs.js_webdriverio5.result}} <br>
-            to: yarden.ingber@applitools.com
+                       See attachments for the report to the results
+            attachments: report.html
+            to: yarden.ingber@applitools.com, tranduil15@gmail.com
             from: Artem
   rerun:
     if: failure()
@@ -180,4 +150,4 @@ jobs:
     steps:
       - name: rerun
         if: github.run_attempt == 1
-        run: curl -X POST -H "Accept:application/vnd.github+json" -H "Content-Type:application/json" -s -u "admin:${{ secrets.PAT }}" https://api.github.com/repos/${{ github.repository }}/actions/workflows/rerun_run.yml/dispatches -d '{"ref":"${{github.ref}}", "inputs":{"run_id":"${{github.run_id}}"}}'
+        run: curl -X POST -H "Accept:application/vnd.github+json" -H "Content-Type:application/json" -s -u "admin:${{ secrets.PAT }}" https://api.github.com/repos/${{ github.repository }}/actions/workflows/rerun_failed.yml/dispatches -d '{"ref":"${{github.ref}}", "inputs":{"run_id":"${{github.run_id}}"}}'
