@@ -123,11 +123,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: echo Reporting a failure
-      - name: Upload report as artifact
+      - name: Download report as artifact
         uses: actions/download-artifact@v3
         with:
           name: report
-          path: report.html
       - name: Send mail
         if: github.run_attempt > 1
         uses: dawidd6/action-send-mail@v3
