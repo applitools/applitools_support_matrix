@@ -19,7 +19,8 @@ try {
     });
     const owner = process.env.GITHUB_REPOSITORY.split('/')[0];
     const repo = process.env.GITHUB_REPOSITORY.split('/')[1];
-    const jobs = await getALlJobs({octokit, owner, repo, run_id});
+    let jobs = await getALlJobs({octokit, owner, repo, run_id});
+    jobs = jobs.filter(job => job.status === 'completed')
     const filtered = jobs.filter(filterTestsJobs)
     const start = jobs.map(test => test.started_at).sort(compareDates)[0]
     const end = jobs.map(test => test.completed_at).sort(compareDates)[jobs.length - 1]

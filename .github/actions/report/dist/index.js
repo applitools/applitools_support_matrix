@@ -38,7 +38,8 @@ try {
     });
     const owner = process.env.GITHUB_REPOSITORY.split('/')[0];
     const repo = process.env.GITHUB_REPOSITORY.split('/')[1];
-    const jobs = await (0,_src_util_actions__WEBPACK_IMPORTED_MODULE_1__/* .getALlJobs */ .RE)({octokit, owner, repo, run_id});
+    let jobs = await (0,_src_util_actions__WEBPACK_IMPORTED_MODULE_1__/* .getALlJobs */ .RE)({octokit, owner, repo, run_id});
+    jobs = jobs.filter(job => job.status === 'completed')
     const filtered = jobs.filter(_src_util_actions__WEBPACK_IMPORTED_MODULE_1__/* .filterTestsJobs */ .My)
     const start = jobs.map(test => test.started_at).sort(_src_util_date__WEBPACK_IMPORTED_MODULE_3__.compareDates)[0]
     const end = jobs.map(test => test.completed_at).sort(_src_util_date__WEBPACK_IMPORTED_MODULE_3__.compareDates)[jobs.length - 1]
