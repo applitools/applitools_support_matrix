@@ -73,14 +73,6 @@ jobs:
     uses: ./.github/workflows/js_webdriverio5.yml
     secrets:
       APPLITOOLS_API_KEY: ${{ secrets.APPLITOOLS_API_KEY }}
-  report_check:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Check files
-        run: |
-          pwd
-          sleep 60
-          exit 1
   report_generation:
     if: always()
     needs: [ java,
@@ -98,8 +90,7 @@ jobs:
              js_cypress,
              js_cypress_v9-,
              js_testcafe,
-             js_storybook,
-             report_check
+             js_storybook
           ]
     runs-on: ubuntu-latest
     steps:
