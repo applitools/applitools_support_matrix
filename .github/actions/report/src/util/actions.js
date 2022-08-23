@@ -1,6 +1,7 @@
 'use strict'
 
 import {TEST_MATRIX, MATRIX_MAPPING} from "../enums/testMatrix";
+import MS from "../enums/time";
 import {getJobsDuration} from "./date";
 import https from "https";
 
@@ -109,9 +110,39 @@ async function jobLog({owner, repo, job_id, pat}) {
 
 }
 
+async function waitForAllCompletedJob({octokit, owner, repo, run_id, wait_time=MS.SECOND*30, tries_limit=20}){
+    let jobs;
+    jobs = await getALlJobs({octokit, owner, repo, run_id});
+    let notCompleted = jobs.filter(job => job.status !== 'completed')
+    let tries = 1;
+    while(notCompleted.length > 0 && tries < tries_limit ) {
+        console.log("There are not completed jobs")
+        notCompleted.forEach(printJob)
+        console.log("Waiting for jobs to complete");
+        await wait(wait_time);
+        jobs = await getALlJobs({octokit, owner, repo, run_id});
+        notCompleted = jobs.filter(job => job.status !== 'completed')
+        tries++;
+    }
+
+    let completed = jobs.filter(job => job.status === 'completed')
+    console.log("Completed jobs:")
+    completed.forEach(printJob)
+    return completed
+
+    function printJob(job) {
+        console.log(`${job.name} has status ${job.status} | ${job.started_at} | ${job.completed_at}`)
+    }
+}
+
+async function wait(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms))
+}
+
 export {
     getJobsBySuites,
     filterTestsJobs,
     getALlJobs,
-    jobLog
+    jobLog,
+    wait
 }
