@@ -44,6 +44,12 @@ jobs:
           cache: 'maven'
       - name: Start Selenium Server
         uses: ./.github/actions/start_selenium
+      - name: Logging version generation
+        uses: ./.github/actions/log_data_json
+        with:
+          os: ${{runner.os}}
+          title: ${{ format('{0} | java [{1}]', runner.os, matrix.java-version) }}
+          selenium: '4'
       - name: Run tests
         working-directory: sdks/java
         run: |

@@ -2,7 +2,7 @@
 const uuid = require("../util/uuid")
 
 class Test {
-    constructor({title, fullTitle, duration, passed}) {
+    constructor({title, fullTitle, duration, passed, code}) {
         this.title = title || "Empty title";
         this.fullTitle = fullTitle || "Empty fullTitle";
         this.timedOut = null;
@@ -13,7 +13,7 @@ class Test {
         this.fail = !passed;
         this.pending = false;
         this.context = null;
-        this.code = "Extra field with info";
+        this.code = code || "Extra field with info";
         this.err = {};
         this.uuid = uuid();
         this.parentUUID = null;

@@ -1,6 +1,7 @@
 /node_modules
 /mochawesome-report
-*.json
+check.json
+data.json
 logs.*
 logs
 *.html

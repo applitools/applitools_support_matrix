@@ -50,14 +50,9 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
       - name: Run Selenium 4
-        if: matrix.major == 0
         uses: ./.github/actions/start_selenium
-      - name: Run Selenium 3
-        if: matrix.major != 0
-        uses: ./.github/actions/start_selenium
-        with:
-          legacy: 'true'
       - name: Framework install
+        id: install
         uses: ./.github/actions/install_npm_package
         with:
           package: nightwatch
@@ -67,6 +62,14 @@ jobs:
         run: npm install
       - name: Log installed packages
         run: npm ls
+      - name: Logging version generation
+        uses: ./.github/actions/log_data_json
+        with:
+          package: 'Nightwatch'
+          version: ${{ steps.install.outputs.package_version }}
+          os: ${{runner.os}}
+          title: ${{ format('{0} | {1}', runner.os, steps.install.outputs.package_version) }}
+          selenium: '4'
       - name: Run classic tests
         run: npm test
       - name: Run ufg tests
