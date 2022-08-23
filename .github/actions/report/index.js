@@ -1,6 +1,6 @@
 'use strict'
 import * as core from '@actions/core'
-import {getALlJobs, getJobsBySuites, filterTestsJobs, jobLog} from './src/util/actions'
+import {waitForAllCompletedJob, getJobsBySuites, filterTestsJobs, jobLog} from './src/util/actions'
 import {Report, Suite, Test} from './src/json'
 import {getDuration, compareDates} from './src/util/date'
 import {Octokit} from '@octokit/rest'
@@ -19,11 +19,7 @@ try {
     });
     const owner = process.env.GITHUB_REPOSITORY.split('/')[0];
     const repo = process.env.GITHUB_REPOSITORY.split('/')[1];
-    let jobs = await getALlJobs({octokit, owner, repo, run_id});
-    jobs.forEach(job => {
-        console.log(`${job.name} has status ${job.status} | ${job.started_at} | ${job.completed_at}`)
-    })
-    jobs = jobs.filter(job => job.status === 'completed')
+    let jobs = await waitForAllCompletedJob({octokit, owner, repo, run_id});
     const filtered = jobs.filter(filterTestsJobs)
     const start = jobs.map(test => test.started_at).sort(compareDates)[0]
     const end = jobs.map(test => test.completed_at).sort(compareDates)[jobs.length - 1]

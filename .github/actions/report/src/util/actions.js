@@ -113,7 +113,7 @@ async function jobLog({owner, repo, job_id, pat}) {
 async function waitForAllCompletedJob({octokit, owner, repo, run_id, wait_time=MS.SECOND*30, tries_limit=20}){
     let jobs;
     jobs = await getALlJobs({octokit, owner, repo, run_id});
-    let notCompleted = jobs.filter(job => job.status !== 'completed')
+    let notCompleted = jobs.filter(job => job.status !== 'completed').filter(job => job.name !== process.env.GITHUB_JOB)
     let tries = 1;
     while(notCompleted.length > 0 && tries < tries_limit ) {
         console.log("There are not completed jobs")
@@ -121,7 +121,7 @@ async function waitForAllCompletedJob({octokit, owner, repo, run_id, wait_time=M
         console.log("Waiting for jobs to complete");
         await wait(wait_time);
         jobs = await getALlJobs({octokit, owner, repo, run_id});
-        notCompleted = jobs.filter(job => job.status !== 'completed')
+        notCompleted = jobs.filter(job => job.status !== 'completed').filter(job => job.name !== process.env.GITHUB_JOB)
         tries++;
     }
 
@@ -144,5 +144,6 @@ export {
     filterTestsJobs,
     getALlJobs,
     jobLog,
-    wait
+    wait,
+    waitForAllCompletedJob
 }

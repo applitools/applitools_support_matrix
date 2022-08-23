@@ -18,7 +18,9 @@ jobs:
   failing_check:
     runs-on: ubuntu-latest
     steps:
-      - run: exit 1
+      - run: |
+         sleep 60 
+         exit 1
   report_generation:
     if: always()
     needs: [ java,python,failing_check]

@@ -9,7 +9,7 @@ __nccwpck_require__.a(module, async (__webpack_handle_async_dependencies__) => {
 __nccwpck_require__.r(__webpack_exports__);
 /* harmony import */ var _actions_core__WEBPACK_IMPORTED_MODULE_0__ = __nccwpck_require__(810);
 /* harmony import */ var _actions_core__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__nccwpck_require__.n(_actions_core__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _src_util_actions__WEBPACK_IMPORTED_MODULE_1__ = __nccwpck_require__(1036);
+/* harmony import */ var _src_util_actions__WEBPACK_IMPORTED_MODULE_1__ = __nccwpck_require__(9706);
 /* harmony import */ var _src_json__WEBPACK_IMPORTED_MODULE_2__ = __nccwpck_require__(6103);
 /* harmony import */ var _src_util_date__WEBPACK_IMPORTED_MODULE_3__ = __nccwpck_require__(4602);
 /* harmony import */ var _src_util_date__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__nccwpck_require__.n(_src_util_date__WEBPACK_IMPORTED_MODULE_3__);
@@ -38,11 +38,7 @@ try {
     });
     const owner = process.env.GITHUB_REPOSITORY.split('/')[0];
     const repo = process.env.GITHUB_REPOSITORY.split('/')[1];
-    let jobs = await (0,_src_util_actions__WEBPACK_IMPORTED_MODULE_1__/* .getALlJobs */ .RE)({octokit, owner, repo, run_id});
-    jobs.forEach(job => {
-        console.log(`${job.name} has status ${job.status} | ${job.started_at} | ${job.completed_at}`)
-    })
-    jobs = jobs.filter(job => job.status === 'completed')
+    let jobs = await (0,_src_util_actions__WEBPACK_IMPORTED_MODULE_1__/* .waitForAllCompletedJob */ .Py)({octokit, owner, repo, run_id});
     const filtered = jobs.filter(_src_util_actions__WEBPACK_IMPORTED_MODULE_1__/* .filterTestsJobs */ .My)
     const start = jobs.map(test => test.started_at).sort(_src_util_date__WEBPACK_IMPORTED_MODULE_3__.compareDates)[0]
     const end = jobs.map(test => test.completed_at).sort(_src_util_date__WEBPACK_IMPORTED_MODULE_3__.compareDates)[jobs.length - 1]
@@ -7437,7 +7433,7 @@ module.exports = {
 const u = (__nccwpck_require__(7976).fromPromise)
 const jsonFile = __nccwpck_require__(648)
 
-jsonFile.outputJson = u(__nccwpck_require__(9706))
+jsonFile.outputJson = u(__nccwpck_require__(9622))
 jsonFile.outputJsonSync = __nccwpck_require__(3209)
 // aliases
 jsonFile.outputJSON = jsonFile.outputJson
@@ -7491,7 +7487,7 @@ module.exports = outputJsonSync
 
 /***/ }),
 
-/***/ 9706:
+/***/ 9622:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
@@ -25783,7 +25779,7 @@ module.exports = Test
 
 /***/ }),
 
-/***/ 1036:
+/***/ 9706:
 /***/ ((__unused_webpack_module, __webpack_exports__, __nccwpck_require__) => {
 
 "use strict";
@@ -25791,10 +25787,12 @@ module.exports = Test
 // EXPORTS
 __nccwpck_require__.d(__webpack_exports__, {
   "My": () => (/* binding */ filterTestsJobs),
-  "RE": () => (/* binding */ getALlJobs),
   "lA": () => (/* binding */ getJobsBySuites),
-  "T1": () => (/* binding */ jobLog)
+  "T1": () => (/* binding */ jobLog),
+  "Py": () => (/* binding */ waitForAllCompletedJob)
 });
+
+// UNUSED EXPORTS: getALlJobs, wait
 
 ;// CONCATENATED MODULE: ./src/enums/testMatrix.js
 
@@ -25837,6 +25835,15 @@ const MATRIX_MAPPING = {
 }
 
 
+;// CONCATENATED MODULE: ./src/enums/time.js
+
+
+const MS = {
+    SECOND: 1000,
+    MINUTES: 60000,
+}
+
+/* harmony default export */ const time = (MS);
 // EXTERNAL MODULE: ./src/util/date.js
 var date = __nccwpck_require__(4602);
 // EXTERNAL MODULE: external "https"
@@ -25846,6 +25853,7 @@ var external_https_default = /*#__PURE__*/__nccwpck_require__.n(external_https_)
 
 
 ;
+
 
 
 
@@ -25952,6 +25960,35 @@ async function jobLog({owner, repo, job_id, pat}) {
         })
     })
 
+}
+
+async function waitForAllCompletedJob({octokit, owner, repo, run_id, wait_time=time.SECOND*30, tries_limit=20}){
+    let jobs;
+    jobs = await getALlJobs({octokit, owner, repo, run_id});
+    let notCompleted = jobs.filter(job => job.status !== 'completed').filter(job => job.name !== process.env.GITHUB_JOB)
+    let tries = 1;
+    while(notCompleted.length > 0 && tries < tries_limit ) {
+        console.log("There are not completed jobs")
+        notCompleted.forEach(printJob)
+        console.log("Waiting for jobs to complete");
+        await wait(wait_time);
+        jobs = await getALlJobs({octokit, owner, repo, run_id});
+        notCompleted = jobs.filter(job => job.status !== 'completed').filter(job => job.name !== process.env.GITHUB_JOB)
+        tries++;
+    }
+
+    let completed = jobs.filter(job => job.status === 'completed')
+    console.log("Completed jobs:")
+    completed.forEach(printJob)
+    return completed
+
+    function printJob(job) {
+        console.log(`${job.name} has status ${job.status} | ${job.started_at} | ${job.completed_at}`)
+    }
+}
+
+async function wait(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms))
 }
 
 
