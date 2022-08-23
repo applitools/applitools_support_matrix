@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.github/actions/install_npm_package/Support.Actions.install_npm_package.iml" filepath="$PROJECT_DIR$/.github/actions/install_npm_package/Support.Actions.install_npm_package.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.github/actions/log_data_json/Support.Actions.log_data_json.iml" filepath="$PROJECT_DIR$/.github/actions/log_data_json/Support.Actions.log_data_json.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.github/actions/report/Support.Actions.report.iml" filepath="$PROJECT_DIR$/.github/actions/report/Support.Actions.report.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.github/actions/start_selenium/Support.Actions.start_selenium.iml" filepath="$PROJECT_DIR$/.github/actions/start_selenium/Support.Actions.start_selenium.iml" />
+      <module fileurl="file://$PROJECT_DIR$/sdks/js/eyes-nightwatch/Support.JS.eyes-nightwatch.iml" filepath="$PROJECT_DIR$/sdks/js/eyes-nightwatch/Support.JS.eyes-nightwatch.iml" />
+      <module fileurl="file://$PROJECT_DIR$/sdks/js/eyes-playwright/Support.JS.eyes-playwright.iml" filepath="$PROJECT_DIR$/sdks/js/eyes-playwright/Support.JS.eyes-playwright.iml" />
+      <module fileurl="file://$PROJECT_DIR$/sdks/js/eyes-protractor/Support.JS.eyes-protractor.iml" filepath="$PROJECT_DIR$/sdks/js/eyes-protractor/Support.JS.eyes-protractor.iml" />
+      <module fileurl="file://$PROJECT_DIR$/sdks/js/eyes-puppeteer/Support.JS.eyes-puppeteer.iml" filepath="$PROJECT_DIR$/sdks/js/eyes-puppeteer/Support.JS.eyes-puppeteer.iml" />
+      <module fileurl="file://$PROJECT_DIR$/sdks/js/eyes-selenium/Support.JS.eyes-selenium.iml" filepath="$PROJECT_DIR$/sdks/js/eyes-selenium/Support.JS.eyes-selenium.iml" />
+      <module fileurl="file://$PROJECT_DIR$/sdks/js/eyes-storybook/Support.JS.eyes-storybook.iml" filepath="$PROJECT_DIR$/sdks/js/eyes-storybook/Support.JS.eyes-storybook.iml" />
+      <module fileurl="file://$PROJECT_DIR$/sdks/js/eyes-testcafe/Support.JS.eyes-testcafe.iml" filepath="$PROJECT_DIR$/sdks/js/eyes-testcafe/Support.JS.eyes-testcafe.iml" />
+      <module fileurl="file://$PROJECT_DIR$/sdks/js/eyes-webdriverio4/Support.JS.eyes-webdriverio4.iml" filepath="$PROJECT_DIR$/sdks/js/eyes-webdriverio4/Support.JS.eyes-webdriverio4.iml" />
+      <module fileurl="file://$PROJECT_DIR$/sdks/js/eyes-cypress/v10/Support.JS.v10.iml" filepath="$PROJECT_DIR$/sdks/js/eyes-cypress/v10/Support.JS.v10.iml" />
+      <module fileurl="file://$PROJECT_DIR$/sdks/js/eyes-cypress/v9/Support.JS.v9.iml" filepath="$PROJECT_DIR$/sdks/js/eyes-cypress/v9/Support.JS.v9.iml" />
+      <module fileurl="file://$PROJECT_DIR$/sdks/js/eyes-webdriverio/5/Support.JS.webdriverio.5.iml" filepath="$PROJECT_DIR$/sdks/js/eyes-webdriverio/5/Support.JS.webdriverio.5.iml" />
+      <module fileurl="file://$PROJECT_DIR$/sdks/js/eyes-webdriverio/6/Support.JS.webdriverio.6.iml" filepath="$PROJECT_DIR$/sdks/js/eyes-webdriverio/6/Support.JS.webdriverio.6.iml" />
+      <module fileurl="file://$PROJECT_DIR$/sdks/js/eyes-webdriverio/7/Support.JS.webdriverio.7.iml" filepath="$PROJECT_DIR$/sdks/js/eyes-webdriverio/7/Support.JS.webdriverio.7.iml" />
+      <module fileurl="file://$PROJECT_DIR$/sdks/java/Support.java.iml" filepath="$PROJECT_DIR$/sdks/java/Support.java.iml" />
+      <module fileurl="file://$PROJECT_DIR$/sdks/python/Support.python.iml" filepath="$PROJECT_DIR$/sdks/python/Support.python.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Support.ruby.iml" filepath="$PROJECT_DIR$/Support.ruby.iml" />
+    </modules>
+  </component>
+</project>
