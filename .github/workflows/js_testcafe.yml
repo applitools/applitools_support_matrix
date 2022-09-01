@@ -32,14 +32,11 @@ jobs:
       matrix:
         node-version: [ '16' ]
         os: [windows-latest, ubuntu-latest]
-        minor: [0]
+        major: [0]
         include:
           - node-version: '16'
             os: ubuntu-latest
-            minor: -1
-          - node-version: '16'
-            os: ubuntu-latest
-            minor: -2
+            major: -1
     runs-on: ${{ matrix.os }}
     env:
       APPLITOOLS_DONT_CLOSE_BATCHES: true
@@ -63,7 +60,7 @@ jobs:
         uses: ./.github/actions/install_npm_package
         with:
           package: testcafe
-          minor: ${{matrix.minor}}
+          minor: ${{matrix.major}}
           working-directory:  ${{env.work_dir}}
       - name: Log installed packages
         run: npm ls
