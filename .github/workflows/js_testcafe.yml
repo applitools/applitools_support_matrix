@@ -60,7 +60,7 @@ jobs:
         uses: ./.github/actions/install_npm_package
         with:
           package: testcafe
-          minor: ${{matrix.major}}
+          major: ${{matrix.major}}
           working-directory:  ${{env.work_dir}}
       - name: Log installed packages
         run: npm ls
