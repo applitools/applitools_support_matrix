@@ -31,13 +31,5 @@ public class UFG : BaseTest
         eyes.Close(true);
     }
 
-    [Test]
-    public void frame()
-    {
-        driver.Navigate().GoToUrl("https://applitools.github.io/demo/TestPages/FramesTestPage/");
-        eyes.Open(driver, "Applitools Support Matrix", "Frame - UFG", new RectangleSize(width:700, height:460));
-        eyes.Check(Target.Frame("frame1"));
-        eyes.Close(true);
-    }
   }
 }

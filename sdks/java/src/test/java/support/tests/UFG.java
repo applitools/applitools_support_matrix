@@ -32,12 +32,4 @@ public class UFG extends BaseSetup {
         eyes.check(Target.region(new Region(50, 70, 90, 110)));
         eyes.close(true);
     }
-
-    @Test
-    public void frame() {
-        driver.get("https://applitools.github.io/demo/TestPages/FramesTestPage/");
-        eyes.open(driver, "Applitools Support Matrix", "Frame - UFG", new RectangleSize(700, 460));
-        eyes.check(Target.frame(By.cssSelector("[name=\"frame1\"]")));
-        eyes.close(true);
-    }
 }

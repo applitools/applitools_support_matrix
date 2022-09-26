@@ -43,15 +43,4 @@ describe('Support Matrix UFG', () => {
         await eyes.close()
     })
 
-    it('frame', async () => {
-        await open(driver, "https://applitools.github.io/demo/TestPages/FramesTestPage/")
-        await eyes.open(
-            driver,
-            "Applitools Support Matrix",
-            "Frame - UFG",
-            {width: 700, height: 460},
-        )
-        await eyes.check({frames: ["[name=\"frame1\"]"]})
-        await eyes.close()
-    })
 })

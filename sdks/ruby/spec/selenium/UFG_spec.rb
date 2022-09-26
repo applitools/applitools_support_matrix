@@ -28,17 +28,5 @@ RSpec.describe 'Coverage Tests' do
     eyes.check(Applitools::Selenium::Target.region(Applitools::Region.new(50, 70, 90, 110)))
     eyes.close(true)
   end
-
-  it 'CheckFrameWithVg' do
-    driver.get('https://applitools.github.io/demo/TestPages/FramesTestPage/')
-    eyes.configure do |conf|
-      conf.app_name = 'Applitools Support Matrix'
-      conf.test_name = 'Frame - UFG'
-      conf.viewport_size = Applitools::RectangleSize.new(700, 460)
-    end
-    eyes.open(driver: driver)
-    eyes.check(Applitools::Selenium::Target.frame('[name="frame1"]'))
-    eyes.close(true)
-  end
 end
 
