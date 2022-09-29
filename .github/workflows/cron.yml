@@ -110,8 +110,8 @@ jobs:
         with:
           name: report
           path: report.html
-  email_notification:
-    if: ${{failure()}}
+  email_notification_fail:
+    if: failure()
     needs: report_generation
     runs-on: ubuntu-latest
     steps:
@@ -129,16 +129,39 @@ jobs:
             username: ${{ secrets.EMAIL_USERNAME }}
             password: ${{ secrets.EMAIL_PASSWORD }}
             subject: SUPPORT MATRIX run has failed job
-            body: Test run check  !!!!!! Workflow ${{ github.workflow }} of ${{ github.repository }}. See attachments for the report to the results
-            html_body: Test run check !!!!!!! Workflow ${{ github.workflow }} of ${{ github.repository }} <br>
+            body: Failed Support Matrix Run Workflow ${{ github.workflow }} of ${{ github.repository }}. See attachments for the report to the results
+            html_body: Failed Support Matrix Run Workflow ${{ github.workflow }} of ${{ github.repository }} <br>
                        See attachments for the report to the results
             attachments: report.html
             to: yarden.ingber@applitools.com, tranduil15@gmail.com
             from: Artem
+  email_notification_success:
+    needs: report_generation
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo Reporting a failure
+      - name: Download report as artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: report
+      - name: Send mail
+        uses: dawidd6/action-send-mail@v3
+        with:
+          server_address: smtp.gmail.com
+          server_port: 465
+          username: ${{ secrets.EMAIL_USERNAME }}
+          password: ${{ secrets.EMAIL_PASSWORD }}
+          subject: SUPPORT MATRIX run has failed job
+          body: Success Support Matrix Run Workflow ${{ github.workflow }} of ${{ github.repository }}. See attachments for the report to the results
+          html_body: Success Support Matrix Run Workflow ${{ github.workflow }} of ${{ github.repository }} <br>
+            See attachments for the report to the results
+          attachments: report.html
+          to: yarden.ingber@applitools.com, tranduil15@gmail.com
+          from: Artem
   rerun:
     if: failure()
     runs-on: ubuntu-latest
-    needs: [report_generation, email_notification]
+    needs: [report_generation, email_notification_fail]
     steps:
       - name: rerun
         if: github.run_attempt == 1
