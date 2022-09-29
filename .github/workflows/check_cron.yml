@@ -45,8 +45,11 @@ jobs:
   email_notification:
     needs: report_generation
     runs-on: ubuntu-latest
+    env: 
+      TEST_VAR: ${{failure()}}
     steps:
       - run: echo Reporting a failure
+      - run: echo $TEST_VAR
       - name: Download report as artifact
         uses: actions/download-artifact@v3
         with:
