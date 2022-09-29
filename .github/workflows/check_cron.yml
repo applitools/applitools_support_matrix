@@ -43,7 +43,6 @@ jobs:
           name: report
           path: report.html
   email_notification:
-    if: ${{failure()}}
     needs: report_generation
     runs-on: ubuntu-latest
     steps:
@@ -53,7 +52,7 @@ jobs:
         with:
           name: report
       - name: Send mail
-        if: github.run_attempt > 1
+        if: github.run_attempt > 1 && failure()
         uses: dawidd6/action-send-mail@v3
         with:
             server_address: smtp.gmail.com
