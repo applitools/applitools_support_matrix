@@ -42,11 +42,10 @@ jobs:
         with:
           name: report
           path: report.html
-  email_notification:
+  email_notification_on_fail:
+    if: failure()
     needs: report_generation
     runs-on: ubuntu-latest
-    env: 
-      TEST_VAR: ${{failure()}}
     steps:
       - run: echo Reporting a failure
       - run: echo $TEST_VAR
@@ -55,7 +54,7 @@ jobs:
         with:
           name: report
       - name: Send mail
-        if: github.run_attempt > 1 && failure()
+        if: github.run_attempt > 1
         uses: dawidd6/action-send-mail@v3
         with:
             server_address: smtp.gmail.com
@@ -69,10 +68,33 @@ jobs:
             attachments: report.html
             to: tranduil15@gmail.com
             from: Artem
+  email_notification_on_success:
+    needs: report_generation
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo Reporting a failure
+      - run: echo $TEST_VAR
+      - name: Download report as artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: report
+      - name: Send mail
+        uses: dawidd6/action-send-mail@v3
+        with:
+            server_address: smtp.gmail.com
+            server_port: 465
+            username: ${{ secrets.EMAIL_USERNAME }}
+            password: ${{ secrets.EMAIL_PASSWORD }}
+            subject: SUPPORT MATRIX run has failed job
+            body: Success Support Matrix run
+            html_body: Success Support Matrix run
+            attachments: report.html
+            to: tranduil15@gmail.com
+            from: Artem            
   rerun:
     if: failure()
     runs-on: ubuntu-latest
-    needs: [report_generation, email_notification]
+    needs: [report_generation, email_notification_on_fail]
     steps:
       - name: rerun
         if: github.run_attempt == 1
