@@ -128,7 +128,7 @@ jobs:
             server_port: 465
             username: ${{ secrets.EMAIL_USERNAME }}
             password: ${{ secrets.EMAIL_PASSWORD }}
-            subject: SUPPORT MATRIX run has failed job
+            subject: SUPPORT MATRIX FAILURE
             body: Failed Support Matrix Run Workflow ${{ github.workflow }} of ${{ github.repository }}. See attachments for the report to the results
             html_body: Failed Support Matrix Run Workflow ${{ github.workflow }} of ${{ github.repository }} <br>
                        See attachments for the report to the results
@@ -151,7 +151,7 @@ jobs:
           server_port: 465
           username: ${{ secrets.EMAIL_USERNAME }}
           password: ${{ secrets.EMAIL_PASSWORD }}
-          subject: SUPPORT MATRIX run has failed job
+          subject: SUPPORT MATRIX SUCCESS
           body: Success Support Matrix Run Workflow ${{ github.workflow }} of ${{ github.repository }}. See attachments for the report to the results
           html_body: Success Support Matrix Run Workflow ${{ github.workflow }} of ${{ github.repository }} <br>
             See attachments for the report to the results
