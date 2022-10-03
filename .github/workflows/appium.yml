@@ -6,6 +6,10 @@ on:
     secrets:
       APPLITOOLS_API_KEY:
         required: true
+      SAUCE_USERNAME:
+        required: true
+      SAUCE_ACCESS_KEY:
+        required: true
 
 permissions:
   contents: read
@@ -14,7 +18,8 @@ permissions:
 env:
   APPLITOOLS_DONT_CLOSE_BATCHES: true
   APPLITOOLS_API_KEY: ${{secrets.APPLITOOLS_API_KEY }}
-
+  SAUCE_USERNAME: ${{secrets.SAUCE_USERNAME}}
+  SAUCE_ACCESS_KEY: ${{secrets.SAUCE_ACCESS_KEY}}
 
 jobs:
   batch_id:
