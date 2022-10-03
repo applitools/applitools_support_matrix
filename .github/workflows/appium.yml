@@ -80,9 +80,11 @@ jobs:
           os: 'ubuntu'
           title: 'Java Appium'
           selenium: 'sauce'
-      - name: Run tests
+      - name: Install dependency
         working-directory: sdks/java
         run: |
           mvn versions:use-latest-releases -Dincludes=com.applitools:eyes-appium-java5
           mvn versions:use-latest-releases -Dincludes=com.applitools:eyes-selenium-java5
-          mvn test -DsuiteFile=appium.xml
+      - name: Run tests
+        working-directory: sdks/java
+        run:  mvn test -DsuiteFile=appium.xml

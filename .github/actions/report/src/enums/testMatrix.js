@@ -15,7 +15,9 @@ const TEST_MATRIX = [
     'js_cypress',
     'js_cypress_v9-',
     'js_testcafe',
-    'js_storybook']
+    'js_storybook',
+    'appium',
+]
 
 const MATRIX_MAPPING = {
     'java' : 'Java',
@@ -34,6 +36,7 @@ const MATRIX_MAPPING = {
     'js_cypress_v9-': 'JS Cypress legacy',
     'js_testcafe': 'JS Testcafe',
     'js_storybook': 'JS Storybook',
+    'appium': 'Appium',
 
 }
 
