@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+
+<suite name="support_matrix_tests" verbose="1">
+    <test name="appium">
+        <classes>
+            <class name="support.appium.classic.IOS" />
+            <class name="support.appium.ufg.IOS" />
+        </classes>
+    </test>
+</suite>

@@ -19,6 +19,7 @@ public class GlobalSetup {
     protected static String serverUrl;
 
     protected final static String SELENIUM_URL = "http://localhost:4444/wd/hub";
+    protected final static String SAUCE_URL = "https://ondemand.us-west-1.saucelabs.com:443/wd/hub";
     public static boolean CI;
 
 

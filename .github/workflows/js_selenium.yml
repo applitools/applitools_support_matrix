@@ -10,6 +10,9 @@ on:
 permissions:
   contents: read
 
+env:
+  work_dir: 'sdks/js/eyes-selenium'
+
 jobs:
   batch_id:
     name: Batch_id
@@ -37,7 +40,7 @@ jobs:
     name: ${{ matrix.node-version }} | ${{matrix.os}}
     defaults:
       run:
-        working-directory: 'sdks/js/eyes-selenium'
+        working-directory: ${{env.work_dir}}
         shell: bash
     steps:
       - uses: actions/checkout@v3

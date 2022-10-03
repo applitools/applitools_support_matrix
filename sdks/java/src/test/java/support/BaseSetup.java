@@ -6,8 +6,10 @@ import com.applitools.eyes.selenium.ClassicRunner;
 import com.applitools.eyes.selenium.Eyes;
 import com.applitools.eyes.selenium.StitchMode;
 import com.applitools.eyes.visualgrid.services.VisualGridRunner;
+import org.openqa.selenium.MutableCapabilities;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -15,7 +17,7 @@ import org.testng.annotations.BeforeMethod;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-public class BaseSetup extends GlobalSetup{
+public class BaseSetup extends GlobalSetup {
     protected WebDriver driver;
     protected Eyes eyes;
     protected EyesRunner runner;
@@ -31,7 +33,7 @@ public class BaseSetup extends GlobalSetup{
     }
 
     @AfterMethod(alwaysRun = true)
-    public void after(){
+    public void after() {
         runner.getAllTestResults(false);
         if (driver != null) driver.quit();
         eyes.abort();
@@ -63,5 +65,4 @@ public class BaseSetup extends GlobalSetup{
         options.addArguments("--no-sandbox", "--disable-gpu", "--disable-dev-shm-usage");
         driver = new RemoteWebDriver(new URL(GlobalSetup.SELENIUM_URL), options);
     }
-
 }
