@@ -73,6 +73,12 @@ jobs:
     uses: ./.github/workflows/js_webdriverio5.yml
     secrets:
       APPLITOOLS_API_KEY: ${{ secrets.APPLITOOLS_API_KEY }}
+  appium:
+    uses: ./.github/workflows/appium.yml
+    secrets:
+      APPLITOOLS_API_KEY: ${{ secrets.APPLITOOLS_API_KEY }}
+      SAUCE_USERNAME: ${{secrets.SAUCE_USERNAME}}
+      SAUCE_ACCESS_KEY: ${{secrets.SAUCE_ACCESS_KEY}}
   report_generation:
     if: always()
     needs: [ java,
@@ -90,7 +96,8 @@ jobs:
              js_cypress,
              js_cypress_v9-,
              js_testcafe,
-             js_storybook
+             js_storybook,
+             appium
           ]
     runs-on: ubuntu-latest
     steps:
