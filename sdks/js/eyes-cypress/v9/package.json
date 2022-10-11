@@ -6,6 +6,6 @@
     "cypress": "9.7.0"
   },
   "scripts": {
-    "test": "cypress run --browser chrome"
+    "test": "cypress run --browser chrome --headless"
   }
 }
