@@ -29,9 +29,9 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [windows-latest, ubuntu-latest, macos-latest]
+        os: [ubuntu-latest]
         node-version: [ '16' ]
-        exact: ['9.7.0', '9.6.1', '8.7.0', '7.7.0']
+        exact: ['9.7.0', '9.6.1', '8.7.0']
     runs-on: ${{ matrix.os }}
     env:
       APPLITOOLS_DONT_CLOSE_BATCHES: true
