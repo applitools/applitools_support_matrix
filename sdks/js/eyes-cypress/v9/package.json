@@ -2,7 +2,7 @@
   "name": "support-matrix-eyes-cypress",
   "version": "1.0.0",
   "dependencies": {
-    "@applitools/eyes-cypress": "latest",
+    "@applitools/eyes-cypress": "3.27.1",
     "cypress": "9.7.0"
   },
   "scripts": {
