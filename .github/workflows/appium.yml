@@ -21,6 +21,9 @@ env:
   SAUCE_USERNAME: ${{secrets.SAUCE_USERNAME}}
   SAUCE_ACCESS_KEY: ${{secrets.SAUCE_ACCESS_KEY}}
 
+strategy:
+  max-parallel: 2
+
 jobs:
   batch_id:
     name: Batch_id
@@ -88,3 +91,26 @@ jobs:
       - name: Run tests
         working-directory: sdks/java
         run:  mvn test -DsuiteFile=appium.xml
+  python:
+    needs: batch_id
+    runs-on: ubuntu-latest
+    env:
+      APPLITOOLS_BATCH_ID: ${{needs.batch_id.outputs.uuid}}
+    name: ${{ matrix.python-version }} | ${{matrix.os}}
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Logging version generation
+        uses: ./.github/actions/log_data_json
+        with:
+          os: ubuntu
+          title: ${{ format('python appium | python [{0}]', matrix.python-version) }}
+          selenium: '4'
+      - name: Run tests
+        working-directory: sdks/python
+        run: |
+          pip install -r requirements.txt
+          pytest -c appium.ini

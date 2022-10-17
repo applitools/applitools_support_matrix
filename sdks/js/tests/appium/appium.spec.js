@@ -22,7 +22,7 @@ describe('Support Matrix Appium', () => {
             })
         })
 
-        it('appium', async () => {
+        it('ios', async () => {
             await eyes.open(driver, "Applitools Support Matrix", "Appium iOS window - Classic")
             await eyes.check(Target.window())
             await eyes.close()
@@ -40,7 +40,7 @@ describe('Support Matrix Appium', () => {
                 })
         })
 
-        it('appium', async () => {
+        it('ios', async () => {
             await eyes.open(driver, "Applitools Support Matrix", "Appium iOS window - UFG")
             await eyes.check(Target.window())
             await eyes.close()

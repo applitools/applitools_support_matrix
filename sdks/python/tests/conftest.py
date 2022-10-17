@@ -7,7 +7,7 @@ from selenium.common.exceptions import WebDriverException
 
 @pytest.fixture(scope="session")
 def batch_info():
-    return BatchInfo("Python Generated tests")
+    return BatchInfo("Python Support Matrix tests")
 
 
 @pytest.fixture(scope="function")
