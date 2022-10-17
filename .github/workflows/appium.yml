@@ -21,8 +21,6 @@ env:
   SAUCE_USERNAME: ${{secrets.SAUCE_USERNAME}}
   SAUCE_ACCESS_KEY: ${{secrets.SAUCE_ACCESS_KEY}}
 
-strategy:
-  max-parallel: 2
 
 jobs:
   batch_id:
