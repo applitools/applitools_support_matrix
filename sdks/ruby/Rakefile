@@ -23,4 +23,8 @@ namespace 'github' do
   task :test => [:set_batch_info, :check_batch] do
     sh('bundle exec parallel_rspec -n 2 -- spec/selenium/*_spec.rb')
   end
+
+  task :appium => [:set_batch_info, :check_batch] do
+    sh('bundle exec parallel_rspec -n 1 -- spec/appium/*_spec.rb')
+  end
 end

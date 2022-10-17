@@ -100,15 +100,42 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
-          python-version: ${{ matrix.python-version }}
+          python-version: '3.10'
       - name: Logging version generation
         uses: ./.github/actions/log_data_json
         with:
           os: ubuntu
-          title: ${{ format('python appium | python [{0}]', matrix.python-version) }}
-          selenium: '4'
+          title: 'python appium [3.10]'
+          selenium: 'sauce'
       - name: Run tests
         working-directory: sdks/python
         run: |
           pip install -r requirements.txt
           pytest -c appium.ini
+  ruby:
+    needs: batch_id
+    runs-on: ubuntu-latest
+    env:
+      APPLITOOLS_BATCH_ID: ${{needs.batch_id.outputs.uuid}}
+    name: 'Ruby Appium'
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '2.6'
+          bundler-cache: true
+      - name: Install gems
+        working-directory: sdks/ruby
+        run: |
+          bundle install
+      - name: Logging version generation
+        uses: ./.github/actions/log_data_json
+        with:
+          os: 'Ubuntu'
+          title: 'Ruby appium [2.6]'
+          selenium: 'sauce'
+      - name: Run tests
+        working-directory: sdks/ruby
+        run: |
+          bundle exec rake github:appium
