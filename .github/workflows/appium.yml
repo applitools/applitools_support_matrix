@@ -94,7 +94,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       APPLITOOLS_BATCH_ID: ${{needs.batch_id.outputs.uuid}}
-    name: ${{ matrix.python-version }} | ${{matrix.os}}
+    name: 'Python Appium'
     steps:
       - uses: actions/checkout@v3
       - name: Set up Python
