@@ -21,6 +21,6 @@ namespace 'github' do
   end
 
   task :test => [:set_batch_info, :check_batch] do
-    sh('bundle exec parallel_rspec -n 2')
+    sh('bundle exec parallel_rspec -n 2 -- spec/selenium/*_spec.rb')
   end
 end
