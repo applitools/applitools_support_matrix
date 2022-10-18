@@ -39,7 +39,7 @@ RSpec.configure do |config|
     driver
   end
   config.after(:each) do
-    driver.quit
+    driver.driver_quit
     eyes.abort
     runner.get_all_test_results(false)
   end
