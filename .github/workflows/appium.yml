@@ -158,7 +158,7 @@ jobs:
           title: 'dotnet appium'
           selenium: 'sauce'
       - name: Run tests
-        working-directory: sdks/dotnet/selenium
+        working-directory: sdks/dotnet/appium
         run: |
           dotnet add package Eyes.Appium
           dotnet test -- NUnit.NumberOfTestWorkers=1        
