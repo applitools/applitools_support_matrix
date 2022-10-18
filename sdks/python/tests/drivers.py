@@ -2,6 +2,8 @@ import os
 
 import pytest
 from selenium import webdriver
+from appium import webdriver as appium_webdriver
+from urllib3.exceptions import MaxRetryError
 
 
 @pytest.fixture(scope="function")
@@ -17,7 +19,7 @@ def chrome():
 @pytest.fixture(scope="function")
 def ios():
     api_key = os.environ["APPLITOOLS_API_KEY"]
-    args = '{"args": [], "env": {"DYLD_INSERT_LIBRARIES": "@executable_path/Frameworks/UFG_lib.xcframework/ios-arm64_x86_64-simulator/UFG_lib.framework/UFG_lib","NML_API_KEY":"'+ api_key +'"}}'
+    args = '{"args": [], "env": {"DYLD_INSERT_LIBRARIES": "@executable_path/Frameworks/UFG_lib.xcframework/ios-arm64_x86_64-simulator/UFG_lib.framework/UFG_lib","NML_API_KEY":"' + api_key + '"}}'
     caps = {
         "browserName": '',
         "platformName": 'iOS',
@@ -34,5 +36,10 @@ def ios():
         }
 
     }
-    return webdriver.Remote(command_executor="https://ondemand.us-west-1.saucelabs.com:443/wd/hub",
-                            desired_capabilities=caps)
+    try:
+        return appium_webdriver.Remote(command_executor="https://ondemand.us-west-1.saucelabs.com:443/wd/hub",
+                                       desired_capabilities=caps)
+    except MaxRetryError:
+        print("Tried to initiate driver")
+    return appium_webdriver.Remote(command_executor="https://ondemand.us-west-1.saucelabs.com:443/wd/hub",
+                                   desired_capabilities=caps)

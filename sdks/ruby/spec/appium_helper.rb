@@ -2,7 +2,8 @@ require 'eyes_appium'
 
 RSpec.shared_context "Common" do
   let(:driver) {
-    driver = Selenium::WebDriver.for :remote, capabilities: caps, url: 'https://ondemand.us-west-1.saucelabs.com:443/wd/hub'
+    driver = Appium::Driver.new({caps: caps, appium_lib: { server_url: 'https://ondemand.us-west-1.saucelabs.com:443/wd/hub' } }, false)
+    driver.start_driver
     driver
   }
   let(:ufg) { false }
