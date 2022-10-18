@@ -139,3 +139,26 @@ jobs:
         working-directory: sdks/ruby
         run: |
           bundle exec rake github:appium
+  dotnet:
+    needs: batch_id
+    runs-on: ubuntu-latest
+    env:
+      APPLITOOLS_BATCH_ID: ${{needs.batch_id.outputs.uuid}}
+    name: Dotnet ${{ matrix.dotnet-version }} ${{matrix.os}}
+    steps:
+      - uses: actions/checkout@v3
+      - name: Setup dotnet
+        uses: actions/setup-dotnet@v2
+        with:
+          dotnet-version: '3.1.x'
+      - name: Logging version generation
+        uses: ./.github/actions/log_data_json
+        with:
+          os: ubuntu
+          title: 'dotnet appium'
+          selenium: 'sauce'
+      - name: Run tests
+        working-directory: sdks/dotnet/selenium
+        run: |
+          dotnet add package Eyes.Appium
+          dotnet test -- NUnit.NumberOfTestWorkers=1        

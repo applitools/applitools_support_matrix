@@ -49,7 +49,7 @@ jobs:
           title: ${{ format('{0} | dotnet [{1}]', runner.os, matrix.dotnet-version) }}
           selenium: '4'
       - name: Run tests
-        working-directory: sdks/dotnet
+        working-directory: sdks/dotnet/selenium
         run: |
           dotnet add package Eyes.Selenium
           dotnet test -- NUnit.NumberOfTestWorkers=1
