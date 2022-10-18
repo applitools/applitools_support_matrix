@@ -1,4 +1,5 @@
 import os
+import time
 
 import pytest
 from selenium import webdriver
@@ -23,7 +24,7 @@ def ios():
     caps = {
         "browserName": '',
         "platformName": 'iOS',
-        "appium:platformVersion": '16.0',
+        "appium:platformVersion": '15.4',
         "appium:newCommandTimeout": 600,
         "appium:app": 'storage:385b000f-a6fa-4d47-87e1-07a7b2ddddb7',
         "appium:deviceName": 'iPhone 8 Simulator',
@@ -36,10 +37,15 @@ def ios():
         }
 
     }
+    return start_appium_driver(caps)
+
+
+def start_appium_driver(caps):
     try:
         return appium_webdriver.Remote(command_executor="https://ondemand.us-west-1.saucelabs.com:443/wd/hub",
                                        desired_capabilities=caps)
     except MaxRetryError:
         print("Tried to initiate driver")
+    time.sleep(60)
     return appium_webdriver.Remote(command_executor="https://ondemand.us-west-1.saucelabs.com:443/wd/hub",
                                    desired_capabilities=caps)
