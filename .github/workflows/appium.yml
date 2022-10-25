@@ -72,7 +72,7 @@ jobs:
       fail-fast: false
       max-parallel: 1
       matrix:
-        os: [ ubuntu-latest, windows-latest, macos-latest]
+        os: [  windows-latest]
     runs-on: ${{ matrix.os }}
     env:
       APPLITOOLS_BATCH_ID: ${{needs.batch_id.outputs.uuid}}
@@ -94,8 +94,8 @@ jobs:
       - name: Install dependency
         working-directory: sdks/java
         run: |
-          mvn versions:use-latest-releases -Dincludes=com.applitools:eyes-appium-java5
-          mvn versions:use-latest-releases -Dincludes=com.applitools:eyes-selenium-java5
+          mvn versions:use-latest-releases -Dincludes=com.applitools:eyes-appium-java5 -X
+          mvn versions:use-latest-releases -Dincludes=com.applitools:eyes-selenium-java5 -X
       - name: Run tests
         working-directory: sdks/java
         run:  mvn test -DsuiteFile=appium.xml
