@@ -34,6 +34,9 @@ jobs:
       APPLITOOLS_API_KEY: ${{ secrets.APPLITOOLS_API_KEY }}
       APPLITOOLS_BATCH_ID: ${{needs.batch_id.outputs.uuid}}
     name: ${{ matrix.java-version }} | ${{matrix.os}}
+    defaults:
+      run:
+        shell: bash
     steps:
       - uses: actions/checkout@v3
       - name: Set up Java
