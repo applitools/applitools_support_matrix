@@ -35,7 +35,11 @@ jobs:
           echo "::set-output name=uuid::$(uuidgen)"
   js:
     needs: batch_id
-    runs-on: ubuntu-latest
+    strategy:
+      max-parallel: 1
+      matrix:
+        os: [ ubuntu-latest, windows-latest, macos-latest]
+    runs-on: ${{ matrix.os }}
     env:
       APPLITOOLS_BATCH_ID: ${{needs.batch_id.outputs.uuid}}
       JS_TESTS_CONFIG_NAME: 'eyes-selenium'
@@ -54,8 +58,8 @@ jobs:
       - name: Logging version generation
         uses: ./.github/actions/log_data_json
         with:
-          os: 'ubuntu'
-          title: 'Javascript Appium'
+          os: ${{matrix.os}}
+          title: ${{ format('Javascript Appium [{0}]', runner.os) }}
           selenium: 'sauce'
       - name: Run tests
         run: |
@@ -63,7 +67,11 @@ jobs:
           npm run appium
   java:
     needs: batch_id
-    runs-on: ubuntu-latest
+    strategy:
+      max-parallel: 1
+      matrix:
+        os: [ ubuntu-latest, windows-latest, macos-latest ]
+    runs-on: ${{ matrix.os }}
     env:
       APPLITOOLS_BATCH_ID: ${{needs.batch_id.outputs.uuid}}
     name: 'Java Appium'
@@ -78,8 +86,8 @@ jobs:
       - name: Logging version generation
         uses: ./.github/actions/log_data_json
         with:
-          os: 'ubuntu'
-          title: 'Java Appium'
+          os: ${{matrix.os}}
+          title: ${{ format('Java Appium [{0}]', runner.os) }}
           selenium: 'sauce'
       - name: Install dependency
         working-directory: sdks/java
@@ -91,7 +99,11 @@ jobs:
         run:  mvn test -DsuiteFile=appium.xml
   python:
     needs: batch_id
-    runs-on: ubuntu-latest
+    strategy:
+      max-parallel: 1
+      matrix:
+        os: [ ubuntu-latest, windows-latest, macos-latest ]
+    runs-on: ${{ matrix.os }}
     env:
       APPLITOOLS_BATCH_ID: ${{needs.batch_id.outputs.uuid}}
     name: 'Python Appium'
@@ -104,8 +116,8 @@ jobs:
       - name: Logging version generation
         uses: ./.github/actions/log_data_json
         with:
-          os: ubuntu
-          title: 'python appium [3.10]'
+          os: ${{matrix.os}}
+          title: ${{ format('Python Appium [{0}] [python version 3.10]', runner.os) }}
           selenium: 'sauce'
       - name: Run tests
         working-directory: sdks/python
@@ -114,7 +126,11 @@ jobs:
           pytest -c appium.ini
   ruby:
     needs: batch_id
-    runs-on: ubuntu-latest
+    strategy:
+      max-parallel: 1
+      matrix:
+        os: [ ubuntu-latest, windows-latest, macos-latest ]
+    runs-on: ${{ matrix.os }}
     env:
       APPLITOOLS_BATCH_ID: ${{needs.batch_id.outputs.uuid}}
     name: 'Ruby Appium'
@@ -132,8 +148,8 @@ jobs:
       - name: Logging version generation
         uses: ./.github/actions/log_data_json
         with:
-          os: 'Ubuntu'
-          title: 'Ruby appium [2.6]'
+          os: ${{matrix.os}}
+          title: ${{ format('Ruby Appium [{0}] [ruby version 2.6]', runner.os) }}
           selenium: 'sauce'
       - name: Run tests
         working-directory: sdks/ruby
@@ -141,7 +157,11 @@ jobs:
           bundle exec rake github:appium
   dotnet:
     needs: batch_id
-    runs-on: ubuntu-latest
+    strategy:
+      max-parallel: 1
+      matrix:
+        os: [ ubuntu-latest, windows-latest, macos-latest ]
+    runs-on: ${{ matrix.os }}
     env:
       APPLITOOLS_BATCH_ID: ${{needs.batch_id.outputs.uuid}}
     name: Dotnet ${{ matrix.dotnet-version }} ${{matrix.os}}
@@ -154,8 +174,8 @@ jobs:
       - name: Logging version generation
         uses: ./.github/actions/log_data_json
         with:
-          os: ubuntu
-          title: 'dotnet appium'
+          os: ${{matrix.os}}
+          title: ${{ format('Dotnet Appium [{0}]', runner.os) }}
           selenium: 'sauce'
       - name: Run tests
         working-directory: sdks/dotnet/appium
