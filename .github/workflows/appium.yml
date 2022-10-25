@@ -36,6 +36,7 @@ jobs:
   js:
     needs: batch_id
     strategy:
+      fail-fast: false
       max-parallel: 1
       matrix:
         os: [ ubuntu-latest, windows-latest, macos-latest]
@@ -68,6 +69,7 @@ jobs:
   java:
     needs: batch_id
     strategy:
+      fail-fast: false
       max-parallel: 1
       matrix:
         os: [ ubuntu-latest, windows-latest, macos-latest ]
@@ -100,6 +102,7 @@ jobs:
   python:
     needs: batch_id
     strategy:
+      fail-fast: false
       max-parallel: 1
       matrix:
         os: [ ubuntu-latest, windows-latest, macos-latest ]
@@ -127,6 +130,7 @@ jobs:
   ruby:
     needs: batch_id
     strategy:
+      fail-fast: false
       max-parallel: 1
       matrix:
         os: [ ubuntu-latest, windows-latest, macos-latest ]
@@ -158,6 +162,7 @@ jobs:
   dotnet:
     needs: batch_id
     strategy:
+      fail-fast: false
       max-parallel: 1
       matrix:
         os: [ ubuntu-latest, windows-latest, macos-latest ]
