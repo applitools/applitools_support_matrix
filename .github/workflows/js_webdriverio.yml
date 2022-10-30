@@ -54,7 +54,7 @@ jobs:
           package: 'Webdriverio'
           version: ${{ matrix.webdriverio-version }}
           os: ${{runner.os}}
-          title: ${{ format('WebdriverIO {1} [{0}] [{2}]', runner.os, matrix.webdriverio-version,, matrix.node-version) }}
+          title: ${{ format('WebdriverIO {1} [{0}] [{2}]', runner.os, matrix.webdriverio-version, matrix.node-version) }}
           selenium: '4'
       - name: Run tests
         run: |
