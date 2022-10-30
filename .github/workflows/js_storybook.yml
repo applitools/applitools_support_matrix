@@ -72,7 +72,7 @@ jobs:
           package: 'Storybook'
           version: ${{ steps.install.outputs.package_version }}
           os: ${{runner.os}}
-          title: ${{ format('{0} | {1}', runner.os, steps.install.outputs.package_version) }}
+          title: ${{ format('Storybook version {1} [{0}] [{2}]', runner.os, steps.install.outputs.package_version, matrix.node-version) }}
           selenium: 'None'
       - name: Run tests
         run: npm test

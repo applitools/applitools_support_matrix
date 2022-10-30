@@ -74,7 +74,7 @@ jobs:
           package: 'Playwright'
           version: ${{ steps.install.outputs.package_version }}
           os: ${{runner.os}}
-          title: ${{ format('{0} | {1}', runner.os, steps.install.outputs.package_version) }}
+          title: ${{ format('Playwright version {1} [{0}] [nodejs {2}]', runner.os, steps.install.outputs.package_version, matrix.node-version) }}
           selenium: '4'
       - name: Run tests
         run:  npm test

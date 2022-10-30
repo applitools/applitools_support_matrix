@@ -51,7 +51,7 @@ jobs:
         uses: ./.github/actions/log_data_json
         with:
           os: ${{runner.os}}
-          title: ${{ format('{0} | java [{1}]', runner.os, matrix.java-version) }}
+          title: ${{ format('Java Selenium SDK [{0}] [java version {1}]', runner.os, matrix.java-version) }}
           selenium: '4'
       - name: Run tests
         working-directory: sdks/java

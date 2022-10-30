@@ -46,7 +46,7 @@ jobs:
         uses: ./.github/actions/log_data_json
         with:
           os: ${{runner.os}}
-          title: ${{ format('{0} | python [{1}]', runner.os, matrix.python-version) }}
+          title: ${{ format('Python SDK [{0}] [python version {1}]', runner.os, matrix.python-version) }}
           selenium: '4'
       - name: Run tests
         working-directory: sdks/python

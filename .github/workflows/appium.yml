@@ -92,7 +92,7 @@ jobs:
         uses: ./.github/actions/log_data_json
         with:
           os: ${{matrix.os}}
-          title: ${{ format('Java Appium [{0}]', runner.os) }}
+          title: ${{ format('Java Appium [{0}]  [java version 8]', runner.os) }}
           selenium: 'sauce'
       - name: Install dependency
         working-directory: sdks/java
@@ -183,7 +183,7 @@ jobs:
         uses: ./.github/actions/log_data_json
         with:
           os: ${{matrix.os}}
-          title: ${{ format('Dotnet Appium [{0}]', runner.os) }}
+          title: ${{ format('Dotnet Appium [{0}] [dotnet version 3.1.x]', runner.os) }}
           selenium: 'sauce'
       - name: Run tests
         working-directory: sdks/dotnet/appium

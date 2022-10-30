@@ -60,7 +60,7 @@ jobs:
           package: 'Webdriverio'
           version: '5.23.0'
           os: ${{runner.os}}
-          title: ${{ format('{0} | 5.23.0', runner.os) }}
+          title: ${{ format('Webdriverio version 5.23.0 [{0}], [{1}]', runner.os, matrix.node-version) }}
           selenium: '3'
       - name: Run tests
         run: |

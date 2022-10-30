@@ -46,7 +46,7 @@ jobs:
         uses: ./.github/actions/log_data_json
         with:
           os: ${{runner.os}}
-          title: ${{ format('{0} | dotnet [{1}]', runner.os, matrix.dotnet-version) }}
+          title: ${{ format('Dotnet selenium sdk [{0}] [dotnet version {1}]', runner.os, matrix.dotnet-version) }}
           selenium: '4'
       - name: Run tests
         working-directory: sdks/dotnet/selenium

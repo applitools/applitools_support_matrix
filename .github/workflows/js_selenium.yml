@@ -54,7 +54,7 @@ jobs:
         uses: ./.github/actions/log_data_json
         with:
           os: ${{runner.os}}
-          title: ${{ format('{0} | Pure selenium', runner.os) }}
+          title: ${{ format('JS Selenium SDK [{0}] [{1}] | Pure selenium', runner.os, matrix.node-version) }}
           selenium: '4'
       - name: Run tests
         run: |

@@ -51,7 +51,7 @@ jobs:
         uses: ./.github/actions/log_data_json
         with:
           os: ${{runner.os}}
-          title: ${{ format('{0} | ruby [{1}]', runner.os, matrix.ruby-version) }}
+          title: ${{ format('Ruby SDK [{0}] [ruby version {1}]', runner.os, matrix.ruby-version) }}
           selenium: '4'
       - name: Run tests
         working-directory: sdks/ruby
