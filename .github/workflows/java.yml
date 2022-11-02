@@ -52,8 +52,19 @@ jobs:
         run: |
           chromedriver --version
           echo "chromedriver_version=$(chromedriver --version)" >> $GITHUB_OUTPUT
-          google-chrome --version
-          echo "chrome_version=$(chrome --version)" >> $GITHUB_OUTPUT
+          if [ "$RUNNER_OS" == "Linux" ]; then
+               google-chrome --version
+               echo "chrome_version=$(google-chrome --version)" >> $GITHUB_OUTPUT
+          elif [ "$RUNNER_OS" == "Windows" ]; then
+               "C:\Program Files\Google\Chrome\Application\chrome.exe" --version
+          elif [ "$RUNNER_OS" == "macOS" ]; then
+               /Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --version 
+               echo "chrome_version=$(/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --version)" >> $GITHUB_OUTPUT
+          else
+               echo "$RUNNER_OS not supported"
+               exit 1
+          fi
+      - name: Log
       - name: Logging version generation
         uses: ./.github/actions/log_data_json
         with:
