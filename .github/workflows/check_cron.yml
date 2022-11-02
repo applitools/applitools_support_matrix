@@ -29,7 +29,7 @@ jobs:
          exit 0
   report_generation:
     if: always()
-    needs: [ java,python,failing_check,appium]
+    needs: [ java,python,failing_check]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
