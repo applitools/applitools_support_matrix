@@ -54,6 +54,24 @@ jobs:
         uses: ./.github/actions/start_selenium
         with:
           legacy: 'true'
+      - name: Log extra info
+        id: logging
+        run: |
+          chromedriver --version
+          echo "chromedriver_version=$(chromedriver --version)" >> $GITHUB_OUTPUT
+          if [ "$RUNNER_OS" == "Linux" ]; then
+               google-chrome --version
+               echo "chrome_version=$(google-chrome --version)" >> $GITHUB_OUTPUT
+          elif [ "$RUNNER_OS" == "Windows" ]; then
+               echo "Getting chrome version isn't supported for windows (((("
+               echo "chrome_version=not_supported_on_windows" >> $GITHUB_OUTPUT
+          elif [ "$RUNNER_OS" == "macOS" ]; then
+               /Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --version 
+               echo "chrome_version=$(/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --version)" >> $GITHUB_OUTPUT
+          else
+               echo "$RUNNER_OS not supported"
+               exit 1
+          fi
       - name: Logging version generation
         uses: ./.github/actions/log_data_json
         with:
@@ -62,6 +80,8 @@ jobs:
           os: ${{runner.os}}
           title: ${{ format('Webdriverio version 5.23.0 [{0}], [{1}]', runner.os, matrix.node-version) }}
           selenium: '3'
+          chrome_version: ${{ steps.logging.outputs.chrome_version }}
+          chromedriver_version: ${{ steps.logging.outputs.chromedriver_version }}
       - name: Run tests
         run: |
           npm install
