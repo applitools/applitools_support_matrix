@@ -47,6 +47,13 @@ jobs:
           cache: 'maven'
       - name: Start Selenium Server
         uses: ./.github/actions/start_selenium
+      - name: Log extra info
+        id: logging
+        run: |
+          chrome --version
+          echo "chrome_version=$(chrome --version)" >> $GITHUB_OUTPUT
+          chromedriver --version
+          echo "chromedriver_version=$(chromedriver --version)" >> $GITHUB_OUTPUT
       - name: Logging version generation
         uses: ./.github/actions/log_data_json
         with:
