@@ -6,12 +6,18 @@ try {
     const os = core.getInput('os');
     const selenium = core.getInput('selenium');
     const title = core.getInput('title');
+    const chrome_version = core.getInput('chrome_version');
+    const chromedriver_version = core.getInput('chromedriver_version');
+    const appium_client_lib_version = core.getInput('Appium_client')
     const data = {
         package: pack,
         version,
         os,
         selenium,
         title,
+        chrome_version,
+        chromedriver_version,
+        appium_client_lib_version,
     }
     console.log(`####[Start_json_data]${JSON.stringify(data)}[End_json_data]####`)
 } catch (error) {
