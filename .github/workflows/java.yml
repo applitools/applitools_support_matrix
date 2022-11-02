@@ -56,7 +56,8 @@ jobs:
                google-chrome --version
                echo "chrome_version=$(google-chrome --version)" >> $GITHUB_OUTPUT
           elif [ "$RUNNER_OS" == "Windows" ]; then
-               "C:\Program Files\Google\Chrome\Application\chrome.exe" --version
+               echo "Getting chrome version isn't supported for windows (((("
+               echo "chrome_version=not_supported_on_windows" >> $GITHUB_OUTPUT
           elif [ "$RUNNER_OS" == "macOS" ]; then
                /Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --version 
                echo "chrome_version=$(/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --version)" >> $GITHUB_OUTPUT
