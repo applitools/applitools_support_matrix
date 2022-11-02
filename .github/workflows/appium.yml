@@ -112,6 +112,9 @@ jobs:
     runs-on: ${{ matrix.os }}
     env:
       APPLITOOLS_BATCH_ID: ${{needs.batch_id.outputs.uuid}}
+    defaults:
+      run:
+        shell: bash
     name: 'Python Appium'
     steps:
       - uses: actions/checkout@v3
@@ -140,6 +143,9 @@ jobs:
     runs-on: ${{ matrix.os }}
     env:
       APPLITOOLS_BATCH_ID: ${{needs.batch_id.outputs.uuid}}
+    defaults:
+      run:
+        shell: bash
     name: 'Ruby Appium'
     steps:
       - uses: actions/checkout@v3
@@ -172,6 +178,9 @@ jobs:
     runs-on: ${{ matrix.os }}
     env:
       APPLITOOLS_BATCH_ID: ${{needs.batch_id.outputs.uuid}}
+    defaults:
+      run:
+        shell: bash
     name: Dotnet ${{ matrix.dotnet-version }} ${{matrix.os}}
     steps:
       - uses: actions/checkout@v3
