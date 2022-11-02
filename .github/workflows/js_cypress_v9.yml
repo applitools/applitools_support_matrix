@@ -23,7 +23,7 @@ jobs:
       - name: generate uuid
         id: uuid
         run: |
-          echo "::set-output name=uuid::$(uuidgen)"
+          echo "uuid=$(uuidgen)" >> $GITHUB_OUTPUT
   test:
     needs: batch_id
     strategy:
