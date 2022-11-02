@@ -64,7 +64,6 @@ jobs:
                echo "$RUNNER_OS not supported"
                exit 1
           fi
-      - name: Log
       - name: Logging version generation
         uses: ./.github/actions/log_data_json
         with:
