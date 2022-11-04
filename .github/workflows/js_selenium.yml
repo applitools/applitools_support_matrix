@@ -72,7 +72,7 @@ jobs:
         uses: ./.github/actions/log_data_json
         with:
           os: ${{runner.os}}
-          title: ${{ format('JS Selenium SDK [{0}] [{1}] | Pure selenium', runner.os, matrix.node-version) }}
+          title: ${{ format('JS Selenium SDK [{0}] [nodejs {1}] | Pure selenium', runner.os, matrix.node-version) }}
           selenium: '4'
           chrome_version: ${{ steps.logging.outputs.chrome_version }}
           chromedriver_version: ${{ steps.logging.outputs.chromedriver_version }}

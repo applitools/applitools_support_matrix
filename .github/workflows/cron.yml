@@ -163,7 +163,7 @@ jobs:
           html_body: Success Support Matrix Run Workflow ${{ github.workflow }} of ${{ github.repository }} <br>
             See attachments for the report to the results
           attachments: report.html
-          to: yarden.ingber@applitools.com, tranduil15@gmail.com
+          to: yarden.ingber@applitools.com, tranduil15@gmail.com, adam.carmi@applitools.com, ben.babayoff@applitools.com
           from: Artem
   rerun:
     if: failure()

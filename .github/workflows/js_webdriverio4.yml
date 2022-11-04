@@ -70,7 +70,7 @@ jobs:
           package: 'Webdriverio'
           version: '4.14.4'
           os: ${{runner.os}}
-          title: ${{ format('Webdriverio version 4.14.4 [{0}] [{1}]', runner.os, matrix.node-version) }}
+          title: ${{ format('Webdriverio version 4.14.4 [{0}] [nodejs {1}]', runner.os, matrix.node-version) }}
           selenium: '4'
           chrome_version: ${{ steps.logging.outputs.chrome_version }}
           chromedriver_version: ${{ steps.logging.outputs.chromedriver_version }}

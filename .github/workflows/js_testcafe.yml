@@ -86,7 +86,7 @@ jobs:
           package: 'Testcafe'
           version: ${{ steps.install.outputs.package_version }}
           os: ${{runner.os}}
-          title: ${{ format('Testcafe version {1} [{0}] [{2}]', runner.os, steps.install.outputs.package_version, matrix.node-version) }}
+          title: ${{ format('Testcafe version {1} [{0}] [nodejs {2}]', runner.os, steps.install.outputs.package_version, matrix.node-version) }}
           selenium: 'None'
           chrome_version: ${{ steps.logging.outputs.chrome_version }}
       - name: Run tests
