@@ -73,7 +73,7 @@ public class AppiumSetup extends GlobalSetup {
         caps.setCapability("platformName", "iOS");
         caps.setCapability("appium:platformVersion", "16.0");
         caps.setCapability("appium:newCommandTimeout", 600);
-        caps.setCapability("appium:app", "storage:385b000f-a6fa-4d47-87e1-07a7b2ddddb7");
+        caps.setCapability("appium:app", "storage:filename=awesomeswift.app.zip");
         caps.setCapability("appium:deviceName", "iPhone 8 Simulator");
         caps.setCapability("appium:automationName", "XCUITest");
         MutableCapabilities options = new MutableCapabilities();

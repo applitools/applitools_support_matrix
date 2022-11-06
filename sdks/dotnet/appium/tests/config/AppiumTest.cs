@@ -72,7 +72,7 @@ namespace Applitools.Support.Matrix.Appium
                     options.AddAdditionalCapability("platformName", "iOS");
                     options.AddAdditionalCapability("appium:platformVersion", "15.4");
                     options.AddAdditionalCapability("appium:newCommandTimeout", 600);
-                    options.AddAdditionalCapability("appium:app", "storage:385b000f-a6fa-4d47-87e1-07a7b2ddddb7");
+                    options.AddAdditionalCapability("appium:app", "storage:filename=awesomeswift.app.zip");
                     options.AddAdditionalCapability("appium:deviceName", "iPhone 8 Simulator");
                     options.AddAdditionalCapability("appium:automationName", "XCUITest");
                     options.AddAdditionalCapability("username", username);
