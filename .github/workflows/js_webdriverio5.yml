@@ -34,6 +34,7 @@ jobs:
           - node-version: '16'
             os: macos-latest
     runs-on: ${{ matrix.os }}
+    timeout-minutes: 15
     name: ${{ matrix.node-version }} | ${{matrix.os}} | 5
     env:
       APPLITOOLS_DONT_CLOSE_BATCHES: true

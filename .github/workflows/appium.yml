@@ -41,6 +41,7 @@ jobs:
       matrix:
         os: [ ubuntu-latest, windows-latest, macos-latest]
     runs-on: ${{ matrix.os }}
+    timeout-minutes: 25
     env:
       APPLITOOLS_BATCH_ID: ${{needs.batch_id.outputs.uuid}}
       JS_TESTS_CONFIG_NAME: 'eyes-selenium'
