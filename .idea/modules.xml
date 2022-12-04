@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/applitools_support_matrix.iml" filepath="$PROJECT_DIR$/.idea/applitools_support_matrix.iml" />
+      <module fileurl="file://$PROJECT_DIR$/sdks/java/support-matrix.iml" filepath="$PROJECT_DIR$/sdks/java/support-matrix.iml" />
     </modules>
   </component>
 </project>
