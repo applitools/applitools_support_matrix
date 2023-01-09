@@ -41,7 +41,7 @@ jobs:
       matrix:
         os: [ ubuntu-latest, windows-latest, macos-latest]
     runs-on: ${{ matrix.os }}
-    timeout-minutes: 20
+    timeout-minutes: 30
     env:
       APPLITOOLS_BATCH_ID: ${{needs.batch_id.outputs.uuid}}
       JS_TESTS_CONFIG_NAME: 'eyes-selenium'
@@ -75,7 +75,7 @@ jobs:
       matrix:
         os: [ ubuntu-latest, windows-latest, macos-latest]
     runs-on: ${{ matrix.os }}
-    timeout-minutes: 20
+    timeout-minutes: 30
     env:
       APPLITOOLS_BATCH_ID: ${{needs.batch_id.outputs.uuid}}
     name: 'Java Appium'
@@ -112,7 +112,7 @@ jobs:
       matrix:
         os: [ ubuntu-latest, windows-latest, macos-latest ]
     runs-on: ${{ matrix.os }}
-    timeout-minutes: 20
+    timeout-minutes: 30
     env:
       APPLITOOLS_BATCH_ID: ${{needs.batch_id.outputs.uuid}}
     defaults:
@@ -144,7 +144,7 @@ jobs:
       matrix:
         os: [ ubuntu-latest, windows-latest, macos-latest ]
     runs-on: ${{ matrix.os }}
-    timeout-minutes: 20
+    timeout-minutes: 30
     env:
       APPLITOOLS_BATCH_ID: ${{needs.batch_id.outputs.uuid}}
     defaults:
@@ -180,7 +180,7 @@ jobs:
       matrix:
         os: [ ubuntu-latest, windows-latest, macos-latest ]
     runs-on: ${{ matrix.os }}
-    timeout-minutes: 20
+    timeout-minutes: 30
     env:
       APPLITOOLS_BATCH_ID: ${{needs.batch_id.outputs.uuid}}
     defaults:
