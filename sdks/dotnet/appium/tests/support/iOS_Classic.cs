@@ -20,11 +20,7 @@ public class iOS_Classic : AppiumTest
     [Test]
     public void window()
     {
-            foreach (DictionaryEntry e in System.Environment.GetEnvironmentVariables())
-            {
-                Console.WriteLine(e.Key + ":" + e.Value);
-            }
-            eyes.Open(driver, "Applitools Support Matrix", "Appium iOS window - Classic (Dotnet)");
+        eyes.Open(driver, "Applitools Support Matrix", "Appium iOS window - Classic (Dotnet)");
         eyes.Check(Target.Window());
         eyes.Close(true);
     }

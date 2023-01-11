@@ -24,11 +24,6 @@
             <version>5.38.0</version>
         </dependency>
         <dependency>
-            <groupId>com.applitools</groupId>
-            <artifactId>eyes-selenium-java5</artifactId>
-            <version>5.37.0</version>
-        </dependency>
-        <dependency>
             <groupId>io.appium</groupId>
             <artifactId>java-client</artifactId>
             <version>8.3.0</version>

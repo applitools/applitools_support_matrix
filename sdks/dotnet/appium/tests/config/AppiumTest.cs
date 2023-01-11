@@ -67,7 +67,6 @@ namespace Applitools.Support.Matrix.Appium
                     AppiumOptions options = new AppiumOptions();
                     var username = Environment.GetEnvironmentVariable("SAUCE_USERNAME");
                     var accessKey = Environment.GetEnvironmentVariable("SAUCE_ACCESS_KEY");
-                    Console.WriteLine(username);
                     options.AddAdditionalCapability("browserName", "");
                     options.AddAdditionalCapability("platformName", "iOS");
                     options.AddAdditionalCapability("appium:platformVersion", "15.4");
@@ -123,7 +122,8 @@ namespace Applitools.Support.Matrix.Appium
             driver?.Quit();
             driver.Dispose();
             eyes?.AbortIfNotClosed();
-            runner?.GetAllTestResults(false);
+            var results = runner?.GetAllTestResults(false);
+            Console.WriteLine(results);
         }
 
     }

@@ -62,7 +62,7 @@ public class AppiumSetup extends GlobalSetup {
         if (showLogs != null && showLogs.equals("true")) {
             eyes.setLogHandler(new StdoutLogHandler((verbose != null && verbose.equals("true"))));
         }
-        if(UFG){
+        if (UFG) {
             eyes.configure().addMobileDevice(new IosDeviceInfo(IosDeviceName.iPhone_8, ScreenOrientation.PORTRAIT));
         }
     }
@@ -81,8 +81,8 @@ public class AppiumSetup extends GlobalSetup {
         options.setCapability("accessKey", System.getenv("SAUCE_ACCESS_KEY"));
         options.setCapability("name", "Support Matrix");
         caps.setCapability("sauce:options", options);
-        if(UFG) {
-            caps.setCapability("appium:processArguments","{\"args\": [], \"env\": {\"DYLD_INSERT_LIBRARIES\": \"@executable_path/Frameworks/UFG_lib.xcframework/ios-arm64_x86_64-simulator/UFG_lib.framework/UFG_lib\",\"NML_API_KEY\":\""+GlobalSetup.apiKey+"\"}}");
+        if (UFG) {
+            caps.setCapability("appium:processArguments", "{\"args\": [], \"env\": {\"DYLD_INSERT_LIBRARIES\": \"@executable_path/Frameworks/UFG_lib.xcframework/ios-arm64_x86_64-simulator/UFG_lib.framework/UFG_lib\",\"NML_API_KEY\":\"" + GlobalSetup.apiKey + "\"}}");
         }
         driver = new IOSDriver(new URL(SAUCE_URL), caps);
     }
