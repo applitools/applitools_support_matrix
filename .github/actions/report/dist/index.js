@@ -48,6 +48,11 @@ try {
     const run_data = []
     for (const suiteData of suites) {
         const suite = new _src_json__WEBPACK_IMPORTED_MODULE_2__.Suite({title: suiteData.name, duration: suiteData.duration})
+        const run_data_info = {
+            title: suiteData.name,
+            suiteData: suiteData,
+            jobs: []
+        }
         for (const job of suiteData.jobs) {
             const testData = {
                 title: job.name.split('/')[1],
@@ -61,12 +66,13 @@ try {
                 if (regex.test(logs)) {
                     const json_data = JSON.parse(regex.exec(logs)[1])
                     if(json_data.title) testData.title = json_data.title;
+                    run_data_info.jobs.push({...json_data, ...testData})
                     testData.code = JSON.stringify(json_data, undefined, 2);
-                    run_data.push({...testData, ...json_data})
                 }
             }
             suite.addTest(new _src_json__WEBPACK_IMPORTED_MODULE_2__.Test(testData))
         }
+        run_data.push(run_data_info)
         report.addSuite(suite);
     }
     // Make json file
