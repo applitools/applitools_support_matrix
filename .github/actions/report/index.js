@@ -26,6 +26,7 @@ try {
     const suites = getJobsBySuites(filtered)
     // Organise and parse raw data Reporting
     const report = new Report({start, end})
+    const run_data = []
     for (const suiteData of suites) {
         const suite = new Suite({title: suiteData.name, duration: suiteData.duration})
         for (const job of suiteData.jobs) {
@@ -42,6 +43,7 @@ try {
                     const json_data = JSON.parse(regex.exec(logs)[1])
                     if(json_data.title) testData.title = json_data.title;
                     testData.code = JSON.stringify(json_data, undefined, 2);
+                    run_data.push({...testData, ...json_data})
                 }
             }
             suite.addTest(new Test(testData))
@@ -50,6 +52,7 @@ try {
     }
     // Make json file
     fs.writeFileSync('data.json', JSON.stringify(report, undefined, 2))
+    fs.writeFileSync('run_data.json', JSON.stringify(run_data, undefined, 2))
     // Make html report
     await generator.generate()
     console.log(1)
