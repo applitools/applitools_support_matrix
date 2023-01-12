@@ -50,7 +50,6 @@ try {
         const suite = new _src_json__WEBPACK_IMPORTED_MODULE_2__.Suite({title: suiteData.name, duration: suiteData.duration})
         const run_data_info = {
             title: suiteData.name,
-            suiteData: suiteData,
             jobs: []
         }
         for (const job of suiteData.jobs) {
