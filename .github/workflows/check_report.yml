@@ -8,8 +8,8 @@ on:
         required: false
 
 permissions:
-  contents: read
-  
+  contents: write
+
 jobs:
   report:
     defaults:
@@ -32,6 +32,13 @@ jobs:
           pwd
           ls
           cat run_data.json
+          git config --global user.name 'AutoSupport'
+          git config --global user.email 'autosupport@users.noreply.github.com'
+          git status
+          git add data.json
+          git add report.html
+          git commit -m "Update data.json and report.html"
+          git push
       - name: Upload report as artifact
         uses: actions/upload-artifact@v3
         with:
