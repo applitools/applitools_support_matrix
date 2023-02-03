@@ -1,0 +1,1040 @@
+[
+  {
+    "title": "Java",
+    "jobs": [
+      {
+        "package": "",
+        "version": "",
+        "os": "Windows",
+        "selenium": "4",
+        "title": "Java Selenium SDK [Windows] [java version 8]",
+        "chrome_version": "not_supported_on_windows",
+        "chromedriver_version": "ChromeDriver 108.0.5359.71 (1e0e3868ee06e91ad636a874420e3ca3ae3756ac-refs/branch-heads/5359@{#1016})",
+        "appium_client_lib_version": "",
+        "fullTitle": "java / 8 | windows-latest",
+        "duration": 128000,
+        "passed": true
+      },
+      {
+        "package": "",
+        "version": "",
+        "os": "Linux",
+        "selenium": "4",
+        "title": "Java Selenium SDK [Linux] [java version 8]",
+        "chrome_version": "Google Chrome 108.0.5359.124",
+        "chromedriver_version": "ChromeDriver 108.0.5359.71 (1e0e3868ee06e91ad636a874420e3ca3ae3756ac-refs/branch-heads/5359@{#1016})",
+        "appium_client_lib_version": "",
+        "fullTitle": "java / 8 | ubuntu-latest",
+        "duration": 68000,
+        "passed": true
+      },
+      {
+        "package": "",
+        "version": "",
+        "os": "macOS",
+        "selenium": "4",
+        "title": "Java Selenium SDK [macOS] [java version 8]",
+        "chrome_version": "Google Chrome 108.0.5359.124",
+        "chromedriver_version": "ChromeDriver 108.0.5359.71 (1e0e3868ee06e91ad636a874420e3ca3ae3756ac-refs/branch-heads/5359@{#1016})",
+        "appium_client_lib_version": "",
+        "fullTitle": "java / 8 | macos-latest",
+        "duration": 112000,
+        "passed": true
+      }
+    ]
+  },
+  {
+    "title": "Ruby",
+    "jobs": [
+      {
+        "package": "",
+        "version": "",
+        "os": "Windows",
+        "selenium": "4",
+        "title": "Ruby SDK [Windows] [ruby version 2.6]",
+        "chrome_version": "not_supported_on_windows",
+        "chromedriver_version": "ChromeDriver 108.0.5359.71 (1e0e3868ee06e91ad636a874420e3ca3ae3756ac-refs/branch-heads/5359@{#1016})",
+        "appium_client_lib_version": "",
+        "fullTitle": "ruby / 2.6 | windows-latest",
+        "duration": 605000,
+        "passed": true
+      },
+      {
+        "package": "",
+        "version": "",
+        "os": "Linux",
+        "selenium": "4",
+        "title": "Ruby SDK [Linux] [ruby version 2.6]",
+        "chrome_version": "Google Chrome 108.0.5359.98",
+        "chromedriver_version": "ChromeDriver 108.0.5359.71 (1e0e3868ee06e91ad636a874420e3ca3ae3756ac-refs/branch-heads/5359@{#1016})",
+        "appium_client_lib_version": "",
+        "fullTitle": "ruby / 2.6 | ubuntu-latest",
+        "duration": 108000,
+        "passed": true
+      },
+      {
+        "package": "",
+        "version": "",
+        "os": "macOS",
+        "selenium": "4",
+        "title": "Ruby SDK [macOS] [ruby version 2.6]",
+        "chrome_version": "Google Chrome 108.0.5359.124",
+        "chromedriver_version": "ChromeDriver 108.0.5359.71 (1e0e3868ee06e91ad636a874420e3ca3ae3756ac-refs/branch-heads/5359@{#1016})",
+        "appium_client_lib_version": "",
+        "fullTitle": "ruby / 2.6 | macos-latest",
+        "duration": 200000,
+        "passed": true
+      }
+    ]
+  },
+  {
+    "title": "Python",
+    "jobs": [
+      {
+        "package": "",
+        "version": "",
+        "os": "Windows",
+        "selenium": "4",
+        "title": "Python SDK [Windows] [python version 3.10]",
+        "chrome_version": "not_supported_on_windows",
+        "chromedriver_version": "ChromeDriver 108.0.5359.71 (1e0e3868ee06e91ad636a874420e3ca3ae3756ac-refs/branch-heads/5359@{#1016})",
+        "appium_client_lib_version": "",
+        "fullTitle": "python / 3.10 | windows-latest",
+        "duration": 236000,
+        "passed": true
+      },
+      {
+        "package": "",
+        "version": "",
+        "os": "Linux",
+        "selenium": "4",
+        "title": "Python SDK [Linux] [python version 3.10]",
+        "chrome_version": "Google Chrome 108.0.5359.98",
+        "chromedriver_version": "ChromeDriver 108.0.5359.71 (1e0e3868ee06e91ad636a874420e3ca3ae3756ac-refs/branch-heads/5359@{#1016})",
+        "appium_client_lib_version": "",
+        "fullTitle": "python / 3.10 | ubuntu-latest",
+        "duration": 67000,
+        "passed": true
+      },
+      {
+        "package": "",
+        "version": "",
+        "os": "macOS",
+        "selenium": "4",
+        "title": "Python SDK [macOS] [python version 3.10]",
+        "chrome_version": "Google Chrome 108.0.5359.124",
+        "chromedriver_version": "ChromeDriver 108.0.5359.71 (1e0e3868ee06e91ad636a874420e3ca3ae3756ac-refs/branch-heads/5359@{#1016})",
+        "appium_client_lib_version": "",
+        "fullTitle": "python / 3.10 | macos-latest",
+        "duration": 114000,
+        "passed": true
+      }
+    ]
+  },
+  {
+    "title": "Dotnet",
+    "jobs": [
+      {
+        "package": "",
+        "version": "",
+        "os": "Windows",
+        "selenium": "4",
+        "title": "Dotnet selenium sdk [Windows] [dotnet version 3.1.x]",
+        "chrome_version": "not_supported_on_windows",
+        "chromedriver_version": "ChromeDriver 108.0.5359.71 (1e0e3868ee06e91ad636a874420e3ca3ae3756ac-refs/branch-heads/5359@{#1016})",
+        "appium_client_lib_version": "",
+        "fullTitle": "dotnet / Dotnet 3.1.x windows-latest",
+        "duration": 189000,
+        "passed": true
+      },
+      {
+        "package": "",
+        "version": "",
+        "os": "Linux",
+        "selenium": "4",
+        "title": "Dotnet selenium sdk [Linux] [dotnet version 3.1.x]",
+        "chrome_version": "Google Chrome 108.0.5359.98",
+        "chromedriver_version": "ChromeDriver 108.0.5359.71 (1e0e3868ee06e91ad636a874420e3ca3ae3756ac-refs/branch-heads/5359@{#1016})",
+        "appium_client_lib_version": "",
+        "fullTitle": "dotnet / Dotnet 3.1.x ubuntu-latest",
+        "duration": 111000,
+        "passed": true
+      },
+      {
+        "package": "",
+        "version": "",
+        "os": "macOS",
+        "selenium": "4",
+        "title": "Dotnet selenium sdk [macOS] [dotnet version 3.1.x]",
+        "chrome_version": "Google Chrome 108.0.5359.124",
+        "chromedriver_version": "ChromeDriver 108.0.5359.71 (1e0e3868ee06e91ad636a874420e3ca3ae3756ac-refs/branch-heads/5359@{#1016})",
+        "appium_client_lib_version": "",
+        "fullTitle": "dotnet / Dotnet 3.1.x macos-latest",
+        "duration": 162000,
+        "passed": true
+      }
+    ]
+  },
+  {
+    "title": "JS Selenium",
+    "jobs": [
+      {
+        "package": "",
+        "version": "",
+        "os": "Windows",
+        "selenium": "4",
+        "title": "JS Selenium SDK [Windows] [nodejs 16] | Pure selenium",
+        "chrome_version": "not_supported_on_windows",
+        "chromedriver_version": "ChromeDriver 108.0.5359.71 (1e0e3868ee06e91ad636a874420e3ca3ae3756ac-refs/branch-heads/5359@{#1016})",
+        "appium_client_lib_version": "",
+        "fullTitle": "js_selenium / 16 | windows-latest",
+        "duration": 110000,
+        "passed": true
+      },
+      {
+        "package": "",
+        "version": "",
+        "os": "Linux",
+        "selenium": "4",
+        "title": "JS Selenium SDK [Linux] [nodejs 16] | Pure selenium",
+        "chrome_version": "Google Chrome 108.0.5359.98",
+        "chromedriver_version": "ChromeDriver 108.0.5359.71 (1e0e3868ee06e91ad636a874420e3ca3ae3756ac-refs/branch-heads/5359@{#1016})",
+        "appium_client_lib_version": "",
+        "fullTitle": "js_selenium / 16 | ubuntu-latest",
+        "duration": 58000,
+        "passed": true
+      },
+      {
+        "package": "",
+        "version": "",
+        "os": "macOS",
+        "selenium": "4",
+        "title": "JS Selenium SDK [macOS] [nodejs 16] | Pure selenium",
+        "chrome_version": "Google Chrome 108.0.5359.124",
+        "chromedriver_version": "ChromeDriver 108.0.5359.71 (1e0e3868ee06e91ad636a874420e3ca3ae3756ac-refs/branch-heads/5359@{#1016})",
+        "appium_client_lib_version": "",
+        "fullTitle": "js_selenium / 16 | macos-latest",
+        "duration": 191000,
+        "passed": true
+      }
+    ]
+  },
+  {
+    "title": "JS Playwright",
+    "jobs": [
+      {
+        "package": "Playwright",
+        "version": "1.29.2",
+        "os": "Windows",
+        "selenium": "4",
+        "title": "Playwright version 1.29.2 [Windows] [nodejs 16]",
+        "chrome_version": "not_supported_on_windows",
+        "chromedriver_version": "",
+        "appium_client_lib_version": "",
+        "fullTitle": "js_playwright / windows-latest | minor 0",
+        "duration": 151000,
+        "passed": true
+      },
+      {
+        "package": "Playwright",
+        "version": "1.29.2",
+        "os": "Linux",
+        "selenium": "4",
+        "title": "Playwright version 1.29.2 [Linux] [nodejs 16]",
+        "chrome_version": "Google Chrome 108.0.5359.98",
+        "chromedriver_version": "",
+        "appium_client_lib_version": "",
+        "fullTitle": "js_playwright / ubuntu-latest | minor 0",
+        "duration": 138000,
+        "passed": true
+      },
+      {
+        "package": "Playwright",
+        "version": "1.29.2",
+        "os": "macOS",
+        "selenium": "4",
+        "title": "Playwright version 1.29.2 [macOS] [nodejs 16]",
+        "chrome_version": "Google Chrome 108.0.5359.124",
+        "chromedriver_version": "",
+        "appium_client_lib_version": "",
+        "fullTitle": "js_playwright / macos-latest | minor 0",
+        "duration": 84000,
+        "passed": true
+      },
+      {
+        "package": "Playwright",
+        "version": "1.28.1",
+        "os": "Linux",
+        "selenium": "4",
+        "title": "Playwright version 1.28.1 [Linux] [nodejs 16]",
+        "chrome_version": "Google Chrome 108.0.5359.98",
+        "chromedriver_version": "",
+        "appium_client_lib_version": "",
+        "fullTitle": "js_playwright / ubuntu-latest | minor -1",
+        "duration": 136000,
+        "passed": true
+      },
+      {
+        "package": "Playwright",
+        "version": "1.27.1",
+        "os": "Linux",
+        "selenium": "4",
+        "title": "Playwright version 1.27.1 [Linux] [nodejs 16]",
+        "chrome_version": "Google Chrome 108.0.5359.124",
+        "chromedriver_version": "",
+        "appium_client_lib_version": "",
+        "fullTitle": "js_playwright / ubuntu-latest | minor -2",
+        "duration": 119000,
+        "passed": true
+      }
+    ]
+  },
+  {
+    "title": "JS Webdriverio",
+    "jobs": [
+      {
+        "package": "Webdriverio",
+        "version": "6",
+        "os": "Windows",
+        "selenium": "4",
+        "title": "WebdriverIO 6 [Windows] [nodejs 16]",
+        "chrome_version": "not_supported_on_windows",
+        "chromedriver_version": "ChromeDriver 108.0.5359.71 (1e0e3868ee06e91ad636a874420e3ca3ae3756ac-refs/branch-heads/5359@{#1016})",
+        "appium_client_lib_version": "",
+        "fullTitle": "js_webdriverio / 16 | windows-latest | 6",
+        "duration": 121000,
+        "passed": true
+      },
+      {
+        "package": "Webdriverio",
+        "version": "7",
+        "os": "Windows",
+        "selenium": "4",
+        "title": "WebdriverIO 7 [Windows] [nodejs 16]",
+        "chrome_version": "not_supported_on_windows",
+        "chromedriver_version": "ChromeDriver 108.0.5359.71 (1e0e3868ee06e91ad636a874420e3ca3ae3756ac-refs/branch-heads/5359@{#1016})",
+        "appium_client_lib_version": "",
+        "fullTitle": "js_webdriverio / 16 | windows-latest | 7",
+        "duration": 190000,
+        "passed": true
+      },
+      {
+        "package": "Webdriverio",
+        "version": "6",
+        "os": "Linux",
+        "selenium": "4",
+        "title": "WebdriverIO 6 [Linux] [nodejs 16]",
+        "chrome_version": "Google Chrome 108.0.5359.98",
+        "chromedriver_version": "ChromeDriver 108.0.5359.71 (1e0e3868ee06e91ad636a874420e3ca3ae3756ac-refs/branch-heads/5359@{#1016})",
+        "appium_client_lib_version": "",
+        "fullTitle": "js_webdriverio / 16 | ubuntu-latest | 6",
+        "duration": 63000,
+        "passed": true
+      },
+      {
+        "package": "Webdriverio",
+        "version": "7",
+        "os": "Linux",
+        "selenium": "4",
+        "title": "WebdriverIO 7 [Linux] [nodejs 16]",
+        "chrome_version": "Google Chrome 108.0.5359.98",
+        "chromedriver_version": "ChromeDriver 108.0.5359.71 (1e0e3868ee06e91ad636a874420e3ca3ae3756ac-refs/branch-heads/5359@{#1016})",
+        "appium_client_lib_version": "",
+        "fullTitle": "js_webdriverio / 16 | ubuntu-latest | 7",
+        "duration": 53000,
+        "passed": true
+      },
+      {
+        "package": "Webdriverio",
+        "version": "6",
+        "os": "macOS",
+        "selenium": "4",
+        "title": "WebdriverIO 6 [macOS] [nodejs 16]",
+        "chrome_version": "Google Chrome 108.0.5359.124",
+        "chromedriver_version": "ChromeDriver 108.0.5359.71 (1e0e3868ee06e91ad636a874420e3ca3ae3756ac-refs/branch-heads/5359@{#1016})",
+        "appium_client_lib_version": "",
+        "fullTitle": "js_webdriverio / 16 | macos-latest | 6",
+        "duration": 115000,
+        "passed": true
+      },
+      {
+        "package": "Webdriverio",
+        "version": "7",
+        "os": "macOS",
+        "selenium": "4",
+        "title": "WebdriverIO 7 [macOS] [nodejs 16]",
+        "chrome_version": "Google Chrome 108.0.5359.124",
+        "chromedriver_version": "ChromeDriver 108.0.5359.71 (1e0e3868ee06e91ad636a874420e3ca3ae3756ac-refs/branch-heads/5359@{#1016})",
+        "appium_client_lib_version": "",
+        "fullTitle": "js_webdriverio / 16 | macos-latest | 7",
+        "duration": 98000,
+        "passed": true
+      }
+    ]
+  },
+  {
+    "title": "JS Webdriverio 4",
+    "jobs": [
+      {
+        "package": "Webdriverio",
+        "version": "4.14.4",
+        "os": "Windows",
+        "selenium": "4",
+        "title": "Webdriverio version 4.14.4 [Windows] [nodejs 16]",
+        "chrome_version": "not_supported_on_windows",
+        "chromedriver_version": "ChromeDriver 108.0.5359.71 (1e0e3868ee06e91ad636a874420e3ca3ae3756ac-refs/branch-heads/5359@{#1016})",
+        "appium_client_lib_version": "",
+        "fullTitle": "js_webdriverio4 / 16 | windows-latest",
+        "duration": 121000,
+        "passed": true
+      },
+      {
+        "package": "Webdriverio",
+        "version": "4.14.4",
+        "os": "Linux",
+        "selenium": "4",
+        "title": "Webdriverio version 4.14.4 [Linux] [nodejs 16]",
+        "chrome_version": "Google Chrome 108.0.5359.124",
+        "chromedriver_version": "ChromeDriver 108.0.5359.71 (1e0e3868ee06e91ad636a874420e3ca3ae3756ac-refs/branch-heads/5359@{#1016})",
+        "appium_client_lib_version": "",
+        "fullTitle": "js_webdriverio4 / 16 | ubuntu-latest",
+        "duration": 57000,
+        "passed": true
+      },
+      {
+        "package": "Webdriverio",
+        "version": "4.14.4",
+        "os": "macOS",
+        "selenium": "4",
+        "title": "Webdriverio version 4.14.4 [macOS] [nodejs 16]",
+        "chrome_version": "Google Chrome 108.0.5359.124",
+        "chromedriver_version": "ChromeDriver 108.0.5359.71 (1e0e3868ee06e91ad636a874420e3ca3ae3756ac-refs/branch-heads/5359@{#1016})",
+        "appium_client_lib_version": "",
+        "fullTitle": "js_webdriverio4 / 16 | macos-latest",
+        "duration": 83000,
+        "passed": true
+      }
+    ]
+  },
+  {
+    "title": "JS Webdriverio 5",
+    "jobs": [
+      {
+        "package": "Webdriverio",
+        "version": "5.23.0",
+        "os": "Windows",
+        "selenium": "3",
+        "title": "Webdriverio version 5.23.0 [Windows], [nodejs 16]",
+        "chrome_version": "not_supported_on_windows",
+        "chromedriver_version": "ChromeDriver 108.0.5359.71 (1e0e3868ee06e91ad636a874420e3ca3ae3756ac-refs/branch-heads/5359@{#1016})",
+        "appium_client_lib_version": "",
+        "fullTitle": "js_webdriverio5 / 16 | windows-latest | 5",
+        "duration": 176000,
+        "passed": true
+      },
+      {
+        "package": "Webdriverio",
+        "version": "5.23.0",
+        "os": "Linux",
+        "selenium": "3",
+        "title": "Webdriverio version 5.23.0 [Linux], [nodejs 16]",
+        "chrome_version": "Google Chrome 108.0.5359.98",
+        "chromedriver_version": "ChromeDriver 108.0.5359.71 (1e0e3868ee06e91ad636a874420e3ca3ae3756ac-refs/branch-heads/5359@{#1016})",
+        "appium_client_lib_version": "",
+        "fullTitle": "js_webdriverio5 / 16 | ubuntu-latest | 5",
+        "duration": 85000,
+        "passed": true
+      },
+      {
+        "package": "Webdriverio",
+        "version": "5.23.0",
+        "os": "macOS",
+        "selenium": "3",
+        "title": "Webdriverio version 5.23.0 [macOS], [nodejs 16]",
+        "chrome_version": "Google Chrome 108.0.5359.124",
+        "chromedriver_version": "ChromeDriver 108.0.5359.71 (1e0e3868ee06e91ad636a874420e3ca3ae3756ac-refs/branch-heads/5359@{#1016})",
+        "appium_client_lib_version": "",
+        "fullTitle": "js_webdriverio5 / 16 | macos-latest | 5",
+        "duration": 79000,
+        "passed": true
+      }
+    ]
+  },
+  {
+    "title": "JS Nightwatch",
+    "jobs": [
+      {
+        "package": "Nightwatch",
+        "version": "1.7.13",
+        "os": "Windows",
+        "selenium": "4",
+        "title": "Nightwatch version 1.7.13 [Windows] [nodejs 16]",
+        "chrome_version": "not_supported_on_windows",
+        "chromedriver_version": "ChromeDriver 108.0.5359.71 (1e0e3868ee06e91ad636a874420e3ca3ae3756ac-refs/branch-heads/5359@{#1016})",
+        "appium_client_lib_version": "",
+        "fullTitle": "js_nightwatch / windows-latest | major 1.7.13",
+        "duration": 147000,
+        "passed": true
+      },
+      {
+        "package": "Nightwatch",
+        "version": "1.7.13",
+        "os": "Linux",
+        "selenium": "4",
+        "title": "Nightwatch version 1.7.13 [Linux] [nodejs 16]",
+        "chrome_version": "Google Chrome 108.0.5359.124",
+        "chromedriver_version": "ChromeDriver 108.0.5359.71 (1e0e3868ee06e91ad636a874420e3ca3ae3756ac-refs/branch-heads/5359@{#1016})",
+        "appium_client_lib_version": "",
+        "fullTitle": "js_nightwatch / ubuntu-latest | major 1.7.13",
+        "duration": 103000,
+        "passed": true
+      },
+      {
+        "package": "Nightwatch",
+        "version": "1.7.13",
+        "os": "macOS",
+        "selenium": "4",
+        "title": "Nightwatch version 1.7.13 [macOS] [nodejs 16]",
+        "chrome_version": "Google Chrome 108.0.5359.124",
+        "chromedriver_version": "ChromeDriver 108.0.5359.71 (1e0e3868ee06e91ad636a874420e3ca3ae3756ac-refs/branch-heads/5359@{#1016})",
+        "appium_client_lib_version": "",
+        "fullTitle": "js_nightwatch / macos-latest | major 1.7.13",
+        "duration": 160000,
+        "passed": true
+      }
+    ]
+  },
+  {
+    "title": "JS Protractor",
+    "jobs": [
+      {
+        "package": "Protractor",
+        "version": "7.0.0",
+        "os": "Windows",
+        "selenium": "4",
+        "title": "Protractor version 7.0.0 [Windows] [nodejs 16]",
+        "chrome_version": "not_supported_on_windows",
+        "chromedriver_version": "ChromeDriver 108.0.5359.71 (1e0e3868ee06e91ad636a874420e3ca3ae3756ac-refs/branch-heads/5359@{#1016})",
+        "appium_client_lib_version": "",
+        "fullTitle": "js_protractor / windows-latest | major 0",
+        "duration": 124000,
+        "passed": true
+      },
+      {
+        "package": "Protractor",
+        "version": "7.0.0",
+        "os": "Linux",
+        "selenium": "4",
+        "title": "Protractor version 7.0.0 [Linux] [nodejs 16]",
+        "chrome_version": "Google Chrome 108.0.5359.98",
+        "chromedriver_version": "ChromeDriver 108.0.5359.71 (1e0e3868ee06e91ad636a874420e3ca3ae3756ac-refs/branch-heads/5359@{#1016})",
+        "appium_client_lib_version": "",
+        "fullTitle": "js_protractor / ubuntu-latest | major 0",
+        "duration": 70000,
+        "passed": true
+      },
+      {
+        "package": "Protractor",
+        "version": "7.0.0",
+        "os": "macOS",
+        "selenium": "4",
+        "title": "Protractor version 7.0.0 [macOS] [nodejs 16]",
+        "chrome_version": "Google Chrome 108.0.5359.124",
+        "chromedriver_version": "ChromeDriver 108.0.5359.71 (1e0e3868ee06e91ad636a874420e3ca3ae3756ac-refs/branch-heads/5359@{#1016})",
+        "appium_client_lib_version": "",
+        "fullTitle": "js_protractor / macos-latest | major 0",
+        "duration": 86000,
+        "passed": true
+      },
+      {
+        "package": "Protractor",
+        "version": "5.4.4",
+        "os": "Linux",
+        "selenium": "4",
+        "title": "Protractor version 5.4.4 [Linux] [nodejs 16]",
+        "chrome_version": "Google Chrome 108.0.5359.98",
+        "chromedriver_version": "ChromeDriver 108.0.5359.71 (1e0e3868ee06e91ad636a874420e3ca3ae3756ac-refs/branch-heads/5359@{#1016})",
+        "appium_client_lib_version": "",
+        "fullTitle": "js_protractor / ubuntu-latest | major -2",
+        "duration": 63000,
+        "passed": true
+      }
+    ]
+  },
+  {
+    "title": "JS Puppeteer",
+    "jobs": [
+      {
+        "package": "Puppeteer",
+        "version": "19.5.1",
+        "os": "Windows",
+        "selenium": "uses direct local driver",
+        "title": "Puppeteer version 19.5.1 [Windows] [nodejs 16]",
+        "chrome_version": "not_supported_on_windows",
+        "chromedriver_version": "ChromeDriver 108.0.5359.71 (1e0e3868ee06e91ad636a874420e3ca3ae3756ac-refs/branch-heads/5359@{#1016})",
+        "appium_client_lib_version": "",
+        "fullTitle": "js_puppeteer / windows-latest | major 0",
+        "duration": 133000,
+        "passed": true
+      },
+      {
+        "package": "Puppeteer",
+        "version": "19.5.1",
+        "os": "Linux",
+        "selenium": "uses direct local driver",
+        "title": "Puppeteer version 19.5.1 [Linux] [nodejs 16]",
+        "chrome_version": "Google Chrome 108.0.5359.98",
+        "chromedriver_version": "ChromeDriver 108.0.5359.71 (1e0e3868ee06e91ad636a874420e3ca3ae3756ac-refs/branch-heads/5359@{#1016})",
+        "appium_client_lib_version": "",
+        "fullTitle": "js_puppeteer / ubuntu-latest | major 0",
+        "duration": 54000,
+        "passed": true
+      },
+      {
+        "package": "Puppeteer",
+        "version": "19.5.1",
+        "os": "macOS",
+        "selenium": "uses direct local driver",
+        "title": "Puppeteer version 19.5.1 [macOS] [nodejs 16]",
+        "chrome_version": "Google Chrome 108.0.5359.124",
+        "chromedriver_version": "ChromeDriver 108.0.5359.71 (1e0e3868ee06e91ad636a874420e3ca3ae3756ac-refs/branch-heads/5359@{#1016})",
+        "appium_client_lib_version": "",
+        "fullTitle": "js_puppeteer / macos-latest | major 0",
+        "duration": 77000,
+        "passed": true
+      },
+      {
+        "package": "Puppeteer",
+        "version": "18.2.1",
+        "os": "Linux",
+        "selenium": "uses direct local driver",
+        "title": "Puppeteer version 18.2.1 [Linux] [nodejs 16]",
+        "chrome_version": "Google Chrome 108.0.5359.98",
+        "chromedriver_version": "ChromeDriver 108.0.5359.71 (1e0e3868ee06e91ad636a874420e3ca3ae3756ac-refs/branch-heads/5359@{#1016})",
+        "appium_client_lib_version": "",
+        "fullTitle": "js_puppeteer / ubuntu-latest | major -1",
+        "duration": 54000,
+        "passed": true
+      },
+      {
+        "package": "Puppeteer",
+        "version": "17.1.3",
+        "os": "Linux",
+        "selenium": "uses direct local driver",
+        "title": "Puppeteer version 17.1.3 [Linux] [nodejs 16]",
+        "chrome_version": "Google Chrome 108.0.5359.98",
+        "chromedriver_version": "ChromeDriver 108.0.5359.71 (1e0e3868ee06e91ad636a874420e3ca3ae3756ac-refs/branch-heads/5359@{#1016})",
+        "appium_client_lib_version": "",
+        "fullTitle": "js_puppeteer / ubuntu-latest | major -2",
+        "duration": 74000,
+        "passed": true
+      },
+      {
+        "package": "Puppeteer",
+        "version": "16.2.0",
+        "os": "Linux",
+        "selenium": "uses direct local driver",
+        "title": "Puppeteer version 16.2.0 [Linux] [nodejs 16]",
+        "chrome_version": "Google Chrome 108.0.5359.98",
+        "chromedriver_version": "ChromeDriver 108.0.5359.71 (1e0e3868ee06e91ad636a874420e3ca3ae3756ac-refs/branch-heads/5359@{#1016})",
+        "appium_client_lib_version": "",
+        "fullTitle": "js_puppeteer / ubuntu-latest | major -3",
+        "duration": 53000,
+        "passed": true
+      }
+    ]
+  },
+  {
+    "title": "JS Cypress",
+    "jobs": [
+      {
+        "package": "Cypress",
+        "version": "12.3.0",
+        "os": "Windows",
+        "selenium": "None",
+        "title": "Cypress version 12.3.0 [Windows] [nodejs 16]",
+        "chrome_version": "not_supported_on_windows",
+        "chromedriver_version": "",
+        "appium_client_lib_version": "",
+        "fullTitle": "js_cypress / windows-latest | minor 0",
+        "duration": 438000,
+        "passed": true
+      },
+      {
+        "package": "Cypress",
+        "version": "11.2.0",
+        "os": "Linux",
+        "selenium": "None",
+        "title": "Cypress version 11.2.0 [Linux] [nodejs 16]",
+        "chrome_version": "Google Chrome 108.0.5359.98",
+        "chromedriver_version": "",
+        "appium_client_lib_version": "",
+        "fullTitle": "js_cypress / ubuntu-latest | minor 0",
+        "duration": 73000,
+        "passed": true
+      },
+      {
+        "package": "Cypress",
+        "version": "12.3.0",
+        "os": "macOS",
+        "selenium": "None",
+        "title": "Cypress version 12.3.0 [macOS] [nodejs 16]",
+        "chrome_version": "Google Chrome 108.0.5359.124",
+        "chromedriver_version": "",
+        "appium_client_lib_version": "",
+        "fullTitle": "js_cypress / macos-latest | minor 0",
+        "duration": 184000,
+        "passed": true
+      }
+    ]
+  },
+  {
+    "title": "JS Cypress legacy",
+    "jobs": [
+      {
+        "package": "Cypress",
+        "version": "9.7.0",
+        "os": "Linux",
+        "selenium": "None",
+        "title": "Cypress version 9.7.0 [Linux] [nodejs 16]",
+        "chrome_version": "Google Chrome 108.0.5359.98",
+        "chromedriver_version": "",
+        "appium_client_lib_version": "",
+        "fullTitle": "js_cypress_v9- / ubuntu-latest | 9.7.0",
+        "duration": 66000,
+        "passed": true
+      },
+      {
+        "package": "Cypress",
+        "version": "9.6.1",
+        "os": "Linux",
+        "selenium": "None",
+        "title": "Cypress version 9.6.1 [Linux] [nodejs 16]",
+        "chrome_version": "Google Chrome 108.0.5359.98",
+        "chromedriver_version": "",
+        "appium_client_lib_version": "",
+        "fullTitle": "js_cypress_v9- / ubuntu-latest | 9.6.1",
+        "duration": 91000,
+        "passed": true
+      },
+      {
+        "package": "Cypress",
+        "version": "8.7.0",
+        "os": "Linux",
+        "selenium": "None",
+        "title": "Cypress version 8.7.0 [Linux] [nodejs 16]",
+        "chrome_version": "Google Chrome 108.0.5359.98",
+        "chromedriver_version": "",
+        "appium_client_lib_version": "",
+        "fullTitle": "js_cypress_v9- / ubuntu-latest | 8.7.0",
+        "duration": 78000,
+        "passed": true
+      }
+    ]
+  },
+  {
+    "title": "JS Testcafe",
+    "jobs": [
+      {
+        "package": "Testcafe",
+        "version": "2.2.0",
+        "os": "Windows",
+        "selenium": "None",
+        "title": "Testcafe version 2.2.0 [Windows] [nodejs 16]",
+        "chrome_version": "not_supported_on_windows",
+        "chromedriver_version": "",
+        "appium_client_lib_version": "",
+        "fullTitle": "js_testcafe / windows-latest | minor ",
+        "duration": 150000,
+        "passed": true
+      },
+      {
+        "package": "Testcafe",
+        "version": "2.2.0",
+        "os": "Linux",
+        "selenium": "None",
+        "title": "Testcafe version 2.2.0 [Linux] [nodejs 16]",
+        "chrome_version": "Google Chrome 108.0.5359.98",
+        "chromedriver_version": "",
+        "appium_client_lib_version": "",
+        "fullTitle": "js_testcafe / ubuntu-latest | minor ",
+        "duration": 56000,
+        "passed": true
+      },
+      {
+        "package": "Testcafe",
+        "version": "1.20.1",
+        "os": "Linux",
+        "selenium": "None",
+        "title": "Testcafe version 1.20.1 [Linux] [nodejs 16]",
+        "chrome_version": "Google Chrome 108.0.5359.98",
+        "chromedriver_version": "",
+        "appium_client_lib_version": "",
+        "fullTitle": "js_testcafe / ubuntu-latest | minor ",
+        "duration": 53000,
+        "passed": true
+      }
+    ]
+  },
+  {
+    "title": "JS Storybook",
+    "jobs": [
+      {
+        "package": "Storybook",
+        "version": "6.5.15",
+        "os": "Windows",
+        "selenium": "None",
+        "title": "Storybook version 6.5.15 [Windows] [nodejs 16]",
+        "chrome_version": "",
+        "chromedriver_version": "",
+        "appium_client_lib_version": "",
+        "fullTitle": "js_storybook / windows-latest | major 0",
+        "duration": 221000,
+        "passed": true
+      },
+      {
+        "package": "Storybook",
+        "version": "6.5.15",
+        "os": "Linux",
+        "selenium": "None",
+        "title": "Storybook version 6.5.15 [Linux] [nodejs 16]",
+        "chrome_version": "",
+        "chromedriver_version": "",
+        "appium_client_lib_version": "",
+        "fullTitle": "js_storybook / ubuntu-latest | major 0",
+        "duration": 145000,
+        "passed": true
+      },
+      {
+        "package": "Storybook",
+        "version": "6.5.15",
+        "os": "macOS",
+        "selenium": "None",
+        "title": "Storybook version 6.5.15 [macOS] [nodejs 16]",
+        "chrome_version": "",
+        "chromedriver_version": "",
+        "appium_client_lib_version": "",
+        "fullTitle": "js_storybook / macos-latest | major 0",
+        "duration": 230000,
+        "passed": true
+      },
+      {
+        "package": "Storybook",
+        "version": "5.3.21",
+        "os": "Linux",
+        "selenium": "None",
+        "title": "Storybook version 5.3.21 [Linux] [nodejs 16]",
+        "chrome_version": "",
+        "chromedriver_version": "",
+        "appium_client_lib_version": "",
+        "fullTitle": "js_storybook / ubuntu-latest | major -1",
+        "duration": 123000,
+        "passed": true
+      }
+    ]
+  },
+  {
+    "title": "Appium",
+    "jobs": [
+      {
+        "package": "",
+        "version": "",
+        "os": "ubuntu-latest",
+        "selenium": "sauce",
+        "title": "Javascript Appium [Linux]",
+        "chrome_version": "",
+        "chromedriver_version": "",
+        "appium_client_lib_version": "",
+        "fullTitle": "appium / Javascript appium (ubuntu-latest)",
+        "duration": 493000,
+        "passed": true
+      },
+      {
+        "package": "",
+        "version": "",
+        "os": "windows-latest",
+        "selenium": "sauce",
+        "title": "Javascript Appium [Windows]",
+        "chrome_version": "",
+        "chromedriver_version": "",
+        "appium_client_lib_version": "",
+        "fullTitle": "appium / Javascript appium (windows-latest)",
+        "duration": 581000,
+        "passed": true
+      },
+      {
+        "package": "",
+        "version": "",
+        "os": "macos-latest",
+        "selenium": "sauce",
+        "title": "Javascript Appium [macOS]",
+        "chrome_version": "",
+        "chromedriver_version": "",
+        "appium_client_lib_version": "",
+        "fullTitle": "appium / Javascript appium (macos-latest)",
+        "duration": 469000,
+        "passed": true
+      },
+      {
+        "package": "",
+        "version": "",
+        "os": "ubuntu-latest",
+        "selenium": "sauce",
+        "title": "Java Appium [Linux]  [java version 8]",
+        "chrome_version": "",
+        "chromedriver_version": "",
+        "appium_client_lib_version": "",
+        "fullTitle": "appium / Java Appium (ubuntu-latest)",
+        "duration": 499000,
+        "passed": true
+      },
+      {
+        "package": "",
+        "version": "",
+        "os": "windows-latest",
+        "selenium": "sauce",
+        "title": "Java Appium [Windows]  [java version 8]",
+        "chrome_version": "",
+        "chromedriver_version": "",
+        "appium_client_lib_version": "",
+        "fullTitle": "appium / Java Appium (windows-latest)",
+        "duration": 583000,
+        "passed": true
+      },
+      {
+        "package": "",
+        "version": "",
+        "os": "macos-latest",
+        "selenium": "sauce",
+        "title": "Java Appium [macOS]  [java version 8]",
+        "chrome_version": "",
+        "chromedriver_version": "",
+        "appium_client_lib_version": "",
+        "fullTitle": "appium / Java Appium (macos-latest)",
+        "duration": 454000,
+        "passed": true
+      },
+      {
+        "package": "",
+        "version": "",
+        "os": "ubuntu-latest",
+        "selenium": "sauce",
+        "title": "Dotnet Appium [Linux] [dotnet version 3.1.x]",
+        "chrome_version": "",
+        "chromedriver_version": "",
+        "appium_client_lib_version": "",
+        "fullTitle": "appium / Dotnet  ubuntu-latest",
+        "duration": 294000,
+        "passed": true
+      },
+      {
+        "package": "",
+        "version": "",
+        "os": "windows-latest",
+        "selenium": "sauce",
+        "title": "Dotnet Appium [Windows] [dotnet version 3.1.x]",
+        "chrome_version": "",
+        "chromedriver_version": "",
+        "appium_client_lib_version": "",
+        "fullTitle": "appium / Dotnet  windows-latest",
+        "duration": 557000,
+        "passed": true
+      },
+      {
+        "package": "",
+        "version": "",
+        "os": "macos-latest",
+        "selenium": "sauce",
+        "title": "Dotnet Appium [macOS] [dotnet version 3.1.x]",
+        "chrome_version": "",
+        "chromedriver_version": "",
+        "appium_client_lib_version": "",
+        "fullTitle": "appium / Dotnet  macos-latest",
+        "duration": 310000,
+        "passed": true
+      },
+      {
+        "package": "",
+        "version": "",
+        "os": "ubuntu-latest",
+        "selenium": "sauce",
+        "title": "Python Appium [Linux] [python version 3.10]",
+        "chrome_version": "",
+        "chromedriver_version": "",
+        "appium_client_lib_version": "",
+        "fullTitle": "appium / Python Appium (ubuntu-latest)",
+        "duration": 332000,
+        "passed": true
+      },
+      {
+        "package": "",
+        "version": "",
+        "os": "windows-latest",
+        "selenium": "sauce",
+        "title": "Python Appium [Windows] [python version 3.10]",
+        "chrome_version": "",
+        "chromedriver_version": "",
+        "appium_client_lib_version": "",
+        "fullTitle": "appium / Python Appium (windows-latest)",
+        "duration": 405000,
+        "passed": true
+      },
+      {
+        "package": "",
+        "version": "",
+        "os": "macos-latest",
+        "selenium": "sauce",
+        "title": "Python Appium [macOS] [python version 3.10]",
+        "chrome_version": "",
+        "chromedriver_version": "",
+        "appium_client_lib_version": "",
+        "fullTitle": "appium / Python Appium (macos-latest)",
+        "duration": 372000,
+        "passed": true
+      },
+      {
+        "package": "",
+        "version": "",
+        "os": "ubuntu-latest",
+        "selenium": "sauce",
+        "title": "Ruby Appium [Linux] [ruby version 2.6]",
+        "chrome_version": "",
+        "chromedriver_version": "",
+        "appium_client_lib_version": "",
+        "fullTitle": "appium / Ruby Appium (ubuntu-latest)",
+        "duration": 532000,
+        "passed": true
+      },
+      {
+        "package": "",
+        "version": "",
+        "os": "windows-latest",
+        "selenium": "sauce",
+        "title": "Ruby Appium [Windows] [ruby version 2.6]",
+        "chrome_version": "",
+        "chromedriver_version": "",
+        "appium_client_lib_version": "",
+        "fullTitle": "appium / Ruby Appium (windows-latest)",
+        "duration": 1026000,
+        "passed": true
+      },
+      {
+        "package": "",
+        "version": "",
+        "os": "macos-latest",
+        "selenium": "sauce",
+        "title": "Ruby Appium [macOS] [ruby version 2.6]",
+        "chrome_version": "",
+        "chromedriver_version": "",
+        "appium_client_lib_version": "",
+        "fullTitle": "appium / Ruby Appium (macos-latest)",
+        "duration": 581000,
+        "passed": true
+      }
+    ]
+  },
+  {
+    "title": "Other",
+    "jobs": []
+  }
+]
