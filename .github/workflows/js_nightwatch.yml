@@ -15,24 +15,27 @@ env:
 
 
 jobs:
-  batch_id:
+  setup:
     name: Batch_id
     runs-on: ubuntu-latest
     outputs:
       uuid: ${{ steps.uuid.outputs.uuid }}
+      matrix: ${{ steps.matrix.outputs.matrix }}
     steps:
       - name: generate uuid
         id: uuid
         run: |
           echo "uuid=$(uuidgen)" >> $GITHUB_OUTPUT
+      - uses: actions/checkout@v3
+      - name: generate uuid
+        id: matrix
+        run: |
+          echo "matrix=$(cat ./${{env.work_dir}}/matrix.json)" >> $GITHUB_OUTPUT
   test:
     needs: batch_id
     strategy:
       fail-fast: false
-      matrix:
-        node-version: [ '16' ]
-        os: [windows-latest, ubuntu-latest, macos-latest]
-        exact: [ 1.7.13 ]
+      matrix: ${{ fromJson(needs.setup.outputs.matrix) }}
     runs-on: ${{ matrix.os }}
     timeout-minutes: 15
     env:

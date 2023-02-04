@@ -1,0 +1,5 @@
+{
+  "os": ["windows-latest", "ubuntu-latest", "macos-latest"],
+  "node-version": "16",
+  "exact": " 1.7.13"
+}
