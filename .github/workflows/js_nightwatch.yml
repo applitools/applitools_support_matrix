@@ -29,8 +29,10 @@ jobs:
       - uses: actions/checkout@v3
       - name: generate uuid
         id: matrix
-        run: |
-          echo "matrix=$(cat ./${{env.work_dir}}/matrix.json)" >> $GITHUB_OUTPUT
+        uses: ./.github/actions/setup
+        with:
+          work_dir: ${{env.work_dir}}
+
   test:
     needs: setup
     strategy:

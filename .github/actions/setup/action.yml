@@ -1,0 +1,9 @@
+name: 'Setup matrix'
+description: 'Action which prepare matrix json and output it'
+inputs:
+  work_dir:
+    description: "Dir where are files for data should be checked"
+    required: true
+runs:
+  using: "node16"
+  main: "dist/index.js"
