@@ -32,7 +32,7 @@ jobs:
         run: |
           echo "matrix=$(cat ./${{env.work_dir}}/matrix.json)" >> $GITHUB_OUTPUT
   test:
-    needs: batch_id
+    needs: setup
     strategy:
       fail-fast: false
       matrix: ${{ fromJson(needs.setup.outputs.matrix) }}
