@@ -24,6 +24,7 @@ jobs:
         id: uuid
         run: |
           echo "uuid=$(uuidgen)" >> $GITHUB_OUTPUT
+      - uses: actions/checkout@v3
       - name: generate matrix
         id: matrix
         uses: ./.github/actions/setup
