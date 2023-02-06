@@ -2108,7 +2108,7 @@ Object.defineProperty(exports, "parse", ({
 
 var _v = _interopRequireDefault(__nccwpck_require__(537));
 
-var _v2 = _interopRequireDefault(__nccwpck_require__(76));
+var _v2 = _interopRequireDefault(__nccwpck_require__(246));
 
 var _v3 = _interopRequireDefault(__nccwpck_require__(749));
 
@@ -2461,7 +2461,7 @@ exports["default"] = _default;
 
 /***/ }),
 
-/***/ 76:
+/***/ 246:
 /***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
 
 "use strict";
@@ -2868,9 +2868,8 @@ var external_path_ = __nccwpck_require__(17);
 var external_path_default = /*#__PURE__*/__nccwpck_require__.n(external_path_);
 ;// CONCATENATED MODULE: external "child_process"
 const external_child_process_namespaceObject = require("child_process");
-;// CONCATENATED MODULE: ../util/js/util.js
+;// CONCATENATED MODULE: ../util/Version.js
 
-;
 
 class Version {
     constructor({major, minor, patch}) {
@@ -2897,6 +2896,10 @@ class Version {
     }
 
 }
+;// CONCATENATED MODULE: ../util/common.js
+
+
+
 
 function parseVersion(versionString) {
     const reg_version_parse = /(\d+).(\d+).(\d+)/gm
@@ -2923,6 +2926,40 @@ function strToNum(str) {
     }
     return parsed
 }
+
+function parseInputVersion({version, packageName, cwd}) {
+    const TYPES = {
+        exact: ({minus})=> {
+            return minus
+        },
+        major: getMajorMinus,
+        minor: getMinorMinus,
+        patch: getPatchMinus,
+        latest: ({packageName, cwd}) => {
+            return getLatest(packageName, cwd)
+        },
+    }
+    const arr = getCheck(version)
+    const type = arr[1];
+    const value = arr[2];
+
+    if (!TYPES.hasOwnProperty(type)) throw new Error(`There were wrong input type, ${JSON.stringify(arr)}`)
+    return TYPES[type]({packageName, cwd, minus:value})
+
+
+    function getCheck(str) {
+        const regex = /(\w+)@(.*)/gm
+        return regex.exec(str)
+    }
+
+
+}
+
+
+;// CONCATENATED MODULE: ../util/js/util.js
+
+;
+
 
 function shellCommand(command, cwd) {
     return (0,external_child_process_namespaceObject.execSync)(command, {cwd}).toString();
@@ -2975,31 +3012,15 @@ function getPatchMinus({packageName, cwd, minus}) {
 
 
 
+
 try {
     const packageName = core.getInput('package');
     const dir = core.getInput('working-directory');
     const cwd = external_path_default().join(process.cwd(), dir)
-    let major, minor, patch, version;
-    major = checkInput(core.getInput('major'));
-    minor = checkInput(core.getInput('minor'));
-    patch = checkInput(core.getInput('patch'));
-    const exact = core.getInput("exact")
-    if (exact.length > 0) {
-        version = exact;
-    } else if(major) {
-        version = getMajorMinus({packageName, cwd, minus: major}).toString()
-    } else if (minor) {
-        version = getMinorMinus({packageName, cwd, minus: minor}).toString()
-    } else if (patch) {
-        version = getPatchMinus({packageName, cwd, minus: patch}).toString()
-    } else {
-        version = getLatest(packageName, cwd).toString()
-    }
-
+    let version;
+    version = checkInput(core.getInput("version"))
+    version = parseInputVersion({version, packageName, cwd})
     console.log(`Package name: ${packageName} | type: ${typeof packageName}`)
-    console.log(`Major: ${major} | type: ${typeof major}`)
-    console.log(`Minor: ${minor} | type: ${typeof minor}`)
-    console.log(`Patch: ${patch} | type: ${typeof patch}`)
     console.log(`Dir: ${dir} | type: ${typeof dir}`)
     console.log(cwd)
     shellCommand(`npm install ${packageName}@${version}`, cwd)
