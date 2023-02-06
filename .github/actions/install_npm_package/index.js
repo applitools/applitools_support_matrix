@@ -1,6 +1,6 @@
 import * as core from '@actions/core'
 import path from 'path'
-import {checkInput, shellCommand, getLatest, getPatchMinus, getMinorMinus, getMajorMinus} from "./util";
+import {checkInput, shellCommand, getLatest, getPatchMinus, getMinorMinus, getMajorMinus} from "../util/js/util";
 
 try {
     const packageName = core.getInput('package');
