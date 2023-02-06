@@ -10,6 +10,12 @@ inputs:
   os:
     description: "Current job os"
     required: false
+  matrix_os:
+    description: "Current job matrix os settings"
+    required: false
+  work_dir:
+    description: "Current job working dir"
+    required: false
   selenium:
     description: "Framework selenium usage"
     required: false

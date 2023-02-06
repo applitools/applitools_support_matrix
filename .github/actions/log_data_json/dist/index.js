@@ -2852,6 +2852,8 @@ try {
     const pack = _actions_core__WEBPACK_IMPORTED_MODULE_0__.getInput('package');
     const version = _actions_core__WEBPACK_IMPORTED_MODULE_0__.getInput('version');
     const os = _actions_core__WEBPACK_IMPORTED_MODULE_0__.getInput('os');
+    const matrix_os = _actions_core__WEBPACK_IMPORTED_MODULE_0__.getInput('matrix_os');
+    const work_dir = _actions_core__WEBPACK_IMPORTED_MODULE_0__.getInput('work_dir');
     const selenium = _actions_core__WEBPACK_IMPORTED_MODULE_0__.getInput('selenium');
     const title = _actions_core__WEBPACK_IMPORTED_MODULE_0__.getInput('title');
     const chrome_version = _actions_core__WEBPACK_IMPORTED_MODULE_0__.getInput('chrome_version');
@@ -2861,6 +2863,8 @@ try {
         package: pack,
         version,
         os,
+        matrix_os,
+        work_dir,
         selenium,
         title,
         chrome_version,
