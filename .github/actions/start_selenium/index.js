@@ -12,7 +12,8 @@ const options = {detached: true, stdio: 'ignore'}
 let selenium;
 try {
     const legacy = core.getInput('legacy');
-    console.log(`Selenium version is set to ${legacy === 'true' ? "3" : "4"}!`);
+    const version = legacy === 'true' ? "3" : "4";
+    console.log(`Selenium version is set to ${version}!`);
     if (legacy === 'true') {
         await downloadSelenium(URL_3)
         selenium = spawn("java", ["-jar", DOWNLOADED_SELENIUM_JAR], options)
@@ -27,6 +28,7 @@ try {
     console.log(`Process pid ${selenium.pid}`)
     const time = (new Date()).toTimeString();
     core.setOutput("time", time);
+    core.setOutput("version", version);
 } catch (error) {
     core.setFailed(error.message);
 }

@@ -10,9 +10,12 @@ on:
 permissions:
   contents: read
 
+env:
+  work_dir: 'sdks/js/eyes-webdriverio'
+
 jobs:
-  batch_id:
-    name: Batch_id
+  setup:
+    name: Setup
     runs-on: ubuntu-latest
     outputs:
       uuid: ${{ steps.uuid.outputs.uuid }}
@@ -21,25 +24,27 @@ jobs:
         id: uuid
         run: |
           echo "uuid=$(uuidgen)" >> $GITHUB_OUTPUT
+      - name: generate matrix
+        id: matrix
+        uses: ./.github/actions/setup
+        with:
+          work_dir: ${{env.work_dir}}
   tests:
-    needs: batch_id
+    needs: setup
     strategy:
       fail-fast: false
-      matrix:
-        node-version: [ '16' ]
-        os: [windows-latest, ubuntu-latest, macos-latest]
-        webdriverio-version: ['6','7']
+      matrix: ${{ fromJson(needs.setup.outputs.matrix) }}
     runs-on: ${{ matrix.os }}
     timeout-minutes: 15
-    name:  ${{ matrix.node-version }} | ${{matrix.os}} | ${{matrix.webdriverio-version}}
+    name:  ${{ matrix.node-version }} | ${{matrix.os}} | ${{matrix.version}}
     env:
       APPLITOOLS_DONT_CLOSE_BATCHES: true
       APPLITOOLS_API_KEY: ${{ secrets.APPLITOOLS_API_KEY }}
       APPLITOOLS_BATCH_ID: ${{needs.batch_id.outputs.uuid}}
-      JS_TESTS_CONFIG_NAME: ${{format('eyes-webdriverio/{0}', matrix.webdriverio-version)}}
+      JS_TESTS_CONFIG_NAME: ${{ matrix.js_config}}
     defaults:
       run:
-        working-directory: ${{format('sdks/js/eyes-webdriverio/{0}', matrix.webdriverio-version)}}
+        working-directory: ${{ matrix.work_dir)}}
         shell: bash
     steps:
       - uses: actions/checkout@v3
@@ -48,7 +53,10 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
       - name: Run Selenium
+        id: selenium
         uses: ./.github/actions/start_selenium
+        with:
+          legacy: ${{matrix.selenium_legacy}}
       - name: Log extra info
         id: logging
         run: |
@@ -67,14 +75,23 @@ jobs:
                echo "$RUNNER_OS not supported"
                exit 1
           fi
+      - name: Framework install
+        id: install
+        uses: ./.github/actions/install_npm_package
+        with:
+          package: webdriverio
+          version: ${{matrix.version}}
+          working-directory: ${{matrix.work_dir}}
       - name: Logging version generation
         uses: ./.github/actions/log_data_json
         with:
           package: 'Webdriverio'
-          version: ${{ matrix.webdriverio-version }}
+          version: ${{ steps.install.outputs.package_version }}
           os: ${{runner.os}}
+          matrix_os: ${{matrix.os}}
+          work_dir: ${{matrix.work_dir}}
           title: ${{ format('WebdriverIO {1} [{0}] [nodejs {2}]', runner.os, matrix.webdriverio-version, matrix.node-version) }}
-          selenium: '4'
+          selenium:  ${{ steps.selenium.outputs.version }}
           chrome_version: ${{ steps.logging.outputs.chrome_version }}
           chromedriver_version: ${{ steps.logging.outputs.chromedriver_version }}
       - name: Run tests

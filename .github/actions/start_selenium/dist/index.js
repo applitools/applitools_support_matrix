@@ -33,7 +33,8 @@ const options = {detached: true, stdio: 'ignore'}
 let selenium;
 try {
     const legacy = _actions_core__WEBPACK_IMPORTED_MODULE_0__.getInput('legacy');
-    console.log(`Selenium version is set to ${legacy === 'true' ? "3" : "4"}!`);
+    const version = legacy === 'true' ? "3" : "4";
+    console.log(`Selenium version is set to ${version}!`);
     if (legacy === 'true') {
         await downloadSelenium(URL_3)
         selenium = (0,child_process__WEBPACK_IMPORTED_MODULE_3__.spawn)("java", ["-jar", DOWNLOADED_SELENIUM_JAR], options)
@@ -48,6 +49,7 @@ try {
     console.log(`Process pid ${selenium.pid}`)
     const time = (new Date()).toTimeString();
     _actions_core__WEBPACK_IMPORTED_MODULE_0__.setOutput("time", time);
+    _actions_core__WEBPACK_IMPORTED_MODULE_0__.setOutput("version", version);
 } catch (error) {
     _actions_core__WEBPACK_IMPORTED_MODULE_0__.setFailed(error.message);
 }
