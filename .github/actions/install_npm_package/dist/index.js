@@ -3024,7 +3024,8 @@ try {
     console.log(`Dir: ${dir} | type: ${typeof dir}`)
     console.log(cwd)
     shellCommand(`npm install ${packageName}@${version}`, cwd)
-    const installed_version = shellCommand(`npm list ${packageName}`, cwd)
+    const ls = shellCommand(`npm list`, cwd)
+    const installed_version = new RegExp(` ${packageName}@.*`).exec(ls)[0]
     const time = (new Date()).toTimeString();
     core.setOutput("time", time);
     core.setOutput("package_version", installed_version)
