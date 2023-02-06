@@ -1,6 +1,6 @@
 'use strict'
 import {execSync} from 'child_process'
-import {parseVersion} from '../common'
+import {parseVersion, strToNum} from '../common'
 
 function shellCommand(command, cwd) {
     return execSync(command, {cwd}).toString();
@@ -18,7 +18,9 @@ function getAllVersions(packageName, cwd) {
 
 function getMajorMinus({packageName, cwd, minus}) {
     const latest = getLatest(packageName, cwd);
-    const newMajor = latest.major + minus;
+    let change = strToNum(minus);
+    if (change > 0) change = change * -1;
+    const newMajor = latest.major + change;
     if (newMajor < 0) throw new Error(`Package [${packageName}] latest version is [${latest.toString()}] there a no major version as ${newMajor}`)
     const all = getAllVersions(packageName, cwd);
     return all.filter(ver => ver.major === newMajor)
@@ -27,7 +29,9 @@ function getMajorMinus({packageName, cwd, minus}) {
 
 function getMinorMinus({packageName, cwd, minus}) {
     const latest = getLatest(packageName, cwd);
-    const newMinor = latest.minor + minus;
+    let change = strToNum(minus);
+    if (change > 0) change = change * -1;
+    const newMinor = latest.minor + change;
     if (newMinor < 0) throw new Error(`Package [${packageName}] latest version is [${latest.toString()}] there a no minor version as ${newMinor}`)
     const all = getAllVersions(packageName, cwd);
     return all
@@ -38,7 +42,9 @@ function getMinorMinus({packageName, cwd, minus}) {
 
 function getPatchMinus({packageName, cwd, minus}) {
     const latest = getLatest(packageName, cwd);
-    const newPatch = latest.patch + minus;
+    let change = strToNum(minus);
+    if (change > 0) change = change * -1;
+    const newPatch = latest.patch + change;
     if (newPatch < 0) throw new Error(`Package [${packageName}] latest version is [${latest.toString()}] there a no patch version as ${newPatch}`)
     const all = getAllVersions(packageName, cwd);
     return all
