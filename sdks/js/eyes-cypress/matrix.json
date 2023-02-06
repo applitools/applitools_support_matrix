@@ -1,0 +1,46 @@
+{
+  "include": [
+    {
+      "os": "ubuntu-latest",
+      "node-version": "16",
+      "version": "latest@",
+      "work_dir": "sdks/js/eyes-cypress/v10"
+    },
+    {
+      "os": "windows-latest",
+      "node-version": "16",
+      "version": "latest@",
+      "work_dir": "sdks/js/eyes-cypress/v10"
+    },
+    {
+      "os": "macos-latest",
+      "node-version": "16",
+      "version": "latest@",
+      "work_dir": "sdks/js/eyes-cypress/v10"
+    },
+    {
+      "os": "ubuntu-latest",
+      "node-version": "16",
+      "version": "major@1",
+      "work_dir": "sdks/js/eyes-cypress/v10"
+    },
+    {
+      "os": "ubuntu-latest",
+      "node-version": "16",
+      "version": "exact@9.7.0",
+      "work_dir": "sdks/js/eyes-cypress/v9"
+    },
+    {
+      "os": "ubuntu-latest",
+      "node-version": "16",
+      "version": "exact@9.6.1",
+      "work_dir": "sdks/js/eyes-cypress/v9"
+    },
+    {
+      "os": "ubuntu-latest",
+      "node-version": "16",
+      "version": "exact@8.7.0",
+      "work_dir": "sdks/js/eyes-cypress/v9"
+    }
+  ]
+}
