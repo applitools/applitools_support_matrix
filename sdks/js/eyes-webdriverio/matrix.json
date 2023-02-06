@@ -44,6 +44,54 @@
       "work_dir": "sdks/js/eyes-webdriverio/5",
       "js_config": "eyes-webdriverio/5",
       "selenium_legacy": true
+    },
+    {
+      "os": "windows-latest",
+      "node-version": "16",
+      "version": "exact@6.12.1",
+      "work_dir": "sdks/js/eyes-webdriverio/6",
+      "js_config": "eyes-webdriverio/6",
+      "selenium_legacy": false
+    },
+    {
+      "os": "ubuntu-latest",
+      "node-version": "16",
+      "version": "exact@6.12.1",
+      "work_dir": "sdks/js/eyes-webdriverio/6",
+      "js_config": "eyes-webdriverio/6",
+      "selenium_legacy": false
+    },
+    {
+      "os": "macos-latest",
+      "node-version": "16",
+      "version": "exact@6.12.1",
+      "work_dir": "sdks/js/eyes-webdriverio/6",
+      "js_config": "eyes-webdriverio/6",
+      "selenium_legacy": false
+    },
+    {
+      "os": "windows-latest",
+      "node-version": "16",
+      "version": "exact@v7",
+      "work_dir": "sdks/js/eyes-webdriverio/7",
+      "js_config": "eyes-webdriverio/7",
+      "selenium_legacy": false
+    },
+    {
+      "os": "ubuntu-latest",
+      "node-version": "16",
+      "version": "exact@v7",
+      "work_dir": "sdks/js/eyes-webdriverio/7",
+      "js_config": "eyes-webdriverio/7",
+      "selenium_legacy": false
+    },
+    {
+      "os": "macos-latest",
+      "node-version": "16",
+      "version": "exact@v7",
+      "work_dir": "sdks/js/eyes-webdriverio/7",
+      "js_config": "eyes-webdriverio/7",
+      "selenium_legacy": false
     }
   ]
 }
