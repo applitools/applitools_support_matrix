@@ -2872,6 +2872,7 @@ __nccwpck_require__.r(__webpack_exports__);
 const work_dir = _actions_core__WEBPACK_IMPORTED_MODULE_0__.getInput('work_dir');
 const readedFile =  fs__WEBPACK_IMPORTED_MODULE_1__.readFileSync(path__WEBPACK_IMPORTED_MODULE_2__.join(process.cwd(), work_dir, 'matrix.json')).toString();
 const matrix = JSON.parse(readedFile)
+console.log(JSON.stringify(matrix, null, 3))
 _actions_core__WEBPACK_IMPORTED_MODULE_0__.setOutput("matrix", JSON.stringify(matrix));
 })();
 
