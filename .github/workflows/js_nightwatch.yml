@@ -62,7 +62,7 @@ jobs:
         uses: ./.github/actions/install_npm_package
         with:
           package: nightwatch
-          exact: ${{matrix.exact}}
+          version: ${{matrix.version}}
           working-directory: ${{env.work_dir}}
       - name: Run Install
         run: npm install
