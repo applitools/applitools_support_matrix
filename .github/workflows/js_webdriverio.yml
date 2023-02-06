@@ -44,7 +44,7 @@ jobs:
       JS_TESTS_CONFIG_NAME: ${{ matrix.js_config}}
     defaults:
       run:
-        working-directory: ${{ matrix.work_dir)}}
+        working-directory: ${{ matrix.work_dir }}
         shell: bash
     steps:
       - uses: actions/checkout@v3
