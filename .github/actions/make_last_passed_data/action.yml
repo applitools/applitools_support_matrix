@@ -1,0 +1,13 @@
+name: 'Produce json with data about all cases checked in the run'
+description: 'Github action to generate report for the run'
+inputs:
+  run_id:
+    description: "Run id for which report needs to be generated"
+    required: false
+  token:
+    description: "PAT token to access the github REST API"
+    required: true
+
+runs:
+  using: "node16"
+  main: "dist/index.js"

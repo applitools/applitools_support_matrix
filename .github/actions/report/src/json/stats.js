@@ -1,5 +1,5 @@
 'use strict'
-const {getDuration} = require('../util/date')
+const {getDuration} = require('../../../util/github_rest/date')
 
 class Stats {
     constructor({start, end}) {

@@ -2,11 +2,10 @@
 import * as core from '@actions/core'
 
 import {waitForAllCompletedJob, getJobsBySuites, filterTestsJobs, jobLog} from '../util/github_rest/actions'
-import {Report, Suite, Test} from './src/json'
 import {getDuration, compareDates} from '../util/github_rest/date'
+import uuid from '../util/github_rest/uuid'
 import {Octokit} from '@octokit/rest'
 import * as fs from 'fs'
-import {generator} from './src/generation/generator'
 
 try {
 
@@ -26,10 +25,8 @@ try {
     const end = jobs.map(test => test.completed_at).sort(compareDates)[jobs.length - 1]
     const suites = getJobsBySuites(filtered)
     // Organise and parse raw data Reporting
-    const report = new Report({start, end})
     const run_data = []
     for (const suiteData of suites) {
-        const suite = new Suite({title: suiteData.name, duration: suiteData.duration})
         const run_data_info = {
             title: suiteData.name,
             jobs: []
@@ -46,21 +43,18 @@ try {
             if (logs && typeof logs === 'string') {
                 if (regex.test(logs)) {
                     const json_data = JSON.parse(regex.exec(logs)[1])
-                    if(json_data.title) testData.title = json_data.title;
                     run_data_info.jobs.push({...json_data, ...testData})
-                    testData.code = JSON.stringify(json_data, undefined, 2);
                 }
             }
-            suite.addTest(new Test(testData))
         }
         run_data.push(run_data_info)
-        report.addSuite(suite);
     }
     // Make json file
-    fs.writeFileSync('data.json', JSON.stringify(report, undefined, 2))
-    fs.writeFileSync('run_data.json', JSON.stringify(run_data, undefined, 2))
-    // Make html report
-    await generator.generate()
+    const file = {
+        id: uuid(),
+        data: run_data
+    }
+    fs.writeFileSync('run_data.json', JSON.stringify(file, undefined, 2))
     console.log(1)
 } catch (error) {
     core.setFailed(error.message);

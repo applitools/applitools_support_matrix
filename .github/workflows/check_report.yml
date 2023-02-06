@@ -27,6 +27,11 @@ jobs:
         with:
           token: ${{secrets.PAT}}
           run_id: ${{github.event.inputs.run_id}}
+      - name: Report data generation
+        uses: ./.github/actions/make_last_passed_data
+        with:
+          token: ${{secrets.PAT}}
+          run_id: ${{github.event.inputs.run_id}}
       - name: Check files
         run: |
           pwd
@@ -36,8 +41,7 @@ jobs:
           git config --global user.email 'autosupport@users.noreply.github.com'
           git status
           git add run_data.json
-          git add report.html
-          git commit -m "Update run_data.json and report.html"
+          git commit -m "Update run_data.json"
           git push
       - name: Upload report as artifact
         uses: actions/upload-artifact@v3

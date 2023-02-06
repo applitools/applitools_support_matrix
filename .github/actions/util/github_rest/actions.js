@@ -1,7 +1,7 @@
 'use strict'
 
-import {TEST_MATRIX, MATRIX_MAPPING} from "../enums/testMatrix";
-import MS from "../enums/time";
+import {TEST_MATRIX, MATRIX_MAPPING} from "./enums/testMatrix";
+import MS from "./enums/time";
 import {getJobsDuration} from "./date";
 import https from "https";
 
