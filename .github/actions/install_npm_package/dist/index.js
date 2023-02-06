@@ -3018,7 +3018,7 @@ try {
     const dir = core.getInput('working-directory');
     const cwd = external_path_default().join(process.cwd(), dir)
     let version;
-    version = checkInput(core.getInput("version"))
+    version = core.getInput("version")
     version = parseInputVersion({version, packageName, cwd})
     console.log(`Package name: ${packageName} | type: ${typeof packageName}`)
     console.log(`Dir: ${dir} | type: ${typeof dir}`)

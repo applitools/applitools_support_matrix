@@ -1,14 +1,14 @@
 import * as core from '@actions/core'
 import path from 'path'
 import {shellCommand} from "../util/js/util";
-import {checkInput, parseInputVersion} from "../util/common";
+import {parseInputVersion} from "../util/common";
 
 try {
     const packageName = core.getInput('package');
     const dir = core.getInput('working-directory');
     const cwd = path.join(process.cwd(), dir)
     let version;
-    version = checkInput(core.getInput("version"))
+    version = core.getInput("version")
     version = parseInputVersion({version, packageName, cwd})
     console.log(`Package name: ${packageName} | type: ${typeof packageName}`)
     console.log(`Dir: ${dir} | type: ${typeof dir}`)
