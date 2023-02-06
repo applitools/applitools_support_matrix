@@ -26,6 +26,7 @@
       "node-version": "16",
       "version": "exact@5.23.0",
       "work_dir": "sdks/js/eyes-webdriverio/5",
+      "js_config": "eyes-webdriverio/5",
       "selenium_legacy": true
     },
     {
@@ -33,6 +34,7 @@
       "node-version": "16",
       "version": "exact@5.23.0",
       "work_dir": "sdks/js/eyes-webdriverio/5",
+      "js_config": "eyes-webdriverio/5",
       "selenium_legacy": true
     },
     {
@@ -40,6 +42,7 @@
       "node-version": "16",
       "version": "exact@5.23.0",
       "work_dir": "sdks/js/eyes-webdriverio/5",
+      "js_config": "eyes-webdriverio/5",
       "selenium_legacy": true
     }
   ]
