@@ -3024,9 +3024,10 @@ try {
     console.log(`Dir: ${dir} | type: ${typeof dir}`)
     console.log(cwd)
     shellCommand(`npm install ${packageName}@${version}`, cwd)
+    const installed_version = shellCommand(`npm list ${packageName}`, cwd)
     const time = (new Date()).toTimeString();
     core.setOutput("time", time);
-    core.setOutput("package_version", version)
+    core.setOutput("package_version", installed_version)
 } catch (error) {
     core.setFailed(error.message);
 }

@@ -92,6 +92,14 @@
       "work_dir": "sdks/js/eyes-webdriverio/7",
       "js_config": "eyes-webdriverio/7",
       "selenium_legacy": false
+    },
+    {
+      "os": "ubuntu-latest",
+      "node-version": "16",
+      "version": "latest@",
+      "work_dir": "sdks/js/eyes-webdriverio/7",
+      "js_config": "eyes-webdriverio/7",
+      "selenium_legacy": false
     }
   ]
 }
