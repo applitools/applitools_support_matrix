@@ -93,6 +93,8 @@ jobs:
           package: 'Nightwatch'
           version: ${{ steps.install.outputs.package_version }}
           os: ${{runner.os}}
+          matrix_os: ${{matrix.os}}
+          work_dir: ${{matrix.work_dir}}
           title: ${{ format('Nightwatch version {1} [{0}] [nodejs {2}]', runner.os, steps.install.outputs.package_version, matrix.node-version) }}
           selenium: ${{ steps.selenium.outputs.version }}
           chrome_version: ${{ steps.logging.outputs.chrome_version }}
