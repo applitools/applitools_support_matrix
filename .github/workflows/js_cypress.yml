@@ -2,7 +2,19 @@ name: JS Cypress
 
 on:
   workflow_dispatch:
+    inputs:
+      last_passed:
+        description: ' Check to make last passed run'
+        default: false
+        required: true
+        type: boolean
   workflow_call:
+    inputs:
+      last_passed:
+        description: 'choose which version of the frameworks should be used (latest | last passed)'
+        default: false
+        required: true
+        type: boolean
     secrets:
       APPLITOOLS_API_KEY:
         required: true
@@ -32,6 +44,7 @@ jobs:
         uses: ./.github/actions/setup
         with:
           work_dir: ${{env.work_dir}}
+          last_passed: ${{inputs.last_passed}}
   test:
     needs: setup
     strategy:

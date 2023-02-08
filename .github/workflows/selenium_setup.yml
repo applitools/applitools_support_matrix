@@ -1,0 +1,31 @@
+name: Pre run Setup
+
+on:
+  workflow_call:
+    inputs:
+      last_passed:
+        description: 'choose which version of the frameworks should be used (latest | last passed)'
+        default: false
+        required: true
+        type: boolean
+
+
+
+setup:
+  name: Setup
+  runs-on: ubuntu-latest
+  outputs:
+    uuid: ${{ steps.uuid.outputs.uuid }}
+    matrix: ${{ steps.matrix.outputs.matrix}}
+  steps:
+    - name: generate uuid
+      id: uuid
+      run: |
+        echo "uuid=$(uuidgen)" >> $GITHUB_OUTPUT
+    - uses: actions/checkout@v3
+    - name: generate matrix
+      id: matrix
+      uses: ./.github/actions/setup
+      with:
+        work_dir: ${{env.work_dir}}
+        last_passed: ${{inputs.last_passed}}
