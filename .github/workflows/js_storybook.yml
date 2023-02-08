@@ -2,7 +2,19 @@ name: JS Storybook
 
 on:
   workflow_dispatch:
+    inputs:
+      last_passed:
+        description: ' Check to make last passed run'
+        default: false
+        required: true
+        type: boolean
   workflow_call:
+    inputs:
+      last_passed:
+        description: 'choose which version of the frameworks should be used (latest | last passed)'
+        default: false
+        required: true
+        type: boolean
     secrets:
       APPLITOOLS_API_KEY:
         required: true
@@ -14,30 +26,29 @@ env:
   work_dir: 'sdks/js/eyes-storybook'
 
 jobs:
-  batch_id:
-    name: Batch_id
+  setup:
+    name: Setup
     runs-on: ubuntu-latest
     outputs:
       uuid: ${{ steps.uuid.outputs.uuid }}
+      matrix: ${{ steps.matrix.outputs.matrix}}
     steps:
       - name: generate uuid
         id: uuid
         run: |
           echo "uuid=$(uuidgen)" >> $GITHUB_OUTPUT
+      - uses: actions/checkout@v3
+      - name: generate matrix
+        id: matrix
+        uses: ./.github/actions/setup
+        with:
+          work_dir: ${{env.work_dir}}
+          last_passed: ${{inputs.last_passed}}
   test:
-    needs: batch_id
+    needs: setup
     strategy:
       fail-fast: false
-      matrix:
-        node-version: [ '16' ]
-        os: [windows-latest, ubuntu-latest, macos-latest]
-        major: [ 0 ]
-        branch: [ 'latest-story' ]
-        include:
-          - node-version: '16'
-            os: ubuntu-latest
-            major: -1
-            branch: 'minus-story'
+      matrix: ${{ fromJson(needs.setup.outputs.matrix) }}
     runs-on: ${{ matrix.os }}
     timeout-minutes: 15
     env:
@@ -45,10 +56,10 @@ jobs:
       APPLITOOLS_API_KEY: ${{ secrets.APPLITOOLS_API_KEY }}
       APPLITOOLS_BATCH_ID: ${{needs.batch_id.outputs.uuid}}
       APPLITOOLS_BRANCH_NAME: ${{matrix.branch}}
-    name: ${{matrix.os}} | major ${{matrix.major}}
+    name: ${{matrix.os}} | ${{matrix.version}}
     defaults:
       run:
-        working-directory: ${{env.work_dir}}
+        working-directory: ${{matrix.work_dir}}
         shell: bash
     steps:
       - uses: actions/checkout@v3
@@ -61,8 +72,8 @@ jobs:
         uses: ./.github/actions/install_npm_package
         with:
           package: '@storybook/react'
-          major: ${{matrix.major}}
-          working-directory: ${{env.work_dir}}
+          version: ${{matrix.version}}
+          working-directory: ${{matrix.work_dir}}
       - name: Run Install
         run: npm install
       - name: Log installed packages
@@ -70,9 +81,11 @@ jobs:
       - name: Logging version generation
         uses: ./.github/actions/log_data_json
         with:
-          package: 'Storybook'
+          package: ${{ steps.install.outputs.package_name }}
           version: ${{ steps.install.outputs.package_version }}
           os: ${{runner.os}}
+          matrix_os: ${{matrix.os}}
+          work_dir: ${{matrix.work_dir}}
           title: ${{ format('Storybook version {1} [{0}] [nodejs {2}]', runner.os, steps.install.outputs.package_version, matrix.node-version) }}
           selenium: 'None'
       - name: Run tests
