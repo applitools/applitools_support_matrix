@@ -22,15 +22,12 @@ on:
 permissions:
   contents: read
 
-env:
-  work_dir: 'sdks/js/eyes-selenium'
-
 jobs:
   setup:
     uses: ./.github/workflows/selenium_setup.yml
     with:
-      last_passed: ${{inputs.last_passed}}
-      work_dir: ${{env.work_dir}}
+      last_passed: ${{ inputs.last_passed }}
+      work_dir: 'sdks/js/eyes-selenium'
   test:
     needs: setup
     strategy:
