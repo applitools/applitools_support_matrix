@@ -34,7 +34,7 @@ try {
     console.log(`Process pid ${selenium.pid}`)
     const time = (new Date()).toTimeString();
     core.setOutput("time", time);
-    core.setOutput("version", installed_version);
+    core.setOutput("version", installed_version.toString());
 } catch (error) {
     core.setFailed(error.message);
 }

@@ -53,7 +53,7 @@ try {
     console.log(`Process pid ${selenium.pid}`)
     const time = (new Date()).toTimeString();
     _actions_core__WEBPACK_IMPORTED_MODULE_0__.setOutput("time", time);
-    _actions_core__WEBPACK_IMPORTED_MODULE_0__.setOutput("version", installed_version);
+    _actions_core__WEBPACK_IMPORTED_MODULE_0__.setOutput("version", installed_version.toString());
 } catch (error) {
     _actions_core__WEBPACK_IMPORTED_MODULE_0__.setFailed(error.message);
 }
