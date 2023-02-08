@@ -16,14 +16,14 @@ try {
     let installed_version;
     if (legacy === 'true') {
         await downloadSelenium(URL_3)
-        installed_version = execSync(`java -jar ${DOWNLOADED_SELENIUM_JAR} --version`)
+        // installed_version = execSync(`java -jar ${DOWNLOADED_SELENIUM_JAR} --version`)
         selenium = spawn("java", ["-jar", DOWNLOADED_SELENIUM_JAR], options)
     } else {
         if (process.env.RUNNER_OS === "macOS") {
-            installed_version = execSync(`selenium-server standalone --version`)
+            // installed_version = execSync(`selenium-server standalone --version`)
             selenium = spawn("selenium-server", ["standalone"], options)
         } else {
-            installed_version = execSync(`java -jar ${process.env.SELENIUM_JAR_PATH} standalone --version`)
+            // installed_version = execSync(`java -jar ${process.env.SELENIUM_JAR_PATH} standalone --version`)
             selenium = spawn("java", ["-jar", process.env.SELENIUM_JAR_PATH, "standalone"], options)
 
         }
