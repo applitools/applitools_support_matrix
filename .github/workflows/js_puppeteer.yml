@@ -19,6 +19,7 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       uuid: ${{ steps.uuid.outputs.uuid }}
+      matrix: ${{ steps.matrix.outputs.matrix}}
     steps:
       - name: generate uuid
         id: uuid
