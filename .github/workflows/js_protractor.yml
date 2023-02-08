@@ -15,7 +15,7 @@ env:
 
 jobs:
   setup:
-    name: Batch_id
+    name: Setup
     runs-on: ubuntu-latest
     outputs:
       uuid: ${{ steps.uuid.outputs.uuid }}
