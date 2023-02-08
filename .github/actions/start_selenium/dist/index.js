@@ -35,14 +35,14 @@ try {
     let installed_version;
     if (legacy === 'true') {
         await downloadSelenium(URL_3)
-        // installed_version = execSync(`java -jar ${DOWNLOADED_SELENIUM_JAR} --version`)
+        installed_version = (0,child_process__WEBPACK_IMPORTED_MODULE_2__.execSync)(`java -jar ${DOWNLOADED_SELENIUM_JAR} --version`)
         selenium = (0,child_process__WEBPACK_IMPORTED_MODULE_2__.spawn)("java", ["-jar", DOWNLOADED_SELENIUM_JAR], options)
     } else {
         if (process.env.RUNNER_OS === "macOS") {
-            // installed_version = execSync(`selenium-server standalone --version`)
+            installed_version = (0,child_process__WEBPACK_IMPORTED_MODULE_2__.execSync)(`selenium-server standalone --version`)
             selenium = (0,child_process__WEBPACK_IMPORTED_MODULE_2__.spawn)("selenium-server", ["standalone"], options)
         } else {
-            // installed_version = execSync(`java -jar ${process.env.SELENIUM_JAR_PATH} standalone --version`)
+            installed_version = (0,child_process__WEBPACK_IMPORTED_MODULE_2__.execSync)(`java -jar ${process.env.SELENIUM_JAR_PATH} standalone --version`)
             selenium = (0,child_process__WEBPACK_IMPORTED_MODULE_2__.spawn)("java", ["-jar", process.env.SELENIUM_JAR_PATH, "standalone"], options)
 
         }
@@ -53,7 +53,7 @@ try {
     console.log(`Process pid ${selenium.pid}`)
     const time = (new Date()).toTimeString();
     _actions_core__WEBPACK_IMPORTED_MODULE_0__.setOutput("time", time);
-    _actions_core__WEBPACK_IMPORTED_MODULE_0__.setOutput("version", version);
+    _actions_core__WEBPACK_IMPORTED_MODULE_0__.setOutput("version", installed_version);
 } catch (error) {
     _actions_core__WEBPACK_IMPORTED_MODULE_0__.setFailed(error.message);
 }
