@@ -1,0 +1,19 @@
+{
+  "include": [
+    {
+      "os": "ubuntu-latest",
+      "ruby-version": "2.6",
+      "work_dir": "sdks/ruby"
+    },
+    {
+      "os": "windows-latest",
+      "ruby-version": "2.6",
+      "work_dir": "sdks/ruby"
+    },
+    {
+      "os": "macos-latest",
+      "ruby-version": "2.6",
+      "work_dir": "sdks/ruby"
+    }
+  ]
+}

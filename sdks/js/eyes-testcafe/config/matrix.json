@@ -13,12 +13,6 @@
       "work_dir": "sdks/js/eyes-testcafe"
     },
     {
-      "os": "macos-latest",
-      "node-version": "16",
-      "version": "latest@",
-      "work_dir": "sdks/js/eyes-testcafe"
-    },
-    {
       "os": "ubuntu-latest",
       "node-version": "16",
       "version": "major@1",

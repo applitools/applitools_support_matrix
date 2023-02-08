@@ -1,0 +1,19 @@
+{
+  "include": [
+    {
+      "os": "ubuntu-latest",
+      "python-version": "3.10",
+      "work_dir": "sdks/python"
+    },
+    {
+      "os": "windows-latest",
+      "python-version": "3.10",
+      "work_dir": "sdks/python"
+    },
+    {
+      "os": "macos-latest",
+      "python-version": "3.10",
+      "work_dir": "sdks/python"
+    }
+  ]
+}

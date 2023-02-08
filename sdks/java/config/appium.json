@@ -1,0 +1,19 @@
+{
+  "include": [
+    {
+      "os": "ubuntu-latest",
+      "java-version": "8",
+      "work_dir": "sdks/java"
+    },
+    {
+      "os": "windows-latest",
+      "java-version": "8",
+      "work_dir": "sdks/java"
+    },
+    {
+      "os": "macos-latest",
+      "java-version": "8",
+      "work_dir": "sdks/java"
+    }
+  ]
+}
