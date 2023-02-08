@@ -31,5 +31,5 @@ jobs:
         id: matrix
         uses: ./.github/actions/setup
         with:
-          work_dir: ${{env.work_dir}}
+          work_dir: ${{inputs.work_dir}}
           last_passed: ${{inputs.last_passed}}
