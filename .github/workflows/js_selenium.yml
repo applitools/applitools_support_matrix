@@ -27,7 +27,7 @@ env:
 
 jobs:
   setup:
-    uses: ./.github/workflows/js_selenium.yml
+    uses: ./.github/workflows/selenium_setup.yml
     with:
       last_passed: ${{last_passed}}
   test:
