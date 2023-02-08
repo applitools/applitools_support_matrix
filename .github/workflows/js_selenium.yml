@@ -30,6 +30,7 @@ jobs:
     uses: ./.github/workflows/selenium_setup.yml
     with:
       last_passed: ${{inputs.last_passed}}
+      work_dir: ${{env.work_dir}}
   test:
     needs: setup
     strategy:

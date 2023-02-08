@@ -3,6 +3,10 @@ name: Pre run Setup
 on:
   workflow_call:
     inputs:
+      work_dir:
+        description: 'Dir where are setup actions should be invoked'
+        required: true
+        type: string
       last_passed:
         description: 'choose which version of the frameworks should be used (latest | last passed)'
         default: false
