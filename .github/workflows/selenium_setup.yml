@@ -12,6 +12,13 @@ on:
         default: false
         required: true
         type: boolean
+    outputs:
+      uuid:
+        description: "UUID of the batch which should be used in the matrix"
+        value: ${{jobs.setup.outputs.uuid}}
+      matrix:
+        description: "JSON which is used for the matrix generation"
+        value: ${{jobs.setup.outputs.matrix}}
 
 
 jobs:
