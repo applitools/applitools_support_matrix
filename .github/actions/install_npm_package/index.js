@@ -15,10 +15,13 @@ try {
     console.log(cwd)
     shellCommand(`npm install ${packageName}@${version}`, cwd)
     const ls = shellCommand(`npm list`, cwd)
-    const installed_version = new RegExp(` ${packageName}@.*`).exec(ls)[0]
+    const regResult = new RegExp(` (${packageName})@(.*)`).exec(ls)
+    const installed_name = regResult[1];
+    const installed_version = regResult[2];
     const time = (new Date()).toTimeString();
     core.setOutput("time", time);
     core.setOutput("package_version", installed_version)
+    core.setOutput("package_name" , installed_name)
 } catch (error) {
     core.setFailed(error.message);
 }
