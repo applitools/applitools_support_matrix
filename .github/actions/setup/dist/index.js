@@ -2870,7 +2870,10 @@ __nccwpck_require__.r(__webpack_exports__);
 
 
 const work_dir = _actions_core__WEBPACK_IMPORTED_MODULE_0__.getInput('work_dir');
-const readedFile =  fs__WEBPACK_IMPORTED_MODULE_1__.readFileSync(path__WEBPACK_IMPORTED_MODULE_2__.join(process.cwd(), work_dir, 'matrix.json')).toString();
+const config_file = _actions_core__WEBPACK_IMPORTED_MODULE_0__.getInput('config_file');
+const use_last_passed = _actions_core__WEBPACK_IMPORTED_MODULE_0__.getInput('last_passed');
+const fileName = use_last_passed ? `${config_file}_passed.json` : `${config_file}.json`
+const readedFile =  fs__WEBPACK_IMPORTED_MODULE_1__.readFileSync(__nccwpck_require__.ab + "setup/" + work_dir + '/' + fileName).toString();
 const matrix = JSON.parse(readedFile)
 console.log(JSON.stringify(matrix, null, 3))
 _actions_core__WEBPACK_IMPORTED_MODULE_0__.setOutput("matrix", JSON.stringify(matrix));

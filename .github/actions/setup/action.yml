@@ -4,6 +4,13 @@ inputs:
   work_dir:
     description: "Dir where are files for data should be checked"
     required: true
+  last_passed:
+    description: "choose which version of the frameworks should be used (latest | last passed)"
+    required: true
+  config_file:
+    description: "Json file which should contain setup information"
+    required: false
+    default: matrix
 runs:
   using: "node16"
   main: "dist/index.js"
