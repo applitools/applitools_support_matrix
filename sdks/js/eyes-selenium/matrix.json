@@ -1,0 +1,25 @@
+{
+  "include": [
+    {
+      "os": "ubuntu-latest",
+      "node-version": "16",
+      "version": "latest@",
+      "work_dir": "sdks/js/eyes-selenium",
+      "js_config": "eyes-selenium"
+    },
+    {
+      "os": "windows-latest",
+      "node-version": "16",
+      "version": "latest@",
+      "work_dir": "sdks/js/eyes-selenium",
+      "js_config": "eyes-selenium"
+    },
+    {
+      "os": "macos-latest",
+      "node-version": "16",
+      "version": "latest@",
+      "work_dir": "sdks/js/eyes-selenium",
+      "js_config": "eyes-selenium"
+    }
+  ]
+}
