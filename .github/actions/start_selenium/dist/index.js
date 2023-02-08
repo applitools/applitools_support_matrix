@@ -38,11 +38,12 @@ try {
         selenium = (0,child_process__WEBPACK_IMPORTED_MODULE_1__.spawn)("java", ["-jar", DOWNLOADED_SELENIUM_JAR], options)
     } else {
         if (process.env.RUNNER_OS === "macOS") {
-            selenium = (0,child_process__WEBPACK_IMPORTED_MODULE_1__.spawn)("selenium-server", ["standalone"], options)
             installed_version = (0,child_process__WEBPACK_IMPORTED_MODULE_1__.execSync)(`selenium-server standalone --version`)
+            selenium = (0,child_process__WEBPACK_IMPORTED_MODULE_1__.spawn)("selenium-server", ["standalone"], options)
         } else {
-            selenium = (0,child_process__WEBPACK_IMPORTED_MODULE_1__.spawn)("java", ["-jar", process.env.SELENIUM_JAR_PATH, "standalone"], options)
             installed_version = (0,child_process__WEBPACK_IMPORTED_MODULE_1__.execSync)(`java -jar ${process.env.SELENIUM_JAR_PATH} standalone --version`)
+            selenium = (0,child_process__WEBPACK_IMPORTED_MODULE_1__.spawn)("java", ["-jar", process.env.SELENIUM_JAR_PATH, "standalone"], options)
+
         }
     }
     selenium.unref();

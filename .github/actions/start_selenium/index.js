@@ -20,11 +20,12 @@ try {
         selenium = spawn("java", ["-jar", DOWNLOADED_SELENIUM_JAR], options)
     } else {
         if (process.env.RUNNER_OS === "macOS") {
-            selenium = spawn("selenium-server", ["standalone"], options)
             installed_version = execSync(`selenium-server standalone --version`)
+            selenium = spawn("selenium-server", ["standalone"], options)
         } else {
-            selenium = spawn("java", ["-jar", process.env.SELENIUM_JAR_PATH, "standalone"], options)
             installed_version = execSync(`java -jar ${process.env.SELENIUM_JAR_PATH} standalone --version`)
+            selenium = spawn("java", ["-jar", process.env.SELENIUM_JAR_PATH, "standalone"], options)
+
         }
     }
     selenium.unref();
