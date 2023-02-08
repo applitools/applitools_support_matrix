@@ -95,7 +95,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     timeout-minutes: 30
     env:
-      APPLITOOLS_BATCH_ID: ${{needs.batch_id.outputs.uuid}}
+      APPLITOOLS_BATCH_ID: ${{needs.setup.outputs.uuid}}
       JS_TESTS_CONFIG_NAME: ${{matrix.js_config}}
       work_dir: ${{matrix.work_dir}}
     name: Javascript appium
@@ -128,7 +128,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     timeout-minutes: 30
     env:
-      APPLITOOLS_BATCH_ID: ${{needs.batch_id.outputs.uuid}}
+      APPLITOOLS_BATCH_ID: ${{needs.setup.outputs.uuid}}
     name: 'Java Appium'
     defaults:
       run:
@@ -163,7 +163,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     timeout-minutes: 30
     env:
-      APPLITOOLS_BATCH_ID: ${{needs.batch_id.outputs.uuid}}
+      APPLITOOLS_BATCH_ID: ${{needs.setup.outputs.uuid}}
     defaults:
       run:
         working-directory: ${{matrix.work_dir}}
@@ -194,7 +194,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     timeout-minutes: 30
     env:
-      APPLITOOLS_BATCH_ID: ${{needs.batch_id.outputs.uuid}}
+      APPLITOOLS_BATCH_ID: ${{needs.setup.outputs.uuid}}
     defaults:
       run:
         working-directory: ${{matrix.work_dir}}
@@ -228,7 +228,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     timeout-minutes: 30
     env:
-      APPLITOOLS_BATCH_ID: ${{needs.batch_id.outputs.uuid}}
+      APPLITOOLS_BATCH_ID: ${{needs.setup.outputs.uuid}}
     defaults:
       run:
         working-directory: ${{matrix.work_dir}}
