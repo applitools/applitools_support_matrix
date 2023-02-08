@@ -24,13 +24,6 @@
     {
       "os": "ubuntu-latest",
       "node-version": "16",
-      "version": "major@1",
-      "work_dir": "sdks/js/eyes-protractor",
-      "js_config": "eyes-protractor"
-    },
-    {
-      "os": "ubuntu-latest",
-      "node-version": "16",
       "version": "major@2",
       "work_dir": "sdks/js/eyes-protractor",
       "js_config": "eyes-protractor"
