@@ -41,7 +41,6 @@ jobs:
         with:
           work_dir: 'sdks/js/eyes-testcafe'
           last_passed: ${{inputs.last_passed}}
-
   test:
     needs: setup
     strategy:
@@ -60,7 +59,7 @@ jobs:
         shell: bash
     steps:
       - uses: actions/checkout@v3
-    - name: Test
-      uses: ./.github/actions/js_test
-      with:
-        work_dir: ${{matrix.work_dir}}
+      - name: Test
+        uses: ./.github/actions/js_test
+        with:
+          work_dir: ${{matrix.work_dir}}
