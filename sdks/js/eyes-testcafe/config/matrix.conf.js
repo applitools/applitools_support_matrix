@@ -1,5 +1,5 @@
 const common = {
-    "node-version": "18",
+    "node-version": "16",
     "work_dir": "sdks/js/eyes-testcafe",
     "framework_package": "testcafe",
     test_command: "npm test"
