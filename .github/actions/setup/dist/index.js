@@ -2688,6 +2688,15 @@ exports["default"] = _default;
 
 /***/ }),
 
+/***/ 175:
+/***/ ((module) => {
+
+module.exports = {
+    test: 'a'
+}
+
+/***/ }),
+
 /***/ 157:
 /***/ ((module) => {
 
@@ -2700,6 +2709,35 @@ webpackEmptyContext.keys = () => ([]);
 webpackEmptyContext.resolve = webpackEmptyContext;
 webpackEmptyContext.id = 157;
 module.exports = webpackEmptyContext;
+
+/***/ }),
+
+/***/ 786:
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
+
+var map = {
+	"./test.conf.js": 175
+};
+
+
+function webpackContext(req) {
+	var id = webpackContextResolve(req);
+	return __nccwpck_require__(id);
+}
+function webpackContextResolve(req) {
+	if(!__nccwpck_require__.o(map, req)) {
+		var e = new Error("Cannot find module '" + req + "'");
+		e.code = 'MODULE_NOT_FOUND';
+		throw e;
+	}
+	return map[req];
+}
+webpackContext.keys = function webpackContextKeys() {
+	return Object.keys(map);
+};
+webpackContext.resolve = webpackContextResolve;
+module.exports = webpackContext;
+webpackContext.id = 786;
 
 /***/ }),
 
@@ -2887,6 +2925,7 @@ const use_last_passed = (0,_actions_core__WEBPACK_IMPORTED_MODULE_0__.getBoolean
 const fileName = use_last_passed ? `${config_file}_passed.conf.js` : `${config_file}.conf.js`
 // Adding hardcoded string is required for ncc to build it properly into 1 file
 const filePath = path__WEBPACK_IMPORTED_MODULE_1__.join(process.cwd(), work_dir, 'config',  fileName)
+console.log(__nccwpck_require__(786)(__nccwpck_require__.ab + "test.conf.js"))
 const readedFile =  __nccwpck_require__(157)(filePath)
 const matrix = JSON.parse(readedFile)
 console.log(JSON.stringify(matrix, null, 3))
