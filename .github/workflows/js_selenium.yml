@@ -24,10 +24,23 @@ permissions:
 
 jobs:
   setup:
-    uses: ./.github/workflows/selenium_setup.yml
-    with:
-      last_passed: ${{ inputs.last_passed }}
-      work_dir: 'sdks/js/eyes-selenium'
+    name: Setup
+    runs-on: ubuntu-latest
+    outputs:
+      uuid: ${{ steps.uuid.outputs.uuid }}
+      matrix: ${{ steps.matrix.outputs.matrix}}
+    steps:
+      - name: generate uuid
+        id: uuid
+        run: |
+          echo "uuid=$(uuidgen)" >> $GITHUB_OUTPUT
+      - uses: actions/checkout@v3
+      - name: generate matrix
+        id: matrix
+        uses: ./.github/actions/setup
+        with:
+          work_dir: ${{inputs.work_dir}}
+          last_passed: ${{inputs.last_passed}}
   test:
     needs: setup
     strategy:
@@ -47,51 +60,55 @@ jobs:
         shell: bash
     steps:
       - uses: actions/checkout@v3
-      - name: Setup node
-        uses: actions/setup-node@v3
+      - name: Test
+        uses: ./.github/actions/js_test
         with:
-          node-version: ${{ matrix.node-version }}
-      - name: Start Selenium Server
-        id: selenium
-        uses: ./.github/actions/start_selenium
-      - name: Framework install
-        id: install
-        uses: ./.github/actions/install_npm_package
-        with:
-          package: selenium-webdriver
-          version: ${{matrix.version}}
-          working-directory: ${{matrix.work_dir}}
-      - name: Log extra info
-        id: logging
-        run: |
-          chromedriver --version
-          echo "chromedriver_version=$(chromedriver --version)" >> $GITHUB_OUTPUT
-          if [ "$RUNNER_OS" == "Linux" ]; then
-               google-chrome --version
-               echo "chrome_version=$(google-chrome --version)" >> $GITHUB_OUTPUT
-          elif [ "$RUNNER_OS" == "Windows" ]; then
-               powershell.exe -command "(Get-Item 'C:\Program Files\Google\Chrome\Application\chrome.exe').VersionInfo.ProductVersion"
-               echo "chrome_version=$(powershell.exe -command "(Get-Item 'C:\Program Files\Google\Chrome\Application\chrome.exe').VersionInfo.ProductVersion")" >> $GITHUB_OUTPUT
-          elif [ "$RUNNER_OS" == "macOS" ]; then
-               /Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --version 
-               echo "chrome_version=$(/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --version)" >> $GITHUB_OUTPUT
-          else
-               echo "$RUNNER_OS not supported"
-               exit 1
-          fi
-      - name: Logging version generation
-        uses: ./.github/actions/log_data_json
-        with:
-          package: ${{ steps.install.outputs.package_name }}
-          version: ${{ steps.install.outputs.package_version }}
-          os: ${{runner.os}}
-          title: ${{ format('JS Selenium SDK [{0}] [nodejs {1}] | Pure selenium', runner.os, matrix.node-version) }}
-          matrix_os: ${{matrix.os}}
           work_dir: ${{matrix.work_dir}}
-          selenium:  ${{ steps.selenium.outputs.version }}
-          chrome_version: ${{ steps.logging.outputs.chrome_version }}
-          chromedriver_version: ${{ steps.logging.outputs.chromedriver_version }}
-      - name: Run tests
-        run: |
-          npm install
-          npm test
+#      - name: Setup node
+#        uses: actions/setup-node@v3
+#        with:
+#          node-version: ${{ matrix.node-version }}
+#      - name: Start Selenium Server
+#        id: selenium
+#        uses: ./.github/actions/start_selenium
+#      - name: Framework install
+#        id: install
+#        uses: ./.github/actions/install_npm_package
+#        with:
+#          package: selenium-webdriver
+#          version: ${{matrix.version}}
+#          working-directory: ${{matrix.work_dir}}
+#      - name: Log extra info
+#        id: logging
+#        run: |
+#          chromedriver --version
+#          echo "chromedriver_version=$(chromedriver --version)" >> $GITHUB_OUTPUT
+#          if [ "$RUNNER_OS" == "Linux" ]; then
+#               google-chrome --version
+#               echo "chrome_version=$(google-chrome --version)" >> $GITHUB_OUTPUT
+#          elif [ "$RUNNER_OS" == "Windows" ]; then
+#               powershell.exe -command "(Get-Item 'C:\Program Files\Google\Chrome\Application\chrome.exe').VersionInfo.ProductVersion"
+#               echo "chrome_version=$(powershell.exe -command "(Get-Item 'C:\Program Files\Google\Chrome\Application\chrome.exe').VersionInfo.ProductVersion")" >> $GITHUB_OUTPUT
+#          elif [ "$RUNNER_OS" == "macOS" ]; then
+#               /Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --version
+#               echo "chrome_version=$(/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --version)" >> $GITHUB_OUTPUT
+#          else
+#               echo "$RUNNER_OS not supported"
+#               exit 1
+#          fi
+#      - name: Logging version generation
+#        uses: ./.github/actions/log_data_json
+#        with:
+#          package: ${{ steps.install.outputs.package_name }}
+#          version: ${{ steps.install.outputs.package_version }}
+#          os: ${{runner.os}}
+#          title: ${{ format('JS Selenium SDK [{0}] [nodejs {1}] | Pure selenium', runner.os, matrix.node-version) }}
+#          matrix_os: ${{matrix.os}}
+#          work_dir: ${{matrix.work_dir}}
+#          selenium:  ${{ steps.selenium.outputs.version }}
+#          chrome_version: ${{ steps.logging.outputs.chrome_version }}
+#          chromedriver_version: ${{ steps.logging.outputs.chromedriver_version }}
+#      - name: Run tests
+#        run: |
+#          npm install
+#          npm test
