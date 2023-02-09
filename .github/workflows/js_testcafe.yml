@@ -41,6 +41,7 @@ jobs:
         with:
           work_dir: 'sdks/js/eyes-testcafe'
           last_passed: ${{inputs.last_passed}}
+
   test:
     needs: setup
     strategy:
