@@ -29,7 +29,7 @@ jobs:
 #         exit 0
   report_generation:
     if: always()
-    needs: [ java,js_selenium]
+    needs: [ java,js_run]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
