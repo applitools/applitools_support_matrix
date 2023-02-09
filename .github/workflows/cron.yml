@@ -33,10 +33,6 @@ jobs:
     uses: ./.github/workflows/js_cypress.yml
     secrets:
       APPLITOOLS_API_KEY: ${{ secrets.APPLITOOLS_API_KEY }}
-  js_cypress_v9-:
-    uses: ./.github/workflows/js_cypress_v9.yml
-    secrets:
-      APPLITOOLS_API_KEY: ${{ secrets.APPLITOOLS_API_KEY }}
   js_testcafe:
     uses: ./.github/workflows/js_testcafe.yml
     secrets:
@@ -65,14 +61,6 @@ jobs:
     uses: ./.github/workflows/js_webdriverio.yml
     secrets:
       APPLITOOLS_API_KEY: ${{ secrets.APPLITOOLS_API_KEY }}
-  js_webdriverio4:
-    uses: ./.github/workflows/js_webdriverio4.yml
-    secrets:
-      APPLITOOLS_API_KEY: ${{ secrets.APPLITOOLS_API_KEY }}
-  js_webdriverio5:
-    uses: ./.github/workflows/js_webdriverio5.yml
-    secrets:
-      APPLITOOLS_API_KEY: ${{ secrets.APPLITOOLS_API_KEY }}
   appium:
     uses: ./.github/workflows/appium.yml
     secrets:
@@ -88,13 +76,10 @@ jobs:
              js_selenium,
              js_playwright,
              js_webdriverio,
-             js_webdriverio4,
-             js_webdriverio5,
              js_nightwatch,
              js_protractor,
              js_puppeteer,
              js_cypress,
-             js_cypress_v9-,
              js_testcafe,
              js_storybook,
              appium
