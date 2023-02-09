@@ -11,32 +11,39 @@ permissions:
   contents: read
 
 jobs:
-  batch_id:
-    name: Batch_id
+  setup:
+    name: Setup
     runs-on: ubuntu-latest
     outputs:
       uuid: ${{ steps.uuid.outputs.uuid }}
+      matrix: ${{ steps.matrix.outputs.matrix}}
     steps:
       - name: generate uuid
         id: uuid
         run: |
           echo "uuid=$(uuidgen)" >> $GITHUB_OUTPUT
+      - uses: actions/checkout@v3
+      - name: generate matrix
+        id: matrix
+        uses: ./.github/actions/setup
+        with:
+          work_dir: 'sdks/js/eyes-selenium'
+          last_passed: ${{inputs.last_passed}}
   test:
-    needs: batch_id
+    needs: setup
     strategy:
       fail-fast: false
-      matrix:
-        java-version: [ '8' ]
-        os: [windows-latest, ubuntu-latest, macos-latest]
+      matrix: ${{ fromJson(needs.setup.outputs.java) }}
     runs-on: ${{ matrix.os }}
     timeout-minutes: 15
     env:
       APPLITOOLS_DONT_CLOSE_BATCHES: true
       APPLITOOLS_API_KEY: ${{ secrets.APPLITOOLS_API_KEY }}
-      APPLITOOLS_BATCH_ID: ${{needs.batch_id.outputs.uuid}}
-    name: ${{ matrix.java-version }} | ${{matrix.os}}
+      APPLITOOLS_BATCH_ID: ${{needs.setup.outputs.uuid}}
+    name: ${{ matrix.job_name }}
     defaults:
       run:
+        working-directory: ${{matrix.work_dir}}
         shell: bash
     steps:
       - uses: actions/checkout@v3
@@ -47,8 +54,11 @@ jobs:
           java-version: ${{ matrix.java-version }}
           cache: 'maven'
       - name: Start Selenium Server
+        if: ${{matrix.use_selenium }}
+        id: selenium
         uses: ./.github/actions/start_selenium
       - name: Log extra info
+        if: ${{matrix.use_selenium }}
         id: logging
         run: |
           chromedriver --version
@@ -71,12 +81,12 @@ jobs:
         with:
           os: ${{runner.os}}
           title: ${{ format('Java Selenium SDK [{0}] [java version {1}]', runner.os, matrix.java-version) }}
-          selenium: '4'
+          selenium: ${{ steps.selenium.outputs.version }}
           chrome_version: ${{ steps.logging.outputs.chrome_version }}
           chromedriver_version: ${{ steps.logging.outputs.chromedriver_version }}
-      - name: Run tests
-        working-directory: sdks/java
+      - name: Install dependency
         run: |
-          mvn versions:use-latest-releases -Dincludes=com.applitools:eyes-appium-java5
-          mvn versions:use-latest-releases -Dincludes=com.applitools:eyes-selenium-java5
-          mvn test
+          mvn versions:use-latest-releases -Dincludes=com.applitools:eyes-appium-java5 -X
+          mvn versions:use-latest-releases -Dincludes=com.applitools:eyes-selenium-java5 -X
+      - name: Run tests
+        run:  ${{matrix.test_command}}
