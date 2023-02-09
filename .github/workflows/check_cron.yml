@@ -12,9 +12,7 @@ jobs:
     secrets:
       APPLITOOLS_API_KEY: ${{ secrets.APPLITOOLS_API_KEY }}
   js_selenium:
-    uses: ./.github/workflows/js_selenium.yml
-    with:
-      last_passed: false
+    uses: ./.github/workflows/js_run.yml
     secrets:
       APPLITOOLS_API_KEY: ${{ secrets.APPLITOOLS_API_KEY }}
 #  appium:

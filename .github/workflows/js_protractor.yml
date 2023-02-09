@@ -27,23 +27,10 @@ env:
 
 jobs:
   setup:
-    name: Setup
-    runs-on: ubuntu-latest
-    outputs:
-      uuid: ${{ steps.uuid.outputs.uuid }}
-      matrix: ${{ steps.matrix.outputs.matrix }}
-    steps:
-      - name: generate uuid
-        id: uuid
-        run: |
-          echo "uuid=$(uuidgen)" >> $GITHUB_OUTPUT
-      - uses: actions/checkout@v3
-      - name: generate matrix
-        id: matrix
-        uses: ./.github/actions/setup
-        with:
-          work_dir: ${{env.work_dir}}
-          last_passed: ${{inputs.last_passed}}
+    uses: ./.github/workflows/selenium_setup.yml
+    with:
+      last_passed: ${{ inputs.last_passed }}
+      work_dir: 'sdks/js/eyes-protractor'
   test:
     needs: setup
     strategy:
