@@ -59,6 +59,7 @@ jobs:
         shell: bash
     steps:
       - uses: actions/checkout@v3
+      - run: npm install
       - name: Test
         uses: ./.github/actions/js_test
         with:
