@@ -27,10 +27,23 @@ env:
 
 jobs:
   setup:
-    uses: ./.github/workflows/selenium_setup.yml
-    with:
-      last_passed: ${{ inputs.last_passed }}
-      work_dir: 'sdks/js/eyes-playwright'
+    name: Setup
+    runs-on: ubuntu-latest
+    outputs:
+      uuid: ${{ steps.uuid.outputs.uuid }}
+      matrix: ${{ steps.matrix.outputs.matrix}}
+    steps:
+      - name: generate uuid
+        id: uuid
+        run: |
+          echo "uuid=$(uuidgen)" >> $GITHUB_OUTPUT
+      - uses: actions/checkout@v3
+      - name: generate matrix
+        id: matrix
+        uses: ./.github/actions/setup
+        with:
+          work_dir: 'sdks/js/eyes-playwright'
+          last_passed: ${{inputs.last_passed}}
   test:
     needs: setup
     strategy:
@@ -49,49 +62,7 @@ jobs:
         shell: bash
     steps:
       - uses: actions/checkout@v3
-      - name: Setup node
-        uses: actions/setup-node@v3
+      - name: Test
+        uses: ./.github/actions/js_test
         with:
-          node-version: ${{ matrix.node-version }}
-      - name: Framework install
-        id: install
-        uses: ./.github/actions/install_npm_package
-        with:
-          package: playwright
-          version: ${{matrix.version}}
-          working-directory: ${{matrix.work_dir}}
-      - name: Run Install
-        run: |
-          npm install
-          npx playwright install --with-deps
-      - name: Log installed packages
-        run: npm ls
-      - name: Log extra info
-        id: logging
-        run: |
-          if [ "$RUNNER_OS" == "Linux" ]; then
-               google-chrome --version
-               echo "chrome_version=$(google-chrome --version)" >> $GITHUB_OUTPUT
-          elif [ "$RUNNER_OS" == "Windows" ]; then
-               powershell.exe -command "(Get-Item 'C:\Program Files\Google\Chrome\Application\chrome.exe').VersionInfo.ProductVersion"
-               echo "chrome_version=$(powershell.exe -command "(Get-Item 'C:\Program Files\Google\Chrome\Application\chrome.exe').VersionInfo.ProductVersion")" >> $GITHUB_OUTPUT
-          elif [ "$RUNNER_OS" == "macOS" ]; then
-               /Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --version 
-               echo "chrome_version=$(/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --version)" >> $GITHUB_OUTPUT
-          else
-               echo "$RUNNER_OS not supported"
-               exit 1
-          fi
-      - name: Logging version generation
-        uses: ./.github/actions/log_data_json
-        with:
-          package: 'Playwright'
-          version: ${{ steps.install.outputs.package_version }}
-          os: ${{runner.os}}
-          matrix_os: ${{matrix.os}}
           work_dir: ${{matrix.work_dir}}
-          title: ${{ format('Playwright version {1} [{0}] [nodejs {2}]', runner.os, steps.install.outputs.package_version, matrix.node-version) }}
-          selenium: 'none'
-          chrome_version: ${{ steps.logging.outputs.chrome_version }}
-      - name: Run tests
-        run:  npm test
