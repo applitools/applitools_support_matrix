@@ -11,7 +11,7 @@ jobs:
     uses: ./.github/workflows/java.yml
     secrets:
       APPLITOOLS_API_KEY: ${{ secrets.APPLITOOLS_API_KEY }}
-  js_selenium:
+  js_run:
     uses: ./.github/workflows/js_run.yml
     secrets:
       APPLITOOLS_API_KEY: ${{ secrets.APPLITOOLS_API_KEY }}
