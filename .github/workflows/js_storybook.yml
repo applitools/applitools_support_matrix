@@ -22,9 +22,6 @@ on:
 permissions:
   contents: read
 
-env:
-  work_dir: 'sdks/js/eyes-storybook'
-
 jobs:
   setup:
     name: Setup
@@ -63,30 +60,7 @@ jobs:
         shell: bash
     steps:
       - uses: actions/checkout@v3
-      - name: Setup node
-        uses: actions/setup-node@v3
+      - name: Test
+        uses: ./.github/actions/js_test
         with:
-          node-version: ${{ matrix.node-version }}
-      - name: Framework install
-        id: install
-        uses: ./.github/actions/install_npm_package
-        with:
-          package: '@storybook/react'
-          version: ${{matrix.version}}
-          working-directory: ${{matrix.work_dir}}
-      - name: Run Install
-        run: npm install
-      - name: Log installed packages
-        run: npm ls
-      - name: Logging version generation
-        uses: ./.github/actions/log_data_json
-        with:
-          package: ${{ steps.install.outputs.package_name }}
-          version: ${{ steps.install.outputs.package_version }}
-          os: ${{runner.os}}
-          matrix_os: ${{matrix.os}}
           work_dir: ${{matrix.work_dir}}
-          title: ${{ format('Storybook version {1} [{0}] [nodejs {2}]', runner.os, steps.install.outputs.package_version, matrix.node-version) }}
-          selenium: 'None'
-      - name: Run tests
-        run: npm test
