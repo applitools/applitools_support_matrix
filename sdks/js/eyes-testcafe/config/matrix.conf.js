@@ -1,5 +1,5 @@
 const common = {
-    "node-version": "16",
+    "node-version": "18",
     "work_dir": "sdks/js/eyes-testcafe",
     "framework_package": "testcafe",
     test_command: "npm test"
@@ -8,10 +8,6 @@ const base_variations = [
     {
         "os": "ubuntu-latest",
         "version": "latest@",
-    },
-    {
-        "os": "ubuntu-latest",
-        "version": "minor@1",
     },
     {
         "os": "ubuntu-latest",
