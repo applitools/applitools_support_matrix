@@ -22,9 +22,6 @@ on:
 permissions:
   contents: read
 
-env:
-  work_dir: 'sdks/js/eyes-puppeteer'
-
 jobs:
   setup:
     name: Setup
@@ -56,57 +53,14 @@ jobs:
       APPLITOOLS_API_KEY: ${{ secrets.APPLITOOLS_API_KEY }}
       APPLITOOLS_BATCH_ID: ${{needs.setup.outputs.uuid}}
       JS_TESTS_CONFIG_NAME: ${{matrix.js_config}}
-    name: ${{matrix.os}} | ${{matrix.version}}
+    name: ${{ matrix.job_name }}
     defaults:
       run:
         working-directory: ${{matrix.work_dir}}
         shell: bash
     steps:
       - uses: actions/checkout@v3
-      - name: Setup node
-        uses: actions/setup-node@v3
+      - name: Test
+        uses: ./.github/actions/js_test
         with:
-          node-version: ${{ matrix.node-version }}
-      - name: Framework install
-        id: install
-        uses: ./.github/actions/install_npm_package
-        with:
-          package: puppeteer
-          version: ${{matrix.version}}
-          working-directory: ${{matrix.work_dir}}
-      - name: Run Install
-        run: npm install
-      - name: Log installed packages
-        run: npm ls
-      - name: Log extra info
-        id: logging
-        run: |
-          chromedriver --version
-          echo "chromedriver_version=$(chromedriver --version)" >> $GITHUB_OUTPUT
-          if [ "$RUNNER_OS" == "Linux" ]; then
-               google-chrome --version
-               echo "chrome_version=$(google-chrome --version)" >> $GITHUB_OUTPUT
-          elif [ "$RUNNER_OS" == "Windows" ]; then
-               powershell.exe -command "(Get-Item 'C:\Program Files\Google\Chrome\Application\chrome.exe').VersionInfo.ProductVersion"
-               echo "chrome_version=$(powershell.exe -command "(Get-Item 'C:\Program Files\Google\Chrome\Application\chrome.exe').VersionInfo.ProductVersion")" >> $GITHUB_OUTPUT
-          elif [ "$RUNNER_OS" == "macOS" ]; then
-               /Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --version 
-               echo "chrome_version=$(/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --version)" >> $GITHUB_OUTPUT
-          else
-               echo "$RUNNER_OS not supported"
-               exit 1
-          fi
-      - name: Logging version generation
-        uses: ./.github/actions/log_data_json
-        with:
-          package: 'Puppeteer'
-          version: ${{ steps.install.outputs.package_version }}
-          os: ${{runner.os}}
-          matrix_os: ${{matrix.os}}
           work_dir: ${{matrix.work_dir}}
-          title: ${{ format('Puppeteer version {1} [{0}] [nodejs {2}]', runner.os, steps.install.outputs.package_version, matrix.node-version) }}
-          selenium: 'uses direct local driver'
-          chrome_version: ${{ steps.logging.outputs.chrome_version }}
-          chromedriver_version: ${{ steps.logging.outputs.chromedriver_version }}
-      - name: Run tests
-        run: npm test
