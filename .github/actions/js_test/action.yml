@@ -13,7 +13,7 @@ runs:
       with:
         node-version: ${{ matrix.node-version }}
     - name: Start Selenium Server
-      if: ${{matrix.use_selenium == 'true'}}
+      if: ${{matrix.use_selenium }}
       id: selenium
       uses: ./.github/actions/start_selenium
       with:

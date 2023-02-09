@@ -53,6 +53,8 @@ jobs:
       APPLITOOLS_API_KEY: ${{ secrets.APPLITOOLS_API_KEY }}
       APPLITOOLS_BATCH_ID: ${{needs.setup.outputs.uuid}}
       JS_TESTS_CONFIG_NAME: ${{matrix.js_config}}
+      SAUCE_USERNAME: ${{secrets.SAUCE_USERNAME}}
+      SAUCE_ACCESS_KEY: ${{secrets.SAUCE_ACCESS_KEY}}
     name: ${{ matrix.node-version }} | ${{matrix.os}}
     defaults:
       run:
