@@ -22,7 +22,7 @@ runs:
       id: install
       uses: ./.github/actions/install_npm_package
       with:
-        package: selenium-webdriver
+        package: ${{matrix.framework_package}}
         version: ${{matrix.version}}
         working-directory: ${{matrix.work_dir}}
     - name: Log extra info
@@ -63,4 +63,4 @@ runs:
     - name: Run tests
       shell: bash
       working-directory: ${{inputs.work_dir}}
-      run: npm test
+      run: ${{matrix.test_command}}
