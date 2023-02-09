@@ -64,3 +64,7 @@ runs:
       shell: bash
       working-directory: ${{inputs.work_dir}}
       run: ${{matrix.test_command}}
+    - name: Print installed packages
+      shell: bash
+      working-directory: ${{inputs.work_dir}}
+      run: npm ls
