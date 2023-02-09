@@ -1,5 +1,5 @@
 const common = {
-    "node-version": "18",
+    "node-version": "16",
     "work_dir": "sdks/js/eyes-storybook",
     "framework_package": "@storybook/react",
     test_command: "npm test"
