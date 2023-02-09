@@ -2688,6 +2688,21 @@ exports["default"] = _default;
 
 /***/ }),
 
+/***/ 157:
+/***/ ((module) => {
+
+function webpackEmptyContext(req) {
+	var e = new Error("Cannot find module '" + req + "'");
+	e.code = 'MODULE_NOT_FOUND';
+	throw e;
+}
+webpackEmptyContext.keys = () => ([]);
+webpackEmptyContext.resolve = webpackEmptyContext;
+webpackEmptyContext.id = 157;
+module.exports = webpackEmptyContext;
+
+/***/ }),
+
 /***/ 491:
 /***/ ((module) => {
 
@@ -2861,21 +2876,18 @@ var __webpack_exports__ = {};
 __nccwpck_require__.r(__webpack_exports__);
 /* harmony import */ var _actions_core__WEBPACK_IMPORTED_MODULE_0__ = __nccwpck_require__(810);
 /* harmony import */ var _actions_core__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__nccwpck_require__.n(_actions_core__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var fs__WEBPACK_IMPORTED_MODULE_1__ = __nccwpck_require__(147);
-/* harmony import */ var fs__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__nccwpck_require__.n(fs__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var path__WEBPACK_IMPORTED_MODULE_2__ = __nccwpck_require__(17);
-/* harmony import */ var path__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__nccwpck_require__.n(path__WEBPACK_IMPORTED_MODULE_2__);
-
+/* harmony import */ var path__WEBPACK_IMPORTED_MODULE_1__ = __nccwpck_require__(17);
+/* harmony import */ var path__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__nccwpck_require__.n(path__WEBPACK_IMPORTED_MODULE_1__);
 
 
 
 const work_dir = (0,_actions_core__WEBPACK_IMPORTED_MODULE_0__.getInput)('work_dir');
 const config_file = (0,_actions_core__WEBPACK_IMPORTED_MODULE_0__.getInput)('config_file');
 const use_last_passed = (0,_actions_core__WEBPACK_IMPORTED_MODULE_0__.getBooleanInput)('last_passed');
-const fileName = use_last_passed ? `${config_file}_passed.json` : `${config_file}.json`
+const fileName = use_last_passed ? `${config_file}_passed.conf.js` : `${config_file}.conf.js`
 // Adding hardcoded string is required for ncc to build it properly into 1 file
-const filePath = path__WEBPACK_IMPORTED_MODULE_2__.join(process.cwd(), work_dir, 'config',  fileName)
-const readedFile =  fs__WEBPACK_IMPORTED_MODULE_1__.readFileSync(filePath).toString();
+const filePath = path__WEBPACK_IMPORTED_MODULE_1__.join(process.cwd(), work_dir, 'config',  fileName)
+const readedFile =  __nccwpck_require__(157)(filePath)
 const matrix = JSON.parse(readedFile)
 console.log(JSON.stringify(matrix, null, 3))
 ;(0,_actions_core__WEBPACK_IMPORTED_MODULE_0__.setOutput)("matrix", JSON.stringify(matrix));

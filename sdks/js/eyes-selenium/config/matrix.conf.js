@@ -1,4 +1,4 @@
-{
+module.exports = {
   "include": [
     {
       "os": "ubuntu-latest",

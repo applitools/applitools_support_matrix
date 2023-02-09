@@ -13,8 +13,11 @@ runs:
       with:
         node-version: ${{ matrix.node-version }}
     - name: Start Selenium Server
+      if: ${{matrix.use_selenium == 'true'}}
       id: selenium
       uses: ./.github/actions/start_selenium
+      with:
+        legacy: ${{matrix.selenium_legacy}}
     - name: Framework install
       id: install
       uses: ./.github/actions/install_npm_package
@@ -53,9 +56,11 @@ runs:
         selenium: ${{ steps.selenium.outputs.version }}
         chrome_version: ${{ steps.logging.outputs.chrome_version }}
         chromedriver_version: ${{ steps.logging.outputs.chromedriver_version }}
+    - name: Pre run install
+      shell: bash
+      working-directory: ${{inputs.work_dir}}
+      run: npm install
     - name: Run tests
       shell: bash
       working-directory: ${{inputs.work_dir}}
-      run: |
-        npm install
-        npm test
+      run: npm test
