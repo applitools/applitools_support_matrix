@@ -62,7 +62,7 @@ jobs:
       run:
         working-directory: ${{matrix.work_dir}}
         shell: bash
-    name: ${{ matrix.python-version }} | ${{matrix.os}}
+    name:  ${{ matrix.job_name }}
     steps:
       - uses: actions/checkout@v3
       - name: Set up Python
