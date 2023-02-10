@@ -2,7 +2,8 @@ const common = {
     "node-version": "18",
     "work_dir": "sdks/js/eyes-testcafe",
     "framework_package": "testcafe",
-    test_command: "npm test"
+    test_command: "npm test",
+    legacy_npm_peers: true,
 }
 const base_variations = [
     {
