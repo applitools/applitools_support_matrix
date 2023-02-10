@@ -9,44 +9,64 @@ permissions:
 jobs:
   js_playwright:
     uses: ./.github/workflows/js_playwright.yml
+    with:
+      last_passed: false
     secrets:
       APPLITOOLS_API_KEY: ${{ secrets.APPLITOOLS_API_KEY }}
   js_cypress:
     uses: ./.github/workflows/js_cypress.yml
+    with:
+      last_passed: false
     secrets:
       APPLITOOLS_API_KEY: ${{ secrets.APPLITOOLS_API_KEY }}
   js_testcafe:
     uses: ./.github/workflows/js_testcafe.yml
+    with:
+      last_passed: false
     secrets:
       APPLITOOLS_API_KEY: ${{ secrets.APPLITOOLS_API_KEY }}
   js_storybook:
     uses: ./.github/workflows/js_storybook.yml
+    with:
+      last_passed: false
     secrets:
       APPLITOOLS_API_KEY: ${{ secrets.APPLITOOLS_API_KEY }}
   js_nightwatch:
     uses: ./.github/workflows/js_nightwatch.yml
+    with:
+      last_passed: false
     secrets:
       APPLITOOLS_API_KEY: ${{ secrets.APPLITOOLS_API_KEY }}
   js_protractor:
     uses: ./.github/workflows/js_protractor.yml
+    with:
+      last_passed: false
     secrets:
       APPLITOOLS_API_KEY: ${{ secrets.APPLITOOLS_API_KEY }}
   js_puppeteer:
     uses: ./.github/workflows/js_puppeteer.yml
+    with:
+      last_passed: false
     secrets:
       APPLITOOLS_API_KEY: ${{ secrets.APPLITOOLS_API_KEY }}
   js_webdriverio:
     uses: ./.github/workflows/js_webdriverio.yml
+    with:
+      last_passed: false
     secrets:
       APPLITOOLS_API_KEY: ${{ secrets.APPLITOOLS_API_KEY }}
   java:
     uses: ./.github/workflows/java.yml
+    with:
+      last_passed: false
     secrets:
       APPLITOOLS_API_KEY: ${{ secrets.APPLITOOLS_API_KEY }}
       SAUCE_USERNAME: ${{secrets.SAUCE_USERNAME}}
       SAUCE_ACCESS_KEY: ${{secrets.SAUCE_ACCESS_KEY}}
   ruby:
     uses: ./.github/workflows/ruby.yml
+    with:
+      last_passed: false
     secrets:
       APPLITOOLS_API_KEY: ${{ secrets.APPLITOOLS_API_KEY }}
       SAUCE_USERNAME: ${{secrets.SAUCE_USERNAME}}
@@ -54,6 +74,8 @@ jobs:
   python:
     needs: java
     uses: ./.github/workflows/python.yml
+    with:
+      last_passed: false
     secrets:
       APPLITOOLS_API_KEY: ${{ secrets.APPLITOOLS_API_KEY }}
       SAUCE_USERNAME: ${{secrets.SAUCE_USERNAME}}
@@ -61,6 +83,8 @@ jobs:
   dotnet:
     needs: ruby
     uses: ./.github/workflows/dotnet.yml
+    with:
+      last_passed: false
     secrets:
       APPLITOOLS_API_KEY: ${{ secrets.APPLITOOLS_API_KEY }}
       SAUCE_USERNAME: ${{secrets.SAUCE_USERNAME}}
@@ -70,6 +94,8 @@ jobs:
              dotnet
     ]
     uses: ./.github/workflows/js_selenium.yml
+    with:
+      last_passed: false
     secrets:
       APPLITOOLS_API_KEY: ${{ secrets.APPLITOOLS_API_KEY }}
       SAUCE_USERNAME: ${{secrets.SAUCE_USERNAME}}
