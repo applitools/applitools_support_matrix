@@ -65,7 +65,7 @@ runs:
       if: ${{matrix.legacy_npm_peers }}
       shell: bash
       working-directory: ${{inputs.work_dir}}
-      run: npm install
+      run: npm install --legacy-peer-deps
     - name: Run tests
       shell: bash
       working-directory: ${{inputs.work_dir}}
