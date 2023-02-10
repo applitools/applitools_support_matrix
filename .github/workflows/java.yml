@@ -100,6 +100,8 @@ jobs:
           os: ${{runner.os}}
           title: ${{ format('Java Selenium SDK [{0}] [java version {1}]', runner.os, matrix.java-version) }}
           selenium: ${{ steps.selenium.outputs.version }}
+          matrix_os: ${{matrix.os}}
+          work_dir: ${{matrix.work_dir}}
           chrome_version: ${{ steps.logging.outputs.chrome_version }}
           chromedriver_version: ${{ steps.logging.outputs.chromedriver_version }}
       - name: Install dependency
