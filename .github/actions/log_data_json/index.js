@@ -4,7 +4,7 @@ try {
     const pack = core.getInput('package');
     const version = core.getInput('version');
     const os = core.getInput('os');
-    const matrix_os = core.getInput('matrix_os');
+    const matrix = core.getInput('matrix');
     const work_dir = core.getInput('work_dir');
     const selenium = core.getInput('selenium');
     const title = core.getInput('title');
@@ -15,7 +15,7 @@ try {
         package: pack,
         version,
         os,
-        matrix_os,
+        matrix,
         work_dir,
         selenium,
         title,

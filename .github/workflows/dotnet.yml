@@ -97,7 +97,7 @@ jobs:
           os: ${{runner.os}}
           title: ${{ format('Dotnet selenium sdk [{0}] [dotnet version {1}]', runner.os, matrix.dotnet-version) }}
           selenium:  ${{ steps.selenium.outputs.version }}
-          matrix_os: ${{matrix.os}}
+          matrix:  ${{ toJSON(matrix) }}
           work_dir: ${{matrix.work_dir}}
           chrome_version: ${{ steps.logging.outputs.chrome_version }}
           chromedriver_version: ${{ steps.logging.outputs.chromedriver_version }}

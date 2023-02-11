@@ -10,8 +10,8 @@ inputs:
   os:
     description: "Current job os"
     required: false
-  matrix_os:
-    description: "Current job matrix os settings"
+  matrix:
+    description: "Current job matrix settings"
     required: false
   work_dir:
     description: "Current job working dir"

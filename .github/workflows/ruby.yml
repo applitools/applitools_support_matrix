@@ -98,7 +98,7 @@ jobs:
           os: ${{runner.os}}
           title: ${{ format('Ruby SDK [{0}] [ruby version {1}]', runner.os, matrix.ruby-version) }}
           selenium: ${{ steps.selenium.outputs.version }}
-          matrix_os: ${{matrix.os}}
+          matrix:  ${{ toJSON(matrix) }}
           work_dir: ${{matrix.work_dir}}
           chrome_version: ${{ steps.logging.outputs.chrome_version }}
           chromedriver_version: ${{ steps.logging.outputs.chromedriver_version }}
