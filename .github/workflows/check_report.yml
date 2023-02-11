@@ -36,13 +36,13 @@ jobs:
         run: |
           pwd
           ls
-          cat run_data.json
-          git config --global user.name 'AutoSupport'
-          git config --global user.email 'autosupport@users.noreply.github.com'
-          git status
-          git add run_data.json
-          git commit -m "Update run_data.json"
-          git push
+#          cat run_data.json
+#          git config --global user.name 'AutoSupport'
+#          git config --global user.email 'autosupport@users.noreply.github.com'
+#          git status
+#          git add run_data.json
+#          git commit -m "Update run_data.json"
+#          git push
       - name: Upload report as artifact
         uses: actions/upload-artifact@v3
         with:
