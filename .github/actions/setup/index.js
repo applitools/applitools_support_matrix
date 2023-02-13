@@ -8,7 +8,7 @@ const fileName = use_last_passed ? `matrix_passed.conf.js` : `matrix.conf.js`
 const filePath = path.join(process.cwd(), work_dir, 'config',  fileName)
 const readedFile = require(filePath)
 const matrix = {
-    include: readedFile.include.map(matrix_data => ({...matrix_data, matrix_config_dir:work_dir, matrix_setup_json: JSON.stringify(matrix_data)}))
+    include: readedFile.include.map(matrix_data => ({...matrix_data, matrix_config_dir:work_dir}))
 }
 console.log(JSON.stringify(matrix, null, 3))
 setOutput("matrix", JSON.stringify(matrix));
