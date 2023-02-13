@@ -1,12 +1,15 @@
 const {getInput, getBooleanInput, setOutput} = require("@actions/core");
 const path = require('path')
+const fs = require('fs')
 
 const work_dir = getInput('work_dir');
 const use_last_passed = getBooleanInput('last_passed');
 let matrix;
 
 if (use_last_passed) {
-    const last_passed = require(path.join(process.cwd(), 'last_passed.json'))
+    const filePath = path.join(process.cwd(), 'last_passed.json');
+    const json_string = fs.readFileSync(filePath).toString();
+    const last_passed = JSON.parse(json_string)
     const matrix_jobs = last_passed.data.filter(suite => suite.config_path === work_dir)[0]
     const include = matrix_jobs.jobs.map(job => ({
         ...JSON.parse(job.matrix_string),

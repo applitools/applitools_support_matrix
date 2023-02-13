@@ -2688,14 +2688,6 @@ exports["default"] = _default;
 
 /***/ }),
 
-/***/ 860:
-/***/ ((module) => {
-
-module.exports = eval("require")("/Volumes/Elements/IntelliJIDEAProjects/applitools_support_matrix/.github/actions/setup/last_passed.json");
-
-
-/***/ }),
-
 /***/ 491:
 /***/ ((module) => {
 
@@ -2827,13 +2819,16 @@ var __webpack_exports__ = {};
 (() => {
 const {getInput, getBooleanInput, setOutput} = __nccwpck_require__(810);
 const path = __nccwpck_require__(17)
+const fs = __nccwpck_require__(147)
 
 const work_dir = getInput('work_dir');
 const use_last_passed = getBooleanInput('last_passed');
 let matrix;
 
 if (use_last_passed) {
-    const last_passed = __nccwpck_require__(860)
+    const filePath = path.join(process.cwd(), 'last_passed.json');
+    const json_string = fs.readFileSync(filePath).toString();
+    const last_passed = JSON.parse(json_string)
     const matrix_jobs = last_passed.data.filter(suite => suite.config_path === work_dir)[0]
     const include = matrix_jobs.jobs.map(job => ({
         ...JSON.parse(job.matrix_string),
