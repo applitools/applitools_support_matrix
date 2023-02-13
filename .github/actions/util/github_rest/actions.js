@@ -35,10 +35,10 @@ function getJobsBySuites(arr) {
 }
 
 function filterTestsJobs({name}) {
-    return !name.includes("Batch_id")
+    return !name.includes("Setup")
         && name !== 'rerun'
         && name !== 'report_generation'
-        && name !== 'email_notification'
+        && !name.includes('email_notification')
 }
 
 async function getALlJobs({octokit, owner, repo, run_id}) {

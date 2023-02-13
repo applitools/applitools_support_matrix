@@ -10,7 +10,7 @@ import {generator} from './src/generation/generator'
 
 try {
 
-    // Get jobs data
+    // Get run and jobs data
     const input_run_id = core.getInput('run_id');
     const run_id = input_run_id && input_run_id.length > 0 ? input_run_id : process.env.GITHUB_RUN_ID
     console.log(`Run id used for this run is [${run_id}]`)

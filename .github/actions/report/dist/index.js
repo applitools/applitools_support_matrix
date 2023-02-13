@@ -29,7 +29,7 @@ __nccwpck_require__.r(__webpack_exports__);
 
 try {
 
-    // Get jobs data
+    // Get run and jobs data
     const input_run_id = _actions_core__WEBPACK_IMPORTED_MODULE_0__.getInput('run_id');
     const run_id = input_run_id && input_run_id.length > 0 ? input_run_id : process.env.GITHUB_RUN_ID
     console.log(`Run id used for this run is [${run_id}]`)
@@ -25820,16 +25820,12 @@ const TEST_MATRIX = [
     'js_selenium',
     'js_playwright',
     'js_webdriverio',
-    'js_webdriverio4',
-    'js_webdriverio5',
     'js_nightwatch',
     'js_protractor',
     'js_puppeteer',
     'js_cypress',
-    'js_cypress_v9-',
     'js_testcafe',
     'js_storybook',
-    'appium',
 ]
 
 const MATRIX_MAPPING = {
@@ -25840,17 +25836,12 @@ const MATRIX_MAPPING = {
     'js_selenium': 'JS Selenium',
     'js_playwright': 'JS Playwright',
     'js_webdriverio': 'JS Webdriverio',
-    'js_webdriverio4': 'JS Webdriverio 4',
-    'js_webdriverio5': 'JS Webdriverio 5',
     'js_nightwatch': 'JS Nightwatch',
     'js_protractor': 'JS Protractor',
     'js_puppeteer': 'JS Puppeteer',
     'js_cypress': 'JS Cypress',
-    'js_cypress_v9-': 'JS Cypress legacy',
     'js_testcafe': 'JS Testcafe',
     'js_storybook': 'JS Storybook',
-    'appium': 'Appium',
-
 }
 
 
@@ -25906,10 +25897,10 @@ function getJobsBySuites(arr) {
 }
 
 function filterTestsJobs({name}) {
-    return !name.includes("Batch_id")
+    return !name.includes("Setup")
         && name !== 'rerun'
         && name !== 'report_generation'
-        && name !== 'email_notification'
+        && !name.includes('email_notification')
 }
 
 async function getALlJobs({octokit, owner, repo, run_id}) {

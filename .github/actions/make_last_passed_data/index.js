@@ -1,8 +1,7 @@
 'use strict'
 import * as core from '@actions/core'
 
-import {waitForAllCompletedJob, getJobsBySuites, filterTestsJobs, jobLog} from '../util/github_rest/actions'
-import {getDuration, compareDates} from '../util/github_rest/date'
+import {filterTestsJobs, getJobsBySuites, jobLog, waitForAllCompletedJob} from '../util/github_rest/actions'
 import uuid from '../util/github_rest/uuid'
 import {Octokit} from '@octokit/rest'
 import * as fs from 'fs'
@@ -21,9 +20,8 @@ try {
     const repo = process.env.GITHUB_REPOSITORY.split('/')[1];
     let jobs = await waitForAllCompletedJob({octokit, owner, repo, run_id});
     const filtered = jobs.filter(filterTestsJobs)
-    const start = jobs.map(test => test.started_at).sort(compareDates)[0]
-    const end = jobs.map(test => test.completed_at).sort(compareDates)[jobs.length - 1]
     const suites = getJobsBySuites(filtered)
+    const current_last_passed = require("./last_passed.json").data
     // Organise and parse raw data Reporting
     const run_data = []
     for (const suiteData of suites) {
@@ -32,29 +30,42 @@ try {
             jobs: []
         }
         for (const job of suiteData.jobs) {
-            const testData = {
-                title: job.name.split('/')[1],
-                fullTitle: job.name,
-                duration: getDuration(job.started_at, job.completed_at),
-                passed: job.conclusion === 'success'
-            }
+            const passed = job.conclusion === 'success'
             const regex = /####\[Start_json_data](.*)\[End_json_data]####/
             const logs = await jobLog({owner, repo, job_id: job.id, pat})
             if (logs && typeof logs === 'string') {
                 if (regex.test(logs)) {
                     const json_data = JSON.parse(regex.exec(logs)[1])
-                    run_data_info.jobs.push({...json_data, ...testData})
+                    const matrix_data = JSON.parse(json_data.matrix)
+                    run_data_info.jobs.push(
+                        {
+                            title: job.name,
+                            ...matrix_data,
+                            passed,
+                            package: json_data.package,
+                            version: json_data.version,
+                            matrix_string: JSON.stringify(matrix_data)
+                        })
+                    if (!run_data_info.config_path) run_data_info.config_path = matrix_data.matrix_config_dir
                 }
             }
         }
         run_data.push(run_data_info)
     }
+
+    run_data.forEach(suite => {
+        const old = current_last_passed.filter(old_suite => suite.title === old_suite.title)
+        suite.jobs = suite.jobs.map(job => {
+             return job.passed ? job : old.jobs.filter(old_job => old_job.matrix_string === job.matrix_string)[0]
+        })
+    })
+
     // Make json file
     const file = {
         id: uuid(),
         data: run_data
     }
-    fs.writeFileSync('run_data.json', JSON.stringify(file, undefined, 2))
+    fs.writeFileSync('last_passed.json', JSON.stringify(file, undefined, 2))
     console.log(1)
 } catch (error) {
     core.setFailed(error.message);
