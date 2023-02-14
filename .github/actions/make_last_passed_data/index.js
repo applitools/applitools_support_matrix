@@ -24,7 +24,7 @@ try {
     const suites = getJobsBySuites(filtered)
     const filePath = path.join(process.cwd(), 'last_passed.json');
     const json_string = fs.readFileSync(filePath).toString();
-    const current_last_passed = JSON.parse(json_string)
+    const current_last_passed = JSON.parse(json_string).data
     // Organise and parse raw data Reporting
     const run_data = []
     for (const suiteData of suites) {

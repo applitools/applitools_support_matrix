@@ -43,7 +43,7 @@ try {
     const suites = (0,_util_github_rest_actions__WEBPACK_IMPORTED_MODULE_1__/* .getJobsBySuites */ .lA)(filtered)
     const filePath = path__WEBPACK_IMPORTED_MODULE_4___default().join(process.cwd(), 'last_passed.json');
     const json_string = fs__WEBPACK_IMPORTED_MODULE_3__.readFileSync(filePath).toString();
-    const current_last_passed = JSON.parse(json_string)
+    const current_last_passed = JSON.parse(json_string).data
     // Organise and parse raw data Reporting
     const run_data = []
     for (const suiteData of suites) {
