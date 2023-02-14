@@ -1,5 +1,4 @@
 'use strict'
-const core = require('@actions/core')
 
 const {waitForAllCompletedJob, getJobsBySuites, filterTestsJobs, jobLog} = require('../util/github_rest/actions')
 const {Report, Suite, Test} = require('./src/json')
@@ -12,15 +11,15 @@ const {generator} = require('./src/generation/generator')
     try {
 
         // Get run and jobs data
-        const input_run_id = core.getInput('run_id');
+        const input_run_id = "4178843500";
         const run_id = input_run_id && input_run_id.length > 0 ? input_run_id : process.env.GITHUB_RUN_ID
         console.log(`Run id used for this run is [${run_id}]`)
-        const pat = core.getInput('token')
+        const pat = process.env.MY_WORK_PAT
         const octokit = new Octokit({
             auth: pat,
         });
-        const owner = process.env.GITHUB_REPOSITORY.split('/')[0];
-        const repo = process.env.GITHUB_REPOSITORY.split('/')[1];
+        const owner = "applitools";
+        const repo = "applitools_support_matrix";
         let jobs = await waitForAllCompletedJob({octokit, owner, repo, run_id});
         const filtered = jobs.filter(filterTestsJobs)
         const start = jobs.map(test => test.started_at).sort(compareDates)[0]
@@ -56,6 +55,6 @@ const {generator} = require('./src/generation/generator')
         await generator.generate()
         console.log(1)
     } catch (error) {
-        core.setFailed(error.message);
+        console.log(error)
     }
 })()
