@@ -1,9 +1,19 @@
 'use strict'
-const {execSync} = require('child_process')
-const {parseVersion, strToNum} = require('../common')
+const {strToNum, shellCommand} = require('./common')
+const Version = require("./Version");
 
-function shellCommand(command, cwd) {
-    return execSync(command, {cwd}).toString();
+function parseVersion(versionString) {
+    const reg_version_parse = /(\d+).(\d+).(\d+)/gm
+    const arr = reg_version_parse.exec(versionString);
+    if (arr === null) {
+        console.log(versionString)
+        throw new Error("failed to parse")
+    }
+    return new Version({
+        major: arr[1],
+        minor: arr[2],
+        patch: arr[3],
+    })
 }
 
 function getLatest(packageName, cwd) {
@@ -53,12 +63,40 @@ function getPatchMinus({packageName, cwd, minus}) {
         .filter(ver => ver.patch === newPatch)[0]
 }
 
+
+function parseInputVersion({version, packageName, cwd}) {
+    const TYPES = {
+        exact: ({minus})=> {
+            return minus
+        },
+        major: getMajorMinus,
+        minor: getMinorMinus,
+        patch: getPatchMinus,
+        latest: ({packageName, cwd}) => {
+            return getLatest(packageName, cwd)
+        },
+    }
+    const arr = getCheck(version)
+    const type = arr[1];
+    const value = arr[2];
+
+    if (!TYPES.hasOwnProperty(type)) throw new Error(`There were wrong input type, ${JSON.stringify(arr)}`)
+    return TYPES[type]({packageName, cwd, minus:value})
+
+
+    function getCheck(str) {
+        const regex = /(\w+)@(.*)/gm
+        return regex.exec(str)
+    }
+
+
+}
+
 module.exports = {
-    parseVersion,
-    shellCommand,
     getLatest,
     getAllVersions,
     getMajorMinus,
     getMinorMinus,
     getPatchMinus,
+    parseInputVersion
 }

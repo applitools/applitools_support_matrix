@@ -2726,23 +2726,7 @@ module.exports = Version
 /***/ 222:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
-const {Version} = __nccwpck_require__(184);
-const {getLatest, getMajorMinus, getPatchMinus, getMinorMinus} = __nccwpck_require__(396);
-
-
-function parseVersion(versionString) {
-    const reg_version_parse = /(\d+).(\d+).(\d+)/gm
-    const arr = reg_version_parse.exec(versionString);
-    if (arr === null) {
-        console.log(versionString)
-        throw new Error("failed to parse")
-    }
-    return new Version({
-        major: arr[1],
-        minor: arr[2],
-        patch: arr[3],
-    })
-}
+const {execSync} = __nccwpck_require__(81)
 
 function checkInput(str) {
     return str && str.length > 0 ? strToNum(str) : str;
@@ -2756,53 +2740,39 @@ function strToNum(str) {
     return parsed
 }
 
-function parseInputVersion({version, packageName, cwd}) {
-    const TYPES = {
-        exact: ({minus})=> {
-            return minus
-        },
-        major: getMajorMinus,
-        minor: getMinorMinus,
-        patch: getPatchMinus,
-        latest: ({packageName, cwd}) => {
-            return getLatest(packageName, cwd)
-        },
-    }
-    const arr = getCheck(version)
-    const type = arr[1];
-    const value = arr[2];
-
-    if (!TYPES.hasOwnProperty(type)) throw new Error(`There were wrong input type, ${JSON.stringify(arr)}`)
-    return TYPES[type]({packageName, cwd, minus:value})
-
-
-    function getCheck(str) {
-        const regex = /(\w+)@(.*)/gm
-        return regex.exec(str)
-    }
-
-
+function shellCommand(command, cwd) {
+    return execSync(command, {cwd}).toString();
 }
+
 
 module.exports = {
     checkInput,
     strToNum,
-    parseVersion,
-    parseInputVersion
+    shellCommand,
 }
 
 /***/ }),
 
-/***/ 396:
+/***/ 10:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
-const {execSync} = __nccwpck_require__(81)
-const {parseVersion, strToNum} = __nccwpck_require__(222)
+const {strToNum, shellCommand} = __nccwpck_require__(222)
+const Version = __nccwpck_require__(184);
 
-function shellCommand(command, cwd) {
-    return execSync(command, {cwd}).toString();
+function parseVersion(versionString) {
+    const reg_version_parse = /(\d+).(\d+).(\d+)/gm
+    const arr = reg_version_parse.exec(versionString);
+    if (arr === null) {
+        console.log(versionString)
+        throw new Error("failed to parse")
+    }
+    return new Version({
+        major: arr[1],
+        minor: arr[2],
+        patch: arr[3],
+    })
 }
 
 function getLatest(packageName, cwd) {
@@ -2852,14 +2822,42 @@ function getPatchMinus({packageName, cwd, minus}) {
         .filter(ver => ver.patch === newPatch)[0]
 }
 
+
+function parseInputVersion({version, packageName, cwd}) {
+    const TYPES = {
+        exact: ({minus})=> {
+            return minus
+        },
+        major: getMajorMinus,
+        minor: getMinorMinus,
+        patch: getPatchMinus,
+        latest: ({packageName, cwd}) => {
+            return getLatest(packageName, cwd)
+        },
+    }
+    const arr = getCheck(version)
+    const type = arr[1];
+    const value = arr[2];
+
+    if (!TYPES.hasOwnProperty(type)) throw new Error(`There were wrong input type, ${JSON.stringify(arr)}`)
+    return TYPES[type]({packageName, cwd, minus:value})
+
+
+    function getCheck(str) {
+        const regex = /(\w+)@(.*)/gm
+        return regex.exec(str)
+    }
+
+
+}
+
 module.exports = {
-    parseVersion,
-    shellCommand,
     getLatest,
     getAllVersions,
     getMajorMinus,
     getMinorMinus,
     getPatchMinus,
+    parseInputVersion
 }
 
 /***/ }),
@@ -3003,8 +3001,8 @@ var __webpack_exports__ = {};
 (() => {
 const core = __nccwpck_require__(810)
 const path = __nccwpck_require__(17)
-const {shellCommand} = __nccwpck_require__(396);
-const {parseInputVersion} = __nccwpck_require__(222);
+const {parseInputVersion} = __nccwpck_require__(10);
+const {shellCommand} = __nccwpck_require__(222);
 
 try {
     const packageName = core.getInput('package');

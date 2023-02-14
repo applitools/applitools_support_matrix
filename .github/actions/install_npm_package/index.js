@@ -1,7 +1,7 @@
 const core = require('@actions/core')
 const path = require('path')
-const {shellCommand} = require("../util/js/util");
-const {parseInputVersion} = require("../util/common");
+const {parseInputVersion} = require("../util/versions");
+const {shellCommand} = require("../util/common");
 
 try {
     const packageName = core.getInput('package');
