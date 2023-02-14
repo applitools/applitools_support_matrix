@@ -17,7 +17,7 @@ function getJobsDuration(jobs){
     return 0;
 }
 
-module.exports = {
+export  {
     getDuration,
     compareDates,
     getJobsDuration,

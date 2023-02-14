@@ -1,7 +1,5 @@
 'use strict'
-const crypto = require("crypto")
-function uuid() {
+import * as crypto from "crypto"
+export function uuid() {
     return crypto.randomUUID()
 }
-
-module.exports = uuid
