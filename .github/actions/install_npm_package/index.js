@@ -23,6 +23,8 @@ try {
     core.setOutput("package_version", installed_version)
     core.setOutput("package_name" , installed_name)
 } catch (error) {
+    console.log(error)
+    console.log(error.stack)
     core.setFailed(error.message);
 }
 

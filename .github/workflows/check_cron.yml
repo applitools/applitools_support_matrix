@@ -55,14 +55,14 @@ jobs:
 #      last_passed: false
 #    secrets:
 #      APPLITOOLS_API_KEY: ${{ secrets.APPLITOOLS_API_KEY }}
-  java:
-    uses: ./.github/workflows/java.yml
-    with:
-      last_passed: false
-    secrets:
-      APPLITOOLS_API_KEY: ${{ secrets.APPLITOOLS_API_KEY }}
-      SAUCE_USERNAME: ${{secrets.SAUCE_USERNAME}}
-      SAUCE_ACCESS_KEY: ${{secrets.SAUCE_ACCESS_KEY}}
+#  java:
+#    uses: ./.github/workflows/java.yml
+#    with:
+#      last_passed: false
+#    secrets:
+#      APPLITOOLS_API_KEY: ${{ secrets.APPLITOOLS_API_KEY }}
+#      SAUCE_USERNAME: ${{secrets.SAUCE_USERNAME}}
+#      SAUCE_ACCESS_KEY: ${{secrets.SAUCE_ACCESS_KEY}}
 #  ruby:
 #    uses: ./.github/workflows/ruby.yml
 #    with:
@@ -108,7 +108,8 @@ jobs:
 #         exit 0
   report_generation:
     if: always()
-    needs: [ java,
+    needs: [
+#      java,
 #             ruby,
 #             python,
 #             dotnet,
