@@ -6835,12 +6835,9 @@ const fetch = __nccwpck_require__(8991);
 const {spawn, execSync} = __nccwpck_require__(2081);
 const {get} = __nccwpck_require__(5687);
 const fs = __nccwpck_require__(7147);
-
-
-(async () => {
-    const DOWNLOADED_SELENIUM_JAR = "selenium-server.jar";
-    const URL_3 = "https://selenium-release.storage.googleapis.com/3.141/selenium-server-standalone-3.141.59.jar"
-    const CHECK_URL = "http://localhost:4444"
+const DOWNLOADED_SELENIUM_JAR = "selenium-server.jar";
+const URL_3 = "https://selenium-release.storage.googleapis.com/3.141/selenium-server-standalone-3.141.59.jar";
+;(async () => {
     const options = {detached: true, stdio: 'ignore'}
     let selenium;
     try {
@@ -6896,6 +6893,7 @@ async function downloadSelenium(url) {
 }
 
 async function waitForSeleniumStart(retries) {
+    const CHECK_URL = "http://localhost:4444";
     while(retries > 0) {
         try {
             const result = await fetch(CHECK_URL)
