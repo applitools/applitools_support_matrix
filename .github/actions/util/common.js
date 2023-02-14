@@ -56,7 +56,7 @@ function parseInputVersion({version, packageName, cwd}) {
 
 }
 
-export {
+module.exports = {
     checkInput,
     strToNum,
     parseVersion,
