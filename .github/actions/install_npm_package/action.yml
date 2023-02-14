@@ -7,17 +7,8 @@ inputs:
   working-directory:
     description: "Relative path to the directory where package should be installed"
     required: true
-  exact:
-    description: "Install version specified in input, not related to the latest"
-    required: false
-  major:
-    description: "Check major package version diff with latest"
-    required: false
-  minor:
-    description: "Check minor package version diff with latest"
-    required: false
-  patch:
-    description: "Check patch package version diff with latest"
+  version:
+    description: "Install version specified in input"
     required: false
 runs:
   using: "node16"

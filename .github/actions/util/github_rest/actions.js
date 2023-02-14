@@ -1,7 +1,7 @@
 'use strict'
 
-import {TEST_MATRIX, MATRIX_MAPPING} from "../enums/testMatrix";
-import MS from "../enums/time";
+import {TEST_MATRIX, MATRIX_MAPPING} from "./enums/testMatrix";
+import MS from "./enums/time";
 import {getJobsDuration} from "./date";
 import https from "https";
 
@@ -35,10 +35,10 @@ function getJobsBySuites(arr) {
 }
 
 function filterTestsJobs({name}) {
-    return !name.includes("Batch_id")
+    return !name.includes("Setup")
         && name !== 'rerun'
         && name !== 'report_generation'
-        && name !== 'email_notification'
+        && !name.includes('email_notification')
 }
 
 async function getALlJobs({octokit, owner, repo, run_id}) {

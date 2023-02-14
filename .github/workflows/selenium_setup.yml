@@ -1,0 +1,42 @@
+name: Pre run Setup
+
+on:
+  workflow_call:
+    inputs:
+      work_dir:
+        description: 'Dir where are setup actions should be invoked'
+        required: true
+        type: string
+      last_passed:
+        description: 'choose which version of the frameworks should be used (latest | last passed)'
+        default: false
+        required: true
+        type: boolean
+    outputs:
+      uuid:
+        description: "UUID of the batch which should be used in the matrix"
+        value: ${{jobs.setup.outputs.uuid}}
+      matrix:
+        description: "JSON which is used for the matrix generation"
+        value: ${{jobs.setup.outputs.matrix}}
+
+
+jobs:
+  setup:
+    name: Setup
+    runs-on: ubuntu-latest
+    outputs:
+      uuid: ${{ steps.uuid.outputs.uuid }}
+      matrix: ${{ steps.matrix.outputs.matrix}}
+    steps:
+      - name: generate uuid
+        id: uuid
+        run: |
+          echo "uuid=$(uuidgen)" >> $GITHUB_OUTPUT
+      - uses: actions/checkout@v3
+      - name: generate matrix
+        id: matrix
+        uses: ./.github/actions/setup
+        with:
+          work_dir: ${{inputs.work_dir}}
+          last_passed: ${{inputs.last_passed}}

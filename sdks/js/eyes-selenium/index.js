@@ -5,7 +5,8 @@ const {
     ConsoleLogHandler,
     IosDeviceName,
     ScreenOrientation,
-    IosVersion
+    IosVersion,
+    BatchInfo,
 } = require("@applitools/eyes-selenium")
 const {Builder} = require('selenium-webdriver');
 const chrome = require('selenium-webdriver/chrome');
@@ -61,9 +62,7 @@ async function open(driver, url) {
     await driver.get(url)
 }
 
-const batch = {
-    name: process.env.APPLITOOLS_BATCH_NAME || 'JS Support Matrix Eyes Selenium',
-}
+const batch = new BatchInfo(process.env.APPLITOOLS_BATCH_NAME || 'JS Support Matrix Eyes Selenium');
 
 function setupEyes({appium, vg, ...config}) {
     const runner = (vg ? new VisualGridRunner({testConcurrency: 500}) : undefined)

@@ -1,10 +1,10 @@
 // @ts-ignore
 
-import {Eyes, VisualGridRunner, Target} from "@applitools/eyes-playwright"
+import {Eyes, VisualGridRunner, Target, BatchInfo} from "@applitools/eyes-playwright"
 
-const batch = {
-    name: process.env.APPLITOOLS_BATCH_NAME || 'JS Support Matrix Eyes Playwright',
-}
+const batch = new BatchInfo();
+batch.setName(process.env.APPLITOOLS_BATCH_NAME || 'JS Support Matrix Eyes Playwright')
+
 
 export function setupEyes({vg, ...config}) {
     const runner = (vg ? new VisualGridRunner({testConcurrency: 500}) : undefined)

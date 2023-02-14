@@ -5,14 +5,14 @@
 /***/ ((module, __webpack_exports__, __nccwpck_require__) => {
 
 "use strict";
-__nccwpck_require__.a(module, async (__webpack_handle_async_dependencies__) => {
+__nccwpck_require__.a(module, async (__webpack_handle_async_dependencies__, __webpack_async_result__) => { try {
 __nccwpck_require__.r(__webpack_exports__);
 /* harmony import */ var _actions_core__WEBPACK_IMPORTED_MODULE_0__ = __nccwpck_require__(810);
 /* harmony import */ var _actions_core__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__nccwpck_require__.n(_actions_core__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _src_util_actions__WEBPACK_IMPORTED_MODULE_1__ = __nccwpck_require__(9706);
+/* harmony import */ var _util_github_rest_actions__WEBPACK_IMPORTED_MODULE_1__ = __nccwpck_require__(2462);
 /* harmony import */ var _src_json__WEBPACK_IMPORTED_MODULE_2__ = __nccwpck_require__(6103);
-/* harmony import */ var _src_util_date__WEBPACK_IMPORTED_MODULE_3__ = __nccwpck_require__(4602);
-/* harmony import */ var _src_util_date__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__nccwpck_require__.n(_src_util_date__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _util_github_rest_date__WEBPACK_IMPORTED_MODULE_3__ = __nccwpck_require__(3190);
+/* harmony import */ var _util_github_rest_date__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__nccwpck_require__.n(_util_github_rest_date__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var _octokit_rest__WEBPACK_IMPORTED_MODULE_6__ = __nccwpck_require__(5294);
 /* harmony import */ var fs__WEBPACK_IMPORTED_MODULE_4__ = __nccwpck_require__(7147);
 /* harmony import */ var fs__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__nccwpck_require__.n(fs__WEBPACK_IMPORTED_MODULE_4__);
@@ -26,9 +26,10 @@ __nccwpck_require__.r(__webpack_exports__);
 
 
 
+
 try {
 
-    // Get jobs data
+    // Get run and jobs data
     const input_run_id = _actions_core__WEBPACK_IMPORTED_MODULE_0__.getInput('run_id');
     const run_id = input_run_id && input_run_id.length > 0 ? input_run_id : process.env.GITHUB_RUN_ID
     console.log(`Run id used for this run is [${run_id}]`)
@@ -38,53 +39,45 @@ try {
     });
     const owner = process.env.GITHUB_REPOSITORY.split('/')[0];
     const repo = process.env.GITHUB_REPOSITORY.split('/')[1];
-    let jobs = await (0,_src_util_actions__WEBPACK_IMPORTED_MODULE_1__/* .waitForAllCompletedJob */ .Py)({octokit, owner, repo, run_id});
-    const filtered = jobs.filter(_src_util_actions__WEBPACK_IMPORTED_MODULE_1__/* .filterTestsJobs */ .My)
-    const start = jobs.map(test => test.started_at).sort(_src_util_date__WEBPACK_IMPORTED_MODULE_3__.compareDates)[0]
-    const end = jobs.map(test => test.completed_at).sort(_src_util_date__WEBPACK_IMPORTED_MODULE_3__.compareDates)[jobs.length - 1]
-    const suites = (0,_src_util_actions__WEBPACK_IMPORTED_MODULE_1__/* .getJobsBySuites */ .lA)(filtered)
+    let jobs = await (0,_util_github_rest_actions__WEBPACK_IMPORTED_MODULE_1__/* .waitForAllCompletedJob */ .Py)({octokit, owner, repo, run_id});
+    const filtered = jobs.filter(_util_github_rest_actions__WEBPACK_IMPORTED_MODULE_1__/* .filterTestsJobs */ .My)
+    const start = jobs.map(test => test.started_at).sort(_util_github_rest_date__WEBPACK_IMPORTED_MODULE_3__.compareDates)[0]
+    const end = jobs.map(test => test.completed_at).sort(_util_github_rest_date__WEBPACK_IMPORTED_MODULE_3__.compareDates)[jobs.length - 1]
+    const suites = (0,_util_github_rest_actions__WEBPACK_IMPORTED_MODULE_1__/* .getJobsBySuites */ .lA)(filtered)
     // Organise and parse raw data Reporting
     const report = new _src_json__WEBPACK_IMPORTED_MODULE_2__.Report({start, end})
-    const run_data = []
     for (const suiteData of suites) {
         const suite = new _src_json__WEBPACK_IMPORTED_MODULE_2__.Suite({title: suiteData.name, duration: suiteData.duration})
-        const run_data_info = {
-            title: suiteData.name,
-            jobs: []
-        }
         for (const job of suiteData.jobs) {
             const testData = {
                 title: job.name.split('/')[1],
                 fullTitle: job.name,
-                duration: (0,_src_util_date__WEBPACK_IMPORTED_MODULE_3__.getDuration)(job.started_at, job.completed_at),
+                duration: (0,_util_github_rest_date__WEBPACK_IMPORTED_MODULE_3__.getDuration)(job.started_at, job.completed_at),
                 passed: job.conclusion === 'success'
             }
             const regex = /####\[Start_json_data](.*)\[End_json_data]####/
-            const logs = await (0,_src_util_actions__WEBPACK_IMPORTED_MODULE_1__/* .jobLog */ .T1)({owner, repo, job_id: job.id, pat})
+            const logs = await (0,_util_github_rest_actions__WEBPACK_IMPORTED_MODULE_1__/* .jobLog */ .T1)({owner, repo, job_id: job.id, pat})
             if (logs && typeof logs === 'string') {
                 if (regex.test(logs)) {
                     const json_data = JSON.parse(regex.exec(logs)[1])
                     if(json_data.title) testData.title = json_data.title;
-                    run_data_info.jobs.push({...json_data, ...testData})
                     testData.code = JSON.stringify(json_data, undefined, 2);
                 }
             }
             suite.addTest(new _src_json__WEBPACK_IMPORTED_MODULE_2__.Test(testData))
         }
-        run_data.push(run_data_info)
         report.addSuite(suite);
     }
     // Make json file
     fs__WEBPACK_IMPORTED_MODULE_4__.writeFileSync('data.json', JSON.stringify(report, undefined, 2))
-    fs__WEBPACK_IMPORTED_MODULE_4__.writeFileSync('run_data.json', JSON.stringify(run_data, undefined, 2))
     // Make html report
     await _src_generation_generator__WEBPACK_IMPORTED_MODULE_5__/* .generator.generate */ .R.generate()
     console.log(1)
 } catch (error) {
     _actions_core__WEBPACK_IMPORTED_MODULE_0__.setFailed(error.message);
 }
-__webpack_handle_async_dependencies__();
-}, 1);
+__webpack_async_result__();
+} catch(e) { __webpack_async_result__(e); } }, 1);
 
 /***/ }),
 
@@ -7456,7 +7449,7 @@ module.exports = {
 const u = (__nccwpck_require__(7976).fromPromise)
 const jsonFile = __nccwpck_require__(648)
 
-jsonFile.outputJson = u(__nccwpck_require__(9622))
+jsonFile.outputJson = u(__nccwpck_require__(9706))
 jsonFile.outputJsonSync = __nccwpck_require__(3209)
 // aliases
 jsonFile.outputJSON = jsonFile.outputJson
@@ -7510,7 +7503,7 @@ module.exports = outputJsonSync
 
 /***/ }),
 
-/***/ 9622:
+/***/ 9706:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
@@ -25661,7 +25654,7 @@ module.exports = Report
 
 "use strict";
 
-const uuid = __nccwpck_require__(9747)
+const uuid = __nccwpck_require__(78)
 
 class Result {
     constructor() {
@@ -25697,7 +25690,7 @@ module.exports = Result
 
 "use strict";
 
-const {getDuration} = __nccwpck_require__(4602)
+const {getDuration} = __nccwpck_require__(3190)
 
 class Stats {
     constructor({start, end}) {
@@ -25737,7 +25730,7 @@ module.exports = Stats
 
 "use strict";
 
-const uuid = __nccwpck_require__(9747)
+const uuid = __nccwpck_require__(78)
 
 class Suite {
     constructor({title, file, duration}) {
@@ -25775,7 +25768,7 @@ module.exports = Suite
 
 "use strict";
 
-const uuid = __nccwpck_require__(9747)
+const uuid = __nccwpck_require__(78)
 
 class Test {
     constructor({title, fullTitle, duration, passed, code}) {
@@ -25802,7 +25795,7 @@ module.exports = Test
 
 /***/ }),
 
-/***/ 9706:
+/***/ 2462:
 /***/ ((__unused_webpack_module, __webpack_exports__, __nccwpck_require__) => {
 
 "use strict";
@@ -25817,7 +25810,7 @@ __nccwpck_require__.d(__webpack_exports__, {
 
 // UNUSED EXPORTS: getALlJobs, wait
 
-;// CONCATENATED MODULE: ./src/enums/testMatrix.js
+;// CONCATENATED MODULE: ../util/github_rest/enums/testMatrix.js
 
 const TEST_MATRIX = [
     'java',
@@ -25827,16 +25820,12 @@ const TEST_MATRIX = [
     'js_selenium',
     'js_playwright',
     'js_webdriverio',
-    'js_webdriverio4',
-    'js_webdriverio5',
     'js_nightwatch',
     'js_protractor',
     'js_puppeteer',
     'js_cypress',
-    'js_cypress_v9-',
     'js_testcafe',
     'js_storybook',
-    'appium',
 ]
 
 const MATRIX_MAPPING = {
@@ -25847,21 +25836,16 @@ const MATRIX_MAPPING = {
     'js_selenium': 'JS Selenium',
     'js_playwright': 'JS Playwright',
     'js_webdriverio': 'JS Webdriverio',
-    'js_webdriverio4': 'JS Webdriverio 4',
-    'js_webdriverio5': 'JS Webdriverio 5',
     'js_nightwatch': 'JS Nightwatch',
     'js_protractor': 'JS Protractor',
     'js_puppeteer': 'JS Puppeteer',
     'js_cypress': 'JS Cypress',
-    'js_cypress_v9-': 'JS Cypress legacy',
     'js_testcafe': 'JS Testcafe',
     'js_storybook': 'JS Storybook',
-    'appium': 'Appium',
-
 }
 
 
-;// CONCATENATED MODULE: ./src/enums/time.js
+;// CONCATENATED MODULE: ../util/github_rest/enums/time.js
 
 
 const MS = {
@@ -25870,12 +25854,12 @@ const MS = {
 }
 
 /* harmony default export */ const time = (MS);
-// EXTERNAL MODULE: ./src/util/date.js
-var date = __nccwpck_require__(4602);
+// EXTERNAL MODULE: ../util/github_rest/date.js
+var date = __nccwpck_require__(3190);
 // EXTERNAL MODULE: external "https"
 var external_https_ = __nccwpck_require__(5687);
 var external_https_default = /*#__PURE__*/__nccwpck_require__.n(external_https_);
-;// CONCATENATED MODULE: ./src/util/actions.js
+;// CONCATENATED MODULE: ../util/github_rest/actions.js
 
 
 ;
@@ -25913,10 +25897,10 @@ function getJobsBySuites(arr) {
 }
 
 function filterTestsJobs({name}) {
-    return !name.includes("Batch_id")
+    return !name.includes("Setup")
         && name !== 'rerun'
         && name !== 'report_generation'
-        && name !== 'email_notification'
+        && !name.includes('email_notification')
 }
 
 async function getALlJobs({octokit, owner, repo, run_id}) {
@@ -26021,7 +26005,7 @@ async function wait(ms) {
 
 /***/ }),
 
-/***/ 4602:
+/***/ 3190:
 /***/ ((module) => {
 
 "use strict";
@@ -26052,7 +26036,7 @@ module.exports = {
 
 /***/ }),
 
-/***/ 9747:
+/***/ 78:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
@@ -26272,75 +26256,70 @@ module.exports = JSON.parse('[[[0,44],"disallowed_STD3_valid"],[[45,46],"valid"]
 /************************************************************************/
 /******/ 	/* webpack/runtime/async module */
 /******/ 	(() => {
-/******/ 		var webpackThen = typeof Symbol === "function" ? Symbol("webpack then") : "__webpack_then__";
+/******/ 		var webpackQueues = typeof Symbol === "function" ? Symbol("webpack queues") : "__webpack_queues__";
 /******/ 		var webpackExports = typeof Symbol === "function" ? Symbol("webpack exports") : "__webpack_exports__";
-/******/ 		var completeQueue = (queue) => {
-/******/ 			if(queue) {
+/******/ 		var webpackError = typeof Symbol === "function" ? Symbol("webpack error") : "__webpack_error__";
+/******/ 		var resolveQueue = (queue) => {
+/******/ 			if(queue && !queue.d) {
+/******/ 				queue.d = 1;
 /******/ 				queue.forEach((fn) => (fn.r--));
 /******/ 				queue.forEach((fn) => (fn.r-- ? fn.r++ : fn()));
 /******/ 			}
 /******/ 		}
-/******/ 		var completeFunction = (fn) => (!--fn.r && fn());
-/******/ 		var queueFunction = (queue, fn) => (queue ? queue.push(fn) : completeFunction(fn));
 /******/ 		var wrapDeps = (deps) => (deps.map((dep) => {
 /******/ 			if(dep !== null && typeof dep === "object") {
-/******/ 				if(dep[webpackThen]) return dep;
+/******/ 				if(dep[webpackQueues]) return dep;
 /******/ 				if(dep.then) {
 /******/ 					var queue = [];
+/******/ 					queue.d = 0;
 /******/ 					dep.then((r) => {
 /******/ 						obj[webpackExports] = r;
-/******/ 						completeQueue(queue);
-/******/ 						queue = 0;
+/******/ 						resolveQueue(queue);
+/******/ 					}, (e) => {
+/******/ 						obj[webpackError] = e;
+/******/ 						resolveQueue(queue);
 /******/ 					});
 /******/ 					var obj = {};
-/******/ 												obj[webpackThen] = (fn, reject) => (queueFunction(queue, fn), dep['catch'](reject));
+/******/ 					obj[webpackQueues] = (fn) => (fn(queue));
 /******/ 					return obj;
 /******/ 				}
 /******/ 			}
 /******/ 			var ret = {};
-/******/ 								ret[webpackThen] = (fn) => (completeFunction(fn));
-/******/ 								ret[webpackExports] = dep;
-/******/ 								return ret;
+/******/ 			ret[webpackQueues] = x => {};
+/******/ 			ret[webpackExports] = dep;
+/******/ 			return ret;
 /******/ 		}));
 /******/ 		__nccwpck_require__.a = (module, body, hasAwait) => {
-/******/ 			var queue = hasAwait && [];
+/******/ 			var queue;
+/******/ 			hasAwait && ((queue = []).d = 1);
+/******/ 			var depQueues = new Set();
 /******/ 			var exports = module.exports;
 /******/ 			var currentDeps;
 /******/ 			var outerResolve;
 /******/ 			var reject;
-/******/ 			var isEvaluating = true;
-/******/ 			var nested = false;
-/******/ 			var whenAll = (deps, onResolve, onReject) => {
-/******/ 				if (nested) return;
-/******/ 				nested = true;
-/******/ 				onResolve.r += deps.length;
-/******/ 				deps.map((dep, i) => (dep[webpackThen](onResolve, onReject)));
-/******/ 				nested = false;
-/******/ 			};
 /******/ 			var promise = new Promise((resolve, rej) => {
 /******/ 				reject = rej;
-/******/ 				outerResolve = () => (resolve(exports), completeQueue(queue), queue = 0);
+/******/ 				outerResolve = resolve;
 /******/ 			});
 /******/ 			promise[webpackExports] = exports;
-/******/ 			promise[webpackThen] = (fn, rejectFn) => {
-/******/ 				if (isEvaluating) { return completeFunction(fn); }
-/******/ 				if (currentDeps) whenAll(currentDeps, fn, rejectFn);
-/******/ 				queueFunction(queue, fn);
-/******/ 				promise['catch'](rejectFn);
-/******/ 			};
+/******/ 			promise[webpackQueues] = (fn) => (queue && fn(queue), depQueues.forEach(fn), promise["catch"](x => {}));
 /******/ 			module.exports = promise;
 /******/ 			body((deps) => {
-/******/ 				if(!deps) return outerResolve();
 /******/ 				currentDeps = wrapDeps(deps);
-/******/ 				var fn, result;
-/******/ 				var promise = new Promise((resolve, reject) => {
-/******/ 					fn = () => (resolve(result = currentDeps.map((d) => (d[webpackExports]))));
+/******/ 				var fn;
+/******/ 				var getResult = () => (currentDeps.map((d) => {
+/******/ 					if(d[webpackError]) throw d[webpackError];
+/******/ 					return d[webpackExports];
+/******/ 				}))
+/******/ 				var promise = new Promise((resolve) => {
+/******/ 					fn = () => (resolve(getResult));
 /******/ 					fn.r = 0;
-/******/ 					whenAll(currentDeps, fn, reject);
+/******/ 					var fnQueue = (q) => (q !== queue && !depQueues.has(q) && (depQueues.add(q), q && !q.d && (fn.r++, q.push(fn))));
+/******/ 					currentDeps.map((dep) => (dep[webpackQueues](fnQueue)));
 /******/ 				});
-/******/ 				return fn.r ? promise : result;
-/******/ 			}).then(outerResolve, reject);
-/******/ 			isEvaluating = false;
+/******/ 				return fn.r ? promise : getResult();
+/******/ 			}, (err) => ((err ? reject(promise[webpackError] = err) : outerResolve(exports)), resolveQueue(queue)));
+/******/ 			queue && (queue.d = 0);
 /******/ 		};
 /******/ 	})();
 /******/ 	

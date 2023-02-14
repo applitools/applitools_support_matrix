@@ -1,5 +1,5 @@
 'use strict'
-const uuid = require("../util/uuid")
+const uuid = require("../../../util/github_rest/uuid")
 
 class Result {
     constructor() {

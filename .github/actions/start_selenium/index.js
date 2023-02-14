@@ -1,7 +1,6 @@
 import * as core from '@actions/core'
-import * as github from '@actions/github'
 import * as fetch from 'node-fetch'
-import {spawn} from 'child_process'
+import {spawn, execSync} from 'child_process'
 import {get} from 'https'
 import * as fs from 'fs'
 
@@ -12,14 +11,22 @@ const options = {detached: true, stdio: 'ignore'}
 let selenium;
 try {
     const legacy = core.getInput('legacy');
-    console.log(`Selenium version is set to ${legacy === 'true' ? "3" : "4"}!`);
+    const version = legacy === 'true' ? "3" : "4";
+    console.log(`Selenium version is set to ${version}!`);
+    let installed_version;
     if (legacy === 'true') {
         await downloadSelenium(URL_3)
+        installed_version = execSync(`java -jar ${DOWNLOADED_SELENIUM_JAR} --version`)
         selenium = spawn("java", ["-jar", DOWNLOADED_SELENIUM_JAR], options)
     } else {
-        selenium = process.env.RUNNER_OS === "macOS" ?
-            spawn("selenium-server", ["standalone"], options) :
-            spawn("java", ["-jar", process.env.SELENIUM_JAR_PATH, "standalone"], options)
+        if (process.env.RUNNER_OS === "macOS") {
+            installed_version = execSync(`selenium-server standalone --version`)
+            selenium = spawn("selenium-server", ["standalone"], options)
+        } else {
+            installed_version = execSync(`java -jar ${process.env.SELENIUM_JAR_PATH} standalone --version`)
+            selenium = spawn("java", ["-jar", process.env.SELENIUM_JAR_PATH, "standalone"], options)
+
+        }
     }
     selenium.unref();
     await waitForSeleniumStart(60)
@@ -27,6 +34,7 @@ try {
     console.log(`Process pid ${selenium.pid}`)
     const time = (new Date()).toTimeString();
     core.setOutput("time", time);
+    core.setOutput("version", installed_version.toString());
 } catch (error) {
     core.setFailed(error.message);
 }

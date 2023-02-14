@@ -1,0 +1,76 @@
+name: 'Close batch'
+description: 'Action to run JS packages tests'
+inputs:
+  work_dir:
+    description: "Change work dir for a run"
+    required: true
+
+runs:
+  using: "composite"
+  steps:
+    - name: Setup node
+      uses: actions/setup-node@v3
+      with:
+        node-version: ${{ matrix.node-version }}
+    - name: Start Selenium Server
+      if: ${{matrix.use_selenium }}
+      id: selenium
+      uses: ./.github/actions/start_selenium
+      with:
+        legacy: ${{matrix.selenium_legacy}}
+    - name: Framework install
+      id: install
+      uses: ./.github/actions/install_npm_package
+      with:
+        package: ${{matrix.framework_package}}
+        version: ${{matrix.version}}
+        working-directory: ${{matrix.work_dir}}
+    - name: Log extra info
+      shell: bash
+      id: logging
+      run: |
+        chromedriver --version
+        echo "chromedriver_version=$(chromedriver --version)" >> $GITHUB_OUTPUT
+        if [ "$RUNNER_OS" == "Linux" ]; then
+             google-chrome --version
+             echo "chrome_version=$(google-chrome --version)" >> $GITHUB_OUTPUT
+        elif [ "$RUNNER_OS" == "Windows" ]; then
+             powershell.exe -command "(Get-Item 'C:\Program Files\Google\Chrome\Application\chrome.exe').VersionInfo.ProductVersion"
+             echo "chrome_version=$(powershell.exe -command "(Get-Item 'C:\Program Files\Google\Chrome\Application\chrome.exe').VersionInfo.ProductVersion")" >> $GITHUB_OUTPUT
+        elif [ "$RUNNER_OS" == "macOS" ]; then
+             /Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --version 
+             echo "chrome_version=$(/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --version)" >> $GITHUB_OUTPUT
+        else
+             echo "$RUNNER_OS not supported"
+             exit 1
+        fi
+    - name: Logging version generation
+      uses: ./.github/actions/log_data_json
+      with:
+        package: ${{ steps.install.outputs.package_name }}
+        version: ${{ steps.install.outputs.package_version }}
+        os: ${{runner.os}}
+        title: ${{ format('JS Selenium SDK [{0}] [nodejs {1}] | Pure selenium', runner.os, matrix.node-version) }}
+        matrix: ${{ toJSON(matrix) }}
+        work_dir: ${{matrix.work_dir}}
+        selenium: ${{ steps.selenium.outputs.version }}
+        chrome_version: ${{ steps.logging.outputs.chrome_version }}
+        chromedriver_version: ${{ steps.logging.outputs.chromedriver_version }}
+    - name: Pre run install
+      if: ${{!matrix.legacy_npm_peers }}
+      shell: bash
+      working-directory: ${{inputs.work_dir}}
+      run: npm install
+    - name: Pre run install with legacy peers
+      if: ${{matrix.legacy_npm_peers }}
+      shell: bash
+      working-directory: ${{inputs.work_dir}}
+      run: npm install --legacy-peer-deps
+    - name: Print installed packages
+      shell: bash
+      working-directory: ${{inputs.work_dir}}
+      run: npm ls
+    - name: Run tests
+      shell: bash
+      working-directory: ${{inputs.work_dir}}
+      run: ${{matrix.test_command}}

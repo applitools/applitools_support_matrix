@@ -2,7 +2,19 @@ name: Appium
 
 on:
   workflow_dispatch:
+    inputs:
+      last_passed:
+        description: ' Check to make last passed run'
+        default: false
+        required: true
+        type: boolean
   workflow_call:
+    inputs:
+      last_passed:
+        description: 'choose which version of the frameworks should be used (latest | last passed)'
+        default: false
+        required: true
+        type: boolean
     secrets:
       APPLITOOLS_API_KEY:
         required: true
@@ -23,33 +35,73 @@ env:
 
 
 jobs:
-  batch_id:
-    name: Batch_id
+  setup:
+    name: Setup
     runs-on: ubuntu-latest
     outputs:
       uuid: ${{ steps.uuid.outputs.uuid }}
+      js: ${{ steps.js.outputs.matrix}}
+      java: ${{ steps.java.outputs.matrix}}
+      dotnet: ${{ steps.dotnet.outputs.matrix}}
+      ruby: ${{ steps.ruby.outputs.matrix}}
+      python: ${{ steps.python.outputs.matrix}}
     steps:
       - name: generate uuid
         id: uuid
         run: |
           echo "uuid=$(uuidgen)" >> $GITHUB_OUTPUT
+      - uses: actions/checkout@v3
+      - name: generate matrix
+        id: js
+        uses: ./.github/actions/setup
+        with:
+          work_dir: 'sdks/js/eyes-selenium'
+          last_passed: ${{inputs.last_passed}}
+          config_file: appium
+      - name: generate matrix
+        id: java
+        uses: ./.github/actions/setup
+        with:
+          work_dir: 'sdks/java'
+          last_passed: ${{inputs.last_passed}}
+          config_file: appium
+      - name: generate matrix
+        id: dotnet
+        uses: ./.github/actions/setup
+        with:
+          work_dir: 'sdks/dotnet'
+          last_passed: ${{inputs.last_passed}}
+          config_file: appium
+      - name: generate matrix
+        id: python
+        uses: ./.github/actions/setup
+        with:
+          work_dir: 'sdks/python'
+          last_passed: ${{inputs.last_passed}}
+          config_file: appium
+      - name: generate matrix
+        id: ruby
+        uses: ./.github/actions/setup
+        with:
+          work_dir: 'sdks/ruby'
+          last_passed: ${{inputs.last_passed}}
+          config_file: appium
   js:
-    needs: batch_id
+    needs: setup
     strategy:
       fail-fast: false
       max-parallel: 1
-      matrix:
-        os: [ ubuntu-latest, windows-latest, macos-latest]
+      matrix: ${{ fromJson(needs.setup.outputs.js) }}
     runs-on: ${{ matrix.os }}
     timeout-minutes: 30
     env:
-      APPLITOOLS_BATCH_ID: ${{needs.batch_id.outputs.uuid}}
-      JS_TESTS_CONFIG_NAME: 'eyes-selenium'
-      work_dir: 'sdks/js/eyes-selenium'
+      APPLITOOLS_BATCH_ID: ${{needs.setup.outputs.uuid}}
+      JS_TESTS_CONFIG_NAME: ${{matrix.js_config}}
+      work_dir: ${{matrix.work_dir}}
     name: Javascript appium
     defaults:
       run:
-        working-directory: ${{env.work_dir}}
+        working-directory: ${{matrix.work_dir}}
         shell: bash
     steps:
       - uses: actions/checkout@v3
@@ -68,19 +120,19 @@ jobs:
           npm install
           npm run appium
   java:
-    needs: batch_id
+    needs: setup
     strategy:
       fail-fast: false
       max-parallel: 1
-      matrix:
-        os: [ ubuntu-latest, windows-latest, macos-latest]
+      matrix: ${{ fromJson(needs.setup.outputs.java) }}
     runs-on: ${{ matrix.os }}
     timeout-minutes: 30
     env:
-      APPLITOOLS_BATCH_ID: ${{needs.batch_id.outputs.uuid}}
+      APPLITOOLS_BATCH_ID: ${{needs.setup.outputs.uuid}}
     name: 'Java Appium'
     defaults:
       run:
+        working-directory: ${{matrix.work_dir}}
         shell: bash
     steps:
       - uses: actions/checkout@v3
@@ -88,7 +140,7 @@ jobs:
         uses: actions/setup-java@v3
         with:
           distribution: 'temurin'
-          java-version: '8'
+          java-version: ${{matrix.java-version}}
           cache: 'maven'
       - name: Logging version generation
         uses: ./.github/actions/log_data_json
@@ -97,26 +149,24 @@ jobs:
           title: ${{ format('Java Appium [{0}]  [java version 8]', runner.os) }}
           selenium: 'sauce'
       - name: Install dependency
-        working-directory: sdks/java
         run: |
           mvn versions:use-latest-releases -Dincludes=com.applitools:eyes-appium-java5 -X
           mvn versions:use-latest-releases -Dincludes=com.applitools:eyes-selenium-java5 -X
       - name: Run tests
-        working-directory: sdks/java
         run:  mvn test -DsuiteFile=appium.xml
   python:
-    needs: batch_id
+    needs: setup
     strategy:
       fail-fast: false
       max-parallel: 1
-      matrix:
-        os: [ ubuntu-latest, windows-latest, macos-latest ]
+      matrix: ${{ fromJson(needs.setup.outputs.python) }}
     runs-on: ${{ matrix.os }}
     timeout-minutes: 30
     env:
-      APPLITOOLS_BATCH_ID: ${{needs.batch_id.outputs.uuid}}
+      APPLITOOLS_BATCH_ID: ${{needs.setup.outputs.uuid}}
     defaults:
       run:
+        working-directory: ${{matrix.work_dir}}
         shell: bash
     name: 'Python Appium'
     steps:
@@ -124,7 +174,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
-          python-version: '3.10'
+          python-version: ${{matrix.python-version}}
       - name: Logging version generation
         uses: ./.github/actions/log_data_json
         with:
@@ -132,23 +182,22 @@ jobs:
           title: ${{ format('Python Appium [{0}] [python version 3.10]', runner.os) }}
           selenium: 'sauce'
       - name: Run tests
-        working-directory: sdks/python
         run: |
           pip install -r requirements.txt
           pytest -c appium.ini
   ruby:
-    needs: batch_id
+    needs: setup
     strategy:
       fail-fast: false
       max-parallel: 1
-      matrix:
-        os: [ ubuntu-latest, windows-latest, macos-latest ]
+      matrix: ${{ fromJson(needs.setup.outputs.ruby) }}
     runs-on: ${{ matrix.os }}
     timeout-minutes: 30
     env:
-      APPLITOOLS_BATCH_ID: ${{needs.batch_id.outputs.uuid}}
+      APPLITOOLS_BATCH_ID: ${{needs.setup.outputs.uuid}}
     defaults:
       run:
+        working-directory: ${{matrix.work_dir}}
         shell: bash
     name: 'Ruby Appium'
     steps:
@@ -156,10 +205,9 @@ jobs:
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: '2.6'
+          ruby-version: ${{matrix.ruby-version}}
           bundler-cache: true
       - name: Install gems
-        working-directory: sdks/ruby
         run: |
           bundle install
       - name: Logging version generation
@@ -169,22 +217,21 @@ jobs:
           title: ${{ format('Ruby Appium [{0}] [ruby version 2.6]', runner.os) }}
           selenium: 'sauce'
       - name: Run tests
-        working-directory: sdks/ruby
         run: |
           bundle exec rake github:appium
   dotnet:
-    needs: batch_id
+    needs: setup
     strategy:
       fail-fast: false
       max-parallel: 1
-      matrix:
-        os: [ ubuntu-latest, windows-latest, macos-latest ]
+      matrix: ${{ fromJson(needs.setup.outputs.dotnet) }}
     runs-on: ${{ matrix.os }}
     timeout-minutes: 30
     env:
-      APPLITOOLS_BATCH_ID: ${{needs.batch_id.outputs.uuid}}
+      APPLITOOLS_BATCH_ID: ${{needs.setup.outputs.uuid}}
     defaults:
       run:
+        working-directory: ${{matrix.work_dir}}
         shell: bash
     name: Dotnet ${{ matrix.dotnet-version }} ${{matrix.os}}
     steps:
@@ -192,7 +239,7 @@ jobs:
       - name: Setup dotnet
         uses: actions/setup-dotnet@v2
         with:
-          dotnet-version: '3.1.x'
+          dotnet-version: ${{matrix.dotnet-version}}
       - name: Logging version generation
         uses: ./.github/actions/log_data_json
         with:
