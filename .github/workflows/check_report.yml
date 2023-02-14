@@ -37,12 +37,6 @@ jobs:
           pwd
           ls
           cat last_passed.json
-          git config --global user.name 'AutoSupport'
-          git config --global user.email 'autosupport@noreply.github.com'
-          git status
-          git add last_passed.json
-          git commit -m "Update last_passed.json file with the latest data"
-          git push
       - name: Upload report as artifact
         uses: actions/upload-artifact@v3
         with:

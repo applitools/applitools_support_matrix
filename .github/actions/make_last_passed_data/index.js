@@ -5,6 +5,7 @@ import {filterTestsJobs, getJobsBySuites, jobLog, waitForAllCompletedJob} from '
 import uuid from '../util/github_rest/uuid'
 import {Octokit} from '@octokit/rest'
 import * as fs from 'fs'
+import path from "path";
 
 try {
 
@@ -21,7 +22,9 @@ try {
     let jobs = await waitForAllCompletedJob({octokit, owner, repo, run_id});
     const filtered = jobs.filter(filterTestsJobs)
     const suites = getJobsBySuites(filtered)
-    const current_last_passed = require("./last_passed.json").data
+    const filePath = path.join(process.cwd(), 'last_passed.json');
+    const json_string = fs.readFileSync(filePath).toString();
+    const current_last_passed = JSON.parse(json_string)
     // Organise and parse raw data Reporting
     const run_data = []
     for (const suiteData of suites) {

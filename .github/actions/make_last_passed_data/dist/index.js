@@ -12,11 +12,14 @@ __nccwpck_require__.r(__webpack_exports__);
 /* harmony import */ var _util_github_rest_actions__WEBPACK_IMPORTED_MODULE_1__ = __nccwpck_require__(2462);
 /* harmony import */ var _util_github_rest_uuid__WEBPACK_IMPORTED_MODULE_2__ = __nccwpck_require__(78);
 /* harmony import */ var _util_github_rest_uuid__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__nccwpck_require__.n(_util_github_rest_uuid__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _octokit_rest__WEBPACK_IMPORTED_MODULE_4__ = __nccwpck_require__(5294);
+/* harmony import */ var _octokit_rest__WEBPACK_IMPORTED_MODULE_5__ = __nccwpck_require__(5294);
 /* harmony import */ var fs__WEBPACK_IMPORTED_MODULE_3__ = __nccwpck_require__(7147);
 /* harmony import */ var fs__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__nccwpck_require__.n(fs__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var path__WEBPACK_IMPORTED_MODULE_4__ = __nccwpck_require__(1017);
+/* harmony import */ var path__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__nccwpck_require__.n(path__WEBPACK_IMPORTED_MODULE_4__);
 
 ;
+
 
 
 
@@ -30,7 +33,7 @@ try {
     const run_id = input_run_id && input_run_id.length > 0 ? input_run_id : process.env.GITHUB_RUN_ID
     console.log(`Run id used for this run is [${run_id}]`)
     const pat = _actions_core__WEBPACK_IMPORTED_MODULE_0__.getInput('token')
-    const octokit = new _octokit_rest__WEBPACK_IMPORTED_MODULE_4__/* .Octokit */ .v({
+    const octokit = new _octokit_rest__WEBPACK_IMPORTED_MODULE_5__/* .Octokit */ .v({
         auth: pat,
     });
     const owner = process.env.GITHUB_REPOSITORY.split('/')[0];
@@ -38,7 +41,9 @@ try {
     let jobs = await (0,_util_github_rest_actions__WEBPACK_IMPORTED_MODULE_1__/* .waitForAllCompletedJob */ .Py)({octokit, owner, repo, run_id});
     const filtered = jobs.filter(_util_github_rest_actions__WEBPACK_IMPORTED_MODULE_1__/* .filterTestsJobs */ .My)
     const suites = (0,_util_github_rest_actions__WEBPACK_IMPORTED_MODULE_1__/* .getJobsBySuites */ .lA)(filtered)
-    const current_last_passed = (__nccwpck_require__(7929).data)
+    const filePath = path__WEBPACK_IMPORTED_MODULE_4___default().join(process.cwd(), 'last_passed.json');
+    const json_string = fs__WEBPACK_IMPORTED_MODULE_3__.readFileSync(filePath).toString();
+    const current_last_passed = JSON.parse(json_string)
     // Organise and parse raw data Reporting
     const run_data = []
     for (const suiteData of suites) {
@@ -9593,14 +9598,6 @@ function uuid() {
 }
 
 module.exports = uuid
-
-/***/ }),
-
-/***/ 7929:
-/***/ ((module) => {
-
-module.exports = eval("require")("./last_passed.json");
-
 
 /***/ }),
 
