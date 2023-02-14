@@ -55,6 +55,6 @@ const generator = {
     }
 }
 
-export {
+module.exports = {
     generator
 }

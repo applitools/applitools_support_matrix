@@ -1,102 +1,6 @@
 /******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
-/***/ 3140:
-/***/ ((module, __webpack_exports__, __nccwpck_require__) => {
-
-"use strict";
-__nccwpck_require__.a(module, async (__webpack_handle_async_dependencies__, __webpack_async_result__) => { try {
-__nccwpck_require__.r(__webpack_exports__);
-/* harmony import */ var _actions_core__WEBPACK_IMPORTED_MODULE_0__ = __nccwpck_require__(810);
-/* harmony import */ var _actions_core__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__nccwpck_require__.n(_actions_core__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _util_github_rest_actions__WEBPACK_IMPORTED_MODULE_1__ = __nccwpck_require__(2462);
-/* harmony import */ var _util_github_rest_uuid__WEBPACK_IMPORTED_MODULE_2__ = __nccwpck_require__(78);
-/* harmony import */ var _util_github_rest_uuid__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__nccwpck_require__.n(_util_github_rest_uuid__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _octokit_rest__WEBPACK_IMPORTED_MODULE_5__ = __nccwpck_require__(5294);
-/* harmony import */ var fs__WEBPACK_IMPORTED_MODULE_3__ = __nccwpck_require__(7147);
-/* harmony import */ var fs__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__nccwpck_require__.n(fs__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var path__WEBPACK_IMPORTED_MODULE_4__ = __nccwpck_require__(1017);
-/* harmony import */ var path__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__nccwpck_require__.n(path__WEBPACK_IMPORTED_MODULE_4__);
-
-;
-
-
-
-
-
-
-
-try {
-
-    // Get jobs data
-    const input_run_id = _actions_core__WEBPACK_IMPORTED_MODULE_0__.getInput('run_id');
-    const run_id = input_run_id && input_run_id.length > 0 ? input_run_id : process.env.GITHUB_RUN_ID
-    console.log(`Run id used for this run is [${run_id}]`)
-    const pat = _actions_core__WEBPACK_IMPORTED_MODULE_0__.getInput('token')
-    const octokit = new _octokit_rest__WEBPACK_IMPORTED_MODULE_5__/* .Octokit */ .v({
-        auth: pat,
-    });
-    const owner = process.env.GITHUB_REPOSITORY.split('/')[0];
-    const repo = process.env.GITHUB_REPOSITORY.split('/')[1];
-    let jobs = await (0,_util_github_rest_actions__WEBPACK_IMPORTED_MODULE_1__/* .waitForAllCompletedJob */ .Py)({octokit, owner, repo, run_id});
-    const filtered = jobs.filter(_util_github_rest_actions__WEBPACK_IMPORTED_MODULE_1__/* .filterTestsJobs */ .My)
-    const suites = (0,_util_github_rest_actions__WEBPACK_IMPORTED_MODULE_1__/* .getJobsBySuites */ .lA)(filtered)
-    const filePath = path__WEBPACK_IMPORTED_MODULE_4___default().join(process.cwd(), 'last_passed.json');
-    const json_string = fs__WEBPACK_IMPORTED_MODULE_3__.readFileSync(filePath).toString();
-    const current_last_passed = JSON.parse(json_string).data
-    // Organise and parse raw data Reporting
-    const run_data = []
-    for (const suiteData of suites) {
-        const run_data_info = {
-            title: suiteData.name,
-            jobs: []
-        }
-        for (const job of suiteData.jobs) {
-            const passed = job.conclusion === 'success'
-            const regex = /####\[Start_json_data](.*)\[End_json_data]####/
-            const logs = await (0,_util_github_rest_actions__WEBPACK_IMPORTED_MODULE_1__/* .jobLog */ .T1)({owner, repo, job_id: job.id, pat})
-            if (logs && typeof logs === 'string') {
-                if (regex.test(logs)) {
-                    const json_data = JSON.parse(regex.exec(logs)[1])
-                    const matrix_data = JSON.parse(json_data.matrix)
-                    run_data_info.jobs.push(
-                        {
-                            title: job.name,
-                            ...matrix_data,
-                            passed,
-                            package: json_data.package,
-                            version: json_data.version,
-                            matrix_string: JSON.stringify(matrix_data)
-                        })
-                    if (!run_data_info.config_path) run_data_info.config_path = matrix_data.matrix_config_dir
-                }
-            }
-        }
-        run_data.push(run_data_info)
-    }
-
-    run_data.forEach(suite => {
-        const old = current_last_passed.filter(old_suite => suite.title === old_suite.title)
-        suite.jobs = suite.jobs.map(job => {
-             return job.passed ? job : old.jobs.filter(old_job => old_job.matrix_string === job.matrix_string)[0]
-        })
-    })
-
-    // Make json file
-    const file = {
-        id: _util_github_rest_uuid__WEBPACK_IMPORTED_MODULE_2___default()(),
-        data: run_data
-    }
-    fs__WEBPACK_IMPORTED_MODULE_3__.writeFileSync('last_passed.json', JSON.stringify(file, undefined, 2))
-    console.log(1)
-} catch (error) {
-    _actions_core__WEBPACK_IMPORTED_MODULE_0__.setFailed(error.message);
-}
-__webpack_async_result__();
-} catch(e) { __webpack_async_result__(e); } }, 1);
-
-/***/ }),
-
 /***/ 7795:
 /***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
 
@@ -1900,10 +1804,9 @@ exports.requestLog = requestLog;
 /***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
 
 "use strict";
-var __webpack_unused_export__;
 
 
-__webpack_unused_export__ = ({ value: true });
+Object.defineProperty(exports, "__esModule", ({ value: true }));
 
 var core = __nccwpck_require__(7686);
 var pluginRequestLog = __nccwpck_require__(6178);
@@ -1916,7 +1819,7 @@ const Octokit = core.Octokit.plugin(pluginRequestLog.requestLog, pluginRestEndpo
   userAgent: `octokit-rest.js/${VERSION}`
 });
 
-exports.v = Octokit;
+exports.Octokit = Octokit;
 //# sourceMappingURL=index.js.map
 
 
@@ -9346,77 +9249,16 @@ function wrappy (fn, cb) {
 
 /***/ }),
 
-/***/ 2462:
-/***/ ((__unused_webpack_module, __webpack_exports__, __nccwpck_require__) => {
+/***/ 5849:
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
-// EXPORTS
-__nccwpck_require__.d(__webpack_exports__, {
-  "My": () => (/* binding */ filterTestsJobs),
-  "lA": () => (/* binding */ getJobsBySuites),
-  "T1": () => (/* binding */ jobLog),
-  "Py": () => (/* binding */ waitForAllCompletedJob)
-});
 
-// UNUSED EXPORTS: getALlJobs, wait
-
-;// CONCATENATED MODULE: ../util/github_rest/enums/testMatrix.js
-
-const TEST_MATRIX = [
-    'java',
-    'ruby',
-    'python',
-    'dotnet',
-    'js_selenium',
-    'js_playwright',
-    'js_webdriverio',
-    'js_nightwatch',
-    'js_protractor',
-    'js_puppeteer',
-    'js_cypress',
-    'js_testcafe',
-    'js_storybook',
-]
-
-const MATRIX_MAPPING = {
-    'java' : 'Java',
-    'ruby' : 'Ruby',
-    'python': 'Python',
-    'dotnet': 'Dotnet',
-    'js_selenium': 'JS Selenium',
-    'js_playwright': 'JS Playwright',
-    'js_webdriverio': 'JS Webdriverio',
-    'js_nightwatch': 'JS Nightwatch',
-    'js_protractor': 'JS Protractor',
-    'js_puppeteer': 'JS Puppeteer',
-    'js_cypress': 'JS Cypress',
-    'js_testcafe': 'JS Testcafe',
-    'js_storybook': 'JS Storybook',
-}
-
-
-;// CONCATENATED MODULE: ../util/github_rest/enums/time.js
-
-
-const MS = {
-    SECOND: 1000,
-    MINUTES: 60000,
-}
-
-/* harmony default export */ const time = (MS);
-// EXTERNAL MODULE: ../util/github_rest/date.js
-var date = __nccwpck_require__(3190);
-// EXTERNAL MODULE: external "https"
-var external_https_ = __nccwpck_require__(5687);
-var external_https_default = /*#__PURE__*/__nccwpck_require__.n(external_https_);
-;// CONCATENATED MODULE: ../util/github_rest/actions.js
-
-
-;
-
-
-
+const {TEST_MATRIX, MATRIX_MAPPING} = __nccwpck_require__(422);
+const MS = __nccwpck_require__(9494);
+const {getJobsDuration} = __nccwpck_require__(3190);
+const https = __nccwpck_require__(5687);
 
 function getJobsBySuites(arr) {
     const result = [];
@@ -9425,21 +9267,21 @@ function getJobsBySuites(arr) {
         jobs: arr.filter(({name}) => {
             let result = true;
             TEST_MATRIX.forEach(matrix => {
-                if(name.split("/")[0].trim() === matrix) result = false
+                if (name.split("/")[0].trim() === matrix) result = false
             })
             return result;
         })
     }
-    if(other.jobs.length !== 0) {
-        other.duration = (0,date.getJobsDuration)(other.jobs)
+    if (other.jobs.length !== 0) {
+        other.duration = getJobsDuration(other.jobs)
     }
     TEST_MATRIX.forEach(matrix => {
         const suite = {
             name: MATRIX_MAPPING[matrix],
-            jobs: arr.filter(({name})=> name.split("/")[0].trim() === matrix)
+            jobs: arr.filter(({name}) => name.split("/")[0].trim() === matrix)
         }
-        if(suite.jobs.length !== 0) {
-            suite.duration = (0,date.getJobsDuration)(suite.jobs)
+        if (suite.jobs.length !== 0) {
+            suite.duration = getJobsDuration(suite.jobs)
         }
         result.push(suite)
     })
@@ -9487,7 +9329,7 @@ async function jobLog({owner, repo, job_id, pat}) {
         }
     }
     const getLocation = new Promise((resolve) => {
-        const req = external_https_default().request(options, (res) => {
+        const req = https.request(options, (res) => {
             console.log('statusCode:', res.statusCode);
             res.on('data', (d) => {
                 process.stdout.write(d);
@@ -9508,12 +9350,12 @@ async function jobLog({owner, repo, job_id, pat}) {
     }
     return new Promise((resolve) => {
         let body = []
-        external_https_default().get(url, (res) => {
+        https.get(url, (res) => {
             console.log('statusCode:', res.statusCode);
             res.on('data', (d) => {
                 body.push(d)
             });
-            res.on('end', ()=> {
+            res.on('end', () => {
                 resolve(Buffer.concat(body).toString());
             });
         }).on('error', (e) => {
@@ -9523,12 +9365,12 @@ async function jobLog({owner, repo, job_id, pat}) {
 
 }
 
-async function waitForAllCompletedJob({octokit, owner, repo, run_id, wait_time=time.SECOND*30, tries_limit=20}){
+async function waitForAllCompletedJob({octokit, owner, repo, run_id, wait_time = MS.SECOND * 30, tries_limit = 20}) {
     let jobs;
     jobs = await getALlJobs({octokit, owner, repo, run_id});
     let notCompleted = jobs.filter(job => job.status !== 'completed').filter(job => job.name !== process.env.GITHUB_JOB)
     let tries = 1;
-    while(notCompleted.length > 0 && tries < tries_limit ) {
+    while (notCompleted.length > 0 && tries < tries_limit) {
         console.log("There are not completed jobs")
         notCompleted.forEach(printJob)
         console.log("Waiting for jobs to complete");
@@ -9552,7 +9394,14 @@ async function wait(ms) {
     return new Promise(resolve => setTimeout(resolve, ms))
 }
 
-
+module.exports = {
+    getJobsBySuites,
+    filterTestsJobs,
+    getALlJobs,
+    jobLog,
+    wait,
+    waitForAllCompletedJob
+}
 
 /***/ }),
 
@@ -9566,12 +9415,12 @@ function getDuration(start, end) {
     return Date.parse(end) - Date.parse(start)
 }
 
-function compareDates(a,b) {
+function compareDates(a, b) {
     return Date.parse(a) - Date.parse(b)
 }
 
-function getJobsDuration(jobs){
-    if(jobs && Array.isArray(jobs) && jobs.length !== 0) {
+function getJobsDuration(jobs) {
+    if (jobs && Array.isArray(jobs) && jobs.length !== 0) {
         const start = jobs.map(test => test.started_at).sort(compareDates)[0]
         const end = jobs.map(test => test.completed_at).sort(compareDates)[jobs.length - 1]
         return getDuration(start, end)
@@ -9587,17 +9436,77 @@ module.exports = {
 
 /***/ }),
 
+/***/ 422:
+/***/ ((module) => {
+
+"use strict";
+
+const TEST_MATRIX = [
+    'java',
+    'ruby',
+    'python',
+    'dotnet',
+    'js_selenium',
+    'js_playwright',
+    'js_webdriverio',
+    'js_nightwatch',
+    'js_protractor',
+    'js_puppeteer',
+    'js_cypress',
+    'js_testcafe',
+    'js_storybook',
+]
+
+const MATRIX_MAPPING = {
+    'java': 'Java',
+    'ruby': 'Ruby',
+    'python': 'Python',
+    'dotnet': 'Dotnet',
+    'js_selenium': 'JS Selenium',
+    'js_playwright': 'JS Playwright',
+    'js_webdriverio': 'JS Webdriverio',
+    'js_nightwatch': 'JS Nightwatch',
+    'js_protractor': 'JS Protractor',
+    'js_puppeteer': 'JS Puppeteer',
+    'js_cypress': 'JS Cypress',
+    'js_testcafe': 'JS Testcafe',
+    'js_storybook': 'JS Storybook',
+}
+
+module.exports = {
+    TEST_MATRIX,
+    MATRIX_MAPPING
+}
+
+/***/ }),
+
+/***/ 9494:
+/***/ ((module) => {
+
+"use strict";
+
+
+const MS = {
+    SECOND: 1000,
+    MINUTES: 60000,
+}
+
+module.exports = MS
+
+/***/ }),
+
 /***/ 78:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 "use strict";
 
 const crypto = __nccwpck_require__(6113)
+
 function uuid() {
     return crypto.randomUUID()
 }
-
 module.exports = uuid
+
 
 /***/ }),
 
@@ -9770,126 +9679,90 @@ module.exports = JSON.parse('[[[0,44],"disallowed_STD3_valid"],[[45,46],"valid"]
 /******/ 	}
 /******/ 	
 /************************************************************************/
-/******/ 	/* webpack/runtime/async module */
-/******/ 	(() => {
-/******/ 		var webpackQueues = typeof Symbol === "function" ? Symbol("webpack queues") : "__webpack_queues__";
-/******/ 		var webpackExports = typeof Symbol === "function" ? Symbol("webpack exports") : "__webpack_exports__";
-/******/ 		var webpackError = typeof Symbol === "function" ? Symbol("webpack error") : "__webpack_error__";
-/******/ 		var resolveQueue = (queue) => {
-/******/ 			if(queue && !queue.d) {
-/******/ 				queue.d = 1;
-/******/ 				queue.forEach((fn) => (fn.r--));
-/******/ 				queue.forEach((fn) => (fn.r-- ? fn.r++ : fn()));
-/******/ 			}
-/******/ 		}
-/******/ 		var wrapDeps = (deps) => (deps.map((dep) => {
-/******/ 			if(dep !== null && typeof dep === "object") {
-/******/ 				if(dep[webpackQueues]) return dep;
-/******/ 				if(dep.then) {
-/******/ 					var queue = [];
-/******/ 					queue.d = 0;
-/******/ 					dep.then((r) => {
-/******/ 						obj[webpackExports] = r;
-/******/ 						resolveQueue(queue);
-/******/ 					}, (e) => {
-/******/ 						obj[webpackError] = e;
-/******/ 						resolveQueue(queue);
-/******/ 					});
-/******/ 					var obj = {};
-/******/ 					obj[webpackQueues] = (fn) => (fn(queue));
-/******/ 					return obj;
-/******/ 				}
-/******/ 			}
-/******/ 			var ret = {};
-/******/ 			ret[webpackQueues] = x => {};
-/******/ 			ret[webpackExports] = dep;
-/******/ 			return ret;
-/******/ 		}));
-/******/ 		__nccwpck_require__.a = (module, body, hasAwait) => {
-/******/ 			var queue;
-/******/ 			hasAwait && ((queue = []).d = 1);
-/******/ 			var depQueues = new Set();
-/******/ 			var exports = module.exports;
-/******/ 			var currentDeps;
-/******/ 			var outerResolve;
-/******/ 			var reject;
-/******/ 			var promise = new Promise((resolve, rej) => {
-/******/ 				reject = rej;
-/******/ 				outerResolve = resolve;
-/******/ 			});
-/******/ 			promise[webpackExports] = exports;
-/******/ 			promise[webpackQueues] = (fn) => (queue && fn(queue), depQueues.forEach(fn), promise["catch"](x => {}));
-/******/ 			module.exports = promise;
-/******/ 			body((deps) => {
-/******/ 				currentDeps = wrapDeps(deps);
-/******/ 				var fn;
-/******/ 				var getResult = () => (currentDeps.map((d) => {
-/******/ 					if(d[webpackError]) throw d[webpackError];
-/******/ 					return d[webpackExports];
-/******/ 				}))
-/******/ 				var promise = new Promise((resolve) => {
-/******/ 					fn = () => (resolve(getResult));
-/******/ 					fn.r = 0;
-/******/ 					var fnQueue = (q) => (q !== queue && !depQueues.has(q) && (depQueues.add(q), q && !q.d && (fn.r++, q.push(fn))));
-/******/ 					currentDeps.map((dep) => (dep[webpackQueues](fnQueue)));
-/******/ 				});
-/******/ 				return fn.r ? promise : getResult();
-/******/ 			}, (err) => ((err ? reject(promise[webpackError] = err) : outerResolve(exports)), resolveQueue(queue)));
-/******/ 			queue && (queue.d = 0);
-/******/ 		};
-/******/ 	})();
-/******/ 	
-/******/ 	/* webpack/runtime/compat get default export */
-/******/ 	(() => {
-/******/ 		// getDefaultExport function for compatibility with non-harmony modules
-/******/ 		__nccwpck_require__.n = (module) => {
-/******/ 			var getter = module && module.__esModule ?
-/******/ 				() => (module['default']) :
-/******/ 				() => (module);
-/******/ 			__nccwpck_require__.d(getter, { a: getter });
-/******/ 			return getter;
-/******/ 		};
-/******/ 	})();
-/******/ 	
-/******/ 	/* webpack/runtime/define property getters */
-/******/ 	(() => {
-/******/ 		// define getter functions for harmony exports
-/******/ 		__nccwpck_require__.d = (exports, definition) => {
-/******/ 			for(var key in definition) {
-/******/ 				if(__nccwpck_require__.o(definition, key) && !__nccwpck_require__.o(exports, key)) {
-/******/ 					Object.defineProperty(exports, key, { enumerable: true, get: definition[key] });
-/******/ 				}
-/******/ 			}
-/******/ 		};
-/******/ 	})();
-/******/ 	
-/******/ 	/* webpack/runtime/hasOwnProperty shorthand */
-/******/ 	(() => {
-/******/ 		__nccwpck_require__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
-/******/ 	})();
-/******/ 	
-/******/ 	/* webpack/runtime/make namespace object */
-/******/ 	(() => {
-/******/ 		// define __esModule on exports
-/******/ 		__nccwpck_require__.r = (exports) => {
-/******/ 			if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
-/******/ 				Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
-/******/ 			}
-/******/ 			Object.defineProperty(exports, '__esModule', { value: true });
-/******/ 		};
-/******/ 	})();
-/******/ 	
 /******/ 	/* webpack/runtime/compat */
 /******/ 	
 /******/ 	if (typeof __nccwpck_require__ !== 'undefined') __nccwpck_require__.ab = __dirname + "/";
 /******/ 	
 /************************************************************************/
-/******/ 	
-/******/ 	// startup
-/******/ 	// Load entry module and return exports
-/******/ 	// This entry module used 'module' so it can't be inlined
-/******/ 	var __webpack_exports__ = __nccwpck_require__(3140);
-/******/ 	module.exports = __webpack_exports__;
-/******/ 	
+var __webpack_exports__ = {};
+// This entry need to be wrapped in an IIFE because it need to be in strict mode.
+(() => {
+"use strict";
+
+const core = __nccwpck_require__(810);
+const {filterTestsJobs, getJobsBySuites, jobLog, waitForAllCompletedJob} = __nccwpck_require__(5849);
+const uuid = __nccwpck_require__(78);
+const {Octokit} = __nccwpck_require__(5294);
+const fs = __nccwpck_require__(7147);
+const path = ("path");
+
+;(async () => {
+    try {
+
+        // Get jobs data
+        const input_run_id = core.getInput('run_id');
+        const run_id = input_run_id && input_run_id.length > 0 ? input_run_id : process.env.GITHUB_RUN_ID
+        console.log(`Run id used for this run is [${run_id}]`)
+        const pat = core.getInput('token')
+        const octokit = new Octokit({
+            auth: pat,
+        });
+        const owner = process.env.GITHUB_REPOSITORY.split('/')[0];
+        const repo = process.env.GITHUB_REPOSITORY.split('/')[1];
+        let jobs = await waitForAllCompletedJob({octokit, owner, repo, run_id});
+        const filtered = jobs.filter(filterTestsJobs)
+        const suites = getJobsBySuites(filtered)
+        const filePath = path.join(process.cwd(), 'last_passed.json');
+        const json_string = fs.readFileSync(filePath).toString();
+        const current_last_passed = JSON.parse(json_string).data
+        // Organise and parse raw data Reporting
+        const run_data = []
+        for (const suiteData of suites) {
+            const run_data_info = {
+                title: suiteData.name, jobs: []
+            }
+            for (const job of suiteData.jobs) {
+                const passed = job.conclusion === 'success'
+                const regex = /####\[Start_json_data](.*)\[End_json_data]####/
+                const logs = await jobLog({owner, repo, job_id: job.id, pat})
+                if (logs && typeof logs === 'string') {
+                    if (regex.test(logs)) {
+                        const json_data = JSON.parse(regex.exec(logs)[1])
+                        const matrix_data = JSON.parse(json_data.matrix)
+                        run_data_info.jobs.push({
+                            title: job.name, ...matrix_data,
+                            passed,
+                            package: json_data.package,
+                            version: json_data.version,
+                            matrix_string: JSON.stringify(matrix_data)
+                        })
+                        if (!run_data_info.config_path) run_data_info.config_path = matrix_data.matrix_config_dir
+                    }
+                }
+            }
+            run_data.push(run_data_info)
+        }
+
+        run_data.forEach(suite => {
+            const old = current_last_passed.filter(old_suite => suite.title === old_suite.title)
+            suite.jobs = suite.jobs.map(job => {
+                return job.passed ? job : old.jobs.filter(old_job => old_job.matrix_string === job.matrix_string)[0]
+            })
+        })
+
+        // Make json file
+        const file = {
+            id: uuid(), data: run_data
+        }
+        fs.writeFileSync('last_passed.json', JSON.stringify(file, undefined, 2))
+        console.log(1)
+    } catch (error) {
+        core.setFailed(error.message);
+    }
+})()
+
+})();
+
+module.exports = __webpack_exports__;
 /******/ })()
 ;

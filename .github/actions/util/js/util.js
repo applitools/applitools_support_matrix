@@ -1,6 +1,6 @@
 'use strict'
-import {execSync} from 'child_process'
-import {parseVersion, strToNum} from '../common'
+const {execSync} = require('child_process')
+const {parseVersion, strToNum} = require('../common')
 
 function shellCommand(command, cwd) {
     return execSync(command, {cwd}).toString();
@@ -53,7 +53,7 @@ function getPatchMinus({packageName, cwd, minus}) {
         .filter(ver => ver.patch === newPatch)[0]
 }
 
-export {
+module.exports = {
     parseVersion,
     shellCommand,
     getLatest,

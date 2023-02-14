@@ -1,7 +1,7 @@
-import * as core from '@actions/core'
-import path from 'path'
-import {shellCommand} from "../util/js/util";
-import {parseInputVersion} from "../util/common";
+const core = require('@actions/core')
+const path = require('path')
+const {shellCommand} = require("../util/js/util");
+const {parseInputVersion} = require("../util/common");
 
 try {
     const packageName = core.getInput('package');

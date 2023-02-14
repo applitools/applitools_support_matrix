@@ -16,8 +16,8 @@ const TEST_MATRIX = [
 ]
 
 const MATRIX_MAPPING = {
-    'java' : 'Java',
-    'ruby' : 'Ruby',
+    'java': 'Java',
+    'ruby': 'Ruby',
     'python': 'Python',
     'dotnet': 'Dotnet',
     'js_selenium': 'JS Selenium',
@@ -31,7 +31,7 @@ const MATRIX_MAPPING = {
     'js_storybook': 'JS Storybook',
 }
 
-export {
+module.exports = {
     TEST_MATRIX,
     MATRIX_MAPPING
 }

@@ -1,4 +1,4 @@
-import {strToNum} from "./common";
+const {strToNum} = require("./common");
 
 export class Version {
     constructor({major, minor, patch}) {

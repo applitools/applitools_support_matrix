@@ -1,5 +1,5 @@
-import {Version} from "./Version";
-import {getLatest, getMajorMinus, getPatchMinus, getMinorMinus} from "./js/util";
+const {Version} = require("./Version");
+const {getLatest, getMajorMinus, getPatchMinus, getMinorMinus} = require("./js/util");
 
 
 function parseVersion(versionString) {
