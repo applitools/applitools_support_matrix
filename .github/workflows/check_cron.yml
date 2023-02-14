@@ -100,12 +100,6 @@ jobs:
       APPLITOOLS_API_KEY: ${{ secrets.APPLITOOLS_API_KEY }}
       SAUCE_USERNAME: ${{secrets.SAUCE_USERNAME}}
       SAUCE_ACCESS_KEY: ${{secrets.SAUCE_ACCESS_KEY}}
-  #  appium:
-#    uses: ./.github/workflows/appium.yml
-#    secrets:
-#      APPLITOOLS_API_KEY: ${{ secrets.APPLITOOLS_API_KEY }}
-#      SAUCE_USERNAME: ${{secrets.SAUCE_USERNAME}}
-#      SAUCE_ACCESS_KEY: ${{secrets.SAUCE_ACCESS_KEY}}
 #  failing_check:
 #    runs-on: ubuntu-latest
 #    steps:
@@ -136,11 +130,23 @@ jobs:
         with:
           token: ${{secrets.PAT}}
           run_id: ${{github.run_id}}
+      - name: Last passed data update
+        uses: ./.github/actions/make_last_passed_data
+        with:
+          token: ${{secrets.PAT}}
+          run_id: ${{github.event.inputs.run_id}}
       - name: Check files
         run: |
           pwd
           sleep 20
           ls
+          cat last_passed.json
+          git config --global user.name 'AutoSupport'
+          git config --global user.email 'autosupport@noreply.github.com'
+          git status
+          git add last_passed.json
+          git commit -m "Update last_passed.json file with the latest data"
+          git push
       - name: Upload report as artifact
         uses: actions/upload-artifact@v3
         with:
