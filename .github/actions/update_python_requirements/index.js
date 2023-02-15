@@ -10,6 +10,7 @@ const fs = require("fs");
         const cwd = path.join(process.cwd(), dir)
         const parser = new PythonParser();
         await parser.collect_data(packageName);
+        console.log(`Package data was collected for: ${packageName}`)
         let version;
         version = core.getInput("version")
         version = parser.parseInputVersion({version, packageName, cwd})

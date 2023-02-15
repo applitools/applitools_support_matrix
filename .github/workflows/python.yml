@@ -75,7 +75,7 @@ jobs:
         uses: ./.github/actions/start_selenium
       - name: Framework python package install
         id: install
-        uses: ./.github/actions/update_gemfile
+        uses: ./.github/actions/update_python_requirements
         with:
           package: ${{matrix.framework_package}}
           version: ${{matrix.version}}
