@@ -9694,7 +9694,7 @@ const {filterTestsJobs, getJobsBySuites, jobLog, waitForAllCompletedJob} = __ncc
 const uuid = __nccwpck_require__(78);
 const {Octokit} = __nccwpck_require__(5294);
 const fs = __nccwpck_require__(7147);
-const path = ("path");
+const path = __nccwpck_require__(1017);
 
 ;(async () => {
     try {

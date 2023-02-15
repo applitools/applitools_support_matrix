@@ -4,7 +4,7 @@ const {filterTestsJobs, getJobsBySuites, jobLog, waitForAllCompletedJob} = requi
 const uuid = require('../util/github_rest/uuid');
 const {Octokit} = require('@octokit/rest');
 const fs = require('fs');
-const path = ("path");
+const path = require("path");
 
 ;(async () => {
     try {
