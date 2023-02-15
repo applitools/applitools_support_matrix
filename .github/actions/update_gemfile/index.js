@@ -1,6 +1,6 @@
 const core = require('@actions/core')
 const path = require('path')
-const RubyParser = require("../util/versions/RubyParser");
+const RubyParser = require("./src/RubyParser");
 const fs = require("fs");
 
 try {
@@ -24,7 +24,7 @@ try {
     } else {
         gemfile = gemfile.concat(`\ngem '${packageName}', '${version}'`)
     }
-    fs.writeFileSync("Gemfile", gemfile)
+    fs.writeFileSync(gemfilePath, gemfile)
     const time = (new Date()).toTimeString();
     core.setOutput("time", time);
     core.setOutput("gem_version", version.toString())

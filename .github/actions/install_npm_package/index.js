@@ -1,6 +1,6 @@
 const core = require('@actions/core')
 const path = require('path')
-const JSParser = require("../util/versions/JSParser");
+const JSParser = require("./src/JSParser");
 const {shellCommand} = require("../util/common");
 
 try {

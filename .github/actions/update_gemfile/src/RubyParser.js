@@ -1,7 +1,7 @@
-const CoreParser = require("./CoreParser")
-const {shellCommand} = require("../common");
+const CoreParser = require("../../util/versions/CoreParser")
+const {shellCommand} = require("../../util/common");
 
-class JSParser extends CoreParser {
+class RubyParser extends CoreParser {
 
     constructor() {
         super();
@@ -27,5 +27,5 @@ class JSParser extends CoreParser {
 
 }
 
-module.exports = JSParser
+module.exports = RubyParser
 

@@ -2688,6 +2688,44 @@ exports["default"] = _default;
 
 /***/ }),
 
+/***/ 920:
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
+
+const CoreParser = __nccwpck_require__(649)
+const {shellCommand} = __nccwpck_require__(222);
+
+class RubyParser extends CoreParser {
+
+    constructor() {
+        super();
+        this.getLatest = this.getLatest.bind(this)
+        this.getAllVersions = this.getAllVersions.bind(this)
+        this.getPreviousMinus = this.getPreviousMinus.bind(this)
+        this.getMajorMinus = this.getMajorMinus.bind(this)
+        this.getMinorMinus = this.getMinorMinus.bind(this)
+        this.getPatchMinus = this.getPatchMinus.bind(this)
+        this.parseVersion = this.parseVersion.bind(this)
+        this.parseInputVersion = this.parseInputVersion.bind(this)
+    }
+
+    getLatest(packageName, cwd) {
+        return this.getAllVersions(packageName, cwd)[0]
+    }
+
+    getAllVersions(packageName, cwd) {
+        const commandRes = shellCommand(`gem info -ra ${packageName}`, cwd);
+        const reg_versions = /\d+.\d+.\d+/gm;
+        return commandRes.match(reg_versions).map(this.parseVersion).sort((a, b) => a.compare(b));
+    }
+
+}
+
+module.exports = RubyParser
+
+
+
+/***/ }),
+
 /***/ 222:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
@@ -2823,44 +2861,6 @@ class CoreParser {
 }
 
 module.exports = CoreParser
-
-/***/ }),
-
-/***/ 818:
-/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
-
-const CoreParser = __nccwpck_require__(649)
-const {shellCommand} = __nccwpck_require__(222);
-
-class JSParser extends CoreParser {
-
-    constructor() {
-        super();
-        this.getLatest = this.getLatest.bind(this)
-        this.getAllVersions = this.getAllVersions.bind(this)
-        this.getPreviousMinus = this.getPreviousMinus.bind(this)
-        this.getMajorMinus = this.getMajorMinus.bind(this)
-        this.getMinorMinus = this.getMinorMinus.bind(this)
-        this.getPatchMinus = this.getPatchMinus.bind(this)
-        this.parseVersion = this.parseVersion.bind(this)
-        this.parseInputVersion = this.parseInputVersion.bind(this)
-    }
-
-    getLatest(packageName, cwd) {
-        return this.getAllVersions(packageName, cwd)[0]
-    }
-
-    getAllVersions(packageName, cwd) {
-        const commandRes = shellCommand(`gem info -ra ${packageName}`, cwd);
-        const reg_versions = /\d+.\d+.\d+/gm;
-        return commandRes.match(reg_versions).map(this.parseVersion).sort((a, b) => a.compare(b));
-    }
-
-}
-
-module.exports = JSParser
-
-
 
 /***/ }),
 
@@ -3038,7 +3038,7 @@ var __webpack_exports__ = {};
 (() => {
 const core = __nccwpck_require__(810)
 const path = __nccwpck_require__(17)
-const RubyParser = __nccwpck_require__(818);
+const RubyParser = __nccwpck_require__(920);
 const fs = __nccwpck_require__(147);
 
 try {
@@ -3062,7 +3062,7 @@ try {
     } else {
         gemfile = gemfile.concat(`\ngem '${packageName}', '${version}'`)
     }
-    fs.writeFileSync("Gemfile", gemfile)
+    fs.writeFileSync(gemfilePath, gemfile)
     const time = (new Date()).toTimeString();
     core.setOutput("time", time);
     core.setOutput("gem_version", version.toString())

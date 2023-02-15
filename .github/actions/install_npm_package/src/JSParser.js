@@ -1,5 +1,5 @@
-const CoreParser = require("./CoreParser")
-const {shellCommand} = require("../common");
+const CoreParser = require("../../util/versions/CoreParser")
+const {shellCommand} = require("../../util/common");
 
 class JSParser extends CoreParser {
 

@@ -2688,6 +2688,44 @@ exports["default"] = _default;
 
 /***/ }),
 
+/***/ 197:
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
+
+const CoreParser = __nccwpck_require__(649)
+const {shellCommand} = __nccwpck_require__(222);
+
+class JSParser extends CoreParser {
+
+    constructor() {
+        super();
+        this.getLatest = this.getLatest.bind(this)
+        this.getAllVersions = this.getAllVersions.bind(this)
+        this.getPreviousMinus = this.getPreviousMinus.bind(this)
+        this.getMajorMinus = this.getMajorMinus.bind(this)
+        this.getMinorMinus = this.getMinorMinus.bind(this)
+        this.getPatchMinus = this.getPatchMinus.bind(this)
+        this.parseVersion = this.parseVersion.bind(this)
+        this.parseInputVersion = this.parseInputVersion.bind(this)
+    }
+
+    getLatest(packageName, cwd) {
+        return this.parseVersion(shellCommand(`npm show ${packageName} version`, cwd))
+    }
+
+    getAllVersions(packageName, cwd) {
+        const commandRes = shellCommand(`npm show ${packageName} versions`, cwd);
+        const reg_versions = /'\d+.\d+.\d+'/gm;
+        return commandRes.match(reg_versions).map(this.parseVersion).sort((a, b) => a.compare(b));
+    }
+
+}
+
+module.exports = JSParser
+
+
+
+/***/ }),
+
 /***/ 222:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
@@ -2823,44 +2861,6 @@ class CoreParser {
 }
 
 module.exports = CoreParser
-
-/***/ }),
-
-/***/ 336:
-/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
-
-const CoreParser = __nccwpck_require__(649)
-const {shellCommand} = __nccwpck_require__(222);
-
-class JSParser extends CoreParser {
-
-    constructor() {
-        super();
-        this.getLatest = this.getLatest.bind(this)
-        this.getAllVersions = this.getAllVersions.bind(this)
-        this.getPreviousMinus = this.getPreviousMinus.bind(this)
-        this.getMajorMinus = this.getMajorMinus.bind(this)
-        this.getMinorMinus = this.getMinorMinus.bind(this)
-        this.getPatchMinus = this.getPatchMinus.bind(this)
-        this.parseVersion = this.parseVersion.bind(this)
-        this.parseInputVersion = this.parseInputVersion.bind(this)
-    }
-
-    getLatest(packageName, cwd) {
-        return this.parseVersion(shellCommand(`npm show ${packageName} version`, cwd))
-    }
-
-    getAllVersions(packageName, cwd) {
-        const commandRes = shellCommand(`npm show ${packageName} versions`, cwd);
-        const reg_versions = /'\d+.\d+.\d+'/gm;
-        return commandRes.match(reg_versions).map(this.parseVersion).sort((a, b) => a.compare(b));
-    }
-
-}
-
-module.exports = JSParser
-
-
 
 /***/ }),
 
@@ -3038,7 +3038,7 @@ var __webpack_exports__ = {};
 (() => {
 const core = __nccwpck_require__(810)
 const path = __nccwpck_require__(17)
-const JSParser = __nccwpck_require__(336);
+const JSParser = __nccwpck_require__(197);
 const {shellCommand} = __nccwpck_require__(222);
 
 try {

@@ -1,0 +1,15 @@
+name: 'Update python requirements'
+description: 'Command to update python requirements file with the package of specific version'
+inputs:
+  package:
+    description: "package name"
+    required: true
+  working-directory:
+    description: "Relative path to the directory where package should be installed"
+    required: true
+  version:
+    description: "Install version specified in input"
+    required: false
+runs:
+  using: "node16"
+  main: "dist/index.js"
