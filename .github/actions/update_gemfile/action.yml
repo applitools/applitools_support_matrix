@@ -1,0 +1,15 @@
+name: 'Update gemfile'
+description: 'Command to update gemfile with the gem of specific version'
+inputs:
+  gem:
+    description: "gem name"
+    required: true
+  working-directory:
+    description: "Relative path to the directory where package should be installed"
+    required: true
+  version:
+    description: "Install version specified in input"
+    required: false
+runs:
+  using: "node16"
+  main: "dist/index.js"

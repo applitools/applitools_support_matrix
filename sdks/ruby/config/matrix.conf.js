@@ -1,6 +1,8 @@
 const common = {
     "ruby-version": "2.6",
-    "work_dir": "sdks/ruby"
+    "work_dir": "sdks/ruby",
+    "framework_gem": "selenium-webdriver",
+    "version": "latest@",
 }
 const base_variations = [
     {
