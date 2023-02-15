@@ -1,15 +1,16 @@
 const core = require('@actions/core')
 const path = require('path')
-const {parseInputVersion} = require("../util/versions");
+const JSParser = require("../util/versions/JSParser");
 const {shellCommand} = require("../util/common");
 
 try {
     const packageName = core.getInput('package');
     const dir = core.getInput('working-directory');
     const cwd = path.join(process.cwd(), dir)
+    const parser = new JSParser();
     let version;
     version = core.getInput("version")
-    version = parseInputVersion({version, packageName, cwd})
+    version = parser.parseInputVersion({version, packageName, cwd})
     console.log(`Package name: ${packageName} | type: ${typeof packageName}`)
     console.log(`Dir: ${dir} | type: ${typeof dir}`)
     console.log(cwd)
