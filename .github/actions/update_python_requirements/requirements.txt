@@ -1,0 +1,5 @@
+eyes-selenium
+pytest>=6.2.5
+selenium==4.7.2
+selenium-webdriver
+pytest-xdist~=2.5.0

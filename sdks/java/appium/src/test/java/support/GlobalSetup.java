@@ -4,7 +4,6 @@ import com.applitools.connectivity.RestClient;
 import com.applitools.connectivity.ServerConnector;
 import com.applitools.eyes.BatchInfo;
 import com.applitools.eyes.Logger;
-import com.applitools.eyes.ProxySettings;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
 
@@ -43,9 +42,6 @@ public class GlobalSetup {
             String url = "https://" + server + "/api/sessions/batches/" + batch.getId() + "/close/bypointerid/?apiKey=" + apiKey;
             URI requestUrl = UriBuilder.fromUri(url).build();
             RestClient client = new RestClient(new Logger(), requestUrl, ServerConnector.DEFAULT_CLIENT_TIMEOUT);
-            if (System.getenv("APPLITOOLS_USE_PROXY") != null) {
-                client.setProxy(new ProxySettings("http://127.0.0.1", 8888));
-            }
             int statusCode = client.sendHttpRequest(requestUrl.toString(), HttpMethod.DELETE).getStatusCode();
             System.out.println(statusCode);
         } catch (Exception e) {

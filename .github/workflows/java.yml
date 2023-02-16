@@ -75,6 +75,22 @@ jobs:
         if: ${{matrix.use_selenium }}
         id: selenium
         uses: ./.github/actions/start_selenium
+      - name: Update pom for the eyes dependency
+        id: eyes
+        uses: ./.github/actions/update_pom_deps
+        with:
+          groupId: ${{matrix.eyes_package.groupId}}
+          artifactId: ${{matrix.eyes_package.artifactId}}
+          version: "latest@"
+          working-directory: ${{matrix.work_dir}}
+      - name: Update Pom for the framework dependency
+        id: install
+        uses: ./.github/actions/update_pom_deps
+        with:
+          groupId: ${{matrix.framework_package.groupId}}
+          artifactId: ${{matrix.framework_package.artifactId}}
+          version: ${{matrix.version}}
+          working-directory: ${{matrix.work_dir}}
       - name: Log extra info
         if: ${{matrix.use_selenium }}
         id: logging
@@ -97,6 +113,8 @@ jobs:
       - name: Logging version generation
         uses: ./.github/actions/log_data_json
         with:
+          package: ${{ steps.install.outputs.package_name }}
+          version: ${{ steps.install.outputs.package_version }}
           os: ${{runner.os}}
           title: ${{ format('Java Selenium SDK [{0}] [java version {1}]', runner.os, matrix.java-version) }}
           selenium: ${{ steps.selenium.outputs.version }}
@@ -104,9 +122,5 @@ jobs:
           work_dir: ${{matrix.work_dir}}
           chrome_version: ${{ steps.logging.outputs.chrome_version }}
           chromedriver_version: ${{ steps.logging.outputs.chromedriver_version }}
-      - name: Install dependency
-        run: |
-          mvn versions:use-latest-releases -Dincludes=com.applitools:eyes-appium-java5 -X
-          mvn versions:use-latest-releases -Dincludes=com.applitools:eyes-selenium-java5 -X
       - name: Run tests
         run:  ${{matrix.test_command}}

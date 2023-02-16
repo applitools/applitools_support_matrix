@@ -74,6 +74,13 @@ jobs:
         if: ${{matrix.use_selenium }}
         id: selenium
         uses: ./.github/actions/start_selenium
+      - name: Framework gem install
+        id: install
+        uses: ./.github/actions/update_gemfile
+        with:
+          gem: ${{matrix.framework_gem}}
+          version: ${{matrix.version}}
+          working-directory: ${{matrix.work_dir}}
       - name: Log extra info
         id: logging
         run: |
@@ -95,6 +102,8 @@ jobs:
       - name: Logging version generation
         uses: ./.github/actions/log_data_json
         with:
+          package: ${{ steps.install.outputs.gem_name }}
+          version: ${{ steps.install.outputs.gem_version }}
           os: ${{runner.os}}
           title: ${{ format('Ruby SDK [{0}] [ruby version {1}]', runner.os, matrix.ruby-version) }}
           selenium: ${{ steps.selenium.outputs.version }}
@@ -105,6 +114,9 @@ jobs:
       - name: Install gems
         working-directory: sdks/ruby
         run: bundle install
+      - name: List installed gems
+        working-directory: sdks/ruby
+        run: bundle list
       - name: Run tests
         working-directory: sdks/ruby
         run: ${{matrix.test_command}}

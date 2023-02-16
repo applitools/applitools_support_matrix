@@ -1,27 +1,41 @@
 const common = {
     "dotnet-version": "3.1.x",
+    test_command: "dotnet test --no-build -- NUnit.NumberOfTestWorkers=1"
 }
 const base_variations = [
     {
-        "os": "ubuntu-latest",
+        os: "ubuntu-latest",
+        version: "latest@"
     },
     {
-        "os": "windows-latest",
+        os: "windows-latest",
+        version: "latest@"
     },
     {
-        "os": "macos-latest",
+        os: "macos-latest",
+        version: "latest@"
     }
 ]
 const base_common = base_variations.map(variant => ({...common, ...variant,}))
 const variations = base_common
     .map((variant) => ({...variant,
         use_selenium: true,
+        selenium_legacy: true,
+        version: "exact@3.141.0",
         work_dir: 'sdks/dotnet/selenium',
-        test_command: "dotnet add package Eyes.Selenium && dotnet test -- NUnit.NumberOfTestWorkers=1"
+        framework_package: "Selenium.WebDriver",
+        eyes_package: "Eyes.Selenium",
     }))
     .concat(base_common.map(variant => ({...variant,
+        use_selenium: true,
+        work_dir: 'sdks/dotnet/selenium',
+        framework_package: "Selenium.WebDriver",
+        eyes_package: "Eyes.Selenium4",
+    })))
+    .concat(base_common.map(variant => ({...variant,
         work_dir: 'sdks/dotnet/appium',
-        test_command: "dotnet add package Eyes.Appium && dotnet test -- NUnit.NumberOfTestWorkers=1"
+        framework_package: "Appium.WebDriver",
+        eyes_package: "Eyes.Appium",
     })))
     .map(variant => ({...variant, job_name:`Dotnet ${variant.use_selenium ? 'Selenium' : 'Appium'} [${variant.os}]`}))
 console.log(variations)

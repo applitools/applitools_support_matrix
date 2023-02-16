@@ -73,6 +73,13 @@ jobs:
         if: ${{matrix.use_selenium }}
         id: selenium
         uses: ./.github/actions/start_selenium
+      - name: Framework python package install
+        id: install
+        uses: ./.github/actions/update_python_requirements
+        with:
+          package: ${{matrix.framework_package}}
+          version: ${{matrix.version}}
+          working-directory: ${{matrix.work_dir}}
       - name: Log extra info
         id: logging
         run: |
@@ -94,6 +101,8 @@ jobs:
       - name: Logging version generation
         uses: ./.github/actions/log_data_json
         with:
+          package: ${{ steps.install.outputs.package_name }}
+          version: ${{ steps.install.outputs.package_version }}
           os: ${{runner.os}}
           title: ${{ format('Python SDK [{0}] [python version {1}]', runner.os, matrix.python-version) }}
           selenium: ${{ steps.selenium.outputs.version }}
@@ -103,5 +112,7 @@ jobs:
           chromedriver_version: ${{ steps.logging.outputs.chromedriver_version }}
       - name: Install dependencies
         run: pip install -r requirements.txt
+      - name: List installed dependencies
+        run: pip list
       - name: Run tests
         run: ${{matrix.test_command}}

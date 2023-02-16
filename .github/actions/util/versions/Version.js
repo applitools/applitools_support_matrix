@@ -1,6 +1,6 @@
-import {strToNum} from "./common";
+const {strToNum} = require("../common");
 
-export class Version {
+class Version {
     constructor({major, minor, patch}) {
         this.major = strToNum(major);
         this.minor = strToNum(minor);
@@ -25,3 +25,5 @@ export class Version {
     }
 
 }
+
+module.exports = Version

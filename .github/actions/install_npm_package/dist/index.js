@@ -2108,7 +2108,7 @@ Object.defineProperty(exports, "parse", ({
 
 var _v = _interopRequireDefault(__nccwpck_require__(537));
 
-var _v2 = _interopRequireDefault(__nccwpck_require__(246));
+var _v2 = _interopRequireDefault(__nccwpck_require__(76));
 
 var _v3 = _interopRequireDefault(__nccwpck_require__(749));
 
@@ -2461,7 +2461,7 @@ exports["default"] = _default;
 
 /***/ }),
 
-/***/ 246:
+/***/ 76:
 /***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
 
 "use strict";
@@ -2688,11 +2688,261 @@ exports["default"] = _default;
 
 /***/ }),
 
+/***/ 517:
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
+
+const {shellCommand} = __nccwpck_require__(222);
+
+
+    function install({source, version, packageName, cwd}) {
+        switch (source) {
+            case "remote":
+                return remote({version, packageName, cwd})
+            default:
+                throw new Error(`Installer doesn't support installation from ${source}`)
+        }
+    }
+
+    function remote({version, packageName, cwd}) {
+        shellCommand(`npm install ${packageName}@${version}`, cwd)
+        const ls = shellCommand(`npm list`, cwd)
+        const regResult = new RegExp(` (${packageName})@(.*)`).exec(ls)
+        return {installed_name: regResult[1], installed_version: regResult[2]}
+    }
+
+
+
+module.exports = install
+
+
+
+/***/ }),
+
+/***/ 197:
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
+
+const CoreParser = __nccwpck_require__(649)
+const {shellCommand} = __nccwpck_require__(222);
+
+class JSParser extends CoreParser {
+
+    constructor() {
+        super();
+        this.getLatest = this.getLatest.bind(this)
+        this.getAllVersions = this.getAllVersions.bind(this)
+        this.getPreviousMinus = this.getPreviousMinus.bind(this)
+        this.getMajorMinus = this.getMajorMinus.bind(this)
+        this.getMinorMinus = this.getMinorMinus.bind(this)
+        this.getPatchMinus = this.getPatchMinus.bind(this)
+        this.parseVersion = this.parseVersion.bind(this)
+        this.parseInputVersion = this.parseInputVersion.bind(this)
+    }
+
+    getLatest(packageName, cwd) {
+        return this.parseVersion(shellCommand(`npm show ${packageName} version`, cwd))
+    }
+
+    getAllVersions(packageName, cwd) {
+        const commandRes = shellCommand(`npm show ${packageName} versions`, cwd);
+        const reg_versions = /'\d+.\d+.\d+'/gm;
+        return commandRes.match(reg_versions).map(this.parseVersion).sort((a, b) => a.compare(b));
+    }
+
+}
+
+module.exports = JSParser
+
+
+
+/***/ }),
+
+/***/ 222:
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
+
+const {execSync} = __nccwpck_require__(81)
+
+function checkInput(str) {
+    return str && str.length > 0 ? strToNum(str) : str;
+}
+
+function strToNum(str) {
+    const parsed = parseInt(str)
+    if (isNaN(parsed)) {
+        throw new Error(`Tried to parse string [${str}] to the num`)
+    }
+    return parsed
+}
+
+function shellCommand(command, cwd) {
+    return execSync(command, {cwd}).toString();
+}
+
+
+module.exports = {
+    checkInput,
+    strToNum,
+    shellCommand
+}
+
+/***/ }),
+
+/***/ 649:
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
+
+"use strict";
+
+const {strToNum} = __nccwpck_require__(222)
+const Version = __nccwpck_require__(676);
+
+
+class CoreParser {
+
+    parseVersion(versionString) {
+        const reg_version_parse = /(\d+)\.(\d+)\.(\d+)/gm
+        const arr = reg_version_parse.exec(versionString);
+        if (arr === null) {
+            console.log(versionString)
+            throw new Error("failed to parse")
+        }
+        return new Version({
+            major: arr[1],
+            minor: arr[2],
+            patch: arr[3],
+        })
+    }
+
+    getLatest() {
+        throw new Error("It's not implemented method of the core parser, something gone wrong")
+    }
+
+    getAllVersions() {
+        throw new Error("It's not implemented method of the core parser, something gone wrong")
+    }
+
+    getMajorMinus({packageName, cwd, minus}) {
+        const latest = this.getLatest(packageName, cwd);
+        let change = strToNum(minus);
+        if (change > 0) change = change * -1;
+        const newMajor = latest.major + change;
+        if (newMajor < 0) throw new Error(`Package [${packageName}] latest version is [${latest.toString()}] there a no major version as ${newMajor}`)
+        const all = this.getAllVersions(packageName, cwd);
+        return all.filter(ver => ver.major === newMajor)
+            .sort((a, b) => a.compare(b))[0]
+    }
+
+    getMinorMinus({packageName, cwd, minus}) {
+        const latest = this.getLatest(packageName, cwd);
+        let change = strToNum(minus);
+        if (change > 0) change = change * -1;
+        const newMinor = latest.minor + change;
+        if (newMinor < 0) throw new Error(`Package [${packageName}] latest version is [${latest.toString()}] there a no minor version as ${newMinor}`)
+        const all = this.getAllVersions(packageName, cwd);
+        return all
+            .filter(ver => ver.major === latest.major)
+            .filter(ver => ver.minor === newMinor)
+            .sort((a, b) => a.compare(b))[0]
+    }
+
+    getPatchMinus({packageName, cwd, minus}) {
+        const latest = this.getLatest(packageName, cwd);
+        let change = strToNum(minus);
+        if (change > 0) change = change * -1;
+        const newPatch = latest.patch + change;
+        if (newPatch < 0) throw new Error(`Package [${packageName}] latest version is [${latest.toString()}] there a no patch version as ${newPatch}`)
+        const all = this.getAllVersions(packageName, cwd);
+        return all
+            .filter(ver => ver.major === latest.major)
+            .filter(ver => ver.minor === latest.minor)
+            .filter(ver => ver.patch === newPatch)[0]
+    }
+
+    getPreviousMinus({packageName, cwd, minus}) {
+        let change = strToNum(minus);
+        const all = this.getAllVersions(packageName, cwd);
+        return all[change]
+    }
+
+    parseInputVersion({version, packageName, cwd}) {
+        const regex = /(\w+)@(.*)/gm
+        const arr = regex.exec(version)
+        const type = arr[1];
+        const value = arr[2];
+        const Remotes = {
+            exact: ({minus}) => {
+                return minus
+            },
+            major: this.getMajorMinus,
+            minor: this.getMinorMinus,
+            patch: this.getPatchMinus,
+            previous: this.getPreviousMinus,
+            latest: ({packageName, cwd}) => {
+                return this.getLatest(packageName, cwd)
+            },
+        }
+        if (Remotes.hasOwnProperty(type)) {
+            const calculatedVersion = Remotes[type]({packageName, cwd, minus: value})
+            if (calculatedVersion === undefined) throw new Error(`The version for ${JSON.stringify(packageName)} wasn't found for change in ${type} for ${value}`)
+            return {
+                source: 'remote',
+                version: calculatedVersion
+            }
+        } else return {source: type, version: value}
+    }
+
+}
+
+module.exports = CoreParser
+
+/***/ }),
+
+/***/ 676:
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
+
+const {strToNum} = __nccwpck_require__(222);
+
+class Version {
+    constructor({major, minor, patch}) {
+        this.major = strToNum(major);
+        this.minor = strToNum(minor);
+        this.patch = strToNum(patch);
+    }
+
+    compare(another) {
+        let result = compareNums(this.major, another.major)
+        if (result === 0) result = compareNums(this.minor, another.minor)
+        if (result === 0) result = compareNums(this.patch, another.patch)
+        return result
+
+        function compareNums(a, b) {
+            if (a > b) return -1
+            else if (a < b) return 1
+            else return 0
+        }
+    }
+
+    toString() {
+        return `${this.major}.${this.minor}.${this.patch}`
+    }
+
+}
+
+module.exports = Version
+
+/***/ }),
+
 /***/ 491:
 /***/ ((module) => {
 
 "use strict";
 module.exports = require("assert");
+
+/***/ }),
+
+/***/ 81:
+/***/ ((module) => {
+
+"use strict";
+module.exports = require("child_process");
 
 /***/ }),
 
@@ -2809,236 +3059,38 @@ module.exports = require("util");
 /******/ 	}
 /******/ 	
 /************************************************************************/
-/******/ 	/* webpack/runtime/compat get default export */
-/******/ 	(() => {
-/******/ 		// getDefaultExport function for compatibility with non-harmony modules
-/******/ 		__nccwpck_require__.n = (module) => {
-/******/ 			var getter = module && module.__esModule ?
-/******/ 				() => (module['default']) :
-/******/ 				() => (module);
-/******/ 			__nccwpck_require__.d(getter, { a: getter });
-/******/ 			return getter;
-/******/ 		};
-/******/ 	})();
-/******/ 	
-/******/ 	/* webpack/runtime/define property getters */
-/******/ 	(() => {
-/******/ 		// define getter functions for harmony exports
-/******/ 		__nccwpck_require__.d = (exports, definition) => {
-/******/ 			for(var key in definition) {
-/******/ 				if(__nccwpck_require__.o(definition, key) && !__nccwpck_require__.o(exports, key)) {
-/******/ 					Object.defineProperty(exports, key, { enumerable: true, get: definition[key] });
-/******/ 				}
-/******/ 			}
-/******/ 		};
-/******/ 	})();
-/******/ 	
-/******/ 	/* webpack/runtime/hasOwnProperty shorthand */
-/******/ 	(() => {
-/******/ 		__nccwpck_require__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
-/******/ 	})();
-/******/ 	
-/******/ 	/* webpack/runtime/make namespace object */
-/******/ 	(() => {
-/******/ 		// define __esModule on exports
-/******/ 		__nccwpck_require__.r = (exports) => {
-/******/ 			if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
-/******/ 				Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
-/******/ 			}
-/******/ 			Object.defineProperty(exports, '__esModule', { value: true });
-/******/ 		};
-/******/ 	})();
-/******/ 	
 /******/ 	/* webpack/runtime/compat */
 /******/ 	
 /******/ 	if (typeof __nccwpck_require__ !== 'undefined') __nccwpck_require__.ab = __dirname + "/";
 /******/ 	
 /************************************************************************/
 var __webpack_exports__ = {};
-// This entry need to be wrapped in an IIFE because it need to be in strict mode.
+// This entry need to be wrapped in an IIFE because it need to be isolated against other modules in the chunk.
 (() => {
-"use strict";
-// ESM COMPAT FLAG
-__nccwpck_require__.r(__webpack_exports__);
-
-// EXTERNAL MODULE: ./node_modules/@actions/core/lib/core.js
-var core = __nccwpck_require__(810);
-// EXTERNAL MODULE: external "path"
-var external_path_ = __nccwpck_require__(17);
-var external_path_default = /*#__PURE__*/__nccwpck_require__.n(external_path_);
-;// CONCATENATED MODULE: external "child_process"
-const external_child_process_namespaceObject = require("child_process");
-;// CONCATENATED MODULE: ../util/Version.js
-
-
-class Version {
-    constructor({major, minor, patch}) {
-        this.major = strToNum(major);
-        this.minor = strToNum(minor);
-        this.patch = strToNum(patch);
-    }
-
-    compare(another) {
-        let result = compareNums(this.major, another.major)
-        if (result === 0) result = compareNums(this.minor, another.minor)
-        if (result === 0) result = compareNums(this.patch, another.patch)
-        return result
-
-        function compareNums(a, b) {
-            if (a > b) return -1
-            else if (a < b) return 1
-            else return 0
-        }
-    }
-
-    toString() {
-        return `${this.major}.${this.minor}.${this.patch}`
-    }
-
-}
-;// CONCATENATED MODULE: ../util/common.js
-
-
-
-
-function parseVersion(versionString) {
-    const reg_version_parse = /(\d+).(\d+).(\d+)/gm
-    const arr = reg_version_parse.exec(versionString);
-    if (arr === null) {
-        console.log(versionString)
-        throw new Error("failed to parse")
-    }
-    return new Version({
-        major: arr[1],
-        minor: arr[2],
-        patch: arr[3],
-    })
-}
-
-function checkInput(str) {
-    return str && str.length > 0 ? strToNum(str) : str;
-}
-
-function strToNum(str) {
-    const parsed = parseInt(str)
-    if (isNaN(parsed)) {
-        throw new Error(`Tried to parse string [${str}] to the num`)
-    }
-    return parsed
-}
-
-function parseInputVersion({version, packageName, cwd}) {
-    const TYPES = {
-        exact: ({minus})=> {
-            return minus
-        },
-        major: getMajorMinus,
-        minor: getMinorMinus,
-        patch: getPatchMinus,
-        latest: ({packageName, cwd}) => {
-            return getLatest(packageName, cwd)
-        },
-    }
-    const arr = getCheck(version)
-    const type = arr[1];
-    const value = arr[2];
-
-    if (!TYPES.hasOwnProperty(type)) throw new Error(`There were wrong input type, ${JSON.stringify(arr)}`)
-    return TYPES[type]({packageName, cwd, minus:value})
-
-
-    function getCheck(str) {
-        const regex = /(\w+)@(.*)/gm
-        return regex.exec(str)
-    }
-
-
-}
-
-
-;// CONCATENATED MODULE: ../util/js/util.js
-
-;
-
-
-function shellCommand(command, cwd) {
-    return (0,external_child_process_namespaceObject.execSync)(command, {cwd}).toString();
-}
-
-function getLatest(packageName, cwd) {
-    return parseVersion(shellCommand(`npm show ${packageName} version`, cwd))
-}
-
-function getAllVersions(packageName, cwd) {
-    const commandRes = shellCommand(`npm show ${packageName} versions`, cwd);
-    const reg_versions = /'\d+.\d+.\d+'/gm;
-    return commandRes.match(reg_versions).map(parseVersion).sort((a, b) => a.compare(b));
-}
-
-function getMajorMinus({packageName, cwd, minus}) {
-    const latest = getLatest(packageName, cwd);
-    let change = strToNum(minus);
-    if (change > 0) change = change * -1;
-    const newMajor = latest.major + change;
-    if (newMajor < 0) throw new Error(`Package [${packageName}] latest version is [${latest.toString()}] there a no major version as ${newMajor}`)
-    const all = getAllVersions(packageName, cwd);
-    return all.filter(ver => ver.major === newMajor)
-        .sort((a, b) => a.compare(b))[0]
-}
-
-function getMinorMinus({packageName, cwd, minus}) {
-    const latest = getLatest(packageName, cwd);
-    let change = strToNum(minus);
-    if (change > 0) change = change * -1;
-    const newMinor = latest.minor + change;
-    if (newMinor < 0) throw new Error(`Package [${packageName}] latest version is [${latest.toString()}] there a no minor version as ${newMinor}`)
-    const all = getAllVersions(packageName, cwd);
-    return all
-        .filter(ver => ver.major === latest.major)
-        .filter(ver => ver.minor === newMinor)
-        .sort((a, b) => a.compare(b))[0]
-}
-
-function getPatchMinus({packageName, cwd, minus}) {
-    const latest = getLatest(packageName, cwd);
-    let change = strToNum(minus);
-    if (change > 0) change = change * -1;
-    const newPatch = latest.patch + change;
-    if (newPatch < 0) throw new Error(`Package [${packageName}] latest version is [${latest.toString()}] there a no patch version as ${newPatch}`)
-    const all = getAllVersions(packageName, cwd);
-    return all
-        .filter(ver => ver.major === latest.major)
-        .filter(ver => ver.minor === latest.minor)
-        .filter(ver => ver.patch === newPatch)[0]
-}
-
-
-;// CONCATENATED MODULE: ./index.js
-
-
-
-
+const core = __nccwpck_require__(810)
+const path = __nccwpck_require__(17)
+const JSParser = __nccwpck_require__(197);
+const install = __nccwpck_require__(517);
 
 try {
     const packageName = core.getInput('package');
     const dir = core.getInput('working-directory');
-    const cwd = external_path_default().join(process.cwd(), dir)
-    let version;
-    version = core.getInput("version")
-    version = parseInputVersion({version, packageName, cwd})
+    const cwd = path.join(process.cwd(), dir)
+    const parser = new JSParser();
+    const inputVersion = core.getInput("version")
+    const {source, version} = parser.parseInputVersion({version:inputVersion, packageName, cwd})
     console.log(`Package name: ${packageName} | type: ${typeof packageName}`)
     console.log(`Dir: ${dir} | type: ${typeof dir}`)
+    console.log(version)
     console.log(cwd)
-    shellCommand(`npm install ${packageName}@${version}`, cwd)
-    const ls = shellCommand(`npm list`, cwd)
-    const regResult = new RegExp(` (${packageName})@(.*)`).exec(ls)
-    const installed_name = regResult[1];
-    const installed_version = regResult[2];
+    const {installed_name, installed_version} = install({source, version, packageName, cwd});
     const time = (new Date()).toTimeString();
     core.setOutput("time", time);
     core.setOutput("package_version", installed_version)
     core.setOutput("package_name" , installed_name)
 } catch (error) {
+    console.log(error)
+    console.log(error.stack)
     core.setFailed(error.message);
 }
 

@@ -5,4 +5,4 @@ const MS = {
     MINUTES: 60000,
 }
 
-export default MS
+module.exports = MS

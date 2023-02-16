@@ -1,9 +1,9 @@
 'use strict'
 
-import {TEST_MATRIX, MATRIX_MAPPING} from "./enums/testMatrix";
-import MS from "./enums/time";
-import {getJobsDuration} from "./date";
-import https from "https";
+const {TEST_MATRIX, MATRIX_MAPPING} = require("./enums/testMatrix");
+const MS = require("./enums/time");
+const {getJobsDuration} = require("./date");
+const https = require("https");
 
 function getJobsBySuites(arr) {
     const result = [];
@@ -12,20 +12,20 @@ function getJobsBySuites(arr) {
         jobs: arr.filter(({name}) => {
             let result = true;
             TEST_MATRIX.forEach(matrix => {
-                if(name.split("/")[0].trim() === matrix) result = false
+                if (name.split("/")[0].trim() === matrix) result = false
             })
             return result;
         })
     }
-    if(other.jobs.length !== 0) {
+    if (other.jobs.length !== 0) {
         other.duration = getJobsDuration(other.jobs)
     }
     TEST_MATRIX.forEach(matrix => {
         const suite = {
             name: MATRIX_MAPPING[matrix],
-            jobs: arr.filter(({name})=> name.split("/")[0].trim() === matrix)
+            jobs: arr.filter(({name}) => name.split("/")[0].trim() === matrix)
         }
-        if(suite.jobs.length !== 0) {
+        if (suite.jobs.length !== 0) {
             suite.duration = getJobsDuration(suite.jobs)
         }
         result.push(suite)
@@ -100,7 +100,7 @@ async function jobLog({owner, repo, job_id, pat}) {
             res.on('data', (d) => {
                 body.push(d)
             });
-            res.on('end', ()=> {
+            res.on('end', () => {
                 resolve(Buffer.concat(body).toString());
             });
         }).on('error', (e) => {
@@ -110,12 +110,12 @@ async function jobLog({owner, repo, job_id, pat}) {
 
 }
 
-async function waitForAllCompletedJob({octokit, owner, repo, run_id, wait_time=MS.SECOND*30, tries_limit=20}){
+async function waitForAllCompletedJob({octokit, owner, repo, run_id, wait_time = MS.SECOND * 30, tries_limit = 20}) {
     let jobs;
     jobs = await getALlJobs({octokit, owner, repo, run_id});
     let notCompleted = jobs.filter(job => job.status !== 'completed').filter(job => job.name !== process.env.GITHUB_JOB)
     let tries = 1;
-    while(notCompleted.length > 0 && tries < tries_limit ) {
+    while (notCompleted.length > 0 && tries < tries_limit) {
         console.log("There are not completed jobs")
         notCompleted.forEach(printJob)
         console.log("Waiting for jobs to complete");
@@ -139,7 +139,7 @@ async function wait(ms) {
     return new Promise(resolve => setTimeout(resolve, ms))
 }
 
-export {
+module.exports = {
     getJobsBySuites,
     filterTestsJobs,
     getALlJobs,

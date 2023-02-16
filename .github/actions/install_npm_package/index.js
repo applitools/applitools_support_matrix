@@ -1,28 +1,27 @@
-import * as core from '@actions/core'
-import path from 'path'
-import {shellCommand} from "../util/js/util";
-import {parseInputVersion} from "../util/common";
+const core = require('@actions/core')
+const path = require('path')
+const JSParser = require("./src/JSParser");
+const install = require("./src/JSInstall");
 
 try {
     const packageName = core.getInput('package');
     const dir = core.getInput('working-directory');
     const cwd = path.join(process.cwd(), dir)
-    let version;
-    version = core.getInput("version")
-    version = parseInputVersion({version, packageName, cwd})
+    const parser = new JSParser();
+    const inputVersion = core.getInput("version")
+    const {source, version} = parser.parseInputVersion({version:inputVersion, packageName, cwd})
     console.log(`Package name: ${packageName} | type: ${typeof packageName}`)
     console.log(`Dir: ${dir} | type: ${typeof dir}`)
+    console.log(version)
     console.log(cwd)
-    shellCommand(`npm install ${packageName}@${version}`, cwd)
-    const ls = shellCommand(`npm list`, cwd)
-    const regResult = new RegExp(` (${packageName})@(.*)`).exec(ls)
-    const installed_name = regResult[1];
-    const installed_version = regResult[2];
+    const {installed_name, installed_version} = install({source, version, packageName, cwd});
     const time = (new Date()).toTimeString();
     core.setOutput("time", time);
     core.setOutput("package_version", installed_version)
     core.setOutput("package_name" , installed_name)
 } catch (error) {
+    console.log(error)
+    console.log(error.stack)
     core.setFailed(error.message);
 }
 

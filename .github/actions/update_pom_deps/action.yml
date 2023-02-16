@@ -1,0 +1,18 @@
+name: 'Update java pom dependencies'
+description: 'Command to update pom dependencies with specific version'
+inputs:
+  groupId:
+    description: "package name"
+    required: true
+  artifactId:
+    description: "package name"
+    required: true
+  working-directory:
+    description: "Relative path to the directory where package should be installed"
+    required: true
+  version:
+    description: "Install version specified in input"
+    required: false
+runs:
+  using: "node16"
+  main: "dist/index.js"
