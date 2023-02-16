@@ -73,6 +73,22 @@ jobs:
         if: ${{matrix.use_selenium }}
         id: selenium
         uses: ./.github/actions/start_selenium
+        with:
+          legacy: ${{matrix.selenium_legacy}}
+      - name: Update csproj for the eyes package
+        id: eyes
+        uses: ./.github/actions/update_dotnet_csproj
+        with:
+          package: ${{matrix.eyes_package}}
+          version: "latest@"
+          working-directory: ${{matrix.work_dir}}
+      - name: Update csproj for the framework dependency
+        id: install
+        uses: ./.github/actions/update_dotnet_csproj
+        with:
+          package: ${{matrix.framework_package}}
+          version: ${{matrix.version}}
+          working-directory: ${{matrix.work_dir}}
       - name: Log extra info
         id: logging
         run: |
@@ -94,6 +110,8 @@ jobs:
       - name: Logging version generation
         uses: ./.github/actions/log_data_json
         with:
+          package: ${{ steps.install.outputs.package_name }}
+          version: ${{ steps.install.outputs.package_version }}
           os: ${{runner.os}}
           title: ${{ format('Dotnet selenium sdk [{0}] [dotnet version {1}]', runner.os, matrix.dotnet-version) }}
           selenium:  ${{ steps.selenium.outputs.version }}
