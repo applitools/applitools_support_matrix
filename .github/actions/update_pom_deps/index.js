@@ -5,7 +5,10 @@ const install = require("./src/JavaInstall");
 
 (async () => {
     try {
-        const packageName = core.getInput('package');
+        const packageName = {
+            groupId: core.getInput('groupId'),
+            artifactId: core.getInput('artifactId')
+        }
         const dir = core.getInput('working-directory');
         const cwd = path.join(process.cwd(), dir)
         const parser = new JavaParser();
@@ -17,7 +20,7 @@ const install = require("./src/JavaInstall");
         console.log(`Package name: ${packageName} | type: ${typeof packageName}`)
         console.log(`Dir: ${dir} | type: ${typeof dir}`)
         console.log(cwd)
-        install({source,v})
+        install({source,version, packageName, cwd})
         const time = (new Date()).toTimeString();
         core.setOutput("time", time);
         core.setOutput("package_version", version.toString())
@@ -27,7 +30,6 @@ const install = require("./src/JavaInstall");
         console.log(error.stack)
         core.setFailed(error.message);
     }
-
 })()
 
 

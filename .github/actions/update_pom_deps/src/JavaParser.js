@@ -19,16 +19,21 @@ class JavaParser extends CoreParser {
 
     async collect_data(packageName) {
         const reg_versions = /<version>\d+.\d+.\d+<\/version>/gm;
-        const raw_data = await fetch(`https://repo1.maven.org/maven2/${packageName}/maven-metadata.xml`).then(res => res.text())
-        this.packages_data[packageName] = raw_data.match(reg_versions).map(this.parseVersion).sort((a, b) => a.compare(b));
+        const urlPart = this.formURlpart(packageName)
+        const raw_data = await fetch(`https://repo1.maven.org/maven2/${urlPart}/maven-metadata.xml`).then(res => res.text())
+        this.packages_data[urlPart] = raw_data.match(reg_versions).map(this.parseVersion).sort((a, b) => a.compare(b));
     }
 
     getLatest(packageName) {
-        return this.packages_data[packageName][0]
+        return this.packages_data[this.formURlpart(packageName)][0]
     }
 
     getAllVersions(packageName) {
-        return this.packages_data[packageName]
+        return this.packages_data[this.formURlpart(packageName)]
+    }
+
+    formURlpart(packageName) {
+        return `${packageName.groupId}/${packageName.artifactId}`.replace(".","/")
     }
 
 }

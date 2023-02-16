@@ -1,7 +1,10 @@
 name: 'Update java pom dependencies'
 description: 'Command to update pom dependencies with specific version'
 inputs:
-  package:
+  groupId:
+    description: "package name"
+    required: true
+  artifactId:
     description: "package name"
     required: true
   working-directory:

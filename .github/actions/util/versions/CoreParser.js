@@ -87,16 +87,16 @@ class CoreParser {
                 return this.getLatest(packageName, cwd)
             },
         }
-        if (Remotes.hasOwnProperty(type)) return {
-            source: 'remote',
-            version: Remotes[type]({packageName, cwd, minus: value})
-        }
-        else return {source: type, version: value}
+        if (Remotes.hasOwnProperty(type)) {
+            const calculatedVersion = Remotes[type]({packageName, cwd, minus: value})
+            if (calculatedVersion === undefined) throw new Error(`The version for ${JSON.stringify(packageName)} wasn't found for change in ${type} for ${value}`)
+            return {
+                source: 'remote',
+                version: calculatedVersion
+            }
+        } else return {source: type, version: value}
     }
 
-    calculateRemoteVersion({type, value, packageName, cwd}) {
-
-    }
 }
 
 module.exports = CoreParser
