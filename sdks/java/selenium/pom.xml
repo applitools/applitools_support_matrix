@@ -3,10 +3,10 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>support-matrix</artifactId>
+    <artifactId>support-matrix-java-selenium</artifactId>
     <groupId>com.applitools</groupId>
     <version>1.0.0</version>
-    <name>support-matrix</name>
+    <name>support-matrix-java-selenium</name>
     <url>http://www.applitools.com</url>
 
     <properties>
@@ -20,13 +20,8 @@
     <dependencies>
         <dependency>
             <groupId>com.applitools</groupId>
-            <artifactId>eyes-appium-java5</artifactId>
+            <artifactId>eyes-selenium-java5</artifactId>
             <version>5.38.0</version>
-        </dependency>
-        <dependency>
-            <groupId>io.appium</groupId>
-            <artifactId>java-client</artifactId>
-            <version>8.3.0</version>
         </dependency>
         <dependency>
             <groupId>org.testng</groupId>
