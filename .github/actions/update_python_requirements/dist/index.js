@@ -7088,7 +7088,7 @@ var __webpack_exports__ = {};
 const core = __nccwpck_require__(810)
 const path = __nccwpck_require__(1017)
 const PythonParser = __nccwpck_require__(5105);
-const install = __nccwpck_require__(834)
+const install = __nccwpck_require__(834);
 
 (async () => {
     try {

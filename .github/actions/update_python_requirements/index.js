@@ -1,7 +1,7 @@
 const core = require('@actions/core')
 const path = require('path')
 const PythonParser = require("./src/PythonParser");
-const install = require("./src/PythonInstall")
+const install = require("./src/PythonInstall");
 
 (async () => {
     try {
