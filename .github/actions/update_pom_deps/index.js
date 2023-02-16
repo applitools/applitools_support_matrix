@@ -17,7 +17,7 @@ const install = require("./src/JavaInstall");
         const inputVersion = core.getInput("version")
         const {source, version} = parser.parseInputVersion({version:inputVersion, packageName, cwd})
         console.log(version);
-        console.log(`Package name: ${packageName} | type: ${typeof packageName}`)
+        console.log(`Package name: ${JSON.stringify(packageName)} | type: ${typeof packageName}`)
         console.log(`Dir: ${dir} | type: ${typeof dir}`)
         console.log(cwd)
         install({source,version, packageName, cwd})

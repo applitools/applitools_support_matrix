@@ -81,7 +81,7 @@ jobs:
         with:
           groupId: ${{matrix.eyes_package.groupId}}
           artifactId: ${{matrix.eyes_package.artifactId}}
-          version: ${{matrix.version}}
+          version: "latest@"
           working-directory: ${{matrix.work_dir}}
       - name: Update Pom for the framework dependency
         id: install
