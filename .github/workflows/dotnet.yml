@@ -119,5 +119,9 @@ jobs:
           work_dir: ${{matrix.work_dir}}
           chrome_version: ${{ steps.logging.outputs.chrome_version }}
           chromedriver_version: ${{ steps.logging.outputs.chromedriver_version }}
+      - name: Install and list dependencies
+        run: |
+          dotnet build 
+          dotnet list package
       - name: Run tests
         run: ${{matrix.test_command}}

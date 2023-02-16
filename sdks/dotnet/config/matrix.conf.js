@@ -1,6 +1,6 @@
 const common = {
     "dotnet-version": "3.1.x",
-    test_command: "dotnet build && dotnet list package && dotnet test --no-build -- NUnit.NumberOfTestWorkers=1"
+    test_command: "dotnet test --no-build -- NUnit.NumberOfTestWorkers=1"
 }
 const base_variations = [
     {
