@@ -55,44 +55,44 @@ jobs:
 #      last_passed: false
 #    secrets:
 #      APPLITOOLS_API_KEY: ${{ secrets.APPLITOOLS_API_KEY }}
-#  java:
-#    uses: ./.github/workflows/java.yml
-#    with:
-#      last_passed: false
-#    secrets:
-#      APPLITOOLS_API_KEY: ${{ secrets.APPLITOOLS_API_KEY }}
-#      SAUCE_USERNAME: ${{secrets.SAUCE_USERNAME}}
-#      SAUCE_ACCESS_KEY: ${{secrets.SAUCE_ACCESS_KEY}}
-#  ruby:
-#    uses: ./.github/workflows/ruby.yml
-#    with:
-#      last_passed: false
-#    secrets:
-#      APPLITOOLS_API_KEY: ${{ secrets.APPLITOOLS_API_KEY }}
-#      SAUCE_USERNAME: ${{secrets.SAUCE_USERNAME}}
-#      SAUCE_ACCESS_KEY: ${{secrets.SAUCE_ACCESS_KEY}}
-#  python:
-#    needs: java
-#    uses: ./.github/workflows/python.yml
-#    with:
-#      last_passed: false
-#    secrets:
-#      APPLITOOLS_API_KEY: ${{ secrets.APPLITOOLS_API_KEY }}
-#      SAUCE_USERNAME: ${{secrets.SAUCE_USERNAME}}
-#      SAUCE_ACCESS_KEY: ${{secrets.SAUCE_ACCESS_KEY}}
-#  dotnet:
-#    needs: ruby
-#    uses: ./.github/workflows/dotnet.yml
-#    with:
-#      last_passed: false
-#    secrets:
-#      APPLITOOLS_API_KEY: ${{ secrets.APPLITOOLS_API_KEY }}
-#      SAUCE_USERNAME: ${{secrets.SAUCE_USERNAME}}
-#      SAUCE_ACCESS_KEY: ${{secrets.SAUCE_ACCESS_KEY}}
+  java:
+    uses: ./.github/workflows/java.yml
+    with:
+      last_passed: false
+    secrets:
+      APPLITOOLS_API_KEY: ${{ secrets.APPLITOOLS_API_KEY }}
+      SAUCE_USERNAME: ${{secrets.SAUCE_USERNAME}}
+      SAUCE_ACCESS_KEY: ${{secrets.SAUCE_ACCESS_KEY}}
+  ruby:
+    uses: ./.github/workflows/ruby.yml
+    with:
+      last_passed: false
+    secrets:
+      APPLITOOLS_API_KEY: ${{ secrets.APPLITOOLS_API_KEY }}
+      SAUCE_USERNAME: ${{secrets.SAUCE_USERNAME}}
+      SAUCE_ACCESS_KEY: ${{secrets.SAUCE_ACCESS_KEY}}
+  python:
+    needs: java
+    uses: ./.github/workflows/python.yml
+    with:
+      last_passed: false
+    secrets:
+      APPLITOOLS_API_KEY: ${{ secrets.APPLITOOLS_API_KEY }}
+      SAUCE_USERNAME: ${{secrets.SAUCE_USERNAME}}
+      SAUCE_ACCESS_KEY: ${{secrets.SAUCE_ACCESS_KEY}}
+  dotnet:
+    needs: ruby
+    uses: ./.github/workflows/dotnet.yml
+    with:
+      last_passed: false
+    secrets:
+      APPLITOOLS_API_KEY: ${{ secrets.APPLITOOLS_API_KEY }}
+      SAUCE_USERNAME: ${{secrets.SAUCE_USERNAME}}
+      SAUCE_ACCESS_KEY: ${{secrets.SAUCE_ACCESS_KEY}}
   js_selenium:
-#    needs: [ python,
-#             dotnet
-#    ]
+    needs: [ python,
+             dotnet
+    ]
     uses: ./.github/workflows/js_selenium.yml
     with:
       last_passed: false
@@ -109,10 +109,10 @@ jobs:
   report_generation:
     if: always()
     needs: [
-#      java,
-#             ruby,
-#             python,
-#             dotnet,
+      java,
+             ruby,
+             python,
+             dotnet,
              js_selenium,
              js_cypress,
 #             js_nightwatch,
