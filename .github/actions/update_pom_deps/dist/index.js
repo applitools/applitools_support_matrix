@@ -9144,7 +9144,7 @@ class JavaParser extends CoreParser {
     }
 
     formURlpart(packageName) {
-        return `${packageName.groupId}/${packageName.artifactId}`.replace(".","/")
+        return `${packageName.groupId}/${packageName.artifactId}`.replaceAll(".","/")
     }
 
 }
