@@ -22,7 +22,10 @@ class DotnetParser extends CoreParser {
         const url = `https://www.nuget.org/packages/${packageName}/atom.xml`
         console.log(`used url: ${url}`)
         const raw_data = await fetch(url).then(res => res.text())
-        this.packages_data[packageName] = raw_data.match(reg_versions).map(this.parseVersion).sort((a, b) => a.compare(b));
+        this.packages_data[packageName] = raw_data
+            .match(reg_versions)
+            .map(this.parseVersion)
+            .sort((a, b) => a.compare(b));
     }
 
     getLatest(packageName) {

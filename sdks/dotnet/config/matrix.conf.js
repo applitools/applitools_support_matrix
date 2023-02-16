@@ -1,6 +1,6 @@
 const common = {
     "dotnet-version": "3.1.x",
-    test_command: "dotnet test -- NUnit.NumberOfTestWorkers=1"
+    test_command: "dotnet list package && dotnet test -- NUnit.NumberOfTestWorkers=1"
 }
 const base_variations = [
     {
@@ -20,6 +20,7 @@ const base_common = base_variations.map(variant => ({...common, ...variant,}))
 const variations = base_common
     .map((variant) => ({...variant,
         use_selenium: true,
+        selenium_legacy: true,
         work_dir: 'sdks/dotnet/selenium',
         framework_package: "Selenium.WebDriver",
         eyes_package: "Eyes.Selenium",

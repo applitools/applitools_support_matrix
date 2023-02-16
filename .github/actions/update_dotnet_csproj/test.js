@@ -4,7 +4,7 @@ const install = require("./src/DotnetInstall");
 
 
 (async () => {
-    const packageName = "Eyes.Selenium"
+    const packageName = "Eyes.Selenium4"
     const cwd = process.cwd()
     const parser = new DotnetParser();
     await parser.collect_data(packageName);

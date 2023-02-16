@@ -2805,7 +2805,7 @@ const Version = __nccwpck_require__(676);
 class CoreParser {
 
     parseVersion(versionString) {
-        const reg_version_parse = /(\d+).(\d+).(\d+)/gm
+        const reg_version_parse = /(\d+)\.(\d+)\.(\d+)/gm
         const arr = reg_version_parse.exec(versionString);
         if (arr === null) {
             console.log(versionString)

@@ -9132,7 +9132,10 @@ class DotnetParser extends CoreParser {
         const url = `https://www.nuget.org/packages/${packageName}/atom.xml`
         console.log(`used url: ${url}`)
         const raw_data = await fetch(url).then(res => res.text())
-        this.packages_data[packageName] = raw_data.match(reg_versions).map(this.parseVersion).sort((a, b) => a.compare(b));
+        this.packages_data[packageName] = raw_data
+            .match(reg_versions)
+            .map(this.parseVersion)
+            .sort((a, b) => a.compare(b));
     }
 
     getLatest(packageName) {
@@ -9193,7 +9196,7 @@ const Version = __nccwpck_require__(4676);
 class CoreParser {
 
     parseVersion(versionString) {
-        const reg_version_parse = /(\d+).(\d+).(\d+)/gm
+        const reg_version_parse = /(\d+)\.(\d+)\.(\d+)/gm
         const arr = reg_version_parse.exec(versionString);
         if (arr === null) {
             console.log(versionString)
