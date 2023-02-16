@@ -2688,6 +2688,36 @@ exports["default"] = _default;
 
 /***/ }),
 
+/***/ 517:
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
+
+const {shellCommand} = __nccwpck_require__(222);
+
+
+    function install({source, version, packageName, cwd}) {
+        switch (source) {
+            case "remote":
+                return remote({version, packageName, cwd})
+            default:
+                throw new Error(`Installer doesn't support installation from ${source}`)
+        }
+    }
+
+    function remote({version, packageName, cwd}) {
+        shellCommand(`npm install ${packageName}@${version}`, cwd)
+        const ls = shellCommand(`npm list`, cwd)
+        const regResult = new RegExp(` (${packageName})@(.*)`).exec(ls)
+        return {installed_name: regResult[1], installed_version: regResult[2]}
+    }
+
+
+
+module.exports = install
+
+
+
+/***/ }),
+
 /***/ 197:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
@@ -2751,7 +2781,7 @@ function shellCommand(command, cwd) {
 module.exports = {
     checkInput,
     strToNum,
-    shellCommand,
+    shellCommand
 }
 
 /***/ }),
@@ -2781,11 +2811,11 @@ class CoreParser {
         })
     }
 
-    getLatest(packageName, cwd) {
+    getLatest() {
         throw new Error("It's not implemented method of the core parser, something gone wrong")
     }
 
-    getAllVersions(packageName, cwd) {
+    getAllVersions() {
         throw new Error("It's not implemented method of the core parser, something gone wrong")
     }
 
@@ -2833,8 +2863,12 @@ class CoreParser {
     }
 
     parseInputVersion({version, packageName, cwd}) {
-        const TYPES = {
-            exact: ({minus})=> {
+        const regex = /(\w+)@(.*)/gm
+        const arr = regex.exec(version)
+        const type = arr[1];
+        const value = arr[2];
+        const Remotes = {
+            exact: ({minus}) => {
                 return minus
             },
             major: this.getMajorMinus,
@@ -2845,18 +2879,15 @@ class CoreParser {
                 return this.getLatest(packageName, cwd)
             },
         }
-        const arr = getCheck(version)
-        const type = arr[1];
-        const value = arr[2];
-
-        if (!TYPES.hasOwnProperty(type)) throw new Error(`There were wrong input type, ${JSON.stringify(arr)}`)
-        return TYPES[type]({packageName, cwd, minus:value})
-
-
-        function getCheck(str) {
-            const regex = /(\w+)@(.*)/gm
-            return regex.exec(str)
+        if (Remotes.hasOwnProperty(type)) return {
+            source: 'remote',
+            version: Remotes[type]({packageName, cwd, minus: value})
         }
+        else return {source: type, version: value}
+    }
+
+    calculateRemoteVersion({type, value, packageName, cwd}) {
+
     }
 }
 
@@ -3039,24 +3070,20 @@ var __webpack_exports__ = {};
 const core = __nccwpck_require__(810)
 const path = __nccwpck_require__(17)
 const JSParser = __nccwpck_require__(197);
-const {shellCommand} = __nccwpck_require__(222);
+const install = __nccwpck_require__(517);
 
 try {
     const packageName = core.getInput('package');
     const dir = core.getInput('working-directory');
     const cwd = path.join(process.cwd(), dir)
     const parser = new JSParser();
-    let version;
-    version = core.getInput("version")
-    version = parser.parseInputVersion({version, packageName, cwd})
+    const inputVersion = core.getInput("version")
+    const {source, version} = parser.parseInputVersion({version:inputVersion, packageName, cwd})
     console.log(`Package name: ${packageName} | type: ${typeof packageName}`)
     console.log(`Dir: ${dir} | type: ${typeof dir}`)
+    console.log(version)
     console.log(cwd)
-    shellCommand(`npm install ${packageName}@${version}`, cwd)
-    const ls = shellCommand(`npm list`, cwd)
-    const regResult = new RegExp(` (${packageName})@(.*)`).exec(ls)
-    const installed_name = regResult[1];
-    const installed_version = regResult[2];
+    const {installed_name, installed_version} = install({source, version, packageName, cwd});
     const time = (new Date()).toTimeString();
     core.setOutput("time", time);
     core.setOutput("package_version", installed_version)

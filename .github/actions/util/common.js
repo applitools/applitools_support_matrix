@@ -20,5 +20,5 @@ function shellCommand(command, cwd) {
 module.exports = {
     checkInput,
     strToNum,
-    shellCommand,
+    shellCommand
 }

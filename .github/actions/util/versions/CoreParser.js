@@ -19,11 +19,11 @@ class CoreParser {
         })
     }
 
-    getLatest(packageName, cwd) {
+    getLatest() {
         throw new Error("It's not implemented method of the core parser, something gone wrong")
     }
 
-    getAllVersions(packageName, cwd) {
+    getAllVersions() {
         throw new Error("It's not implemented method of the core parser, something gone wrong")
     }
 
@@ -71,8 +71,12 @@ class CoreParser {
     }
 
     parseInputVersion({version, packageName, cwd}) {
-        const TYPES = {
-            exact: ({minus})=> {
+        const regex = /(\w+)@(.*)/gm
+        const arr = regex.exec(version)
+        const type = arr[1];
+        const value = arr[2];
+        const Remotes = {
+            exact: ({minus}) => {
                 return minus
             },
             major: this.getMajorMinus,
@@ -83,18 +87,15 @@ class CoreParser {
                 return this.getLatest(packageName, cwd)
             },
         }
-        const arr = getCheck(version)
-        const type = arr[1];
-        const value = arr[2];
-
-        if (!TYPES.hasOwnProperty(type)) throw new Error(`There were wrong input type, ${JSON.stringify(arr)}`)
-        return TYPES[type]({packageName, cwd, minus:value})
-
-
-        function getCheck(str) {
-            const regex = /(\w+)@(.*)/gm
-            return regex.exec(str)
+        if (Remotes.hasOwnProperty(type)) return {
+            source: 'remote',
+            version: Remotes[type]({packageName, cwd, minus: value})
         }
+        else return {source: type, version: value}
+    }
+
+    calculateRemoteVersion({type, value, packageName, cwd}) {
+
     }
 }
 

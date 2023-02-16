@@ -6645,6 +6645,43 @@ module.exports.implForWrapper = function (wrapper) {
 
 /***/ }),
 
+/***/ 834:
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
+
+const path = __nccwpck_require__(1017);
+const fs = __nccwpck_require__(7147);
+
+
+function install({source, version, packageName, cwd}) {
+    switch (source) {
+        case "remote":
+            return remote({version, packageName, cwd})
+        default:
+            throw new Error(`Installer doesn't support installation from ${source}`)
+    }
+}
+
+function remote({version, packageName, cwd}) {
+    const requirementsPath = path.join(cwd, "requirements.txt")
+    let requirements = fs.readFileSync(requirementsPath).toString()
+    const reg = new RegExp(`^${packageName}[=>~]{0,2}[\\d\.\*]*$`, 'gm')
+    const newPackageLine = `${packageName}==${version}`
+    if (reg.test(requirements)) {
+        requirements = requirements.replace(reg, newPackageLine)
+    } else {
+        requirements = requirements.concat(`\n${newPackageLine}`)
+    }
+    fs.writeFileSync(requirementsPath, requirements)
+}
+
+
+
+module.exports = install
+
+
+
+/***/ }),
+
 /***/ 5105:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
@@ -6714,7 +6751,7 @@ function shellCommand(command, cwd) {
 module.exports = {
     checkInput,
     strToNum,
-    shellCommand,
+    shellCommand
 }
 
 /***/ }),
@@ -6744,11 +6781,11 @@ class CoreParser {
         })
     }
 
-    getLatest(packageName, cwd) {
+    getLatest() {
         throw new Error("It's not implemented method of the core parser, something gone wrong")
     }
 
-    getAllVersions(packageName, cwd) {
+    getAllVersions() {
         throw new Error("It's not implemented method of the core parser, something gone wrong")
     }
 
@@ -6796,8 +6833,12 @@ class CoreParser {
     }
 
     parseInputVersion({version, packageName, cwd}) {
-        const TYPES = {
-            exact: ({minus})=> {
+        const regex = /(\w+)@(.*)/gm
+        const arr = regex.exec(version)
+        const type = arr[1];
+        const value = arr[2];
+        const Remotes = {
+            exact: ({minus}) => {
                 return minus
             },
             major: this.getMajorMinus,
@@ -6808,18 +6849,15 @@ class CoreParser {
                 return this.getLatest(packageName, cwd)
             },
         }
-        const arr = getCheck(version)
-        const type = arr[1];
-        const value = arr[2];
-
-        if (!TYPES.hasOwnProperty(type)) throw new Error(`There were wrong input type, ${JSON.stringify(arr)}`)
-        return TYPES[type]({packageName, cwd, minus:value})
-
-
-        function getCheck(str) {
-            const regex = /(\w+)@(.*)/gm
-            return regex.exec(str)
+        if (Remotes.hasOwnProperty(type)) return {
+            source: 'remote',
+            version: Remotes[type]({packageName, cwd, minus: value})
         }
+        else return {source: type, version: value}
+    }
+
+    calculateRemoteVersion({type, value, packageName, cwd}) {
+
     }
 }
 
@@ -7050,7 +7088,7 @@ var __webpack_exports__ = {};
 const core = __nccwpck_require__(810)
 const path = __nccwpck_require__(1017)
 const PythonParser = __nccwpck_require__(5105);
-const fs = __nccwpck_require__(7147);
+const install = __nccwpck_require__(834)
 
 (async () => {
     try {
@@ -7060,23 +7098,13 @@ const fs = __nccwpck_require__(7147);
         const parser = new PythonParser();
         await parser.collect_data(packageName);
         console.log(`Package data was collected for: ${packageName}`)
-        let version;
-        version = core.getInput("version")
-        version = parser.parseInputVersion({version, packageName, cwd})
+        const inputVersion = core.getInput("version")
+        const {source, version} = parser.parseInputVersion({version:inputVersion, packageName, cwd})
         console.log(version);
         console.log(`Package name: ${packageName} | type: ${typeof packageName}`)
         console.log(`Dir: ${dir} | type: ${typeof dir}`)
         console.log(cwd)
-        const requirementsPath = path.join(cwd, "requirements.txt")
-        let requirements = fs.readFileSync(requirementsPath).toString()
-        const reg = new RegExp(`^${packageName}[=>~]{0,2}[\\d\.\*]*$`, 'gm')
-        const newPackageLine = `${packageName}==${version}`
-        if (reg.test(requirements)) {
-            requirements = requirements.replace(reg, newPackageLine)
-        } else {
-            requirements = requirements.concat(`\n${newPackageLine}`)
-        }
-        fs.writeFileSync(requirementsPath, requirements)
+        install({source,version,packageName,cwd})
         const time = (new Date()).toTimeString();
         core.setOutput("time", time);
         core.setOutput("package_version", version.toString())
