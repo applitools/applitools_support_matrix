@@ -38,7 +38,9 @@ const variations = base_common
         ...variant,
         test_command: "bundle exec rake github:appium"
     })))
-    .map(variant => ({...variant, job_name: `Ruby ${variant.use_selenium ? 'Selenium' : 'Appium'} [${variant.os}]`}))
+    .map(variant => ({...variant,
+        job_name: `Ruby ${variant.use_selenium ? 'Selenium' : 'Appium'} [${variant.os} | ${variant["ruby-version"]}] version: ${variant.version}`
+    }))
 console.log(variations)
 module.exports = {
     "include": variations

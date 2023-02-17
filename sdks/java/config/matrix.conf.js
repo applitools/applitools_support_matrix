@@ -43,7 +43,9 @@ const variations = base_common
         },
         work_dir: "sdks/java/appium"
     })))
-    .map(variant => ({...variant, job_name:`Java ${variant.use_selenium ? 'Selenium' : 'Appium'} [${variant.os}]`}))
+    .map(variant => ({...variant,
+        job_name:`Java ${variant.use_selenium ? 'Selenium' : 'Appium'} [${variant.os} | ${variant["java-version"]}] version: ${variant.version}`
+    }))
 console.log(variations)
 module.exports = {
     "include": variations

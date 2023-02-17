@@ -24,7 +24,9 @@ const base_variations = [
         "version": "latest@",
     }
 ]
-const variations = base_variations.map(variant => ({...common, ...variant, job_name:`JS Protractor [${variant.os} | ${variant.version}]`}))
+const variations = base_variations.map(variant => ({...common, ...variant,
+    job_name:`JS Protractor [${variant.os} | ${variant["node-version"]}] version: ${variant.version}`
+}))
 console.log(variations)
 module.exports = {
     "include": variations

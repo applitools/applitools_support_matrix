@@ -50,7 +50,7 @@ runs:
         package: ${{ steps.install.outputs.package_name }}
         version: ${{ steps.install.outputs.package_version }}
         os: ${{runner.os}}
-        title: ${{ format('JS Selenium SDK [{0}] [nodejs {1}] | Pure selenium', runner.os, matrix.node-version) }}
+        title: ${{ matrix.job_name }}
         matrix: ${{ toJSON(matrix) }}
         work_dir: ${{matrix.work_dir}}
         selenium: ${{ steps.selenium.outputs.version }}

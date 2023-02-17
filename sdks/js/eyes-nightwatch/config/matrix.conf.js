@@ -19,7 +19,9 @@ const base_variations = [
         "version": "exact@1.7.13",
     }
 ]
-const variations = base_variations.map(variant => ({...common, ...variant, job_name:`JS Nightwatch [${variant.os}]`}))
+const variations = base_variations.map(variant => ({...common, ...variant,
+    job_name:`JS Nightwatch [${variant.os} | ${variant["node-version"]}] version: ${variant.version}`
+}))
 console.log(variations)
 module.exports = {
     "include": variations

@@ -45,7 +45,7 @@ const base_common = latest_variations.map(variant => ({...common, ...variant,}))
 })))
 const variations = base_common.map(variant => ({
     ...variant,
-    job_name: `JS Cypress [${variant.os} | ${variant.version}]`
+    job_name: `JS Cypress [${variant.os} | ${variant["node-version"]}] version: ${variant.version}`
 }))
 console.log(variations)
 module.exports = {

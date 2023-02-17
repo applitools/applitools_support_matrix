@@ -27,7 +27,7 @@ const variations = base_common
         test_command: "pytest -c appium.ini",
         framework_package: "Appium-Python-Client"
     })))
-    .map(variant => ({...variant, job_name:`Python ${variant.use_selenium ? 'Selenium' : 'Appium'} [${variant.os}]`}))
+    .map(variant => ({...variant, job_name:`Python ${variant.use_selenium ? 'Selenium' : 'Appium'} [${variant.os} | ${variant["python-version"]}] version: ${variant.version}`}))
 console.log(variations)
 module.exports = {
     "include": variations

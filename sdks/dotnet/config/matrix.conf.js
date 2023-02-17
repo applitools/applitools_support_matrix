@@ -37,7 +37,9 @@ const variations = base_common
         framework_package: "Appium.WebDriver",
         eyes_package: "Eyes.Appium",
     })))
-    .map(variant => ({...variant, job_name:`Dotnet ${variant.use_selenium ? 'Selenium' : 'Appium'} [${variant.os}]`}))
+    .map(variant => ({...variant,
+        job_name:`Dotnet ${variant.use_selenium ? 'Selenium' : 'Appium'} [${variant.os} | ${variant["dotnet-version"]}] [version: ${variant.version}]`
+    }))
 console.log(variations)
 module.exports = {
     "include": variations

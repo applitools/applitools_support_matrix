@@ -21,7 +21,9 @@ const base_variations = [
 const base_common = base_variations.map(variant => ({...common, ...variant,}))
 const variations = base_common.map((variant) => ({...variant, use_selenium: true, test_command: "npm test"}))
     .concat(base_common.map(variant => ({...variant, test_command: "npm run appium"})))
-    .map(variant => ({...variant, job_name:`JS ${variant.use_selenium ? 'Selenium' : 'Appium'} [${variant.os}]`}))
+    .map(variant => ({...variant,
+        job_name:`JS ${variant.use_selenium ? 'Selenium' : 'Appium'} [${variant.os} | ${variant["node-version"]}] version: ${variant.version}`
+    }))
 console.log(variations)
 module.exports = {
     "include": variations

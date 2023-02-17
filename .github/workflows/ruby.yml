@@ -105,7 +105,7 @@ jobs:
           package: ${{ steps.install.outputs.gem_name }}
           version: ${{ steps.install.outputs.gem_version }}
           os: ${{runner.os}}
-          title: ${{ format('Ruby SDK [{0}] [ruby version {1}]', runner.os, matrix.ruby-version) }}
+          title: ${{ matrix.job_name }}
           selenium: ${{ steps.selenium.outputs.version }}
           matrix:  ${{ toJSON(matrix) }}
           work_dir: ${{matrix.work_dir}}
