@@ -1,15 +1,15 @@
 {
-  "id": "d820e2ba-c415-4586-8c57-bf92284d453a",
+  "id": "5e2dccb3-1f43-4219-b661-338407b00f82",
   "data": [
     {
       "title": "Java",
       "jobs": [
         {
-          "title": "java / Java Selenium [ubuntu-latest]",
+          "title": "java / Java Selenium [ubuntu-latest | 8] version: latest@",
           "java-version": "8",
           "test_command": "mvn test",
           "os": "ubuntu-latest",
-          "version": "4.8.0",
+          "version": "4.8.1",
           "use_selenium": true,
           "framework_package": {
             "groupId": "org.seleniumhq.selenium",
@@ -20,18 +20,18 @@
             "artifactId": "eyes-selenium-java5"
           },
           "work_dir": "sdks/java/selenium",
-          "job_name": "Java Selenium [ubuntu-latest]",
+          "job_name": "Java Selenium [ubuntu-latest | 8] version: latest@",
           "matrix_config_dir": "sdks/java",
           "passed": true,
           "package": "{\"groupId\":\"org.seleniumhq.selenium\",\"artifactId\":\"selenium-java\"}",
-          "matrix_string": "{\"java-version\":\"8\",\"test_command\":\"mvn test\",\"os\":\"ubuntu-latest\",\"version\":\"latest@\",\"use_selenium\":true,\"framework_package\":{\"groupId\":\"org.seleniumhq.selenium\",\"artifactId\":\"selenium-java\"},\"eyes_package\":{\"groupId\":\"com.applitools\",\"artifactId\":\"eyes-selenium-java5\"},\"work_dir\":\"sdks/java/selenium\",\"job_name\":\"Java Selenium [ubuntu-latest]\",\"matrix_config_dir\":\"sdks/java\"}"
+          "matrix_string": "{\"java-version\":\"8\",\"test_command\":\"mvn test\",\"os\":\"ubuntu-latest\",\"version\":\"latest@\",\"use_selenium\":true,\"framework_package\":{\"groupId\":\"org.seleniumhq.selenium\",\"artifactId\":\"selenium-java\"},\"eyes_package\":{\"groupId\":\"com.applitools\",\"artifactId\":\"eyes-selenium-java5\"},\"work_dir\":\"sdks/java/selenium\",\"job_name\":\"Java Selenium [ubuntu-latest | 8] version: latest@\",\"matrix_config_dir\":\"sdks/java\"}"
         },
         {
-          "title": "java / Java Selenium [windows-latest]",
+          "title": "java / Java Selenium [windows-latest | 8] version: latest@",
           "java-version": "8",
           "test_command": "mvn test",
           "os": "windows-latest",
-          "version": "4.8.0",
+          "version": "4.8.1",
           "use_selenium": true,
           "framework_package": {
             "groupId": "org.seleniumhq.selenium",
@@ -42,18 +42,18 @@
             "artifactId": "eyes-selenium-java5"
           },
           "work_dir": "sdks/java/selenium",
-          "job_name": "Java Selenium [windows-latest]",
+          "job_name": "Java Selenium [windows-latest | 8] version: latest@",
           "matrix_config_dir": "sdks/java",
           "passed": true,
           "package": "{\"groupId\":\"org.seleniumhq.selenium\",\"artifactId\":\"selenium-java\"}",
-          "matrix_string": "{\"java-version\":\"8\",\"test_command\":\"mvn test\",\"os\":\"windows-latest\",\"version\":\"latest@\",\"use_selenium\":true,\"framework_package\":{\"groupId\":\"org.seleniumhq.selenium\",\"artifactId\":\"selenium-java\"},\"eyes_package\":{\"groupId\":\"com.applitools\",\"artifactId\":\"eyes-selenium-java5\"},\"work_dir\":\"sdks/java/selenium\",\"job_name\":\"Java Selenium [windows-latest]\",\"matrix_config_dir\":\"sdks/java\"}"
+          "matrix_string": "{\"java-version\":\"8\",\"test_command\":\"mvn test\",\"os\":\"windows-latest\",\"version\":\"latest@\",\"use_selenium\":true,\"framework_package\":{\"groupId\":\"org.seleniumhq.selenium\",\"artifactId\":\"selenium-java\"},\"eyes_package\":{\"groupId\":\"com.applitools\",\"artifactId\":\"eyes-selenium-java5\"},\"work_dir\":\"sdks/java/selenium\",\"job_name\":\"Java Selenium [windows-latest | 8] version: latest@\",\"matrix_config_dir\":\"sdks/java\"}"
         },
         {
-          "title": "java / Java Selenium [macos-latest]",
+          "title": "java / Java Selenium [macos-latest | 8] version: latest@",
           "java-version": "8",
           "test_command": "mvn test",
           "os": "macos-latest",
-          "version": "4.8.0",
+          "version": "4.8.1",
           "use_selenium": true,
           "framework_package": {
             "groupId": "org.seleniumhq.selenium",
@@ -64,14 +64,14 @@
             "artifactId": "eyes-selenium-java5"
           },
           "work_dir": "sdks/java/selenium",
-          "job_name": "Java Selenium [macos-latest]",
+          "job_name": "Java Selenium [macos-latest | 8] version: latest@",
           "matrix_config_dir": "sdks/java",
           "passed": true,
           "package": "{\"groupId\":\"org.seleniumhq.selenium\",\"artifactId\":\"selenium-java\"}",
-          "matrix_string": "{\"java-version\":\"8\",\"test_command\":\"mvn test\",\"os\":\"macos-latest\",\"version\":\"latest@\",\"use_selenium\":true,\"framework_package\":{\"groupId\":\"org.seleniumhq.selenium\",\"artifactId\":\"selenium-java\"},\"eyes_package\":{\"groupId\":\"com.applitools\",\"artifactId\":\"eyes-selenium-java5\"},\"work_dir\":\"sdks/java/selenium\",\"job_name\":\"Java Selenium [macos-latest]\",\"matrix_config_dir\":\"sdks/java\"}"
+          "matrix_string": "{\"java-version\":\"8\",\"test_command\":\"mvn test\",\"os\":\"macos-latest\",\"version\":\"latest@\",\"use_selenium\":true,\"framework_package\":{\"groupId\":\"org.seleniumhq.selenium\",\"artifactId\":\"selenium-java\"},\"eyes_package\":{\"groupId\":\"com.applitools\",\"artifactId\":\"eyes-selenium-java5\"},\"work_dir\":\"sdks/java/selenium\",\"job_name\":\"Java Selenium [macos-latest | 8] version: latest@\",\"matrix_config_dir\":\"sdks/java\"}"
         },
         {
-          "title": "java / Java Appium [ubuntu-latest]",
+          "title": "java / Java Appium [ubuntu-latest | 8] version: latest@",
           "java-version": "8",
           "test_command": "mvn test",
           "os": "ubuntu-latest",
@@ -85,14 +85,14 @@
             "artifactId": "eyes-appium-java5"
           },
           "work_dir": "sdks/java/appium",
-          "job_name": "Java Appium [ubuntu-latest]",
+          "job_name": "Java Appium [ubuntu-latest | 8] version: latest@",
           "matrix_config_dir": "sdks/java",
           "passed": true,
           "package": "{\"groupId\":\"io.appium\",\"artifactId\":\"java-client\"}",
-          "matrix_string": "{\"java-version\":\"8\",\"test_command\":\"mvn test\",\"os\":\"ubuntu-latest\",\"version\":\"latest@\",\"framework_package\":{\"groupId\":\"io.appium\",\"artifactId\":\"java-client\"},\"eyes_package\":{\"groupId\":\"com.applitools\",\"artifactId\":\"eyes-appium-java5\"},\"work_dir\":\"sdks/java/appium\",\"job_name\":\"Java Appium [ubuntu-latest]\",\"matrix_config_dir\":\"sdks/java\"}"
+          "matrix_string": "{\"java-version\":\"8\",\"test_command\":\"mvn test\",\"os\":\"ubuntu-latest\",\"version\":\"latest@\",\"framework_package\":{\"groupId\":\"io.appium\",\"artifactId\":\"java-client\"},\"eyes_package\":{\"groupId\":\"com.applitools\",\"artifactId\":\"eyes-appium-java5\"},\"work_dir\":\"sdks/java/appium\",\"job_name\":\"Java Appium [ubuntu-latest | 8] version: latest@\",\"matrix_config_dir\":\"sdks/java\"}"
         },
         {
-          "title": "java / Java Appium [windows-latest]",
+          "title": "java / Java Appium [windows-latest | 8] version: latest@",
           "java-version": "8",
           "test_command": "mvn test",
           "os": "windows-latest",
@@ -106,14 +106,14 @@
             "artifactId": "eyes-appium-java5"
           },
           "work_dir": "sdks/java/appium",
-          "job_name": "Java Appium [windows-latest]",
+          "job_name": "Java Appium [windows-latest | 8] version: latest@",
           "matrix_config_dir": "sdks/java",
           "passed": true,
           "package": "{\"groupId\":\"io.appium\",\"artifactId\":\"java-client\"}",
-          "matrix_string": "{\"java-version\":\"8\",\"test_command\":\"mvn test\",\"os\":\"windows-latest\",\"version\":\"latest@\",\"framework_package\":{\"groupId\":\"io.appium\",\"artifactId\":\"java-client\"},\"eyes_package\":{\"groupId\":\"com.applitools\",\"artifactId\":\"eyes-appium-java5\"},\"work_dir\":\"sdks/java/appium\",\"job_name\":\"Java Appium [windows-latest]\",\"matrix_config_dir\":\"sdks/java\"}"
+          "matrix_string": "{\"java-version\":\"8\",\"test_command\":\"mvn test\",\"os\":\"windows-latest\",\"version\":\"latest@\",\"framework_package\":{\"groupId\":\"io.appium\",\"artifactId\":\"java-client\"},\"eyes_package\":{\"groupId\":\"com.applitools\",\"artifactId\":\"eyes-appium-java5\"},\"work_dir\":\"sdks/java/appium\",\"job_name\":\"Java Appium [windows-latest | 8] version: latest@\",\"matrix_config_dir\":\"sdks/java\"}"
         },
         {
-          "title": "java / Java Appium [macos-latest]",
+          "title": "java / Java Appium [macos-latest | 8] version: latest@",
           "java-version": "8",
           "test_command": "mvn test",
           "os": "macos-latest",
@@ -127,11 +127,11 @@
             "artifactId": "eyes-appium-java5"
           },
           "work_dir": "sdks/java/appium",
-          "job_name": "Java Appium [macos-latest]",
+          "job_name": "Java Appium [macos-latest | 8] version: latest@",
           "matrix_config_dir": "sdks/java",
           "passed": true,
           "package": "{\"groupId\":\"io.appium\",\"artifactId\":\"java-client\"}",
-          "matrix_string": "{\"java-version\":\"8\",\"test_command\":\"mvn test\",\"os\":\"macos-latest\",\"version\":\"latest@\",\"framework_package\":{\"groupId\":\"io.appium\",\"artifactId\":\"java-client\"},\"eyes_package\":{\"groupId\":\"com.applitools\",\"artifactId\":\"eyes-appium-java5\"},\"work_dir\":\"sdks/java/appium\",\"job_name\":\"Java Appium [macos-latest]\",\"matrix_config_dir\":\"sdks/java\"}"
+          "matrix_string": "{\"java-version\":\"8\",\"test_command\":\"mvn test\",\"os\":\"macos-latest\",\"version\":\"latest@\",\"framework_package\":{\"groupId\":\"io.appium\",\"artifactId\":\"java-client\"},\"eyes_package\":{\"groupId\":\"com.applitools\",\"artifactId\":\"eyes-appium-java5\"},\"work_dir\":\"sdks/java/appium\",\"job_name\":\"Java Appium [macos-latest | 8] version: latest@\",\"matrix_config_dir\":\"sdks/java\"}"
         }
       ],
       "config_path": "sdks/java"
@@ -140,52 +140,52 @@
       "title": "Ruby",
       "jobs": [
         {
-          "title": "ruby / Ruby Selenium [ubuntu-latest]",
-          "version": "4.8.0",
+          "title": "ruby / Ruby Selenium [ubuntu-latest | 2.7] version: latest@",
+          "version": "4.8.1",
           "ruby-version": "2.7",
           "work_dir": "sdks/ruby",
           "framework_gem": "selenium-webdriver",
           "os": "ubuntu-latest",
           "use_selenium": true,
           "test_command": "bundle exec rake",
-          "job_name": "Ruby Selenium [ubuntu-latest]",
+          "job_name": "Ruby Selenium [ubuntu-latest | 2.7] version: latest@",
           "matrix_config_dir": "sdks/ruby",
           "passed": true,
           "package": "selenium-webdriver",
-          "matrix_string": "{\"version\":\"latest@\",\"ruby-version\":\"2.7\",\"work_dir\":\"sdks/ruby\",\"framework_gem\":\"selenium-webdriver\",\"os\":\"ubuntu-latest\",\"use_selenium\":true,\"test_command\":\"bundle exec rake\",\"job_name\":\"Ruby Selenium [ubuntu-latest]\",\"matrix_config_dir\":\"sdks/ruby\"}"
+          "matrix_string": "{\"version\":\"latest@\",\"ruby-version\":\"2.7\",\"work_dir\":\"sdks/ruby\",\"framework_gem\":\"selenium-webdriver\",\"os\":\"ubuntu-latest\",\"use_selenium\":true,\"test_command\":\"bundle exec rake\",\"job_name\":\"Ruby Selenium [ubuntu-latest | 2.7] version: latest@\",\"matrix_config_dir\":\"sdks/ruby\"}"
         },
         {
-          "title": "ruby / Ruby Selenium [windows-latest]",
-          "version": "4.8.0",
+          "title": "ruby / Ruby Selenium [windows-latest | 2.7] version: latest@",
+          "version": "4.8.1",
           "ruby-version": "2.7",
           "work_dir": "sdks/ruby",
           "framework_gem": "selenium-webdriver",
           "os": "windows-latest",
           "use_selenium": true,
           "test_command": "bundle exec rake",
-          "job_name": "Ruby Selenium [windows-latest]",
+          "job_name": "Ruby Selenium [windows-latest | 2.7] version: latest@",
           "matrix_config_dir": "sdks/ruby",
           "passed": true,
           "package": "selenium-webdriver",
-          "matrix_string": "{\"version\":\"latest@\",\"ruby-version\":\"2.7\",\"work_dir\":\"sdks/ruby\",\"framework_gem\":\"selenium-webdriver\",\"os\":\"windows-latest\",\"use_selenium\":true,\"test_command\":\"bundle exec rake\",\"job_name\":\"Ruby Selenium [windows-latest]\",\"matrix_config_dir\":\"sdks/ruby\"}"
+          "matrix_string": "{\"version\":\"latest@\",\"ruby-version\":\"2.7\",\"work_dir\":\"sdks/ruby\",\"framework_gem\":\"selenium-webdriver\",\"os\":\"windows-latest\",\"use_selenium\":true,\"test_command\":\"bundle exec rake\",\"job_name\":\"Ruby Selenium [windows-latest | 2.7] version: latest@\",\"matrix_config_dir\":\"sdks/ruby\"}"
         },
         {
-          "title": "ruby / Ruby Selenium [macos-latest]",
-          "version": "4.8.0",
+          "title": "ruby / Ruby Selenium [macos-latest | 2.7] version: latest@",
+          "version": "4.8.1",
           "ruby-version": "2.7",
           "work_dir": "sdks/ruby",
           "framework_gem": "selenium-webdriver",
           "os": "macos-latest",
           "use_selenium": true,
           "test_command": "bundle exec rake",
-          "job_name": "Ruby Selenium [macos-latest]",
+          "job_name": "Ruby Selenium [macos-latest | 2.7] version: latest@",
           "matrix_config_dir": "sdks/ruby",
           "passed": true,
           "package": "selenium-webdriver",
-          "matrix_string": "{\"version\":\"latest@\",\"ruby-version\":\"2.7\",\"work_dir\":\"sdks/ruby\",\"framework_gem\":\"selenium-webdriver\",\"os\":\"macos-latest\",\"use_selenium\":true,\"test_command\":\"bundle exec rake\",\"job_name\":\"Ruby Selenium [macos-latest]\",\"matrix_config_dir\":\"sdks/ruby\"}"
+          "matrix_string": "{\"version\":\"latest@\",\"ruby-version\":\"2.7\",\"work_dir\":\"sdks/ruby\",\"framework_gem\":\"selenium-webdriver\",\"os\":\"macos-latest\",\"use_selenium\":true,\"test_command\":\"bundle exec rake\",\"job_name\":\"Ruby Selenium [macos-latest | 2.7] version: latest@\",\"matrix_config_dir\":\"sdks/ruby\"}"
         },
         {
-          "title": "ruby / Ruby Selenium [ubuntu-latest]",
+          "title": "ruby / Ruby Selenium [ubuntu-latest | 2.6] version: exact@4.1.0",
           "os": "ubuntu-latest",
           "use_selenium": true,
           "test_command": "bundle exec rake",
@@ -193,53 +193,53 @@
           "ruby-version": "2.6",
           "work_dir": "sdks/ruby",
           "framework_gem": "selenium-webdriver",
-          "job_name": "Ruby Selenium [ubuntu-latest]",
+          "job_name": "Ruby Selenium [ubuntu-latest | 2.6] version: exact@4.1.0",
           "matrix_config_dir": "sdks/ruby",
           "passed": true,
           "package": "selenium-webdriver",
-          "matrix_string": "{\"os\":\"ubuntu-latest\",\"use_selenium\":true,\"test_command\":\"bundle exec rake\",\"version\":\"exact@4.1.0\",\"ruby-version\":\"2.6\",\"work_dir\":\"sdks/ruby\",\"framework_gem\":\"selenium-webdriver\",\"job_name\":\"Ruby Selenium [ubuntu-latest]\",\"matrix_config_dir\":\"sdks/ruby\"}"
+          "matrix_string": "{\"os\":\"ubuntu-latest\",\"use_selenium\":true,\"test_command\":\"bundle exec rake\",\"version\":\"exact@4.1.0\",\"ruby-version\":\"2.6\",\"work_dir\":\"sdks/ruby\",\"framework_gem\":\"selenium-webdriver\",\"job_name\":\"Ruby Selenium [ubuntu-latest | 2.6] version: exact@4.1.0\",\"matrix_config_dir\":\"sdks/ruby\"}"
         },
         {
-          "title": "ruby / Ruby Appium [ubuntu-latest]",
-          "version": "4.8.0",
+          "title": "ruby / Ruby Appium [ubuntu-latest | 2.7] version: latest@",
+          "version": "4.8.1",
           "ruby-version": "2.7",
           "work_dir": "sdks/ruby",
           "framework_gem": "selenium-webdriver",
           "os": "ubuntu-latest",
           "test_command": "bundle exec rake github:appium",
-          "job_name": "Ruby Appium [ubuntu-latest]",
+          "job_name": "Ruby Appium [ubuntu-latest | 2.7] version: latest@",
           "matrix_config_dir": "sdks/ruby",
           "passed": true,
           "package": "selenium-webdriver",
-          "matrix_string": "{\"version\":\"latest@\",\"ruby-version\":\"2.7\",\"work_dir\":\"sdks/ruby\",\"framework_gem\":\"selenium-webdriver\",\"os\":\"ubuntu-latest\",\"test_command\":\"bundle exec rake github:appium\",\"job_name\":\"Ruby Appium [ubuntu-latest]\",\"matrix_config_dir\":\"sdks/ruby\"}"
+          "matrix_string": "{\"version\":\"latest@\",\"ruby-version\":\"2.7\",\"work_dir\":\"sdks/ruby\",\"framework_gem\":\"selenium-webdriver\",\"os\":\"ubuntu-latest\",\"test_command\":\"bundle exec rake github:appium\",\"job_name\":\"Ruby Appium [ubuntu-latest | 2.7] version: latest@\",\"matrix_config_dir\":\"sdks/ruby\"}"
         },
         {
-          "title": "ruby / Ruby Appium [windows-latest]",
-          "version": "4.8.0",
+          "title": "ruby / Ruby Appium [windows-latest | 2.7] version: latest@",
+          "version": "4.8.1",
           "ruby-version": "2.7",
           "work_dir": "sdks/ruby",
           "framework_gem": "selenium-webdriver",
           "os": "windows-latest",
           "test_command": "bundle exec rake github:appium",
-          "job_name": "Ruby Appium [windows-latest]",
+          "job_name": "Ruby Appium [windows-latest | 2.7] version: latest@",
           "matrix_config_dir": "sdks/ruby",
           "passed": true,
           "package": "selenium-webdriver",
-          "matrix_string": "{\"version\":\"latest@\",\"ruby-version\":\"2.7\",\"work_dir\":\"sdks/ruby\",\"framework_gem\":\"selenium-webdriver\",\"os\":\"windows-latest\",\"test_command\":\"bundle exec rake github:appium\",\"job_name\":\"Ruby Appium [windows-latest]\",\"matrix_config_dir\":\"sdks/ruby\"}"
+          "matrix_string": "{\"version\":\"latest@\",\"ruby-version\":\"2.7\",\"work_dir\":\"sdks/ruby\",\"framework_gem\":\"selenium-webdriver\",\"os\":\"windows-latest\",\"test_command\":\"bundle exec rake github:appium\",\"job_name\":\"Ruby Appium [windows-latest | 2.7] version: latest@\",\"matrix_config_dir\":\"sdks/ruby\"}"
         },
         {
-          "title": "ruby / Ruby Appium [macos-latest]",
-          "version": "4.8.0",
+          "title": "ruby / Ruby Appium [macos-latest | 2.7] version: latest@",
+          "version": "4.8.1",
           "ruby-version": "2.7",
           "work_dir": "sdks/ruby",
           "framework_gem": "selenium-webdriver",
           "os": "macos-latest",
           "test_command": "bundle exec rake github:appium",
-          "job_name": "Ruby Appium [macos-latest]",
+          "job_name": "Ruby Appium [macos-latest | 2.7] version: latest@",
           "matrix_config_dir": "sdks/ruby",
           "passed": true,
           "package": "selenium-webdriver",
-          "matrix_string": "{\"version\":\"latest@\",\"ruby-version\":\"2.7\",\"work_dir\":\"sdks/ruby\",\"framework_gem\":\"selenium-webdriver\",\"os\":\"macos-latest\",\"test_command\":\"bundle exec rake github:appium\",\"job_name\":\"Ruby Appium [macos-latest]\",\"matrix_config_dir\":\"sdks/ruby\"}"
+          "matrix_string": "{\"version\":\"latest@\",\"ruby-version\":\"2.7\",\"work_dir\":\"sdks/ruby\",\"framework_gem\":\"selenium-webdriver\",\"os\":\"macos-latest\",\"test_command\":\"bundle exec rake github:appium\",\"job_name\":\"Ruby Appium [macos-latest | 2.7] version: latest@\",\"matrix_config_dir\":\"sdks/ruby\"}"
         }
       ],
       "config_path": "sdks/ruby"
@@ -248,91 +248,91 @@
       "title": "Python",
       "jobs": [
         {
-          "title": "python / Python Selenium [ubuntu-latest]",
+          "title": "python / Python Selenium [ubuntu-latest | 3.10] version: latest@",
           "python-version": "3.10",
           "work_dir": "sdks/python",
           "os": "ubuntu-latest",
-          "version": "4.8.0",
+          "version": "4.8.2",
           "use_selenium": true,
           "test_command": "pytest -n 2",
           "framework_package": "selenium",
-          "job_name": "Python Selenium [ubuntu-latest]",
+          "job_name": "Python Selenium [ubuntu-latest | 3.10] version: latest@",
           "matrix_config_dir": "sdks/python",
           "passed": true,
           "package": "selenium",
-          "matrix_string": "{\"python-version\":\"3.10\",\"work_dir\":\"sdks/python\",\"os\":\"ubuntu-latest\",\"version\":\"latest@\",\"use_selenium\":true,\"test_command\":\"pytest -n 2\",\"framework_package\":\"selenium\",\"job_name\":\"Python Selenium [ubuntu-latest]\",\"matrix_config_dir\":\"sdks/python\"}"
+          "matrix_string": "{\"python-version\":\"3.10\",\"work_dir\":\"sdks/python\",\"os\":\"ubuntu-latest\",\"version\":\"latest@\",\"use_selenium\":true,\"test_command\":\"pytest -n 2\",\"framework_package\":\"selenium\",\"job_name\":\"Python Selenium [ubuntu-latest | 3.10] version: latest@\",\"matrix_config_dir\":\"sdks/python\"}"
         },
         {
-          "title": "python / Python Selenium [windows-latest]",
+          "title": "python / Python Selenium [windows-latest | 3.10] version: latest@",
           "python-version": "3.10",
           "work_dir": "sdks/python",
           "os": "windows-latest",
-          "version": "4.8.0",
+          "version": "4.8.2",
           "use_selenium": true,
           "test_command": "pytest -n 2",
           "framework_package": "selenium",
-          "job_name": "Python Selenium [windows-latest]",
+          "job_name": "Python Selenium [windows-latest | 3.10] version: latest@",
           "matrix_config_dir": "sdks/python",
           "passed": true,
           "package": "selenium",
-          "matrix_string": "{\"python-version\":\"3.10\",\"work_dir\":\"sdks/python\",\"os\":\"windows-latest\",\"version\":\"latest@\",\"use_selenium\":true,\"test_command\":\"pytest -n 2\",\"framework_package\":\"selenium\",\"job_name\":\"Python Selenium [windows-latest]\",\"matrix_config_dir\":\"sdks/python\"}"
+          "matrix_string": "{\"python-version\":\"3.10\",\"work_dir\":\"sdks/python\",\"os\":\"windows-latest\",\"version\":\"latest@\",\"use_selenium\":true,\"test_command\":\"pytest -n 2\",\"framework_package\":\"selenium\",\"job_name\":\"Python Selenium [windows-latest | 3.10] version: latest@\",\"matrix_config_dir\":\"sdks/python\"}"
         },
         {
-          "title": "python / Python Selenium [macos-latest]",
+          "title": "python / Python Selenium [macos-latest | 3.10] version: latest@",
           "python-version": "3.10",
           "work_dir": "sdks/python",
           "os": "macos-latest",
-          "version": "4.8.0",
+          "version": "4.8.2",
           "use_selenium": true,
           "test_command": "pytest -n 2",
           "framework_package": "selenium",
-          "job_name": "Python Selenium [macos-latest]",
+          "job_name": "Python Selenium [macos-latest | 3.10] version: latest@",
           "matrix_config_dir": "sdks/python",
           "passed": true,
           "package": "selenium",
-          "matrix_string": "{\"python-version\":\"3.10\",\"work_dir\":\"sdks/python\",\"os\":\"macos-latest\",\"version\":\"latest@\",\"use_selenium\":true,\"test_command\":\"pytest -n 2\",\"framework_package\":\"selenium\",\"job_name\":\"Python Selenium [macos-latest]\",\"matrix_config_dir\":\"sdks/python\"}"
+          "matrix_string": "{\"python-version\":\"3.10\",\"work_dir\":\"sdks/python\",\"os\":\"macos-latest\",\"version\":\"latest@\",\"use_selenium\":true,\"test_command\":\"pytest -n 2\",\"framework_package\":\"selenium\",\"job_name\":\"Python Selenium [macos-latest | 3.10] version: latest@\",\"matrix_config_dir\":\"sdks/python\"}"
         },
         {
-          "title": "python / Python Appium [ubuntu-latest]",
+          "title": "python / Python Appium [ubuntu-latest | 3.10] version: latest@",
           "python-version": "3.10",
           "work_dir": "sdks/python",
           "os": "ubuntu-latest",
           "version": "2.8.1",
           "test_command": "pytest -c appium.ini",
           "framework_package": "Appium-Python-Client",
-          "job_name": "Python Appium [ubuntu-latest]",
+          "job_name": "Python Appium [ubuntu-latest | 3.10] version: latest@",
           "matrix_config_dir": "sdks/python",
           "passed": true,
           "package": "Appium-Python-Client",
-          "matrix_string": "{\"python-version\":\"3.10\",\"work_dir\":\"sdks/python\",\"os\":\"ubuntu-latest\",\"version\":\"latest@\",\"test_command\":\"pytest -c appium.ini\",\"framework_package\":\"Appium-Python-Client\",\"job_name\":\"Python Appium [ubuntu-latest]\",\"matrix_config_dir\":\"sdks/python\"}"
+          "matrix_string": "{\"python-version\":\"3.10\",\"work_dir\":\"sdks/python\",\"os\":\"ubuntu-latest\",\"version\":\"latest@\",\"test_command\":\"pytest -c appium.ini\",\"framework_package\":\"Appium-Python-Client\",\"job_name\":\"Python Appium [ubuntu-latest | 3.10] version: latest@\",\"matrix_config_dir\":\"sdks/python\"}"
         },
         {
-          "title": "python / Python Appium [windows-latest]",
+          "title": "python / Python Appium [windows-latest | 3.10] version: latest@",
           "python-version": "3.10",
           "work_dir": "sdks/python",
           "os": "windows-latest",
           "version": "2.8.1",
           "test_command": "pytest -c appium.ini",
           "framework_package": "Appium-Python-Client",
-          "job_name": "Python Appium [windows-latest]",
+          "job_name": "Python Appium [windows-latest | 3.10] version: latest@",
           "matrix_config_dir": "sdks/python",
           "passed": true,
           "package": "Appium-Python-Client",
-          "matrix_string": "{\"python-version\":\"3.10\",\"work_dir\":\"sdks/python\",\"os\":\"windows-latest\",\"version\":\"latest@\",\"test_command\":\"pytest -c appium.ini\",\"framework_package\":\"Appium-Python-Client\",\"job_name\":\"Python Appium [windows-latest]\",\"matrix_config_dir\":\"sdks/python\"}"
+          "matrix_string": "{\"python-version\":\"3.10\",\"work_dir\":\"sdks/python\",\"os\":\"windows-latest\",\"version\":\"latest@\",\"test_command\":\"pytest -c appium.ini\",\"framework_package\":\"Appium-Python-Client\",\"job_name\":\"Python Appium [windows-latest | 3.10] version: latest@\",\"matrix_config_dir\":\"sdks/python\"}"
         },
         {
-          "title": "python / Python Appium [macos-latest]",
+          "title": "python / Python Appium [macos-latest | 3.10] version: latest@",
           "python-version": "3.10",
           "work_dir": "sdks/python",
           "os": "macos-latest",
           "version": "2.8.1",
           "test_command": "pytest -c appium.ini",
           "framework_package": "Appium-Python-Client",
-          "job_name": "Python Appium [macos-latest]",
+          "job_name": "Python Appium [macos-latest | 3.10] version: latest@",
           "matrix_config_dir": "sdks/python",
           "passed": true,
           "package": "Appium-Python-Client",
-          "matrix_string": "{\"python-version\":\"3.10\",\"work_dir\":\"sdks/python\",\"os\":\"macos-latest\",\"version\":\"latest@\",\"test_command\":\"pytest -c appium.ini\",\"framework_package\":\"Appium-Python-Client\",\"job_name\":\"Python Appium [macos-latest]\",\"matrix_config_dir\":\"sdks/python\"}"
+          "matrix_string": "{\"python-version\":\"3.10\",\"work_dir\":\"sdks/python\",\"os\":\"macos-latest\",\"version\":\"latest@\",\"test_command\":\"pytest -c appium.ini\",\"framework_package\":\"Appium-Python-Client\",\"job_name\":\"Python Appium [macos-latest | 3.10] version: latest@\",\"matrix_config_dir\":\"sdks/python\"}"
         }
       ],
       "config_path": "sdks/python"
@@ -341,7 +341,7 @@
       "title": "Dotnet",
       "jobs": [
         {
-          "title": "dotnet / Dotnet Selenium [ubuntu-latest]",
+          "title": "dotnet / Dotnet Selenium [ubuntu-latest | 3.1.x] [version: exact@3.141.0]",
           "dotnet-version": "3.1.x",
           "test_command": "dotnet test --no-build -- NUnit.NumberOfTestWorkers=1",
           "os": "ubuntu-latest",
@@ -351,14 +351,14 @@
           "work_dir": "sdks/dotnet/selenium",
           "framework_package": "Selenium.WebDriver",
           "eyes_package": "Eyes.Selenium",
-          "job_name": "Dotnet Selenium [ubuntu-latest]",
+          "job_name": "Dotnet Selenium [ubuntu-latest | 3.1.x] [version: exact@3.141.0]",
           "matrix_config_dir": "sdks/dotnet",
           "passed": true,
           "package": "Selenium.WebDriver",
-          "matrix_string": "{\"dotnet-version\":\"3.1.x\",\"test_command\":\"dotnet test --no-build -- NUnit.NumberOfTestWorkers=1\",\"os\":\"ubuntu-latest\",\"version\":\"exact@3.141.0\",\"use_selenium\":true,\"selenium_legacy\":true,\"work_dir\":\"sdks/dotnet/selenium\",\"framework_package\":\"Selenium.WebDriver\",\"eyes_package\":\"Eyes.Selenium\",\"job_name\":\"Dotnet Selenium [ubuntu-latest]\",\"matrix_config_dir\":\"sdks/dotnet\"}"
+          "matrix_string": "{\"dotnet-version\":\"3.1.x\",\"test_command\":\"dotnet test --no-build -- NUnit.NumberOfTestWorkers=1\",\"os\":\"ubuntu-latest\",\"version\":\"exact@3.141.0\",\"use_selenium\":true,\"selenium_legacy\":true,\"work_dir\":\"sdks/dotnet/selenium\",\"framework_package\":\"Selenium.WebDriver\",\"eyes_package\":\"Eyes.Selenium\",\"job_name\":\"Dotnet Selenium [ubuntu-latest | 3.1.x] [version: exact@3.141.0]\",\"matrix_config_dir\":\"sdks/dotnet\"}"
         },
         {
-          "title": "dotnet / Dotnet Selenium [windows-latest]",
+          "title": "dotnet / Dotnet Selenium [windows-latest | 3.1.x] [version: exact@3.141.0]",
           "dotnet-version": "3.1.x",
           "test_command": "dotnet test --no-build -- NUnit.NumberOfTestWorkers=1",
           "os": "windows-latest",
@@ -368,14 +368,14 @@
           "work_dir": "sdks/dotnet/selenium",
           "framework_package": "Selenium.WebDriver",
           "eyes_package": "Eyes.Selenium",
-          "job_name": "Dotnet Selenium [windows-latest]",
+          "job_name": "Dotnet Selenium [windows-latest | 3.1.x] [version: exact@3.141.0]",
           "matrix_config_dir": "sdks/dotnet",
           "passed": true,
           "package": "Selenium.WebDriver",
-          "matrix_string": "{\"dotnet-version\":\"3.1.x\",\"test_command\":\"dotnet test --no-build -- NUnit.NumberOfTestWorkers=1\",\"os\":\"windows-latest\",\"version\":\"exact@3.141.0\",\"use_selenium\":true,\"selenium_legacy\":true,\"work_dir\":\"sdks/dotnet/selenium\",\"framework_package\":\"Selenium.WebDriver\",\"eyes_package\":\"Eyes.Selenium\",\"job_name\":\"Dotnet Selenium [windows-latest]\",\"matrix_config_dir\":\"sdks/dotnet\"}"
+          "matrix_string": "{\"dotnet-version\":\"3.1.x\",\"test_command\":\"dotnet test --no-build -- NUnit.NumberOfTestWorkers=1\",\"os\":\"windows-latest\",\"version\":\"exact@3.141.0\",\"use_selenium\":true,\"selenium_legacy\":true,\"work_dir\":\"sdks/dotnet/selenium\",\"framework_package\":\"Selenium.WebDriver\",\"eyes_package\":\"Eyes.Selenium\",\"job_name\":\"Dotnet Selenium [windows-latest | 3.1.x] [version: exact@3.141.0]\",\"matrix_config_dir\":\"sdks/dotnet\"}"
         },
         {
-          "title": "dotnet / Dotnet Selenium [macos-latest]",
+          "title": "dotnet / Dotnet Selenium [macos-latest | 3.1.x] [version: exact@3.141.0]",
           "dotnet-version": "3.1.x",
           "test_command": "dotnet test --no-build -- NUnit.NumberOfTestWorkers=1",
           "os": "macos-latest",
@@ -385,62 +385,62 @@
           "work_dir": "sdks/dotnet/selenium",
           "framework_package": "Selenium.WebDriver",
           "eyes_package": "Eyes.Selenium",
-          "job_name": "Dotnet Selenium [macos-latest]",
+          "job_name": "Dotnet Selenium [macos-latest | 3.1.x] [version: exact@3.141.0]",
           "matrix_config_dir": "sdks/dotnet",
           "passed": true,
           "package": "Selenium.WebDriver",
-          "matrix_string": "{\"dotnet-version\":\"3.1.x\",\"test_command\":\"dotnet test --no-build -- NUnit.NumberOfTestWorkers=1\",\"os\":\"macos-latest\",\"version\":\"exact@3.141.0\",\"use_selenium\":true,\"selenium_legacy\":true,\"work_dir\":\"sdks/dotnet/selenium\",\"framework_package\":\"Selenium.WebDriver\",\"eyes_package\":\"Eyes.Selenium\",\"job_name\":\"Dotnet Selenium [macos-latest]\",\"matrix_config_dir\":\"sdks/dotnet\"}"
+          "matrix_string": "{\"dotnet-version\":\"3.1.x\",\"test_command\":\"dotnet test --no-build -- NUnit.NumberOfTestWorkers=1\",\"os\":\"macos-latest\",\"version\":\"exact@3.141.0\",\"use_selenium\":true,\"selenium_legacy\":true,\"work_dir\":\"sdks/dotnet/selenium\",\"framework_package\":\"Selenium.WebDriver\",\"eyes_package\":\"Eyes.Selenium\",\"job_name\":\"Dotnet Selenium [macos-latest | 3.1.x] [version: exact@3.141.0]\",\"matrix_config_dir\":\"sdks/dotnet\"}"
         },
         {
-          "title": "dotnet / Dotnet Selenium [ubuntu-latest]",
+          "title": "dotnet / Dotnet Selenium [ubuntu-latest | 3.1.x] [version: latest@]",
           "dotnet-version": "3.1.x",
           "test_command": "dotnet test --no-build -- NUnit.NumberOfTestWorkers=1",
           "os": "ubuntu-latest",
-          "version": "4.8.0",
+          "version": "4.8.1",
           "use_selenium": true,
           "work_dir": "sdks/dotnet/selenium",
           "framework_package": "Selenium.WebDriver",
           "eyes_package": "Eyes.Selenium4",
-          "job_name": "Dotnet Selenium [ubuntu-latest]",
+          "job_name": "Dotnet Selenium [ubuntu-latest | 3.1.x] [version: latest@]",
           "matrix_config_dir": "sdks/dotnet",
           "passed": true,
           "package": "Selenium.WebDriver",
-          "matrix_string": "{\"dotnet-version\":\"3.1.x\",\"test_command\":\"dotnet test --no-build -- NUnit.NumberOfTestWorkers=1\",\"os\":\"ubuntu-latest\",\"version\":\"latest@\",\"use_selenium\":true,\"work_dir\":\"sdks/dotnet/selenium\",\"framework_package\":\"Selenium.WebDriver\",\"eyes_package\":\"Eyes.Selenium4\",\"job_name\":\"Dotnet Selenium [ubuntu-latest]\",\"matrix_config_dir\":\"sdks/dotnet\"}"
+          "matrix_string": "{\"dotnet-version\":\"3.1.x\",\"test_command\":\"dotnet test --no-build -- NUnit.NumberOfTestWorkers=1\",\"os\":\"ubuntu-latest\",\"version\":\"latest@\",\"use_selenium\":true,\"work_dir\":\"sdks/dotnet/selenium\",\"framework_package\":\"Selenium.WebDriver\",\"eyes_package\":\"Eyes.Selenium4\",\"job_name\":\"Dotnet Selenium [ubuntu-latest | 3.1.x] [version: latest@]\",\"matrix_config_dir\":\"sdks/dotnet\"}"
         },
         {
-          "title": "dotnet / Dotnet Selenium [windows-latest]",
+          "title": "dotnet / Dotnet Selenium [windows-latest | 3.1.x] [version: latest@]",
           "dotnet-version": "3.1.x",
           "test_command": "dotnet test --no-build -- NUnit.NumberOfTestWorkers=1",
           "os": "windows-latest",
-          "version": "4.8.0",
+          "version": "4.8.1",
           "use_selenium": true,
           "work_dir": "sdks/dotnet/selenium",
           "framework_package": "Selenium.WebDriver",
           "eyes_package": "Eyes.Selenium4",
-          "job_name": "Dotnet Selenium [windows-latest]",
+          "job_name": "Dotnet Selenium [windows-latest | 3.1.x] [version: latest@]",
           "matrix_config_dir": "sdks/dotnet",
           "passed": true,
           "package": "Selenium.WebDriver",
-          "matrix_string": "{\"dotnet-version\":\"3.1.x\",\"test_command\":\"dotnet test --no-build -- NUnit.NumberOfTestWorkers=1\",\"os\":\"windows-latest\",\"version\":\"latest@\",\"use_selenium\":true,\"work_dir\":\"sdks/dotnet/selenium\",\"framework_package\":\"Selenium.WebDriver\",\"eyes_package\":\"Eyes.Selenium4\",\"job_name\":\"Dotnet Selenium [windows-latest]\",\"matrix_config_dir\":\"sdks/dotnet\"}"
+          "matrix_string": "{\"dotnet-version\":\"3.1.x\",\"test_command\":\"dotnet test --no-build -- NUnit.NumberOfTestWorkers=1\",\"os\":\"windows-latest\",\"version\":\"latest@\",\"use_selenium\":true,\"work_dir\":\"sdks/dotnet/selenium\",\"framework_package\":\"Selenium.WebDriver\",\"eyes_package\":\"Eyes.Selenium4\",\"job_name\":\"Dotnet Selenium [windows-latest | 3.1.x] [version: latest@]\",\"matrix_config_dir\":\"sdks/dotnet\"}"
         },
         {
-          "title": "dotnet / Dotnet Selenium [macos-latest]",
+          "title": "dotnet / Dotnet Selenium [macos-latest | 3.1.x] [version: latest@]",
           "dotnet-version": "3.1.x",
           "test_command": "dotnet test --no-build -- NUnit.NumberOfTestWorkers=1",
           "os": "macos-latest",
-          "version": "4.8.0",
+          "version": "4.8.1",
           "use_selenium": true,
           "work_dir": "sdks/dotnet/selenium",
           "framework_package": "Selenium.WebDriver",
           "eyes_package": "Eyes.Selenium4",
-          "job_name": "Dotnet Selenium [macos-latest]",
+          "job_name": "Dotnet Selenium [macos-latest | 3.1.x] [version: latest@]",
           "matrix_config_dir": "sdks/dotnet",
           "passed": true,
           "package": "Selenium.WebDriver",
-          "matrix_string": "{\"dotnet-version\":\"3.1.x\",\"test_command\":\"dotnet test --no-build -- NUnit.NumberOfTestWorkers=1\",\"os\":\"macos-latest\",\"version\":\"latest@\",\"use_selenium\":true,\"work_dir\":\"sdks/dotnet/selenium\",\"framework_package\":\"Selenium.WebDriver\",\"eyes_package\":\"Eyes.Selenium4\",\"job_name\":\"Dotnet Selenium [macos-latest]\",\"matrix_config_dir\":\"sdks/dotnet\"}"
+          "matrix_string": "{\"dotnet-version\":\"3.1.x\",\"test_command\":\"dotnet test --no-build -- NUnit.NumberOfTestWorkers=1\",\"os\":\"macos-latest\",\"version\":\"latest@\",\"use_selenium\":true,\"work_dir\":\"sdks/dotnet/selenium\",\"framework_package\":\"Selenium.WebDriver\",\"eyes_package\":\"Eyes.Selenium4\",\"job_name\":\"Dotnet Selenium [macos-latest | 3.1.x] [version: latest@]\",\"matrix_config_dir\":\"sdks/dotnet\"}"
         },
         {
-          "title": "dotnet / Dotnet Appium [ubuntu-latest]",
+          "title": "dotnet / Dotnet Appium [ubuntu-latest | 3.1.x] [version: latest@]",
           "dotnet-version": "3.1.x",
           "test_command": "dotnet test --no-build -- NUnit.NumberOfTestWorkers=1",
           "os": "ubuntu-latest",
@@ -448,14 +448,14 @@
           "work_dir": "sdks/dotnet/appium",
           "framework_package": "Appium.WebDriver",
           "eyes_package": "Eyes.Appium",
-          "job_name": "Dotnet Appium [ubuntu-latest]",
+          "job_name": "Dotnet Appium [ubuntu-latest | 3.1.x] [version: latest@]",
           "matrix_config_dir": "sdks/dotnet",
           "passed": true,
           "package": "Appium.WebDriver",
-          "matrix_string": "{\"dotnet-version\":\"3.1.x\",\"test_command\":\"dotnet test --no-build -- NUnit.NumberOfTestWorkers=1\",\"os\":\"ubuntu-latest\",\"version\":\"latest@\",\"work_dir\":\"sdks/dotnet/appium\",\"framework_package\":\"Appium.WebDriver\",\"eyes_package\":\"Eyes.Appium\",\"job_name\":\"Dotnet Appium [ubuntu-latest]\",\"matrix_config_dir\":\"sdks/dotnet\"}"
+          "matrix_string": "{\"dotnet-version\":\"3.1.x\",\"test_command\":\"dotnet test --no-build -- NUnit.NumberOfTestWorkers=1\",\"os\":\"ubuntu-latest\",\"version\":\"latest@\",\"work_dir\":\"sdks/dotnet/appium\",\"framework_package\":\"Appium.WebDriver\",\"eyes_package\":\"Eyes.Appium\",\"job_name\":\"Dotnet Appium [ubuntu-latest | 3.1.x] [version: latest@]\",\"matrix_config_dir\":\"sdks/dotnet\"}"
         },
         {
-          "title": "dotnet / Dotnet Appium [windows-latest]",
+          "title": "dotnet / Dotnet Appium [windows-latest | 3.1.x] [version: latest@]",
           "dotnet-version": "3.1.x",
           "test_command": "dotnet test --no-build -- NUnit.NumberOfTestWorkers=1",
           "os": "windows-latest",
@@ -463,14 +463,14 @@
           "work_dir": "sdks/dotnet/appium",
           "framework_package": "Appium.WebDriver",
           "eyes_package": "Eyes.Appium",
-          "job_name": "Dotnet Appium [windows-latest]",
+          "job_name": "Dotnet Appium [windows-latest | 3.1.x] [version: latest@]",
           "matrix_config_dir": "sdks/dotnet",
           "passed": true,
           "package": "Appium.WebDriver",
-          "matrix_string": "{\"dotnet-version\":\"3.1.x\",\"test_command\":\"dotnet test --no-build -- NUnit.NumberOfTestWorkers=1\",\"os\":\"windows-latest\",\"version\":\"latest@\",\"work_dir\":\"sdks/dotnet/appium\",\"framework_package\":\"Appium.WebDriver\",\"eyes_package\":\"Eyes.Appium\",\"job_name\":\"Dotnet Appium [windows-latest]\",\"matrix_config_dir\":\"sdks/dotnet\"}"
+          "matrix_string": "{\"dotnet-version\":\"3.1.x\",\"test_command\":\"dotnet test --no-build -- NUnit.NumberOfTestWorkers=1\",\"os\":\"windows-latest\",\"version\":\"latest@\",\"work_dir\":\"sdks/dotnet/appium\",\"framework_package\":\"Appium.WebDriver\",\"eyes_package\":\"Eyes.Appium\",\"job_name\":\"Dotnet Appium [windows-latest | 3.1.x] [version: latest@]\",\"matrix_config_dir\":\"sdks/dotnet\"}"
         },
         {
-          "title": "dotnet / Dotnet Appium [macos-latest]",
+          "title": "dotnet / Dotnet Appium [macos-latest | 3.1.x] [version: latest@]",
           "dotnet-version": "3.1.x",
           "test_command": "dotnet test --no-build -- NUnit.NumberOfTestWorkers=1",
           "os": "macos-latest",
@@ -478,11 +478,11 @@
           "work_dir": "sdks/dotnet/appium",
           "framework_package": "Appium.WebDriver",
           "eyes_package": "Eyes.Appium",
-          "job_name": "Dotnet Appium [macos-latest]",
+          "job_name": "Dotnet Appium [macos-latest | 3.1.x] [version: latest@]",
           "matrix_config_dir": "sdks/dotnet",
           "passed": true,
           "package": "Appium.WebDriver",
-          "matrix_string": "{\"dotnet-version\":\"3.1.x\",\"test_command\":\"dotnet test --no-build -- NUnit.NumberOfTestWorkers=1\",\"os\":\"macos-latest\",\"version\":\"latest@\",\"work_dir\":\"sdks/dotnet/appium\",\"framework_package\":\"Appium.WebDriver\",\"eyes_package\":\"Eyes.Appium\",\"job_name\":\"Dotnet Appium [macos-latest]\",\"matrix_config_dir\":\"sdks/dotnet\"}"
+          "matrix_string": "{\"dotnet-version\":\"3.1.x\",\"test_command\":\"dotnet test --no-build -- NUnit.NumberOfTestWorkers=1\",\"os\":\"macos-latest\",\"version\":\"latest@\",\"work_dir\":\"sdks/dotnet/appium\",\"framework_package\":\"Appium.WebDriver\",\"eyes_package\":\"Eyes.Appium\",\"job_name\":\"Dotnet Appium [macos-latest | 3.1.x] [version: latest@]\",\"matrix_config_dir\":\"sdks/dotnet\"}"
         }
       ],
       "config_path": "sdks/dotnet"
@@ -491,97 +491,97 @@
       "title": "JS Selenium",
       "jobs": [
         {
-          "title": "js_selenium / JS Selenium [ubuntu-latest]",
+          "title": "js_selenium / JS Selenium [ubuntu-latest | 18] version: latest@",
           "node-version": "18",
           "work_dir": "sdks/js/eyes-selenium",
           "js_config": "eyes-selenium",
           "framework_package": "selenium-webdriver",
           "os": "ubuntu-latest",
-          "version": "4.8.0",
+          "version": "4.8.1",
           "use_selenium": true,
           "test_command": "npm test",
-          "job_name": "JS Selenium [ubuntu-latest]",
+          "job_name": "JS Selenium [ubuntu-latest | 18] version: latest@",
           "matrix_config_dir": "sdks/js/eyes-selenium",
           "passed": true,
           "package": "selenium-webdriver",
-          "matrix_string": "{\"node-version\":\"18\",\"work_dir\":\"sdks/js/eyes-selenium\",\"js_config\":\"eyes-selenium\",\"framework_package\":\"selenium-webdriver\",\"os\":\"ubuntu-latest\",\"version\":\"latest@\",\"use_selenium\":true,\"test_command\":\"npm test\",\"job_name\":\"JS Selenium [ubuntu-latest]\",\"matrix_config_dir\":\"sdks/js/eyes-selenium\"}"
+          "matrix_string": "{\"node-version\":\"18\",\"work_dir\":\"sdks/js/eyes-selenium\",\"js_config\":\"eyes-selenium\",\"framework_package\":\"selenium-webdriver\",\"os\":\"ubuntu-latest\",\"version\":\"latest@\",\"use_selenium\":true,\"test_command\":\"npm test\",\"job_name\":\"JS Selenium [ubuntu-latest | 18] version: latest@\",\"matrix_config_dir\":\"sdks/js/eyes-selenium\"}"
         },
         {
-          "title": "js_selenium / JS Selenium [windows-latest]",
+          "title": "js_selenium / JS Selenium [windows-latest | 18] version: latest@",
           "node-version": "18",
           "work_dir": "sdks/js/eyes-selenium",
           "js_config": "eyes-selenium",
           "framework_package": "selenium-webdriver",
           "os": "windows-latest",
-          "version": "4.8.0",
+          "version": "4.8.1",
           "use_selenium": true,
           "test_command": "npm test",
-          "job_name": "JS Selenium [windows-latest]",
+          "job_name": "JS Selenium [windows-latest | 18] version: latest@",
           "matrix_config_dir": "sdks/js/eyes-selenium",
           "passed": true,
           "package": "selenium-webdriver",
-          "matrix_string": "{\"node-version\":\"18\",\"work_dir\":\"sdks/js/eyes-selenium\",\"js_config\":\"eyes-selenium\",\"framework_package\":\"selenium-webdriver\",\"os\":\"windows-latest\",\"version\":\"latest@\",\"use_selenium\":true,\"test_command\":\"npm test\",\"job_name\":\"JS Selenium [windows-latest]\",\"matrix_config_dir\":\"sdks/js/eyes-selenium\"}"
+          "matrix_string": "{\"node-version\":\"18\",\"work_dir\":\"sdks/js/eyes-selenium\",\"js_config\":\"eyes-selenium\",\"framework_package\":\"selenium-webdriver\",\"os\":\"windows-latest\",\"version\":\"latest@\",\"use_selenium\":true,\"test_command\":\"npm test\",\"job_name\":\"JS Selenium [windows-latest | 18] version: latest@\",\"matrix_config_dir\":\"sdks/js/eyes-selenium\"}"
         },
         {
-          "title": "js_selenium / JS Selenium [macos-latest]",
+          "title": "js_selenium / JS Selenium [macos-latest | 18] version: latest@",
           "node-version": "18",
           "work_dir": "sdks/js/eyes-selenium",
           "js_config": "eyes-selenium",
           "framework_package": "selenium-webdriver",
           "os": "macos-latest",
-          "version": "4.8.0",
+          "version": "4.8.1",
           "use_selenium": true,
           "test_command": "npm test",
-          "job_name": "JS Selenium [macos-latest]",
+          "job_name": "JS Selenium [macos-latest | 18] version: latest@",
           "matrix_config_dir": "sdks/js/eyes-selenium",
           "passed": true,
           "package": "selenium-webdriver",
-          "matrix_string": "{\"node-version\":\"18\",\"work_dir\":\"sdks/js/eyes-selenium\",\"js_config\":\"eyes-selenium\",\"framework_package\":\"selenium-webdriver\",\"os\":\"macos-latest\",\"version\":\"latest@\",\"use_selenium\":true,\"test_command\":\"npm test\",\"job_name\":\"JS Selenium [macos-latest]\",\"matrix_config_dir\":\"sdks/js/eyes-selenium\"}"
+          "matrix_string": "{\"node-version\":\"18\",\"work_dir\":\"sdks/js/eyes-selenium\",\"js_config\":\"eyes-selenium\",\"framework_package\":\"selenium-webdriver\",\"os\":\"macos-latest\",\"version\":\"latest@\",\"use_selenium\":true,\"test_command\":\"npm test\",\"job_name\":\"JS Selenium [macos-latest | 18] version: latest@\",\"matrix_config_dir\":\"sdks/js/eyes-selenium\"}"
         },
         {
-          "title": "js_selenium / JS Appium [ubuntu-latest]",
+          "title": "js_selenium / JS Appium [ubuntu-latest | 18] version: latest@",
           "node-version": "18",
           "work_dir": "sdks/js/eyes-selenium",
           "js_config": "eyes-selenium",
           "framework_package": "selenium-webdriver",
           "os": "ubuntu-latest",
-          "version": "4.8.0",
+          "version": "4.8.1",
           "test_command": "npm run appium",
-          "job_name": "JS Appium [ubuntu-latest]",
+          "job_name": "JS Appium [ubuntu-latest | 18] version: latest@",
           "matrix_config_dir": "sdks/js/eyes-selenium",
           "passed": true,
           "package": "selenium-webdriver",
-          "matrix_string": "{\"node-version\":\"18\",\"work_dir\":\"sdks/js/eyes-selenium\",\"js_config\":\"eyes-selenium\",\"framework_package\":\"selenium-webdriver\",\"os\":\"ubuntu-latest\",\"version\":\"latest@\",\"test_command\":\"npm run appium\",\"job_name\":\"JS Appium [ubuntu-latest]\",\"matrix_config_dir\":\"sdks/js/eyes-selenium\"}"
+          "matrix_string": "{\"node-version\":\"18\",\"work_dir\":\"sdks/js/eyes-selenium\",\"js_config\":\"eyes-selenium\",\"framework_package\":\"selenium-webdriver\",\"os\":\"ubuntu-latest\",\"version\":\"latest@\",\"test_command\":\"npm run appium\",\"job_name\":\"JS Appium [ubuntu-latest | 18] version: latest@\",\"matrix_config_dir\":\"sdks/js/eyes-selenium\"}"
         },
         {
-          "title": "js_selenium / JS Appium [windows-latest]",
+          "title": "js_selenium / JS Appium [windows-latest | 18] version: latest@",
           "node-version": "18",
           "work_dir": "sdks/js/eyes-selenium",
           "js_config": "eyes-selenium",
           "framework_package": "selenium-webdriver",
           "os": "windows-latest",
-          "version": "4.8.0",
+          "version": "4.8.1",
           "test_command": "npm run appium",
-          "job_name": "JS Appium [windows-latest]",
+          "job_name": "JS Appium [windows-latest | 18] version: latest@",
           "matrix_config_dir": "sdks/js/eyes-selenium",
           "passed": true,
           "package": "selenium-webdriver",
-          "matrix_string": "{\"node-version\":\"18\",\"work_dir\":\"sdks/js/eyes-selenium\",\"js_config\":\"eyes-selenium\",\"framework_package\":\"selenium-webdriver\",\"os\":\"windows-latest\",\"version\":\"latest@\",\"test_command\":\"npm run appium\",\"job_name\":\"JS Appium [windows-latest]\",\"matrix_config_dir\":\"sdks/js/eyes-selenium\"}"
+          "matrix_string": "{\"node-version\":\"18\",\"work_dir\":\"sdks/js/eyes-selenium\",\"js_config\":\"eyes-selenium\",\"framework_package\":\"selenium-webdriver\",\"os\":\"windows-latest\",\"version\":\"latest@\",\"test_command\":\"npm run appium\",\"job_name\":\"JS Appium [windows-latest | 18] version: latest@\",\"matrix_config_dir\":\"sdks/js/eyes-selenium\"}"
         },
         {
-          "title": "js_selenium / JS Appium [macos-latest]",
+          "title": "js_selenium / JS Appium [macos-latest | 18] version: latest@",
           "node-version": "18",
           "work_dir": "sdks/js/eyes-selenium",
           "js_config": "eyes-selenium",
           "framework_package": "selenium-webdriver",
           "os": "macos-latest",
-          "version": "4.8.0",
+          "version": "4.8.1",
           "test_command": "npm run appium",
-          "job_name": "JS Appium [macos-latest]",
+          "job_name": "JS Appium [macos-latest | 18] version: latest@",
           "matrix_config_dir": "sdks/js/eyes-selenium",
           "passed": true,
           "package": "selenium-webdriver",
-          "matrix_string": "{\"node-version\":\"18\",\"work_dir\":\"sdks/js/eyes-selenium\",\"js_config\":\"eyes-selenium\",\"framework_package\":\"selenium-webdriver\",\"os\":\"macos-latest\",\"version\":\"latest@\",\"test_command\":\"npm run appium\",\"job_name\":\"JS Appium [macos-latest]\",\"matrix_config_dir\":\"sdks/js/eyes-selenium\"}"
+          "matrix_string": "{\"node-version\":\"18\",\"work_dir\":\"sdks/js/eyes-selenium\",\"js_config\":\"eyes-selenium\",\"framework_package\":\"selenium-webdriver\",\"os\":\"macos-latest\",\"version\":\"latest@\",\"test_command\":\"npm run appium\",\"job_name\":\"JS Appium [macos-latest | 18] version: latest@\",\"matrix_config_dir\":\"sdks/js/eyes-selenium\"}"
         }
       ],
       "config_path": "sdks/js/eyes-selenium"
@@ -590,74 +590,74 @@
       "title": "JS Playwright",
       "jobs": [
         {
-          "title": "js_playwright / JS Playwright [ubuntu-latest | latest@]",
+          "title": "js_playwright / JS Playwright [ubuntu-latest | undefined] version: latest@",
           "node-version": "18",
           "work_dir": "sdks/js/eyes-playwright",
           "framework_package": "playwright",
           "test_command": "npx playwright install --with-deps && npm test",
           "os": "ubuntu-latest",
           "version": "1.30.0",
-          "job_name": "JS Playwright [ubuntu-latest | latest@]",
+          "job_name": "JS Playwright [ubuntu-latest | undefined] version: latest@",
           "matrix_config_dir": "sdks/js/eyes-playwright",
           "passed": true,
           "package": "playwright",
-          "matrix_string": "{\"node-version\":\"18\",\"work_dir\":\"sdks/js/eyes-playwright\",\"framework_package\":\"playwright\",\"test_command\":\"npx playwright install --with-deps && npm test\",\"os\":\"ubuntu-latest\",\"version\":\"latest@\",\"job_name\":\"JS Playwright [ubuntu-latest | latest@]\",\"matrix_config_dir\":\"sdks/js/eyes-playwright\"}"
+          "matrix_string": "{\"node-version\":\"18\",\"work_dir\":\"sdks/js/eyes-playwright\",\"framework_package\":\"playwright\",\"test_command\":\"npx playwright install --with-deps && npm test\",\"os\":\"ubuntu-latest\",\"version\":\"latest@\",\"job_name\":\"JS Playwright [ubuntu-latest | undefined] version: latest@\",\"matrix_config_dir\":\"sdks/js/eyes-playwright\"}"
         },
         {
-          "title": "js_playwright / JS Playwright [ubuntu-latest | minor@1]",
+          "title": "js_playwright / JS Playwright [ubuntu-latest | undefined] version: minor@1",
           "node-version": "18",
           "work_dir": "sdks/js/eyes-playwright",
           "framework_package": "playwright",
           "test_command": "npx playwright install --with-deps && npm test",
           "os": "ubuntu-latest",
           "version": "1.29.2",
-          "job_name": "JS Playwright [ubuntu-latest | minor@1]",
+          "job_name": "JS Playwright [ubuntu-latest | undefined] version: minor@1",
           "matrix_config_dir": "sdks/js/eyes-playwright",
           "passed": true,
           "package": "playwright",
-          "matrix_string": "{\"node-version\":\"18\",\"work_dir\":\"sdks/js/eyes-playwright\",\"framework_package\":\"playwright\",\"test_command\":\"npx playwright install --with-deps && npm test\",\"os\":\"ubuntu-latest\",\"version\":\"minor@1\",\"job_name\":\"JS Playwright [ubuntu-latest | minor@1]\",\"matrix_config_dir\":\"sdks/js/eyes-playwright\"}"
+          "matrix_string": "{\"node-version\":\"18\",\"work_dir\":\"sdks/js/eyes-playwright\",\"framework_package\":\"playwright\",\"test_command\":\"npx playwright install --with-deps && npm test\",\"os\":\"ubuntu-latest\",\"version\":\"minor@1\",\"job_name\":\"JS Playwright [ubuntu-latest | undefined] version: minor@1\",\"matrix_config_dir\":\"sdks/js/eyes-playwright\"}"
         },
         {
-          "title": "js_playwright / JS Playwright [ubuntu-latest | minor@2]",
+          "title": "js_playwright / JS Playwright [ubuntu-latest | undefined] version: minor@2",
           "node-version": "18",
           "work_dir": "sdks/js/eyes-playwright",
           "framework_package": "playwright",
           "test_command": "npx playwright install --with-deps && npm test",
           "os": "ubuntu-latest",
           "version": "1.28.1",
-          "job_name": "JS Playwright [ubuntu-latest | minor@2]",
+          "job_name": "JS Playwright [ubuntu-latest | undefined] version: minor@2",
           "matrix_config_dir": "sdks/js/eyes-playwright",
           "passed": true,
           "package": "playwright",
-          "matrix_string": "{\"node-version\":\"18\",\"work_dir\":\"sdks/js/eyes-playwright\",\"framework_package\":\"playwright\",\"test_command\":\"npx playwright install --with-deps && npm test\",\"os\":\"ubuntu-latest\",\"version\":\"minor@2\",\"job_name\":\"JS Playwright [ubuntu-latest | minor@2]\",\"matrix_config_dir\":\"sdks/js/eyes-playwright\"}"
+          "matrix_string": "{\"node-version\":\"18\",\"work_dir\":\"sdks/js/eyes-playwright\",\"framework_package\":\"playwright\",\"test_command\":\"npx playwright install --with-deps && npm test\",\"os\":\"ubuntu-latest\",\"version\":\"minor@2\",\"job_name\":\"JS Playwright [ubuntu-latest | undefined] version: minor@2\",\"matrix_config_dir\":\"sdks/js/eyes-playwright\"}"
         },
         {
-          "title": "js_playwright / JS Playwright [windows-latest | latest@]",
+          "title": "js_playwright / JS Playwright [windows-latest | undefined] version: latest@",
           "node-version": "18",
           "work_dir": "sdks/js/eyes-playwright",
           "framework_package": "playwright",
           "test_command": "npx playwright install --with-deps && npm test",
           "os": "windows-latest",
           "version": "1.30.0",
-          "job_name": "JS Playwright [windows-latest | latest@]",
+          "job_name": "JS Playwright [windows-latest | undefined] version: latest@",
           "matrix_config_dir": "sdks/js/eyes-playwright",
           "passed": true,
           "package": "playwright",
-          "matrix_string": "{\"node-version\":\"18\",\"work_dir\":\"sdks/js/eyes-playwright\",\"framework_package\":\"playwright\",\"test_command\":\"npx playwright install --with-deps && npm test\",\"os\":\"windows-latest\",\"version\":\"latest@\",\"job_name\":\"JS Playwright [windows-latest | latest@]\",\"matrix_config_dir\":\"sdks/js/eyes-playwright\"}"
+          "matrix_string": "{\"node-version\":\"18\",\"work_dir\":\"sdks/js/eyes-playwright\",\"framework_package\":\"playwright\",\"test_command\":\"npx playwright install --with-deps && npm test\",\"os\":\"windows-latest\",\"version\":\"latest@\",\"job_name\":\"JS Playwright [windows-latest | undefined] version: latest@\",\"matrix_config_dir\":\"sdks/js/eyes-playwright\"}"
         },
         {
-          "title": "js_playwright / JS Playwright [macos-latest | latest@]",
+          "title": "js_playwright / JS Playwright [macos-latest | undefined] version: latest@",
           "node-version": "18",
           "work_dir": "sdks/js/eyes-playwright",
           "framework_package": "playwright",
           "test_command": "npx playwright install --with-deps && npm test",
           "os": "macos-latest",
           "version": "1.30.0",
-          "job_name": "JS Playwright [macos-latest | latest@]",
+          "job_name": "JS Playwright [macos-latest | undefined] version: latest@",
           "matrix_config_dir": "sdks/js/eyes-playwright",
           "passed": true,
           "package": "playwright",
-          "matrix_string": "{\"node-version\":\"18\",\"work_dir\":\"sdks/js/eyes-playwright\",\"framework_package\":\"playwright\",\"test_command\":\"npx playwright install --with-deps && npm test\",\"os\":\"macos-latest\",\"version\":\"latest@\",\"job_name\":\"JS Playwright [macos-latest | latest@]\",\"matrix_config_dir\":\"sdks/js/eyes-playwright\"}"
+          "matrix_string": "{\"node-version\":\"18\",\"work_dir\":\"sdks/js/eyes-playwright\",\"framework_package\":\"playwright\",\"test_command\":\"npx playwright install --with-deps && npm test\",\"os\":\"macos-latest\",\"version\":\"latest@\",\"job_name\":\"JS Playwright [macos-latest | undefined] version: latest@\",\"matrix_config_dir\":\"sdks/js/eyes-playwright\"}"
         }
       ],
       "config_path": "sdks/js/eyes-playwright"
@@ -666,7 +666,7 @@
       "title": "JS Webdriverio",
       "jobs": [
         {
-          "title": "js_webdriverio / JS Selenium [ubuntu-latest | exact@4.14.4]",
+          "title": "js_webdriverio / JS WDIO [ubuntu-latest | 18] version: exact@4.14.4",
           "os": "ubuntu-latest",
           "version": "4.14.4",
           "node-version": "18",
@@ -674,14 +674,14 @@
           "framework_package": "webdriverio",
           "test_command": "npm test",
           "work_dir": "sdks/js/eyes-webdriverio/4",
-          "job_name": "JS Selenium [ubuntu-latest | exact@4.14.4]",
+          "job_name": "JS WDIO [ubuntu-latest | 18] version: exact@4.14.4",
           "matrix_config_dir": "sdks/js/eyes-webdriverio",
           "passed": true,
           "package": "webdriverio",
-          "matrix_string": "{\"os\":\"ubuntu-latest\",\"version\":\"exact@4.14.4\",\"node-version\":\"18\",\"use_selenium\":true,\"framework_package\":\"webdriverio\",\"test_command\":\"npm test\",\"work_dir\":\"sdks/js/eyes-webdriverio/4\",\"job_name\":\"JS Selenium [ubuntu-latest | exact@4.14.4]\",\"matrix_config_dir\":\"sdks/js/eyes-webdriverio\"}"
+          "matrix_string": "{\"os\":\"ubuntu-latest\",\"version\":\"exact@4.14.4\",\"node-version\":\"18\",\"use_selenium\":true,\"framework_package\":\"webdriverio\",\"test_command\":\"npm test\",\"work_dir\":\"sdks/js/eyes-webdriverio/4\",\"job_name\":\"JS WDIO [ubuntu-latest | 18] version: exact@4.14.4\",\"matrix_config_dir\":\"sdks/js/eyes-webdriverio\"}"
         },
         {
-          "title": "js_webdriverio / JS Selenium [windows-latest | exact@4.14.4]",
+          "title": "js_webdriverio / JS WDIO [windows-latest | 18] version: exact@4.14.4",
           "os": "windows-latest",
           "version": "4.14.4",
           "node-version": "18",
@@ -689,14 +689,14 @@
           "framework_package": "webdriverio",
           "test_command": "npm test",
           "work_dir": "sdks/js/eyes-webdriverio/4",
-          "job_name": "JS Selenium [windows-latest | exact@4.14.4]",
+          "job_name": "JS WDIO [windows-latest | 18] version: exact@4.14.4",
           "matrix_config_dir": "sdks/js/eyes-webdriverio",
           "passed": true,
           "package": "webdriverio",
-          "matrix_string": "{\"os\":\"windows-latest\",\"version\":\"exact@4.14.4\",\"node-version\":\"18\",\"use_selenium\":true,\"framework_package\":\"webdriverio\",\"test_command\":\"npm test\",\"work_dir\":\"sdks/js/eyes-webdriverio/4\",\"job_name\":\"JS Selenium [windows-latest | exact@4.14.4]\",\"matrix_config_dir\":\"sdks/js/eyes-webdriverio\"}"
+          "matrix_string": "{\"os\":\"windows-latest\",\"version\":\"exact@4.14.4\",\"node-version\":\"18\",\"use_selenium\":true,\"framework_package\":\"webdriverio\",\"test_command\":\"npm test\",\"work_dir\":\"sdks/js/eyes-webdriverio/4\",\"job_name\":\"JS WDIO [windows-latest | 18] version: exact@4.14.4\",\"matrix_config_dir\":\"sdks/js/eyes-webdriverio\"}"
         },
         {
-          "title": "js_webdriverio / JS Selenium [macos-latest | exact@4.14.4]",
+          "title": "js_webdriverio / JS WDIO [macos-latest | 18] version: exact@4.14.4",
           "os": "macos-latest",
           "version": "4.14.4",
           "node-version": "18",
@@ -704,14 +704,14 @@
           "framework_package": "webdriverio",
           "test_command": "npm test",
           "work_dir": "sdks/js/eyes-webdriverio/4",
-          "job_name": "JS Selenium [macos-latest | exact@4.14.4]",
+          "job_name": "JS WDIO [macos-latest | 18] version: exact@4.14.4",
           "matrix_config_dir": "sdks/js/eyes-webdriverio",
           "passed": true,
           "package": "webdriverio",
-          "matrix_string": "{\"os\":\"macos-latest\",\"version\":\"exact@4.14.4\",\"node-version\":\"18\",\"use_selenium\":true,\"framework_package\":\"webdriverio\",\"test_command\":\"npm test\",\"work_dir\":\"sdks/js/eyes-webdriverio/4\",\"job_name\":\"JS Selenium [macos-latest | exact@4.14.4]\",\"matrix_config_dir\":\"sdks/js/eyes-webdriverio\"}"
+          "matrix_string": "{\"os\":\"macos-latest\",\"version\":\"exact@4.14.4\",\"node-version\":\"18\",\"use_selenium\":true,\"framework_package\":\"webdriverio\",\"test_command\":\"npm test\",\"work_dir\":\"sdks/js/eyes-webdriverio/4\",\"job_name\":\"JS WDIO [macos-latest | 18] version: exact@4.14.4\",\"matrix_config_dir\":\"sdks/js/eyes-webdriverio\"}"
         },
         {
-          "title": "js_webdriverio / JS Selenium [ubuntu-latest | exact@5.23.0]",
+          "title": "js_webdriverio / JS WDIO [ubuntu-latest | 18] version: exact@5.23.0",
           "os": "ubuntu-latest",
           "version": "5.23.0",
           "node-version": "18",
@@ -721,14 +721,14 @@
           "work_dir": "sdks/js/eyes-webdriverio/5",
           "js_config": "eyes-webdriverio/5",
           "selenium_legacy": true,
-          "job_name": "JS Selenium [ubuntu-latest | exact@5.23.0]",
+          "job_name": "JS WDIO [ubuntu-latest | 18] version: exact@5.23.0",
           "matrix_config_dir": "sdks/js/eyes-webdriverio",
           "passed": true,
           "package": "webdriverio",
-          "matrix_string": "{\"os\":\"ubuntu-latest\",\"version\":\"exact@5.23.0\",\"node-version\":\"18\",\"use_selenium\":true,\"framework_package\":\"webdriverio\",\"test_command\":\"npm test\",\"work_dir\":\"sdks/js/eyes-webdriverio/5\",\"js_config\":\"eyes-webdriverio/5\",\"selenium_legacy\":true,\"job_name\":\"JS Selenium [ubuntu-latest | exact@5.23.0]\",\"matrix_config_dir\":\"sdks/js/eyes-webdriverio\"}"
+          "matrix_string": "{\"os\":\"ubuntu-latest\",\"version\":\"exact@5.23.0\",\"node-version\":\"18\",\"use_selenium\":true,\"framework_package\":\"webdriverio\",\"test_command\":\"npm test\",\"work_dir\":\"sdks/js/eyes-webdriverio/5\",\"js_config\":\"eyes-webdriverio/5\",\"selenium_legacy\":true,\"job_name\":\"JS WDIO [ubuntu-latest | 18] version: exact@5.23.0\",\"matrix_config_dir\":\"sdks/js/eyes-webdriverio\"}"
         },
         {
-          "title": "js_webdriverio / JS Selenium [windows-latest | exact@5.23.0]",
+          "title": "js_webdriverio / JS WDIO [windows-latest | 18] version: exact@5.23.0",
           "os": "windows-latest",
           "version": "5.23.0",
           "node-version": "18",
@@ -738,14 +738,14 @@
           "work_dir": "sdks/js/eyes-webdriverio/5",
           "js_config": "eyes-webdriverio/5",
           "selenium_legacy": true,
-          "job_name": "JS Selenium [windows-latest | exact@5.23.0]",
+          "job_name": "JS WDIO [windows-latest | 18] version: exact@5.23.0",
           "matrix_config_dir": "sdks/js/eyes-webdriverio",
           "passed": true,
           "package": "webdriverio",
-          "matrix_string": "{\"os\":\"windows-latest\",\"version\":\"exact@5.23.0\",\"node-version\":\"18\",\"use_selenium\":true,\"framework_package\":\"webdriverio\",\"test_command\":\"npm test\",\"work_dir\":\"sdks/js/eyes-webdriverio/5\",\"js_config\":\"eyes-webdriverio/5\",\"selenium_legacy\":true,\"job_name\":\"JS Selenium [windows-latest | exact@5.23.0]\",\"matrix_config_dir\":\"sdks/js/eyes-webdriverio\"}"
+          "matrix_string": "{\"os\":\"windows-latest\",\"version\":\"exact@5.23.0\",\"node-version\":\"18\",\"use_selenium\":true,\"framework_package\":\"webdriverio\",\"test_command\":\"npm test\",\"work_dir\":\"sdks/js/eyes-webdriverio/5\",\"js_config\":\"eyes-webdriverio/5\",\"selenium_legacy\":true,\"job_name\":\"JS WDIO [windows-latest | 18] version: exact@5.23.0\",\"matrix_config_dir\":\"sdks/js/eyes-webdriverio\"}"
         },
         {
-          "title": "js_webdriverio / JS Selenium [macos-latest | exact@5.23.0]",
+          "title": "js_webdriverio / JS WDIO [macos-latest | 18] version: exact@5.23.0",
           "os": "macos-latest",
           "version": "5.23.0",
           "node-version": "18",
@@ -755,14 +755,14 @@
           "work_dir": "sdks/js/eyes-webdriverio/5",
           "js_config": "eyes-webdriverio/5",
           "selenium_legacy": true,
-          "job_name": "JS Selenium [macos-latest | exact@5.23.0]",
+          "job_name": "JS WDIO [macos-latest | 18] version: exact@5.23.0",
           "matrix_config_dir": "sdks/js/eyes-webdriverio",
           "passed": true,
           "package": "webdriverio",
-          "matrix_string": "{\"os\":\"macos-latest\",\"version\":\"exact@5.23.0\",\"node-version\":\"18\",\"use_selenium\":true,\"framework_package\":\"webdriverio\",\"test_command\":\"npm test\",\"work_dir\":\"sdks/js/eyes-webdriverio/5\",\"js_config\":\"eyes-webdriverio/5\",\"selenium_legacy\":true,\"job_name\":\"JS Selenium [macos-latest | exact@5.23.0]\",\"matrix_config_dir\":\"sdks/js/eyes-webdriverio\"}"
+          "matrix_string": "{\"os\":\"macos-latest\",\"version\":\"exact@5.23.0\",\"node-version\":\"18\",\"use_selenium\":true,\"framework_package\":\"webdriverio\",\"test_command\":\"npm test\",\"work_dir\":\"sdks/js/eyes-webdriverio/5\",\"js_config\":\"eyes-webdriverio/5\",\"selenium_legacy\":true,\"job_name\":\"JS WDIO [macos-latest | 18] version: exact@5.23.0\",\"matrix_config_dir\":\"sdks/js/eyes-webdriverio\"}"
         },
         {
-          "title": "js_webdriverio / JS Selenium [ubuntu-latest | exact@6.12.1]",
+          "title": "js_webdriverio / JS WDIO [ubuntu-latest | 18] version: exact@6.12.1",
           "os": "ubuntu-latest",
           "version": "6.12.1",
           "node-version": "18",
@@ -771,14 +771,14 @@
           "test_command": "npm test",
           "work_dir": "sdks/js/eyes-webdriverio/6",
           "js_config": "eyes-webdriverio/6",
-          "job_name": "JS Selenium [ubuntu-latest | exact@6.12.1]",
+          "job_name": "JS WDIO [ubuntu-latest | 18] version: exact@6.12.1",
           "matrix_config_dir": "sdks/js/eyes-webdriverio",
           "passed": true,
           "package": "webdriverio",
-          "matrix_string": "{\"os\":\"ubuntu-latest\",\"version\":\"exact@6.12.1\",\"node-version\":\"18\",\"use_selenium\":true,\"framework_package\":\"webdriverio\",\"test_command\":\"npm test\",\"work_dir\":\"sdks/js/eyes-webdriverio/6\",\"js_config\":\"eyes-webdriverio/6\",\"job_name\":\"JS Selenium [ubuntu-latest | exact@6.12.1]\",\"matrix_config_dir\":\"sdks/js/eyes-webdriverio\"}"
+          "matrix_string": "{\"os\":\"ubuntu-latest\",\"version\":\"exact@6.12.1\",\"node-version\":\"18\",\"use_selenium\":true,\"framework_package\":\"webdriverio\",\"test_command\":\"npm test\",\"work_dir\":\"sdks/js/eyes-webdriverio/6\",\"js_config\":\"eyes-webdriverio/6\",\"job_name\":\"JS WDIO [ubuntu-latest | 18] version: exact@6.12.1\",\"matrix_config_dir\":\"sdks/js/eyes-webdriverio\"}"
         },
         {
-          "title": "js_webdriverio / JS Selenium [windows-latest | exact@6.12.1]",
+          "title": "js_webdriverio / JS WDIO [windows-latest | 18] version: exact@6.12.1",
           "os": "windows-latest",
           "version": "6.12.1",
           "node-version": "18",
@@ -787,14 +787,14 @@
           "test_command": "npm test",
           "work_dir": "sdks/js/eyes-webdriverio/6",
           "js_config": "eyes-webdriverio/6",
-          "job_name": "JS Selenium [windows-latest | exact@6.12.1]",
+          "job_name": "JS WDIO [windows-latest | 18] version: exact@6.12.1",
           "matrix_config_dir": "sdks/js/eyes-webdriverio",
           "passed": true,
           "package": "webdriverio",
-          "matrix_string": "{\"os\":\"windows-latest\",\"version\":\"exact@6.12.1\",\"node-version\":\"18\",\"use_selenium\":true,\"framework_package\":\"webdriverio\",\"test_command\":\"npm test\",\"work_dir\":\"sdks/js/eyes-webdriverio/6\",\"js_config\":\"eyes-webdriverio/6\",\"job_name\":\"JS Selenium [windows-latest | exact@6.12.1]\",\"matrix_config_dir\":\"sdks/js/eyes-webdriverio\"}"
+          "matrix_string": "{\"os\":\"windows-latest\",\"version\":\"exact@6.12.1\",\"node-version\":\"18\",\"use_selenium\":true,\"framework_package\":\"webdriverio\",\"test_command\":\"npm test\",\"work_dir\":\"sdks/js/eyes-webdriverio/6\",\"js_config\":\"eyes-webdriverio/6\",\"job_name\":\"JS WDIO [windows-latest | 18] version: exact@6.12.1\",\"matrix_config_dir\":\"sdks/js/eyes-webdriverio\"}"
         },
         {
-          "title": "js_webdriverio / JS Selenium [macos-latest | exact@6.12.1]",
+          "title": "js_webdriverio / JS WDIO [macos-latest | 18] version: exact@6.12.1",
           "os": "macos-latest",
           "version": "6.12.1",
           "node-version": "18",
@@ -803,14 +803,14 @@
           "test_command": "npm test",
           "work_dir": "sdks/js/eyes-webdriverio/6",
           "js_config": "eyes-webdriverio/6",
-          "job_name": "JS Selenium [macos-latest | exact@6.12.1]",
+          "job_name": "JS WDIO [macos-latest | 18] version: exact@6.12.1",
           "matrix_config_dir": "sdks/js/eyes-webdriverio",
           "passed": true,
           "package": "webdriverio",
-          "matrix_string": "{\"os\":\"macos-latest\",\"version\":\"exact@6.12.1\",\"node-version\":\"18\",\"use_selenium\":true,\"framework_package\":\"webdriverio\",\"test_command\":\"npm test\",\"work_dir\":\"sdks/js/eyes-webdriverio/6\",\"js_config\":\"eyes-webdriverio/6\",\"job_name\":\"JS Selenium [macos-latest | exact@6.12.1]\",\"matrix_config_dir\":\"sdks/js/eyes-webdriverio\"}"
+          "matrix_string": "{\"os\":\"macos-latest\",\"version\":\"exact@6.12.1\",\"node-version\":\"18\",\"use_selenium\":true,\"framework_package\":\"webdriverio\",\"test_command\":\"npm test\",\"work_dir\":\"sdks/js/eyes-webdriverio/6\",\"js_config\":\"eyes-webdriverio/6\",\"job_name\":\"JS WDIO [macos-latest | 18] version: exact@6.12.1\",\"matrix_config_dir\":\"sdks/js/eyes-webdriverio\"}"
         },
         {
-          "title": "js_webdriverio / JS Selenium [ubuntu-latest | latest@]",
+          "title": "js_webdriverio / JS WDIO [ubuntu-latest | 18] version: latest@",
           "os": "ubuntu-latest",
           "version": "8.3.9",
           "node-version": "18",
@@ -819,14 +819,14 @@
           "test_command": "npm test",
           "work_dir": "sdks/js/eyes-webdriverio/7",
           "js_config": "eyes-webdriverio/7",
-          "job_name": "JS Selenium [ubuntu-latest | latest@]",
+          "job_name": "JS WDIO [ubuntu-latest | 18] version: latest@",
           "matrix_config_dir": "sdks/js/eyes-webdriverio",
           "passed": true,
           "package": "webdriverio",
-          "matrix_string": "{\"os\":\"ubuntu-latest\",\"version\":\"latest@\",\"node-version\":\"18\",\"use_selenium\":true,\"framework_package\":\"webdriverio\",\"test_command\":\"npm test\",\"work_dir\":\"sdks/js/eyes-webdriverio/7\",\"js_config\":\"eyes-webdriverio/7\",\"job_name\":\"JS Selenium [ubuntu-latest | latest@]\",\"matrix_config_dir\":\"sdks/js/eyes-webdriverio\"}"
+          "matrix_string": "{\"os\":\"ubuntu-latest\",\"version\":\"latest@\",\"node-version\":\"18\",\"use_selenium\":true,\"framework_package\":\"webdriverio\",\"test_command\":\"npm test\",\"work_dir\":\"sdks/js/eyes-webdriverio/7\",\"js_config\":\"eyes-webdriverio/7\",\"job_name\":\"JS WDIO [ubuntu-latest | 18] version: latest@\",\"matrix_config_dir\":\"sdks/js/eyes-webdriverio\"}"
         },
         {
-          "title": "js_webdriverio / JS Selenium [windows-latest | latest@]",
+          "title": "js_webdriverio / JS WDIO [windows-latest | 18] version: latest@",
           "os": "windows-latest",
           "version": "8.3.9",
           "node-version": "18",
@@ -835,14 +835,14 @@
           "test_command": "npm test",
           "work_dir": "sdks/js/eyes-webdriverio/7",
           "js_config": "eyes-webdriverio/7",
-          "job_name": "JS Selenium [windows-latest | latest@]",
+          "job_name": "JS WDIO [windows-latest | 18] version: latest@",
           "matrix_config_dir": "sdks/js/eyes-webdriverio",
           "passed": true,
           "package": "webdriverio",
-          "matrix_string": "{\"os\":\"windows-latest\",\"version\":\"latest@\",\"node-version\":\"18\",\"use_selenium\":true,\"framework_package\":\"webdriverio\",\"test_command\":\"npm test\",\"work_dir\":\"sdks/js/eyes-webdriverio/7\",\"js_config\":\"eyes-webdriverio/7\",\"job_name\":\"JS Selenium [windows-latest | latest@]\",\"matrix_config_dir\":\"sdks/js/eyes-webdriverio\"}"
+          "matrix_string": "{\"os\":\"windows-latest\",\"version\":\"latest@\",\"node-version\":\"18\",\"use_selenium\":true,\"framework_package\":\"webdriverio\",\"test_command\":\"npm test\",\"work_dir\":\"sdks/js/eyes-webdriverio/7\",\"js_config\":\"eyes-webdriverio/7\",\"job_name\":\"JS WDIO [windows-latest | 18] version: latest@\",\"matrix_config_dir\":\"sdks/js/eyes-webdriverio\"}"
         },
         {
-          "title": "js_webdriverio / JS Selenium [macos-latest | latest@]",
+          "title": "js_webdriverio / JS WDIO [macos-latest | 18] version: latest@",
           "os": "macos-latest",
           "version": "8.3.9",
           "node-version": "18",
@@ -851,14 +851,14 @@
           "test_command": "npm test",
           "work_dir": "sdks/js/eyes-webdriverio/7",
           "js_config": "eyes-webdriverio/7",
-          "job_name": "JS Selenium [macos-latest | latest@]",
+          "job_name": "JS WDIO [macos-latest | 18] version: latest@",
           "matrix_config_dir": "sdks/js/eyes-webdriverio",
           "passed": true,
           "package": "webdriverio",
-          "matrix_string": "{\"os\":\"macos-latest\",\"version\":\"latest@\",\"node-version\":\"18\",\"use_selenium\":true,\"framework_package\":\"webdriverio\",\"test_command\":\"npm test\",\"work_dir\":\"sdks/js/eyes-webdriverio/7\",\"js_config\":\"eyes-webdriverio/7\",\"job_name\":\"JS Selenium [macos-latest | latest@]\",\"matrix_config_dir\":\"sdks/js/eyes-webdriverio\"}"
+          "matrix_string": "{\"os\":\"macos-latest\",\"version\":\"latest@\",\"node-version\":\"18\",\"use_selenium\":true,\"framework_package\":\"webdriverio\",\"test_command\":\"npm test\",\"work_dir\":\"sdks/js/eyes-webdriverio/7\",\"js_config\":\"eyes-webdriverio/7\",\"job_name\":\"JS WDIO [macos-latest | 18] version: latest@\",\"matrix_config_dir\":\"sdks/js/eyes-webdriverio\"}"
         },
         {
-          "title": "js_webdriverio / JS Selenium [ubuntu-latest | major@1]",
+          "title": "js_webdriverio / JS WDIO [ubuntu-latest | 18] version: major@1",
           "os": "ubuntu-latest",
           "version": "7.30.1",
           "node-version": "18",
@@ -867,14 +867,14 @@
           "test_command": "npm test",
           "work_dir": "sdks/js/eyes-webdriverio/7",
           "js_config": "eyes-webdriverio/7",
-          "job_name": "JS Selenium [ubuntu-latest | major@1]",
+          "job_name": "JS WDIO [ubuntu-latest | 18] version: major@1",
           "matrix_config_dir": "sdks/js/eyes-webdriverio",
           "passed": true,
           "package": "webdriverio",
-          "matrix_string": "{\"os\":\"ubuntu-latest\",\"version\":\"major@1\",\"node-version\":\"18\",\"use_selenium\":true,\"framework_package\":\"webdriverio\",\"test_command\":\"npm test\",\"work_dir\":\"sdks/js/eyes-webdriverio/7\",\"js_config\":\"eyes-webdriverio/7\",\"job_name\":\"JS Selenium [ubuntu-latest | major@1]\",\"matrix_config_dir\":\"sdks/js/eyes-webdriverio\"}"
+          "matrix_string": "{\"os\":\"ubuntu-latest\",\"version\":\"major@1\",\"node-version\":\"18\",\"use_selenium\":true,\"framework_package\":\"webdriverio\",\"test_command\":\"npm test\",\"work_dir\":\"sdks/js/eyes-webdriverio/7\",\"js_config\":\"eyes-webdriverio/7\",\"job_name\":\"JS WDIO [ubuntu-latest | 18] version: major@1\",\"matrix_config_dir\":\"sdks/js/eyes-webdriverio\"}"
         },
         {
-          "title": "js_webdriverio / JS Selenium [windows-latest | major@1]",
+          "title": "js_webdriverio / JS WDIO [windows-latest | 18] version: major@1",
           "os": "windows-latest",
           "version": "7.30.1",
           "node-version": "18",
@@ -883,14 +883,14 @@
           "test_command": "npm test",
           "work_dir": "sdks/js/eyes-webdriverio/7",
           "js_config": "eyes-webdriverio/7",
-          "job_name": "JS Selenium [windows-latest | major@1]",
+          "job_name": "JS WDIO [windows-latest | 18] version: major@1",
           "matrix_config_dir": "sdks/js/eyes-webdriverio",
           "passed": true,
           "package": "webdriverio",
-          "matrix_string": "{\"os\":\"windows-latest\",\"version\":\"major@1\",\"node-version\":\"18\",\"use_selenium\":true,\"framework_package\":\"webdriverio\",\"test_command\":\"npm test\",\"work_dir\":\"sdks/js/eyes-webdriverio/7\",\"js_config\":\"eyes-webdriverio/7\",\"job_name\":\"JS Selenium [windows-latest | major@1]\",\"matrix_config_dir\":\"sdks/js/eyes-webdriverio\"}"
+          "matrix_string": "{\"os\":\"windows-latest\",\"version\":\"major@1\",\"node-version\":\"18\",\"use_selenium\":true,\"framework_package\":\"webdriverio\",\"test_command\":\"npm test\",\"work_dir\":\"sdks/js/eyes-webdriverio/7\",\"js_config\":\"eyes-webdriverio/7\",\"job_name\":\"JS WDIO [windows-latest | 18] version: major@1\",\"matrix_config_dir\":\"sdks/js/eyes-webdriverio\"}"
         },
         {
-          "title": "js_webdriverio / JS Selenium [macos-latest | major@1]",
+          "title": "js_webdriverio / JS WDIO [macos-latest | 18] version: major@1",
           "os": "macos-latest",
           "version": "7.30.1",
           "node-version": "18",
@@ -899,11 +899,11 @@
           "test_command": "npm test",
           "work_dir": "sdks/js/eyes-webdriverio/7",
           "js_config": "eyes-webdriverio/7",
-          "job_name": "JS Selenium [macos-latest | major@1]",
+          "job_name": "JS WDIO [macos-latest | 18] version: major@1",
           "matrix_config_dir": "sdks/js/eyes-webdriverio",
           "passed": true,
           "package": "webdriverio",
-          "matrix_string": "{\"os\":\"macos-latest\",\"version\":\"major@1\",\"node-version\":\"18\",\"use_selenium\":true,\"framework_package\":\"webdriverio\",\"test_command\":\"npm test\",\"work_dir\":\"sdks/js/eyes-webdriverio/7\",\"js_config\":\"eyes-webdriverio/7\",\"job_name\":\"JS Selenium [macos-latest | major@1]\",\"matrix_config_dir\":\"sdks/js/eyes-webdriverio\"}"
+          "matrix_string": "{\"os\":\"macos-latest\",\"version\":\"major@1\",\"node-version\":\"18\",\"use_selenium\":true,\"framework_package\":\"webdriverio\",\"test_command\":\"npm test\",\"work_dir\":\"sdks/js/eyes-webdriverio/7\",\"js_config\":\"eyes-webdriverio/7\",\"job_name\":\"JS WDIO [macos-latest | 18] version: major@1\",\"matrix_config_dir\":\"sdks/js/eyes-webdriverio\"}"
         }
       ],
       "config_path": "sdks/js/eyes-webdriverio"
@@ -912,7 +912,7 @@
       "title": "JS Nightwatch",
       "jobs": [
         {
-          "title": "js_nightwatch / JS Nightwatch [ubuntu-latest]",
+          "title": "js_nightwatch / JS Nightwatch [ubuntu-latest | undefined] version: exact@1.7.13",
           "node-version": "18",
           "work_dir": "sdks/js/eyes-nightwatch",
           "framework_package": "nightwatch",
@@ -920,14 +920,14 @@
           "test_command": "npm test && USE_UFG=true npm test",
           "os": "ubuntu-latest",
           "version": "1.7.13",
-          "job_name": "JS Nightwatch [ubuntu-latest]",
+          "job_name": "JS Nightwatch [ubuntu-latest | undefined] version: exact@1.7.13",
           "matrix_config_dir": "sdks/js/eyes-nightwatch",
           "passed": true,
           "package": "nightwatch",
-          "matrix_string": "{\"node-version\":\"18\",\"work_dir\":\"sdks/js/eyes-nightwatch\",\"framework_package\":\"nightwatch\",\"use_selenium\":true,\"test_command\":\"npm test && USE_UFG=true npm test\",\"os\":\"ubuntu-latest\",\"version\":\"exact@1.7.13\",\"job_name\":\"JS Nightwatch [ubuntu-latest]\",\"matrix_config_dir\":\"sdks/js/eyes-nightwatch\"}"
+          "matrix_string": "{\"node-version\":\"18\",\"work_dir\":\"sdks/js/eyes-nightwatch\",\"framework_package\":\"nightwatch\",\"use_selenium\":true,\"test_command\":\"npm test && USE_UFG=true npm test\",\"os\":\"ubuntu-latest\",\"version\":\"exact@1.7.13\",\"job_name\":\"JS Nightwatch [ubuntu-latest | undefined] version: exact@1.7.13\",\"matrix_config_dir\":\"sdks/js/eyes-nightwatch\"}"
         },
         {
-          "title": "js_nightwatch / JS Nightwatch [windows-latest]",
+          "title": "js_nightwatch / JS Nightwatch [windows-latest | undefined] version: exact@1.7.13",
           "node-version": "18",
           "work_dir": "sdks/js/eyes-nightwatch",
           "framework_package": "nightwatch",
@@ -935,14 +935,14 @@
           "test_command": "npm test && USE_UFG=true npm test",
           "os": "windows-latest",
           "version": "1.7.13",
-          "job_name": "JS Nightwatch [windows-latest]",
+          "job_name": "JS Nightwatch [windows-latest | undefined] version: exact@1.7.13",
           "matrix_config_dir": "sdks/js/eyes-nightwatch",
           "passed": true,
           "package": "nightwatch",
-          "matrix_string": "{\"node-version\":\"18\",\"work_dir\":\"sdks/js/eyes-nightwatch\",\"framework_package\":\"nightwatch\",\"use_selenium\":true,\"test_command\":\"npm test && USE_UFG=true npm test\",\"os\":\"windows-latest\",\"version\":\"exact@1.7.13\",\"job_name\":\"JS Nightwatch [windows-latest]\",\"matrix_config_dir\":\"sdks/js/eyes-nightwatch\"}"
+          "matrix_string": "{\"node-version\":\"18\",\"work_dir\":\"sdks/js/eyes-nightwatch\",\"framework_package\":\"nightwatch\",\"use_selenium\":true,\"test_command\":\"npm test && USE_UFG=true npm test\",\"os\":\"windows-latest\",\"version\":\"exact@1.7.13\",\"job_name\":\"JS Nightwatch [windows-latest | undefined] version: exact@1.7.13\",\"matrix_config_dir\":\"sdks/js/eyes-nightwatch\"}"
         },
         {
-          "title": "js_nightwatch / JS Nightwatch [macos-latest]",
+          "title": "js_nightwatch / JS Nightwatch [macos-latest | undefined] version: exact@1.7.13",
           "node-version": "18",
           "work_dir": "sdks/js/eyes-nightwatch",
           "framework_package": "nightwatch",
@@ -950,11 +950,11 @@
           "test_command": "npm test && USE_UFG=true npm test",
           "os": "macos-latest",
           "version": "1.7.13",
-          "job_name": "JS Nightwatch [macos-latest]",
+          "job_name": "JS Nightwatch [macos-latest | undefined] version: exact@1.7.13",
           "matrix_config_dir": "sdks/js/eyes-nightwatch",
           "passed": true,
           "package": "nightwatch",
-          "matrix_string": "{\"node-version\":\"18\",\"work_dir\":\"sdks/js/eyes-nightwatch\",\"framework_package\":\"nightwatch\",\"use_selenium\":true,\"test_command\":\"npm test && USE_UFG=true npm test\",\"os\":\"macos-latest\",\"version\":\"exact@1.7.13\",\"job_name\":\"JS Nightwatch [macos-latest]\",\"matrix_config_dir\":\"sdks/js/eyes-nightwatch\"}"
+          "matrix_string": "{\"node-version\":\"18\",\"work_dir\":\"sdks/js/eyes-nightwatch\",\"framework_package\":\"nightwatch\",\"use_selenium\":true,\"test_command\":\"npm test && USE_UFG=true npm test\",\"os\":\"macos-latest\",\"version\":\"exact@1.7.13\",\"job_name\":\"JS Nightwatch [macos-latest | undefined] version: exact@1.7.13\",\"matrix_config_dir\":\"sdks/js/eyes-nightwatch\"}"
         }
       ],
       "config_path": "sdks/js/eyes-nightwatch"
@@ -963,7 +963,7 @@
       "title": "JS Protractor",
       "jobs": [
         {
-          "title": "js_protractor / JS Protractor [ubuntu-latest | latest@]",
+          "title": "js_protractor / JS Protractor [ubuntu-latest | undefined] version: latest@",
           "node-version": "18",
           "work_dir": "sdks/js/eyes-protractor",
           "framework_package": "protractor",
@@ -972,14 +972,14 @@
           "test_command": "npm test",
           "os": "ubuntu-latest",
           "version": "7.0.0",
-          "job_name": "JS Protractor [ubuntu-latest | latest@]",
+          "job_name": "JS Protractor [ubuntu-latest | undefined] version: latest@",
           "matrix_config_dir": "sdks/js/eyes-protractor",
           "passed": true,
           "package": "protractor",
-          "matrix_string": "{\"node-version\":\"18\",\"work_dir\":\"sdks/js/eyes-protractor\",\"framework_package\":\"protractor\",\"use_selenium\":true,\"js_config\":\"eyes-protractor\",\"test_command\":\"npm test\",\"os\":\"ubuntu-latest\",\"version\":\"latest@\",\"job_name\":\"JS Protractor [ubuntu-latest | latest@]\",\"matrix_config_dir\":\"sdks/js/eyes-protractor\"}"
+          "matrix_string": "{\"node-version\":\"18\",\"work_dir\":\"sdks/js/eyes-protractor\",\"framework_package\":\"protractor\",\"use_selenium\":true,\"js_config\":\"eyes-protractor\",\"test_command\":\"npm test\",\"os\":\"ubuntu-latest\",\"version\":\"latest@\",\"job_name\":\"JS Protractor [ubuntu-latest | undefined] version: latest@\",\"matrix_config_dir\":\"sdks/js/eyes-protractor\"}"
         },
         {
-          "title": "js_protractor / JS Protractor [ubuntu-latest | major@2]",
+          "title": "js_protractor / JS Protractor [ubuntu-latest | undefined] version: major@2",
           "node-version": "18",
           "work_dir": "sdks/js/eyes-protractor",
           "framework_package": "protractor",
@@ -988,14 +988,14 @@
           "test_command": "npm test",
           "os": "ubuntu-latest",
           "version": "5.4.4",
-          "job_name": "JS Protractor [ubuntu-latest | major@2]",
+          "job_name": "JS Protractor [ubuntu-latest | undefined] version: major@2",
           "matrix_config_dir": "sdks/js/eyes-protractor",
           "passed": true,
           "package": "protractor",
-          "matrix_string": "{\"node-version\":\"18\",\"work_dir\":\"sdks/js/eyes-protractor\",\"framework_package\":\"protractor\",\"use_selenium\":true,\"js_config\":\"eyes-protractor\",\"test_command\":\"npm test\",\"os\":\"ubuntu-latest\",\"version\":\"major@2\",\"job_name\":\"JS Protractor [ubuntu-latest | major@2]\",\"matrix_config_dir\":\"sdks/js/eyes-protractor\"}"
+          "matrix_string": "{\"node-version\":\"18\",\"work_dir\":\"sdks/js/eyes-protractor\",\"framework_package\":\"protractor\",\"use_selenium\":true,\"js_config\":\"eyes-protractor\",\"test_command\":\"npm test\",\"os\":\"ubuntu-latest\",\"version\":\"major@2\",\"job_name\":\"JS Protractor [ubuntu-latest | undefined] version: major@2\",\"matrix_config_dir\":\"sdks/js/eyes-protractor\"}"
         },
         {
-          "title": "js_protractor / JS Protractor [windows-latest | latest@]",
+          "title": "js_protractor / JS Protractor [windows-latest | undefined] version: latest@",
           "node-version": "18",
           "work_dir": "sdks/js/eyes-protractor",
           "framework_package": "protractor",
@@ -1004,14 +1004,14 @@
           "test_command": "npm test",
           "os": "windows-latest",
           "version": "7.0.0",
-          "job_name": "JS Protractor [windows-latest | latest@]",
+          "job_name": "JS Protractor [windows-latest | undefined] version: latest@",
           "matrix_config_dir": "sdks/js/eyes-protractor",
           "passed": true,
           "package": "protractor",
-          "matrix_string": "{\"node-version\":\"18\",\"work_dir\":\"sdks/js/eyes-protractor\",\"framework_package\":\"protractor\",\"use_selenium\":true,\"js_config\":\"eyes-protractor\",\"test_command\":\"npm test\",\"os\":\"windows-latest\",\"version\":\"latest@\",\"job_name\":\"JS Protractor [windows-latest | latest@]\",\"matrix_config_dir\":\"sdks/js/eyes-protractor\"}"
+          "matrix_string": "{\"node-version\":\"18\",\"work_dir\":\"sdks/js/eyes-protractor\",\"framework_package\":\"protractor\",\"use_selenium\":true,\"js_config\":\"eyes-protractor\",\"test_command\":\"npm test\",\"os\":\"windows-latest\",\"version\":\"latest@\",\"job_name\":\"JS Protractor [windows-latest | undefined] version: latest@\",\"matrix_config_dir\":\"sdks/js/eyes-protractor\"}"
         },
         {
-          "title": "js_protractor / JS Protractor [macos-latest | latest@]",
+          "title": "js_protractor / JS Protractor [macos-latest | undefined] version: latest@",
           "node-version": "18",
           "work_dir": "sdks/js/eyes-protractor",
           "framework_package": "protractor",
@@ -1020,11 +1020,11 @@
           "test_command": "npm test",
           "os": "macos-latest",
           "version": "7.0.0",
-          "job_name": "JS Protractor [macos-latest | latest@]",
+          "job_name": "JS Protractor [macos-latest | undefined] version: latest@",
           "matrix_config_dir": "sdks/js/eyes-protractor",
           "passed": true,
           "package": "protractor",
-          "matrix_string": "{\"node-version\":\"18\",\"work_dir\":\"sdks/js/eyes-protractor\",\"framework_package\":\"protractor\",\"use_selenium\":true,\"js_config\":\"eyes-protractor\",\"test_command\":\"npm test\",\"os\":\"macos-latest\",\"version\":\"latest@\",\"job_name\":\"JS Protractor [macos-latest | latest@]\",\"matrix_config_dir\":\"sdks/js/eyes-protractor\"}"
+          "matrix_string": "{\"node-version\":\"18\",\"work_dir\":\"sdks/js/eyes-protractor\",\"framework_package\":\"protractor\",\"use_selenium\":true,\"js_config\":\"eyes-protractor\",\"test_command\":\"npm test\",\"os\":\"macos-latest\",\"version\":\"latest@\",\"job_name\":\"JS Protractor [macos-latest | undefined] version: latest@\",\"matrix_config_dir\":\"sdks/js/eyes-protractor\"}"
         }
       ],
       "config_path": "sdks/js/eyes-protractor"
@@ -1033,7 +1033,7 @@
       "title": "JS Puppeteer",
       "jobs": [
         {
-          "title": "js_puppeteer / JS Puppeteer [ubuntu-latest | latest@]",
+          "title": "js_puppeteer / JS Puppeteer [ubuntu-latest | undefined] version: latest@]",
           "node-version": "18",
           "work_dir": "sdks/js/eyes-puppeteer",
           "framework_package": "puppeteer",
@@ -1041,14 +1041,14 @@
           "test_command": "npm test",
           "os": "ubuntu-latest",
           "version": "19.7.1",
-          "job_name": "JS Puppeteer [ubuntu-latest | latest@]",
+          "job_name": "JS Puppeteer [ubuntu-latest | undefined] version: latest@]",
           "matrix_config_dir": "sdks/js/eyes-puppeteer",
           "passed": true,
           "package": "puppeteer",
-          "matrix_string": "{\"node-version\":\"18\",\"work_dir\":\"sdks/js/eyes-puppeteer\",\"framework_package\":\"puppeteer\",\"js_config\":\"eyes-puppeteer\",\"test_command\":\"npm test\",\"os\":\"ubuntu-latest\",\"version\":\"latest@\",\"job_name\":\"JS Puppeteer [ubuntu-latest | latest@]\",\"matrix_config_dir\":\"sdks/js/eyes-puppeteer\"}"
+          "matrix_string": "{\"node-version\":\"18\",\"work_dir\":\"sdks/js/eyes-puppeteer\",\"framework_package\":\"puppeteer\",\"js_config\":\"eyes-puppeteer\",\"test_command\":\"npm test\",\"os\":\"ubuntu-latest\",\"version\":\"latest@\",\"job_name\":\"JS Puppeteer [ubuntu-latest | undefined] version: latest@]\",\"matrix_config_dir\":\"sdks/js/eyes-puppeteer\"}"
         },
         {
-          "title": "js_puppeteer / JS Puppeteer [ubuntu-latest | major@1]",
+          "title": "js_puppeteer / JS Puppeteer [ubuntu-latest | undefined] version: major@1]",
           "node-version": "18",
           "work_dir": "sdks/js/eyes-puppeteer",
           "framework_package": "puppeteer",
@@ -1056,14 +1056,14 @@
           "test_command": "npm test",
           "os": "ubuntu-latest",
           "version": "18.2.1",
-          "job_name": "JS Puppeteer [ubuntu-latest | major@1]",
+          "job_name": "JS Puppeteer [ubuntu-latest | undefined] version: major@1]",
           "matrix_config_dir": "sdks/js/eyes-puppeteer",
           "passed": true,
           "package": "puppeteer",
-          "matrix_string": "{\"node-version\":\"18\",\"work_dir\":\"sdks/js/eyes-puppeteer\",\"framework_package\":\"puppeteer\",\"js_config\":\"eyes-puppeteer\",\"test_command\":\"npm test\",\"os\":\"ubuntu-latest\",\"version\":\"major@1\",\"job_name\":\"JS Puppeteer [ubuntu-latest | major@1]\",\"matrix_config_dir\":\"sdks/js/eyes-puppeteer\"}"
+          "matrix_string": "{\"node-version\":\"18\",\"work_dir\":\"sdks/js/eyes-puppeteer\",\"framework_package\":\"puppeteer\",\"js_config\":\"eyes-puppeteer\",\"test_command\":\"npm test\",\"os\":\"ubuntu-latest\",\"version\":\"major@1\",\"job_name\":\"JS Puppeteer [ubuntu-latest | undefined] version: major@1]\",\"matrix_config_dir\":\"sdks/js/eyes-puppeteer\"}"
         },
         {
-          "title": "js_puppeteer / JS Puppeteer [ubuntu-latest | major@2]",
+          "title": "js_puppeteer / JS Puppeteer [ubuntu-latest | undefined] version: major@2]",
           "node-version": "18",
           "work_dir": "sdks/js/eyes-puppeteer",
           "framework_package": "puppeteer",
@@ -1071,14 +1071,14 @@
           "test_command": "npm test",
           "os": "ubuntu-latest",
           "version": "17.1.3",
-          "job_name": "JS Puppeteer [ubuntu-latest | major@2]",
+          "job_name": "JS Puppeteer [ubuntu-latest | undefined] version: major@2]",
           "matrix_config_dir": "sdks/js/eyes-puppeteer",
           "passed": true,
           "package": "puppeteer",
-          "matrix_string": "{\"node-version\":\"18\",\"work_dir\":\"sdks/js/eyes-puppeteer\",\"framework_package\":\"puppeteer\",\"js_config\":\"eyes-puppeteer\",\"test_command\":\"npm test\",\"os\":\"ubuntu-latest\",\"version\":\"major@2\",\"job_name\":\"JS Puppeteer [ubuntu-latest | major@2]\",\"matrix_config_dir\":\"sdks/js/eyes-puppeteer\"}"
+          "matrix_string": "{\"node-version\":\"18\",\"work_dir\":\"sdks/js/eyes-puppeteer\",\"framework_package\":\"puppeteer\",\"js_config\":\"eyes-puppeteer\",\"test_command\":\"npm test\",\"os\":\"ubuntu-latest\",\"version\":\"major@2\",\"job_name\":\"JS Puppeteer [ubuntu-latest | undefined] version: major@2]\",\"matrix_config_dir\":\"sdks/js/eyes-puppeteer\"}"
         },
         {
-          "title": "js_puppeteer / JS Puppeteer [ubuntu-latest | major@3]",
+          "title": "js_puppeteer / JS Puppeteer [ubuntu-latest | undefined] version: major@3]",
           "node-version": "18",
           "work_dir": "sdks/js/eyes-puppeteer",
           "framework_package": "puppeteer",
@@ -1086,14 +1086,14 @@
           "test_command": "npm test",
           "os": "ubuntu-latest",
           "version": "16.2.0",
-          "job_name": "JS Puppeteer [ubuntu-latest | major@3]",
+          "job_name": "JS Puppeteer [ubuntu-latest | undefined] version: major@3]",
           "matrix_config_dir": "sdks/js/eyes-puppeteer",
           "passed": true,
           "package": "puppeteer",
-          "matrix_string": "{\"node-version\":\"18\",\"work_dir\":\"sdks/js/eyes-puppeteer\",\"framework_package\":\"puppeteer\",\"js_config\":\"eyes-puppeteer\",\"test_command\":\"npm test\",\"os\":\"ubuntu-latest\",\"version\":\"major@3\",\"job_name\":\"JS Puppeteer [ubuntu-latest | major@3]\",\"matrix_config_dir\":\"sdks/js/eyes-puppeteer\"}"
+          "matrix_string": "{\"node-version\":\"18\",\"work_dir\":\"sdks/js/eyes-puppeteer\",\"framework_package\":\"puppeteer\",\"js_config\":\"eyes-puppeteer\",\"test_command\":\"npm test\",\"os\":\"ubuntu-latest\",\"version\":\"major@3\",\"job_name\":\"JS Puppeteer [ubuntu-latest | undefined] version: major@3]\",\"matrix_config_dir\":\"sdks/js/eyes-puppeteer\"}"
         },
         {
-          "title": "js_puppeteer / JS Puppeteer [windows-latest | latest@]",
+          "title": "js_puppeteer / JS Puppeteer [windows-latest | undefined] version: latest@]",
           "node-version": "18",
           "work_dir": "sdks/js/eyes-puppeteer",
           "framework_package": "puppeteer",
@@ -1101,14 +1101,14 @@
           "test_command": "npm test",
           "os": "windows-latest",
           "version": "19.7.1",
-          "job_name": "JS Puppeteer [windows-latest | latest@]",
+          "job_name": "JS Puppeteer [windows-latest | undefined] version: latest@]",
           "matrix_config_dir": "sdks/js/eyes-puppeteer",
           "passed": true,
           "package": "puppeteer",
-          "matrix_string": "{\"node-version\":\"18\",\"work_dir\":\"sdks/js/eyes-puppeteer\",\"framework_package\":\"puppeteer\",\"js_config\":\"eyes-puppeteer\",\"test_command\":\"npm test\",\"os\":\"windows-latest\",\"version\":\"latest@\",\"job_name\":\"JS Puppeteer [windows-latest | latest@]\",\"matrix_config_dir\":\"sdks/js/eyes-puppeteer\"}"
+          "matrix_string": "{\"node-version\":\"18\",\"work_dir\":\"sdks/js/eyes-puppeteer\",\"framework_package\":\"puppeteer\",\"js_config\":\"eyes-puppeteer\",\"test_command\":\"npm test\",\"os\":\"windows-latest\",\"version\":\"latest@\",\"job_name\":\"JS Puppeteer [windows-latest | undefined] version: latest@]\",\"matrix_config_dir\":\"sdks/js/eyes-puppeteer\"}"
         },
         {
-          "title": "js_puppeteer / JS Puppeteer [macos-latest | latest@]",
+          "title": "js_puppeteer / JS Puppeteer [macos-latest | undefined] version: latest@]",
           "node-version": "18",
           "work_dir": "sdks/js/eyes-puppeteer",
           "framework_package": "puppeteer",
@@ -1116,11 +1116,11 @@
           "test_command": "npm test",
           "os": "macos-latest",
           "version": "19.7.1",
-          "job_name": "JS Puppeteer [macos-latest | latest@]",
+          "job_name": "JS Puppeteer [macos-latest | undefined] version: latest@]",
           "matrix_config_dir": "sdks/js/eyes-puppeteer",
           "passed": true,
           "package": "puppeteer",
-          "matrix_string": "{\"node-version\":\"18\",\"work_dir\":\"sdks/js/eyes-puppeteer\",\"framework_package\":\"puppeteer\",\"js_config\":\"eyes-puppeteer\",\"test_command\":\"npm test\",\"os\":\"macos-latest\",\"version\":\"latest@\",\"job_name\":\"JS Puppeteer [macos-latest | latest@]\",\"matrix_config_dir\":\"sdks/js/eyes-puppeteer\"}"
+          "matrix_string": "{\"node-version\":\"18\",\"work_dir\":\"sdks/js/eyes-puppeteer\",\"framework_package\":\"puppeteer\",\"js_config\":\"eyes-puppeteer\",\"test_command\":\"npm test\",\"os\":\"macos-latest\",\"version\":\"latest@\",\"job_name\":\"JS Puppeteer [macos-latest | undefined] version: latest@]\",\"matrix_config_dir\":\"sdks/js/eyes-puppeteer\"}"
         }
       ],
       "config_path": "sdks/js/eyes-puppeteer"
@@ -1129,102 +1129,102 @@
       "title": "JS Cypress",
       "jobs": [
         {
-          "title": "js_cypress / JS Cypress [ubuntu-latest | latest@]",
+          "title": "js_cypress / JS Cypress [ubuntu-latest | 18] version: latest@",
           "node-version": "18",
           "work_dir": "sdks/js/eyes-cypress/v10",
           "framework_package": "cypress",
           "test_command": "npm test",
           "os": "ubuntu-latest",
           "version": "12.5.1",
-          "job_name": "JS Cypress [ubuntu-latest | latest@]",
+          "job_name": "JS Cypress [ubuntu-latest | 18] version: latest@",
           "matrix_config_dir": "sdks/js/eyes-cypress",
           "passed": true,
           "package": "cypress",
-          "matrix_string": "{\"node-version\":\"18\",\"work_dir\":\"sdks/js/eyes-cypress/v10\",\"framework_package\":\"cypress\",\"test_command\":\"npm test\",\"os\":\"ubuntu-latest\",\"version\":\"latest@\",\"job_name\":\"JS Cypress [ubuntu-latest | latest@]\",\"matrix_config_dir\":\"sdks/js/eyes-cypress\"}"
+          "matrix_string": "{\"node-version\":\"18\",\"work_dir\":\"sdks/js/eyes-cypress/v10\",\"framework_package\":\"cypress\",\"test_command\":\"npm test\",\"os\":\"ubuntu-latest\",\"version\":\"latest@\",\"job_name\":\"JS Cypress [ubuntu-latest | 18] version: latest@\",\"matrix_config_dir\":\"sdks/js/eyes-cypress\"}"
         },
         {
-          "title": "js_cypress / JS Cypress [ubuntu-latest | major@1]",
+          "title": "js_cypress / JS Cypress [ubuntu-latest | 18] version: major@1",
           "node-version": "18",
           "work_dir": "sdks/js/eyes-cypress/v10",
           "framework_package": "cypress",
           "test_command": "npm test",
           "os": "ubuntu-latest",
           "version": "11.2.0",
-          "job_name": "JS Cypress [ubuntu-latest | major@1]",
+          "job_name": "JS Cypress [ubuntu-latest | 18] version: major@1",
           "matrix_config_dir": "sdks/js/eyes-cypress",
           "passed": true,
           "package": "cypress",
-          "matrix_string": "{\"node-version\":\"18\",\"work_dir\":\"sdks/js/eyes-cypress/v10\",\"framework_package\":\"cypress\",\"test_command\":\"npm test\",\"os\":\"ubuntu-latest\",\"version\":\"major@1\",\"job_name\":\"JS Cypress [ubuntu-latest | major@1]\",\"matrix_config_dir\":\"sdks/js/eyes-cypress\"}"
+          "matrix_string": "{\"node-version\":\"18\",\"work_dir\":\"sdks/js/eyes-cypress/v10\",\"framework_package\":\"cypress\",\"test_command\":\"npm test\",\"os\":\"ubuntu-latest\",\"version\":\"major@1\",\"job_name\":\"JS Cypress [ubuntu-latest | 18] version: major@1\",\"matrix_config_dir\":\"sdks/js/eyes-cypress\"}"
         },
         {
-          "title": "js_cypress / JS Cypress [ubuntu-latest | major@2]",
+          "title": "js_cypress / JS Cypress [ubuntu-latest | 18] version: major@2",
           "node-version": "18",
           "work_dir": "sdks/js/eyes-cypress/v10",
           "framework_package": "cypress",
           "test_command": "npm test",
           "os": "ubuntu-latest",
           "version": "10.11.0",
-          "job_name": "JS Cypress [ubuntu-latest | major@2]",
+          "job_name": "JS Cypress [ubuntu-latest | 18] version: major@2",
           "matrix_config_dir": "sdks/js/eyes-cypress",
           "passed": true,
           "package": "cypress",
-          "matrix_string": "{\"node-version\":\"18\",\"work_dir\":\"sdks/js/eyes-cypress/v10\",\"framework_package\":\"cypress\",\"test_command\":\"npm test\",\"os\":\"ubuntu-latest\",\"version\":\"major@2\",\"job_name\":\"JS Cypress [ubuntu-latest | major@2]\",\"matrix_config_dir\":\"sdks/js/eyes-cypress\"}"
+          "matrix_string": "{\"node-version\":\"18\",\"work_dir\":\"sdks/js/eyes-cypress/v10\",\"framework_package\":\"cypress\",\"test_command\":\"npm test\",\"os\":\"ubuntu-latest\",\"version\":\"major@2\",\"job_name\":\"JS Cypress [ubuntu-latest | 18] version: major@2\",\"matrix_config_dir\":\"sdks/js/eyes-cypress\"}"
         },
         {
-          "title": "js_cypress / JS Cypress [windows-latest | latest@]",
+          "title": "js_cypress / JS Cypress [windows-latest | 18] version: latest@",
           "node-version": "18",
           "work_dir": "sdks/js/eyes-cypress/v10",
           "framework_package": "cypress",
           "test_command": "npm test",
           "os": "windows-latest",
           "version": "12.5.1",
-          "job_name": "JS Cypress [windows-latest | latest@]",
+          "job_name": "JS Cypress [windows-latest | 18] version: latest@",
           "matrix_config_dir": "sdks/js/eyes-cypress",
           "passed": true,
           "package": "cypress",
-          "matrix_string": "{\"node-version\":\"18\",\"work_dir\":\"sdks/js/eyes-cypress/v10\",\"framework_package\":\"cypress\",\"test_command\":\"npm test\",\"os\":\"windows-latest\",\"version\":\"latest@\",\"job_name\":\"JS Cypress [windows-latest | latest@]\",\"matrix_config_dir\":\"sdks/js/eyes-cypress\"}"
+          "matrix_string": "{\"node-version\":\"18\",\"work_dir\":\"sdks/js/eyes-cypress/v10\",\"framework_package\":\"cypress\",\"test_command\":\"npm test\",\"os\":\"windows-latest\",\"version\":\"latest@\",\"job_name\":\"JS Cypress [windows-latest | 18] version: latest@\",\"matrix_config_dir\":\"sdks/js/eyes-cypress\"}"
         },
         {
-          "title": "js_cypress / JS Cypress [macos-latest | latest@]",
+          "title": "js_cypress / JS Cypress [macos-latest | 18] version: latest@",
           "node-version": "18",
           "work_dir": "sdks/js/eyes-cypress/v10",
           "framework_package": "cypress",
           "test_command": "npm test",
           "os": "macos-latest",
           "version": "12.5.1",
-          "job_name": "JS Cypress [macos-latest | latest@]",
+          "job_name": "JS Cypress [macos-latest | 18] version: latest@",
           "matrix_config_dir": "sdks/js/eyes-cypress",
           "passed": true,
           "package": "cypress",
-          "matrix_string": "{\"node-version\":\"18\",\"work_dir\":\"sdks/js/eyes-cypress/v10\",\"framework_package\":\"cypress\",\"test_command\":\"npm test\",\"os\":\"macos-latest\",\"version\":\"latest@\",\"job_name\":\"JS Cypress [macos-latest | latest@]\",\"matrix_config_dir\":\"sdks/js/eyes-cypress\"}"
+          "matrix_string": "{\"node-version\":\"18\",\"work_dir\":\"sdks/js/eyes-cypress/v10\",\"framework_package\":\"cypress\",\"test_command\":\"npm test\",\"os\":\"macos-latest\",\"version\":\"latest@\",\"job_name\":\"JS Cypress [macos-latest | 18] version: latest@\",\"matrix_config_dir\":\"sdks/js/eyes-cypress\"}"
         },
         {
-          "title": "js_cypress / JS Cypress [ubuntu-latest | exact@9.7.0]",
+          "title": "js_cypress / JS Cypress [ubuntu-latest | 18] version: exact@9.7.0",
           "node-version": "18",
           "work_dir": "sdks/js/eyes-cypress/v9",
           "framework_package": "cypress",
           "test_command": "npm test",
           "os": "ubuntu-latest",
           "version": "9.7.0",
-          "job_name": "JS Cypress [ubuntu-latest | exact@9.7.0]",
+          "job_name": "JS Cypress [ubuntu-latest | 18] version: exact@9.7.0",
           "matrix_config_dir": "sdks/js/eyes-cypress",
           "passed": true,
           "package": "cypress",
-          "matrix_string": "{\"node-version\":\"18\",\"work_dir\":\"sdks/js/eyes-cypress/v9\",\"framework_package\":\"cypress\",\"test_command\":\"npm test\",\"os\":\"ubuntu-latest\",\"version\":\"exact@9.7.0\",\"job_name\":\"JS Cypress [ubuntu-latest | exact@9.7.0]\",\"matrix_config_dir\":\"sdks/js/eyes-cypress\"}"
+          "matrix_string": "{\"node-version\":\"18\",\"work_dir\":\"sdks/js/eyes-cypress/v9\",\"framework_package\":\"cypress\",\"test_command\":\"npm test\",\"os\":\"ubuntu-latest\",\"version\":\"exact@9.7.0\",\"job_name\":\"JS Cypress [ubuntu-latest | 18] version: exact@9.7.0\",\"matrix_config_dir\":\"sdks/js/eyes-cypress\"}"
         },
         {
-          "title": "js_cypress / JS Cypress [ubuntu-latest | exact@8.7.0]",
+          "title": "js_cypress / JS Cypress [ubuntu-latest | 18] version: exact@8.7.0",
           "node-version": "18",
           "work_dir": "sdks/js/eyes-cypress/v9",
           "framework_package": "cypress",
           "test_command": "npm test",
           "os": "ubuntu-latest",
           "version": "8.7.0",
-          "job_name": "JS Cypress [ubuntu-latest | exact@8.7.0]",
+          "job_name": "JS Cypress [ubuntu-latest | 18] version: exact@8.7.0",
           "matrix_config_dir": "sdks/js/eyes-cypress",
           "passed": true,
           "package": "cypress",
-          "matrix_string": "{\"node-version\":\"18\",\"work_dir\":\"sdks/js/eyes-cypress/v9\",\"framework_package\":\"cypress\",\"test_command\":\"npm test\",\"os\":\"ubuntu-latest\",\"version\":\"exact@8.7.0\",\"job_name\":\"JS Cypress [ubuntu-latest | exact@8.7.0]\",\"matrix_config_dir\":\"sdks/js/eyes-cypress\"}"
+          "matrix_string": "{\"node-version\":\"18\",\"work_dir\":\"sdks/js/eyes-cypress/v9\",\"framework_package\":\"cypress\",\"test_command\":\"npm test\",\"os\":\"ubuntu-latest\",\"version\":\"exact@8.7.0\",\"job_name\":\"JS Cypress [ubuntu-latest | 18] version: exact@8.7.0\",\"matrix_config_dir\":\"sdks/js/eyes-cypress\"}"
         }
       ],
       "config_path": "sdks/js/eyes-cypress"
@@ -1233,7 +1233,7 @@
       "title": "JS Testcafe",
       "jobs": [
         {
-          "title": "js_testcafe / JS Testcafe [ubuntu-latest | latest@]",
+          "title": "js_testcafe / JS Testcafe [ubuntu-latest | undefined] version: latest@",
           "node-version": "18",
           "work_dir": "sdks/js/eyes-testcafe",
           "framework_package": "testcafe",
@@ -1241,14 +1241,14 @@
           "legacy_npm_peers": true,
           "os": "ubuntu-latest",
           "version": "2.3.1",
-          "job_name": "JS Testcafe [ubuntu-latest | latest@]",
+          "job_name": "JS Testcafe [ubuntu-latest | undefined] version: latest@",
           "matrix_config_dir": "sdks/js/eyes-testcafe",
           "passed": true,
           "package": "testcafe",
-          "matrix_string": "{\"node-version\":\"18\",\"work_dir\":\"sdks/js/eyes-testcafe\",\"framework_package\":\"testcafe\",\"test_command\":\"npm test\",\"legacy_npm_peers\":true,\"os\":\"ubuntu-latest\",\"version\":\"latest@\",\"job_name\":\"JS Testcafe [ubuntu-latest | latest@]\",\"matrix_config_dir\":\"sdks/js/eyes-testcafe\"}"
+          "matrix_string": "{\"node-version\":\"18\",\"work_dir\":\"sdks/js/eyes-testcafe\",\"framework_package\":\"testcafe\",\"test_command\":\"npm test\",\"legacy_npm_peers\":true,\"os\":\"ubuntu-latest\",\"version\":\"latest@\",\"job_name\":\"JS Testcafe [ubuntu-latest | undefined] version: latest@\",\"matrix_config_dir\":\"sdks/js/eyes-testcafe\"}"
         },
         {
-          "title": "js_testcafe / JS Testcafe [ubuntu-latest | major@1]",
+          "title": "js_testcafe / JS Testcafe [ubuntu-latest | undefined] version: major@1",
           "node-version": "18",
           "work_dir": "sdks/js/eyes-testcafe",
           "framework_package": "testcafe",
@@ -1256,14 +1256,14 @@
           "legacy_npm_peers": true,
           "os": "ubuntu-latest",
           "version": "1.20.1",
-          "job_name": "JS Testcafe [ubuntu-latest | major@1]",
+          "job_name": "JS Testcafe [ubuntu-latest | undefined] version: major@1",
           "matrix_config_dir": "sdks/js/eyes-testcafe",
           "passed": true,
           "package": "testcafe",
-          "matrix_string": "{\"node-version\":\"18\",\"work_dir\":\"sdks/js/eyes-testcafe\",\"framework_package\":\"testcafe\",\"test_command\":\"npm test\",\"legacy_npm_peers\":true,\"os\":\"ubuntu-latest\",\"version\":\"major@1\",\"job_name\":\"JS Testcafe [ubuntu-latest | major@1]\",\"matrix_config_dir\":\"sdks/js/eyes-testcafe\"}"
+          "matrix_string": "{\"node-version\":\"18\",\"work_dir\":\"sdks/js/eyes-testcafe\",\"framework_package\":\"testcafe\",\"test_command\":\"npm test\",\"legacy_npm_peers\":true,\"os\":\"ubuntu-latest\",\"version\":\"major@1\",\"job_name\":\"JS Testcafe [ubuntu-latest | undefined] version: major@1\",\"matrix_config_dir\":\"sdks/js/eyes-testcafe\"}"
         },
         {
-          "title": "js_testcafe / JS Testcafe [windows-latest | latest@]",
+          "title": "js_testcafe / JS Testcafe [windows-latest | undefined] version: latest@",
           "node-version": "18",
           "work_dir": "sdks/js/eyes-testcafe",
           "framework_package": "testcafe",
@@ -1271,11 +1271,11 @@
           "legacy_npm_peers": true,
           "os": "windows-latest",
           "version": "2.3.1",
-          "job_name": "JS Testcafe [windows-latest | latest@]",
+          "job_name": "JS Testcafe [windows-latest | undefined] version: latest@",
           "matrix_config_dir": "sdks/js/eyes-testcafe",
           "passed": true,
           "package": "testcafe",
-          "matrix_string": "{\"node-version\":\"18\",\"work_dir\":\"sdks/js/eyes-testcafe\",\"framework_package\":\"testcafe\",\"test_command\":\"npm test\",\"legacy_npm_peers\":true,\"os\":\"windows-latest\",\"version\":\"latest@\",\"job_name\":\"JS Testcafe [windows-latest | latest@]\",\"matrix_config_dir\":\"sdks/js/eyes-testcafe\"}"
+          "matrix_string": "{\"node-version\":\"18\",\"work_dir\":\"sdks/js/eyes-testcafe\",\"framework_package\":\"testcafe\",\"test_command\":\"npm test\",\"legacy_npm_peers\":true,\"os\":\"windows-latest\",\"version\":\"latest@\",\"job_name\":\"JS Testcafe [windows-latest | undefined] version: latest@\",\"matrix_config_dir\":\"sdks/js/eyes-testcafe\"}"
         }
       ],
       "config_path": "sdks/js/eyes-testcafe"
@@ -1284,7 +1284,7 @@
       "title": "JS Storybook",
       "jobs": [
         {
-          "title": "js_storybook / JS Storybook [ubuntu-latest | latest@]",
+          "title": "js_storybook / JS Storybook [ubuntu-latest | undefined] version: latest@",
           "node-version": "16",
           "work_dir": "sdks/js/eyes-storybook",
           "framework_package": "@storybook/react",
@@ -1292,14 +1292,14 @@
           "os": "ubuntu-latest",
           "version": "6.5.16",
           "branch": "latest-story",
-          "job_name": "JS Storybook [ubuntu-latest | latest@]",
+          "job_name": "JS Storybook [ubuntu-latest | undefined] version: latest@",
           "matrix_config_dir": "sdks/js/eyes-storybook",
           "passed": true,
           "package": "@storybook/react",
-          "matrix_string": "{\"node-version\":\"16\",\"work_dir\":\"sdks/js/eyes-storybook\",\"framework_package\":\"@storybook/react\",\"test_command\":\"npm test\",\"os\":\"ubuntu-latest\",\"version\":\"latest@\",\"branch\":\"latest-story\",\"job_name\":\"JS Storybook [ubuntu-latest | latest@]\",\"matrix_config_dir\":\"sdks/js/eyes-storybook\"}"
+          "matrix_string": "{\"node-version\":\"16\",\"work_dir\":\"sdks/js/eyes-storybook\",\"framework_package\":\"@storybook/react\",\"test_command\":\"npm test\",\"os\":\"ubuntu-latest\",\"version\":\"latest@\",\"branch\":\"latest-story\",\"job_name\":\"JS Storybook [ubuntu-latest | undefined] version: latest@\",\"matrix_config_dir\":\"sdks/js/eyes-storybook\"}"
         },
         {
-          "title": "js_storybook / JS Storybook [ubuntu-latest | major@1]",
+          "title": "js_storybook / JS Storybook [ubuntu-latest | undefined] version: major@1",
           "node-version": "16",
           "work_dir": "sdks/js/eyes-storybook",
           "framework_package": "@storybook/react",
@@ -1307,14 +1307,14 @@
           "os": "ubuntu-latest",
           "version": "5.3.21",
           "branch": "minus-story",
-          "job_name": "JS Storybook [ubuntu-latest | major@1]",
+          "job_name": "JS Storybook [ubuntu-latest | undefined] version: major@1",
           "matrix_config_dir": "sdks/js/eyes-storybook",
           "passed": true,
           "package": "@storybook/react",
-          "matrix_string": "{\"node-version\":\"16\",\"work_dir\":\"sdks/js/eyes-storybook\",\"framework_package\":\"@storybook/react\",\"test_command\":\"npm test\",\"os\":\"ubuntu-latest\",\"version\":\"major@1\",\"branch\":\"minus-story\",\"job_name\":\"JS Storybook [ubuntu-latest | major@1]\",\"matrix_config_dir\":\"sdks/js/eyes-storybook\"}"
+          "matrix_string": "{\"node-version\":\"16\",\"work_dir\":\"sdks/js/eyes-storybook\",\"framework_package\":\"@storybook/react\",\"test_command\":\"npm test\",\"os\":\"ubuntu-latest\",\"version\":\"major@1\",\"branch\":\"minus-story\",\"job_name\":\"JS Storybook [ubuntu-latest | undefined] version: major@1\",\"matrix_config_dir\":\"sdks/js/eyes-storybook\"}"
         },
         {
-          "title": "js_storybook / JS Storybook [windows-latest | latest@]",
+          "title": "js_storybook / JS Storybook [windows-latest | undefined] version: latest@",
           "node-version": "16",
           "work_dir": "sdks/js/eyes-storybook",
           "framework_package": "@storybook/react",
@@ -1322,14 +1322,14 @@
           "os": "windows-latest",
           "version": "6.5.16",
           "branch": "latest-story",
-          "job_name": "JS Storybook [windows-latest | latest@]",
+          "job_name": "JS Storybook [windows-latest | undefined] version: latest@",
           "matrix_config_dir": "sdks/js/eyes-storybook",
           "passed": true,
           "package": "@storybook/react",
-          "matrix_string": "{\"node-version\":\"16\",\"work_dir\":\"sdks/js/eyes-storybook\",\"framework_package\":\"@storybook/react\",\"test_command\":\"npm test\",\"os\":\"windows-latest\",\"version\":\"latest@\",\"branch\":\"latest-story\",\"job_name\":\"JS Storybook [windows-latest | latest@]\",\"matrix_config_dir\":\"sdks/js/eyes-storybook\"}"
+          "matrix_string": "{\"node-version\":\"16\",\"work_dir\":\"sdks/js/eyes-storybook\",\"framework_package\":\"@storybook/react\",\"test_command\":\"npm test\",\"os\":\"windows-latest\",\"version\":\"latest@\",\"branch\":\"latest-story\",\"job_name\":\"JS Storybook [windows-latest | undefined] version: latest@\",\"matrix_config_dir\":\"sdks/js/eyes-storybook\"}"
         },
         {
-          "title": "js_storybook / JS Storybook [macos-latest | latest@]",
+          "title": "js_storybook / JS Storybook [macos-latest | undefined] version: latest@",
           "node-version": "16",
           "work_dir": "sdks/js/eyes-storybook",
           "framework_package": "@storybook/react",
@@ -1337,11 +1337,11 @@
           "os": "macos-latest",
           "version": "6.5.16",
           "branch": "latest-story",
-          "job_name": "JS Storybook [macos-latest | latest@]",
+          "job_name": "JS Storybook [macos-latest | undefined] version: latest@",
           "matrix_config_dir": "sdks/js/eyes-storybook",
           "passed": true,
           "package": "@storybook/react",
-          "matrix_string": "{\"node-version\":\"16\",\"work_dir\":\"sdks/js/eyes-storybook\",\"framework_package\":\"@storybook/react\",\"test_command\":\"npm test\",\"os\":\"macos-latest\",\"version\":\"latest@\",\"branch\":\"latest-story\",\"job_name\":\"JS Storybook [macos-latest | latest@]\",\"matrix_config_dir\":\"sdks/js/eyes-storybook\"}"
+          "matrix_string": "{\"node-version\":\"16\",\"work_dir\":\"sdks/js/eyes-storybook\",\"framework_package\":\"@storybook/react\",\"test_command\":\"npm test\",\"os\":\"macos-latest\",\"version\":\"latest@\",\"branch\":\"latest-story\",\"job_name\":\"JS Storybook [macos-latest | undefined] version: latest@\",\"matrix_config_dir\":\"sdks/js/eyes-storybook\"}"
         }
       ],
       "config_path": "sdks/js/eyes-storybook"
