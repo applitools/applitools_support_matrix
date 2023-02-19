@@ -1,5 +1,5 @@
 {
-  "id": "5e2dccb3-1f43-4219-b661-338407b00f82",
+  "id": "6edd5831-2f54-488c-96eb-8fedde39230f",
   "data": [
     {
       "title": "Java",
@@ -1135,7 +1135,7 @@
           "framework_package": "cypress",
           "test_command": "npm test",
           "os": "ubuntu-latest",
-          "version": "12.5.1",
+          "version": "12.6.0",
           "job_name": "JS Cypress [ubuntu-latest | 18] version: latest@",
           "matrix_config_dir": "sdks/js/eyes-cypress",
           "passed": true,
@@ -1177,7 +1177,7 @@
           "framework_package": "cypress",
           "test_command": "npm test",
           "os": "windows-latest",
-          "version": "12.5.1",
+          "version": "12.6.0",
           "job_name": "JS Cypress [windows-latest | 18] version: latest@",
           "matrix_config_dir": "sdks/js/eyes-cypress",
           "passed": true,
@@ -1191,7 +1191,7 @@
           "framework_package": "cypress",
           "test_command": "npm test",
           "os": "macos-latest",
-          "version": "12.5.1",
+          "version": "12.6.0",
           "job_name": "JS Cypress [macos-latest | 18] version: latest@",
           "matrix_config_dir": "sdks/js/eyes-cypress",
           "passed": true,
