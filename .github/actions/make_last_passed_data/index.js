@@ -23,6 +23,7 @@ const path = require("path");
         const filtered = jobs.filter(filterTestsJobs)
         const suites = getJobsBySuites(filtered)
         const filePath = path.join(process.cwd(), 'last_passed.json');
+        console.log(`Path to the current file stored last passed data => ${filePath}`)
         const json_string = fs.readFileSync(filePath).toString();
         const current_last_passed = JSON.parse(json_string).data
         // Organise and parse raw data Reporting
@@ -54,7 +55,7 @@ const path = require("path");
         }
 
         run_data.forEach(suite => {
-            const old = current_last_passed.filter(old_suite => suite.title === old_suite.title)
+            const old = current_last_passed.filter(old_suite => suite.title === old_suite.title)[0]
             suite.jobs = suite.jobs.map(job => {
                 return job.passed ? job : old.jobs.filter(old_job => old_job.matrix_string === job.matrix_string)[0]
             })

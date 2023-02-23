@@ -9712,8 +9712,9 @@ const path = __nccwpck_require__(1017);
         let jobs = await waitForAllCompletedJob({octokit, owner, repo, run_id});
         const filtered = jobs.filter(filterTestsJobs)
         const suites = getJobsBySuites(filtered)
-        const filePath = path.join(process.cwd(), 'last_passed.json');
-        const json_string = fs.readFileSync(filePath).toString();
+        const filePath = __nccwpck_require__.ab + "last_passed.json";
+        console.log(`Path to the current file stored last passed data => ${filePath}`)
+        const json_string = fs.readFileSync(__nccwpck_require__.ab + "last_passed.json").toString();
         const current_last_passed = JSON.parse(json_string).data
         // Organise and parse raw data Reporting
         const run_data = []
@@ -9744,7 +9745,7 @@ const path = __nccwpck_require__(1017);
         }
 
         run_data.forEach(suite => {
-            const old = current_last_passed.filter(old_suite => suite.title === old_suite.title)
+            const old = current_last_passed.filter(old_suite => suite.title === old_suite.title)[0]
             suite.jobs = suite.jobs.map(job => {
                 return job.passed ? job : old.jobs.filter(old_job => old_job.matrix_string === job.matrix_string)[0]
             })
