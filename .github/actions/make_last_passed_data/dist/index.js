@@ -9712,9 +9712,9 @@ const path = __nccwpck_require__(1017);
         let jobs = await waitForAllCompletedJob({octokit, owner, repo, run_id});
         const filtered = jobs.filter(filterTestsJobs)
         const suites = getJobsBySuites(filtered)
-        const filePath = __nccwpck_require__.ab + "last_passed.json";
+        const filePath = path.join(process.cwd(), 'last_passed.json');
         console.log(`Path to the current file stored last passed data => ${filePath}`)
-        const json_string = fs.readFileSync(__nccwpck_require__.ab + "last_passed.json").toString();
+        const json_string = fs.readFileSync(filePath).toString();
         const current_last_passed = JSON.parse(json_string).data
         // Organise and parse raw data Reporting
         const run_data = []
