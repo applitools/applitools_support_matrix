@@ -9,8 +9,8 @@ function setupEyes({vg, ...config}) {
     const configuration = {
         apiKey: process.env.APPLITOOLS_API_KEY,
         batch,
-        parentBranchName: 'master',
-        branchName: 'master',
+        parentBranchName: 'wdio4',
+        branchName: 'wdio4',
         dontCloseBatches: true,
         matchTimeout: 0,
         saveNewTests: false,
