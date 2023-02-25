@@ -1,5 +1,5 @@
 {
-  "id": "144af640-8b47-47db-a985-4c7729c97b4a",
+  "id": "477c0aaa-e33e-4e6d-a15d-e73d932504fe",
   "data": [
     {
       "title": "Java",
@@ -596,7 +596,7 @@
           "framework_package": "playwright",
           "test_command": "npx playwright install --with-deps && npm test",
           "os": "ubuntu-latest",
-          "version": "1.31.0",
+          "version": "1.31.1",
           "job_name": "JS Playwright [ubuntu-latest | undefined] version: latest@",
           "matrix_config_dir": "sdks/js/eyes-playwright",
           "passed": true,
@@ -638,7 +638,7 @@
           "framework_package": "playwright",
           "test_command": "npx playwright install --with-deps && npm test",
           "os": "windows-latest",
-          "version": "1.31.0",
+          "version": "1.31.1",
           "job_name": "JS Playwright [windows-latest | undefined] version: latest@",
           "matrix_config_dir": "sdks/js/eyes-playwright",
           "passed": true,
@@ -652,7 +652,7 @@
           "framework_package": "playwright",
           "test_command": "npx playwright install --with-deps && npm test",
           "os": "macos-latest",
-          "version": "1.31.0",
+          "version": "1.31.1",
           "job_name": "JS Playwright [macos-latest | undefined] version: latest@",
           "matrix_config_dir": "sdks/js/eyes-playwright",
           "passed": true,
@@ -812,7 +812,7 @@
         {
           "title": "js_webdriverio / JS WDIO [ubuntu-latest | 18] version: latest@",
           "os": "ubuntu-latest",
-          "version": "8.3.10",
+          "version": "8.3.11",
           "node-version": "18",
           "use_selenium": true,
           "framework_package": "webdriverio",
@@ -828,7 +828,7 @@
         {
           "title": "js_webdriverio / JS WDIO [windows-latest | 18] version: latest@",
           "os": "windows-latest",
-          "version": "8.3.10",
+          "version": "8.3.11",
           "node-version": "18",
           "use_selenium": true,
           "framework_package": "webdriverio",
@@ -844,7 +844,7 @@
         {
           "title": "js_webdriverio / JS WDIO [macos-latest | 18] version: latest@",
           "os": "macos-latest",
-          "version": "8.3.10",
+          "version": "8.3.11",
           "node-version": "18",
           "use_selenium": true,
           "framework_package": "webdriverio",
