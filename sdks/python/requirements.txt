@@ -1,4 +1,4 @@
-eyes-selenium --no-index --find-links=file:dist
+eyes-selenium @ file:dist/eyes_selenium-5.15.1-py2.py3-none-any.whl
 pytest>=6.2.5
 selenium~=4.1.5
 pytest-xdist~=2.5.0
