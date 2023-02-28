@@ -1,4 +1,4 @@
-eyes-selenium
+eyes-selenium @ file://dist/
 pytest>=6.2.5
 selenium~=4.1.5
 pytest-xdist~=2.5.0
