@@ -126,28 +126,34 @@ jobs:
         with:
           token: ${{secrets.PAT}}
           run_id: ${{github.run_id}}
-      - name: Last passed data update
-        uses: ./.github/actions/make_last_passed_data
-        with:
-          token: ${{secrets.PAT}}
-          run_id: ${{github.event.inputs.run_id}}
-      - name: Check files
-        run: |
-          pwd
-          sleep 20
-          ls
-          cat last_passed.json
-          git config --global user.name 'AutoSupport'
-          git config --global user.email 'autosupport@noreply.github.com'
-          git status
-          git add last_passed.json
-          git commit -m "Update last_passed.json file with the latest data"
-          git push
       - name: Upload report as artifact
         uses: actions/upload-artifact@v3
         with:
           name: report
           path: report.html
+      - name: Prepare for commit
+        run: |
+          git config --global user.name 'AutoSupport'
+          git config --global user.email 'autosupport@noreply.github.com'
+          git fetch
+          git reset --hard
+          git pull
+          git status
+      - name: Last passed data update
+        uses: ./.github/actions/make_last_passed_data
+        with:
+          token: ${{secrets.PAT}}
+          run_id: ${{github.event.inputs.run_id}}
+      - name: Commit files
+        run: |
+          pwd
+          sleep 20
+          ls
+          cat last_passed.json
+          git add last_passed.json
+          git commit -m "Update last_passed.json file with the latest data"
+          git push
+
   email_notification_fail:
     if: failure()
     needs: report_generation
