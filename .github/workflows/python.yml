@@ -112,8 +112,6 @@ jobs:
           chromedriver_version: ${{ steps.logging.outputs.chromedriver_version }}
       - name: Install dependencies
         run: pip install -r requirements.txt
-      - name: Install dependencies
-        run: pip install dist/*
       - name: List installed dependencies
         run: pip list
       - name: Run tests
