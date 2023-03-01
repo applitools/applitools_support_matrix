@@ -7,14 +7,14 @@ const base_variations = [
         "os": "ubuntu-latest",
         "version": "latest@",
     },
-    {
-        "os": "windows-latest",
-        "version": "latest@",
-    },
-    {
-        "os": "macos-latest",
-        "version": "latest@",
-    }
+    // {
+    //     "os": "windows-latest",
+    //     "version": "latest@",
+    // },
+    // {
+    //     "os": "macos-latest",
+    //     "version": "latest@",
+    // }
 ]
 const base_common = base_variations.map(variant => ({...common, ...variant,}))
 const variations = base_common
