@@ -38,6 +38,7 @@ jobs:
         id: uuid
         run: |
           echo "uuid=$(uuidgen)" >> $GITHUB_OUTPUT
+          env
       - uses: actions/checkout@v3
         with:
           repository: applitools/applitools_support_matrix
