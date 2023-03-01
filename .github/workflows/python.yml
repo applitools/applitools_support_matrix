@@ -113,7 +113,7 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt
       - name: Install eyes dependencies
-        run: pip install --no-index --find-links=file://$(pwd)/dist eyes-selenium
+        run: pip install --find-links=file://$(pwd)/dist eyes-selenium
       - name: List installed dependencies
         run: pip list
       - name: Run tests
