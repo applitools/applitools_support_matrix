@@ -13947,8 +13947,9 @@ const install = __nccwpck_require__(834);
         await parser.collect_data(packageName);
         console.log(`Package data was collected for: ${packageName}`)
         const inputVersion = core.getInput("version")
+        console.log(`Input version string: ${inputVersion}`)
         const {source, version} = parser.parseInputVersion({version:inputVersion, packageName, cwd})
-        console.log(version);
+        console.log(`Parsed version: ${version}`);
         console.log(`Package name: ${packageName} | type: ${typeof packageName}`)
         console.log(`Dir: ${dir} | type: ${typeof dir}`)
         console.log(cwd)
