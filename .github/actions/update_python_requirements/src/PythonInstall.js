@@ -37,16 +37,33 @@ async function package({version, packageName, cwd}) {
     const downloadResponse = await artifactClient.downloadArtifact(artifactName, dirPath, options)
     console.log(JSON.stringify(downloadResponse))
     deepLs(cwd)
+    const artifact_packages_paths = []
+    collect_packages_paths(path.join(cwd, 'dist', 'python'))
+    artifact_packages_paths.forEach(filePath => {
+        fs.renameSync(filePath, path.join(cwd, 'dist', path.basename(filePath)))
+    })
+    deepLs(cwd)
     throw new Error("Method isn't finished yet")
+
+    function collect_packages_paths(dir) {
+        fs.readdirSync(dir).forEach(file => {
+            const absolute = path.join(dir, file);
+            if (fs.statSync(absolute).isDirectory()) collect_packages_paths(absolute);
+            else artifact_packages_paths.push(absolute);
+        });
+    }
+
+
+    function deepLs(dir) {
+        fs.readdirSync(dir).forEach(file => {
+            const absolute = path.join(dir, file);
+            if (fs.statSync(absolute).isDirectory()) deepLs(absolute);
+            else console.log(absolute);
+        });
+    }
 }
 
-function deepLs(dir) {
-    fs.readdirSync(dir).forEach(file => {
-        const absolute = path.join(dir, file);
-        if (fs.statSync(absolute).isDirectory()) deepLs(absolute);
-        else console.log(absolute);
-    });
-}
+
 
 module.exports = install
 
