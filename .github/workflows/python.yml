@@ -8,6 +8,10 @@ on:
         default: false
         required: true
         type: boolean
+      eyes_version:
+        description: 'Set the version which should be used for the eyes SDK'
+        default: 'latest@'
+        required: false
   workflow_call:
     inputs:
       last_passed:
@@ -15,6 +19,10 @@ on:
         default: false
         required: true
         type: boolean
+      eyes_version:
+        description: 'Set the version which should be used for the eyes SDK'
+        default: 'latest@'
+        required: false
       checkout_ref:
         description: 'set ref when used from the another repo'
         default: ''
@@ -90,6 +98,13 @@ jobs:
         with:
           package: ${{matrix.framework_package}}
           version: ${{matrix.version}}
+          working-directory: ${{matrix.work_dir}}
+      - name: Eyes SDK python package install
+        id: eyes
+        uses: ./.github/actions/update_python_requirements
+        with:
+          package: ${{matrix.eyes_package}}
+          version: ${{inputs.eyes_version}}
           working-directory: ${{matrix.work_dir}}
       - name: Log extra info
         id: logging
