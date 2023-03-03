@@ -1,34 +1,23 @@
 const path = require('path')
 const fs = require('fs')
 const PythonParser = require("./src/PythonParser");
+const core = require("@actions/core");
+const install = require("./src/PythonInstall");
 
 
 (async() => {
-    const packageName = "selenium";
-// const packageName = "pytest";
-    const dir = "sdks/python";
-    const action_path = '../../../'
-    const cwd = path.join(process.cwd(), action_path, dir)
-    let version;
+    const packageName = "eyes_selenium";
+    const cwd = path.join(process.cwd())
+    const inputVersion = "package@5.15.1.test"
     const parser = new PythonParser();
-    version = "previous@1";
-    await parser.collect_data(packageName)
-    version = parser.parseInputVersion({version, packageName, cwd})
-    console.log(version)
+    await parser.collect_data(packageName);
+    console.log(`Package data was collected for: ${packageName}`)
+    console.log(`Input version string: ${inputVersion}`)
+    const {source, version} = parser.parseInputVersion({version:inputVersion, packageName, cwd})
+    console.log(`Parsed version: ${version}`);
     console.log(`Package name: ${packageName} | type: ${typeof packageName}`)
-    console.log(`Dir: ${dir} | type: ${typeof dir}`)
     console.log(cwd)
-    console.log(parser.getLatest(packageName, cwd))
-
-    let requirements = fs.readFileSync("requirements.txt").toString()
-    const reg = new RegExp(`^${packageName}[=>~]{0,2}[\\d\.\*]*$`, 'gm')
-    const newPackageLine = `${packageName}==${version}`
-    if (reg.test(requirements)) {
-        requirements = requirements.replace(reg, newPackageLine)
-    } else {
-        requirements = requirements.concat(`\n${newPackageLine}`)
-    }
-    fs.writeFileSync("requirements.txt", requirements)
+    // await install({source,version,packageName,cwd})
 })()
 
 
