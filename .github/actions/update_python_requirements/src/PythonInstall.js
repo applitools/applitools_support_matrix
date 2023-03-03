@@ -29,7 +29,7 @@ function remote({version, packageName, cwd}) {
 async function package({version, packageName, cwd}) {
     const artifact = require('@actions/artifact');
     const artifactClient = artifact.create()
-    const artifactName = 'my-artifact';
+    const artifactName = 'package';
     const dirPath = path.join(cwd, 'dist')
     const options = {
         createArtifactFolder: false

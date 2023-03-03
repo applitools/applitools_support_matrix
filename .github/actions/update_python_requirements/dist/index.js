@@ -13480,7 +13480,7 @@ function remote({version, packageName, cwd}) {
 async function package({version, packageName, cwd}) {
     const artifact = __nccwpck_require__(7756);
     const artifactClient = artifact.create()
-    const artifactName = 'my-artifact';
+    const artifactName = 'package';
     const dirPath = path.join(cwd, 'dist')
     const options = {
         createArtifactFolder: false
