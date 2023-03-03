@@ -23,6 +23,9 @@ function remote({version, packageName, cwd}) {
     } else {
         requirements = requirements.concat(`\n${newPackageLine}`)
     }
+    console.log('Update file:')
+    console.log(requirements)
+    console.log('^^^^^^^^^^^^')
     fs.writeFileSync(requirementsPath, requirements)
 }
 
