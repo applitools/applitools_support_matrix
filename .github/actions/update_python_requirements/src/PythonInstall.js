@@ -2,10 +2,12 @@ const path = require("path");
 const fs = require("fs");
 
 
-function install({source, version, packageName, cwd}) {
+async function install({source, version, packageName, cwd}) {
     switch (source) {
         case "remote":
             return remote({version, packageName, cwd})
+        case "package":
+            return await package({version, packageName, cwd})
         default:
             throw new Error(`Installer doesn't support installation from ${source}`)
     }
@@ -24,7 +26,27 @@ function remote({version, packageName, cwd}) {
     fs.writeFileSync(requirementsPath, requirements)
 }
 
+async function package({version, packageName, cwd}) {
+    const artifact = require('@actions/artifact');
+    const artifactClient = artifact.create()
+    const artifactName = 'my-artifact';
+    const dirPath = path.join(cwd, 'dist')
+    const options = {
+        createArtifactFolder: false
+    }
+    const downloadResponse = await artifactClient.downloadArtifact(artifactName, dirPath, options)
+    console.log(JSON.stringify(downloadResponse))
+    deepLs(cwd)
+    throw new Error("Method isn't finished yet")
+}
 
+function deepLs(dir) {
+    fs.readdirSync(dir).forEach(file => {
+        const absolute = path.join(dir, file);
+        if (fs.statSync(absolute).isDirectory()) deepLs(absolute);
+        else console.log(absolute);
+    });
+}
 
 module.exports = install
 

@@ -17,7 +17,7 @@ const install = require("./src/PythonInstall");
         console.log(`Package name: ${packageName} | type: ${typeof packageName}`)
         console.log(`Dir: ${dir} | type: ${typeof dir}`)
         console.log(cwd)
-        install({source,version,packageName,cwd})
+        await install({source,version,packageName,cwd})
         const time = (new Date()).toTimeString();
         core.setOutput("time", time);
         core.setOutput("package_version", version.toString())
