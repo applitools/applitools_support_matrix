@@ -13496,7 +13496,7 @@ async function package({version, packageName, cwd}) {
         fs.renameSync(filePath, path.join(cwd, 'dist', path.basename(filePath)))
     })
     deepLs(cwd)
-    remote({version: `${version} --find-links=file://${cwd}/dist`,packageName, cwd})
+    remote({version: `${version} --find-links=file://${cwd}/dist/`,packageName, cwd})
 
     function collect_packages_paths(dir) {
         fs.readdirSync(dir).forEach(file => {
