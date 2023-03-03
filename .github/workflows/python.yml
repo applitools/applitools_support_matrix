@@ -22,6 +22,7 @@ on:
       eyes_version:
         description: 'Set the version which should be used for the eyes SDK'
         default: 'latest@'
+        type: string
         required: false
       checkout_ref:
         description: 'set ref when used from the another repo'
