@@ -1,5 +1,6 @@
 const path = require("path");
 const fs = require("fs");
+const {shellCommand} = require("../../util/common")
 
 
 async function install({source, version, packageName, cwd}) {
@@ -7,7 +8,7 @@ async function install({source, version, packageName, cwd}) {
         case "remote":
             return remote({version, packageName, cwd})
         case "package":
-            return await package({version, packageName, cwd})
+            return await packageInstall({version, packageName, cwd})
         default:
             throw new Error(`Installer doesn't support installation from ${source}`)
     }
@@ -29,7 +30,18 @@ function remote({version, packageName, cwd}) {
     fs.writeFileSync(requirementsPath, requirements)
 }
 
-async function package({version, packageName, cwd}) {
+function removeDepsFromRequirements({packageName, cwd}){
+    const requirementsPath = path.join(cwd, "requirements.txt")
+    let requirements = fs.readFileSync(requirementsPath).toString()
+    const reg = new RegExp(`^${packageName}[=>~]{0,2}[\\d\.\*]*$`, 'gm')
+    requirements = requirements.split('\n').filter(line => !reg.test(line)).join('\n')
+    console.log('Update file:')
+    console.log(requirements)
+    console.log('^^^^^^^^^^^^')
+    fs.writeFileSync(requirementsPath, requirements)
+}
+
+async function packageInstall({version, packageName, cwd}) {
     const artifact = require('@actions/artifact');
     const artifactClient = artifact.create()
     const artifactName = 'package';
@@ -45,7 +57,8 @@ async function package({version, packageName, cwd}) {
         fs.renameSync(filePath, path.join(cwd, 'dist', path.basename(filePath)))
     })
     deepLs(cwd)
-    remote({version: `${version} --find-links=file://${cwd}/dist/`,packageName, cwd})
+    removeDepsFromRequirements({packageName, cwd})
+    shellCommand(`pip install ${packageName}==${version} --find-links=file://${cwd}/dist/`, cwd)
 
     function collect_packages_paths(dir) {
         fs.readdirSync(dir).forEach(file => {

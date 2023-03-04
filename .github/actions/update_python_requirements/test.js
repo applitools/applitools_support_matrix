@@ -1,12 +1,9 @@
 const path = require('path')
-const fs = require('fs')
 const PythonParser = require("./src/PythonParser");
-const core = require("@actions/core");
-const install = require("./src/PythonInstall");
 
 
 (async() => {
-    const packageName = "eyes_selenium";
+    const packageName = "eyes-selenium";
     const cwd = path.join(process.cwd())
     const inputVersion = "package@5.15.1.test"
     const parser = new PythonParser();
@@ -19,7 +16,5 @@ const install = require("./src/PythonInstall");
     console.log(cwd)
     // await install({source,version,packageName,cwd})
 })()
-
-
 
 
