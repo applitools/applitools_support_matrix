@@ -1,5 +1,5 @@
 {
-  "id": "804df434-1be7-4ba7-bb7a-acab625a17fe",
+  "id": "db1f7a16-cbc9-46d8-88c3-097ba11e71b1",
   "data": [
     {
       "title": "Java",
@@ -246,96 +246,7 @@
     },
     {
       "title": "Python",
-      "jobs": [
-        {
-          "title": "python / Python Selenium [ubuntu-latest | 3.10] version: latest@",
-          "python-version": "3.10",
-          "work_dir": "sdks/python",
-          "os": "ubuntu-latest",
-          "version": "4.8.2",
-          "use_selenium": true,
-          "test_command": "pytest -n 2",
-          "framework_package": "selenium",
-          "job_name": "Python Selenium [ubuntu-latest | 3.10] version: latest@",
-          "matrix_config_dir": "sdks/python",
-          "passed": true,
-          "package": "selenium",
-          "matrix_string": "{\"python-version\":\"3.10\",\"work_dir\":\"sdks/python\",\"os\":\"ubuntu-latest\",\"version\":\"latest@\",\"use_selenium\":true,\"test_command\":\"pytest -n 2\",\"framework_package\":\"selenium\",\"job_name\":\"Python Selenium [ubuntu-latest | 3.10] version: latest@\",\"matrix_config_dir\":\"sdks/python\"}"
-        },
-        {
-          "title": "python / Python Selenium [windows-latest | 3.10] version: latest@",
-          "python-version": "3.10",
-          "work_dir": "sdks/python",
-          "os": "windows-latest",
-          "version": "4.8.2",
-          "use_selenium": true,
-          "test_command": "pytest -n 2",
-          "framework_package": "selenium",
-          "job_name": "Python Selenium [windows-latest | 3.10] version: latest@",
-          "matrix_config_dir": "sdks/python",
-          "passed": true,
-          "package": "selenium",
-          "matrix_string": "{\"python-version\":\"3.10\",\"work_dir\":\"sdks/python\",\"os\":\"windows-latest\",\"version\":\"latest@\",\"use_selenium\":true,\"test_command\":\"pytest -n 2\",\"framework_package\":\"selenium\",\"job_name\":\"Python Selenium [windows-latest | 3.10] version: latest@\",\"matrix_config_dir\":\"sdks/python\"}"
-        },
-        {
-          "title": "python / Python Selenium [macos-latest | 3.10] version: latest@",
-          "python-version": "3.10",
-          "work_dir": "sdks/python",
-          "os": "macos-latest",
-          "version": "4.8.2",
-          "use_selenium": true,
-          "test_command": "pytest -n 2",
-          "framework_package": "selenium",
-          "job_name": "Python Selenium [macos-latest | 3.10] version: latest@",
-          "matrix_config_dir": "sdks/python",
-          "passed": true,
-          "package": "selenium",
-          "matrix_string": "{\"python-version\":\"3.10\",\"work_dir\":\"sdks/python\",\"os\":\"macos-latest\",\"version\":\"latest@\",\"use_selenium\":true,\"test_command\":\"pytest -n 2\",\"framework_package\":\"selenium\",\"job_name\":\"Python Selenium [macos-latest | 3.10] version: latest@\",\"matrix_config_dir\":\"sdks/python\"}"
-        },
-        {
-          "title": "python / Python Appium [ubuntu-latest | 3.10] version: latest@",
-          "python-version": "3.10",
-          "work_dir": "sdks/python",
-          "os": "ubuntu-latest",
-          "version": "2.8.1",
-          "test_command": "pytest -c appium.ini",
-          "framework_package": "Appium-Python-Client",
-          "job_name": "Python Appium [ubuntu-latest | 3.10] version: latest@",
-          "matrix_config_dir": "sdks/python",
-          "passed": true,
-          "package": "Appium-Python-Client",
-          "matrix_string": "{\"python-version\":\"3.10\",\"work_dir\":\"sdks/python\",\"os\":\"ubuntu-latest\",\"version\":\"latest@\",\"test_command\":\"pytest -c appium.ini\",\"framework_package\":\"Appium-Python-Client\",\"job_name\":\"Python Appium [ubuntu-latest | 3.10] version: latest@\",\"matrix_config_dir\":\"sdks/python\"}"
-        },
-        {
-          "title": "python / Python Appium [windows-latest | 3.10] version: latest@",
-          "python-version": "3.10",
-          "work_dir": "sdks/python",
-          "os": "windows-latest",
-          "version": "2.8.1",
-          "test_command": "pytest -c appium.ini",
-          "framework_package": "Appium-Python-Client",
-          "job_name": "Python Appium [windows-latest | 3.10] version: latest@",
-          "matrix_config_dir": "sdks/python",
-          "passed": true,
-          "package": "Appium-Python-Client",
-          "matrix_string": "{\"python-version\":\"3.10\",\"work_dir\":\"sdks/python\",\"os\":\"windows-latest\",\"version\":\"latest@\",\"test_command\":\"pytest -c appium.ini\",\"framework_package\":\"Appium-Python-Client\",\"job_name\":\"Python Appium [windows-latest | 3.10] version: latest@\",\"matrix_config_dir\":\"sdks/python\"}"
-        },
-        {
-          "title": "python / Python Appium [macos-latest | 3.10] version: latest@",
-          "python-version": "3.10",
-          "work_dir": "sdks/python",
-          "os": "macos-latest",
-          "version": "2.8.1",
-          "test_command": "pytest -c appium.ini",
-          "framework_package": "Appium-Python-Client",
-          "job_name": "Python Appium [macos-latest | 3.10] version: latest@",
-          "matrix_config_dir": "sdks/python",
-          "passed": true,
-          "package": "Appium-Python-Client",
-          "matrix_string": "{\"python-version\":\"3.10\",\"work_dir\":\"sdks/python\",\"os\":\"macos-latest\",\"version\":\"latest@\",\"test_command\":\"pytest -c appium.ini\",\"framework_package\":\"Appium-Python-Client\",\"job_name\":\"Python Appium [macos-latest | 3.10] version: latest@\",\"matrix_config_dir\":\"sdks/python\"}"
-        }
-      ],
-      "config_path": "sdks/python"
+      "jobs": []
     },
     {
       "title": "Dotnet",
@@ -489,102 +400,7 @@
     },
     {
       "title": "JS Selenium",
-      "jobs": [
-        {
-          "title": "js_selenium / JS Selenium [ubuntu-latest | 18] version: latest@",
-          "node-version": "18",
-          "work_dir": "sdks/js/eyes-selenium",
-          "js_config": "eyes-selenium",
-          "framework_package": "selenium-webdriver",
-          "os": "ubuntu-latest",
-          "version": "4.8.1",
-          "use_selenium": true,
-          "test_command": "npm test",
-          "job_name": "JS Selenium [ubuntu-latest | 18] version: latest@",
-          "matrix_config_dir": "sdks/js/eyes-selenium",
-          "passed": true,
-          "package": "selenium-webdriver",
-          "matrix_string": "{\"node-version\":\"18\",\"work_dir\":\"sdks/js/eyes-selenium\",\"js_config\":\"eyes-selenium\",\"framework_package\":\"selenium-webdriver\",\"os\":\"ubuntu-latest\",\"version\":\"latest@\",\"use_selenium\":true,\"test_command\":\"npm test\",\"job_name\":\"JS Selenium [ubuntu-latest | 18] version: latest@\",\"matrix_config_dir\":\"sdks/js/eyes-selenium\"}"
-        },
-        {
-          "title": "js_selenium / JS Selenium [windows-latest | 18] version: latest@",
-          "node-version": "18",
-          "work_dir": "sdks/js/eyes-selenium",
-          "js_config": "eyes-selenium",
-          "framework_package": "selenium-webdriver",
-          "os": "windows-latest",
-          "version": "4.8.1",
-          "use_selenium": true,
-          "test_command": "npm test",
-          "job_name": "JS Selenium [windows-latest | 18] version: latest@",
-          "matrix_config_dir": "sdks/js/eyes-selenium",
-          "passed": true,
-          "package": "selenium-webdriver",
-          "matrix_string": "{\"node-version\":\"18\",\"work_dir\":\"sdks/js/eyes-selenium\",\"js_config\":\"eyes-selenium\",\"framework_package\":\"selenium-webdriver\",\"os\":\"windows-latest\",\"version\":\"latest@\",\"use_selenium\":true,\"test_command\":\"npm test\",\"job_name\":\"JS Selenium [windows-latest | 18] version: latest@\",\"matrix_config_dir\":\"sdks/js/eyes-selenium\"}"
-        },
-        {
-          "title": "js_selenium / JS Selenium [macos-latest | 18] version: latest@",
-          "node-version": "18",
-          "work_dir": "sdks/js/eyes-selenium",
-          "js_config": "eyes-selenium",
-          "framework_package": "selenium-webdriver",
-          "os": "macos-latest",
-          "version": "4.8.1",
-          "use_selenium": true,
-          "test_command": "npm test",
-          "job_name": "JS Selenium [macos-latest | 18] version: latest@",
-          "matrix_config_dir": "sdks/js/eyes-selenium",
-          "passed": true,
-          "package": "selenium-webdriver",
-          "matrix_string": "{\"node-version\":\"18\",\"work_dir\":\"sdks/js/eyes-selenium\",\"js_config\":\"eyes-selenium\",\"framework_package\":\"selenium-webdriver\",\"os\":\"macos-latest\",\"version\":\"latest@\",\"use_selenium\":true,\"test_command\":\"npm test\",\"job_name\":\"JS Selenium [macos-latest | 18] version: latest@\",\"matrix_config_dir\":\"sdks/js/eyes-selenium\"}"
-        },
-        {
-          "title": "js_selenium / JS Appium [ubuntu-latest | 18] version: latest@",
-          "node-version": "18",
-          "work_dir": "sdks/js/eyes-selenium",
-          "js_config": "eyes-selenium",
-          "framework_package": "selenium-webdriver",
-          "os": "ubuntu-latest",
-          "version": "4.8.1",
-          "test_command": "npm run appium",
-          "job_name": "JS Appium [ubuntu-latest | 18] version: latest@",
-          "matrix_config_dir": "sdks/js/eyes-selenium",
-          "passed": true,
-          "package": "selenium-webdriver",
-          "matrix_string": "{\"node-version\":\"18\",\"work_dir\":\"sdks/js/eyes-selenium\",\"js_config\":\"eyes-selenium\",\"framework_package\":\"selenium-webdriver\",\"os\":\"ubuntu-latest\",\"version\":\"latest@\",\"test_command\":\"npm run appium\",\"job_name\":\"JS Appium [ubuntu-latest | 18] version: latest@\",\"matrix_config_dir\":\"sdks/js/eyes-selenium\"}"
-        },
-        {
-          "title": "js_selenium / JS Appium [windows-latest | 18] version: latest@",
-          "node-version": "18",
-          "work_dir": "sdks/js/eyes-selenium",
-          "js_config": "eyes-selenium",
-          "framework_package": "selenium-webdriver",
-          "os": "windows-latest",
-          "version": "4.8.1",
-          "test_command": "npm run appium",
-          "job_name": "JS Appium [windows-latest | 18] version: latest@",
-          "matrix_config_dir": "sdks/js/eyes-selenium",
-          "passed": true,
-          "package": "selenium-webdriver",
-          "matrix_string": "{\"node-version\":\"18\",\"work_dir\":\"sdks/js/eyes-selenium\",\"js_config\":\"eyes-selenium\",\"framework_package\":\"selenium-webdriver\",\"os\":\"windows-latest\",\"version\":\"latest@\",\"test_command\":\"npm run appium\",\"job_name\":\"JS Appium [windows-latest | 18] version: latest@\",\"matrix_config_dir\":\"sdks/js/eyes-selenium\"}"
-        },
-        {
-          "title": "js_selenium / JS Appium [macos-latest | 18] version: latest@",
-          "node-version": "18",
-          "work_dir": "sdks/js/eyes-selenium",
-          "js_config": "eyes-selenium",
-          "framework_package": "selenium-webdriver",
-          "os": "macos-latest",
-          "version": "4.8.1",
-          "test_command": "npm run appium",
-          "job_name": "JS Appium [macos-latest | 18] version: latest@",
-          "matrix_config_dir": "sdks/js/eyes-selenium",
-          "passed": true,
-          "package": "selenium-webdriver",
-          "matrix_string": "{\"node-version\":\"18\",\"work_dir\":\"sdks/js/eyes-selenium\",\"js_config\":\"eyes-selenium\",\"framework_package\":\"selenium-webdriver\",\"os\":\"macos-latest\",\"version\":\"latest@\",\"test_command\":\"npm run appium\",\"job_name\":\"JS Appium [macos-latest | 18] version: latest@\",\"matrix_config_dir\":\"sdks/js/eyes-selenium\"}"
-        }
-      ],
-      "config_path": "sdks/js/eyes-selenium"
+      "jobs": []
     },
     {
       "title": "JS Playwright",
