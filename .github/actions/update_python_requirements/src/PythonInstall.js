@@ -58,6 +58,7 @@ async function packageInstall({version, packageName, cwd}) {
     })
     deepLs(cwd)
     removeDepsFromRequirements({packageName, cwd})
+    shellCommand(`pip install core-universal --no-index --find-links=file://${cwd}/dist/`, cwd)
     shellCommand(`pip install ${packageName}==${version} --find-links=file://${cwd}/dist/`, cwd)
 
     function collect_packages_paths(dir) {
