@@ -13507,9 +13507,10 @@ async function packageInstall({version, packageName, cwd}) {
     artifact_packages_paths.forEach(filePath => {
         fs.renameSync(filePath, path.join(cwd, 'dist', path.basename(filePath)))
     })
+    const coreVersion = artifact_packages_paths.filter(val => val.startsWith("core_universal"))[0].split("-")[1]
     deepLs(cwd)
     removeDepsFromRequirements({packageName, cwd})
-    shellCommand(`pip install core-universal --no-index --find-links=file://${cwd}/dist/`, cwd)
+    shellCommand(`pip install core-universal==${coreVersion} --no-index --find-links=file://${cwd}/dist/`, cwd)
     shellCommand(`pip install ${packageName}==${version} --find-links=file://${cwd}/dist/`, cwd)
 
     function collect_packages_paths(dir) {
