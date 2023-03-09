@@ -74,6 +74,7 @@ jobs:
       SAUCE_USERNAME: ${{secrets.SAUCE_USERNAME}}
       SAUCE_ACCESS_KEY: ${{secrets.SAUCE_ACCESS_KEY}}
   python:
+    if: always()
     needs: java
     uses: ./.github/workflows/python.yml
     with:
@@ -83,6 +84,7 @@ jobs:
       SAUCE_USERNAME: ${{secrets.SAUCE_USERNAME}}
       SAUCE_ACCESS_KEY: ${{secrets.SAUCE_ACCESS_KEY}}
   dotnet:
+    if: always()
     needs: ruby
     uses: ./.github/workflows/dotnet.yml
     with:
@@ -92,6 +94,7 @@ jobs:
       SAUCE_USERNAME: ${{secrets.SAUCE_USERNAME}}
       SAUCE_ACCESS_KEY: ${{secrets.SAUCE_ACCESS_KEY}}
   js_selenium:
+    if: always()
     needs: [ python,
              dotnet
     ]
