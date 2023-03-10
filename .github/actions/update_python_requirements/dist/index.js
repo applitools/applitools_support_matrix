@@ -13452,6 +13452,8 @@ function wrappy (fn, cb) {
 const path = __nccwpck_require__(1017);
 const fs = __nccwpck_require__(7147);
 const {shellCommand} = __nccwpck_require__(222)
+const {spawn} = __nccwpck_require__(2081);
+const core = __nccwpck_require__(810);
 
 
 async function install({source, version, packageName, cwd}) {
@@ -13507,11 +13509,14 @@ async function packageInstall({version, packageName, cwd}) {
     artifact_packages_paths.forEach(filePath => {
         fs.renameSync(filePath, path.join(cwd, 'dist', path.basename(filePath)))
     })
-    const coreVersion = artifact_packages_paths.map(value => path.basename(value)).filter(val => val.startsWith("core_universal"))[0].split("-")[1]
     deepLs(cwd)
     removeDepsFromRequirements({packageName, cwd})
-    shellCommand(`pip install core-universal==${coreVersion} --no-index --find-links=file://${cwd}/dist/`, cwd)
-    shellCommand(`pip install ${packageName}==${version} --find-links=file://${cwd}/dist/`, cwd)
+    shellCommand(`pip install pypiserver`, cwd)
+    const spawnOptions = {detached: true, stdio: 'ignore'}
+    const pypi = spawn("pypi-server", ["run", "-p", "8080", `${cwd}/dist`], spawnOptions)
+    core.exportVariable("PIP_EXTRA_INDEX_URL", "http://localhost:8080/")
+    pypi.unref();
+    remote({version, packageName, cwd})
 
     function collect_packages_paths(dir) {
         fs.readdirSync(dir).forEach(file => {

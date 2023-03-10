@@ -1,6 +1,8 @@
 const path = require("path");
 const fs = require("fs");
 const {shellCommand} = require("../../util/common")
+const {spawn} = require('child_process');
+const core = require('@actions/core');
 
 
 async function install({source, version, packageName, cwd}) {
@@ -56,11 +58,14 @@ async function packageInstall({version, packageName, cwd}) {
     artifact_packages_paths.forEach(filePath => {
         fs.renameSync(filePath, path.join(cwd, 'dist', path.basename(filePath)))
     })
-    const coreVersion = artifact_packages_paths.map(value => path.basename(value)).filter(val => val.startsWith("core_universal"))[0].split("-")[1]
     deepLs(cwd)
     removeDepsFromRequirements({packageName, cwd})
-    shellCommand(`pip install core-universal==${coreVersion} --no-index --find-links=file://${cwd}/dist/`, cwd)
-    shellCommand(`pip install ${packageName}==${version} --find-links=file://${cwd}/dist/`, cwd)
+    shellCommand(`pip install pypiserver`, cwd)
+    const spawnOptions = {detached: true, stdio: 'ignore'}
+    const pypi = spawn("pypi-server", ["run", "-p", "8080", `${cwd}/dist`], spawnOptions)
+    core.exportVariable("PIP_EXTRA_INDEX_URL", "http://localhost:8080/")
+    pypi.unref();
+    remote({version, packageName, cwd})
 
     function collect_packages_paths(dir) {
         fs.readdirSync(dir).forEach(file => {
