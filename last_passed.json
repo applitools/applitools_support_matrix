@@ -1,5 +1,5 @@
 {
-  "id": "783deb6d-b4ab-43b4-bb3a-80f0a64654a1",
+  "id": "eb78ab21-f9d2-4a36-b618-8e3353d1340f",
   "data": [
     {
       "title": "Java",
@@ -320,7 +320,20 @@
           "package": "Appium-Python-Client",
           "matrix_string": "{\"python-version\":\"3.10\",\"work_dir\":\"sdks/python\",\"os\":\"windows-latest\",\"version\":\"latest@\",\"test_command\":\"pytest -c appium.ini\",\"framework_package\":\"Appium-Python-Client\",\"job_name\":\"Python Appium [windows-latest | 3.10] version: latest@\",\"matrix_config_dir\":\"sdks/python\"}"
         },
-        null
+        {
+          "title": "python / Python Appium [macos-latest | 3.10] version: latest@",
+          "python-version": "3.10",
+          "work_dir": "sdks/python",
+          "os": "macos-latest",
+          "version": "2.8.1",
+          "test_command": "pytest -c appium.ini",
+          "framework_package": "Appium-Python-Client",
+          "job_name": "Python Appium [macos-latest | 3.10] version: latest@",
+          "matrix_config_dir": "sdks/python",
+          "passed": true,
+          "package": "Appium-Python-Client",
+          "matrix_string": "{\"python-version\":\"3.10\",\"work_dir\":\"sdks/python\",\"os\":\"macos-latest\",\"version\":\"latest@\",\"test_command\":\"pytest -c appium.ini\",\"framework_package\":\"Appium-Python-Client\",\"job_name\":\"Python Appium [macos-latest | 3.10] version: latest@\",\"matrix_config_dir\":\"sdks/python\"}"
+        }
       ],
       "config_path": "sdks/python"
     },
@@ -799,7 +812,7 @@
         {
           "title": "js_webdriverio / JS WDIO [ubuntu-latest | 18] version: latest@",
           "os": "ubuntu-latest",
-          "version": "8.5.7",
+          "version": "8.5.8",
           "node-version": "18",
           "use_selenium": true,
           "framework_package": "webdriverio",
@@ -815,7 +828,7 @@
         {
           "title": "js_webdriverio / JS WDIO [windows-latest | 18] version: latest@",
           "os": "windows-latest",
-          "version": "8.5.7",
+          "version": "8.5.8",
           "node-version": "18",
           "use_selenium": true,
           "framework_package": "webdriverio",
@@ -831,7 +844,7 @@
         {
           "title": "js_webdriverio / JS WDIO [macos-latest | 18] version: latest@",
           "os": "macos-latest",
-          "version": "8.5.7",
+          "version": "8.5.8",
           "node-version": "18",
           "use_selenium": true,
           "framework_package": "webdriverio",
