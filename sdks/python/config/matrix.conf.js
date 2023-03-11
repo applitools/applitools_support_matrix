@@ -1,6 +1,7 @@
 const common = {
     "python-version": "3.10",
     "work_dir": "sdks/python",
+    eyes_package: "eyes-selenium"
 }
 const base_variations = [
     {
