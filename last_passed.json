@@ -1,5 +1,5 @@
 {
-  "id": "16610428-4daa-4211-9e6a-9ff91b424198",
+  "id": "b24e807e-19f2-45b1-aeb7-f98fe20e9fb9",
   "data": [
     {
       "title": "Java",
@@ -396,6 +396,22 @@
           "passed": true,
           "package": "Selenium.WebDriver",
           "matrix_string": "{\"dotnet-version\":\"3.1.x\",\"test_command\":\"dotnet test --no-build -- NUnit.NumberOfTestWorkers=1\",\"os\":\"macos-latest\",\"version\":\"exact@3.141.0\",\"use_selenium\":true,\"selenium_legacy\":true,\"work_dir\":\"sdks/dotnet/selenium\",\"framework_package\":\"Selenium.WebDriver\",\"eyes_package\":\"Eyes.Selenium\",\"job_name\":\"Dotnet Selenium [macos-latest | 3.1.x] [version: exact@3.141.0]\",\"matrix_config_dir\":\"sdks/dotnet\"}"
+        },
+        {
+          "title": "dotnet / Dotnet Selenium [ubuntu-latest | 3.1.x] [version: latest@]",
+          "dotnet-version": "3.1.x",
+          "test_command": "dotnet test --no-build -- NUnit.NumberOfTestWorkers=1",
+          "os": "ubuntu-latest",
+          "version": "4.8.1",
+          "use_selenium": true,
+          "work_dir": "sdks/dotnet/selenium",
+          "framework_package": "Selenium.WebDriver",
+          "eyes_package": "Eyes.Selenium4",
+          "job_name": "Dotnet Selenium [ubuntu-latest | 3.1.x] [version: latest@]",
+          "matrix_config_dir": "sdks/dotnet",
+          "passed": true,
+          "package": "Selenium.WebDriver",
+          "matrix_string": "{\"dotnet-version\":\"3.1.x\",\"test_command\":\"dotnet test --no-build -- NUnit.NumberOfTestWorkers=1\",\"os\":\"ubuntu-latest\",\"version\":\"latest@\",\"use_selenium\":true,\"work_dir\":\"sdks/dotnet/selenium\",\"framework_package\":\"Selenium.WebDriver\",\"eyes_package\":\"Eyes.Selenium4\",\"job_name\":\"Dotnet Selenium [ubuntu-latest | 3.1.x] [version: latest@]\",\"matrix_config_dir\":\"sdks/dotnet\"}"
         },
         {
           "title": "dotnet / Dotnet Selenium [windows-latest | 3.1.x] [version: latest@]",
