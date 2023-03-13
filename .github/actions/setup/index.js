@@ -30,10 +30,10 @@ if (use_last_passed) {
     const fileName =  `matrix.conf.js`;
     const include = [];
     dirs.forEach(dir => {
-        const filePath = path.join(process.cwd(), work_dir, 'config',  fileName)
-        console.log(filePath)
+        const filePath = path.join(process.cwd(), dir, 'config',  fileName)
+        console.log(`Filepath value: ${filePath}`)
         const readedFile = require(filePath)
-        include.concat(readedFile.include.map(matrix_data => ({...matrix_data, matrix_config_dir:work_dir})))
+        include.concat(readedFile.include.map(matrix_data => ({...matrix_data, matrix_config_dir:dir})))
     })
 
     matrix = {
