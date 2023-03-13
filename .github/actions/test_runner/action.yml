@@ -1,0 +1,22 @@
+name: 'All languanges test runner'
+description: 'Action to run all tests'
+inputs:
+  lang:
+    description: "Choose lang to run"
+    required: true
+
+runs:
+  using: "composite"
+  steps:
+    - name: Run JS test
+      if: ${{inputs.lang == 'js'}}
+      uses: ./.github/actions/test_js
+    - name: Run Python test
+      if: ${{inputs.lang == 'python'}}
+      uses: ./.github/actions/test_python
+    - name: Check input
+      if: ${{ !contains(['js','python'], inputs.lang) }}
+      shell: bash
+      run: |
+        echo "Unsupported test lang was used ${{inputs.lang}}"
+        exit 1

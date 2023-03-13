@@ -1,0 +1,56 @@
+name: 'JS test'
+description: 'Action to run JS packages tests'
+
+runs:
+  using: "composite"
+  steps:
+    - name: Setup node
+      uses: actions/setup-node@v3
+      with:
+        node-version: ${{ matrix.node-version }}
+    - name: Start Selenium Server
+      if: ${{matrix.use_selenium }}
+      id: selenium
+      uses: ./.github/actions/start_selenium
+      with:
+        legacy: ${{matrix.selenium_legacy}}
+    - name: Framework install
+      id: install
+      uses: ./.github/actions/install_npm_package
+      with:
+        package: ${{matrix.framework_package}}
+        version: ${{matrix.version}}
+        working-directory: ${{matrix.work_dir}}
+    - name: Log extra info
+      id: logging
+      uses: ./.github/actions/chrome_version
+    - name: Logging version generation
+      uses: ./.github/actions/log_data_json
+      with:
+        package: ${{ steps.install.outputs.package_name }}
+        version: ${{ steps.install.outputs.package_version }}
+        os: ${{runner.os}}
+        title: ${{ matrix.job_name }}
+        matrix: ${{ toJSON(matrix) }}
+        work_dir: ${{matrix.work_dir}}
+        selenium: ${{ steps.selenium.outputs.version }}
+        chrome_version: ${{ steps.logging.outputs.chrome_version }}
+        chromedriver_version: ${{ steps.logging.outputs.chromedriver_version }}
+    - name: Pre run install
+      if: ${{!matrix.legacy_npm_peers }}
+      shell: bash
+      working-directory: ${{matrix.work_dir}}
+      run: npm install
+    - name: Pre run install with legacy peers
+      if: ${{matrix.legacy_npm_peers }}
+      shell: bash
+      working-directory: ${{matrix.work_dir}}
+      run: npm install --legacy-peer-deps
+    - name: Print installed packages
+      shell: bash
+      working-directory: ${{matrix.work_dir}}
+      run: npm ls
+    - name: Run tests
+      shell: bash
+      working-directory: ${{matrix.work_dir}}
+      run: ${{matrix.test_command}}

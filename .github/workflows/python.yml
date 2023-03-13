@@ -83,64 +83,7 @@ jobs:
     name:  ${{ matrix.job_name }}
     steps:
       - uses: actions/checkout@v3
+      - name: Test
+        uses: ./.github/actions/test_runner
         with:
-          repository: applitools/applitools_support_matrix
-          ref: ${{inputs.checkout_ref}}
-      - name: Set up Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: ${{ matrix.python-version }}
-      - name: Start Selenium Server
-        if: ${{matrix.use_selenium }}
-        id: selenium
-        uses: ./.github/actions/start_selenium
-      - name: Framework python package install
-        id: install
-        uses: ./.github/actions/update_python_requirements
-        with:
-          package: ${{matrix.framework_package}}
-          version: ${{matrix.version}}
-          working-directory: ${{matrix.work_dir}}
-      - name: Eyes SDK python package install
-        id: eyes
-        uses: ./.github/actions/update_python_requirements
-        with:
-          package: ${{matrix.eyes_package}}
-          version: ${{inputs.eyes_version}}
-          working-directory: ${{matrix.work_dir}}
-      - name: Log extra info
-        id: logging
-        run: |
-          chromedriver --version
-          echo "chromedriver_version=$(chromedriver --version)" >> $GITHUB_OUTPUT
-          if [ "$RUNNER_OS" == "Linux" ]; then
-               google-chrome --version
-               echo "chrome_version=$(google-chrome --version)" >> $GITHUB_OUTPUT
-          elif [ "$RUNNER_OS" == "Windows" ]; then
-               powershell.exe -command "(Get-Item 'C:\Program Files\Google\Chrome\Application\chrome.exe').VersionInfo.ProductVersion"
-               echo "chrome_version=$(powershell.exe -command "(Get-Item 'C:\Program Files\Google\Chrome\Application\chrome.exe').VersionInfo.ProductVersion")" >> $GITHUB_OUTPUT
-          elif [ "$RUNNER_OS" == "macOS" ]; then
-               /Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --version 
-               echo "chrome_version=$(/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --version)" >> $GITHUB_OUTPUT
-          else
-               echo "$RUNNER_OS not supported"
-               exit 1
-          fi
-      - name: Logging version generation
-        uses: ./.github/actions/log_data_json
-        with:
-          package: ${{ steps.install.outputs.package_name }}
-          version: ${{ steps.install.outputs.package_version }}
-          os: ${{runner.os}}
-          title: ${{ matrix.job_name }}
-          selenium: ${{ steps.selenium.outputs.version }}
-          matrix:  ${{ toJSON(matrix) }}
-          work_dir: ${{matrix.work_dir}}
-          chrome_version: ${{ steps.logging.outputs.chrome_version }}
-          chromedriver_version: ${{ steps.logging.outputs.chromedriver_version }}
-      - name: Install dependencies
-        run: pip install -r requirements.txt
-      - name: List installed dependencies
-        run: pip list
-      - name: Run tests
-        run: ${{matrix.test_command}}
+          lang: 'python'
