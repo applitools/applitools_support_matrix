@@ -35,8 +35,14 @@ runs:
         chrome_version: ${{ steps.logging.outputs.chrome_version }}
         chromedriver_version: ${{ steps.logging.outputs.chromedriver_version }}
     - name: Install dependencies
+      shell: bash
+      working-directory: ${{matrix.work_dir}}
       run: pip install -r requirements.txt
     - name: List installed dependencies
+      shell: bash
+      working-directory: ${{matrix.work_dir}}
       run: pip list
     - name: Run tests
+      shell: bash
+      working-directory: ${{matrix.work_dir}}
       run: ${{matrix.test_command}}
