@@ -86,5 +86,5 @@ jobs:
       - name: Test
         uses: ./.github/actions/test_runner
         with:
-          lang: 'asdasd'
+          lang: ${{matrix.test_runner}}
           eyes_version: ${{inputs.eyes_version}}

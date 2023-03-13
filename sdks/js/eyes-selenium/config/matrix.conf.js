@@ -3,7 +3,8 @@ const common = {
     "eyes_package": "@applitools/eyes-selenium",
     "work_dir": "sdks/js/eyes-selenium",
     "js_config": "eyes-selenium",
-    "framework_package": "selenium-webdriver"
+    "framework_package": "selenium-webdriver",
+    "test_runner": "js"
 }
 const base_variations = [
     {
