@@ -2,6 +2,7 @@ const common = {
     "node-version": "18",
     "work_dir": "sdks/js/eyes-selenium",
     "js_config": "eyes-selenium",
+    "test_action": "./.github/actions/js_test",
     "framework_package": "selenium-webdriver"
 }
 const base_variations = [
