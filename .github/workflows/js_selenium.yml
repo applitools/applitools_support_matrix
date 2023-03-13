@@ -8,10 +8,10 @@ on:
         default: false
         required: true
         type: boolean
-    eyes_version:
-      description: 'Set the version which should be used for the eyes SDK'
-      default: 'latest@'
-      required: false
+      eyes_version:
+        description: 'Set the version which should be used for the eyes SDK'
+        default: 'latest@'
+        required: false
   workflow_call:
     inputs:
       last_passed:
