@@ -2850,6 +2850,7 @@ if (use_last_passed) {
     const include = [];
     dirs.forEach(dir => {
         const filePath = path.join(process.cwd(), work_dir, 'config',  fileName)
+        console.log(filePath)
         const readedFile = require(filePath)
         include.concat(readedFile.include.map(matrix_data => ({...matrix_data, matrix_config_dir:work_dir})))
     })
