@@ -67,6 +67,6 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Test
-        uses: ${{matrix.test_action}}
+        uses: ./.github/actions/js_test
         with:
           work_dir: ${{matrix.work_dir}}
