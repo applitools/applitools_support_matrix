@@ -33,13 +33,6 @@ runs:
         package: ${{matrix.eyes_package}}
         version: ${{inputs.eyes_version}}
         working-directory: ${{matrix.work_dir}}
-    - name: Eyes SDK python package install
-      id: eyes
-      uses: ./.github/actions/update_python_requirements
-      with:
-        package: ${{matrix.eyes_package}}
-        version: ${{inputs.eyes_version}}
-        working-directory: ${{matrix.work_dir}}
     - name: Log extra info
       id: logging
       uses: ./.github/actions/chrome_version
