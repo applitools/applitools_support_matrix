@@ -87,3 +87,4 @@ jobs:
         uses: ./.github/actions/test_runner
         with:
           lang: 'python'
+          eyes_version: ${{inputs.eyes_version}}

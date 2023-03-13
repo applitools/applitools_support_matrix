@@ -4,6 +4,10 @@ inputs:
   lang:
     description: "Choose lang to run"
     required: true
+  eyes_version:
+    description: 'Set the version which should be used for the eyes SDK'
+    default: 'latest@'
+    required: false
 
 runs:
   using: "composite"
@@ -11,9 +15,13 @@ runs:
     - name: Run JS test
       if: ${{inputs.lang == 'js'}}
       uses: ./.github/actions/test_js
+      with:
+        eyes_version: ${{inputs.eyes_version}}
     - name: Run Python test
       if: ${{inputs.lang == 'python'}}
       uses: ./.github/actions/test_py
+      with:
+        eyes_version: ${{inputs.eyes_version}}
     - name: Check input
       if: ${{ !contains(fromJSON('["js","python"]'), inputs.lang) }}
       shell: bash
