@@ -13,7 +13,7 @@ runs:
       uses: ./.github/actions/test_js
     - name: Run Python test
       if: ${{inputs.lang == 'python'}}
-      uses: ./.github/actions/test_python
+      uses: ./.github/actions/test_py
     - name: Check input
       if: ${{ !contains(fromJSON('["js","python"]'), inputs.lang) }}
       shell: bash
