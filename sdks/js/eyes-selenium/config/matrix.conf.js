@@ -1,5 +1,6 @@
 const common = {
     "node-version": "18",
+    "eyes_package": "@applitools/eyes-selenium",
     "work_dir": "sdks/js/eyes-selenium",
     "js_config": "eyes-selenium",
     "framework_package": "selenium-webdriver"
