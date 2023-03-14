@@ -38,7 +38,7 @@ jobs:
         id: matrix
         uses: ./.github/actions/setup
         with:
-          work_dir: 'sdks/js/eyes-selenium, sdks/python'
+          work_dir: 'sdks/js/eyes-selenium, sdks/python, sdks/java, sdks/dotnet, sdks/ruby'
           last_passed: ${{inputs.last_passed}}
   test:
     needs: setup
