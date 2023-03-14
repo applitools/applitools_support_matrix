@@ -1,6 +1,7 @@
 const common = {
     "dotnet-version": "3.1.x",
-    test_command: "dotnet test --no-build -- NUnit.NumberOfTestWorkers=1"
+    test_command: "dotnet test --no-build -- NUnit.NumberOfTestWorkers=1",
+    "test_runner": "dotnet"
 }
 const base_variations = [
     {
@@ -36,6 +37,7 @@ const variations = base_common
         work_dir: 'sdks/dotnet/appium',
         framework_package: "Appium.WebDriver",
         eyes_package: "Eyes.Appium",
+        isAppium: true
     })))
     .map(variant => ({...variant,
         job_name:`Dotnet ${variant.use_selenium ? 'Selenium' : 'Appium'} [${variant.os} | ${variant["dotnet-version"]}] [version: ${variant.version}]`

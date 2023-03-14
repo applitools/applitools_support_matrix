@@ -9,12 +9,11 @@ let matrix;
 const dirs = work_dir.split(', ')
 
 
-
+let include = [];
 if (use_last_passed) {
     const filePath = path.join(process.cwd(), 'last_passed.json');
     const json_string = fs.readFileSync(filePath).toString();
     const last_passed = JSON.parse(json_string)
-    let include = [];
     dirs.forEach(dir => {
         const matrix_jobs = last_passed.data.filter(suite => suite.config_path === dir)[0]
         const dir_include = matrix_jobs.jobs.map(job => ({
@@ -24,22 +23,20 @@ if (use_last_passed) {
         include = include.concat(dir_include)
     })
 
-    matrix = {include}
+
 } else {
     // Adding hardcoded string is required for ncc to build it properly into 1 file
     const fileName =  `matrix.conf.js`;
-    let include = [];
     dirs.forEach(dir => {
         const filePath = path.join(process.cwd(), dir, 'config',  fileName)
         console.log(`Filepath value: ${filePath}`)
         const readedFile = require(filePath)
         include = include.concat(readedFile.include.map(matrix_data => ({...matrix_data, matrix_config_dir:dir})))
     })
-
-    matrix = {
-        include
-    }
 }
-
+matrix = {include: include.filter(job=> !job.isAppium)}
 console.log(JSON.stringify(matrix, null, 3))
 setOutput("matrix", JSON.stringify(matrix));
+const appium = {include: include.filter(job=> job.isAppium)}
+console.log(JSON.stringify(appium, null, 3))
+setOutput("appium", JSON.stringify(matrix));

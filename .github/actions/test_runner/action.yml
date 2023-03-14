@@ -22,8 +22,23 @@ runs:
       uses: ./.github/actions/test_py
       with:
         eyes_version: ${{inputs.eyes_version}}
+    - name: Run Ruby test
+      if: ${{inputs.lang == 'ruby'}}
+      uses: ./.github/actions/test_ruby
+      with:
+        eyes_version: ${{inputs.eyes_version}}
+    - name: Run Java test
+      if: ${{inputs.lang == 'java'}}
+      uses: ./.github/actions/test_java
+      with:
+        eyes_version: ${{inputs.eyes_version}}
+    - name: Run Dotnet test
+      if: ${{inputs.lang == 'dotnet'}}
+      uses: ./.github/actions/test_dotnet
+      with:
+        eyes_version: ${{inputs.eyes_version}}
     - name: Check input
-      if: ${{ !contains(fromJSON('["js","python"]'), inputs.lang) }}
+      if: ${{ !contains(fromJSON('["js","python", "ruby", "java", "dotnet"]'), inputs.lang) }}
       shell: bash
       run: |
         echo "Unsupported test lang was used ${{inputs.lang}}"

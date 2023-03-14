@@ -1,0 +1,56 @@
+name: 'Java test'
+description: 'Action to run Java packages tests'
+inputs:
+  eyes_version:
+    description: 'Set the version which should be used for the eyes SDK'
+    default: 'latest@'
+    required: false
+
+runs:
+  using: "composite"
+  steps:
+    - name: Set up Java
+      uses: actions/setup-java@v3
+      with:
+        distribution: 'temurin'
+        java-version: ${{ matrix.java-version }}
+        cache: 'maven'
+    - name: Start Selenium Server
+      if: ${{matrix.use_selenium }}
+      id: selenium
+      uses: ./.github/actions/start_selenium
+    - name: Update pom for the eyes dependency
+      id: eyes
+      uses: ./.github/actions/update_pom_deps
+      with:
+        groupId: ${{matrix.eyes_package.groupId}}
+        artifactId: ${{matrix.eyes_package.artifactId}}
+        version: ${{inputs.eyes_version}}
+        working-directory: ${{matrix.work_dir}}
+    - name: Update Pom for the framework dependency
+      id: install
+      uses: ./.github/actions/update_pom_deps
+      with:
+        groupId: ${{matrix.framework_package.groupId}}
+        artifactId: ${{matrix.framework_package.artifactId}}
+        version: ${{matrix.version}}
+        working-directory: ${{matrix.work_dir}}
+    - name: Log extra info
+      id: logging
+      uses: ./.github/actions/chrome_version
+    - name: Logging version generation
+      uses: ./.github/actions/log_data_json
+      with:
+        package: ${{ steps.install.outputs.package_name }}
+        version: ${{ steps.install.outputs.package_version }}
+        os: ${{runner.os}}
+        title: ${{ matrix.job_name }}
+        selenium: ${{ steps.selenium.outputs.version }}
+        matrix:  ${{ toJSON(matrix) }}
+        work_dir: ${{matrix.work_dir}}
+        chrome_version: ${{ steps.logging.outputs.chrome_version }}
+        chromedriver_version: ${{ steps.logging.outputs.chromedriver_version }}
+    - name: Run tests
+      shell: bash
+      working-directory: ${{matrix.work_dir}}
+      run:  ${{matrix.test_command}}

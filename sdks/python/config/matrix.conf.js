@@ -27,7 +27,8 @@ const variations = base_common
     }))
     .concat(base_common.map(variant => ({...variant,
         test_command: "pytest -c appium.ini",
-        framework_package: "Appium-Python-Client"
+        framework_package: "Appium-Python-Client",
+        isAppium: true
     })))
     .map(variant => ({...variant, job_name:`Python ${variant.use_selenium ? 'Selenium' : 'Appium'} [${variant.os} | ${variant["python-version"]}] version: ${variant.version}`}))
 console.log(variations)

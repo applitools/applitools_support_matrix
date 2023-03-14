@@ -1,0 +1,61 @@
+name: 'Ruby test'
+description: 'Action to run Ruby packages tests'
+inputs:
+  eyes_version:
+    description: 'Set the version which should be used for the eyes SDK'
+    default: 'latest@'
+    required: false
+
+runs:
+  using: "composite"
+  steps:
+    - name: Set up Ruby
+      uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: ${{ matrix.ruby-version }}
+        bundler-cache: true
+    - name: Start Selenium Server
+      if: ${{matrix.use_selenium }}
+      id: selenium
+      uses: ./.github/actions/start_selenium
+    - name: Framework gem install
+      id: install
+      uses: ./.github/actions/update_gemfile
+      with:
+        gem: ${{matrix.framework_gem}}
+        version: ${{matrix.version}}
+        working-directory: ${{matrix.work_dir}}
+    - name: Eyes SDK ruby package install
+      id: eyes
+      uses: ./.github/actions/update_gemfile
+      with:
+        gem: ${{matrix.eyes_gem}}
+        version: ${{inputs.eyes_version}}
+        working-directory: ${{matrix.work_dir}}
+    - name: Log extra info
+      id: logging
+      uses: ./.github/actions/chrome_version
+    - name: Logging version generation
+      uses: ./.github/actions/log_data_json
+      with:
+        package: ${{ steps.install.outputs.gem_name }}
+        version: ${{ steps.install.outputs.gem_version }}
+        os: ${{runner.os}}
+        title: ${{ matrix.job_name }}
+        selenium: ${{ steps.selenium.outputs.version }}
+        matrix:  ${{ toJSON(matrix) }}
+        work_dir: ${{matrix.work_dir}}
+        chrome_version: ${{ steps.logging.outputs.chrome_version }}
+        chromedriver_version: ${{ steps.logging.outputs.chromedriver_version }}
+    - name: Install gems
+      shell: bash
+      working-directory: ${{matrix.work_dir}}
+      run: bundle install
+    - name: List installed gems
+      shell: bash
+      working-directory: ${{matrix.work_dir}}
+      run: bundle list
+    - name: Run tests
+      shell: bash
+      working-directory: ${{matrix.work_dir}}
+      run: ${{matrix.test_command}}
