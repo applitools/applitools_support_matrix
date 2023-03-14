@@ -39,4 +39,4 @@ console.log(JSON.stringify(matrix, null, 3))
 setOutput("matrix", JSON.stringify(matrix));
 const appium = {include: include.filter(job=> job.isAppium)}
 console.log(JSON.stringify(appium, null, 3))
-setOutput("appium", JSON.stringify(matrix));
+setOutput("appium", JSON.stringify(appium));
