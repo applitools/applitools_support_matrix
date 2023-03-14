@@ -10,19 +10,15 @@ const common = {
 const base_variations = [
     {
         "os": "ubuntu-latest",
-        "version": "latest@",
-    },
-    {
-        "os": "ubuntu-latest",
         "version": "major@1",
     },
     {
         "os": "windows-latest",
-        "version": "latest@",
+        "version": "major@1",
     }
 ]
 const variations = base_variations.map(variant => ({...common, ...variant,
-    job_name:`JS Testcafe [${variant.os} | ${variant["node-version"]}] version: ${variant.version}`
+    job_name:`JS Testcafe [${variant.os} | ${common["node-version"]}] version: ${variant.version}`
 }))
 console.log(variations)
 module.exports = {
