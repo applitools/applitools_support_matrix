@@ -2,6 +2,8 @@ const common = {
     "node-version": "18",
     "work_dir": "sdks/js/eyes-testcafe",
     "framework_package": "testcafe",
+    "test_runner": "js",
+    "eyes_package": "@applitools/eyes-testcafe",
     test_command: "npm test",
     legacy_npm_peers: true,
 }

@@ -2,6 +2,8 @@ const common = {
     "node-version": "18",
     "work_dir": "sdks/js/eyes-nightwatch",
     "framework_package": "nightwatch",
+    "test_runner": "js",
+    "eyes_package": "@applitools/eyes-nightwatch",
     use_selenium: true,
     test_command: "npm test && USE_UFG=true npm test"
 }

@@ -2,6 +2,8 @@ const common = {
     "node-version": "18",
     "work_dir": "sdks/js/eyes-playwright",
     "framework_package": "playwright",
+    "test_runner": "js",
+    "eyes_package": "@applitools/eyes-playwright",
     test_command: "npx playwright install --with-deps && npm test"
 }
 const base_variations = [

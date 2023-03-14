@@ -3,7 +3,9 @@ const common = {
     "work_dir": "sdks/js/eyes-puppeteer",
     "framework_package": "puppeteer",
     js_config: "eyes-puppeteer",
-    test_command: "npm test"
+    test_command: "npm test",
+    "test_runner": "js",
+    "eyes_package": "@applitools/eyes-puppeteer",
 }
 const base_variations = [
     {

@@ -2,6 +2,8 @@ const common = {
     "node-version": "16",
     "work_dir": "sdks/js/eyes-storybook",
     "framework_package": "@storybook/react",
+    "test_runner": "js",
+    "eyes_package": "@applitools/eyes-storybook",
     test_command: "npm test"
 }
 const base_variations = [

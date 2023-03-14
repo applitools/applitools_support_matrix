@@ -2845,18 +2845,25 @@ if (use_last_passed) {
 
 } else {
     // Adding hardcoded string is required for ncc to build it properly into 1 file
-    const fileName =  `matrix.conf.js`;
+    const fileName = `matrix.conf.js`;
     dirs.forEach(dir => {
-        const filePath = path.join(process.cwd(), dir, 'config',  fileName)
+        const filePath = path.join(process.cwd(), dir, 'config', fileName)
         console.log(`Filepath value: ${filePath}`)
         const readedFile = require(filePath)
-        include = include.concat(readedFile.include.map(matrix_data => ({...matrix_data, matrix_config_dir:dir})))
+        include = include.concat(readedFile.include.map(matrix_data => ({...matrix_data, matrix_config_dir: dir})))
     })
 }
-matrix = {include: include.filter(job=> !job.isAppium)}
+
+
+matrix = {include}
 console.log(JSON.stringify(matrix, null, 3))
 setOutput("matrix", JSON.stringify(matrix));
-const appium = {include: include.filter(job=> job.isAppium)}
+
+const web = {include: include.filter(job => !job.isAppium)}
+console.log(JSON.stringify(web, null, 3))
+setOutput("web", JSON.stringify(web));
+
+const appium = {include: include.filter(job => job.isAppium)}
 console.log(JSON.stringify(appium, null, 3))
 setOutput("appium", JSON.stringify(appium));
 })();

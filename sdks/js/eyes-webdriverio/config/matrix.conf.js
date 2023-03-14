@@ -2,11 +2,14 @@ const common = {
     "node-version": "18",
     use_selenium: true,
     "framework_package": "webdriverio",
+    "test_runner": "js",
+    "eyes_package": "@applitools/eyes-webdriverio",
     test_command: "npm test"
 }
 const wdio4 = {
     "work_dir": "sdks/js/eyes-webdriverio/4",
     "version": "exact@4.14.4",
+    "eyes_package": "@applitools/eyes.webdriverio"
 }
 const wdio5 = {
     "version": "exact@5.23.0",

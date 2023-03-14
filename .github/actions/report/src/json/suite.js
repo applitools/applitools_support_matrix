@@ -26,6 +26,10 @@ class Suite {
         if(test.pass) this.passes.push(test.uuid)
         if(test.fail) this.failures.push(test.uuid)
     }
+
+    addSuite(suite) {
+        this.suites.push(suite)
+    }
 }
 
 module.exports = Suite

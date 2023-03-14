@@ -4,7 +4,9 @@ const common = {
     "framework_package": "protractor",
     use_selenium: true,
     js_config: "eyes-protractor",
-    test_command: "npm test"
+    test_command: "npm test",
+    "test_runner": "js",
+    "eyes_package": "@applitools/eyes-protractor",
 }
 const base_variations = [
     {

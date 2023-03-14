@@ -1,9 +1,9 @@
 'use strict'
 const core = require('@actions/core')
 
-const {waitForAllCompletedJob, getJobsBySuites, filterTestsJobs, jobLog} = require('../util/github_rest/actions')
+const {waitForAllCompletedJob, filterTestsJobs, jobLog, organiseSuites} = require('../util/github_rest/actions')
 const {Report, Suite, Test} = require('./src/json')
-const {getDuration, compareDates} = require('../util/github_rest/date')
+const {getDuration, compareDates, getJobsDuration} = require('../util/github_rest/date')
 const {Octokit} = require('@octokit/rest')
 const fs = require('fs')
 const {generator} = require('./src/generation/generator')
@@ -25,11 +25,20 @@ const {generator} = require('./src/generation/generator')
         const filtered = jobs.filter(filterTestsJobs)
         const start = jobs.map(test => test.started_at).sort(compareDates)[0]
         const end = jobs.map(test => test.completed_at).sort(compareDates)[jobs.length - 1]
-        const suites = getJobsBySuites(filtered)
-        // Organise and parse raw data Reporting
+        const struct = organiseSuites(filtered)
         const report = new Report({start, end})
-        for (const suiteData of suites) {
-            const suite = new Suite({title: suiteData.name, duration: suiteData.duration})
+        for (const suiteName in struct.suites) {
+            const suiteData = struct.suites[suiteName]
+            const suite = await MakeSuite(suiteData)
+            report.addSuite(suite);
+        }
+        // Make json file
+        fs.writeFileSync('data.json', JSON.stringify(report, undefined, 2))
+        // Make html report
+        await generator.generate()
+        console.log(1)
+        async function MakeSuite(suiteData) {
+            const suite = new Suite({title: suiteData.name, duration: getJobsDuration(suiteData.jobs)})
             for (const job of suiteData.jobs) {
                 const testData = {
                     title: job.name.split('/')[1],
@@ -48,13 +57,13 @@ const {generator} = require('./src/generation/generator')
                 }
                 suite.addTest(new Test(testData))
             }
-            report.addSuite(suite);
+            for (const suiteName in suiteData.suites) {
+                const innerData = suiteData.suites[suiteName]
+                const innerSuite = await MakeSuite(innerData)
+                suite.addSuite(innerSuite);
+            }
+            return suite;
         }
-        // Make json file
-        fs.writeFileSync('data.json', JSON.stringify(report, undefined, 2))
-        // Make html report
-        await generator.generate()
-        console.log(1)
     } catch (error) {
         core.setFailed(error.message);
     }
