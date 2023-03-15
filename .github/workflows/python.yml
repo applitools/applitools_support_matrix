@@ -83,6 +83,9 @@ jobs:
     name:  ${{ matrix.job_name }}
     steps:
       - uses: actions/checkout@v3
+        with:
+          repository: applitools/applitools_support_matrix
+          ref: ${{inputs.checkout_ref}}
       - name: Test
         uses: ./.github/actions/test_runner
         with:
