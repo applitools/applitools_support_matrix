@@ -2,6 +2,8 @@ const common = {
     "node-version": "18",
     "work_dir": "sdks/js/eyes-cypress/v10",
     "framework_package": "cypress",
+    "test_runner": "js",
+    "eyes_package": "@applitools/eyes-cypress",
     test_command: "npm test"
 }
 const latest_variations = [

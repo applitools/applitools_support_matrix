@@ -2,6 +2,8 @@ const common = {
     "node-version": "16",
     "work_dir": "sdks/js/eyes-storybook",
     "framework_package": "@storybook/react",
+    "test_runner": "js",
+    "eyes_package": "@applitools/eyes-storybook",
     test_command: "npm test"
 }
 const base_variations = [
@@ -27,7 +29,7 @@ const base_variations = [
     }
 ]
 const variations = base_variations.map(variant => ({...common, ...variant,
-    job_name:`JS Storybook [${variant.os} | ${variant["node-version"]}] version: ${variant.version}`
+    job_name:`JS Storybook [${variant.os} | ${common["node-version"]}] version: ${variant.version}`
 }))
 console.log(variations)
 module.exports = {

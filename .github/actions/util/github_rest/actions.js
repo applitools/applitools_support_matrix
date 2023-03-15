@@ -5,6 +5,33 @@ const MS = require("./enums/time");
 const {getJobsDuration} = require("./date");
 const https = require("https");
 
+function organiseSuites(arr) {
+    const structure = {suites: {}}
+    function addJob(job) {
+        let currentSuite = structure;
+        let name = job.name.includes("/") ? job.name.split(" / ")[1] : job.name
+        for (const str of name.split(" ")){
+            if (str.startsWith("[")) {
+                currentSuite.jobs.push(job)
+                break;
+            }
+            if (currentSuite.suites.hasOwnProperty(str)) {
+                currentSuite = currentSuite.suites[str]
+            } else {
+                currentSuite.suites[str] = {
+                    name: str,
+                    jobs: [],
+                    suites: {}
+                }
+                currentSuite = currentSuite.suites[str]
+            }
+
+        }
+    }
+    arr.forEach(addJob)
+    return structure;
+}
+
 function getJobsBySuites(arr) {
     const result = [];
     const other = {
@@ -143,6 +170,7 @@ module.exports = {
     getJobsBySuites,
     filterTestsJobs,
     getALlJobs,
+    organiseSuites,
     jobLog,
     wait,
     waitForAllCompletedJob

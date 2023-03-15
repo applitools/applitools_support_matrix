@@ -3,7 +3,9 @@ const common = {
     "work_dir": "sdks/js/eyes-puppeteer",
     "framework_package": "puppeteer",
     js_config: "eyes-puppeteer",
-    test_command: "npm test"
+    test_command: "npm test",
+    "test_runner": "js",
+    "eyes_package": "@applitools/eyes-puppeteer",
 }
 const base_variations = [
     {
@@ -32,7 +34,7 @@ const base_variations = [
     }
 ]
 const variations = base_variations.map(variant => ({...common, ...variant,
-    job_name:`JS Puppeteer [${variant.os} | ${variant["node-version"]}] version: ${variant.version}]`
+    job_name:`JS Puppeteer [${variant.os} | ${common["node-version"]}] version: ${variant.version}]`
 }))
 console.log(variations)
 module.exports = {

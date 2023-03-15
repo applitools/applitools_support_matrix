@@ -25676,6 +25676,10 @@ class Suite {
         if(test.pass) this.passes.push(test.uuid)
         if(test.fail) this.failures.push(test.uuid)
     }
+
+    addSuite(suite) {
+        this.suites.push(suite)
+    }
 }
 
 module.exports = Suite
@@ -25724,6 +25728,33 @@ const {TEST_MATRIX, MATRIX_MAPPING} = __nccwpck_require__(422);
 const MS = __nccwpck_require__(9494);
 const {getJobsDuration} = __nccwpck_require__(3190);
 const https = __nccwpck_require__(5687);
+
+function organiseSuites(arr) {
+    const structure = {suites: {}}
+    function addJob(job) {
+        let currentSuite = structure;
+        let name = job.name.includes("/") ? job.name.split(" / ")[1] : job.name
+        for (const str of name.split(" ")){
+            if (str.startsWith("[")) {
+                currentSuite.jobs.push(job)
+                break;
+            }
+            if (currentSuite.suites.hasOwnProperty(str)) {
+                currentSuite = currentSuite.suites[str]
+            } else {
+                currentSuite.suites[str] = {
+                    name: str,
+                    jobs: [],
+                    suites: {}
+                }
+                currentSuite = currentSuite.suites[str]
+            }
+
+        }
+    }
+    arr.forEach(addJob)
+    return structure;
+}
 
 function getJobsBySuites(arr) {
     const result = [];
@@ -25863,6 +25894,7 @@ module.exports = {
     getJobsBySuites,
     filterTestsJobs,
     getALlJobs,
+    organiseSuites,
     jobLog,
     wait,
     waitForAllCompletedJob
@@ -26200,9 +26232,9 @@ var __webpack_exports__ = {};
 
 const core = __nccwpck_require__(810)
 
-const {waitForAllCompletedJob, getJobsBySuites, filterTestsJobs, jobLog} = __nccwpck_require__(5849)
+const {waitForAllCompletedJob, filterTestsJobs, jobLog, organiseSuites} = __nccwpck_require__(5849)
 const {Report, Suite, Test} = __nccwpck_require__(6103)
-const {getDuration, compareDates} = __nccwpck_require__(3190)
+const {getDuration, compareDates, getJobsDuration} = __nccwpck_require__(3190)
 const {Octokit} = __nccwpck_require__(5294)
 const fs = __nccwpck_require__(7147)
 const {generator} = __nccwpck_require__(7240)
@@ -26224,11 +26256,20 @@ const {generator} = __nccwpck_require__(7240)
         const filtered = jobs.filter(filterTestsJobs)
         const start = jobs.map(test => test.started_at).sort(compareDates)[0]
         const end = jobs.map(test => test.completed_at).sort(compareDates)[jobs.length - 1]
-        const suites = getJobsBySuites(filtered)
-        // Organise and parse raw data Reporting
+        const struct = organiseSuites(filtered)
         const report = new Report({start, end})
-        for (const suiteData of suites) {
-            const suite = new Suite({title: suiteData.name, duration: suiteData.duration})
+        for (const suiteName in struct.suites) {
+            const suiteData = struct.suites[suiteName]
+            const suite = await MakeSuite(suiteData)
+            report.addSuite(suite);
+        }
+        // Make json file
+        fs.writeFileSync('data.json', JSON.stringify(report, undefined, 2))
+        // Make html report
+        await generator.generate()
+        console.log(1)
+        async function MakeSuite(suiteData) {
+            const suite = new Suite({title: suiteData.name, duration: getJobsDuration(suiteData.jobs)})
             for (const job of suiteData.jobs) {
                 const testData = {
                     title: job.name.split('/')[1],
@@ -26247,13 +26288,13 @@ const {generator} = __nccwpck_require__(7240)
                 }
                 suite.addTest(new Test(testData))
             }
-            report.addSuite(suite);
+            for (const suiteName in suiteData.suites) {
+                const innerData = suiteData.suites[suiteName]
+                const innerSuite = await MakeSuite(innerData)
+                suite.addSuite(innerSuite);
+            }
+            return suite;
         }
-        // Make json file
-        fs.writeFileSync('data.json', JSON.stringify(report, undefined, 2))
-        // Make html report
-        await generator.generate()
-        console.log(1)
     } catch (error) {
         core.setFailed(error.message);
     }

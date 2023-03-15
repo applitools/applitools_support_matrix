@@ -1,6 +1,8 @@
 const common = {
     "work_dir": "sdks/ruby",
     "framework_gem": "selenium-webdriver",
+    "test_runner": "ruby",
+    eyes_gem: "eyes_selenium"
 }
 const basic = {
     "version": "latest@",
@@ -36,7 +38,9 @@ const variations = base_common
     }])
     .concat(base_common.map(variant => ({
         ...variant,
-        test_command: "bundle exec rake github:appium"
+        test_command: "bundle exec rake github:appium",
+        eyes_gem: "eyes_appium",
+        isAppium: true
     })))
     .map(variant => ({...variant,
         job_name: `Ruby ${variant.use_selenium ? 'Selenium' : 'Appium'} [${variant.os} | ${variant["ruby-version"]}] version: ${variant.version}`

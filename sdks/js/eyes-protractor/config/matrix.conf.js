@@ -4,7 +4,9 @@ const common = {
     "framework_package": "protractor",
     use_selenium: true,
     js_config: "eyes-protractor",
-    test_command: "npm test"
+    test_command: "npm test",
+    "test_runner": "js",
+    "eyes_package": "@applitools/eyes-protractor",
 }
 const base_variations = [
     {
@@ -25,7 +27,7 @@ const base_variations = [
     }
 ]
 const variations = base_variations.map(variant => ({...common, ...variant,
-    job_name:`JS Protractor [${variant.os} | ${variant["node-version"]}] version: ${variant.version}`
+    job_name:`JS Protractor [${variant.os} | ${common["node-version"]}] version: ${variant.version}`
 }))
 console.log(variations)
 module.exports = {

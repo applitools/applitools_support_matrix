@@ -8,6 +8,10 @@ on:
         default: false
         required: true
         type: boolean
+      eyes_version:
+        description: 'Set the version which should be used for the eyes SDK'
+        default: 'latest@'
+        required: false
   workflow_call:
     inputs:
       last_passed:
@@ -15,6 +19,16 @@ on:
         default: false
         required: true
         type: boolean
+      eyes_version:
+        description: 'Set the version which should be used for the eyes SDK'
+        default: 'latest@'
+        type: string
+        required: false
+      checkout_ref:
+        description: 'set ref when used from the another repo'
+        default: ''
+        required: false
+        type: string
     secrets:
       APPLITOOLS_API_KEY:
         required: true
@@ -67,6 +81,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Test
-        uses: ./.github/actions/js_test
+        uses: ./.github/actions/test_runner
         with:
-          work_dir: ${{matrix.work_dir}}
+          lang: ${{matrix.test_runner}}
+          eyes_version: ${{inputs.eyes_version}}

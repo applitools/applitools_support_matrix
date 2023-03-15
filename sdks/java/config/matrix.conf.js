@@ -1,6 +1,7 @@
 const common = {
     "java-version": "8",
     test_command: "mvn test",
+    "test_runner": "java"
 }
 const base_variations = [
     {
@@ -41,7 +42,8 @@ const variations = base_common
             groupId:'com.applitools',
             artifactId:'eyes-appium-java5'
         },
-        work_dir: "sdks/java/appium"
+        work_dir: "sdks/java/appium",
+        isAppium: true
     })))
     .map(variant => ({...variant,
         job_name:`Java ${variant.use_selenium ? 'Selenium' : 'Appium'} [${variant.os} | ${variant["java-version"]}] version: ${variant.version}`

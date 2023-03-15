@@ -1,5 +1,10 @@
 name: 'JS test'
 description: 'Action to run JS packages tests'
+inputs:
+  eyes_version:
+    description: 'Set the version which should be used for the eyes SDK'
+    default: 'latest@'
+    required: false
 
 runs:
   using: "composite"
@@ -20,6 +25,13 @@ runs:
       with:
         package: ${{matrix.framework_package}}
         version: ${{matrix.version}}
+        working-directory: ${{matrix.work_dir}}
+    - name: Eyes SDK js package install
+      id: eyes
+      uses: ./.github/actions/install_npm_package
+      with:
+        package: ${{matrix.eyes_package}}
+        version: ${{inputs.eyes_version}}
         working-directory: ${{matrix.work_dir}}
     - name: Log extra info
       id: logging
