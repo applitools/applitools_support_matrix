@@ -9,25 +9,25 @@ permissions:
   contents: write
 
 jobs:
-setup:
-  name: Setup
-  runs-on: ubuntu-latest
-  outputs:
-    uuid: ${{ steps.uuid.outputs.uuid }}
-    web: ${{ steps.matrix.outputs.web}}
-    appium: ${{ steps.matrix.outputs.appium}}
-  steps:
-    - name: generate uuid
-      id: uuid
-      run: |
-        echo "uuid=$(uuidgen)" >> $GITHUB_OUTPUT
-    - uses: actions/checkout@v3
-    - name: generate matrix
-      id: matrix
-      uses: ./.github/actions/setup
-      with:
-        work_dir: 'sdks/js/eyes-webdriverio, sdks/js/eyes-testcafe, sdks/js/eyes-storybook, sdks/js/eyes-puppeteer, sdks/js/eyes-protractor, sdks/js/eyes-playwright, sdks/js/eyes-nightwatch, sdks/js/eyes-cypress, sdks/js/eyes-selenium, sdks/python, sdks/java, sdks/dotnet, sdks/ruby'
-        last_passed: false
+  setup:
+    name: Setup
+    runs-on: ubuntu-latest
+    outputs:
+      uuid: ${{ steps.uuid.outputs.uuid }}
+      web: ${{ steps.matrix.outputs.web}}
+      appium: ${{ steps.matrix.outputs.appium}}
+    steps:
+      - name: generate uuid
+        id: uuid
+        run: |
+          echo "uuid=$(uuidgen)" >> $GITHUB_OUTPUT
+      - uses: actions/checkout@v3
+      - name: generate matrix
+        id: matrix
+        uses: ./.github/actions/setup
+        with:
+          work_dir: 'sdks/js/eyes-webdriverio, sdks/js/eyes-testcafe, sdks/js/eyes-storybook, sdks/js/eyes-puppeteer, sdks/js/eyes-protractor, sdks/js/eyes-playwright, sdks/js/eyes-nightwatch, sdks/js/eyes-cypress, sdks/js/eyes-selenium, sdks/python, sdks/java, sdks/dotnet, sdks/ruby'
+          last_passed: false
   web:
     needs: setup
     strategy:
