@@ -49,7 +49,6 @@ jobs:
         uses: ./.github/actions/test_runner
         with:
           lang: ${{matrix.test_runner}}
-          eyes_version: ${{inputs.eyes_version}}
   appium:
     needs: setup
     strategy:
@@ -76,7 +75,6 @@ jobs:
         uses: ./.github/actions/test_runner
         with:
           lang: ${{matrix.test_runner}}
-          eyes_version: ${{inputs.eyes_version}}
 #  failing_check:
 #    runs-on: ubuntu-latest
 #    steps:
