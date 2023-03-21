@@ -98,7 +98,6 @@ public class AppiumSetup extends GlobalSetup {
         caps.setCapability("appium:automationName", "UiAutomator2");
         caps.setCapability("appium:autoGrantPermissions", true);
         caps.setCapability("appium:newCommandTimeout", 600);
-        caps.setCapability("appium:app", "storage:filename=androind_nmg_python.apk");
         MutableCapabilities options = new MutableCapabilities();
         options.setCapability("username", System.getenv("SAUCE_USERNAME"));
         options.setCapability("accessKey", System.getenv("SAUCE_ACCESS_KEY"));
@@ -106,6 +105,9 @@ public class AppiumSetup extends GlobalSetup {
         caps.setCapability("sauce:options", options);
         if (UFG) {
             caps.setCapability("appium:optionalIntentArguments", String.format("--es APPLITOOLS \'{\"NML_API_KEY\":\"%s\", \"NML_SERVER_URL\":\"https://eyesapi.applitools.com\"}\'", apiKey));
+            caps.setCapability("appium:app", "storage:filename=androind_nmg_python.apk");
+        } else {
+            caps.setCapability("appium:app", "storage:filename=SimpleRandomStock.apk");
         }
         driver = new IOSDriver(new URL(SAUCE_URL), caps);
     }
