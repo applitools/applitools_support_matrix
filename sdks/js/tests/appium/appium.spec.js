@@ -16,14 +16,21 @@ describe('Support Matrix Appium', () => {
     describe('Classic', async () => {
 
         beforeEach(async () => {
-            driver = await setupDriver(true);
             eyes = setupEyes({
                 stitchMode: "CSS",
             })
         })
 
         it('ios', async () => {
+            driver = await setupDriver({appium: true, platform: 'iOS'});
             await eyes.open(driver, "Applitools Support Matrix", "Appium iOS window - Classic")
+            await eyes.check(Target.window())
+            await eyes.close()
+        })
+
+        it.only('android', async () => {
+            driver = await setupDriver({appium: true, platform: 'Android'});
+            await eyes.open(driver, "Applitools Support Matrix", "Appium Android window - Classic")
             await eyes.check(Target.window())
             await eyes.close()
         })
@@ -31,17 +38,19 @@ describe('Support Matrix Appium', () => {
 
     describe('UFG', async () => {
 
-        beforeEach(async () => {
-            driver = await setupDriver(true, true);
-            eyes = setupEyes(
-                {
-                    vg: true,
-                    appium: true,
-                })
-        })
 
         it('ios', async () => {
+            driver = await setupDriver({appium: true, ufg: true, platform: 'iOS'});
+            eyes = setupEyes({vg: true, appium: true, platform: 'iOS'})
             await eyes.open(driver, "Applitools Support Matrix", "Appium iOS window - UFG")
+            await eyes.check(Target.window())
+            await eyes.close()
+        })
+
+        it('android', async () => {
+            driver = await setupDriver({appium: true, ufg: true, platform: 'Android'});
+            eyes = setupEyes({vg: true, appium: true, platform: 'Android'})
+            await eyes.open(driver, "Applitools Support Matrix", "Appium Android window - UFG")
             await eyes.check(Target.window())
             await eyes.close()
         })

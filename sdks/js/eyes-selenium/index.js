@@ -4,40 +4,19 @@ const {
     Target,
     ConsoleLogHandler,
     IosDeviceName,
+    AndroidDeviceName,
     ScreenOrientation,
     IosVersion,
+    AndroidVersion,
     BatchInfo,
 } = require("@applitools/eyes-selenium")
 const {Builder} = require('selenium-webdriver');
 const chrome = require('selenium-webdriver/chrome');
 const SAUCE_URL = "https://ondemand.us-west-1.saucelabs.com:443/wd/hub"
 
-async function setupDriver(appium = false, ufg = false) {
+async function setupDriver({appium = false, ufg = false, platform}) {
     if (appium) {
-        let caps = {
-            browserName: '',
-            platformName: 'iOS',
-            "appium:platformVersion": '16.0',
-            "appium:newCommandTimeout": 600,
-            "appium:app": 'storage:filename=awesomeswift.app.zip',
-            "appium:deviceName": 'iPhone 8 Simulator',
-            "appium:automationName": 'XCUITest',
-            'sauce:options': {
-                username: process.env.SAUCE_USERNAME,
-                accessKey: process.env.SAUCE_ACCESS_KEY,
-                name: 'Support Matrix'
-            }
-
-        }
-        if (ufg) {
-            caps["appium:processArguments"] = {
-                args: [],
-                env: {
-                    DYLD_INSERT_LIBRARIES: "@executable_path/Frameworks/UFG_lib.xcframework/ios-arm64_x86_64-simulator/UFG_lib.framework/UFG_lib",
-                    NML_API_KEY: process.env.APPLITOOLS_API_KEY
-                }
-            }
-        }
+        let caps = platform==='iOS' ? getIOSCaps(ufg) : getAndroidCaps(ufg)
         const builder = new Builder().withCapabilities(caps).usingServer(SAUCE_URL)
         return builder.build();
     } else {
@@ -64,7 +43,7 @@ async function open(driver, url) {
 
 const batch = new BatchInfo(process.env.APPLITOOLS_BATCH_NAME || 'JS Support Matrix Eyes Selenium');
 
-function setupEyes({appium, vg, ...config}) {
+function setupEyes({appium, vg, platform, ...config}) {
     const runner = (vg ? new VisualGridRunner({testConcurrency: 500}) : undefined)
     const configuration = {
         apiKey: process.env.APPLITOOLS_API_KEY,
@@ -81,16 +60,79 @@ function setupEyes({appium, vg, ...config}) {
     eyes.setLogHandler(new ConsoleLogHandler(true))
     if (appium && vg) {
         const ufg = eyes.getConfiguration();
-        ufg.addBrowser({
-            iosDeviceInfo: {
-                deviceName: IosDeviceName.iPhone_8,
-                screenOrientation: ScreenOrientation.PORTRAIT,
-                iosVersion: IosVersion.LATEST
-            }
-        })
+        if (platform === 'iOS') {
+            ufg.addBrowser({
+                iosDeviceInfo: {
+                    deviceName: IosDeviceName.iPhone_8,
+                    screenOrientation: ScreenOrientation.PORTRAIT,
+                    iosVersion: IosVersion.LATEST
+                }
+            })
+        }
+        if (platform === 'Android') {
+            ufg.addBrowser({
+                androidDeviceInfo: {
+                    deviceName: AndroidDeviceName.Pixel_5,
+                    screenOrientation: ScreenOrientation.PORTRAIT,
+                    androidVersion: AndroidVersion.LATEST
+                }
+            })
+        }
         eyes.setConfiguration(ufg);
     }
     return eyes
+}
+
+function getIOSCaps(ufg) {
+    let caps = {
+        browserName: '',
+        platformName: 'iOS',
+        "appium:platformVersion": '16.0',
+        "appium:newCommandTimeout": 600,
+        "appium:app": 'storage:filename=awesomeswift.app.zip',
+        "appium:deviceName": 'iPhone 8 Simulator',
+        "appium:automationName": 'XCUITest',
+        'sauce:options': {
+            username: process.env.SAUCE_USERNAME,
+            accessKey: process.env.SAUCE_ACCESS_KEY,
+            name: 'Support Matrix JS'
+        }
+
+    }
+    if (ufg) {
+        caps["appium:processArguments"] = {
+            args: [],
+            env: {
+                DYLD_INSERT_LIBRARIES: "@executable_path/Frameworks/UFG_lib.xcframework/ios-arm64_x86_64-simulator/UFG_lib.framework/UFG_lib",
+                NML_API_KEY: process.env.APPLITOOLS_API_KEY
+            }
+        }
+    }
+    return caps
+}
+
+
+function getAndroidCaps(ufg) {
+    let caps = {
+        browserName: '',
+        platformName: 'Android',
+        "appium:platformVersion": '11.0',
+        "appium:newCommandTimeout": 600,
+        "appium:app": 'storage:filename=android_nmg.apk',
+        "appium:deviceName": 'Google Pixel 5 GoogleAPI Emulator',
+        "appium:automationName": 'UiAutomator2',
+        "appium:autoGrantPermissions": true,
+        'sauce:options': {
+            username: process.env.SAUCE_USERNAME,
+            accessKey: process.env.SAUCE_ACCESS_KEY,
+            name: 'Support Matrix JS'
+        }
+
+    }
+    if (ufg) {
+        caps["appium:optionalIntentArguments"] = `--es APPLITOOLS \'{\"NML_API_KEY\":\"${process.env.APPLITOOLS_API_KEY}\", \"NML_SERVER_URL\":\"https://eyesapi.applitools.com\"}\'`
+    }
+    return caps
 }
 
 module.exports = {

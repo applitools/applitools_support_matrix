@@ -40,8 +40,17 @@ RSpec.configure do |config|
   end
   config.after(:each) do
     driver.quit_driver
+    puts 'Driver closed succesfully'
+  end
+
+  config.after(:each) do
     eyes.abort
+    puts 'Eyes abort pass succesfully'
+  end
+
+  config.after(:each) do
     runner.get_all_test_results(false)
+    puts 'Eyes runner get all tests results pass succesfully'
   end
 
 end

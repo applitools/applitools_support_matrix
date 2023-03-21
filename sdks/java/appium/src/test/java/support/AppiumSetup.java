@@ -5,9 +5,7 @@ import com.applitools.eyes.StdoutLogHandler;
 import com.applitools.eyes.appium.AppiumRunner;
 import com.applitools.eyes.appium.AppiumVisualGridRunner;
 import com.applitools.eyes.appium.Eyes;
-import com.applitools.eyes.visualgrid.model.IosDeviceInfo;
-import com.applitools.eyes.visualgrid.model.IosDeviceName;
-import com.applitools.eyes.visualgrid.model.ScreenOrientation;
+import com.applitools.eyes.visualgrid.model.*;
 import com.applitools.eyes.visualgrid.services.VisualGridRunner;
 import io.appium.java_client.ios.IOSDriver;
 import org.openqa.selenium.MutableCapabilities;
@@ -34,10 +32,10 @@ public class AppiumSetup extends GlobalSetup {
     public void beforeTest() throws MalformedURLException {
         initEyes();
         if (platform == MobilePlatform.iOS) {
-            buildIOS(UFG);
+            buildIOS();
         }
         if (platform == MobilePlatform.Android) {
-            throw new UnsupportedOperationException("Android isn't supported yet");
+            buildAndroid();
         }
     }
 
@@ -63,11 +61,15 @@ public class AppiumSetup extends GlobalSetup {
             eyes.setLogHandler(new StdoutLogHandler((verbose != null && verbose.equals("true"))));
         }
         if (UFG) {
-            eyes.configure().addMobileDevice(new IosDeviceInfo(IosDeviceName.iPhone_8, ScreenOrientation.PORTRAIT));
+            if(platform == MobilePlatform.iOS) {
+                eyes.configure().addMobileDevice(new IosDeviceInfo(IosDeviceName.iPhone_8, ScreenOrientation.PORTRAIT));
+            } else if (platform == MobilePlatform.Android) {
+                eyes.configure().addMobileDevice(new AndroidDeviceInfo(AndroidDeviceName.Pixel_5, ScreenOrientation.PORTRAIT));
+            }
         }
     }
 
-    public void buildIOS(boolean UFG) throws MalformedURLException {
+    public void buildIOS() throws MalformedURLException {
         DesiredCapabilities caps = new DesiredCapabilities();
         caps.setCapability("browserName", "");
         caps.setCapability("platformName", "iOS");
@@ -79,10 +81,31 @@ public class AppiumSetup extends GlobalSetup {
         MutableCapabilities options = new MutableCapabilities();
         options.setCapability("username", System.getenv("SAUCE_USERNAME"));
         options.setCapability("accessKey", System.getenv("SAUCE_ACCESS_KEY"));
-        options.setCapability("name", "Support Matrix");
+        options.setCapability("name", "Support Matrix Java iOS");
         caps.setCapability("sauce:options", options);
         if (UFG) {
             caps.setCapability("appium:processArguments", "{\"args\": [], \"env\": {\"DYLD_INSERT_LIBRARIES\": \"@executable_path/Frameworks/UFG_lib.xcframework/ios-arm64_x86_64-simulator/UFG_lib.framework/UFG_lib\",\"NML_API_KEY\":\"" + GlobalSetup.apiKey + "\"}}");
+        }
+        driver = new IOSDriver(new URL(SAUCE_URL), caps);
+    }
+
+    public void buildAndroid() throws MalformedURLException {
+        DesiredCapabilities caps = new DesiredCapabilities();
+        caps.setCapability("platformName", "Android");
+        caps.setCapability("browserName", "");
+        caps.setCapability("appium:deviceName", "Google Pixel 5 GoogleAPI Emulator");
+        caps.setCapability("appium:platformVersion", "11.0");
+        caps.setCapability("appium:automationName", "UiAutomator2");
+        caps.setCapability("appium:autoGrantPermissions", true);
+        caps.setCapability("appium:newCommandTimeout", 600);
+        caps.setCapability("appium:app", "storage:filename=androind_nmg_python.apk");
+        MutableCapabilities options = new MutableCapabilities();
+        options.setCapability("username", System.getenv("SAUCE_USERNAME"));
+        options.setCapability("accessKey", System.getenv("SAUCE_ACCESS_KEY"));
+        options.setCapability("name", "Support Matrix Java Android");
+        caps.setCapability("sauce:options", options);
+        if (UFG) {
+            caps.setCapability("appium:optionalIntentArguments", String.format("--es APPLITOOLS \'{\"NML_API_KEY\":\"%s\", \"NML_SERVER_URL\":\"https://eyesapi.applitools.com\"}\'", apiKey));
         }
         driver = new IOSDriver(new URL(SAUCE_URL), caps);
     }
