@@ -67,10 +67,10 @@ namespace Applitools.Support.Matrix.Appium
             sauceOptions.Add("name", "Support Matrix Dotnet");
             sauceOptions.Add("username", username);
             sauceOptions.Add("accessKey", accessKey);
+            AppiumOptions options = new AppiumOptions();
             switch (device)
             {
                 case DeviceTypes.iPhone:
-                    AppiumOptions options = new AppiumOptions();
                     options.AddAdditionalCapability("browserName", "");
                     options.AddAdditionalCapability("platformName", "iOS");
                     options.AddAdditionalCapability("appium:platformVersion", "15.4");
@@ -89,6 +89,28 @@ namespace Applitools.Support.Matrix.Appium
                     new Uri(SAUCE_URL), options, TimeSpan.FromMinutes(5));
                     break;
                 case DeviceTypes.Android:
+                    options.AddAdditionalCapability("platformName", "Android");
+                    options.AddAdditionalCapability("browserName", "");
+                    options.AddAdditionalCapability("appium:deviceName", "Google Pixel 5 GoogleAPI Emulator");
+                    options.AddAdditionalCapability("appium:platformVersion", "11.0");
+                    options.AddAdditionalCapability("appium:automationName", "UiAutomator2");
+                    options.AddAdditionalCapability("appium:autoGrantPermissions", true);
+                    options.AddAdditionalCapability("appium:newCommandTimeout", 600);
+                    
+//                    options.AddAdditionalCapability("username", username);
+//                    options.AddAdditionalCapability("accessKey", accessKey);
+                    options.AddAdditionalCapability("sauce:options", sauceOptions);
+                    if (isUFG())
+                    {
+                        options.AddAdditionalCapability("appium:app", "storage:filename=androind_nmg_python.apk");
+                        options.AddAdditionalCapability("appium:optionalIntentArguments", "--es APPLITOOLS \'{\"NML_API_KEY\":\"" + apiKey + "\", \"NML_SERVER_URL\":\"https://eyesapi.applitools.com\"}\'");
+                    }
+                    else
+                    {
+                        options.AddAdditionalCapability("appium:app", "storage:ca4b986f-175c-40fd-86a2-ff55bd5f933b");
+                    }
+                    driver = new AndroidDriver<AppiumWebElement>(
+                        new Uri(SAUCE_URL), options, TimeSpan.FromMinutes(5));
                     break;
                 default:
                     throw new Exception("Unknown browser type");

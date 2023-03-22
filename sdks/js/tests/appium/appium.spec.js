@@ -1,4 +1,4 @@
-const {setupEyes, setupDriver, teardownDriver, open, Target} = require(`../../${process.env.JS_TESTS_CONFIG_NAME}`)
+const {setupEyes, setupDriver, teardownDriver, Target} = require(`../../${process.env.JS_TESTS_CONFIG_NAME}`)
 
 describe('Support Matrix Appium', () => {
     let driver, eyes
@@ -28,7 +28,7 @@ describe('Support Matrix Appium', () => {
             await eyes.close()
         })
 
-        it.only('android', async () => {
+        it('android', async () => {
             driver = await setupDriver({appium: true, platform: 'Android'});
             await eyes.open(driver, "Applitools Support Matrix", "Appium Android window - Classic")
             await eyes.check(Target.window())

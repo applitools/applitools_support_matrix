@@ -107,7 +107,7 @@ public class AppiumSetup extends GlobalSetup {
             caps.setCapability("appium:optionalIntentArguments", String.format("--es APPLITOOLS \'{\"NML_API_KEY\":\"%s\", \"NML_SERVER_URL\":\"https://eyesapi.applitools.com\"}\'", apiKey));
             caps.setCapability("appium:app", "storage:filename=androind_nmg_python.apk");
         } else {
-            caps.setCapability("appium:app", "storage:filename=SimpleRandomStock.apk");
+            caps.setCapability("appium:app", "storage:ca4b986f-175c-40fd-86a2-ff55bd5f933b");
         }
         driver = new IOSDriver(new URL(SAUCE_URL), caps);
     }
