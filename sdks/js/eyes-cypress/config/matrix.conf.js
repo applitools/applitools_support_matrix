@@ -36,6 +36,7 @@ const old_variations = [
     },
     {
         "os": "ubuntu-latest",
+        "node-version": "16",
         "version": "exact@8.7.0",
     },
 ]
