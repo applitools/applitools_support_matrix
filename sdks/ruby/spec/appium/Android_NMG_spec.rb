@@ -20,19 +20,19 @@ RSpec.describe 'Coverage Tests' do
       'sauce:options': {
         "username": ENV["SAUCE_USERNAME"],
         "accessKey": ENV["SAUCE_ACCESS_KEY"],
-        "name": 'Support Matrix'
+        "name": 'Support Matrix Ruby'
       }
 
     }
     caps
   }
-  let(:iphone_8) {Applitools::Selenium::IosDeviceInfo.new(device_name: IosDeviceName::IPhone_8, screen_orientation: Orientation::PORTRAIT)}
+  let(:pixel_4) {Applitools::Selenium::AndroidDeviceInfo.new(device_name: AndroidDeviceName::Pixel4, screen_orientation: Orientation::PORTRAIT)}
 
   it 'Window' do
     eyes.configure do |conf|
       conf.app_name = 'Applitools Support Matrix'
       conf.test_name = 'Appium Android window - UFG (Ruby)'
-      conf.add_mobile_device(iphone_8)
+      conf.add_mobile_device(pixel_4)
     end
     eyes.open(driver: driver)
     eyes.check(Applitools::Appium::Target.window)

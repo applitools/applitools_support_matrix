@@ -61,12 +61,16 @@ namespace Applitools.Support.Matrix.Appium
         public void driverSetup() 
         {
             var device = GetDevice();
+            var username = Environment.GetEnvironmentVariable("SAUCE_USERNAME");
+            var accessKey = Environment.GetEnvironmentVariable("SAUCE_ACCESS_KEY");
+            var sauceOptions = new Dictionary<string, object>();
+            sauceOptions.Add("name", "Support Matrix Dotnet");
+            sauceOptions.Add("username", username);
+            sauceOptions.Add("accessKey", accessKey);
             switch (device)
             {
                 case DeviceTypes.iPhone:
                     AppiumOptions options = new AppiumOptions();
-                    var username = Environment.GetEnvironmentVariable("SAUCE_USERNAME");
-                    var accessKey = Environment.GetEnvironmentVariable("SAUCE_ACCESS_KEY");
                     options.AddAdditionalCapability("browserName", "");
                     options.AddAdditionalCapability("platformName", "iOS");
                     options.AddAdditionalCapability("appium:platformVersion", "15.4");
@@ -74,12 +78,8 @@ namespace Applitools.Support.Matrix.Appium
                     options.AddAdditionalCapability("appium:app", "storage:filename=awesomeswift.app.zip");
                     options.AddAdditionalCapability("appium:deviceName", "iPhone 8 Simulator");
                     options.AddAdditionalCapability("appium:automationName", "XCUITest");
-                    options.AddAdditionalCapability("username", username);
-                    options.AddAdditionalCapability("accessKey", accessKey);
-                    var sauceOptions = new Dictionary<string, object>();
-                    sauceOptions.Add("name", "Support Matrix");
-                    sauceOptions.Add("username", username);
-                    sauceOptions.Add("accessKey", accessKey);
+//                    options.AddAdditionalCapability("username", username);
+//                    options.AddAdditionalCapability("accessKey", accessKey);
                     options.AddAdditionalCapability("sauce:options", sauceOptions);
                     if (isUFG())
                     {

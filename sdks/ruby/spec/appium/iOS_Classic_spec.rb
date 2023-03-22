@@ -16,7 +16,7 @@ RSpec.describe 'Coverage Tests' do
       'sauce:options': {
         "username": ENV["SAUCE_USERNAME"],
         "accessKey": ENV["SAUCE_ACCESS_KEY"],
-        "name": 'Support Matrix'
+        "name": 'Support Matrix Ruby'
       }
     }
     caps

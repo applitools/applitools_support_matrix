@@ -35,4 +35,12 @@ namespace 'github' do
   task :android_nmg => [:set_batch_info, :check_batch] do
     sh('bundle exec parallel_rspec -n 1 -- spec/appium/Android_NMG_spec.rb')
   end
+
+  task :ios_classic => [:set_batch_info, :check_batch] do
+    sh('bundle exec parallel_rspec -n 1 -- spec/appium/iOS_Classic_spec.rb')
+  end
+
+  task :ios_nmg => [:set_batch_info, :check_batch] do
+    sh('bundle exec parallel_rspec -n 1 -- spec/appium/iOS_NMG_spec.rb')
+  end
 end

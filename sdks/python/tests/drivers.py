@@ -39,6 +39,50 @@ def ios():
     }
     return start_appium_driver(caps)
 
+@pytest.fixture(scope="function")
+def android_nmg():
+    api_key = os.environ["APPLITOOLS_API_KEY"]
+    args = "--es APPLITOOLS \"{\"NML_API_KEY\":\"" + api_key +\
+           "\", \"NML_SERVER_URL\":\"https://eyesapi.applitools.com\"}\""
+    caps = {
+        "browserName": '',
+        "platformName": 'Android',
+        "appium:platformVersion": '11.0',
+        "appium:newCommandTimeout": 600,
+        "appium:app": 'storage:filename=android_nmg.apk',
+        "appium:deviceName": 'Google Pixel 5 GoogleAPI Emulator',
+        "appium:automationName": 'UiAutomator2',
+        "appium:autoGrantPermissions": True,
+        "appium:optionalIntentArguments": args,
+        'sauce:options': {
+            "username": os.environ["SAUCE_USERNAME"],
+            "accessKey": os.environ["SAUCE_ACCESS_KEY"],
+            "name": 'Support Matrix Python'
+        }
+    }
+    return start_appium_driver(caps)
+
+
+@pytest.fixture(scope="function")
+def android():
+    caps = {
+        "browserName": '',
+        "platformName": 'Android',
+        "appium:platformVersion": '11.0',
+        "appium:newCommandTimeout": 600,
+        "appium:app": 'storage:filename=android_nmg.apk',
+        "appium:deviceName": 'Google Pixel 5 GoogleAPI Emulator',
+        "appium:automationName": 'UiAutomator2',
+        "appium:autoGrantPermissions": True,
+        'sauce:options': {
+            "username": os.environ["SAUCE_USERNAME"],
+            "accessKey": os.environ["SAUCE_ACCESS_KEY"],
+            "name": 'Support Matrix Python'
+        }
+    }
+    return start_appium_driver(caps)
+
+
 
 def start_appium_driver(caps):
     try:
