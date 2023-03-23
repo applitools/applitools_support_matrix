@@ -26,19 +26,19 @@ const variations = base_common
     .map((variant) => ({
         ...variant,
         use_selenium: true,
-        test_command: "bundle exec rake"
+        test_command: "bundle exec rake -v"
     }))
     .concat([{
         os: "ubuntu-latest",
         use_selenium: true,
-        test_command: "bundle exec rake",
+        test_command: "bundle exec rake -v",
         version: "exact@4.1.0",
         "ruby-version": "2.6",
         ...common,
     }])
     .concat(base_common.map(variant => ({
         ...variant,
-        test_command: "bundle exec rake github:appium",
+        test_command: "bundle exec rake github:appium -v",
         eyes_gem: "eyes_appium",
         isAppium: true
     })))
