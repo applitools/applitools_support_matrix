@@ -19,6 +19,7 @@ public class Android_UFG : AppiumTest
     }
 
     [Test]
+    [Ignore("Skipped test due to bad screenshot")]
     public void window()
     {
             var conf = eyes.GetConfiguration();

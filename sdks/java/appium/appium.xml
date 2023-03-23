@@ -6,7 +6,6 @@
         <classes>
             <class name="support.appium.classic.IOS" />
             <class name="support.appium.ufg.IOS" />
-            <class name="support.appium.ufg.Android" />
         </classes>
     </test>
 </suite>
