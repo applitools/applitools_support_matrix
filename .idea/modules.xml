@@ -2,6 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/sdks/python/Support.python.iml" filepath="$PROJECT_DIR$/sdks/python/Support.python.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Support.ruby.iml" filepath="$PROJECT_DIR$/Support.ruby.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/applitools_support_matrix.iml" filepath="$PROJECT_DIR$/.idea/applitools_support_matrix.iml" />
       <module fileurl="file://$PROJECT_DIR$/sdks/java/appium/support-matrix-java-appium.iml" filepath="$PROJECT_DIR$/sdks/java/appium/support-matrix-java-appium.iml" />
       <module fileurl="file://$PROJECT_DIR$/sdks/java/selenium/support-matrix-java-selenium.iml" filepath="$PROJECT_DIR$/sdks/java/selenium/support-matrix-java-selenium.iml" />

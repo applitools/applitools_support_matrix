@@ -1,74 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<module type="RUBY_MODULE" version="4">
-  <component name="NewModuleRootManager" inherit-compiler-output="true">
-    <exclude-output />
-    <content url="file://$MODULE_DIR$/sdks/ruby" />
-    <orderEntry type="jdk" jdkName="RVM: ruby-2.6.4" jdkType="RUBY_SDK" />
-    <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" scope="PROVIDED" name="addressable (v2.8.0, RVM: ruby-2.6.4) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="appium_lib (v12.0.1, RVM: ruby-2.6.4) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="appium_lib_core (v5.1.2, RVM: ruby-2.6.4) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="bundler (v2.2.27, RVM: ruby-2.6.4) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="childprocess (v4.1.0, RVM: ruby-2.6.4) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="colorize (v0.8.1, RVM: ruby-2.6.4) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="crass (v1.0.6, RVM: ruby-2.6.4) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="css_parser (v1.11.0, RVM: ruby-2.6.4) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="date (v3.2.2, RVM: ruby-2.6.4) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="diff-lcs (v1.5.0, RVM: ruby-2.6.4) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="domain_name (v0.5.20190701, RVM: ruby-2.6.4) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="eventmachine (v1.2.7@9cb13a, RVM: ruby-2.6.4) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="eyes_appium (v4.1.0.alpha, RVM: ruby-2.6.4) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="eyes_core (v4.1.0.alpha, RVM: ruby-2.6.4) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="eyes_selenium (v4.1.0.alpha, RVM: ruby-2.6.4) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="eyes_universal (v2.7.2, RVM: ruby-2.6.4) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="faraday (v1.10.0, RVM: ruby-2.6.4) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="faraday-cookie_jar (v0.0.7, RVM: ruby-2.6.4) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="faraday-em_http (v1.0.0, RVM: ruby-2.6.4) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="faraday-em_synchrony (v1.0.0, RVM: ruby-2.6.4) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="faraday-excon (v1.1.0, RVM: ruby-2.6.4) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="faraday-httpclient (v1.0.1, RVM: ruby-2.6.4) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="faraday-multipart (v1.0.4, RVM: ruby-2.6.4) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="faraday-net_http (v1.0.1, RVM: ruby-2.6.4) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="faraday-net_http_persistent (v1.2.0, RVM: ruby-2.6.4) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="faraday-patron (v1.0.0, RVM: ruby-2.6.4) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="faraday-rack (v1.0.0, RVM: ruby-2.6.4) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="faraday-retry (v1.0.3, RVM: ruby-2.6.4) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="faraday_middleware (v1.2.0, RVM: ruby-2.6.4) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="faye-websocket (v0.11.1, RVM: ruby-2.6.4) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="ffi (v1.15.5, RVM: ruby-2.6.4) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="http-cookie (v1.0.5, RVM: ruby-2.6.4) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="multipart-post (v2.2.3, RVM: ruby-2.6.4) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="nokogiri (v1.13.8, RVM: ruby-2.6.4) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="oj (v3.13.14, RVM: ruby-2.6.4) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="open-uri (v0.2.0, RVM: ruby-2.6.4) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="parallel (v1.22.1, RVM: ruby-2.6.4) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="parallel_tests (v3.11.0, RVM: ruby-2.6.4) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="public_suffix (v4.0.7, RVM: ruby-2.6.4) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="racc (v1.6.0, RVM: ruby-2.6.4) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="rake (v12.3.2, RVM: ruby-2.6.4) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="rbtree (v0.4.5, RVM: ruby-2.6.4) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="rexml (v3.2.5, RVM: ruby-2.6.4) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="rspec (v3.11.0, RVM: ruby-2.6.4) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="rspec-core (v3.11.0, RVM: ruby-2.6.4) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="rspec-expectations (v3.11.0, RVM: ruby-2.6.4) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="rspec-mocks (v3.11.1, RVM: ruby-2.6.4) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="rspec-support (v3.11.0, RVM: ruby-2.6.4) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="ruby2_keywords (v0.0.5, RVM: ruby-2.6.4) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="rubyzip (v2.3.2, RVM: ruby-2.6.4) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="selenium-webdriver (v4.1.0, RVM: ruby-2.6.4) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="set (v1.0.2, RVM: ruby-2.6.4) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="sorted_set (v1.0.3, RVM: ruby-2.6.4) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="state_machine (v1.2.0, RVM: ruby-2.6.4) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="stringio (v3.0.2, RVM: ruby-2.6.4) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="time (v0.2.0, RVM: ruby-2.6.4) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="tomlrb (v2.0.3, RVM: ruby-2.6.4) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="unf (v0.1.4, RVM: ruby-2.6.4) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="unf_ext (v0.0.8.2, RVM: ruby-2.6.4) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="uri (v0.11.0, RVM: ruby-2.6.4) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="websocket (v1.2.9, RVM: ruby-2.6.4) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="websocket-driver (v0.7.5, RVM: ruby-2.6.4) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="websocket-extensions (v0.1.5, RVM: ruby-2.6.4) [gem]" level="application" />
-  </component>
+<module version="4">
   <component name="RakeTasksCache">
     <option name="myRootTask">
       <RakeTaskImpl id="rake">
@@ -78,8 +9,12 @@
           <RakeTaskImpl description="" fullCommand="default" id="default" />
           <RakeTaskImpl id="github">
             <subtasks>
+              <RakeTaskImpl description="" fullCommand="github:android_classic" id="android_classic" />
+              <RakeTaskImpl description="" fullCommand="github:android_nmg" id="android_nmg" />
               <RakeTaskImpl description="" fullCommand="github:appium" id="appium" />
               <RakeTaskImpl description="" fullCommand="github:check_batch" id="check_batch" />
+              <RakeTaskImpl description="" fullCommand="github:ios_classic" id="ios_classic" />
+              <RakeTaskImpl description="" fullCommand="github:ios_nmg" id="ios_nmg" />
               <RakeTaskImpl description="" fullCommand="github:set_batch_info" id="set_batch_info" />
               <RakeTaskImpl description="" fullCommand="github:test" id="test" />
             </subtasks>

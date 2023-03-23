@@ -46,6 +46,7 @@ const variations = base_common.map((variant) => ({...variant, ...wdio4 }))
     .concat(base_common.map(variant => ({...variant, ...wdio5})))
     .concat(base_common.map(variant => ({...variant, ...wdio6})))
     .concat(base_common.map(variant => ({...variant, ...wdio})))
+    .concat(base_common.map(variant => ({...variant, ...wdio, use_selenium: false, test_command: 'npm run appium', isAppium: true})))
     .concat(base_common.map(variant => ({...variant, ...wdio, "version": "major@1"})))
     .map(variant => ({...variant,
         job_name:`JS ${variant.use_selenium ? 'WDIO' : 'WDIO Appium'} [${variant.os} | ${variant["node-version"]}] version: ${variant.version}`

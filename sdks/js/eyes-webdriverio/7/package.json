@@ -7,6 +7,9 @@
     "webdriverio": "^7.20.5"
   },
   "scripts": {
-    "test": "mocha --config ../.mocharc.js"
+    "test": "mocha --config ../.mocharc.js",
+    "test:local": "JS_TESTS_CONFIG_NAME=eyes-webdriverio/7 mocha --config ../.mocharc.js",
+    "appium": "mocha --config ../.appium.mocharc.js",
+    "appium:local": "JS_TESTS_CONFIG_NAME=eyes-webdriverio/7 mocha --config ../.appium.mocharc.js"
   }
 }

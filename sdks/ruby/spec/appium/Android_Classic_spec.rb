@@ -7,12 +7,13 @@ RSpec.describe 'Coverage Tests' do
   let(:caps) {
     caps = {
       "browserName": '',
-      "platformName": 'iOS',
-      "appium:platformVersion": '16.0',
+      "platformName": 'Android',
+      "appium:platformVersion": '11.0',
       "appium:newCommandTimeout": 600,
-      "appium:app": 'storage:filename=awesomeswift.app.zip',
-      "appium:deviceName": 'iPhone 8 Simulator',
-      "appium:automationName": 'XCUITest',
+      "appium:app": 'storage:filename=android_nmg.apk',
+      "appium:deviceName": 'Google Pixel 5 GoogleAPI Emulator',
+      "appium:automationName": 'UiAutomator2',
+      "appium:autoGrantPermissions": true,
       'sauce:options': {
         "username": ENV["SAUCE_USERNAME"],
         "accessKey": ENV["SAUCE_ACCESS_KEY"],
@@ -25,7 +26,7 @@ RSpec.describe 'Coverage Tests' do
   it 'Window' do
     eyes.configure do |conf|
       conf.app_name = 'Applitools Support Matrix'
-      conf.test_name = 'Appium iOS window - Classic (Ruby)'
+      conf.test_name = 'Appium Android window - Classic (Ruby)'
     end
     eyes.open(driver: driver)
     eyes.check(Applitools::Appium::Target.window)
