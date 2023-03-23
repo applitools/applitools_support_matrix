@@ -1,5 +1,5 @@
 {
-  "id": "e3484f5c-955e-4a44-8010-e0f903a9e74a",
+  "id": "56021861-9a5f-45b4-82de-79746063c6e1",
   "data": [
     {
       "title": "Java",
@@ -887,7 +887,7 @@
           "eyes_package": "@applitools/eyes-playwright",
           "test_command": "npx playwright install --with-deps && npm test",
           "os": "ubuntu-latest",
-          "version": "1.31.2",
+          "version": "1.32.0",
           "job_name": "JS Playwright [ubuntu-latest | 18] version: latest@",
           "matrix_config_dir": "sdks/js/eyes-playwright",
           "passed": true,
@@ -903,7 +903,7 @@
           "eyes_package": "@applitools/eyes-playwright",
           "test_command": "npx playwright install --with-deps && npm test",
           "os": "ubuntu-latest",
-          "version": "1.30.0",
+          "version": "1.31.2",
           "job_name": "JS Playwright [ubuntu-latest | 18] version: minor@1",
           "matrix_config_dir": "sdks/js/eyes-playwright",
           "passed": true,
@@ -919,7 +919,7 @@
           "eyes_package": "@applitools/eyes-playwright",
           "test_command": "npx playwright install --with-deps && npm test",
           "os": "ubuntu-latest",
-          "version": "1.29.2",
+          "version": "1.30.0",
           "job_name": "JS Playwright [ubuntu-latest | 18] version: minor@2",
           "matrix_config_dir": "sdks/js/eyes-playwright",
           "passed": true,
@@ -935,7 +935,7 @@
           "eyes_package": "@applitools/eyes-playwright",
           "test_command": "npx playwright install --with-deps && npm test",
           "os": "windows-latest",
-          "version": "1.31.2",
+          "version": "1.32.0",
           "job_name": "JS Playwright [windows-latest | 18] version: latest@",
           "matrix_config_dir": "sdks/js/eyes-playwright",
           "passed": true,
@@ -951,7 +951,7 @@
           "eyes_package": "@applitools/eyes-playwright",
           "test_command": "npx playwright install --with-deps && npm test",
           "os": "macos-latest",
-          "version": "1.31.2",
+          "version": "1.32.0",
           "job_name": "JS Playwright [macos-latest | 18] version: latest@",
           "matrix_config_dir": "sdks/js/eyes-playwright",
           "passed": true,
@@ -1106,8 +1106,8 @@
           "matrix_string": "{\"node-version\":\"18\",\"work_dir\":\"sdks/js/eyes-cypress/v9\",\"framework_package\":\"cypress\",\"test_runner\":\"js\",\"eyes_package\":\"@applitools/eyes-cypress\",\"test_command\":\"npm test\",\"os\":\"ubuntu-latest\",\"version\":\"exact@9.7.0\",\"job_name\":\"JS Cypress [ubuntu-latest | 18] version: exact@9.7.0\",\"matrix_config_dir\":\"sdks/js/eyes-cypress\"}"
         },
         {
-          "title": "JS Cypress [ubuntu-latest | 18] version: exact@8.7.0",
-          "node-version": "18",
+          "title": "JS Cypress [ubuntu-latest | 16] version: exact@8.7.0",
+          "node-version": "16",
           "work_dir": "sdks/js/eyes-cypress/v9",
           "framework_package": "cypress",
           "test_runner": "js",
@@ -1115,11 +1115,11 @@
           "test_command": "npm test",
           "os": "ubuntu-latest",
           "version": "8.7.0",
-          "job_name": "JS Cypress [ubuntu-latest | 18] version: exact@8.7.0",
+          "job_name": "JS Cypress [ubuntu-latest | 16] version: exact@8.7.0",
           "matrix_config_dir": "sdks/js/eyes-cypress",
           "passed": true,
           "package": "cypress",
-          "matrix_string": "{\"node-version\":\"18\",\"work_dir\":\"sdks/js/eyes-cypress/v9\",\"framework_package\":\"cypress\",\"test_runner\":\"js\",\"eyes_package\":\"@applitools/eyes-cypress\",\"test_command\":\"npm test\",\"os\":\"ubuntu-latest\",\"version\":\"exact@8.7.0\",\"job_name\":\"JS Cypress [ubuntu-latest | 18] version: exact@8.7.0\",\"matrix_config_dir\":\"sdks/js/eyes-cypress\"}"
+          "matrix_string": "{\"node-version\":\"16\",\"work_dir\":\"sdks/js/eyes-cypress/v9\",\"framework_package\":\"cypress\",\"test_runner\":\"js\",\"eyes_package\":\"@applitools/eyes-cypress\",\"test_command\":\"npm test\",\"os\":\"ubuntu-latest\",\"version\":\"exact@8.7.0\",\"job_name\":\"JS Cypress [ubuntu-latest | 16] version: exact@8.7.0\",\"matrix_config_dir\":\"sdks/js/eyes-cypress\"}"
         },
         {
           "title": "JS Selenium [ubuntu-latest | 18] version: latest@",
