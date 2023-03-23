@@ -14,7 +14,14 @@ const {Builder} = require('selenium-webdriver');
 const chrome = require('selenium-webdriver/chrome');
 const SAUCE_URL = "https://ondemand.us-west-1.saucelabs.com:443/wd/hub"
 
-async function setupDriver({appium = false, ufg = false, platform}) {
+async function setupDriver(options) {
+    let appium, ufg, platform;
+    if (options) {
+        ({appium, ufg, platform} = options)
+    } else {
+        appium = false
+        ufg = false
+    }
     if (appium) {
         let caps = platform==='iOS' ? getIOSCaps(ufg) : getAndroidCaps(ufg)
         const builder = new Builder().withCapabilities(caps).usingServer(SAUCE_URL)

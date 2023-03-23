@@ -3,7 +3,14 @@ const {remote} = require('webdriverio');
 const SAUCE_HOSTNAME = "ondemand.us-west-1.saucelabs.com";
 const SAUCE_PORT = 443;
 
-async function setupDriver({appium = false, ufg = false, platform}) {
+async function setupDriver(options) {
+    let appium, ufg, platform;
+    if (options) {
+        ({appium, ufg, platform} = options)
+    } else {
+        appium = false
+        ufg = false
+    }
     if (appium) {
         const capabilities = platform==='iOS' ? getIOSCaps(ufg) : getAndroidCaps(ufg)
         const driver_config = {
