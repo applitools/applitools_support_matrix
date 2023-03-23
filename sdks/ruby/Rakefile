@@ -16,8 +16,8 @@ namespace 'github' do
   end
 
   task :check_batch do
-    puts "Batch ID: #{ENV['APPLITOOLS_BATCH_ID']}"
-    puts "Batch NAME: #{ENV['APPLITOOLS_BATCH_NAME']}"
+    sh("echo Batch ID: #{ENV['APPLITOOLS_BATCH_ID']}")
+    sh("echo Batch NAME: #{ENV['APPLITOOLS_BATCH_NAME']}")
   end
 
   task :test => [:set_batch_info, :check_batch] do
