@@ -144,9 +144,9 @@ jobs:
         run: |
           pwd
           ls
-          mv report.html index.html
-          git add index.html
-          git commit -m "Update report file"
+          mv report.html test.html
+          git add test.html
+          git commit -m "Update test file report"
           git push
 
   email_notification_on_fail:
