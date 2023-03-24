@@ -1,5 +1,5 @@
 {
-  "id": "7a9e4225-3cb4-4c3f-80ee-f317a24695de",
+  "id": "1aaf3cd8-fec1-44ae-ada6-2787e7a58096",
   "data": [
     {
       "title": "Java",
@@ -56,6 +56,45 @@
     {
       "title": "Other",
       "jobs": [
+        {
+          "title": "JS WDIO Appium [ubuntu-latest | 18] version: latest@",
+          "os": "ubuntu-latest",
+          "version": "8.6.7",
+          "node-version": "18",
+          "use_selenium": false,
+          "framework_package": "webdriverio",
+          "test_runner": "js",
+          "eyes_package": "@applitools/eyes-webdriverio",
+          "test_command": "npm run appium",
+          "work_dir": "sdks/js/eyes-webdriverio/7",
+          "js_config": "eyes-webdriverio/7",
+          "isAppium": true,
+          "job_name": "JS WDIO Appium [ubuntu-latest | 18] version: latest@",
+          "matrix_config_dir": "sdks/js/eyes-webdriverio",
+          "passed": true,
+          "package": "webdriverio",
+          "matrix_string": "{\"os\":\"ubuntu-latest\",\"version\":\"latest@\",\"node-version\":\"18\",\"use_selenium\":false,\"framework_package\":\"webdriverio\",\"test_runner\":\"js\",\"eyes_package\":\"@applitools/eyes-webdriverio\",\"test_command\":\"npm run appium\",\"work_dir\":\"sdks/js/eyes-webdriverio/7\",\"js_config\":\"eyes-webdriverio/7\",\"isAppium\":true,\"job_name\":\"JS WDIO Appium [ubuntu-latest | 18] version: latest@\",\"matrix_config_dir\":\"sdks/js/eyes-webdriverio\"}"
+        },
+        null,
+        {
+          "title": "JS WDIO Appium [macos-latest | 18] version: latest@",
+          "os": "macos-latest",
+          "version": "8.6.7",
+          "node-version": "18",
+          "use_selenium": false,
+          "framework_package": "webdriverio",
+          "test_runner": "js",
+          "eyes_package": "@applitools/eyes-webdriverio",
+          "test_command": "npm run appium",
+          "work_dir": "sdks/js/eyes-webdriverio/7",
+          "js_config": "eyes-webdriverio/7",
+          "isAppium": true,
+          "job_name": "JS WDIO Appium [macos-latest | 18] version: latest@",
+          "matrix_config_dir": "sdks/js/eyes-webdriverio",
+          "passed": true,
+          "package": "webdriverio",
+          "matrix_string": "{\"os\":\"macos-latest\",\"version\":\"latest@\",\"node-version\":\"18\",\"use_selenium\":false,\"framework_package\":\"webdriverio\",\"test_runner\":\"js\",\"eyes_package\":\"@applitools/eyes-webdriverio\",\"test_command\":\"npm run appium\",\"work_dir\":\"sdks/js/eyes-webdriverio/7\",\"js_config\":\"eyes-webdriverio/7\",\"isAppium\":true,\"job_name\":\"JS WDIO Appium [macos-latest | 18] version: latest@\",\"matrix_config_dir\":\"sdks/js/eyes-webdriverio\"}"
+        },
         {
           "title": "JS Appium [ubuntu-latest | 18] version: latest@",
           "node-version": "18",
@@ -290,13 +329,13 @@
           "test_runner": "ruby",
           "eyes_gem": "eyes_appium",
           "os": "ubuntu-latest",
-          "test_command": "bundle exec rake github:appium",
+          "test_command": "bundle exec rake github:appium -v",
           "isAppium": true,
           "job_name": "Ruby Appium [ubuntu-latest | 2.7] version: latest@",
           "matrix_config_dir": "sdks/ruby",
           "passed": true,
           "package": "selenium-webdriver",
-          "matrix_string": "{\"version\":\"latest@\",\"ruby-version\":\"2.7\",\"work_dir\":\"sdks/ruby\",\"framework_gem\":\"selenium-webdriver\",\"test_runner\":\"ruby\",\"eyes_gem\":\"eyes_appium\",\"os\":\"ubuntu-latest\",\"test_command\":\"bundle exec rake github:appium\",\"isAppium\":true,\"job_name\":\"Ruby Appium [ubuntu-latest | 2.7] version: latest@\",\"matrix_config_dir\":\"sdks/ruby\"}"
+          "matrix_string": "{\"version\":\"latest@\",\"ruby-version\":\"2.7\",\"work_dir\":\"sdks/ruby\",\"framework_gem\":\"selenium-webdriver\",\"test_runner\":\"ruby\",\"eyes_gem\":\"eyes_appium\",\"os\":\"ubuntu-latest\",\"test_command\":\"bundle exec rake github:appium -v\",\"isAppium\":true,\"job_name\":\"Ruby Appium [ubuntu-latest | 2.7] version: latest@\",\"matrix_config_dir\":\"sdks/ruby\"}"
         },
         {
           "title": "Ruby Appium [windows-latest | 2.7] version: latest@",
@@ -307,13 +346,13 @@
           "test_runner": "ruby",
           "eyes_gem": "eyes_appium",
           "os": "windows-latest",
-          "test_command": "bundle exec rake github:appium",
+          "test_command": "bundle exec rake github:appium -v",
           "isAppium": true,
           "job_name": "Ruby Appium [windows-latest | 2.7] version: latest@",
           "matrix_config_dir": "sdks/ruby",
           "passed": true,
           "package": "selenium-webdriver",
-          "matrix_string": "{\"version\":\"latest@\",\"ruby-version\":\"2.7\",\"work_dir\":\"sdks/ruby\",\"framework_gem\":\"selenium-webdriver\",\"test_runner\":\"ruby\",\"eyes_gem\":\"eyes_appium\",\"os\":\"windows-latest\",\"test_command\":\"bundle exec rake github:appium\",\"isAppium\":true,\"job_name\":\"Ruby Appium [windows-latest | 2.7] version: latest@\",\"matrix_config_dir\":\"sdks/ruby\"}"
+          "matrix_string": "{\"version\":\"latest@\",\"ruby-version\":\"2.7\",\"work_dir\":\"sdks/ruby\",\"framework_gem\":\"selenium-webdriver\",\"test_runner\":\"ruby\",\"eyes_gem\":\"eyes_appium\",\"os\":\"windows-latest\",\"test_command\":\"bundle exec rake github:appium -v\",\"isAppium\":true,\"job_name\":\"Ruby Appium [windows-latest | 2.7] version: latest@\",\"matrix_config_dir\":\"sdks/ruby\"}"
         },
         {
           "title": "Ruby Appium [macos-latest | 2.7] version: latest@",
@@ -324,13 +363,13 @@
           "test_runner": "ruby",
           "eyes_gem": "eyes_appium",
           "os": "macos-latest",
-          "test_command": "bundle exec rake github:appium",
+          "test_command": "bundle exec rake github:appium -v",
           "isAppium": true,
           "job_name": "Ruby Appium [macos-latest | 2.7] version: latest@",
           "matrix_config_dir": "sdks/ruby",
           "passed": true,
           "package": "selenium-webdriver",
-          "matrix_string": "{\"version\":\"latest@\",\"ruby-version\":\"2.7\",\"work_dir\":\"sdks/ruby\",\"framework_gem\":\"selenium-webdriver\",\"test_runner\":\"ruby\",\"eyes_gem\":\"eyes_appium\",\"os\":\"macos-latest\",\"test_command\":\"bundle exec rake github:appium\",\"isAppium\":true,\"job_name\":\"Ruby Appium [macos-latest | 2.7] version: latest@\",\"matrix_config_dir\":\"sdks/ruby\"}"
+          "matrix_string": "{\"version\":\"latest@\",\"ruby-version\":\"2.7\",\"work_dir\":\"sdks/ruby\",\"framework_gem\":\"selenium-webdriver\",\"test_runner\":\"ruby\",\"eyes_gem\":\"eyes_appium\",\"os\":\"macos-latest\",\"test_command\":\"bundle exec rake github:appium -v\",\"isAppium\":true,\"job_name\":\"Ruby Appium [macos-latest | 2.7] version: latest@\",\"matrix_config_dir\":\"sdks/ruby\"}"
         },
         {
           "title": "JS WDIO [ubuntu-latest | 18] version: exact@4.14.4",
@@ -533,7 +572,7 @@
         {
           "title": "JS WDIO [macos-latest | 18] version: latest@",
           "os": "macos-latest",
-          "version": "8.6.7",
+          "version": "8.6.8",
           "node-version": "18",
           "use_selenium": true,
           "framework_package": "webdriverio",
@@ -1410,12 +1449,12 @@
           "eyes_gem": "eyes_selenium",
           "os": "ubuntu-latest",
           "use_selenium": true,
-          "test_command": "bundle exec rake",
+          "test_command": "bundle exec rake -v",
           "job_name": "Ruby Selenium [ubuntu-latest | 2.7] version: latest@",
           "matrix_config_dir": "sdks/ruby",
           "passed": true,
           "package": "selenium-webdriver",
-          "matrix_string": "{\"version\":\"latest@\",\"ruby-version\":\"2.7\",\"work_dir\":\"sdks/ruby\",\"framework_gem\":\"selenium-webdriver\",\"test_runner\":\"ruby\",\"eyes_gem\":\"eyes_selenium\",\"os\":\"ubuntu-latest\",\"use_selenium\":true,\"test_command\":\"bundle exec rake\",\"job_name\":\"Ruby Selenium [ubuntu-latest | 2.7] version: latest@\",\"matrix_config_dir\":\"sdks/ruby\"}"
+          "matrix_string": "{\"version\":\"latest@\",\"ruby-version\":\"2.7\",\"work_dir\":\"sdks/ruby\",\"framework_gem\":\"selenium-webdriver\",\"test_runner\":\"ruby\",\"eyes_gem\":\"eyes_selenium\",\"os\":\"ubuntu-latest\",\"use_selenium\":true,\"test_command\":\"bundle exec rake -v\",\"job_name\":\"Ruby Selenium [ubuntu-latest | 2.7] version: latest@\",\"matrix_config_dir\":\"sdks/ruby\"}"
         },
         {
           "title": "Ruby Selenium [windows-latest | 2.7] version: latest@",
@@ -1427,12 +1466,12 @@
           "eyes_gem": "eyes_selenium",
           "os": "windows-latest",
           "use_selenium": true,
-          "test_command": "bundle exec rake",
+          "test_command": "bundle exec rake -v",
           "job_name": "Ruby Selenium [windows-latest | 2.7] version: latest@",
           "matrix_config_dir": "sdks/ruby",
           "passed": true,
           "package": "selenium-webdriver",
-          "matrix_string": "{\"version\":\"latest@\",\"ruby-version\":\"2.7\",\"work_dir\":\"sdks/ruby\",\"framework_gem\":\"selenium-webdriver\",\"test_runner\":\"ruby\",\"eyes_gem\":\"eyes_selenium\",\"os\":\"windows-latest\",\"use_selenium\":true,\"test_command\":\"bundle exec rake\",\"job_name\":\"Ruby Selenium [windows-latest | 2.7] version: latest@\",\"matrix_config_dir\":\"sdks/ruby\"}"
+          "matrix_string": "{\"version\":\"latest@\",\"ruby-version\":\"2.7\",\"work_dir\":\"sdks/ruby\",\"framework_gem\":\"selenium-webdriver\",\"test_runner\":\"ruby\",\"eyes_gem\":\"eyes_selenium\",\"os\":\"windows-latest\",\"use_selenium\":true,\"test_command\":\"bundle exec rake -v\",\"job_name\":\"Ruby Selenium [windows-latest | 2.7] version: latest@\",\"matrix_config_dir\":\"sdks/ruby\"}"
         },
         {
           "title": "Ruby Selenium [macos-latest | 2.7] version: latest@",
@@ -1444,18 +1483,18 @@
           "eyes_gem": "eyes_selenium",
           "os": "macos-latest",
           "use_selenium": true,
-          "test_command": "bundle exec rake",
+          "test_command": "bundle exec rake -v",
           "job_name": "Ruby Selenium [macos-latest | 2.7] version: latest@",
           "matrix_config_dir": "sdks/ruby",
           "passed": true,
           "package": "selenium-webdriver",
-          "matrix_string": "{\"version\":\"latest@\",\"ruby-version\":\"2.7\",\"work_dir\":\"sdks/ruby\",\"framework_gem\":\"selenium-webdriver\",\"test_runner\":\"ruby\",\"eyes_gem\":\"eyes_selenium\",\"os\":\"macos-latest\",\"use_selenium\":true,\"test_command\":\"bundle exec rake\",\"job_name\":\"Ruby Selenium [macos-latest | 2.7] version: latest@\",\"matrix_config_dir\":\"sdks/ruby\"}"
+          "matrix_string": "{\"version\":\"latest@\",\"ruby-version\":\"2.7\",\"work_dir\":\"sdks/ruby\",\"framework_gem\":\"selenium-webdriver\",\"test_runner\":\"ruby\",\"eyes_gem\":\"eyes_selenium\",\"os\":\"macos-latest\",\"use_selenium\":true,\"test_command\":\"bundle exec rake -v\",\"job_name\":\"Ruby Selenium [macos-latest | 2.7] version: latest@\",\"matrix_config_dir\":\"sdks/ruby\"}"
         },
         {
           "title": "Ruby Selenium [ubuntu-latest | 2.6] version: exact@4.1.0",
           "os": "ubuntu-latest",
           "use_selenium": true,
-          "test_command": "bundle exec rake",
+          "test_command": "bundle exec rake -v",
           "version": "4.1.0",
           "ruby-version": "2.6",
           "work_dir": "sdks/ruby",
@@ -1466,10 +1505,10 @@
           "matrix_config_dir": "sdks/ruby",
           "passed": true,
           "package": "selenium-webdriver",
-          "matrix_string": "{\"os\":\"ubuntu-latest\",\"use_selenium\":true,\"test_command\":\"bundle exec rake\",\"version\":\"exact@4.1.0\",\"ruby-version\":\"2.6\",\"work_dir\":\"sdks/ruby\",\"framework_gem\":\"selenium-webdriver\",\"test_runner\":\"ruby\",\"eyes_gem\":\"eyes_selenium\",\"job_name\":\"Ruby Selenium [ubuntu-latest | 2.6] version: exact@4.1.0\",\"matrix_config_dir\":\"sdks/ruby\"}"
+          "matrix_string": "{\"os\":\"ubuntu-latest\",\"use_selenium\":true,\"test_command\":\"bundle exec rake -v\",\"version\":\"exact@4.1.0\",\"ruby-version\":\"2.6\",\"work_dir\":\"sdks/ruby\",\"framework_gem\":\"selenium-webdriver\",\"test_runner\":\"ruby\",\"eyes_gem\":\"eyes_selenium\",\"job_name\":\"Ruby Selenium [ubuntu-latest | 2.6] version: exact@4.1.0\",\"matrix_config_dir\":\"sdks/ruby\"}"
         }
       ],
-      "config_path": "sdks/js/eyes-selenium"
+      "config_path": "sdks/js/eyes-webdriverio"
     }
   ]
 }
