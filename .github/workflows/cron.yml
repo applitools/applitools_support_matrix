@@ -118,6 +118,34 @@ jobs:
           git add last_passed.json
           git commit -m "Update last_passed.json file with the latest data"
           git push
+  gh_pages_updates:
+    if: ${{ success() || (failure() && github.run_attempt == 3 )}}
+    needs: report_generation
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          ref: 'gh-pages'
+      - name: Prepare for commit
+        run: |
+          git config --global user.name 'AutoSupport'
+          git config --global user.email 'autosupport@noreply.github.com'
+          git fetch
+          git reset --hard
+          git pull
+          git status
+      - name: Download report as artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: report
+      - name: Check files
+        run: |
+          pwd
+          ls
+          mv report.html index.html
+          git add index.html
+          git commit -m "Update support matrix report file"
+          git push
 
   email_notification_fail:
     if: failure()
@@ -138,8 +166,9 @@ jobs:
             username: ${{ secrets.EMAIL_USERNAME }}
             password: ${{ secrets.EMAIL_PASSWORD }}
             subject: SUPPORT MATRIX FAILURE
-            body: Failed Support Matrix Run Workflow ${{ github.workflow }} of ${{ github.repository }}. See attachments for the report to the results
+            body: Failed Support Matrix Run Workflow ${{ github.workflow }} of ${{ github.repository }}. Link to the test report is => https://applitools.github.io/applitools_support_matrix/ See attachments for the report to the results
             html_body: Failed Support Matrix Run Workflow ${{ github.workflow }} of ${{ github.repository }} <br>
+                       Link to the test report is => https://applitools.github.io/applitools_support_matrix/ <br>
                        See attachments for the report to the results
             attachments: report.html
             to: yarden.ingber@applitools.com, tranduil15@gmail.com, adam.carmi@applitools.com, ben.babayoff@applitools.com
@@ -161,8 +190,9 @@ jobs:
           username: ${{ secrets.EMAIL_USERNAME }}
           password: ${{ secrets.EMAIL_PASSWORD }}
           subject: SUPPORT MATRIX SUCCESS
-          body: Success Support Matrix Run Workflow ${{ github.workflow }} of ${{ github.repository }}. See attachments for the report to the results
+          body: Success Support Matrix Run Workflow ${{ github.workflow }} of ${{ github.repository }}. Link to the test report is => https://applitools.github.io/applitools_support_matrix/ See attachments for the report to the results
           html_body: Success Support Matrix Run Workflow ${{ github.workflow }} of ${{ github.repository }} <br>
+            Link to the test report is => https://applitools.github.io/applitools_support_matrix/ <br>
             See attachments for the report to the results
           attachments: report.html
           to: yarden.ingber@applitools.com, tranduil15@gmail.com, adam.carmi@applitools.com, ben.babayoff@applitools.com
