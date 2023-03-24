@@ -83,7 +83,7 @@ jobs:
     steps:
       - run: |
          sleep 60
-         exit 0
+         exit 1
   report_generation:
     if: always()
     needs: [
