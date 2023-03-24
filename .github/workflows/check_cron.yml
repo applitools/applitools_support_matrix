@@ -78,17 +78,18 @@ jobs:
         uses: ./.github/actions/test_runner
         with:
           lang: ${{matrix.test_runner}}
-#  failing_check:
-#    runs-on: ubuntu-latest
-#    steps:
-#      - run: |
-#         sleep 60
-#         exit 0
+  failing_check:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+         sleep 60
+         exit 0
   report_generation:
     if: always()
     needs: [
         web,
-        appium
+        appium,
+        failing_check
     ]
     runs-on: ubuntu-latest
     steps:
