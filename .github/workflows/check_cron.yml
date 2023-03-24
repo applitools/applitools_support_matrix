@@ -26,7 +26,7 @@ jobs:
         with:
 #          work_dir: 'sdks/js/eyes-webdriverio, sdks/js/eyes-testcafe, sdks/js/eyes-storybook, sdks/js/eyes-puppeteer, sdks/js/eyes-protractor, sdks/js/eyes-playwright, sdks/js/eyes-nightwatch, sdks/js/eyes-cypress, sdks/js/eyes-selenium, sdks/python, sdks/java, sdks/dotnet, sdks/ruby'
 #          work_dir: 'sdks/ruby'
-          work_dir: 'sdks/ruby, sdks/js/eyes-webdriverio, sdks/js/eyes-selenium, sdks/python, sdks/java, sdks/dotnet'
+          work_dir: 'sdks/js/eyes-cypress'
           last_passed: false
   web:
     needs: setup
@@ -120,6 +120,35 @@ jobs:
         with:
           name: report
           path: report.html
+  gh_pages_updates:
+    if: ${{ success() || (failure() && github.run_attempt == 3 )}}
+    needs: report_generation
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          ref: 'gh-pages'
+      - name: Prepare for commit
+        run: |
+          git config --global user.name 'AutoSupport'
+          git config --global user.email 'autosupport@noreply.github.com'
+          git fetch
+          git reset --hard
+          git pull
+          git status
+      - name: Upload report as artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: report
+      - name: Check files
+        run: |
+          pwd
+          ls
+          mv report.html index.html
+          git add index.html
+          git commit -m "Update report file"
+          git push
+
   email_notification_on_fail:
     if: failure()
     needs: report_generation
