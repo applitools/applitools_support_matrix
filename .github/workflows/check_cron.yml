@@ -78,18 +78,17 @@ jobs:
         uses: ./.github/actions/test_runner
         with:
           lang: ${{matrix.test_runner}}
-  failing_check:
-    runs-on: ubuntu-latest
-    steps:
-      - run: |
-         sleep 60
-         exit 1
+#  failing_check:
+#    runs-on: ubuntu-latest
+#    steps:
+#      - run: |
+#         sleep 60
+#         exit 1
   report_generation:
     if: always()
     needs: [
         web,
-        appium,
-        failing_check
+        appium
     ]
     runs-on: ubuntu-latest
     steps:
@@ -137,7 +136,7 @@ jobs:
           git reset --hard
           git pull
           git status
-      - name: Upload report as artifact
+      - name: Download report as artifact
         uses: actions/download-artifact@v3
         with:
           name: report
@@ -170,8 +169,9 @@ jobs:
             username: ${{ secrets.EMAIL_USERNAME }}
             password: ${{ secrets.EMAIL_PASSWORD }}
             subject: SUPPORT MATRIX run has failed job
-            body: Test run check  !!!!!! Workflow ${{ github.workflow }} of ${{ github.repository }}. See attachments for the report to the results
+            body: Test run check  !!!!!! Workflow ${{ github.workflow }} of ${{ github.repository }}. Link to the test report is => https://applitools.github.io/applitools_support_matrix/test.html  See attachments for the report to the results
             html_body: Test run check !!!!!!! Workflow ${{ github.workflow }} of ${{ github.repository }} <br>
+                       Link to the test report is => https://applitools.github.io/applitools_support_matrix/test.html <br>
                        See attachments for the report to the results
             attachments: report.html
             to: tranduil15@gmail.com
@@ -194,8 +194,8 @@ jobs:
             username: ${{ secrets.EMAIL_USERNAME }}
             password: ${{ secrets.EMAIL_PASSWORD }}
             subject: SUPPORT MATRIX run has success job
-            body: Success Support Matrix run
-            html_body: Success Support Matrix run
+            body: Success Support Matrix run Link to the test report is => https://applitools.github.io/applitools_support_matrix/test.html
+            html_body: Success Support Matrix run <br> Link to the test report is => https://applitools.github.io/applitools_support_matrix/test.html
             attachments: report.html
             to: tranduil15@gmail.com
             from: Artem            
