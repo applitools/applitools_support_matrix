@@ -1,5 +1,5 @@
 {
-  "id": "1aaf3cd8-fec1-44ae-ada6-2787e7a58096",
+  "id": "dab11466-c227-4127-a900-650b8c63185d",
   "data": [
     {
       "title": "Java",
@@ -75,7 +75,25 @@
           "package": "webdriverio",
           "matrix_string": "{\"os\":\"ubuntu-latest\",\"version\":\"latest@\",\"node-version\":\"18\",\"use_selenium\":false,\"framework_package\":\"webdriverio\",\"test_runner\":\"js\",\"eyes_package\":\"@applitools/eyes-webdriverio\",\"test_command\":\"npm run appium\",\"work_dir\":\"sdks/js/eyes-webdriverio/7\",\"js_config\":\"eyes-webdriverio/7\",\"isAppium\":true,\"job_name\":\"JS WDIO Appium [ubuntu-latest | 18] version: latest@\",\"matrix_config_dir\":\"sdks/js/eyes-webdriverio\"}"
         },
-        null,
+        {
+          "title": "JS WDIO Appium [windows-latest | 18] version: latest@",
+          "os": "windows-latest",
+          "version": "8.6.8",
+          "node-version": "18",
+          "use_selenium": false,
+          "framework_package": "webdriverio",
+          "test_runner": "js",
+          "eyes_package": "@applitools/eyes-webdriverio",
+          "test_command": "npm run appium",
+          "work_dir": "sdks/js/eyes-webdriverio/7",
+          "js_config": "eyes-webdriverio/7",
+          "isAppium": true,
+          "job_name": "JS WDIO Appium [windows-latest | 18] version: latest@",
+          "matrix_config_dir": "sdks/js/eyes-webdriverio",
+          "passed": true,
+          "package": "webdriverio",
+          "matrix_string": "{\"os\":\"windows-latest\",\"version\":\"latest@\",\"node-version\":\"18\",\"use_selenium\":false,\"framework_package\":\"webdriverio\",\"test_runner\":\"js\",\"eyes_package\":\"@applitools/eyes-webdriverio\",\"test_command\":\"npm run appium\",\"work_dir\":\"sdks/js/eyes-webdriverio/7\",\"js_config\":\"eyes-webdriverio/7\",\"isAppium\":true,\"job_name\":\"JS WDIO Appium [windows-latest | 18] version: latest@\",\"matrix_config_dir\":\"sdks/js/eyes-webdriverio\"}"
+        },
         {
           "title": "JS WDIO Appium [macos-latest | 18] version: latest@",
           "os": "macos-latest",
