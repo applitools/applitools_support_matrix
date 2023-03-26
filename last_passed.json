@@ -1,5 +1,5 @@
 {
-  "id": "fc3ca8d7-562c-49f0-9b7c-9babfd6bbc0e",
+  "id": "cb34372c-c45c-4811-94f0-12f263376ae0",
   "data": [
     {
       "title": "Java",
@@ -97,7 +97,7 @@
         {
           "title": "JS WDIO Appium [macos-latest | 18] version: latest@",
           "os": "macos-latest",
-          "version": "8.6.7",
+          "version": "8.6.8",
           "node-version": "18",
           "use_selenium": false,
           "framework_package": "webdriverio",
