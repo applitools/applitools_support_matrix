@@ -14,14 +14,14 @@ const URL_3 = "https://selenium-release.storage.googleapis.com/3.141/selenium-se
         const version = legacy === 'true' ? "3" : "4";
         console.log(`Selenium version is set to ${version}!`);
         if (legacy === 'true') {
-            await downloadSelenium(URL_3)
+            await downloadSelenium(URL_3, DOWNLOADED_SELENIUM_3_JAR)
             installed_version = execSync(`java -jar ${DOWNLOADED_SELENIUM_3_JAR} --version`)
             selenium = spawn("java", ["-jar", DOWNLOADED_SELENIUM_3_JAR], options)
         } else {
             const parser = new SeleniumParser();
             await parser.collect_data();
             const latestSelenium = parser.getLatest();
-            await downloadSelenium(latestSelenium.download_url)
+            await downloadSelenium(latestSelenium.download_url, latestSelenium.name)
             installed_version = execSync(`java -jar ${latestSelenium.name} standalone --version`)
             selenium = spawn("java", ["-jar", latestSelenium.name, "standalone"], options)
         }
@@ -39,9 +39,9 @@ const URL_3 = "https://selenium-release.storage.googleapis.com/3.141/selenium-se
 
 
 
-async function downloadSelenium(url) {
+async function downloadSelenium(url, name) {
     return new Promise((resolve, reject) => {
-        const file = fs.createWriteStream(DOWNLOADED_SELENIUM_JAR);
+        const file = fs.createWriteStream(name);
         get(url, function (response) {
             response.pipe(file);
 
