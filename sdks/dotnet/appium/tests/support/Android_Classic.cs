@@ -23,11 +23,10 @@ public class Android_Classic : AppiumTest
     }
 
     [Test]
-    [Ignore("Skipped test due to bad screenshot")]
     public void window()
     {
         eyes.Open(driver, "Applitools Support Matrix", "Appium Android window - Classic (Dotnet)");
-        eyes.Check(Target.Window());
+        eyes.Check(Target.Window().Fully(false));
         eyes.Close(true);
     }
   }

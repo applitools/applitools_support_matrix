@@ -6,7 +6,7 @@ RSpec.describe 'Coverage Tests' do
   let(:ufg) { true }
   let(:caps) {
     api_key = ENV["APPLITOOLS_API_KEY"]
-    args = "--es APPLITOOLS \"{\"NML_API_KEY\":\""+ api_key +"\", \"NML_SERVER_URL\":\"https://eyesapi.applitools.com\"}\""
+    args = "--es APPLITOOLS '{\"NML_API_KEY\":\""+ api_key +"\", \"NML_SERVER_URL\":\"https://eyesapi.applitools.com\"}'"
     caps = {
       "browserName": '',
       "platformName": 'Android',

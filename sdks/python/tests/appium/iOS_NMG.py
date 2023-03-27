@@ -19,5 +19,5 @@ def window(driver, eyes):
     eyes.set_configuration(conf)
     eyes.configure.add_mobile_device(IosDeviceInfo(IosDeviceName.iPhone_8, ScreenOrientation.PORTRAIT))
     eyes.open(driver)
-    eyes.check(Target.window())
+    eyes.check(Target.window().fully(False))
     eyes.close(raise_ex=True)

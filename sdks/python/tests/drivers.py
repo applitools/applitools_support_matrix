@@ -4,6 +4,7 @@ import time
 import pytest
 from selenium import webdriver
 from appium import webdriver as appium_webdriver
+from applitools.selenium import Eyes
 from urllib3.exceptions import MaxRetryError
 
 
@@ -42,8 +43,6 @@ def ios():
 @pytest.fixture(scope="function")
 def android_nmg():
     api_key = os.environ["APPLITOOLS_API_KEY"]
-    args = "--es APPLITOOLS \"{\"NML_API_KEY\":\"" + api_key +\
-           "\", \"NML_SERVER_URL\":\"https://eyesapi.applitools.com\"}\""
     caps = {
         "browserName": '',
         "platformName": 'Android',
@@ -53,13 +52,13 @@ def android_nmg():
         "appium:deviceName": 'Google Pixel 5 GoogleAPI Emulator',
         "appium:automationName": 'UiAutomator2',
         "appium:autoGrantPermissions": True,
-        "appium:optionalIntentArguments": args,
         'sauce:options': {
             "username": os.environ["SAUCE_USERNAME"],
             "accessKey": os.environ["SAUCE_ACCESS_KEY"],
             "name": 'Support Matrix Python'
         }
     }
+    Eyes.set_nmg_capabilities(caps)
     return start_appium_driver(caps)
 
 

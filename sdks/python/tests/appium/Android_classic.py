@@ -17,5 +17,5 @@ def window(driver, eyes):
     conf.app_name = "Applitools Support Matrix"
     eyes.set_configuration(conf)
     eyes.open(driver)
-    eyes.check(Target.window())
+    eyes.check(Target.window().fully(False))
     eyes.close(raise_ex=True)

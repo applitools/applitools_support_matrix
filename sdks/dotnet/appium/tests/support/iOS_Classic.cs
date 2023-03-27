@@ -21,7 +21,7 @@ public class iOS_Classic : AppiumTest
     public void window()
     {
         eyes.Open(driver, "Applitools Support Matrix", "Appium iOS window - Classic (Dotnet)");
-        eyes.Check(Target.Window());
+        eyes.Check(Target.Window().Fully(false));
         eyes.Close(true);
     }
   }

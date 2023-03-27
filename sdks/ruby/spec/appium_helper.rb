@@ -24,6 +24,7 @@ RSpec.shared_context "Common" do
       conf.branch_name = 'master'
       conf.parent_branch_name = 'master'
       conf.save_new_tests = false
+      conf.force_full_page_screenshot = false
     end
     eyes.match_timeout = 0 unless ufg
 

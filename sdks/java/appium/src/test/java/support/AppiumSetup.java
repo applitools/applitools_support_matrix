@@ -7,6 +7,7 @@ import com.applitools.eyes.appium.AppiumVisualGridRunner;
 import com.applitools.eyes.appium.Eyes;
 import com.applitools.eyes.visualgrid.model.*;
 import com.applitools.eyes.visualgrid.services.VisualGridRunner;
+import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.ios.IOSDriver;
 import org.openqa.selenium.MutableCapabilities;
 import org.openqa.selenium.WebDriver;
@@ -55,6 +56,7 @@ public class AppiumSetup extends GlobalSetup {
         eyes.setParentBranchName("master");
         eyes.setBatch(batch);
         eyes.setSaveNewTests(false);
+        eyes.setForceFullPageScreenshot(false);
         String showLogs = System.getenv("APPLITOOLS_SHOW_LOGS");
         String verbose = System.getenv("APPLITOOLS_SHOW_LOGS_VERBOSE");
         if (showLogs != null && showLogs.equals("true")) {
@@ -104,12 +106,12 @@ public class AppiumSetup extends GlobalSetup {
         options.setCapability("name", "Support Matrix Java Android");
         caps.setCapability("sauce:options", options);
         if (UFG) {
-            caps.setCapability("appium:optionalIntentArguments", String.format("--es APPLITOOLS \'{\"NML_API_KEY\":\"%s\", \"NML_SERVER_URL\":\"https://eyesapi.applitools.com\"}\'", apiKey));
+            Eyes.setNMGCapabilities(caps);
             caps.setCapability("appium:app", "storage:filename=androind_nmg_python.apk");
         } else {
             caps.setCapability("appium:app", "storage:ca4b986f-175c-40fd-86a2-ff55bd5f933b");
         }
-        driver = new IOSDriver(new URL(SAUCE_URL), caps);
+        driver = new AndroidDriver(new URL(SAUCE_URL), caps);
     }
 
 }

@@ -20,7 +20,7 @@ public class UFG : AppiumTest
             conf.AddMobileDevice(new VisualGrid.IosDeviceInfo(VisualGrid.IosDeviceName.iPhone_8));
             eyes.SetConfiguration(conf);
             eyes.Open(driver, "Applitools Support Matrix", "Appium iOS window - UFG (Dotnet)");
-            eyes.Check(Target.Window());
+            eyes.Check(Target.Window().Fully(false));
             eyes.Close(true);
     }
 

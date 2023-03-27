@@ -9,6 +9,7 @@ using OpenQA.Selenium.Appium.Enums;
 using OpenQA.Selenium.Remote;
 using System.Collections.Generic;
 using System.Diagnostics;
+using Applitools.Appium;
 
 namespace Applitools.Support.Matrix.Appium
 {
@@ -103,7 +104,7 @@ namespace Applitools.Support.Matrix.Appium
                     if (isUFG())
                     {
                         options.AddAdditionalCapability("appium:app", "storage:filename=androind_nmg_python.apk");
-                        options.AddAdditionalCapability("appium:optionalIntentArguments", "--es APPLITOOLS \'{\"NML_API_KEY\":\"" + apiKey + "\", \"NML_SERVER_URL\":\"https://eyesapi.applitools.com\"}\'");
+                        options.AddAdditionalCapability("appium:optionalIntentArguments", "--es APPLITOOLS '{\"NML_API_KEY\":\"" + apiKey + "\", \"NML_SERVER_URL\":\"https://eyesapi.applitools.com\"}'");
                     }
                     else
                     {
