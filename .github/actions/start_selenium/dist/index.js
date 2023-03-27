@@ -7081,7 +7081,9 @@ const URL_3 = "https://selenium-release.storage.googleapis.com/3.141/selenium-se
             const parser = new SeleniumParser();
             await parser.collect_data();
             const latestSelenium = parser.getLatest();
+            console.log(JSON.stringify(latestSelenium))
             await downloadSelenium(latestSelenium.download_url, latestSelenium.name)
+            fs.readdirSync(process.cwd()).forEach(console.log)
             installed_version = execSync(`java -jar ${latestSelenium.name} standalone --version`)
             selenium = spawn("java", ["-jar", latestSelenium.name, "standalone"], options)
         }
