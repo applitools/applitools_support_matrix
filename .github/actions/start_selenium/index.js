@@ -3,29 +3,27 @@ const fetch = require("node-fetch");
 const {spawn, execSync} = require('child_process');
 const {get} = require("https");
 const fs = require("fs");
-const DOWNLOADED_SELENIUM_JAR = "selenium-server.jar";
+const SeleniumParser = require("./src/SeleniumParser")
+const DOWNLOADED_SELENIUM_3_JAR = "selenium-server.jar";
 const URL_3 = "https://selenium-release.storage.googleapis.com/3.141/selenium-server-standalone-3.141.59.jar";
 ;(async () => {
     const options = {detached: true, stdio: 'ignore'}
-    let selenium;
+    let selenium, installed_version;
     try {
         const legacy = core.getInput('legacy');
         const version = legacy === 'true' ? "3" : "4";
         console.log(`Selenium version is set to ${version}!`);
-        let installed_version;
         if (legacy === 'true') {
             await downloadSelenium(URL_3)
-            installed_version = execSync(`java -jar ${DOWNLOADED_SELENIUM_JAR} --version`)
-            selenium = spawn("java", ["-jar", DOWNLOADED_SELENIUM_JAR], options)
+            installed_version = execSync(`java -jar ${DOWNLOADED_SELENIUM_3_JAR} --version`)
+            selenium = spawn("java", ["-jar", DOWNLOADED_SELENIUM_3_JAR], options)
         } else {
-            if (process.env.RUNNER_OS === "macOS") {
-                installed_version = execSync(`selenium-server standalone --version`)
-                selenium = spawn("selenium-server", ["standalone"], options)
-            } else {
-                installed_version = execSync(`java -jar ${process.env.SELENIUM_JAR_PATH} standalone --version`)
-                selenium = spawn("java", ["-jar", process.env.SELENIUM_JAR_PATH, "standalone"], options)
-
-            }
+            const parser = new SeleniumParser();
+            await parser.collect_data();
+            const latestSelenium = parser.getLatest();
+            await downloadSelenium(latestSelenium.download_url)
+            installed_version = execSync(`java -jar ${latestSelenium.name} standalone --version`)
+            selenium = spawn("java", ["-jar", latestSelenium.name, "standalone"], options)
         }
         selenium.unref();
         await waitForSeleniumStart(60)
