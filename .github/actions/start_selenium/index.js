@@ -1,7 +1,6 @@
 const core = require('@actions/core');
 const fetch = require("node-fetch");
 const {spawn, execSync} = require('child_process');
-const {get} = require("https");
 const fs = require("fs");
 const SeleniumParser = require("./src/SeleniumParser")
 const DOWNLOADED_SELENIUM_3_JAR = "selenium-server.jar";
@@ -42,21 +41,12 @@ const URL_3 = "https://selenium-release.storage.googleapis.com/3.141/selenium-se
 
 
 async function downloadSelenium(url, name) {
+    const res = await fetch(url)
+    const file = fs.createWriteStream(name);
     return new Promise((resolve, reject) => {
-        const file = fs.createWriteStream(name);
-        get(url, function (response) {
-            response.pipe(file);
-
-            // after download completed close filestream
-            file.on("finish", () => {
-                file.close();
-                console.log("Download Completed");
-                resolve();
-            });
-            file.on("error", (err) => {
-                reject(err)
-            })
-        });
+        res.body.pipe(file);
+        res.body.on("error", reject);
+        file.on("finish", resolve);
     })
 }
 

@@ -7061,7 +7061,6 @@ var __webpack_exports__ = {};
 const core = __nccwpck_require__(810);
 const fetch = __nccwpck_require__(8991);
 const {spawn, execSync} = __nccwpck_require__(2081);
-const {get} = __nccwpck_require__(5687);
 const fs = __nccwpck_require__(7147);
 const SeleniumParser = __nccwpck_require__(158)
 const DOWNLOADED_SELENIUM_3_JAR = "selenium-server.jar";
@@ -7102,21 +7101,12 @@ const URL_3 = "https://selenium-release.storage.googleapis.com/3.141/selenium-se
 
 
 async function downloadSelenium(url, name) {
+    const res = await fetch(url)
+    const file = fs.createWriteStream(name);
     return new Promise((resolve, reject) => {
-        const file = fs.createWriteStream(name);
-        get(url, function (response) {
-            response.pipe(file);
-
-            // after download completed close filestream
-            file.on("finish", () => {
-                file.close();
-                console.log("Download Completed");
-                resolve();
-            });
-            file.on("error", (err) => {
-                reject(err)
-            })
-        });
+        res.body.pipe(file);
+        res.body.on("error", reject);
+        file.on("finish", resolve);
     })
 }
 
