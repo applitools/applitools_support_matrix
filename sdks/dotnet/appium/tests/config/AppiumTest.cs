@@ -68,6 +68,11 @@ namespace Applitools.Support.Matrix.Appium
             sauceOptions.Add("name", "Support Matrix Dotnet");
             sauceOptions.Add("username", username);
             sauceOptions.Add("accessKey", accessKey);
+            string appiumVersion = Environment.GetEnvironmentVariable("APPIUM_VERSION");
+            if (appiumVersion != null)
+            {
+                options.AddAdditionalCapability("appiumVersion", appiumVersion);
+            }
             AppiumOptions options = new AppiumOptions();
             switch (device)
             {

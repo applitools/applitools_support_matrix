@@ -16,6 +16,20 @@ RSpec.shared_context "Common" do
     end
   }
 
+  let(:sauce_options) {
+    sauce_options = {
+      "username": ENV["SAUCE_USERNAME"],
+      "accessKey": ENV["SAUCE_ACCESS_KEY"],
+      "name": 'Support Matrix Ruby'
+    }
+    appium_version = ENV['APPIUM_VERSION']
+    if appium_version != nil
+      sauce_options[:appiumVersion] = appium_version
+    end
+    sauce_options
+  }
+
+
   let(:eyes) {
     eyes = Applitools::Appium::Eyes.new(runner: runner)
     eyes.configure do |conf|

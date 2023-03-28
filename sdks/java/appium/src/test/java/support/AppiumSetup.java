@@ -81,6 +81,10 @@ public class AppiumSetup extends GlobalSetup {
         caps.setCapability("appium:deviceName", "iPhone 8 Simulator");
         caps.setCapability("appium:automationName", "XCUITest");
         MutableCapabilities options = new MutableCapabilities();
+        String appiumVersion = System.getenv("APPIUM_VERSION");
+        if( appiumVersion != null) {
+            options.setCapability("appiumVersion", appiumVersion);
+        }
         options.setCapability("username", System.getenv("SAUCE_USERNAME"));
         options.setCapability("accessKey", System.getenv("SAUCE_ACCESS_KEY"));
         options.setCapability("name", "Support Matrix Java iOS");
@@ -101,6 +105,10 @@ public class AppiumSetup extends GlobalSetup {
         caps.setCapability("appium:autoGrantPermissions", true);
         caps.setCapability("appium:newCommandTimeout", 600);
         MutableCapabilities options = new MutableCapabilities();
+        String appiumVersion = System.getenv("APPIUM_VERSION");
+        if( appiumVersion != null) {
+            options.setCapability("appiumVersion", appiumVersion);
+        }
         options.setCapability("username", System.getenv("SAUCE_USERNAME"));
         options.setCapability("accessKey", System.getenv("SAUCE_ACCESS_KEY"));
         options.setCapability("name", "Support Matrix Java Android");

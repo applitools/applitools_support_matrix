@@ -17,11 +17,7 @@ RSpec.describe 'Coverage Tests' do
       "appium:automationName": 'UiAutomator2',
       "appium:autoGrantPermissions": true,
       "appium:optionalIntentArguments": args,
-      'sauce:options': {
-        "username": ENV["SAUCE_USERNAME"],
-        "accessKey": ENV["SAUCE_ACCESS_KEY"],
-        "name": 'Support Matrix Ruby'
-      }
+      'sauce:options': sauce_options
 
     }
     caps
