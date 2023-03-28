@@ -23,6 +23,7 @@ class SeleniumParser extends CoreParser {
         const raw_data = await fetch(SELENIUM_LATEST_RELEASES_INFO_URL).then(res => {
             console.log(res.ok)
             console.log(res.status)
+            if (!res.ok) console.log(JSON.stringify(res, null, 3))
             return  res.text()
         })
         const data = JSON.parse(raw_data)
