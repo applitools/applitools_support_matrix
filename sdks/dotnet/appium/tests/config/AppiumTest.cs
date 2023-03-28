@@ -71,7 +71,7 @@ namespace Applitools.Support.Matrix.Appium
             string appiumVersion = Environment.GetEnvironmentVariable("APPIUM_VERSION");
             if (appiumVersion != null)
             {
-                sauceOptions.AddAdditionalCapability("appiumVersion", appiumVersion);
+                sauceOptions.Add("appiumVersion", appiumVersion);
             }
             AppiumOptions options = new AppiumOptions();
             switch (device)
