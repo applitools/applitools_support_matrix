@@ -6670,7 +6670,11 @@ class SeleniumParser extends CoreParser {
     async collect_data() {
         const SELENIUM_LATEST_RELEASES_INFO_URL = `https://api.github.com/repos/SeleniumHQ/selenium/releases/latest`
         console.log(`used url: ${SELENIUM_LATEST_RELEASES_INFO_URL}`)
-        const raw_data = await fetch(SELENIUM_LATEST_RELEASES_INFO_URL).then(res => res.text())
+        const raw_data = await fetch(SELENIUM_LATEST_RELEASES_INFO_URL).then(res => {
+            console.log(res.ok)
+            console.log(res.status)
+            return  res.text()
+        })
         const data = JSON.parse(raw_data)
         const self = this;
         this.assets = data.assets
