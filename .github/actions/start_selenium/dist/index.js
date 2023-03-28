@@ -6645,6 +6645,234 @@ module.exports.implForWrapper = function (wrapper) {
 
 /***/ }),
 
+/***/ 158:
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
+
+const CoreParser = __nccwpck_require__(1649)
+const fetch = __nccwpck_require__(8991);
+
+
+class SeleniumParser extends CoreParser {
+
+    constructor() {
+        super();
+        this.getLatest = this.getLatest.bind(this)
+        this.getAllVersions = this.getAllVersions.bind(this)
+        this.getPreviousMinus = this.getPreviousMinus.bind(this)
+        this.getMajorMinus = this.getMajorMinus.bind(this)
+        this.getMinorMinus = this.getMinorMinus.bind(this)
+        this.getPatchMinus = this.getPatchMinus.bind(this)
+        this.parseVersion = this.parseVersion.bind(this)
+        this.parseInputVersion = this.parseInputVersion.bind(this)
+        this.assets = []
+    }
+
+    async collect_data() {
+        const SELENIUM_LATEST_RELEASES_INFO_URL = `https://api.github.com/repos/SeleniumHQ/selenium/releases/latest`
+        console.log(`used url: ${SELENIUM_LATEST_RELEASES_INFO_URL}`)
+        const raw_data = await fetch(SELENIUM_LATEST_RELEASES_INFO_URL).then(res => res.text())
+        const data = JSON.parse(raw_data)
+        const self = this;
+        this.assets = data.assets
+            .filter(as => as.name.includes("selenium-server") && as.name.includes(".jar"))
+            .map(function (asset) {
+                return {
+                    version: self.parseVersion(asset.name),
+                    name: asset.name,
+                    download_url: asset.browser_download_url
+                }
+            })
+            .sort((a, b) => a.version.compare(b.version));
+    }
+
+    getLatest() {
+        return this.assets[0]
+    }
+
+    getAllVersions() {
+        return this.assets
+    }
+
+}
+
+module.exports = SeleniumParser
+
+/***/ }),
+
+/***/ 222:
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
+
+const {execSync} = __nccwpck_require__(2081)
+
+function checkInput(str) {
+    return str && str.length > 0 ? strToNum(str) : str;
+}
+
+function strToNum(str) {
+    const parsed = parseInt(str)
+    if (isNaN(parsed)) {
+        throw new Error(`Tried to parse string [${str}] to the num`)
+    }
+    return parsed
+}
+
+function shellCommand(command, cwd) {
+    return execSync(command, {cwd}).toString();
+}
+
+
+module.exports = {
+    checkInput,
+    strToNum,
+    shellCommand
+}
+
+/***/ }),
+
+/***/ 1649:
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
+
+"use strict";
+
+const {strToNum} = __nccwpck_require__(222)
+const Version = __nccwpck_require__(4676);
+
+
+class CoreParser {
+
+    parseVersion(versionString) {
+        const reg_version_parse = /(\d+)\.(\d+)\.(\d+)/gm
+        const arr = reg_version_parse.exec(versionString);
+        if (arr === null) {
+            console.log(versionString)
+            throw new Error("failed to parse")
+        }
+        return new Version({
+            major: arr[1],
+            minor: arr[2],
+            patch: arr[3],
+        })
+    }
+
+    getLatest() {
+        throw new Error("It's not implemented method of the core parser, something gone wrong")
+    }
+
+    getAllVersions() {
+        throw new Error("It's not implemented method of the core parser, something gone wrong")
+    }
+
+    getMajorMinus({packageName, cwd, minus}) {
+        const latest = this.getLatest(packageName, cwd);
+        let change = strToNum(minus);
+        if (change > 0) change = change * -1;
+        const newMajor = latest.major + change;
+        if (newMajor < 0) throw new Error(`Package [${packageName}] latest version is [${latest.toString()}] there a no major version as ${newMajor}`)
+        const all = this.getAllVersions(packageName, cwd);
+        return all.filter(ver => ver.major === newMajor)
+            .sort((a, b) => a.compare(b))[0]
+    }
+
+    getMinorMinus({packageName, cwd, minus}) {
+        const latest = this.getLatest(packageName, cwd);
+        let change = strToNum(minus);
+        if (change > 0) change = change * -1;
+        const newMinor = latest.minor + change;
+        if (newMinor < 0) throw new Error(`Package [${packageName}] latest version is [${latest.toString()}] there a no minor version as ${newMinor}`)
+        const all = this.getAllVersions(packageName, cwd);
+        return all
+            .filter(ver => ver.major === latest.major)
+            .filter(ver => ver.minor === newMinor)
+            .sort((a, b) => a.compare(b))[0]
+    }
+
+    getPatchMinus({packageName, cwd, minus}) {
+        const latest = this.getLatest(packageName, cwd);
+        let change = strToNum(minus);
+        if (change > 0) change = change * -1;
+        const newPatch = latest.patch + change;
+        if (newPatch < 0) throw new Error(`Package [${packageName}] latest version is [${latest.toString()}] there a no patch version as ${newPatch}`)
+        const all = this.getAllVersions(packageName, cwd);
+        return all
+            .filter(ver => ver.major === latest.major)
+            .filter(ver => ver.minor === latest.minor)
+            .filter(ver => ver.patch === newPatch)[0]
+    }
+
+    getPreviousMinus({packageName, cwd, minus}) {
+        let change = strToNum(minus);
+        const all = this.getAllVersions(packageName, cwd);
+        return all[change]
+    }
+
+    parseInputVersion({version, packageName, cwd}) {
+        const regex = /(\w+)@(.*)/gm
+        const arr = regex.exec(version)
+        const type = arr[1];
+        const value = arr[2];
+        const Remotes = {
+            exact: ({minus}) => {
+                return minus
+            },
+            major: this.getMajorMinus,
+            minor: this.getMinorMinus,
+            patch: this.getPatchMinus,
+            previous: this.getPreviousMinus,
+            latest: ({packageName, cwd}) => {
+                return this.getLatest(packageName, cwd)
+            },
+        }
+        if (Remotes.hasOwnProperty(type)) {
+            const calculatedVersion = Remotes[type]({packageName, cwd, minus: value})
+            if (calculatedVersion === undefined) throw new Error(`The version for ${JSON.stringify(packageName)} wasn't found for change in ${type} for ${value}`)
+            return {
+                source: 'remote',
+                version: calculatedVersion
+            }
+        } else return {source: type, version: value}
+    }
+
+}
+
+module.exports = CoreParser
+
+/***/ }),
+
+/***/ 4676:
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
+
+const {strToNum} = __nccwpck_require__(222);
+
+class Version {
+    constructor({major, minor, patch}) {
+        this.major = strToNum(major);
+        this.minor = strToNum(minor);
+        this.patch = strToNum(patch);
+    }
+
+    compare(another) {
+        let result = compareNums(this.major, another.major)
+        if (result === 0) result = compareNums(this.minor, another.minor)
+        if (result === 0) result = compareNums(this.patch, another.patch)
+        return result
+
+        function compareNums(a, b) {
+            if (a > b) return -1
+            else if (a < b) return 1
+            else return 0
+        }
+    }
+
+    toString() {
+        return `${this.major}.${this.minor}.${this.patch}`
+    }
+
+}
+
+module.exports = Version
+
+/***/ }),
+
 /***/ 5757:
 /***/ ((module) => {
 
@@ -6833,31 +7061,30 @@ var __webpack_exports__ = {};
 const core = __nccwpck_require__(810);
 const fetch = __nccwpck_require__(8991);
 const {spawn, execSync} = __nccwpck_require__(2081);
-const {get} = __nccwpck_require__(5687);
 const fs = __nccwpck_require__(7147);
-const DOWNLOADED_SELENIUM_JAR = "selenium-server.jar";
+const SeleniumParser = __nccwpck_require__(158)
+const DOWNLOADED_SELENIUM_3_JAR = "selenium-server.jar";
 const URL_3 = "https://selenium-release.storage.googleapis.com/3.141/selenium-server-standalone-3.141.59.jar";
 ;(async () => {
     const options = {detached: true, stdio: 'ignore'}
-    let selenium;
+    let selenium, installed_version;
     try {
         const legacy = core.getInput('legacy');
         const version = legacy === 'true' ? "3" : "4";
         console.log(`Selenium version is set to ${version}!`);
-        let installed_version;
         if (legacy === 'true') {
-            await downloadSelenium(URL_3)
-            installed_version = execSync(`java -jar ${DOWNLOADED_SELENIUM_JAR} --version`)
-            selenium = spawn("java", ["-jar", DOWNLOADED_SELENIUM_JAR], options)
+            await downloadSelenium(URL_3, DOWNLOADED_SELENIUM_3_JAR)
+            installed_version = execSync(`java -jar ${DOWNLOADED_SELENIUM_3_JAR} --version`)
+            selenium = spawn("java", ["-jar", DOWNLOADED_SELENIUM_3_JAR], options)
         } else {
-            if (process.env.RUNNER_OS === "macOS") {
-                installed_version = execSync(`selenium-server standalone --version`)
-                selenium = spawn("selenium-server", ["standalone"], options)
-            } else {
-                installed_version = execSync(`java -jar ${process.env.SELENIUM_JAR_PATH} standalone --version`)
-                selenium = spawn("java", ["-jar", process.env.SELENIUM_JAR_PATH, "standalone"], options)
-
-            }
+            const parser = new SeleniumParser();
+            await parser.collect_data();
+            const latestSelenium = parser.getLatest();
+            console.log(JSON.stringify(latestSelenium))
+            await downloadSelenium(latestSelenium.download_url, latestSelenium.name)
+            fs.readdirSync(process.cwd()).forEach(console.log)
+            installed_version = execSync(`java -jar ${latestSelenium.name} standalone --version`)
+            selenium = spawn("java", ["-jar", latestSelenium.name, "standalone"], options)
         }
         selenium.unref();
         await waitForSeleniumStart(60)
@@ -6873,22 +7100,13 @@ const URL_3 = "https://selenium-release.storage.googleapis.com/3.141/selenium-se
 
 
 
-async function downloadSelenium(url) {
+async function downloadSelenium(url, name) {
+    const res = await fetch(url)
+    const file = fs.createWriteStream(name);
     return new Promise((resolve, reject) => {
-        const file = fs.createWriteStream(DOWNLOADED_SELENIUM_JAR);
-        get(url, function (response) {
-            response.pipe(file);
-
-            // after download completed close filestream
-            file.on("finish", () => {
-                file.close();
-                console.log("Download Completed");
-                resolve();
-            });
-            file.on("error", (err) => {
-                reject(err)
-            })
-        });
+        res.body.pipe(file);
+        res.body.on("error", reject);
+        file.on("finish", resolve);
     })
 }
 

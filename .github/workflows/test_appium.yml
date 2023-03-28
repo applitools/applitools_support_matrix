@@ -1,4 +1,4 @@
-name: Check Support_Matrix_Execution
+name: Test Appium tests
 
 on:
   workflow_dispatch:
