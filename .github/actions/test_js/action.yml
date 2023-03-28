@@ -13,13 +13,6 @@ runs:
       uses: actions/setup-node@v3
       with:
         node-version: ${{ matrix.node-version }}
-    - name: Install java for selenium
-      if: ${{matrix.use_selenium }}
-      uses: actions/setup-java@v3
-      with:
-        distribution: 'temurin'
-        java-version: '8'
-        cache: 'maven'
     - name: Start Selenium Server
       if: ${{matrix.use_selenium }}
       id: selenium
