@@ -1,5 +1,5 @@
 {
-  "id": "d897f249-c712-440f-8671-0e6b1c7523e8",
+  "id": "a8748af2-8981-4064-a6e7-860c63e06bd5",
   "data": [
     {
       "title": "Java",
@@ -554,7 +554,7 @@
         {
           "title": "JS WDIO [ubuntu-latest | 18] version: latest@",
           "os": "ubuntu-latest",
-          "version": "8.6.8",
+          "version": "8.6.9",
           "node-version": "18",
           "use_selenium": true,
           "framework_package": "webdriverio",
@@ -572,7 +572,7 @@
         {
           "title": "JS WDIO [windows-latest | 18] version: latest@",
           "os": "windows-latest",
-          "version": "8.6.8",
+          "version": "8.6.9",
           "node-version": "18",
           "use_selenium": true,
           "framework_package": "webdriverio",
@@ -590,7 +590,7 @@
         {
           "title": "JS WDIO [macos-latest | 18] version: latest@",
           "os": "macos-latest",
-          "version": "8.6.8",
+          "version": "8.6.9",
           "node-version": "18",
           "use_selenium": true,
           "framework_package": "webdriverio",
