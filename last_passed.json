@@ -1,5 +1,5 @@
 {
-  "id": "64de2cfb-4d31-4c13-880e-8a6ba9084f3e",
+  "id": "4e0a8044-8126-4991-9ef7-cf01d7d33bf8",
   "data": [
     {
       "title": "Java",
@@ -422,6 +422,23 @@
           "passed": true,
           "package": "webdriverio",
           "matrix_string": "{\"os\":\"windows-latest\",\"version\":\"exact@4.14.4\",\"node-version\":\"18\",\"use_selenium\":true,\"framework_package\":\"webdriverio\",\"test_runner\":\"js\",\"eyes_package\":\"@applitools/eyes.webdriverio\",\"test_command\":\"npm test\",\"work_dir\":\"sdks/js/eyes-webdriverio/4\",\"job_name\":\"JS WDIO [windows-latest | 18] version: exact@4.14.4\",\"matrix_config_dir\":\"sdks/js/eyes-webdriverio\"}"
+        },
+        {
+          "title": "JS WDIO [macos-latest | 18] version: exact@4.14.4",
+          "os": "macos-latest",
+          "version": "4.14.4",
+          "node-version": "18",
+          "use_selenium": true,
+          "framework_package": "webdriverio",
+          "test_runner": "js",
+          "eyes_package": "@applitools/eyes.webdriverio",
+          "test_command": "npm test",
+          "work_dir": "sdks/js/eyes-webdriverio/4",
+          "job_name": "JS WDIO [macos-latest | 18] version: exact@4.14.4",
+          "matrix_config_dir": "sdks/js/eyes-webdriverio",
+          "passed": true,
+          "package": "webdriverio",
+          "matrix_string": "{\"os\":\"macos-latest\",\"version\":\"exact@4.14.4\",\"node-version\":\"18\",\"use_selenium\":true,\"framework_package\":\"webdriverio\",\"test_runner\":\"js\",\"eyes_package\":\"@applitools/eyes.webdriverio\",\"test_command\":\"npm test\",\"work_dir\":\"sdks/js/eyes-webdriverio/4\",\"job_name\":\"JS WDIO [macos-latest | 18] version: exact@4.14.4\",\"matrix_config_dir\":\"sdks/js/eyes-webdriverio\"}"
         },
         {
           "title": "JS WDIO [ubuntu-latest | 18] version: exact@5.23.0",
