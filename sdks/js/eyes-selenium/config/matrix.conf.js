@@ -56,7 +56,7 @@ const variations = base_common
             ...variant,
             test_command: "npm run appium",
             isAppium: true,
-            job_name: `JS Appium [${variant.os} | ${variant["node-version"]} | client version: ${variant.version} ] `
+            job_name: `JS Appium [${variant.os} | ${variant["node-version"]} | client version: ${variant.version} | ${variant.gh_environment} ] `
         })))
     // .concat(containers)
 console.log(variations)

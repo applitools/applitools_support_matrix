@@ -18,6 +18,11 @@ const base_variations = [
     }
 ]
 const base_common = base_variations.map(variant => ({...common, ...variant,}))
+const appium_common = base_common.map(variant => ({...variant, gh_environment: 'appium_latest'})).concat([
+    {...common, os:'ubuntu-latest', version:'previous@1', gh_environment: 'appium_latest'},
+    {...common, os:'ubuntu-latest', version:'latest@', gh_environment: 'appium_previous'},
+    {...common, os:'ubuntu-latest', version:'previous@1', gh_environment: 'appium_previous'},
+])
 const variations = base_common
     .map((variant) => ({
         ...variant,
@@ -31,8 +36,9 @@ const variations = base_common
             artifactId:'eyes-selenium-java5'
         },
         work_dir: "sdks/java/selenium",
+        job_name:`Java Selenium [${variant.os} | ${variant["java-version"]} | version: ${variant.version}]`
     }))
-    .concat(base_common.map(variant => ({
+    .concat(appium_common.map(variant => ({
         ...variant,
         framework_package:{
             groupId:'io.appium',
@@ -43,11 +49,9 @@ const variations = base_common
             artifactId:'eyes-appium-java5'
         },
         work_dir: "sdks/java/appium",
-        isAppium: true
+        isAppium: true,
+        job_name:`Java Appium [${variant.os} | ${variant["java-version"]} | client version: ${variant.version} | ${variant.gh_environment}] `
     })))
-    .map(variant => ({...variant,
-        job_name:`Java ${variant.use_selenium ? 'Selenium' : 'Appium'} [${variant.os} | ${variant["java-version"]}] version: ${variant.version}`
-    }))
 console.log(variations)
 module.exports = {
     "include": variations
