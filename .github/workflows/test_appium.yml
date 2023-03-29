@@ -25,8 +25,8 @@ jobs:
         uses: ./.github/actions/setup
         with:
 #          work_dir: 'sdks/js/eyes-webdriverio, sdks/js/eyes-testcafe, sdks/js/eyes-storybook, sdks/js/eyes-puppeteer, sdks/js/eyes-protractor, sdks/js/eyes-playwright, sdks/js/eyes-nightwatch, sdks/js/eyes-cypress, sdks/js/eyes-selenium, sdks/python, sdks/java, sdks/dotnet, sdks/ruby'
-#          work_dir: 'sdks/ruby'
-          work_dir: 'sdks/js/eyes-selenium'
+#          work_dir: 'sdks/js/eyes-selenium'
+          work_dir: 'sdks/js/eyes-selenium, sdks/js/eyes-webdriverio, sdks/python, sdks/java, sdks/dotnet, sdks/ruby'
           last_passed: false
   appium:
     needs: setup
@@ -35,6 +35,7 @@ jobs:
       fail-fast: false
       matrix: ${{ fromJson(needs.setup.outputs.appium) }}
     runs-on: ${{ matrix.os }}
+    environment: ${{matrix.gh_environment}}
     timeout-minutes: 20
     env:
       APPLITOOLS_DONT_CLOSE_BATCHES: true
@@ -43,6 +44,7 @@ jobs:
       JS_TESTS_CONFIG_NAME: ${{matrix.js_config}}
       SAUCE_USERNAME: ${{secrets.SAUCE_USERNAME}}
       SAUCE_ACCESS_KEY: ${{secrets.SAUCE_ACCESS_KEY}}
+      APPIUM_VERSION: ${{vars.APPIUM_VERSION}}
     name: ${{ matrix.job_name }}
     defaults:
       run:

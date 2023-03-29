@@ -7,6 +7,19 @@ from appium import webdriver as appium_webdriver
 from applitools.selenium import Eyes
 from urllib3.exceptions import MaxRetryError
 
+@pytest.fixture(scope="function")
+def sauce_options():
+    options = {
+        "username": os.environ["SAUCE_USERNAME"],
+        "accessKey": os.environ["SAUCE_ACCESS_KEY"],
+        "name": 'Support Matrix Python'
+    }
+    appium_version = os.getenv("APPIUM_VERSION")
+    if appium_version is not None:
+        options["appiumVersion"] = appium_version
+    return options
+
+
 
 @pytest.fixture(scope="function")
 def chrome():
@@ -19,7 +32,7 @@ def chrome():
 
 
 @pytest.fixture(scope="function")
-def ios():
+def ios(sauce_options):
     api_key = os.environ["APPLITOOLS_API_KEY"]
     args = '{"args": [], "env": {"DYLD_INSERT_LIBRARIES": "@executable_path/Frameworks/UFG_lib.xcframework/ios-arm64_x86_64-simulator/UFG_lib.framework/UFG_lib","NML_API_KEY":"' + api_key + '"}}'
     caps = {
@@ -31,18 +44,12 @@ def ios():
         "appium:deviceName": 'iPhone 8 Simulator',
         "appium:automationName": 'XCUITest',
         "appium:processArguments": args,
-        'sauce:options': {
-            "username": os.environ["SAUCE_USERNAME"],
-            "accessKey": os.environ["SAUCE_ACCESS_KEY"],
-            "name": 'Support Matrix Python'
-        }
-
+        'sauce:options': sauce_options
     }
     return start_appium_driver(caps)
 
 @pytest.fixture(scope="function")
-def android_nmg():
-    api_key = os.environ["APPLITOOLS_API_KEY"]
+def android_nmg(sauce_options):
     caps = {
         "browserName": '',
         "platformName": 'Android',
@@ -52,18 +59,14 @@ def android_nmg():
         "appium:deviceName": 'Google Pixel 5 GoogleAPI Emulator',
         "appium:automationName": 'UiAutomator2',
         "appium:autoGrantPermissions": True,
-        'sauce:options': {
-            "username": os.environ["SAUCE_USERNAME"],
-            "accessKey": os.environ["SAUCE_ACCESS_KEY"],
-            "name": 'Support Matrix Python'
-        }
+        'sauce:options': sauce_options
     }
     Eyes.set_nmg_capabilities(caps)
     return start_appium_driver(caps)
 
 
 @pytest.fixture(scope="function")
-def android():
+def android(sauce_options):
     caps = {
         "browserName": '',
         "platformName": 'Android',
@@ -73,11 +76,7 @@ def android():
         "appium:deviceName": 'Google Pixel 5 GoogleAPI Emulator',
         "appium:automationName": 'UiAutomator2',
         "appium:autoGrantPermissions": True,
-        'sauce:options': {
-            "username": os.environ["SAUCE_USERNAME"],
-            "accessKey": os.environ["SAUCE_ACCESS_KEY"],
-            "name": 'Support Matrix Python'
-        }
+        'sauce:options': sauce_options
     }
     return start_appium_driver(caps)
 

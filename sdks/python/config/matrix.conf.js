@@ -19,18 +19,24 @@ const base_variations = [
     }
 ]
 const base_common = base_variations.map(variant => ({...common, ...variant,}))
+const appium_common = base_common.map(variant => ({...variant, gh_environment: 'appium_latest'})).concat([
+    {...common, os:'ubuntu-latest', version:'previous@1', gh_environment: 'appium_latest'},
+    {...common, os:'ubuntu-latest', version:'latest@', gh_environment: 'appium_previous'},
+    {...common, os:'ubuntu-latest', version:'previous@1', gh_environment: 'appium_previous'},
+])
 const variations = base_common
     .map((variant) => ({...variant,
         use_selenium: true,
         test_command: "pytest -n 2",
-        framework_package: "selenium"
+        framework_package: "selenium",
+        job_name: `Python Selenium [${variant.os} | ${variant["python-version"]} | client version: ${variant.version}] `
     }))
-    .concat(base_common.map(variant => ({...variant,
+    .concat(appium_common.map(variant => ({...variant,
         test_command: "pytest -c appium.ini",
         framework_package: "Appium-Python-Client",
-        isAppium: true
+        isAppium: true,
+        job_name: `Python Appium [${variant.os} | ${variant["python-version"]} | client version ${variant.version}]`
     })))
-    .map(variant => ({...variant, job_name:`Python ${variant.use_selenium ? 'Selenium' : 'Appium'} [${variant.os} | ${variant["python-version"]}] version: ${variant.version}`}))
 console.log(variations)
 module.exports = {
     "include": variations

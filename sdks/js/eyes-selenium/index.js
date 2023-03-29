@@ -90,6 +90,19 @@ function setupEyes({appium, vg, platform, ...config}) {
     return eyes
 }
 
+function getSauceOptions() {
+    const sauceOptions = {
+        username: process.env.SAUCE_USERNAME,
+        accessKey: process.env.SAUCE_ACCESS_KEY,
+        name: 'Support Matrix JS'
+    }
+    const appiumVersion = process.env.APPIUM_VERSION;
+    if (appiumVersion !== undefined) {
+        sauceOptions.appiumVersion = appiumVersion;
+    }
+    return sauceOptions;
+}
+
 function getIOSCaps(ufg) {
     let caps = {
         browserName: '',
@@ -99,12 +112,7 @@ function getIOSCaps(ufg) {
         "appium:app": 'storage:filename=awesomeswift.app.zip',
         "appium:deviceName": 'iPhone 8 Simulator',
         "appium:automationName": 'XCUITest',
-        'sauce:options': {
-            username: process.env.SAUCE_USERNAME,
-            accessKey: process.env.SAUCE_ACCESS_KEY,
-            name: 'Support Matrix JS'
-        }
-
+        'sauce:options': getSauceOptions()
     }
     if (ufg) {
         caps["appium:processArguments"] = {
@@ -129,12 +137,7 @@ function getAndroidCaps(ufg) {
         "appium:deviceName": 'Google Pixel 5 GoogleAPI Emulator',
         "appium:automationName": 'UiAutomator2',
         "appium:autoGrantPermissions": true,
-        'sauce:options': {
-            username: process.env.SAUCE_USERNAME,
-            accessKey: process.env.SAUCE_ACCESS_KEY,
-            name: 'Support Matrix JS'
-        }
-
+        'sauce:options': getSauceOptions()
     }
     if (ufg) {
         caps["appium:optionalIntentArguments"] = `--es APPLITOOLS \'{\"NML_API_KEY\":\"${process.env.APPLITOOLS_API_KEY}\", \"NML_SERVER_URL\":\"https://eyesapi.applitools.com\"}\'`

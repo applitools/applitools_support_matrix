@@ -59,6 +59,7 @@ jobs:
       fail-fast: false
       matrix: ${{ fromJson(needs.setup.outputs.appium) }}
     runs-on: ${{ matrix.os }}
+    environment: ${{matrix.gh_environment}}
     timeout-minutes: 20
     env:
       APPLITOOLS_DONT_CLOSE_BATCHES: true
@@ -67,6 +68,7 @@ jobs:
       JS_TESTS_CONFIG_NAME: ${{matrix.js_config}}
       SAUCE_USERNAME: ${{secrets.SAUCE_USERNAME}}
       SAUCE_ACCESS_KEY: ${{secrets.SAUCE_ACCESS_KEY}}
+      APPIUM_VERSION: ${{vars.APPIUM_VERSION}}
     name: ${{ matrix.job_name }}
     defaults:
       run:

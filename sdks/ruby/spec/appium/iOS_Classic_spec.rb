@@ -13,11 +13,7 @@ RSpec.describe 'Coverage Tests' do
       "appium:app": 'storage:filename=awesomeswift.app.zip',
       "appium:deviceName": 'iPhone 8 Simulator',
       "appium:automationName": 'XCUITest',
-      'sauce:options': {
-        "username": ENV["SAUCE_USERNAME"],
-        "accessKey": ENV["SAUCE_ACCESS_KEY"],
-        "name": 'Support Matrix Ruby'
-      }
+      'sauce:options': sauce_options
     }
     caps
   }

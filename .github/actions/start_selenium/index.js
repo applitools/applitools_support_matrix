@@ -2,7 +2,6 @@ const core = require('@actions/core');
 const fetch = require("node-fetch");
 const {spawn, execSync} = require('child_process');
 const fs = require("fs");
-const SeleniumParser = require("./src/SeleniumParser")
 const DOWNLOADED_SELENIUM_3_JAR = "selenium-server.jar";
 const URL_3 = "https://selenium-release.storage.googleapis.com/3.141/selenium-server-standalone-3.141.59.jar";
 ;(async () => {
@@ -17,14 +16,13 @@ const URL_3 = "https://selenium-release.storage.googleapis.com/3.141/selenium-se
             installed_version = execSync(`java -jar ${DOWNLOADED_SELENIUM_3_JAR} --version`)
             selenium = spawn("java", ["-jar", DOWNLOADED_SELENIUM_3_JAR], options)
         } else {
-            const parser = new SeleniumParser();
-            await parser.collect_data();
-            const latestSelenium = parser.getLatest();
-            console.log(JSON.stringify(latestSelenium))
-            await downloadSelenium(latestSelenium.download_url, latestSelenium.name)
-            fs.readdirSync(process.cwd()).forEach(console.log)
-            installed_version = execSync(`java -jar ${latestSelenium.name} standalone --version`)
-            selenium = spawn("java", ["-jar", latestSelenium.name, "standalone"], options)
+            if (process.env.RUNNER_OS === "macOS") {
+                installed_version = execSync(`selenium-server standalone --version`)
+                selenium = spawn("selenium-server", ["standalone"], options)
+            } else {
+                installed_version = execSync(`java -jar ${process.env.SELENIUM_JAR_PATH} standalone --version`)
+                selenium = spawn("java", ["-jar", process.env.SELENIUM_JAR_PATH, "standalone"], options)
+            }
         }
         selenium.unref();
         await waitForSeleniumStart(60)

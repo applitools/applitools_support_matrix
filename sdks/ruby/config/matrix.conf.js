@@ -22,11 +22,17 @@ const base_variations = [
     }
 ]
 const base_common = base_variations.map(variant => ({...basic, ...variant,}))
+const appium_common = base_common.map(variant => ({...variant, gh_environment: 'appium_latest'})).concat([
+    {...common, "ruby-version":"2.7", os:'ubuntu-latest', version:'previous@1', gh_environment: 'appium_latest'},
+    {...common, "ruby-version":"2.7", os:'ubuntu-latest', version:'latest@', gh_environment: 'appium_previous'},
+    {...common, "ruby-version":"2.7", os:'ubuntu-latest', version:'previous@1', gh_environment: 'appium_previous'},
+])
 const variations = base_common
     .map((variant) => ({
         ...variant,
         use_selenium: true,
-        test_command: "bundle exec rake -v"
+        test_command: "bundle exec rake -v",
+        job_name: `Ruby Selenium [${variant.os} | ${variant["ruby-version"]} | client version: ${variant.version}] `
     }))
     .concat([{
         os: "ubuntu-latest",
@@ -34,17 +40,16 @@ const variations = base_common
         test_command: "bundle exec rake -v",
         version: "exact@4.1.0",
         "ruby-version": "2.6",
+        job_name: `Ruby Selenium [ ubuntu-latest | 2.6 | client version: 4.1.0]`,
         ...common,
     }])
-    .concat(base_common.map(variant => ({
+    .concat(appium_common.map(variant => ({
         ...variant,
         test_command: "bundle exec rake github:appium -v",
         eyes_gem: "eyes_appium",
-        isAppium: true
+        isAppium: true,
+        job_name: `Ruby Appium [${variant.os} | ${variant["ruby-version"]} | client version: ${variant.version} | ${variant.gh_environment}] `
     })))
-    .map(variant => ({...variant,
-        job_name: `Ruby ${variant.use_selenium ? 'Selenium' : 'Appium'} [${variant.os} | ${variant["ruby-version"]}] version: ${variant.version}`
-    }))
 console.log(variations)
 module.exports = {
     "include": variations
