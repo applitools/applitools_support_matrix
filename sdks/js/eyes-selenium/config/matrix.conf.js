@@ -21,6 +21,11 @@ const base_variations = [
     }
 ]
 const base_common = base_variations.map(variant => ({...common, ...variant,}))
+const appium_common = base_common.map(variant => ({...variant, gh_environment: 'appium_latest'})).concat([
+    {...common, os:'ubuntu-latest', version:'previous@1', gh_environment: 'appium_latest'},
+    {...common, os:'ubuntu-latest', version:'latest@', gh_environment: 'appium_previous'},
+    {...common, os:'ubuntu-latest', version:'previous@1', gh_environment: 'appium_previous'},
+])
 const containers = [
     {
         ...common,
@@ -39,12 +44,21 @@ const containers = [
         test_command: "npm test"
     },
 ]
-const variations = base_common.map((variant) => ({...variant, use_selenium: true, test_command: "npm test"}))
-    .concat(base_common.map(variant => ({...variant, test_command: "npm run appium", isAppium: true})))
-    // .concat(containers)
-    .map(variant => ({...variant,
-        job_name:`JS ${variant.use_selenium ? 'Selenium' : 'Appium'} [${variant.os} | ${variant["node-version"]}] version: ${variant.version}`
+const variations = base_common
+    .map((variant) => ({
+        ...variant,
+        use_selenium: true,
+        test_command: "npm test",
+        job_name: `JS Selenium [${variant.os} | ${variant["node-version"]} | version: ${variant.version}]`
     }))
+    .concat(appium_common.map(variant => (
+        {
+            ...variant,
+            test_command: "npm run appium",
+            isAppium: true,
+            job_name: `JS Appium [${variant.os} | ${variant["node-version"]} | client version: ${variant.version} ] `
+        })))
+    // .concat(containers)
 console.log(variations)
 module.exports = {
     "include": variations
