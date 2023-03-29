@@ -23,9 +23,9 @@ const base_variations = [
 ]
 const base_common = base_variations.map(variant => ({...basic, ...variant,}))
 const appium_common = base_common.map(variant => ({...variant, gh_environment: 'appium_latest'})).concat([
-    {...common, os:'ubuntu-latest', version:'previous@1', gh_environment: 'appium_latest'},
-    {...common, os:'ubuntu-latest', version:'latest@', gh_environment: 'appium_previous'},
-    {...common, os:'ubuntu-latest', version:'previous@1', gh_environment: 'appium_previous'},
+    {...common, "ruby-version":"2.7", os:'ubuntu-latest', version:'previous@1', gh_environment: 'appium_latest'},
+    {...common, "ruby-version":"2.7", os:'ubuntu-latest', version:'latest@', gh_environment: 'appium_previous'},
+    {...common, "ruby-version":"2.7", os:'ubuntu-latest', version:'previous@1', gh_environment: 'appium_previous'},
 ])
 const variations = base_common
     .map((variant) => ({

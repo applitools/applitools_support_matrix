@@ -42,7 +42,7 @@ const base_variations = [
     }
 ]
 const base_common = base_variations.map(variant => ({ ...variant,...common,}))
-const appium_common = base_variations.map(variant => ({...variant, gh_environment: 'appium_latest'})).concat([
+const appium_common = base_variations.map(variant => ({...common,...variant, gh_environment: 'appium_latest'})).concat([
     {...common, os:'ubuntu-latest', version:'previous@1', gh_environment: 'appium_latest'},
     {...common, os:'ubuntu-latest', version:'latest@', gh_environment: 'appium_previous'},
     {...common, os:'ubuntu-latest', version:'previous@1', gh_environment: 'appium_previous'},
