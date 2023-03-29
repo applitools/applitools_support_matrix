@@ -41,6 +41,7 @@ jobs:
       APPLITOOLS_API_KEY: ${{ secrets.APPLITOOLS_API_KEY }}
       APPLITOOLS_BATCH_ID: ${{needs.setup.outputs.uuid}}
       APPLITOOLS_BRANCH_NAME: ${{matrix.branch}}
+      PUPPETEER_CACHE_DIR: ${{matrix.work_dir}}
       JS_TESTS_CONFIG_NAME: ${{matrix.js_config}}
     name: ${{ matrix.job_name }}
     defaults:
