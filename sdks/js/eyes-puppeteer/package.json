@@ -7,7 +7,6 @@
     "puppeteer": "latest"
   },
   "scripts": {
-    "test": "mocha --config ../.mocharc.js",
-    "postinstall": "node node_modules/puppeteer/install.js"
+    "test": "mocha --config ../.mocharc.js"
   }
 }
