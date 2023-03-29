@@ -11,6 +11,7 @@ const base_variations = [
     {
         "os": "ubuntu-latest",
         "version": "latest@",
+        test_command: "npm postinstall && npm test",
     },
     {
         "os": "ubuntu-latest",
@@ -27,10 +28,12 @@ const base_variations = [
     {
         "os": "windows-latest",
         "version": "latest@",
+        test_command: "npm postinstall && npm test",
     },
     {
         "os": "macos-latest",
         "version": "latest@",
+        test_command: "npm postinstall && npm test",
     }
 ]
 const variations = base_variations.map(variant => ({...common, ...variant,
