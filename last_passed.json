@@ -1,5 +1,5 @@
 {
-  "id": "4e0a8044-8126-4991-9ef7-cf01d7d33bf8",
+  "id": "6fe7d6ec-3f8d-4dfb-b898-c46a3d3f0040",
   "data": [
     {
       "title": "Java",
@@ -1050,6 +1050,23 @@
           "matrix_string": "{\"node-version\":\"18\",\"work_dir\":\"sdks/js/eyes-nightwatch\",\"framework_package\":\"nightwatch\",\"test_runner\":\"js\",\"eyes_package\":\"@applitools/eyes-nightwatch\",\"use_selenium\":true,\"test_command\":\"npm test && USE_UFG=true npm test\",\"os\":\"windows-latest\",\"version\":\"exact@1.7.13\",\"job_name\":\"JS Nightwatch [windows-latest | 18] version: exact@1.7.13\",\"matrix_config_dir\":\"sdks/js/eyes-nightwatch\"}"
         },
         {
+          "title": "JS Nightwatch [macos-latest | 18] version: exact@1.7.13",
+          "node-version": "18",
+          "work_dir": "sdks/js/eyes-nightwatch",
+          "framework_package": "nightwatch",
+          "test_runner": "js",
+          "eyes_package": "@applitools/eyes-nightwatch",
+          "use_selenium": true,
+          "test_command": "npm test && USE_UFG=true npm test",
+          "os": "macos-latest",
+          "version": "1.7.13",
+          "job_name": "JS Nightwatch [macos-latest | 18] version: exact@1.7.13",
+          "matrix_config_dir": "sdks/js/eyes-nightwatch",
+          "passed": true,
+          "package": "nightwatch",
+          "matrix_string": "{\"node-version\":\"18\",\"work_dir\":\"sdks/js/eyes-nightwatch\",\"framework_package\":\"nightwatch\",\"test_runner\":\"js\",\"eyes_package\":\"@applitools/eyes-nightwatch\",\"use_selenium\":true,\"test_command\":\"npm test && USE_UFG=true npm test\",\"os\":\"macos-latest\",\"version\":\"exact@1.7.13\",\"job_name\":\"JS Nightwatch [macos-latest | 18] version: exact@1.7.13\",\"matrix_config_dir\":\"sdks/js/eyes-nightwatch\"}"
+        },
+        {
           "title": "JS Cypress [ubuntu-latest | 18] version: latest@",
           "node-version": "18",
           "work_dir": "sdks/js/eyes-cypress/v10",
@@ -1311,6 +1328,29 @@
           "passed": true,
           "package": "{\"groupId\":\"org.seleniumhq.selenium\",\"artifactId\":\"selenium-java\"}",
           "matrix_string": "{\"java-version\":\"8\",\"test_command\":\"mvn test\",\"test_runner\":\"java\",\"os\":\"windows-latest\",\"version\":\"latest@\",\"use_selenium\":true,\"framework_package\":{\"groupId\":\"org.seleniumhq.selenium\",\"artifactId\":\"selenium-java\"},\"eyes_package\":{\"groupId\":\"com.applitools\",\"artifactId\":\"eyes-selenium-java5\"},\"work_dir\":\"sdks/java/selenium\",\"job_name\":\"Java Selenium [windows-latest | 8] version: latest@\",\"matrix_config_dir\":\"sdks/java\"}"
+        },
+        {
+          "title": "Java Selenium [macos-latest | 8] version: latest@",
+          "java-version": "8",
+          "test_command": "mvn test",
+          "test_runner": "java",
+          "os": "macos-latest",
+          "version": "4.8.3",
+          "use_selenium": true,
+          "framework_package": {
+            "groupId": "org.seleniumhq.selenium",
+            "artifactId": "selenium-java"
+          },
+          "eyes_package": {
+            "groupId": "com.applitools",
+            "artifactId": "eyes-selenium-java5"
+          },
+          "work_dir": "sdks/java/selenium",
+          "job_name": "Java Selenium [macos-latest | 8] version: latest@",
+          "matrix_config_dir": "sdks/java",
+          "passed": true,
+          "package": "{\"groupId\":\"org.seleniumhq.selenium\",\"artifactId\":\"selenium-java\"}",
+          "matrix_string": "{\"java-version\":\"8\",\"test_command\":\"mvn test\",\"test_runner\":\"java\",\"os\":\"macos-latest\",\"version\":\"latest@\",\"use_selenium\":true,\"framework_package\":{\"groupId\":\"org.seleniumhq.selenium\",\"artifactId\":\"selenium-java\"},\"eyes_package\":{\"groupId\":\"com.applitools\",\"artifactId\":\"eyes-selenium-java5\"},\"work_dir\":\"sdks/java/selenium\",\"job_name\":\"Java Selenium [macos-latest | 8] version: latest@\",\"matrix_config_dir\":\"sdks/java\"}"
         },
         {
           "title": "Dotnet Selenium [ubuntu-latest | 3.1.x] [version: exact@3.141.0]",
