@@ -13566,7 +13566,7 @@ class PythonParser extends CoreParser {
     }
 
     async collect_data(packageName) {
-        const reg_versions = /<title>\d+.\d+.\d+<\/title>/gm;
+        const reg_versions = /<title>\d+\.\d+\.\d+<\/title>/gm;
         const url = `https://pypi.org/rss/project/${packageName}/releases.xml`
         console.log(`used url: ${url}`)
         const raw_data = await fetch(url).then(res => res.text())

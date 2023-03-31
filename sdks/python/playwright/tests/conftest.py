@@ -1,8 +1,6 @@
-import pytest
 import os
-from .drivers import *
-from applitools.selenium import BatchInfo, Eyes, StitchMode
-from selenium.common.exceptions import WebDriverException
+import pytest
+from applitools.playwright import *
 
 
 @pytest.fixture(scope="session")
@@ -43,20 +41,3 @@ def eyes_setup(runner, batch_info, stitch_mode):
     eyes.abort()
     if runner is not None:
         runner.get_all_test_results(False)
-
-
-@pytest.fixture(scope="function")
-def driver_builder(chrome):
-    return chrome
-
-
-@pytest.fixture(name="driver", scope="function")
-def driver_setup(driver_builder):
-    driver = driver_builder
-    yield driver
-    # Close the browser.
-    try:
-        if driver is not None:
-            driver.quit()
-    except WebDriverException:
-        print("Driver was already closed")
