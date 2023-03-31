@@ -33,7 +33,7 @@ const variations = base_common
     }))
     .concat(base_common.map((variant) => ({...variant,
         use_selenium: false,
-        test_command: "pytest -n 2",
+        test_command: "playwright install && pytest -n 2",
         eyes_package: "eyes-playwright",
         framework_package: "playwright",
         work_dir: 'sdks/python/playwright',
