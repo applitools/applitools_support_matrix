@@ -38,6 +38,20 @@ const variations = base_common
         work_dir: "sdks/java/selenium",
         job_name:`Java Selenium [${variant.os} | ${variant["java-version"]} | version: ${variant.version}]`
     }))
+    .concat(base_common.map(variant => ({
+        ...variant,
+        use_selenium: false,
+        framework_package:{
+            groupId:'com.microsoft.playwright',
+            artifactId:'playwright'
+        },
+        eyes_package: {
+            groupId:'com.applitools',
+            artifactId:'eyes-playwright-java5'
+        },
+        work_dir: "sdks/java/playwright",
+        job_name:`Java Playwright [${variant.os} | ${variant["java-version"]} | version: ${variant.version}]`
+    })))
     .concat(appium_common.map(variant => ({
         ...variant,
         framework_package:{
