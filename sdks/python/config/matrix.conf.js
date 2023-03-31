@@ -31,6 +31,14 @@ const variations = base_common
         work_dir: 'sdks/python/selenium',
         job_name: `Python Selenium [${variant.os} | ${variant["python-version"]} | client version: ${variant.version}] `
     }))
+    .concat(base_common.map((variant) => ({...variant,
+        use_selenium: false,
+        test_command: "pytest -n 2",
+        eyes_package: "eyes-playwright",
+        framework_package: "playwright",
+        work_dir: 'sdks/python/playwright',
+        job_name: `Python Playwright [${variant.os} | ${variant["python-version"]} | client version: ${variant.version}] `
+    })))
     .concat(appium_common.map(variant => ({...variant,
         test_command: "pytest",
         framework_package: "Appium-Python-Client",
