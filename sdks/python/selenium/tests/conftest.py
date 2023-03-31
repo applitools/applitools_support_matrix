@@ -1,4 +1,3 @@
-import pytest
 import os
 from .drivers import *
 from applitools.selenium import BatchInfo, Eyes, StitchMode
