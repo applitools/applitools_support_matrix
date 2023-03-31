@@ -39,6 +39,14 @@ const variations = base_common
         work_dir: 'sdks/python/playwright',
         job_name: `Python Playwright [${variant.os} | ${variant["python-version"]} | client version: ${variant.version}] `
     })))
+    .concat(base_common.map((variant) => ({...variant,
+        use_selenium: false,
+        test_command: "robot ./web",
+        eyes_package: "eyes-robotframework",
+        framework_package: "robotframework",
+        work_dir: 'sdks/python/robot',
+        job_name: `Python Robotframework [${variant.os} | ${variant["python-version"]} | client version: ${variant.version}] `
+    })))
     .concat(appium_common.map(variant => ({...variant,
         test_command: "pytest",
         framework_package: "Appium-Python-Client",

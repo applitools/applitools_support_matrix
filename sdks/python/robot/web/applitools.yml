@@ -1,0 +1,33 @@
+
+propagate_eyes_test_results: true
+batch:
+  name: "Python Support Matrix tests"
+
+app_name: Applitools Support Matrix
+
+
+
+# Applitools run checkpoints for snapshots taken on the local machine.
+web:
+  viewport_size:
+    width: 700
+    height: 460
+  wait_before_screenshots: 100
+#  stitch_mode: CSS
+  hide_caret: true
+  hide_scrollbars: true
+  save_new_tests: false
+  parent_branch_name: master
+  branch_name: master
+
+web_ufg:
+  batch:
+    name: RobotFramework | Web UFG | Selenium
+  browsers:
+    desktop:
+      - browser_type: CHROME  # names from BrowserType
+        width: 700
+        height: 460
+  save_new_tests: false
+  parent_branch_name: master
+  branch_name: master
