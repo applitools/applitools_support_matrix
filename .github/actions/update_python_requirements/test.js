@@ -3,9 +3,9 @@ const PythonParser = require("./src/PythonParser");
 
 
 (async() => {
-    const packageName = "eyes-selenium";
+    const packageName = "robotframework";
     const cwd = path.join(process.cwd())
-    const inputVersion = "package@5.15.1.test"
+    const inputVersion = "latest@"
     const parser = new PythonParser();
     await parser.collect_data(packageName);
     console.log(`Package data was collected for: ${packageName}`)
