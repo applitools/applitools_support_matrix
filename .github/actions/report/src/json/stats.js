@@ -18,6 +18,7 @@ class Stats {
         this.skipped = 0;
         this.hasSkipped = false;
         this.duration = getDuration(start, end);
+        this.addSuite = this.addSuite.bind(this)
     }
 
     addSuite(suite){
@@ -27,6 +28,7 @@ class Stats {
         this.testsRegistered += newTests;
         this.passes += suite.passes.length;
         this.failures += suite.failures.length;
+        suite.suites.forEach(this.addSuite)
     }
 }
 

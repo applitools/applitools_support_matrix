@@ -12,8 +12,8 @@ const {generator} = require('./src/generation/generator')
     try {
 
         // Get run and jobs data
-        // const input_run_id = "4199446890";
-        const input_run_id = "4415380844";
+        // const input_run_id = "4415380844";
+        const input_run_id = "4591608142";
         const run_id = input_run_id && input_run_id.length > 0 ? input_run_id : process.env.GITHUB_RUN_ID
         console.log(`Run id used for this run is [${run_id}]`)
         const pat = process.env.MY_WORK_PAT
@@ -93,6 +93,7 @@ const {generator} = require('./src/generation/generator')
         }
     } catch (error) {
         console.log(error)
+        console.log(error.stack)
     }
 })()
 
