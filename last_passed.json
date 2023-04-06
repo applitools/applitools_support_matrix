@@ -1,5 +1,5 @@
 {
-  "id": "4883954c-a2a8-42ab-a6c9-a76dcb021c71",
+  "id": "b5ae3fea-fb2d-4280-abe7-b8a1fce4b041",
   "data": [
     {
       "title": "Java",
@@ -270,6 +270,25 @@
           "passed": true,
           "package": "selenium-webdriver",
           "matrix_string": "{\"node-version\":\"18\",\"eyes_package\":\"@applitools/eyes-selenium\",\"work_dir\":\"sdks/js/eyes-selenium\",\"js_config\":\"eyes-selenium\",\"framework_package\":\"selenium-webdriver\",\"test_runner\":\"js\",\"os\":\"ubuntu-latest\",\"version\":\"latest@\",\"gh_environment\":\"appium_previous\",\"test_command\":\"npm run appium\",\"isAppium\":true,\"job_name\":\"JS Appium [ubuntu-latest | 18 | client version: latest@ | appium_previous ] \",\"matrix_config_dir\":\"sdks/js/eyes-selenium\"}"
+        },
+        {
+          "title": "JS Appium [ubuntu-latest | 18 | client version: previous@1 | appium_previous ]",
+          "node-version": "18",
+          "eyes_package": "@applitools/eyes-selenium",
+          "work_dir": "sdks/js/eyes-selenium",
+          "js_config": "eyes-selenium",
+          "framework_package": "selenium-webdriver",
+          "test_runner": "js",
+          "os": "ubuntu-latest",
+          "version": "4.8.1",
+          "gh_environment": "appium_previous",
+          "test_command": "npm run appium",
+          "isAppium": true,
+          "job_name": "JS Appium [ubuntu-latest | 18 | client version: previous@1 | appium_previous ] ",
+          "matrix_config_dir": "sdks/js/eyes-selenium",
+          "passed": true,
+          "package": "selenium-webdriver",
+          "matrix_string": "{\"node-version\":\"18\",\"eyes_package\":\"@applitools/eyes-selenium\",\"work_dir\":\"sdks/js/eyes-selenium\",\"js_config\":\"eyes-selenium\",\"framework_package\":\"selenium-webdriver\",\"test_runner\":\"js\",\"os\":\"ubuntu-latest\",\"version\":\"previous@1\",\"gh_environment\":\"appium_previous\",\"test_command\":\"npm run appium\",\"isAppium\":true,\"job_name\":\"JS Appium [ubuntu-latest | 18 | client version: previous@1 | appium_previous ] \",\"matrix_config_dir\":\"sdks/js/eyes-selenium\"}"
         },
         {
           "title": "Python Appium [ubuntu-latest | 3.10 | client version latest@]",
