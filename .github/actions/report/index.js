@@ -18,7 +18,7 @@ const ReportUtil = require("./src/ReportUtil");
         const owner = process.env.GITHUB_REPOSITORY.split('/')[0];
         const repo = process.env.GITHUB_REPOSITORY.split('/')[1];
         const reportUtil = new ReportUtil({pat, owner, repo})
-        let jobs = await reportUtil.waitForAllCompletedJob({octokit, owner, repo, run_id});
+        let jobs = await reportUtil.waitForAllCompletedJob({run_id});
         const filtered = jobs.filter(filterTestsJobs)
         const start = jobs.map(test => test.started_at).sort(compareDates)[0]
         const end = jobs.map(test => test.completed_at).sort(compareDates)[jobs.length - 1]
