@@ -13,7 +13,9 @@
   "dependencies": {
     "@actions/core": "^1.10.0",
     "@actions/github": "^5.1.1",
-    "@octokit/rest": "^19.0.4",
-    "mochawesome-report-generator": "6.2.0"
+    "@octokit/rest": "^19.0.7",
+    "json-stringify-safe": "^5.0.1",
+    "mochawesome-report-generator": "6.2.0",
+    "jszip": "^3.10.1"
   }
 }

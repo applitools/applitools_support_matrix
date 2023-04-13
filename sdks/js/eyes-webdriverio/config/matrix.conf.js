@@ -57,7 +57,7 @@ const variations = base_common.map((variant) => ({...variant, ...wdio4 }))
     .concat(appium_common.map(variant => ({...variant, ...wdio,
         use_selenium: false,
         test_command: 'npm run appium',
-        isAppium: true,
+        use_appium: true,
         job_name:`JS WDIO Appium [${variant.os} | ${variant["node-version"]} | client version: ${variant.version} | ${variant.gh_environment} ]`
     })))
 console.log(variations)

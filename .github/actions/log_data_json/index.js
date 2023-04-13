@@ -15,13 +15,13 @@ try {
         package: pack,
         version,
         os,
-        matrix,
-        work_dir,
         selenium,
         title,
         chrome_version,
         chromedriver_version,
         appium_client_lib_version,
+        matrix,
+        work_dir,
     }
     console.log(`####[Start_json_data]${JSON.stringify(data)}[End_json_data]####`)
 } catch (error) {
