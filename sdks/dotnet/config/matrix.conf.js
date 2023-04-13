@@ -44,7 +44,7 @@ const variations = base_common
         work_dir: 'sdks/dotnet/appium',
         framework_package: "Appium.WebDriver",
         eyes_package: "Eyes.Appium",
-        isAppium: true,
+        use_appium: true,
         job_name:`Dotnet Appium [${variant.os} | ${variant["dotnet-version"]} | version: ${variant.version} | ${variant.gh_environment}]`
     })))
 console.log(variations)

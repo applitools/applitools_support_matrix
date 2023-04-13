@@ -9260,6 +9260,35 @@ const MS = __nccwpck_require__(9494);
 const {getJobsDuration} = __nccwpck_require__(3190);
 const https = __nccwpck_require__(5687);
 
+function organiseSuites(arr) {
+    const structure = {suites: {}}
+
+    function addJob(job) {
+        let currentSuite = structure;
+        let name = job.name.includes("/") ? job.name.split(" / ")[1] : job.name
+        for (const str of name.split(" ")) {
+            if (str.startsWith("[")) {
+                currentSuite.jobs.push(job)
+                break;
+            }
+            if (currentSuite.suites.hasOwnProperty(str)) {
+                currentSuite = currentSuite.suites[str]
+            } else {
+                currentSuite.suites[str] = {
+                    name: str,
+                    jobs: [],
+                    suites: {}
+                }
+                currentSuite = currentSuite.suites[str]
+            }
+
+        }
+    }
+
+    arr.forEach(addJob)
+    return structure;
+}
+
 function getJobsBySuites(arr) {
     const result = [];
     const other = {
@@ -9316,53 +9345,20 @@ async function getALlJobs({octokit, owner, repo, run_id}) {
     return jobs;
 }
 
-async function jobLog({owner, repo, job_id, pat}) {
-    const options = {
-        hostname: 'api.github.com',
-        path: `/repos/${owner}/${repo}/actions/jobs/${job_id}/logs`,
-        port: 443,
-        method: 'GET',
-        headers: {
-            'Accept': 'application/vnd.github+json',
-            'Authorization': `token ${pat}`,
-            'User-Agent': 'applitools',
-        }
-    }
-    const getLocation = new Promise((resolve) => {
-        const req = https.request(options, (res) => {
-            console.log('statusCode:', res.statusCode);
-            res.on('data', (d) => {
-                process.stdout.write(d);
-            });
-            resolve(res.headers.location)
-        }).on('error', (e) => {
-            console.error(e);
-            resolve()
-        });
-        req.end()
-    })
-    const location = await getLocation
-    let url
+async function jobLog({octokit, owner, repo, job_id}) {
+    let response;
     try {
-        url = new URL(location)
+        response = await octokit.rest.actions.downloadJobLogsForWorkflowRun({
+            owner: owner,
+            repo: repo,
+            job_id,
+        });
     } catch (e) {
-        return;
+        console.log("There are were an error")
+        throw new Error(e.message)
     }
-    return new Promise((resolve) => {
-        let body = []
-        https.get(url, (res) => {
-            console.log('statusCode:', res.statusCode);
-            res.on('data', (d) => {
-                body.push(d)
-            });
-            res.on('end', () => {
-                resolve(Buffer.concat(body).toString());
-            });
-        }).on('error', (e) => {
-            console.error(e);
-        })
-    })
 
+    return response.data
 }
 
 async function waitForAllCompletedJob({octokit, owner, repo, run_id, wait_time = MS.SECOND * 30, tries_limit = 20}) {
@@ -9398,6 +9394,7 @@ module.exports = {
     getJobsBySuites,
     filterTestsJobs,
     getALlJobs,
+    organiseSuites,
     jobLog,
     wait,
     waitForAllCompletedJob
@@ -9725,7 +9722,7 @@ const path = __nccwpck_require__(1017);
             for (const job of suiteData.jobs) {
                 const passed = job.conclusion === 'success'
                 const regex = /####\[Start_json_data](.*)\[End_json_data]####/
-                const logs = await jobLog({owner, repo, job_id: job.id, pat})
+                const logs = await jobLog({octokit, owner, repo, job_id: job.id})
                 if (logs && typeof logs === 'string') {
                     if (regex.test(logs)) {
                         const json_data = JSON.parse(regex.exec(logs)[1])

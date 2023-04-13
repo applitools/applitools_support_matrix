@@ -35,7 +35,7 @@ const path = require("path");
             for (const job of suiteData.jobs) {
                 const passed = job.conclusion === 'success'
                 const regex = /####\[Start_json_data](.*)\[End_json_data]####/
-                const logs = await jobLog({owner, repo, job_id: job.id, pat})
+                const logs = await jobLog({octokit, owner, repo, job_id: job.id})
                 if (logs && typeof logs === 'string') {
                     if (regex.test(logs)) {
                         const json_data = JSON.parse(regex.exec(logs)[1])

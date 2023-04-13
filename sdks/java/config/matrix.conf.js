@@ -63,7 +63,7 @@ const variations = base_common
             artifactId:'eyes-appium-java5'
         },
         work_dir: "sdks/java/appium",
-        isAppium: true,
+        use_appium: true,
         job_name:`Java Appium [${variant.os} | ${variant["java-version"]} | client version: ${variant.version} | ${variant.gh_environment}] `
     })))
 console.log(variations)

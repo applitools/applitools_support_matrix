@@ -50,7 +50,7 @@ const variations = base_common
     .concat(appium_common.map(variant => ({...variant,
         test_command: "pytest",
         framework_package: "Appium-Python-Client",
-        isAppium: true,
+        use_appium: true,
         work_dir: 'sdks/python/appium',
         job_name: `Python Appium [${variant.os} | ${variant["python-version"]} | client version ${variant.version}]`
     })))
