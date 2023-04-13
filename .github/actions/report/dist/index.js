@@ -9425,6 +9425,40 @@ exports.isPlainObject = isPlainObject;
 
 /***/ }),
 
+/***/ 5040:
+/***/ ((module, exports) => {
+
+exports = module.exports = stringify
+exports.getSerialize = serializer
+
+function stringify(obj, replacer, spaces, cycleReplacer) {
+  return JSON.stringify(obj, serializer(replacer, cycleReplacer), spaces)
+}
+
+function serializer(replacer, cycleReplacer) {
+  var stack = [], keys = []
+
+  if (cycleReplacer == null) cycleReplacer = function(key, value) {
+    if (stack[0] === value) return "[Circular ~]"
+    return "[Circular ~." + keys.slice(0, stack.indexOf(value)).join(".") + "]"
+  }
+
+  return function(key, value) {
+    if (stack.length > 0) {
+      var thisPos = stack.indexOf(this)
+      ~thisPos ? stack.splice(thisPos + 1) : stack.push(this)
+      ~thisPos ? keys.splice(thisPos, Infinity, key) : keys.push(key)
+      if (~stack.indexOf(value)) value = cycleReplacer.call(this, key, value)
+    }
+    else stack.push(value)
+
+    return replacer == null ? value : replacer.call(this, key, value)
+  }
+}
+
+
+/***/ }),
+
 /***/ 3278:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
@@ -25396,6 +25430,202 @@ function wrappy (fn, cb) {
 
 /***/ }),
 
+/***/ 7047:
+/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
+
+"use strict";
+
+const {Suite, Test} = __nccwpck_require__(6103);
+const {getJobsDuration, getDuration} = __nccwpck_require__(3190);
+const {getALlJobs, jobLog, waitForAllCompletedJob} = __nccwpck_require__(5849);
+const MS = __nccwpck_require__(9494);
+const stringify = __nccwpck_require__(5040);
+const {Octokit} = __nccwpck_require__(5294);
+
+class ReportUtil {
+
+    constructor({ pat, owner, repo}) {
+        this.pat = pat
+        this.owner = owner
+        this.repo = repo
+        this.octokit = new Octokit({
+            auth: pat,
+            request: {
+                timeout: 30000,
+                retries: 2,
+            }
+        });
+        this.MakeSuite = this.MakeSuite.bind(this)
+        this.getJobLog = this.getJobLog.bind(this)
+        this.getALlJobs = this.getALlJobs.bind(this)
+        this.waitForAllCompletedJob = this.waitForAllCompletedJob.bind(this)
+        this.prepareContext = this.prepareContext.bind(this)
+        this.parseError = this.parseError.bind(this)
+        this.generateReportTitle = this.generateReportTitle.bind(this)
+        this.getLangVersion = this.getLangVersion.bind(this)
+        this.getAppiumServerVersion = this.getAppiumServerVersion.bind(this)
+        this.formatPackageVersion = this.formatPackageVersion.bind(this)
+        this.formatSeleniumServerVersion = this.formatSeleniumServerVersion.bind(this)
+    }
+
+
+    prepareContext(object_data, str_arr) {
+        const ctx = []
+        ctx.push(...str_arr)
+        for (const prop in object_data) {
+            if (object_data[prop]) {
+                ctx.push(`${prop} : ${object_data[prop]}`)
+            }
+        }
+        return stringify(ctx, null, 2);
+    }
+
+    async generateReportTitle(object_data) {
+        const eyesSDK = object_data.title.split("[")[0]
+        const matrix = JSON.parse(object_data.matrix)
+        const env = [];
+        env.push(object_data.os)
+        env.push(this.getLangVersion(matrix))
+        env.push(this.formatPackageVersion(object_data))
+        // isAppium deprecated
+        if (matrix.use_appium || matrix.isAppium) {
+            env.push(await this.getAppiumServerVersion(matrix.gh_environment))
+        }
+        if (matrix.use_selenium) {
+            env.push(this.formatSeleniumServerVersion(object_data))
+        }
+        return `${eyesSDK} [${env.join(' | ')}]`
+    }
+
+    async getAppiumServerVersion(gh_environment){
+        const repoResponse = await this.octokit.rest.repos.get({owner: this.owner, repo: this.repo})
+        const repository_id = repoResponse.data.id;
+        const variableResponse = await this.octokit.rest.actions.getEnvironmentVariable({
+            repository_id,
+            environment_name:gh_environment,
+            name: 'APPIUM_VERSION'
+        })
+        return `appium server: ${variableResponse.data.value}`
+    }
+
+    formatSeleniumServerVersion(data){
+        return data.selenium.split(",")[0]
+    }
+
+    formatPackageVersion(data){
+        const packageString = data.groupId ?
+            `${data.groupId}/${data.artifactId}` :
+            `${data.package}`
+        return `${packageString} : ${data.version}`
+    }
+
+    getLangVersion(matrix) {
+        switch (matrix.test_runner) {
+            case 'js':
+                return `node-version: ${matrix['node-version']}`
+            case 'dotnet':
+                return `dotnet-version: ${matrix['dotnet-version']}`
+            case 'java':
+                return `java-version: ${matrix['java-version']}`
+            case 'ruby':
+                return `ruby-version: ${matrix['ruby-version']}`
+            case 'python':
+                return `python-version: ${matrix['python-version']}`
+            default: throw new Error(`Unsupported runner used need an update. Runner: ${matrix.test_runner}`)
+        }
+    }
+
+    parseError(logs) {
+        const regex = /##\[endgroup\](?:(?!##\[endgroup\]).)*?(?=##\[error\])/gs;
+        const matches = logs.match(regex);
+        let errorLogs;
+        if (matches) {
+            const lastMatch = matches[matches.length - 1];
+            errorLogs = lastMatch.replace("##[endgroup]", "");
+            return {
+                message: "Here are error logs",
+                estack: errorLogs,
+                diff: null,
+            }
+        }
+        return {
+            message: "No logs were found",
+            estack: undefined,
+            diff: null,
+        }
+    }
+
+    async MakeSuite(suiteData) {
+        const suite = new Suite({title: suiteData.name, duration: getJobsDuration(suiteData.jobs)})
+        for (const job of suiteData.jobs) {
+            const testData = {
+                title: job.name.split('/')[1],
+                fullTitle: job.name,
+                duration: getDuration(job.started_at, job.completed_at),
+                passed: job.conclusion === 'success'
+            }
+            const logs = await this.getJobLog({ job_id: job.id,})
+            if (logs && typeof logs === 'string') {
+                const regex = /####\[Start_json_data](.*)\[End_json_data]####/
+                if (regex.test(logs)) {
+                    const json_data = JSON.parse(regex.exec(logs)[1])
+                    if (json_data.title) testData.title = await this.generateReportTitle(json_data)
+                    testData.code = JSON.stringify(json_data, undefined, 2);
+                    testData.context = this.prepareContext(json_data, [job.html_url])
+                }
+                if (!testData.passed) {
+                    testData.err = this.parseError(logs)
+                }
+
+            }
+            suite.addTest(new Test(testData))
+        }
+        for (const suiteName in suiteData.suites) {
+            const innerData = suiteData.suites[suiteName]
+            const innerSuite = await this.MakeSuite(innerData)
+            suite.addSuite(innerSuite);
+        }
+        return suite;
+    }
+
+    async getALlJobs({ run_id}) {
+        return await getALlJobs({
+            octokit: this.octokit,
+            owner: this.owner,
+            repo: this.repo,
+            run_id
+        })
+    }
+
+    async getJobLog({job_id}) {
+        console.log(`Getting logs for the job: ${job_id}`)
+        return await jobLog({
+            octokit: this.octokit,
+            owner: this.owner,
+            repo: this.repo,
+            job_id
+        })
+
+    }
+
+    async waitForAllCompletedJob({run_id, wait_time = MS.SECOND * 30, tries_limit = 20}) {
+        return await waitForAllCompletedJob({
+            octokit: this.octokit,
+            owner: this.owner,
+            repo: this.repo,
+            run_id,
+            wait_time,
+            tries_limit
+        })
+    }
+
+}
+
+
+module.exports = ReportUtil
+
+/***/ }),
+
 /***/ 7240:
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
@@ -26136,13 +26366,12 @@ var __webpack_exports__ = {};
 
 const core = __nccwpck_require__(810)
 
-const {waitForAllCompletedJob, filterTestsJobs, jobLog, organiseSuites} = __nccwpck_require__(5849)
-const {Report, Suite, Test} = __nccwpck_require__(6103)
-const {getDuration, compareDates, getJobsDuration} = __nccwpck_require__(3190)
-const {Octokit} = __nccwpck_require__(5294)
+const {filterTestsJobs, organiseSuites} = __nccwpck_require__(5849)
+const {Report} = __nccwpck_require__(6103)
+const {compareDates} = __nccwpck_require__(3190)
 const fs = __nccwpck_require__(7147)
 const {generator} = __nccwpck_require__(7240)
-
+const ReportUtil = __nccwpck_require__(7047);
 ;(async () => {
     try {
 
@@ -26151,12 +26380,10 @@ const {generator} = __nccwpck_require__(7240)
         const run_id = input_run_id && input_run_id.length > 0 ? input_run_id : process.env.GITHUB_RUN_ID
         console.log(`Run id used for this run is [${run_id}]`)
         const pat = core.getInput('token')
-        const octokit = new Octokit({
-            auth: pat,
-        });
         const owner = process.env.GITHUB_REPOSITORY.split('/')[0];
         const repo = process.env.GITHUB_REPOSITORY.split('/')[1];
-        let jobs = await waitForAllCompletedJob({octokit, owner, repo, run_id});
+        const reportUtil = new ReportUtil({pat, owner, repo})
+        let jobs = await reportUtil.waitForAllCompletedJob({octokit, owner, repo, run_id});
         const filtered = jobs.filter(filterTestsJobs)
         const start = jobs.map(test => test.started_at).sort(compareDates)[0]
         const end = jobs.map(test => test.completed_at).sort(compareDates)[jobs.length - 1]
@@ -26164,7 +26391,7 @@ const {generator} = __nccwpck_require__(7240)
         const report = new Report({start, end})
         for (const suiteName in struct.suites) {
             const suiteData = struct.suites[suiteName]
-            const suite = await MakeSuite(suiteData)
+            const suite = await reportUtil.MakeSuite(suiteData)
             report.addSuite(suite);
         }
         // Make json file
@@ -26172,33 +26399,6 @@ const {generator} = __nccwpck_require__(7240)
         // Make html report
         await generator.generate()
         console.log(1)
-        async function MakeSuite(suiteData) {
-            const suite = new Suite({title: suiteData.name, duration: getJobsDuration(suiteData.jobs)})
-            for (const job of suiteData.jobs) {
-                const testData = {
-                    title: job.name.split('/')[1],
-                    fullTitle: job.name,
-                    duration: getDuration(job.started_at, job.completed_at),
-                    passed: job.conclusion === 'success'
-                }
-                const regex = /####\[Start_json_data](.*)\[End_json_data]####/
-                const logs = await jobLog({owner, repo, job_id: job.id, pat})
-                if (logs && typeof logs === 'string') {
-                    if (regex.test(logs)) {
-                        const json_data = JSON.parse(regex.exec(logs)[1])
-                        if (json_data.title) testData.title = json_data.title;
-                        testData.code = JSON.stringify(json_data, undefined, 2);
-                    }
-                }
-                suite.addTest(new Test(testData))
-            }
-            for (const suiteName in suiteData.suites) {
-                const innerData = suiteData.suites[suiteName]
-                const innerSuite = await MakeSuite(innerData)
-                suite.addSuite(innerSuite);
-            }
-            return suite;
-        }
     } catch (error) {
         core.setFailed(error.message);
     }
