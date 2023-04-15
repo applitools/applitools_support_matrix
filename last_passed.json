@@ -1,5 +1,5 @@
 {
-  "id": "fde68e34-f8e6-4371-b624-b1b9d76985bd",
+  "id": "f4fcfe26-455c-4073-ab35-e247332a4064",
   "data": [
     {
       "title": "Java",
@@ -1126,7 +1126,7 @@
           "test_runner": "js",
           "eyes_package": "@applitools/eyes-puppeteer",
           "os": "ubuntu-latest",
-          "version": "19.8.5",
+          "version": "19.9.0",
           "job_name": "JS Puppeteer [ubuntu-latest | 18] version: latest@]",
           "matrix_config_dir": "sdks/js/eyes-puppeteer",
           "passed": true,
@@ -1194,7 +1194,7 @@
           "test_runner": "js",
           "eyes_package": "@applitools/eyes-puppeteer",
           "os": "windows-latest",
-          "version": "19.8.5",
+          "version": "19.9.0",
           "job_name": "JS Puppeteer [windows-latest | 18] version: latest@]",
           "matrix_config_dir": "sdks/js/eyes-puppeteer",
           "passed": true,
@@ -1211,7 +1211,7 @@
           "test_runner": "js",
           "eyes_package": "@applitools/eyes-puppeteer",
           "os": "macos-latest",
-          "version": "19.8.5",
+          "version": "19.9.0",
           "job_name": "JS Puppeteer [macos-latest | 18] version: latest@]",
           "matrix_config_dir": "sdks/js/eyes-puppeteer",
           "passed": true,
