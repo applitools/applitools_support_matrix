@@ -176,7 +176,7 @@ jobs:
                        Link to the test report is => https://applitools.github.io/applitools_support_matrix/test.html <br>
                        See attachments for the report to the results
             attachments: report.html
-            to: tranduil15@gmail.com
+            to: artem.borodavka@applitools.com
             from: Artem
   email_notification_on_success:
     needs: report_generation
@@ -199,7 +199,7 @@ jobs:
             body: Success Support Matrix run Link to the test report is => https://applitools.github.io/applitools_support_matrix/test.html
             html_body: Success Support Matrix run <br> Link to the test report is => https://applitools.github.io/applitools_support_matrix/test.html
             attachments: report.html
-            to: tranduil15@gmail.com
+            to: artem.borodavka@applitools.com
             from: Artem            
   rerun:
     if: failure()
