@@ -1,9 +1,0 @@
-name: 'Send Email'
-description: 'Action to send an email regarding email status'
-inputs:
-  matrix-status:
-    description: "Status of the matrix"
-    required: true
-runs:
-  using: "node16"
-  main: "dist/index.js"
