@@ -1,15 +1,11 @@
 package support;
 
-import com.applitools.connectivity.RestClient;
-import com.applitools.connectivity.ServerConnector;
 import com.applitools.eyes.BatchInfo;
-import com.applitools.eyes.Logger;
+import com.applitools.eyes.fluent.BatchClose;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
 
-import javax.ws.rs.HttpMethod;
-import javax.ws.rs.core.UriBuilder;
-import java.net.URI;
+import java.util.Collections;
 
 public class GlobalSetup {
 
@@ -35,17 +31,9 @@ public class GlobalSetup {
         GlobalSetup.CI = CI != null && CI.equals("true");
     }
 
+
    @AfterSuite
-    public void closeBatch() {
-        try {
-            String server = "eyesapi.applitools.com";
-            String url = "https://" + server + "/api/sessions/batches/" + batch.getId() + "/close/bypointerid/?apiKey=" + apiKey;
-            URI requestUrl = UriBuilder.fromUri(url).build();
-            RestClient client = new RestClient(new Logger(), requestUrl, ServerConnector.DEFAULT_CLIENT_TIMEOUT);
-            int statusCode = client.sendHttpRequest(requestUrl.toString(), HttpMethod.DELETE).getStatusCode();
-            System.out.println(statusCode);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
+   public void closeBatch() {
+       new BatchClose().setBatchId(Collections.singletonList(batch.getId())).close();
+   }
 }
