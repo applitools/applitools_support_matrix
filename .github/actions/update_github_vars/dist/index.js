@@ -12504,11 +12504,13 @@ async function actionCommand({owner, repo, pat}) {
     const repoResponse = await octokit.rest.repos.get({owner, repo})
     const repository_id = repoResponse.data.id;
     const latest = await getAppiumVersionEnv(repository_id, gh_environment.latest)
+    console.log(`Current latest version in github env: ${latest}`)
     if (versions[0] !== latest) await updateAppiumVersionEnv(repository_id, gh_environment.latest, versions[0])
     const previous = await getAppiumVersionEnv(repository_id, gh_environment.previous)
-    if (versions[1] !== previous) await updateAppiumVersionEnv(repository_id, gh_environment.previous, versions[1])
-    console.log(`Current latest version in github env: ${latest}`)
     console.log(`Current previous version in github env: ${previous}`)
+    if (versions[1] !== previous) await updateAppiumVersionEnv(repository_id, gh_environment.previous, versions[1])
+
+
 
     async function getAppiumVersionEnv(repository_id, environment_name) {
         const response = await octokit.rest.actions.getEnvironmentVariable({
