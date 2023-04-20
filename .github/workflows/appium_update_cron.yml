@@ -1,4 +1,4 @@
-name: Support_Matrix_Execution
+name: Update Appium vars and apps
 
 on:
   workflow_dispatch:
