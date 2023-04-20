@@ -20,9 +20,9 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Update vars
-          uses: ./.github/actions/update_github_vars
-          with:
-            token: ${{secrets.PAT}}
+        uses: ./.github/actions/update_github_vars
+        with:
+          token: ${{secrets.PAT}}
   update_apps:
     runs-on: ubuntu-latest
     timeout-minutes: 15
