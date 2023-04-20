@@ -1,0 +1,9 @@
+name: 'Update github env with the latest appium version'
+description: 'Action which update env vars on github for appium versions with the latest versions from sauce'
+inputs:
+  token:
+    description: "PAT token to access the github REST API"
+    required: true
+runs:
+  using: "node16"
+  main: "dist/index.js"
