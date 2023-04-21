@@ -48,6 +48,7 @@ const variations = base_common
         test_command: "bundle exec rake github:appium -v",
         eyes_gem: "eyes_appium",
         use_appium: true,
+        framework_gem: "appium_lib",
         job_name: `Ruby Appium [${variant.os} | ${variant["ruby-version"]} | client version: ${variant.version} | ${variant.gh_environment}] `
     })))
 console.log(variations)
