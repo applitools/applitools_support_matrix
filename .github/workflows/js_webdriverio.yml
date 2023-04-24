@@ -32,6 +32,11 @@ on:
     secrets:
       APPLITOOLS_API_KEY:
         required: true
+      SAUCE_USERNAME:
+        required: true
+      SAUCE_ACCESS_KEY:
+        required: true  
+        
 
 permissions:
   contents: read
@@ -74,6 +79,8 @@ jobs:
       APPLITOOLS_API_KEY: ${{ secrets.APPLITOOLS_API_KEY }}
       APPLITOOLS_BATCH_ID: ${{needs.setup.outputs.uuid}}
       JS_TESTS_CONFIG_NAME: ${{ matrix.js_config}}
+      SAUCE_USERNAME: ${{secrets.SAUCE_USERNAME}}
+      SAUCE_ACCESS_KEY: ${{secrets.SAUCE_ACCESS_KEY}}
     defaults:
       run:
         working-directory: ${{ matrix.work_dir }}
