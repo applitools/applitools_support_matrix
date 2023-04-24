@@ -6,11 +6,7 @@ const common = {
     "eyes_package": "@applitools/eyes-webdriverio",
     test_command: "npm test"
 }
-const wdio4 = {
-    "work_dir": "sdks/js/eyes-webdriverio/4",
-    "version": "exact@4.14.4",
-    "eyes_package": "@applitools/eyes.webdriverio"
-}
+
 const wdio5 = {
     "version": "exact@5.23.0",
     "work_dir": "sdks/js/eyes-webdriverio/5",
@@ -47,10 +43,10 @@ const appium_common = base_variations.map(variant => ({...common,...variant, gh_
     {...common, os:'ubuntu-latest', version:'latest@', gh_environment: 'appium_previous'},
     {...common, os:'ubuntu-latest', version:'previous@1', gh_environment: 'appium_previous'},
 ])
-const variations = base_common.map((variant) => ({...variant, ...wdio4 }))
+const variations = base_common
+    .map(variant => ({...variant, ...wdio}))
     .concat(base_common.map(variant => ({...variant, ...wdio5})))
     .concat(base_common.map(variant => ({...variant, ...wdio6})))
-    .concat(base_common.map(variant => ({...variant, ...wdio})))
     .concat(base_common.map(variant => ({...variant, ...wdio, "version": "major@1"})))
     .map(variant => ({...variant, job_name:`JS WDIO [${variant.os} | ${variant["node-version"]} | version: ${variant.version} ]`
     }))
