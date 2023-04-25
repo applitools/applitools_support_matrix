@@ -38,6 +38,7 @@ jobs:
       - name: Prepare apps
         run: |
           ls -lh
+          cat awesomeswift.app.zip
           echo "Download applitoolsify script"
           echo "Inject applitools lib"
           echo "Download app to saucelabs (("
@@ -56,6 +57,7 @@ jobs:
       - name: Prepare apps
         run: |
           ls -lh
+          cat SimpleRandomStock.apk
           echo "Download applitoolsify script"
           echo "Inject applitools lib"
           echo "Download app to saucelabs (("
