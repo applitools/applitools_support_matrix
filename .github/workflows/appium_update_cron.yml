@@ -53,7 +53,7 @@ jobs:
       - name: Download clean app
         run: |
           echo "Start update script"     
-          curl -L -o SimpleRandomStock.apk "https://drive.google.com/uc?export=download&id=16M_Fu4OfTHFMi3bQsaFyrbj-kYXoxwOl"
+          curl -L -o SimpleRandomStock.apk "https://drive.google.com/uc?export=download&confirm=no_antivirus&id=16M_Fu4OfTHFMi3bQsaFyrbj-kYXoxwOl"
       - name: Prepare apps
         run: |
           ls -lh
