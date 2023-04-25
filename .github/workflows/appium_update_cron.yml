@@ -50,9 +50,9 @@ jobs:
         shell: bash
     steps:
       - name: Download clean app
-          run: |
-            echo "Start update script"     
-            curl -O https://drive.google.com/file/d/16M_Fu4OfTHFMi3bQsaFyrbj-kYXoxwOl/view?usp=share_link
+        run: |
+          echo "Start update script"     
+          curl -O https://drive.google.com/file/d/16M_Fu4OfTHFMi3bQsaFyrbj-kYXoxwOl/view?usp=share_link
       - name: Prepare apps
         run: |
           ls
