@@ -26,15 +26,17 @@ jobs:
   update_ios_apps:
     runs-on: ubuntu-latest
     timeout-minutes: 15
-    name: Update native apps
+    name: Update ios native apps
     defaults:
       run:
         shell: bash
     steps:
-      - name: Prepare apps
-        run: |
+      - name: Download clean app
+        run: | 
           echo "Start update script"     
           curl -O https://drive.google.com/file/d/1xu9hfo5rZ101hZoDzA9HMZ8dtW0R5-4K/view?usp=share_link
+      - name: Prepare apps
+        run: |
           ls
           echo "Download applitoolsify script"
           echo "Inject applitools lib"
@@ -42,15 +44,17 @@ jobs:
   update_android_apps:
     runs-on: ubuntu-latest
     timeout-minutes: 15
-    name: Update native apps
+    name: Update android native apps
     defaults:
       run:
         shell: bash
     steps:
+      - name: Download clean app
+          run: |
+            echo "Start update script"     
+            curl -O https://drive.google.com/file/d/16M_Fu4OfTHFMi3bQsaFyrbj-kYXoxwOl/view?usp=share_link
       - name: Prepare apps
         run: |
-          echo "Start update script"     
-          curl -O https://drive.google.com/file/d/16M_Fu4OfTHFMi3bQsaFyrbj-kYXoxwOl/view?usp=share_link
           ls
           echo "Download applitoolsify script"
           echo "Inject applitools lib"
