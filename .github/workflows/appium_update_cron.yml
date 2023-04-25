@@ -34,10 +34,10 @@ jobs:
       - name: Download clean app
         run: | 
           echo "Start update script"     
-          curl -O https://drive.google.com/file/d/1xu9hfo5rZ101hZoDzA9HMZ8dtW0R5-4K/view?usp=share_link
+          curl -L -o awesomeswift.app.zip https://drive.google.com/file/d/1xu9hfo5rZ101hZoDzA9HMZ8dtW0R5-4K/view?usp=share_link
       - name: Prepare apps
         run: |
-          ls
+          ls -lh
           echo "Download applitoolsify script"
           echo "Inject applitools lib"
           echo "Download app to saucelabs (("
@@ -52,10 +52,10 @@ jobs:
       - name: Download clean app
         run: |
           echo "Start update script"     
-          curl -O https://drive.google.com/file/d/16M_Fu4OfTHFMi3bQsaFyrbj-kYXoxwOl/view?usp=share_link
+          curl -L -o SimpleRandomStock.apk https://drive.google.com/file/d/16M_Fu4OfTHFMi3bQsaFyrbj-kYXoxwOl/view?usp=share_link
       - name: Prepare apps
         run: |
-          ls
+          ls -lh
           echo "Download applitoolsify script"
           echo "Inject applitools lib"
           echo "Download app to saucelabs (("
