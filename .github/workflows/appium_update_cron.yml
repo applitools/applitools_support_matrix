@@ -23,7 +23,7 @@ jobs:
         uses: ./.github/actions/update_github_vars
         with:
           token: ${{secrets.PAT}}
-  update_apps:
+  update_ios_apps:
     runs-on: ubuntu-latest
     timeout-minutes: 15
     name: Update native apps
@@ -33,8 +33,25 @@ jobs:
     steps:
       - name: Prepare apps
         run: |
-          echo "Start update script"        
-          echo "Download clean apps from jFrog"
+          echo "Start update script"     
+          curl -O https://drive.google.com/file/d/1xu9hfo5rZ101hZoDzA9HMZ8dtW0R5-4K/view?usp=share_link
+          ls
           echo "Download applitoolsify script"
           echo "Inject applitools lib"
-          echo "Download app to jFrog"
+          echo "Download app to saucelabs (("
+  update_android_apps:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    name: Update native apps
+    defaults:
+      run:
+        shell: bash
+    steps:
+      - name: Prepare apps
+        run: |
+          echo "Start update script"     
+          curl -O https://drive.google.com/file/d/16M_Fu4OfTHFMi3bQsaFyrbj-kYXoxwOl/view?usp=share_link
+          ls
+          echo "Download applitoolsify script"
+          echo "Inject applitools lib"
+          echo "Download app to saucelabs (("
