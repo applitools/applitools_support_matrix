@@ -23,7 +23,7 @@ jobs:
 #        uses: ./.github/actions/update_github_vars
 #        with:
 #          token: ${{secrets.PAT}}
-  update_ios_apps:
+  update_ios_nmg_apps:
     runs-on: ubuntu-latest
     timeout-minutes: 15
     name: Update ios native apps
@@ -37,9 +37,11 @@ jobs:
           curl -L -o awesomeswift.app.zip "https://drive.google.com/uc?export=download&id=1xu9hfo5rZ101hZoDzA9HMZ8dtW0R5-4K"
       - name: Prepare apps
         run: |
+          unzip awesomeswift.app.zip
           ls -lh
-          echo "Download applitoolsify script"
-          echo "Inject applitools lib"
+          curl -O https://raw.githubusercontent.com/applitools/applitoolsify/main/applitoolsify.py
+          python applitoolsify.py ./awesomeswift.app ios_nmg 
+          mv awesomeswift.app awesomeswift_nmg.app
           echo "Download app to saucelabs (("
   update_android_apps:
     runs-on: ubuntu-latest
