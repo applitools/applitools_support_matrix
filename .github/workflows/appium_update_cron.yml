@@ -128,8 +128,8 @@ jobs:
           curl -L -o SimpleRandomStock.apk "https://drive.google.com/uc?export=download&confirm=no_antivirus&id=16M_Fu4OfTHFMi3bQsaFyrbj-kYXoxwOl"
       - name: Prepare apps
         run: |
-          ls -lh
           curl -L -o applitoolsify_android "https://applitools.jfrog.io/artifactory/nmg/android/instrumentation/release/applitoolsify-Linux"
+          ls -lh
           chmod +x applitoolsify_android
           applitoolsify_android SimpleRandomStock.apk
           mv ./instrumented-apk/ready.apk SimpleRandomStock_nmg.apk
