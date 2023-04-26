@@ -58,9 +58,10 @@ jobs:
           ls -lh
       - name: Upload to Sauce
         run: |
-          npm install -g saucectl
-          saucectl storage upload awesomeswift_nmg.app.zip --region us-west-1
-
+          curl -u "$SAUCE_USERNAME:$SAUCE_ACCESS_KEY" --location \
+          --request POST 'https://api.us-west-1.saucelabs.com/v1/storage/upload' \
+          --form 'payload=@"./awesomeswift_nmg.app.zip"' \
+          --form 'name="awesomeswift_nmg.app.zip"'
   update_ios_classic_app:
     runs-on: ubuntu-latest
     timeout-minutes: 8
@@ -84,8 +85,10 @@ jobs:
           ls -lh
       - name: Upload to Sauce
         run: |
-          npm install -g saucectl
-          saucectl storage upload awesomeswift_classic.app.zip --region us-west-1          
+          curl -u "$SAUCE_USERNAME:$SAUCE_ACCESS_KEY" --location \
+          --request POST 'https://api.us-west-1.saucelabs.com/v1/storage/upload' \
+          --form 'payload=@"./awesomeswift_classic.app.zip"' \
+          --form 'name="awesomeswift_classic.app.zip"'          
 
   update_android_apps:
     runs-on: ubuntu-latest
