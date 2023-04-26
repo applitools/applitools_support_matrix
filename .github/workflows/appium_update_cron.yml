@@ -2,9 +2,21 @@ name: Update Appium vars and apps
 
 on:
   workflow_dispatch:
+  workflow_call:
+    secrets:
+      SAUCE_USERNAME:
+        required: true
+      SAUCE_ACCESS_KEY:
+        required: true
 
 permissions:
   contents: write
+
+
+env:
+  SAUCE_USERNAME: ${{secrets.SAUCE_USERNAME}}
+  SAUCE_ACCESS_KEY: ${{secrets.SAUCE_ACCESS_KEY}}
+
 
 jobs:
 #  update_vars:
@@ -25,7 +37,7 @@ jobs:
 #          token: ${{secrets.PAT}}
   update_ios_nmg_apps:
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 8
     name: Update ios native apps
     defaults:
       run:
