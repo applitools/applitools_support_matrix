@@ -35,84 +35,84 @@ jobs:
 #        uses: ./.github/actions/update_github_vars
 #        with:
 #          token: ${{secrets.PAT}}
-  update_ios_nmg_app:
-    runs-on: ubuntu-latest
-    timeout-minutes: 8
-    name: Update ios nmg app
-    defaults:
-      run:
-        shell: bash
-    steps:
-      - name: Download clean app
-        run: | 
-          echo "Start update script"     
-          curl -L -o awesomeswift.app.zip "https://drive.google.com/uc?export=download&id=1xu9hfo5rZ101hZoDzA9HMZ8dtW0R5-4K"
-      - name: Prepare apps
-        run: |
-          unzip awesomeswift.app.zip
-          ls -lh
-          curl -O https://raw.githubusercontent.com/applitools/applitoolsify/main/applitoolsify.py
-          python applitoolsify.py ./awesomeswift.app ios_nmg 
-          mv awesomeswift.app awesomeswift_nmg.app
-          zip -r awesomeswift_nmg.app.zip awesomeswift_nmg.app
-          ls -lh
-      - name: Remove previous versions of app on Sauce
-        run: |
-          APP_NAME="awesomeswift_nmg.app.zip"
-        
-          FILE_IDS=$(curl -s -u $SAUCE_USERNAME:$SAUCE_ACCESS_KEY "https://api.us-west-1.saucelabs.com/v1/storage/files?name=$APP_NAME" | jq -r '.items[].id')
-        
-          for FILE_ID in $FILE_IDS; do
-            echo "Deleting app with ID: $FILE_ID"
-            curl -s -X DELETE -u $SAUCE_USERNAME:$SAUCE_ACCESS_KEY "https://api.us-west-1.saucelabs.com/v1/storage/files/$FILE_ID"
-          done
-  
-          echo "All matching apps have been deleted."
-      - name: Upload to Sauce
-        run: |
-          curl -u "$SAUCE_USERNAME:$SAUCE_ACCESS_KEY" --location \
-          --request POST 'https://api.us-west-1.saucelabs.com/v1/storage/upload' \
-          --form 'payload=@"./awesomeswift_nmg.app.zip"' \
-          --form 'name="awesomeswift_nmg.app.zip"'
-  update_ios_classic_app:
-    runs-on: ubuntu-latest
-    timeout-minutes: 8
-    name: Update ios classic app
-    defaults:
-      run:
-        shell: bash
-    steps:
-      - name: Download clean app
-        run: |
-          echo "Start update script"     
-          curl -L -o awesomeswift.app.zip "https://drive.google.com/uc?export=download&id=1xu9hfo5rZ101hZoDzA9HMZ8dtW0R5-4K"
-      - name: Prepare apps
-        run: |
-          unzip awesomeswift.app.zip
-          ls -lh
-          curl -O https://raw.githubusercontent.com/applitools/applitoolsify/main/applitoolsify.py
-          python applitoolsify.py ./awesomeswift.app ios_classic
-          mv awesomeswift.app awesomeswift_classic.app
-          zip -r awesomeswift_classic.app.zip awesomeswift_classic.app
-          ls -lh
-      - name: Remove previous versions of app on Sauce
-        run: |
-          APP_NAME="awesomeswift_classic.app.zip"
-          
-          FILE_IDS=$(curl -s -u $SAUCE_USERNAME:$SAUCE_ACCESS_KEY "https://api.us-west-1.saucelabs.com/v1/storage/files?name=$APP_NAME" | jq -r '.items[].id')
-          
-          for FILE_ID in $FILE_IDS; do
-            echo "Deleting app with ID: $FILE_ID"
-            curl -s -X DELETE -u $SAUCE_USERNAME:$SAUCE_ACCESS_KEY "https://api.us-west-1.saucelabs.com/v1/storage/files/$FILE_ID"
-          done
-          
-          echo "All matching apps have been deleted."
-      - name: Upload to Sauce
-        run: |
-          curl -u "$SAUCE_USERNAME:$SAUCE_ACCESS_KEY" --location \
-          --request POST 'https://api.us-west-1.saucelabs.com/v1/storage/upload' \
-          --form 'payload=@"./awesomeswift_classic.app.zip"' \
-          --form 'name="awesomeswift_classic.app.zip"'          
+#  update_ios_nmg_app:
+#    runs-on: ubuntu-latest
+#    timeout-minutes: 8
+#    name: Update ios nmg app
+#    defaults:
+#      run:
+#        shell: bash
+#    steps:
+#      - name: Download clean app
+#        run: |
+#          echo "Start update script"
+#          curl -L -o awesomeswift.app.zip "https://drive.google.com/uc?export=download&id=1xu9hfo5rZ101hZoDzA9HMZ8dtW0R5-4K"
+#      - name: Prepare apps
+#        run: |
+#          unzip awesomeswift.app.zip
+#          ls -lh
+#          curl -O https://raw.githubusercontent.com/applitools/applitoolsify/main/applitoolsify.py
+#          python applitoolsify.py ./awesomeswift.app ios_nmg
+#          mv awesomeswift.app awesomeswift_nmg.app
+#          zip -r awesomeswift_nmg.app.zip awesomeswift_nmg.app
+#          ls -lh
+#      - name: Remove previous versions of app on Sauce
+#        run: |
+#          APP_NAME="awesomeswift_nmg.app.zip"
+#
+#          FILE_IDS=$(curl -s -u $SAUCE_USERNAME:$SAUCE_ACCESS_KEY "https://api.us-west-1.saucelabs.com/v1/storage/files?name=$APP_NAME" | jq -r '.items[].id')
+#
+#          for FILE_ID in $FILE_IDS; do
+#            echo "Deleting app with ID: $FILE_ID"
+#            curl -s -X DELETE -u $SAUCE_USERNAME:$SAUCE_ACCESS_KEY "https://api.us-west-1.saucelabs.com/v1/storage/files/$FILE_ID"
+#          done
+#
+#          echo "All matching apps have been deleted."
+#      - name: Upload to Sauce
+#        run: |
+#          curl -u "$SAUCE_USERNAME:$SAUCE_ACCESS_KEY" --location \
+#          --request POST 'https://api.us-west-1.saucelabs.com/v1/storage/upload' \
+#          --form 'payload=@"./awesomeswift_nmg.app.zip"' \
+#          --form 'name="awesomeswift_nmg.app.zip"'
+#  update_ios_classic_app:
+#    runs-on: ubuntu-latest
+#    timeout-minutes: 8
+#    name: Update ios classic app
+#    defaults:
+#      run:
+#        shell: bash
+#    steps:
+#      - name: Download clean app
+#        run: |
+#          echo "Start update script"
+#          curl -L -o awesomeswift.app.zip "https://drive.google.com/uc?export=download&id=1xu9hfo5rZ101hZoDzA9HMZ8dtW0R5-4K"
+#      - name: Prepare apps
+#        run: |
+#          unzip awesomeswift.app.zip
+#          ls -lh
+#          curl -O https://raw.githubusercontent.com/applitools/applitoolsify/main/applitoolsify.py
+#          python applitoolsify.py ./awesomeswift.app ios_classic
+#          mv awesomeswift.app awesomeswift_classic.app
+#          zip -r awesomeswift_classic.app.zip awesomeswift_classic.app
+#          ls -lh
+#      - name: Remove previous versions of app on Sauce
+#        run: |
+#          APP_NAME="awesomeswift_classic.app.zip"
+#
+#          FILE_IDS=$(curl -s -u $SAUCE_USERNAME:$SAUCE_ACCESS_KEY "https://api.us-west-1.saucelabs.com/v1/storage/files?name=$APP_NAME" | jq -r '.items[].id')
+#
+#          for FILE_ID in $FILE_IDS; do
+#            echo "Deleting app with ID: $FILE_ID"
+#            curl -s -X DELETE -u $SAUCE_USERNAME:$SAUCE_ACCESS_KEY "https://api.us-west-1.saucelabs.com/v1/storage/files/$FILE_ID"
+#          done
+#
+#          echo "All matching apps have been deleted."
+#      - name: Upload to Sauce
+#        run: |
+#          curl -u "$SAUCE_USERNAME:$SAUCE_ACCESS_KEY" --location \
+#          --request POST 'https://api.us-west-1.saucelabs.com/v1/storage/upload' \
+#          --form 'payload=@"./awesomeswift_classic.app.zip"' \
+#          --form 'name="awesomeswift_classic.app.zip"'
 
   update_android_apps:
     runs-on: ubuntu-latest
