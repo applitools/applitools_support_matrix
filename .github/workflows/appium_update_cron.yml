@@ -42,8 +42,15 @@ jobs:
           curl -O https://raw.githubusercontent.com/applitools/applitoolsify/main/applitoolsify.py
           python applitoolsify.py ./awesomeswift.app ios_nmg 
           mv awesomeswift.app awesomeswift_nmg.app
+          zip -r awesomeswift_nmg.app.zip awesomeswift_nmg.app
           ls -lh
-          echo "Download app to saucelabs (("
+      - name: Upload to Sauce
+        run: |
+          curl -u "$SAUCE_USERNAME:$SAUCE_ACCESS_KEY" --location \
+          --request POST 'https://api.us-west-1.saucelabs.com/v1/storage/upload' \
+          --form 'payload=@"./awesomeswift_nmg.app.zip"' \
+          --form 'name="awesomeswift_nmg.app.zip"'
+
   update_android_apps:
     runs-on: ubuntu-latest
     timeout-minutes: 15
