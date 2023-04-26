@@ -60,11 +60,11 @@ jobs:
         run: |
           APP_NAME="awesomeswift_nmg.app.zip"
         
-          FILE_IDS=$(curl -s -u $SAUCE_USERNAME:$SAUCE_ACCESS_KEY "https://saucelabs.com/v1/storage/files?name=$APP_NAME" | jq -r '.items[].id')
+          FILE_IDS=$(curl -s -u $SAUCE_USERNAME:$SAUCE_ACCESS_KEY "https://api.us-west-1.saucelabs.com/v1/storage/files?name=$APP_NAME" | jq -r '.items[].id')
         
           for FILE_ID in $FILE_IDS; do
             echo "Deleting app with ID: $FILE_ID"
-            curl -s -X DELETE -u $SAUCE_USERNAME:$SAUCE_ACCESS_KEY "https://saucelabs.com/v1/storage/files/$FILE_ID"
+            curl -s -X DELETE -u $SAUCE_USERNAME:$SAUCE_ACCESS_KEY "https://api.us-west-1.saucelabs.com/v1/storage/files/$FILE_ID"
           done
   
           echo "All matching apps have been deleted."
@@ -99,11 +99,11 @@ jobs:
         run: |
           APP_NAME="awesomeswift_classic.app.zip"
           
-          FILE_IDS=$(curl -s -u $SAUCE_USERNAME:$SAUCE_ACCESS_KEY "https://saucelabs.com/v1/storage/files?name=$APP_NAME" | jq -r '.items[].id')
+          FILE_IDS=$(curl -s -u $SAUCE_USERNAME:$SAUCE_ACCESS_KEY "https://api.us-west-1.saucelabs.com/v1/storage/files?name=$APP_NAME" | jq -r '.items[].id')
           
           for FILE_ID in $FILE_IDS; do
             echo "Deleting app with ID: $FILE_ID"
-            curl -s -X DELETE -u $SAUCE_USERNAME:$SAUCE_ACCESS_KEY "https://saucelabs.com/v1/storage/files/$FILE_ID"
+            curl -s -X DELETE -u $SAUCE_USERNAME:$SAUCE_ACCESS_KEY "https://api.us-west-1.saucelabs.com/v1/storage/files/$FILE_ID"
           done
           
           echo "All matching apps have been deleted."
