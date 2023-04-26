@@ -132,7 +132,7 @@ jobs:
           ls -lh
           chmod +x applitoolsify_android
           ./applitoolsify_android SimpleRandomStock.apk
-          mv ./instrumented-apk/ready.apk SimpleRandomStock_nmg.apk
+          mv ./dist/ready.apk SimpleRandomStock_nmg.apk
           ls -lh
       - name: Remove previous versions of app on Sauce
         run: |
