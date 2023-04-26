@@ -149,7 +149,7 @@ jobs:
       - name: Upload to Sauce
         run: |
           echo $APP_NAME
-          curl -u "$SAUCE_USERNAME:$SAUCE_ACCESS_KEY" --location \
+          curl -v -u "$SAUCE_USERNAME:$SAUCE_ACCESS_KEY" --location \
           --request POST 'https://api.us-west-1.saucelabs.com/v1/storage/upload' \
           --form 'payload=@"./$APP_NAME"' \
           --form 'name="$APP_NAME"'
