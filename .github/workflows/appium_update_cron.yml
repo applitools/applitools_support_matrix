@@ -42,6 +42,7 @@ jobs:
           curl -O https://raw.githubusercontent.com/applitools/applitoolsify/main/applitoolsify.py
           python applitoolsify.py ./awesomeswift.app ios_nmg 
           mv awesomeswift.app awesomeswift_nmg.app
+          ls -lh
           echo "Download app to saucelabs (("
   update_android_apps:
     runs-on: ubuntu-latest
