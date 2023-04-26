@@ -56,7 +56,7 @@ jobs:
           mv awesomeswift.app awesomeswift_nmg.app
           zip -r awesomeswift_nmg.app.zip awesomeswift_nmg.app
           ls -lh
-      - name: Clean App on Sauce
+      - name: Remove previous versions of app on Sauce
         run: |
           APP_NAME="awesomeswift_nmg.app.zip"
         
@@ -95,7 +95,7 @@ jobs:
           mv awesomeswift.app awesomeswift_classic.app
           zip -r awesomeswift_classic.app.zip awesomeswift_classic.app
           ls -lh
-      - name: Clean App on Sauce
+      - name: Remove previous versions of app on Sauce
         run: |
           APP_NAME="awesomeswift_classic.app.zip"
           
@@ -129,6 +129,27 @@ jobs:
       - name: Prepare apps
         run: |
           ls -lh
-          echo "Download applitoolsify script"
-          echo "Inject applitools lib"
-          echo "Download app to saucelabs (("
+          curl -L -o applitoolsify_android "https://applitools.jfrog.io/artifactory/nmg/android/instrumentation/release/applitoolsify-Linux"
+          chmod +x applitoolsify_android
+          applitoolsify_android SimpleRandomStock.apk
+          mv ./instrumented-apk/ready.apk SimpleRandomStock_nmg.apk
+          ls -lh
+      - name: Remove previous versions of app on Sauce
+        run: |
+          APP_NAME="SimpleRandomStock_nmg.apk"
+          
+          FILE_IDS=$(curl -s -u $SAUCE_USERNAME:$SAUCE_ACCESS_KEY "https://api.us-west-1.saucelabs.com/v1/storage/files?name=$APP_NAME" | jq -r '.items[].id')
+          
+          for FILE_ID in $FILE_IDS; do
+            echo "Deleting app with ID: $FILE_ID"
+            curl -s -X DELETE -u $SAUCE_USERNAME:$SAUCE_ACCESS_KEY "https://api.us-west-1.saucelabs.com/v1/storage/files/$FILE_ID"
+          done
+          
+          echo "All matching apps have been deleted."
+      - name: Upload to Sauce
+        run: |
+          echo $APP_NAME
+          curl -u "$SAUCE_USERNAME:$SAUCE_ACCESS_KEY" --location \
+          --request POST 'https://api.us-west-1.saucelabs.com/v1/storage/upload' \
+          --form 'payload=@"./SimpleRandomStock_nmg.apk"' \
+          --form 'name="SimpleRandomStock_nmg.apk"'
