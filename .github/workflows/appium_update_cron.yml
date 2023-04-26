@@ -131,7 +131,7 @@ jobs:
           curl -L -o applitoolsify_android "https://applitools.jfrog.io/artifactory/nmg/android/instrumentation/release/applitoolsify-Linux"
           ls -lh
           chmod +x applitoolsify_android
-          applitoolsify_android SimpleRandomStock.apk
+          ./applitoolsify_android SimpleRandomStock.apk
           mv ./instrumented-apk/ready.apk SimpleRandomStock_nmg.apk
           ls -lh
       - name: Remove previous versions of app on Sauce
