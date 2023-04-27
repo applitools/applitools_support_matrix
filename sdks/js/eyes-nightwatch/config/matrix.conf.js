@@ -5,6 +5,7 @@ const common = {
     "test_runner": "js",
     "eyes_package": "@applitools/eyes-nightwatch",
     use_selenium: true,
+    selenium_legacy: true,
     test_command: "npm test && USE_UFG=true npm test"
 }
 const base_variations = [
