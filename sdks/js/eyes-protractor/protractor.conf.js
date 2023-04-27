@@ -11,6 +11,7 @@ exports.config = {
     capabilities: {
         browserName: 'chrome',
         'goog:chromeOptions': {
+          w3c: true,
           args: ['headless','--no-sandbox', '--disable-gpu', '--disable-dev-shm-usage']
         }
     },

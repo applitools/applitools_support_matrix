@@ -3,7 +3,7 @@ const common = {
     "work_dir": "sdks/js/eyes-protractor",
     "framework_package": "protractor",
     use_selenium: true,
-    selenium_legacy: true,
+    // selenium_legacy: true,
     js_config: "eyes-protractor",
     test_command: "npm test",
     "test_runner": "js",
