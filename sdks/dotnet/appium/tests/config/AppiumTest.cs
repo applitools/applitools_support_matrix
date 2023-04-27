@@ -81,15 +81,18 @@ namespace Applitools.Support.Matrix.Appium
                     options.AddAdditionalCapability("platformName", "iOS");
                     options.AddAdditionalCapability("appium:platformVersion", "15.4");
                     options.AddAdditionalCapability("appium:newCommandTimeout", 600);
-                    options.AddAdditionalCapability("appium:app", "storage:filename=awesomeswift.app.zip");
+
                     options.AddAdditionalCapability("appium:deviceName", "iPhone 8 Simulator");
                     options.AddAdditionalCapability("appium:automationName", "XCUITest");
 //                    options.AddAdditionalCapability("username", username);
 //                    options.AddAdditionalCapability("accessKey", accessKey);
                     options.AddAdditionalCapability("sauce:options", sauceOptions);
-                    if (isUFG())
-                    {
+                    if (isUFG()) {
                         options.AddAdditionalCapability("appium:processArguments", "{\"args\": [], \"env\": {\"DYLD_INSERT_LIBRARIES\": \"@executable_path/Frameworks/UFG_lib.xcframework/ios-arm64_x86_64-simulator/UFG_lib.framework/UFG_lib\",\"NML_API_KEY\":\"" + apiKey + "\"}}");
+                        options.AddAdditionalCapability("appium:app", "storage:filename=awesomeswift_nmg.app.zip");
+                    }
+                    else {
+                        options.AddAdditionalCapability("appium:app", "storage:filename=awesomeswift_classic.app.zip");
                     }
                     driver = new IOSDriver<AppiumWebElement>(
                     new Uri(SAUCE_URL), options, TimeSpan.FromMinutes(5));
@@ -106,14 +109,12 @@ namespace Applitools.Support.Matrix.Appium
 //                    options.AddAdditionalCapability("username", username);
 //                    options.AddAdditionalCapability("accessKey", accessKey);
                     options.AddAdditionalCapability("sauce:options", sauceOptions);
-                    if (isUFG())
-                    {
-                        options.AddAdditionalCapability("appium:app", "storage:filename=androind_nmg_python.apk");
+                    if (isUFG()) {
+                        options.AddAdditionalCapability("appium:app", "storage:filename=SimpleRandomStock_nmg.apk");
                         options.AddAdditionalCapability("appium:optionalIntentArguments", "--es APPLITOOLS '{\"NML_API_KEY\":\"" + apiKey + "\", \"NML_SERVER_URL\":\"https://eyesapi.applitools.com\"}'");
                     }
-                    else
-                    {
-                        options.AddAdditionalCapability("appium:app", "storage:ca4b986f-175c-40fd-86a2-ff55bd5f933b");
+                    else {
+                        options.AddAdditionalCapability("appium:app", "storage:filename=SimpleRandomStock_classic.apk");
                     }
                     driver = new AndroidDriver<AppiumWebElement>(
                         new Uri(SAUCE_URL), options, TimeSpan.FromMinutes(5));

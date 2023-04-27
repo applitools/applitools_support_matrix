@@ -12,7 +12,7 @@ RSpec.describe 'Coverage Tests' do
       "platformName": 'iOS',
       "appium:platformVersion": '16.0',
       "appium:newCommandTimeout": 600,
-      "appium:app": 'storage:filename=awesomeswift.app.zip',
+      "appium:app": 'storage:filename=awesomeswift_nmg.app.zip',
       "appium:deviceName": 'iPhone 8 Simulator',
       "appium:automationName": 'XCUITest',
       "appium:processArguments": args,

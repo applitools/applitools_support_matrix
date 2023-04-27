@@ -108,7 +108,6 @@ function getIOSCaps(ufg) {
         platformName: 'iOS',
         "appium:platformVersion": '16.0',
         "appium:newCommandTimeout": 600,
-        "appium:app": 'storage:filename=awesomeswift.app.zip',
         "appium:deviceName": 'iPhone 8 Simulator',
         "appium:automationName": 'XCUITest',
         'sauce:options': getSauceOptions()
@@ -121,6 +120,9 @@ function getIOSCaps(ufg) {
                 NML_API_KEY: process.env.APPLITOOLS_API_KEY
             }
         }
+        caps["appium:app"] = 'storage:filename=awesomeswift_nmg.app.zip'
+    } else {
+        caps["appium:app"] = 'storage:filename=awesomeswift_classic.app.zip'
     }
     return caps
 }
@@ -132,7 +134,6 @@ function getAndroidCaps(ufg) {
         platformName: 'Android',
         "appium:platformVersion": '11.0',
         "appium:newCommandTimeout": 600,
-        "appium:app": 'storage:filename=android_nmg.apk',
         "appium:deviceName": 'Google Pixel 5 GoogleAPI Emulator',
         "appium:automationName": 'UiAutomator2',
         "appium:autoGrantPermissions": true,
@@ -140,6 +141,9 @@ function getAndroidCaps(ufg) {
     }
     if (ufg) {
         caps["appium:optionalIntentArguments"] = `--es APPLITOOLS \'{\"NML_API_KEY\":\"${process.env.APPLITOOLS_API_KEY}\", \"NML_SERVER_URL\":\"https://eyesapi.applitools.com\"}\'`
+        caps["appium:app"] = 'storage:filename=SimpleRandomStock_nmg.apk'
+    } else {
+        caps["appium:app"] = 'storage:filename=SimpleRandomStock_classic.apk'
     }
     return caps
 }
