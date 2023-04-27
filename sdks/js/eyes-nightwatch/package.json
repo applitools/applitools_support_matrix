@@ -6,6 +6,7 @@
     "nightwatch": "^2.3.0"
   },
   "scripts": {
-    "test": "nightwatch"
+    "test": "nightwatch",
+    "nightwatch1": "nightwatch -c nightwatch.conf.old.js"
   }
 }
