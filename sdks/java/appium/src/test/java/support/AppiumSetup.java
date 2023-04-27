@@ -77,7 +77,6 @@ public class AppiumSetup extends GlobalSetup {
         caps.setCapability("platformName", "iOS");
         caps.setCapability("appium:platformVersion", "16.0");
         caps.setCapability("appium:newCommandTimeout", 600);
-        caps.setCapability("appium:app", "storage:filename=awesomeswift.app.zip");
         caps.setCapability("appium:deviceName", "iPhone 8 Simulator");
         caps.setCapability("appium:automationName", "XCUITest");
         MutableCapabilities options = new MutableCapabilities();
@@ -91,6 +90,9 @@ public class AppiumSetup extends GlobalSetup {
         caps.setCapability("sauce:options", options);
         if (UFG) {
             caps.setCapability("appium:processArguments", "{\"args\": [], \"env\": {\"DYLD_INSERT_LIBRARIES\": \"@executable_path/Frameworks/UFG_lib.xcframework/ios-arm64_x86_64-simulator/UFG_lib.framework/UFG_lib\",\"NML_API_KEY\":\"" + GlobalSetup.apiKey + "\"}}");
+            caps.setCapability("appium:app", "storage:filename=awesomeswift_nmg.app.zip");
+        } else {
+            caps.setCapability("appium:app", "storage:filename=awesomeswift_classic.app.zip");
         }
         driver = new IOSDriver(new URL(SAUCE_URL), caps);
     }
