@@ -10,7 +10,7 @@ RSpec.describe 'Coverage Tests' do
       "platformName": 'Android',
       "appium:platformVersion": '11.0',
       "appium:newCommandTimeout": 600,
-      "appium:app": 'storage:filename=android_nmg.apk',
+      "appium:app": 'storage:filename=SimpleRandomStock_classic.apk',
       "appium:deviceName": 'Google Pixel 5 GoogleAPI Emulator',
       "appium:automationName": 'UiAutomator2',
       "appium:autoGrantPermissions": true,

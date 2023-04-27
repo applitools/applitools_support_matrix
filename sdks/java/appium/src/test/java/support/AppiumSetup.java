@@ -117,9 +117,9 @@ public class AppiumSetup extends GlobalSetup {
         caps.setCapability("sauce:options", options);
         if (UFG) {
             Eyes.setNMGCapabilities(caps);
-            caps.setCapability("appium:app", "storage:filename=androind_nmg_python.apk");
+            caps.setCapability("appium:app", "storage:filename=SimpleRandomStock_nmg.apk");
         } else {
-            caps.setCapability("appium:app", "storage:ca4b986f-175c-40fd-86a2-ff55bd5f933b");
+            caps.setCapability("appium:app", "storage:filename=SimpleRandomStock_classic.apk");
         }
         driver = new AndroidDriver(new URL(SAUCE_URL), caps);
     }

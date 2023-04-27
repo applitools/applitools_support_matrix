@@ -8,8 +8,8 @@ def eyes_runner_class():
     return VisualGridRunner(10)
 
 @pytest.fixture(scope="function")
-def driver_builder(ios):
-    return ios
+def driver_builder(ios_nmg):
+    return ios_nmg
 
 
 def window(driver, eyes):
