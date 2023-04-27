@@ -5,26 +5,26 @@ const common = {
     "test_runner": "js",
     "eyes_package": "@applitools/eyes-nightwatch",
     use_selenium: true,
-    selenium_legacy: true,
     test_command: "npm test && USE_UFG=true npm test"
 }
 const base_variations = [
     {
         "os": "ubuntu-latest",
-        "version": "exact@1.7.13",
+        "version": "latest@",
     },
     {
         "os": "windows-latest",
-        "version": "exact@1.7.13",
+        "version": "latest@",
     },
     {
         "os": "macos-latest",
-        "version": "exact@1.7.13",
+        "version": "latest@",
     }
 ]
-const variations = base_variations.map(variant => ({...common, ...variant,
-    job_name:`JS Nightwatch [${variant.os} | ${common["node-version"]}] version: ${variant.version}`
-}))
+const base_common = base_variations.map(variant => ({ ...variant,...common,}))
+const variations = base_common
+    .concat(base_common.map(variant => ({...variant, version: 'exact@1.7.13', selenium_legacy: true})))
+    .map(variant => ({...variant, job_name:`JS Nightwatch [${variant.os} | ${common["node-version"]}] version: ${variant.version}`}))
 console.log(variations)
 module.exports = {
     "include": variations
