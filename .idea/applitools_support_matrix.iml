@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="JAVA_MODULE" version="4">
+  <component name="NewModuleRootManager" inherit-compiler-output="true">
+    <exclude-output />
+    <content url="file://$MODULE_DIR$">
+      <excludeFolder url="file://$MODULE_DIR$/.github/actions/start_selenium/dist" />
+      <excludeFolder url="file://$MODULE_DIR$/.github/actions/update_python_requirements/dist" />
+      <excludeFolder url="file://$MODULE_DIR$/.github/actions/update_pom_deps/dist" />
+      <excludeFolder url="file://$MODULE_DIR$/.github/actions/report/dist" />
+      <excludeFolder url="file://$MODULE_DIR$/.github/actions/make_last_passed_data/dist" />
+      <excludeFolder url="file://$MODULE_DIR$/.github/actions/update_github_vars/dist" />
+      <excludePattern pattern="dist" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+  </component>
+</module>
