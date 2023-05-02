@@ -7,6 +7,9 @@ inputs:
   working-directory:
     description: "Relative path to the directory where package should be installed"
     required: true
+  legacy_npm_peers:
+    description: "Flag indicating need to use legacy-npm-peers flags during install"
+    required: false
   version:
     description: "Install version specified in input"
     required: false
