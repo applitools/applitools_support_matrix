@@ -14,6 +14,7 @@ const base_variations = [
     {
         "os": "ubuntu-latest",
         "version": "exact@next",
+        legacy_npm_peers: true,
     },
     {
         "os": "ubuntu-latest",
