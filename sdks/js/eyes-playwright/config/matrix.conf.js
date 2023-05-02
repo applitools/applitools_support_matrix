@@ -13,6 +13,10 @@ const base_variations = [
     },
     {
         "os": "ubuntu-latest",
+        "version": "exact@next",
+    },
+    {
+        "os": "ubuntu-latest",
         "version": "minor@1",
     },
     {
