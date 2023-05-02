@@ -14,6 +14,12 @@ const base_variations = [
     },
     {
         "work_dir": "sdks/js/eyes-storybook/latest",
+        "os": "ubuntu-latest",
+        "version": "exact@future",
+        "branch": "latest-story"
+    },
+    {
+        "work_dir": "sdks/js/eyes-storybook/latest",
         "os": "windows-latest",
         "version": "latest@",
         "branch": "latest-story"

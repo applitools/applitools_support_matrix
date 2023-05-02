@@ -26,6 +26,7 @@ runs:
         package: ${{matrix.framework_package}}
         version: ${{matrix.version}}
         working-directory: ${{matrix.work_dir}}
+        legacy_npm_peers: ${{matrix.legacy_npm_peers }}
     - name: Eyes SDK js package install
       id: eyes
       uses: ./.github/actions/install_npm_package
@@ -33,6 +34,7 @@ runs:
         package: ${{matrix.eyes_package}}
         version: ${{inputs.eyes_version}}
         working-directory: ${{matrix.work_dir}}
+        legacy_npm_peers: ${{matrix.legacy_npm_peers }}
     - name: Log extra info
       id: logging
       uses: ./.github/actions/chrome_version
