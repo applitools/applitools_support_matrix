@@ -35,4 +35,8 @@ RUN java -version && \
     ruby -v && \
     bundle -v
 
-CMD ["/bin/sh"]
+# Set the working directory to the home directory
+WORKDIR /home
+
+# Set the entry point
+ENTRYPOINT ["/bin/sh"]

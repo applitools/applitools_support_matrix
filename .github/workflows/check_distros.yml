@@ -13,17 +13,12 @@ jobs:
     defaults:
       run:
         shell: bash
-    strategy:
-      matrix:
-        os: [ ubuntu-latest]
-    runs-on: ${{ matrix.os }}
-    name: ${{matrix.os}} | ${{matrix.legacy}}
+    runs-on: ubuntu-latest
+    name: Run Distros
+    container: artem0tranduil/alpine_runner:latest
     steps:
       - uses: actions/checkout@v3
-      - name: Run Selenium
-        uses: ./.github/actions/start_selenium
-        with:
-          legacy: ${{matrix.legacy}}
-      - name: Check Selenium
+      - name: Check checkout
         run: |
           ls
+          pwd
