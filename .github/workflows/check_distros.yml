@@ -52,8 +52,8 @@ jobs:
           apk update
           apk upgrade
           apk add --update ca-certificates
-          apk add chromium
-          ldd chrome | grep no
+          apk add chromium udev ttf-freefont
+          chromium --version
       - name: Run tests
         shell: bash
         working-directory: ${{env.work_dir}}
