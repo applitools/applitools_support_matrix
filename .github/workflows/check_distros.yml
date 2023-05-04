@@ -28,7 +28,7 @@ jobs:
         uses: ./.github/actions/install_npm_package
         with:
           package: puppeteer
-          version: @latest
+          version: "@latest"
           working-directory: ${{env.work_dir}}
           legacy_npm_peers: false
       - name: Eyes SDK js package install
@@ -36,7 +36,7 @@ jobs:
         uses: ./.github/actions/install_npm_package
         with:
           package: @applitools/eyes-puppeteer
-          version: @latest
+          version: "@latest"
           working-directory: ${{env.work_dir}}
           legacy_npm_peers: false
       - name: Pre run install
