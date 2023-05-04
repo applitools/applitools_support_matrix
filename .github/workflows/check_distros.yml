@@ -35,7 +35,7 @@ jobs:
         id: eyes
         uses: ./.github/actions/install_npm_package
         with:
-          package: @applitools/eyes-puppeteer
+          package: "@applitools/eyes-puppeteer"
           version: "@latest"
           working-directory: ${{env.work_dir}}
           legacy_npm_peers: false
