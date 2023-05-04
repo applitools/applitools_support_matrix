@@ -52,9 +52,11 @@ jobs:
           apk update
           apk upgrade
           apk add --update ca-certificates
-          apk add chromium udev ttf-freefont
+          apk add chromium udev ttf-freefont nss freetype harfbuzz
           chromium --version
       - name: Run tests
         shell: bash
         working-directory: ${{env.work_dir}}
+        env:
+          PUPPETEER_EXECUTABLE_PATH: /usr/bin/chromium-browser
         run: npm test
