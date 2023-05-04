@@ -15,7 +15,7 @@ jobs:
         shell: bash
     runs-on: ubuntu-latest
     name: Run Distros
-    container: artem0tranduil/alpine_runner:latest
+    container: alpine
     steps:
       - uses: actions/checkout@v3
       - name: Check checkout
