@@ -39,4 +39,4 @@ RUN java -version && \
 WORKDIR /home
 
 # Set the entry point
-ENTRYPOINT ["/bin/sh"]
+CMD ["/bin/sh"]
