@@ -1,0 +1,46 @@
+# Use Alpine Linux as the base image
+FROM alpine:latest
+
+# Update repositories and install required packages
+RUN apk update && \
+    apk add --no-cache \
+        wget \
+        tar \
+        bash \
+        ca-certificates \
+        zlib-dev \
+        icu-libs
+
+# Install java
+RUN apk add --no-cache openjdk8
+
+# Install node js
+RUN apk add --no-cache nodejs npm
+
+# Install python
+RUN apk add --no-cache python3 py3-pip
+
+# install ruby
+RUN apk add --no cache ruby ruby-bundler
+
+# Install .NET Core 7
+RUN wget https://dotnet.microsoft.com/download/dotnet/7.0.0/aspnetcore-runtime-7.0.0-linux-musl-x64.tar.gz && \
+    mkdir -p /usr/share/dotnet && \
+    tar -C /usr/share/dotnet -xzf aspnetcore-runtime-7.0.0-linux-musl-x64.tar.gz && \
+    ln -s /usr/share/dotnet/dotnet /usr/bin/dotnet && \
+    rm aspnetcore-runtime-7.0.0-linux-musl-x64.tar.gz
+
+# Set the necessary environment variables
+ENV DOTNET_SYSTEM_GLOBALIZATION_INVARIANT=true
+
+# Test the installed software
+RUN java -version && \
+    dotnet --version && \
+    node -v && \
+    npm -v && \
+    python3 --version && \
+    pip --version && \
+    ruby -v && \
+    bundle -v
+
+CMD ["/bin/sh"]
