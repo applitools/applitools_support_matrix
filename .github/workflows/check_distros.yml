@@ -56,6 +56,6 @@ jobs:
       - name: Run tests
         shell: bash
         working-directory: ${{env.work_dir}}
-        env:
-          PUPPETEER_EXECUTABLE_PATH: /usr/bin/chromium-browser
+#        env:
+#          PUPPETEER_EXECUTABLE_PATH: /usr/bin/chromium-browser
         run: npm test
