@@ -53,6 +53,7 @@ jobs:
           apk upgrade
           apk add --update ca-certificates
           apk add chromium
+          ldd chrome | grep no
       - name: Run tests
         shell: bash
         working-directory: ${{env.work_dir}}
