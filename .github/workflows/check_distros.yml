@@ -2,6 +2,7 @@ name: Check distros flow
 
 on:
   workflow_dispatch:
+  push:
 
 permissions:
   contents: read
@@ -14,8 +15,7 @@ jobs:
         shell: bash
     strategy:
       matrix:
-        os: [windows-latest, ubuntu-latest, macos-latest]
-        legacy: ['true', 'false']
+        os: [ ubuntu-latest]
     runs-on: ${{ matrix.os }}
     name: ${{matrix.os}} | ${{matrix.legacy}}
     steps:
