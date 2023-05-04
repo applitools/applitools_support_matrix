@@ -47,6 +47,12 @@ jobs:
         shell: bash
         working-directory: ${{env.work_dir}}
         run: npm ls
+      - name: Temp fix before dockerfile update
+        run: | 
+          apk update
+          apk upgrade
+          apk add --update ca-certificates
+          apk add chromium
       - name: Run tests
         shell: bash
         working-directory: ${{env.work_dir}}
