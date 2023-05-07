@@ -1,5 +1,5 @@
 {
-  "id": "1ea6f6db-0ff1-4259-ba9d-c702b03a0913",
+  "id": "94ee7ef0-c4eb-4288-95d1-4579a893154b",
   "data": [
     {
       "title": "Java",
@@ -1285,7 +1285,7 @@
           "eyes_package": "@applitools/eyes-playwright",
           "test_command": "npx playwright install --with-deps && npm test",
           "os": "ubuntu-latest",
-          "version": "1.34.0-alpha-may-5-2023",
+          "version": "1.34.0-alpha-may-6-2023",
           "legacy_npm_peers": true,
           "job_name": "JS Playwright [ubuntu-latest | 18] version: exact@next",
           "matrix_config_dir": "sdks/js/eyes-playwright",
