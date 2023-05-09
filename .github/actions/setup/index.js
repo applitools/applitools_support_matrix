@@ -50,4 +50,4 @@ setOutput("appium", JSON.stringify(appium));
 
 const container = {include: include.filter(job => job.use_container)}
 console.log(JSON.stringify(container, null, 3))
-setOutput("appium", JSON.stringify(container));
+setOutput("container", JSON.stringify(container));

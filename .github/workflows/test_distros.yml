@@ -13,8 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       uuid: ${{ steps.uuid.outputs.uuid }}
-      web: ${{ steps.matrix.outputs.web}}
-      appium: ${{ steps.matrix.outputs.appium}}
+      container: ${{ steps.matrix.outputs.container}}
     steps:
       - name: generate uuid
         id: uuid
@@ -32,7 +31,7 @@ jobs:
     needs: setup
     strategy:
       fail-fast: false
-      matrix: ${{ fromJson(needs.setup.outputs.web) }}
+      matrix: ${{ fromJson(needs.setup.outputs.container) }}
     runs-on: ${{ matrix.os }}
     container: ${{matrix.container}}
     timeout-minutes: 12
