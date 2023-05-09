@@ -40,10 +40,14 @@ matrix = {include}
 console.log(JSON.stringify(matrix, null, 3))
 setOutput("matrix", JSON.stringify(matrix));
 
-const web = {include: include.filter(job => !job.use_appium)}
+const web = {include: include.filter(job => !job.use_appium && !job.use_container)}
 console.log(JSON.stringify(web, null, 3))
 setOutput("web", JSON.stringify(web));
 
 const appium = {include: include.filter(job => job.use_appium)}
 console.log(JSON.stringify(appium, null, 3))
 setOutput("appium", JSON.stringify(appium));
+
+const container = {include: include.filter(job => job.use_container)}
+console.log(JSON.stringify(container, null, 3))
+setOutput("appium", JSON.stringify(container));

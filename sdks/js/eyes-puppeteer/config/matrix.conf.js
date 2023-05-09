@@ -14,6 +14,12 @@ const base_variations = [
     },
     {
         "os": "ubuntu-latest",
+        "version": "latest@",
+        use_container: true,
+        container: 'artem0tranduil/alpine_runner:latest'
+    },
+    {
+        "os": "ubuntu-latest",
         "version": "major@1",
     },
     {
