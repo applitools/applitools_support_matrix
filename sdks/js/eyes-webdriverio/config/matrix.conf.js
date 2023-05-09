@@ -40,6 +40,7 @@ const base_variations = [
 
 const alpine = {
     use_container: true,
+    use_selenium: false,
     container: 'artem0tranduil/alpine_runner:latest',
 }
 
