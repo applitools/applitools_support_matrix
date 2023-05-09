@@ -20,10 +20,17 @@ RUN apk update && \
         bash \
         ca-certificates \
         zlib-dev \
-        icu-libs
+        icu-libs \
+        chromium \
+        udev \
+        ttf-freefont \
+        nss \
+        freetype \
+        harfbuzz
 
 # Set the necessary environment variables
 ENV DOTNET_SYSTEM_GLOBALIZATION_INVARIANT=true
+ENV PUPPETEER_EXECUTABLE_PATH=/usr/bin/chromium-browser
 
 # Test the installed software
 RUN java -version && \
