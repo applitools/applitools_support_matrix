@@ -11,7 +11,7 @@ async function setupDriver() {
             }
         },
         logLevel: 'silent',
-        host: '127.0.0.1'
+        host: process.env.SELENIUM_SERVER_HOST || '127.0.0.1'
     };
     return await remote(chrome);
 }

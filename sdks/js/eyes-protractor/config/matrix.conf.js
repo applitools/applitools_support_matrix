@@ -27,9 +27,30 @@ const base_variations = [
         "version": "latest@",
     }
 ]
+const alpine = {
+    use_container: true,
+    container: 'artem0tranduil/alpine_runner:latest',
+}
 const variations = base_variations.map(variant => ({...common, ...variant,
     job_name:`JS Protractor [${variant.os} | ${common["node-version"]}] version: ${variant.version}`
-}))
+})).concat([
+    {
+        ...common,
+        ...alpine,
+        use_selenium: false,
+        "os": "ubuntu-latest",
+        "version": "latest@",
+        job_name:`JS Protractor [ alpine | ${common["node-version"]}] version: latest@`
+    },
+    {
+        ...common,
+        ...alpine,
+        use_selenium: false,
+        "os": "ubuntu-latest",
+        "version": "major@2",
+        job_name:`JS Protractor [ alpine | ${common["node-version"]}] version: major@2`
+    },
+])
 console.log(variations)
 module.exports = {
     "include": variations

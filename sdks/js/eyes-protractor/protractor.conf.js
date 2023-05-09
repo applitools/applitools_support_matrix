@@ -4,7 +4,7 @@
 // https://github.com/angular/protractor/blob/master/lib/config.ts
 
 exports.config = {
-    seleniumAddress: `http://localhost:4444/wd/hub`,
+    seleniumAddress: process.env.SELENIUM_SERVER_URL || `http://localhost:4444/wd/hub`,
     suites: {
         default: '../tests/support/*.spec.js'
     },

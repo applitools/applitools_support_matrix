@@ -45,6 +45,7 @@ jobs:
       APPLITOOLS_BRANCH_NAME: ${{matrix.branch}}
       JS_TESTS_CONFIG_NAME: ${{matrix.js_config}}
       SELENIUM_SERVER_URL: "http://selenium:4444/wd/hub"
+      SELENIUM_SERVER_HOST: "selenium"
     name: ${{ matrix.job_name }}
     defaults:
       run:

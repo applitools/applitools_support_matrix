@@ -37,6 +37,46 @@ const base_variations = [
         "version": "latest@",
     }
 ]
+
+const alpine = {
+    use_container: true,
+    container: 'artem0tranduil/alpine_runner:latest',
+}
+
+const containers = [
+    {
+        ...common,
+        ...wdio,
+        ...alpine,
+        "os": "ubuntu-latest",
+        "version": "latest@",
+        job_name: `JS WDIO [ alpine | 18 | version: latest@]`,
+    },
+    {
+        ...common,
+        ...wdio,
+        ...alpine,
+        "os": "ubuntu-latest",
+        "version": "major@1",
+        job_name: `JS WDIO [ alpine | 18 | version: major@1]`,
+    },
+    {
+        ...common,
+        ...wdio6,
+        ...alpine,
+        "os": "ubuntu-latest",
+        "version": "latest@",
+        job_name: `JS WDIO [ alpine | 18 | version: latest@]`,
+    },
+    {
+        ...common,
+        ...wdio5,
+        ...alpine,
+        "os": "ubuntu-latest",
+        "version": "latest@",
+        job_name: `JS WDIO [ alpine | 18 | version: latest@]`,
+    },
+]
 const base_common = base_variations.map(variant => ({ ...variant,...common,}))
 const appium_common = base_variations.map(variant => ({...common,...variant, gh_environment: 'appium_latest'})).concat([
     {...common, os:'ubuntu-latest', version:'previous@1', gh_environment: 'appium_latest'},
@@ -56,6 +96,7 @@ const variations = base_common
         use_appium: true,
         job_name:`JS WDIO Appium [${variant.os} | ${variant["node-version"]} | client version: ${variant.version} | ${variant.gh_environment} ]`
     })))
+    .concat(containers)
 console.log(variations)
 module.exports = {
     "include": variations
