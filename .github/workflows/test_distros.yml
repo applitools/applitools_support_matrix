@@ -25,7 +25,7 @@ jobs:
         uses: ./.github/actions/setup
         with:
 #          work_dir: 'sdks/js/eyes-webdriverio, sdks/js/eyes-testcafe, sdks/js/eyes-storybook, sdks/js/eyes-puppeteer, sdks/js/eyes-protractor, sdks/js/eyes-playwright, sdks/js/eyes-nightwatch, sdks/js/eyes-cypress, sdks/js/eyes-selenium, sdks/python, sdks/java, sdks/dotnet, sdks/ruby'
-          work_dir: 'sdks/js/eyes-puppeteer'
+          work_dir: 'sdks/js/eyes-puppeteer', 'sdks/js.eyes-selenium'
           last_passed: false
   distros:
     needs: setup
@@ -35,12 +35,18 @@ jobs:
     runs-on: ${{ matrix.os }}
     container: ${{matrix.container}}
     timeout-minutes: 12
+    services:
+      selenium:
+        image: selenium/standalone-chrome:latest
+        ports:
+          - 4444:4444
     env:
       APPLITOOLS_DONT_CLOSE_BATCHES: true
       APPLITOOLS_API_KEY: ${{ secrets.APPLITOOLS_API_KEY }}
       APPLITOOLS_BATCH_ID: ${{needs.setup.outputs.uuid}}
       APPLITOOLS_BRANCH_NAME: ${{matrix.branch}}
       JS_TESTS_CONFIG_NAME: ${{matrix.js_config}}
+#      SELENIUM_SERVER_URL: "http://selenium:4444/wd/hub"
     name: ${{ matrix.job_name }}
     defaults:
       run:

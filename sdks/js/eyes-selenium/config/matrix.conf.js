@@ -31,18 +31,18 @@ const containers = [
         ...common,
         "os": "ubuntu-latest",
         "version": "latest@",
-        container: "alpine",
-        use_selenium: true,
+        use_container: true,
+        container: 'artem0tranduil/alpine_runner:latest',
         test_command: "npm test"
     },
-    {
-        ...common,
-        "os": "ubuntu-latest",
-        "version": "latest@",
-        container: "debian",
-        use_selenium: true,
-        test_command: "npm test"
-    },
+    // {
+    //     ...common,
+    //     "os": "ubuntu-latest",
+    //     "version": "latest@",
+    //     container: "debian",
+    //     use_container: true,
+    //     test_command: "npm test"
+    // },
 ]
 const variations = base_common
     .map((variant) => ({
@@ -58,7 +58,7 @@ const variations = base_common
             use_appium: true,
             job_name: `JS Appium [${variant.os} | ${variant["node-version"]} | client version: ${variant.version} | ${variant.gh_environment} ] `
         })))
-    // .concat(containers)
+    .concat(containers)
 console.log(variations)
 module.exports = {
     "include": variations
