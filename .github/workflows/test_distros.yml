@@ -38,15 +38,13 @@ jobs:
     services:
       selenium:
         image: selenium/standalone-chrome:latest
-        ports:
-          - 4444:4444
     env:
       APPLITOOLS_DONT_CLOSE_BATCHES: true
       APPLITOOLS_API_KEY: ${{ secrets.APPLITOOLS_API_KEY }}
       APPLITOOLS_BATCH_ID: ${{needs.setup.outputs.uuid}}
       APPLITOOLS_BRANCH_NAME: ${{matrix.branch}}
       JS_TESTS_CONFIG_NAME: ${{matrix.js_config}}
-#      SELENIUM_SERVER_URL: "http://selenium:4444/wd/hub"
+      SELENIUM_SERVER_URL: "http://selenium:4444/wd/hub"
     name: ${{ matrix.job_name }}
     defaults:
       run:

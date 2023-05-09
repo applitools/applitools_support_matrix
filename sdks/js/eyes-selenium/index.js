@@ -13,6 +13,7 @@ const {
 const {Builder} = require('selenium-webdriver');
 const chrome = require('selenium-webdriver/chrome');
 const SAUCE_URL = "https://ondemand.us-west-1.saucelabs.com:443/wd/hub"
+const SELENIUM_SERVER_URL = process.env.SELENIUM_SERVER_URL || "http://localhost:4444/wd/hub"
 
 async function setupDriver(options) {
     let appium, ufg, platform;
@@ -35,7 +36,7 @@ async function setupDriver(options) {
         const builder = new Builder()
             .forBrowser('chrome')
             .setChromeOptions(options)
-        builder.usingServer("http://localhost:4444/wd/hub")
+        builder.usingServer(SELENIUM_SERVER_URL)
         return builder.build();
     }
 }
