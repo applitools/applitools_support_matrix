@@ -12,6 +12,7 @@ runs:
   using: "composite"
   steps:
     - name: Log extra info
+      if: ${{!matrix.use_container}}
       shell: bash
       id: logging
       run: |
