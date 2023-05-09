@@ -24,8 +24,8 @@ jobs:
         id: matrix
         uses: ./.github/actions/setup
         with:
-#          work_dir: 'sdks/js/eyes-webdriverio, sdks/js/eyes-testcafe, sdks/js/eyes-storybook, sdks/js/eyes-puppeteer, sdks/js/eyes-protractor, sdks/js/eyes-playwright, sdks/js/eyes-nightwatch, sdks/js/eyes-cypress, sdks/js/eyes-selenium, sdks/python, sdks/java, sdks/dotnet, sdks/ruby'
-          work_dir: 'sdks/js/eyes-puppeteer, sdks/js/eyes-selenium'
+          work_dir: 'sdks/js/eyes-webdriverio, sdks/js/eyes-testcafe, sdks/js/eyes-storybook, sdks/js/eyes-puppeteer, sdks/js/eyes-protractor, sdks/js/eyes-playwright, sdks/js/eyes-nightwatch, sdks/js/eyes-cypress, sdks/js/eyes-selenium, sdks/python, sdks/java, sdks/dotnet, sdks/ruby'
+#          work_dir: 'sdks/js/eyes-puppeteer, sdks/js/eyes-selenium'
           last_passed: false
   distros:
     needs: setup
