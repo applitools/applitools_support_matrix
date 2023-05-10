@@ -13,7 +13,7 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 
 import java.net.MalformedURLException;
-import java.net.URL;
+import java.nio.file.Paths;
 
 public class BaseSetup extends GlobalSetup {
     protected Page driver;
@@ -78,11 +78,16 @@ public class BaseSetup extends GlobalSetup {
         }
     }
 
-    public void buildDriver() throws MalformedURLException {
+    public void buildDriver()  {
+        BrowserType.LaunchOptions options = new BrowserType.LaunchOptions().setHeadless(true);
+        String env = System.getenv("PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH");
+        if(env != null && !env.isEmpty()) {
+            options.setExecutablePath(Paths.get(env));
+        }
         playwright = Playwright.create();
         driver = playwright
                 .chromium()
-                .launch(new BrowserType.LaunchOptions().setHeadless(true))
+                .launch(options)
                 .newContext()
                 .newPage();
     }
