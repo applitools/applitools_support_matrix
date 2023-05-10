@@ -27,22 +27,26 @@ function update_version() {
   echo "$NEW_VERSION" > "$VERSION_FILE"
 }
 
+function handle_error() {
+  echo "An error occurred during the execution of the Docker command."
+  exit 1
+}
+
 function build_image() {
-  # Build the Docker image
-  docker build --platform linux/amd64 -t $DOCKER_HUB_USERNAME/$IMAGE_NAME_WITH_SUFFIX:$NEW_VERSION -f $DOCKERFILE_NAME .
+  # Build the Docker image for x64 architecture
+  docker build --platform linux/amd64 -t $DOCKER_HUB_USERNAME/$IMAGE_NAME_WITH_SUFFIX:$NEW_VERSION -f $DOCKERFILE_NAME . || handle_error
 }
 
 function push_image() {
   # Push the new version to Docker Hub
-  docker push $DOCKER_HUB_USERNAME/$IMAGE_NAME_WITH_SUFFIX:$NEW_VERSION
+  docker push $DOCKER_HUB_USERNAME/$IMAGE_NAME_WITH_SUFFIX:$NEW_VERSION || handle_error
 
   # Tag the new version as "latest"
-  docker tag $DOCKER_HUB_USERNAME/$IMAGE_NAME_WITH_SUFFIX:$NEW_VERSION $DOCKER_HUB_USERNAME/$IMAGE_NAME_WITH_SUFFIX:latest
+  docker tag $DOCKER_HUB_USERNAME/$IMAGE_NAME_WITH_SUFFIX:$NEW_VERSION $DOCKER_HUB_USERNAME/$IMAGE_NAME_WITH_SUFFIX:latest || handle_error
 
   # Push the "latest" tag to Docker Hub
-  docker push $DOCKER_HUB_USERNAME/$IMAGE_NAME_WITH_SUFFIX:latest
+  docker push $DOCKER_HUB_USERNAME/$IMAGE_NAME_WITH_SUFFIX:latest || handle_error
 }
-
 
 function initialize_variables() {
   IMAGE_NAME="$1"

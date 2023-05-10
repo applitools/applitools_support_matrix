@@ -5,6 +5,7 @@ FROM alpine:latest
 RUN apk update && \
     apk add --no-cache \
         openjdk8 \
+        maven \
         nodejs \
         npm \
         python3 \
@@ -34,6 +35,7 @@ ENV PUPPETEER_EXECUTABLE_PATH=/usr/bin/chromium-browser
 
 # Test the installed software
 RUN java -version && \
+    mvn -version && \
     dotnet --version && \
     node -v && \
     npm -v && \
