@@ -7,7 +7,7 @@ USER_AGENT="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Geck
 LATEST_RELEASE=$(wget -q -O - --header="User-Agent: $USER_AGENT" https://api.github.com/repos/SeleniumHQ/selenium/releases/latest)
 
 # Extract the download URL for the Selenium Standalone Server jar file
-DOWNLOAD_URL=$(echo "$LATEST_RELEASE" | sed -n 's/.*"browser_download_url": "\(.*selenium-server-standalone[^"]*.jar\)".*/\1/p')
+DOWNLOAD_URL=$(echo "$LATEST_RELEASE" | jq -r '[.assets[] | select(.name | test("selenium-server-.*\\.jar"))] | last | .browser_download_url')
 
 # Download the latest version of Selenium Standalone Server
 echo "Downloading the latest Selenium Standalone Server..."

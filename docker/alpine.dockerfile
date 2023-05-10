@@ -27,7 +27,8 @@ RUN apk update && \
         ttf-freefont \
         nss \
         freetype \
-        harfbuzz
+        harfbuzz \
+        jq
 
 # Copy the scripts to the Docker image
 COPY install_selenium.sh /tmp/
