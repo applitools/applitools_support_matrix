@@ -30,7 +30,7 @@ const base_variations = [
 const alpine = {
     use_container: true,
     container: 'artem0tranduil/alpine_runner:latest',
-    service: 'selenium/standalone-chrome:4.9.0',
+    service: 'selenium/standalone-chrome:4.8.0',
 }
 const variations = base_variations.map(variant => ({...common, ...variant,
     job_name:`JS Protractor [${variant.os} | ${common["node-version"]}] version: ${variant.version}`
