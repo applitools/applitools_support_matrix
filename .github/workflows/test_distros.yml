@@ -34,7 +34,7 @@ jobs:
       matrix: ${{ fromJson(needs.setup.outputs.container) }}
     runs-on: ${{ matrix.os }}
     container: ${{matrix.container}}
-    timeout-minutes: 12
+    timeout-minutes: 10
     services:
       selenium:
         image: ${{matrix.service}}
