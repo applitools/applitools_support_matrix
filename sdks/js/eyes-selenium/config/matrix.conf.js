@@ -33,6 +33,7 @@ const containers = [
         "version": "latest@",
         use_container: true,
         container: 'artem0tranduil/alpine_runner:latest',
+        service: 'selenium/standalone-chrome:latest',
         job_name: `JS Selenium [ alpine | 18 | version: latest@]`,
         test_command: "npm test"
     },

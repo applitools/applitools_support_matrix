@@ -42,6 +42,7 @@ const alpine = {
     use_container: true,
     use_selenium: false,
     container: 'artem0tranduil/alpine_runner:latest',
+    service: 'selenium/standalone-chrome:latest',
 }
 
 const containers = [
