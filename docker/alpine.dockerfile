@@ -32,6 +32,7 @@ RUN apk update && \
 # Set the necessary environment variables
 ENV DOTNET_SYSTEM_GLOBALIZATION_INVARIANT=true
 ENV PUPPETEER_EXECUTABLE_PATH=/usr/bin/chromium-browser
+ENV JAVA_HOME="/usr/lib/jvm/java-1.8-openjdk"
 
 # Test the installed software
 RUN java -version && \
