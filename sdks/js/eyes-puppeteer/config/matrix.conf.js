@@ -16,7 +16,8 @@ const base_variations = [
         "os": "ubuntu-latest",
         "version": "latest@",
         use_container: true,
-        container: 'artem0tranduil/alpine_runner:latest'
+        container: 'artem0tranduil/alpine_runner:latest',
+        container_name: 'alpine'
     },
     {
         "os": "ubuntu-latest",
@@ -40,7 +41,7 @@ const base_variations = [
     }
 ]
 const variations = base_variations.map(variant => ({...common, ...variant,
-    job_name:`JS Puppeteer [${variant.os} | ${common["node-version"]}] version: ${variant.version}]`
+    job_name:`JS Puppeteer [${variant.container_name ? variant.container_name :variant.os} | ${common["node-version"]}] version: ${variant.version}]`
 }))
 console.log(variations)
 module.exports = {

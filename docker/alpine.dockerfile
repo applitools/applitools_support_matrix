@@ -23,6 +23,7 @@ RUN apk update && \
         zlib-dev \
         icu-libs \
         chromium \
+        chromium-chromedriver \
         udev \
         ttf-freefont \
         nss \
@@ -32,13 +33,12 @@ RUN apk update && \
 
 # Copy the scripts to the Docker image
 COPY install_selenium.sh /tmp/
-COPY install_chromedriver.sh /tmp/
 
 # Make the scripts executable
-RUN chmod +x /tmp/install_selenium.sh && chmod +x /tmp/install_chromedriver.sh
+RUN chmod +x /tmp/install_selenium.sh
 
-# Run the script to download the latest Selenium Standalone Server and chromedriver
-RUN /tmp/install_chromedriver.sh && /tmp/install_selenium.sh
+# Run the script to download the latest Selenium Standalone Server
+RUN  /tmp/install_selenium.sh
 
 # Set the necessary environment variables
 ENV DOTNET_SYSTEM_GLOBALIZATION_INVARIANT=true
