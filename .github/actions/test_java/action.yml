@@ -10,6 +10,7 @@ runs:
   using: "composite"
   steps:
     - name: Set up Java
+      if: ${{!matrix.use_container }}
       uses: actions/setup-java@v3
       with:
         distribution: 'temurin'
