@@ -79,6 +79,7 @@ const variations = base_common
         {
             os: "ubuntu-latest",
             version: "latest@",
+            use_selenium: true,
             ...common,
             ...alpine,
             ...selenium_package,
