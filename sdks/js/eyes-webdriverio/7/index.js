@@ -32,9 +32,8 @@ async function setupDriver(options) {
                 }
             },
             logLevel: 'silent',
-            host: process.env.SELENIUM_SERVER_HOST || '127.0.0.1'
+            hostname: process.env.SELENIUM_SERVER_HOST || '127.0.0.1'
         };
-        console.log(process.env.SELENIUM_SERVER_HOST)
         return await remote(chrome);
     }
 }

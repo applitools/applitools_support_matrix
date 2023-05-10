@@ -11,7 +11,7 @@ describe('Support Matrix CSS', () => {
                     args: ['headless']
                 }
             },
-            host: process.env.SELENIUM_SERVER_HOST || '127.0.0.1'
+            hostname: process.env.SELENIUM_SERVER_HOST || '127.0.0.1'
 
         };
         driver = webdriverio.remote(chrome);
