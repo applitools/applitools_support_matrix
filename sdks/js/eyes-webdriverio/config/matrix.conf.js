@@ -40,9 +40,8 @@ const base_variations = [
 
 const alpine = {
     use_container: true,
-    use_selenium: false,
+    use_selenium: true,
     container: 'artem0tranduil/alpine_runner:latest',
-    service: 'selenium/standalone-chrome:latest',
 }
 
 const containers = [

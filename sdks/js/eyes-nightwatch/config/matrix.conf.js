@@ -24,7 +24,6 @@ const base_variations = [
 const alpine = {
     use_container: true,
     container: 'artem0tranduil/alpine_runner:latest',
-    service: 'selenium/standalone-chrome:latest',
 }
 const base_common = base_variations.map(variant => ({...variant, ...common,}))
 const variations = base_common
@@ -44,7 +43,6 @@ const variations = base_common
         ...alpine,
         os: "ubuntu-latest",
         version: "latest@",
-        use_selenium: false,
         job_name: 'JS Nightwatch [ alpine | 18 | version: latest@ ]'
     }])
 console.log(variations)
