@@ -1,8 +1,8 @@
 'use strict'
 const {getOS} = require('../../matrix/util')
 const common = {
-    "dotnet-version": "3.1.x",
-    test_command: "dotnet test --no-build -- NUnit.NumberOfTestWorkers=1",
+    "dotnet-version": "7",
+    test_command: "dotnet test --no-build -r net7.0 -- NUnit.NumberOfTestWorkers=1",
     "test_runner": "dotnet"
 }
 const base_variations = [
