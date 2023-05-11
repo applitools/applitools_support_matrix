@@ -39,7 +39,8 @@ const base_variations = [
         "version": "latest@",
         use_container: true,
         container: 'artem0tranduil/alpine_runner:latest',
-        container_name: 'alpine'
+        container_name: 'alpine',
+        test_command: "npm test"
     },
 ]
 const variations = base_variations.map(variant => ({...common, ...variant,
