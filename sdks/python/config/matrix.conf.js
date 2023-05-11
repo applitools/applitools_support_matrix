@@ -24,6 +24,7 @@ const containers = [
         os: "ubuntu-latest",
         version: "latest@",
         use_container: true,
+        container_name: 'alpine',
         container: 'artem0tranduil/alpine_runner:latest',
     },
 ]
@@ -42,7 +43,8 @@ const variations = web_common
         work_dir: 'sdks/python/selenium',
         job_name: `Python Selenium [${getOS(variant)} | ${variant["python-version"]} | client version: ${variant.version}] `
     }))
-    .concat(web_common.map((variant) => ({...variant,
+    // Python playwright can't be installed on the alpine and doesn't support this distro
+    .concat(web_common.filter(variation => variation.container_name !== 'alpine').map((variant) => ({...variant,
         use_selenium: false,
         test_command: "playwright install && pytest -n 2",
         eyes_package: "eyes-playwright",
