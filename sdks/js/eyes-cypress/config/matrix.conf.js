@@ -26,7 +26,15 @@ const latest_variations = [
     {
         "os": "macos-latest",
         "version": "latest@",
-    }
+    },
+    // Container section -----------------
+    {
+        "os": "ubuntu-latest",
+        "version": "latest@",
+        use_container: true,
+        container: 'artem0tranduil/alpine_runner:latest',
+        container_name: 'alpine'
+    },
 ]
 
 const old_variations = [
@@ -42,13 +50,15 @@ const old_variations = [
 ]
 
 
-const base_common = latest_variations.map(variant => ({...common, ...variant,})).concat(old_variations.map(variant => ({
+const base_common = latest_variations
+    .map(variant => ({...common, ...variant,}))
+    .concat(old_variations.map(variant => ({
     ...common, ...variant,
     work_dir: "sdks/js/eyes-cypress/v9"
 })))
 const variations = base_common.map(variant => ({
     ...variant,
-    job_name: `JS Cypress [${variant.os} | ${variant["node-version"]}] version: ${variant.version}`
+    job_name: `JS Cypress [${variant.container_name ? variant.container_name :variant.os} | ${variant["node-version"]}] version: ${variant.version}`
 }))
 console.log(variations)
 module.exports = {
