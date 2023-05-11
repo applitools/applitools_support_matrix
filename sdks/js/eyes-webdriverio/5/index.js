@@ -11,7 +11,8 @@ async function setupDriver() {
             }
         },
         logLevel: 'silent',
-        hostname: process.env.SELENIUM_SERVER_HOST || '127.0.0.1'
+        hostname: process.env.SELENIUM_SERVER_HOST || '127.0.0.1',
+        path: '/wd/hub'
     };
     return await remote(chrome);
 }
