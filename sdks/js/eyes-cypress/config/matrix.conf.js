@@ -28,13 +28,14 @@ const latest_variations = [
         "version": "latest@",
     },
     // Container section -----------------
-    {
-        "os": "ubuntu-latest",
-        "version": "latest@",
-        use_container: true,
-        container: 'artem0tranduil/alpine_runner:latest',
-        container_name: 'alpine'
-    },
+    // Cypress doesn't work on alpine at the moment: https://github.com/cypress-io/cypress/issues/419
+    // {
+    //     "os": "ubuntu-latest",
+    //     "version": "latest@",
+    //     use_container: true,
+    //     container: 'artem0tranduil/alpine_runner:latest',
+    //     container_name: 'alpine'
+    // },
 ]
 
 const old_variations = [

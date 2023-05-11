@@ -15,10 +15,17 @@ const base_variations = [
     {
         "os": "windows-latest",
         "version": "major@1",
-    }
+    },
+    {
+        "os": "ubuntu-latest",
+        "version": "major@1",
+        use_container: true,
+        container: 'artem0tranduil/alpine_runner:latest',
+        container_name: 'alpine'
+    },
 ]
 const variations = base_variations.map(variant => ({...common, ...variant,
-    job_name:`JS Testcafe [${variant.os} | ${common["node-version"]}] version: ${variant.version}`
+    job_name:`JS Testcafe [${variant.container_name ? variant.container_name :variant.os} | ${common["node-version"]}] version: ${variant.version}`
 }))
 console.log(variations)
 module.exports = {
