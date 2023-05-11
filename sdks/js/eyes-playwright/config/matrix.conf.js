@@ -31,10 +31,17 @@ const base_variations = [
     {
         "os": "macos-latest",
         "version": "latest@",
-    }
+    },
+    {
+        "os": "ubuntu-latest",
+        "version": "latest@",
+        use_container: true,
+        container: 'artem0tranduil/alpine_runner:latest',
+        container_name: 'alpine'
+    },
 ]
 const variations = base_variations.map(variant => ({...common, ...variant,
-    job_name:`JS Playwright [${variant.os} | ${common["node-version"]}] version: ${variant.version}`
+    job_name:`JS Playwright [${variant.container_name ? variant.container_name :variant.os} | ${common["node-version"]}] version: ${variant.version}`
 }))
 console.log(variations)
 module.exports = {
