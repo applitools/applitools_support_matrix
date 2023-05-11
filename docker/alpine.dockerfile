@@ -40,7 +40,7 @@ RUN chmod +x /tmp/install_selenium.sh
 # Run the script to download the latest Selenium Standalone Server
 RUN  /tmp/install_selenium.sh
 
-RUN echo '#!/bin/sh\nexec /usr/bin/chromium-browser --no-sandbox --headless "$@"' > /usr/local/bin/chromium-nosandbox
+RUN echo '#!/bin/sh\nexec /usr/bin/chromium-browser --no-sandbox --disable-setuid-sandbox --headless "$@"' > /usr/local/bin/chromium-nosandbox
 RUN chmod +x /usr/local/bin/chromium-nosandbox
 
 # Set the necessary environment variables
