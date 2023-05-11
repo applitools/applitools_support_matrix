@@ -64,6 +64,7 @@ jobs:
       fail-fast: false
       matrix: ${{ fromJson(needs.setup.outputs.matrix) }}
     runs-on: ${{ matrix.os }}
+    container: ${{matrix.container}}
     timeout-minutes: 15
     env:
       APPLITOOLS_DONT_CLOSE_BATCHES: true
