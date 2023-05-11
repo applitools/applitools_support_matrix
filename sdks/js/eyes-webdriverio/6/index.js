@@ -7,7 +7,7 @@ async function setupDriver() {
         capabilities: {
             browserName: 'chrome',
             'goog:chromeOptions': {
-                args: ['headless']
+                args: ['headless','--no-sandbox', '--disable-gpu', '--disable-dev-shm-usage']
             }
         },
         logLevel: 'silent',
