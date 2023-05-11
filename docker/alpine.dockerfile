@@ -64,8 +64,17 @@ RUN java -version && \
     ruby -v && \
     bundle -v
 
+# Add user so we don't need --no-sandbox.
+RUN addgroup -S user && adduser -S -G user user \
+    && mkdir -p /home/user/Downloads /app \
+    && chown -R user:user /home/user \
+    && chown -R user:user /app
+
+# Run everything after as non-privileged user.
+USER user
+
 # Set the working directory to the home directory
-WORKDIR /home
+WORKDIR /home/user
 
 # Set the entry point
 CMD ["/bin/sh"]
