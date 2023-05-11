@@ -21,7 +21,8 @@ const base_variations = [
         "version": "major@1",
         use_container: true,
         container: 'artem0tranduil/alpine_runner:latest',
-        container_name: 'alpine'
+        container_name: 'alpine',
+        test_command: 'npm test path:/usr/bin/chromium-browser'
     },
 ]
 const variations = base_variations.map(variant => ({...common, ...variant,
