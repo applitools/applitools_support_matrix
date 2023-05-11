@@ -22,7 +22,7 @@ const base_variations = [
         use_container: true,
         container: 'artem0tranduil/alpine_runner:latest',
         container_name: 'alpine',
-        test_command: 'npm test path:/usr/bin/chromium-browser'
+        test_command: 'npm run test:alpine'
     },
 ]
 const variations = base_variations.map(variant => ({...common, ...variant,
