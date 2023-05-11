@@ -9,7 +9,7 @@ on:
       SAUCE_ACCESS_KEY:
         required: true
   schedule:
-    - cron: '0 22 * * *'
+    - cron: '0 19 * * *'
 
 permissions:
   contents: write
