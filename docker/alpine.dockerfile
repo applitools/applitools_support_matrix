@@ -40,11 +40,14 @@ RUN chmod +x /tmp/install_selenium.sh
 # Run the script to download the latest Selenium Standalone Server
 RUN  /tmp/install_selenium.sh
 
+RUN echo '#!/bin/sh\nexec /usr/bin/chromium-browser --no-sandbox "$@"' > /usr/local/bin/chromium-nosandbox
+RUN chmod +x /usr/local/bin/chromium-nosandbox
+
 # Set the necessary environment variables
 ENV DOTNET_SYSTEM_GLOBALIZATION_INVARIANT=true
 ENV JAVA_HOME="/usr/lib/jvm/java-1.8-openjdk"
 # Set Puppeteer env var to run in alpine
-ENV PUPPETEER_EXECUTABLE_PATH="/usr/bin/chromium-browser --no-sandbox"
+ENV PUPPETEER_EXECUTABLE_PATH="/usr/local/bin/chromium-nosandbox"
 # Set Pleywright env var to run in alpine
 ENV PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH=/usr/bin/chromium-browser
 ENV PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=1
