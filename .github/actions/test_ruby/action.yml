@@ -10,6 +10,7 @@ runs:
   using: "composite"
   steps:
     - name: Set up Ruby
+      if: ${{!matrix.use_container }}
       uses: ruby/setup-ruby@v1
       with:
         ruby-version: ${{ matrix.ruby-version }}
