@@ -44,7 +44,7 @@ RUN  /tmp/install_selenium.sh
 ENV DOTNET_SYSTEM_GLOBALIZATION_INVARIANT=true
 ENV JAVA_HOME="/usr/lib/jvm/java-1.8-openjdk"
 # Set Puppeteer env var to run in alpine
-ENV PUPPETEER_EXECUTABLE_PATH=/usr/bin/chromium-browser
+ENV PUPPETEER_EXECUTABLE_PATH="/usr/bin/chromium-browser --no-sandbox"
 # Set Pleywright env var to run in alpine
 ENV PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH=/usr/bin/chromium-browser
 ENV PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=1
@@ -63,15 +63,6 @@ RUN java -version && \
     pip --version && \
     ruby -v && \
     bundle -v
-
-# Add user so we don't need --no-sandbox.
-RUN addgroup -S user && adduser -S -G user user \
-    && mkdir -p /home/user/Downloads /app \
-    && chown -R user:user /home/user \
-    && chown -R user:user /app
-
-# Run everything after as non-privileged user.
-USER user
 
 # Set the working directory to the home directory
 WORKDIR /home/user
