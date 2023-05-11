@@ -1,3 +1,6 @@
+'use strict'
+const {getOS} = require('../../../matrix/util')
+
 const common = {
     "node-version": "16",
     "framework_package": "@storybook/react",
@@ -62,7 +65,7 @@ const base_variations = [
 
 ]
 const variations = base_variations.map(variant => ({...common, ...variant,
-    job_name:`JS Storybook [${variant.container_name ? variant.container_name :variant.os} | ${common["node-version"]}] version: ${variant.version}`
+    job_name:`JS Storybook [${getOS(variant)} | ${common["node-version"]}] version: ${variant.version}`
 }))
 console.log(variations)
 module.exports = {

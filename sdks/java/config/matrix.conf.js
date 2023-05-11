@@ -20,7 +20,6 @@ const base_variations = [
 const alpine = {
     use_container: true,
     container: 'artem0tranduil/alpine_runner:latest',
-    service: 'selenium/standalone-chrome:latest',
 }
 const selenium_package = {
     work_dir: "sdks/java/selenium",

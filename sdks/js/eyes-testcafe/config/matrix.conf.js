@@ -1,3 +1,5 @@
+'use strict'
+const {getOS} = require('../../../matrix/util')
 const common = {
     "node-version": "18",
     "work_dir": "sdks/js/eyes-testcafe",
@@ -26,7 +28,7 @@ const base_variations = [
     },
 ]
 const variations = base_variations.map(variant => ({...common, ...variant,
-    job_name:`JS Testcafe [${variant.container_name ? variant.container_name :variant.os} | ${common["node-version"]}] version: ${variant.version}`
+    job_name:`JS Testcafe [${getOS(variant)} | ${common["node-version"]}] version: ${variant.version}`
 }))
 console.log(variations)
 module.exports = {
