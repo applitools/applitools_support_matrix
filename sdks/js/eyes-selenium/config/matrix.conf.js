@@ -34,18 +34,19 @@ const containers = [
         use_container: true,
         use_selenium: true,
         container: 'artem0tranduil/alpine_runner:latest',
-        service: 'selenium/standalone-chrome:latest',
         job_name: `JS Selenium [ alpine | 18 | version: latest@]`,
         test_command: "npm test"
     },
-    // {
-    //     ...common,
-    //     "os": "ubuntu-latest",
-    //     "version": "latest@",
-    //     container: "debian",
-    //     use_container: true,
-    //     test_command: "npm test"
-    // },
+    {
+        ...common,
+        "os": "ubuntu-latest",
+        "version": "latest@",
+        use_container: true,
+        use_selenium: true,
+        container: 'artem0tranduil/debian_runner:latest',
+        job_name: `JS Selenium [ debian | 18 | version: latest@]`,
+        test_command: "npm test"
+    },
 ]
 const variations = base_common
     .map((variant) => ({

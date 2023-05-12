@@ -26,6 +26,14 @@ const base_variations = [
         container_name: 'alpine',
         test_command: 'npm run test:alpine'
     },
+    {
+        "os": "ubuntu-latest",
+        "version": "major@1",
+        use_container: true,
+        container: 'artem0tranduil/debian_runner:latest',
+        container_name: 'debian',
+        test_command: 'npm run test:alpine'
+    },
 ]
 const variations = base_variations.map(variant => ({...common, ...variant,
     job_name:`JS Testcafe [${getOS(variant)} | ${common["node-version"]}] version: ${variant.version}`

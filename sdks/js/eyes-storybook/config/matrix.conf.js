@@ -62,6 +62,15 @@ const base_variations = [
         container: 'artem0tranduil/alpine_runner:latest',
         container_name: 'alpine',
     },
+    {
+        "work_dir": "sdks/js/eyes-storybook/latest",
+        "os": "ubuntu-latest",
+        "version": "latest@",
+        "branch": "latest-story",
+        use_container: true,
+        container: 'artem0tranduil/debian_runner:latest',
+        container_name: 'debian',
+    },
 
 ]
 const variations = base_variations.map(variant => ({...common, ...variant,
