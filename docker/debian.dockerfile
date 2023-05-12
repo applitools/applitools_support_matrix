@@ -13,7 +13,9 @@ RUN apt-get update && \
     gnupg2 \
     lsb-release \
     software-properties-common \
-    wget
+    wget \
+    nano \
+    jq
 
 # Add Microsoft package signing key and repository for .NET
 RUN wget https://packages.microsoft.com/config/debian/11/packages-microsoft-prod.deb -O packages-microsoft-prod.deb && \
@@ -23,6 +25,7 @@ RUN wget https://packages.microsoft.com/config/debian/11/packages-microsoft-prod
 # Install Java 8, .NET 7, Python latest, Ruby latest, Node.js 18, and Chromium
 RUN apt-get install -y --no-install-recommends \
     openjdk-11-jdk \
+    maven \
     dotnet-sdk-7.0 \
     python3 \
     python3-pip \

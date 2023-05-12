@@ -9,6 +9,7 @@ LATEST_RELEASE=$(wget -q -O - --header="User-Agent: $USER_AGENT" https://api.git
 # Extract the download URL for the Selenium Standalone Server jar file
 DOWNLOAD_URL=$(echo "$LATEST_RELEASE" | jq -r '[.assets[] | select(.name | test("selenium-server-.*\\.jar"))] | last | .browser_download_url')
 
+echo $DOWNLOAD_URL
 # Download the latest version of Selenium Standalone Server
 echo "Downloading the latest Selenium Standalone Server..."
 wget -q -O selenium-server.jar --header="User-Agent: $USER_AGENT" "$DOWNLOAD_URL"
