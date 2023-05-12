@@ -21,6 +21,11 @@ const alpine = {
     use_container: true,
     container: 'artem0tranduil/alpine_runner:latest',
 }
+
+const debian = {
+    use_container: true,
+    container: 'artem0tranduil/debian_runner:latest',
+}
 const selenium_package = {
     work_dir: "sdks/java/selenium",
     framework_package: {
@@ -91,6 +96,23 @@ const variations = base_common
             ...alpine,
             ...playwright_package,
             job_name: `Java Playwright [alpine | 8 | latest@]`
+        },
+        {
+            os: "ubuntu-latest",
+            version: "latest@",
+            use_selenium: true,
+            ...common,
+            ...debian,
+            ...selenium_package,
+            job_name: `Java Selenium [debian | 8 | latest@]`
+        },
+        {
+            os: "ubuntu-latest",
+            version: "latest@",
+            ...common,
+            ...debian,
+            ...playwright_package,
+            job_name: `Java Playwright [debian | 8 | latest@]`
         },
     ])
     .concat(appium_common.map(variant => ({

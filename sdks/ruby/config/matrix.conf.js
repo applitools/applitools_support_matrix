@@ -33,6 +33,16 @@ const containers = [
     // container_name: 'alpine',
     // job_name: `Ruby Selenium [alpine | 3+ | client version: latest@]`
     // },
+    {
+    ...common,
+    os: "ubuntu-latest",
+    "version": "latest@",
+    use_selenium: true,
+    use_container: true,
+    container: 'artem0tranduil/debian_runner:latest',
+    container_name: 'debian',
+    job_name: `Ruby Selenium [debian | 3+ | client version: latest@]`
+    },
 ]
 const base_common = base_variations.map(variant => ({...basic, ...variant,}))
 const appium_common = base_common.map(variant => ({...variant, gh_environment: 'appium_latest'})).concat([
