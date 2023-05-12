@@ -47,6 +47,9 @@ RUN echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" |
 RUN apt-get clean && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* packages-microsoft-prod.deb
 
+RUN gem install bundler
+RUN bundle config --global silence_root_warning 1
+
 # Copy the scripts to the Docker image
 COPY install_selenium.sh /tmp/
 COPY install_chromedriver.sh /tmp/
