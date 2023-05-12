@@ -95,12 +95,12 @@ const variations = base_common
     .concat(containers.map(variant => ({
         ...variant,
         ...alpine,
-        job_name: `JS WDIO [ ${variant.container_name} | 18 | client version: ${variant.version}]`
+        job_name: `JS WDIO [ ${alpine.container_name} | 18 | client version: ${variant.version}]`
     })))
     .concat(containers.map(variant => ({
         ...variant,
         ...debian,
-        job_name: `JS WDIO [ ${variant.container_name} | 18 | client version: ${variant.version}]`
+        job_name: `JS WDIO [ ${debian.container_name} | 18 | client version: ${variant.version}]`
     })))
 console.log(variations)
 module.exports = {

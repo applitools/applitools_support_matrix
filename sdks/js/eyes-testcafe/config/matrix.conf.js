@@ -32,7 +32,7 @@ const base_variations = [
         use_container: true,
         container: 'artem0tranduil/debian_runner:latest',
         container_name: 'debian',
-        test_command: 'npm run test:alpine'
+        test_command: 'npm run test'
     },
 ]
 const variations = base_variations.map(variant => ({...common, ...variant,

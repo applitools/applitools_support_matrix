@@ -1,3 +1,5 @@
+'use strict'
+const {getOS} = require("../../../matrix/util")
 const common = {
     "node-version": "18",
     "work_dir": "sdks/js/eyes-cypress/v10",
@@ -36,6 +38,13 @@ const latest_variations = [
     //     container: 'artem0tranduil/alpine_runner:latest',
     //     container_name: 'alpine'
     // },
+    {
+        "os": "ubuntu-latest",
+        "version": "latest@",
+        use_container: true,
+        container: 'artem0tranduil/debian_runner:latest',
+        container_name: 'debian'
+    },
 ]
 
 const old_variations = [
@@ -59,7 +68,7 @@ const base_common = latest_variations
 })))
 const variations = base_common.map(variant => ({
     ...variant,
-    job_name: `JS Cypress [${variant.container_name ? variant.container_name :variant.os} | ${variant["node-version"]}] version: ${variant.version}`
+    job_name: `JS Cypress [${getOS(variant)} | ${variant["node-version"]}] version: ${variant.version}`
 }))
 console.log(variations)
 module.exports = {
