@@ -15,6 +15,7 @@ RUN apt-get update && \
     software-properties-common \
     wget \
     nano \
+    unzip \
     jq
 
 # Add Microsoft package signing key and repository for .NET
@@ -30,10 +31,17 @@ RUN apt-get install -y --no-install-recommends \
     python3 \
     python3-pip \
     ruby \
-    ruby-dev \
-    chromium && \
+    ruby-dev && \
     curl -fsSL https://deb.nodesource.com/setup_18.x | bash - && \
     apt-get install -y nodejs
+
+
+RUN echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" | \
+    tee -a /etc/apt/sources.list.d/google.list && \
+    wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | \
+    apt-key add - && \
+    apt-get update && \
+    apt-get install -y google-chrome-stable libxss1
 
 # Clean up
 RUN apt-get clean && \
@@ -49,10 +57,13 @@ RUN chmod +x /tmp/install_chromedriver.sh
 
 # Run the script to download the latest Selenium Standalone Server
 RUN  /tmp/install_selenium.sh
-RUN  /tmp/install_chromedriver.sh \
+RUN  /tmp/install_chromedriver.sh
+# Check installed chromedriver
+RUN chromedriver --version
 
 ENV JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64/
-ENV SELENIUM_JAR_PATH /usr/share/java/selenium-server.jar
+ENV SELENIUM_JAR_PATH=/usr/share/java/selenium-server.jar
+
 
 # Set the default command
 CMD ["/bin/bash"]

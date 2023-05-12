@@ -34,7 +34,7 @@ function handle_error() {
 
 function build_image() {
   # Build the Docker image for x64 architecture
-  docker build --platform linux/amd64 -t $DOCKER_HUB_USERNAME/$IMAGE_NAME_WITH_SUFFIX:$NEW_VERSION -f $DOCKERFILE_NAME . || handle_error
+  docker build --progress plain --platform linux/amd64 -t $DOCKER_HUB_USERNAME/$IMAGE_NAME_WITH_SUFFIX:$NEW_VERSION -f $DOCKERFILE_NAME . || handle_error
 }
 
 function push_image() {
