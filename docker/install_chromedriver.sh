@@ -1,28 +1,31 @@
-#!/bin/bash
+#!/bin/sh
 
-CHROMIUM_PATH="/usr/bin/chromium-browser"
-
-if [ ! -f "$CHROMIUM_PATH" ]; then
-    echo "Chromium browser not found at $CHROMIUM_PATH."
-    exit 1
+# Check the Chromium binary location
+if [ -f "/usr/bin/chromium-browser" ]; then
+  CHROMIUM_BIN="/usr/bin/chromium-browser"
+elif [ -f "/usr/bin/chromium" ]; then
+  CHROMIUM_BIN="/usr/bin/chromium"
+else
+  echo "Chromium browser not found in the expected locations."
+  exit 1
 fi
 
-CHROMIUM_VERSION=$("$CHROMIUM_PATH" --version | sed -n 's/.*Chromium \([0-9]*\).*/\1/p')
+# Get the Chromium version
+CHROMIUM_VERSION=$($CHROMIUM_BIN --version | awk '{ print $2 }')
 
+# Get the major version
+CHROMIUM_MAJOR_VERSION=$(echo $CHROMIUM_VERSION | cut -d'.' -f1)
 
-CHROMEDRIVER_BASE_URL="https://chromedriver.storage.googleapis.com"
-CHROMEDRIVER_VERSION=$(wget -q -O - "$CHROMEDRIVER_BASE_URL/LATEST_RELEASE_$CHROMIUM_VERSION")
+# Get the corresponding ChromeDriver version
+CHROMEDRIVER_VERSION=$(wget -q -O - "https://chromedriver.storage.googleapis.com/LATEST_RELEASE_$CHROMIUM_MAJOR_VERSION")
 
-echo "Downloading ChromeDriver version $CHROMEDRIVER_VERSION..."
-wget -q -O chromedriver_linux64.zip "$CHROMEDRIVER_BASE_URL/$CHROMEDRIVER_VERSION/chromedriver_linux64.zip"
-echo "Download completed."
+# Download the ChromeDriver
+wget -q -O chromedriver.zip "https://chromedriver.storage.googleapis.com/$CHROMEDRIVER_VERSION/chromedriver_linux64.zip"
 
-echo "Extracting ChromeDriver binary..."
-unzip -o -q chromedriver_linux64.zip
-rm chromedriver_linux64.zip
-echo "Extraction completed."
+# Unzip and install the ChromeDriver
+unzip -o chromedriver.zip
+rm chromedriver.zip
+sudo mv chromedriver /usr/bin/chromedriver
+sudo chmod +x /usr/bin/chromedriver
 
-echo "Moving ChromeDriver to /usr/bin..."
-mv chromedriver /usr/bin/chromedriver
-chmod +x /usr/bin/chromedriver
-echo "The matching version of ChromeDriver has been downloaded and installed at: /usr/bin/chromedriver"
+echo "Installed ChromeDriver version: $CHROMEDRIVER_VERSION"

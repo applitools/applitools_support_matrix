@@ -28,6 +28,14 @@ const containers = [
         container_name: 'alpine',
         container: 'artem0tranduil/alpine_runner:latest',
     },
+    {
+        "dotnet-version": "7",
+        os: "ubuntu-latest",
+        version: "latest@",
+        use_container: true,
+        container_name: 'debian',
+        container: 'artem0tranduil/debian_runner:latest',
+    },
 ]
 const base_common = base_variations.map(variant => ({...common, ...variant,}))
 const web_common = base_common.concat(containers.map(variant => ({...common, ...variant})))
