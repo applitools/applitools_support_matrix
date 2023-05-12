@@ -39,7 +39,7 @@ const containers = [
     "version": "latest@",
     use_selenium: true,
     use_container: true,
-    container: 'artem0tranduil/debian_runner:latest',
+    container: 'artem0tranduil/debian_ruby_runner:latest',
     container_name: 'debian',
     job_name: `Ruby Selenium [debian | 3+ | client version: latest@]`
     },
