@@ -21,7 +21,7 @@ RUN apt-get update && \
 # Install Java 8, .NET 7, Python latest, Ruby latest, Node.js 18, and Chromium
 RUN apt-get install -y --no-install-recommends \
     openjdk-11-jdk \
-    maven \
+    maven && \
     curl -fsSL https://deb.nodesource.com/setup_18.x | bash - && \
     apt-get install -y nodejs
 
