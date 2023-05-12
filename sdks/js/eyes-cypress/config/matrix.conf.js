@@ -42,7 +42,7 @@ const latest_variations = [
         "os": "ubuntu-latest",
         "version": "latest@",
         use_container: true,
-        container: 'artem0tranduil/debian_runner:latest',
+        container: 'artem0tranduil/debian_cypress_runner:latest',
         container_name: 'debian'
     },
 ]
