@@ -48,7 +48,7 @@ class ReportUtil {
         const eyesSDK = object_data.title.split("[")[0]
         const matrix = JSON.parse(object_data.matrix)
         const env = [];
-        env.push(object_data.os)
+        env.push(matrix.container_name || object_data.os)
         env.push(this.getLangVersion(matrix))
         env.push(this.formatPackageVersion(object_data))
         // isAppium deprecated
@@ -123,7 +123,7 @@ class ReportUtil {
         const suite = new Suite({title: suiteData.name, duration: getJobsDuration(suiteData.jobs)})
         for (const job of suiteData.jobs) {
             const testData = {
-                title: job.name.split('/')[1],
+                title: job.name,
                 fullTitle: job.name,
                 duration: getDuration(job.started_at, job.completed_at),
                 passed: job.conclusion === 'success'
@@ -137,10 +137,9 @@ class ReportUtil {
                     testData.code = JSON.stringify(json_data, undefined, 2);
                     testData.context = this.prepareContext(json_data, [job.html_url])
                 }
-                if (!testData.passed) {
-                    testData.err = this.parseError(logs)
-                }
-
+            }
+            if (!testData.passed) {
+                testData.err = this.parseError(logs)
             }
             suite.addTest(new Test(testData))
         }
