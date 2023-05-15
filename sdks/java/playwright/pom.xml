@@ -6,7 +6,7 @@
     <artifactId>support-matrix-java-playwright</artifactId>
     <groupId>com.applitools</groupId>
     <version>1.0.0</version>
-    <name>support-matrix-java-selenium</name>
+    <name>support-matrix-java-playwright</name>
     <url>http://www.applitools.com</url>
 
     <properties>

@@ -7,10 +7,11 @@ describe('Support Matrix UFG', () => {
             desiredCapabilities: {
                 browserName: 'chrome',
                 'goog:chromeOptions': {
-                    args: ['headless']
+                    args: ['headless','--no-sandbox', '--disable-gpu', '--disable-dev-shm-usage']
                 }
             },
-            host: '127.0.0.1'
+            hostname: process.env.SELENIUM_SERVER_HOST || '127.0.0.1',
+            path: '/wd/hub'
         };
         driver = webdriverio.remote(chrome);
         await driver.init()

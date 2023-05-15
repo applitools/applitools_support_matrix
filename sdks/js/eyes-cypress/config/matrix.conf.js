@@ -1,3 +1,5 @@
+'use strict'
+const {getOS} = require("../../../matrix/util")
 const common = {
     "node-version": "18",
     "work_dir": "sdks/js/eyes-cypress/v10",
@@ -26,7 +28,23 @@ const latest_variations = [
     {
         "os": "macos-latest",
         "version": "latest@",
-    }
+    },
+    // Container section -----------------
+    // Cypress doesn't work on alpine at the moment: https://github.com/cypress-io/cypress/issues/419
+    // {
+    //     "os": "ubuntu-latest",
+    //     "version": "latest@",
+    //     use_container: true,
+    //     container: 'artem0tranduil/alpine_runner:latest',
+    //     container_name: 'alpine'
+    // },
+    {
+        "os": "ubuntu-latest",
+        "version": "latest@",
+        use_container: true,
+        container: 'artem0tranduil/debian_cypress_runner:latest',
+        container_name: 'debian'
+    },
 ]
 
 const old_variations = [
@@ -42,13 +60,15 @@ const old_variations = [
 ]
 
 
-const base_common = latest_variations.map(variant => ({...common, ...variant,})).concat(old_variations.map(variant => ({
+const base_common = latest_variations
+    .map(variant => ({...common, ...variant,}))
+    .concat(old_variations.map(variant => ({
     ...common, ...variant,
     work_dir: "sdks/js/eyes-cypress/v9"
 })))
 const variations = base_common.map(variant => ({
     ...variant,
-    job_name: `JS Cypress [${variant.os} | ${variant["node-version"]}] version: ${variant.version}`
+    job_name: `JS Cypress [${getOS(variant)} | ${variant["node-version"]}] version: ${variant.version}`
 }))
 console.log(variations)
 module.exports = {

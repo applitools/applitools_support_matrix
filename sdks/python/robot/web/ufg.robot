@@ -11,7 +11,12 @@ Test Teardown     Teardown
 *** Keywords ***
 # For setup, load the demo site's login page and open Eyes to start visual testing.
 Setup
-    Open Browser    https://applitools.github.io/demo/TestPages/FramesTestPage/    headlesschrome
+    ${chrome_options}=    Evaluate    sys.modules['selenium.webdriver'].ChromeOptions()    sys, selenium.webdriver
+    Call Method    ${chrome_options}    add_argument    --no-sandbox
+    Call Method    ${chrome_options}    add_argument    --disable-gpu
+    Call Method    ${chrome_options}    add_argument    --headless
+    Create WebDriver    Chrome    chrome_options=${chrome_options}
+    Go To    https://applitools.github.io/demo/TestPages/FramesTestPage/
     Eyes Open
 
 # For teardown, close Eyes and the browser.

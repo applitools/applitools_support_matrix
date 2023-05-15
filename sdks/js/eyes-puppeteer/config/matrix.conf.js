@@ -1,3 +1,5 @@
+'use strict'
+const {getOS} = require('../../../matrix/util')
 const common = {
     "node-version": "18",
     "work_dir": "sdks/js/eyes-puppeteer",
@@ -11,6 +13,20 @@ const base_variations = [
     {
         "os": "ubuntu-latest",
         "version": "latest@",
+    },
+    {
+        "os": "ubuntu-latest",
+        "version": "latest@",
+        use_container: true,
+        container: 'artem0tranduil/alpine_runner:latest',
+        container_name: 'alpine'
+    },
+    {
+        "os": "ubuntu-latest",
+        "version": "latest@",
+        use_container: true,
+        container: 'artem0tranduil/debian_runner:latest',
+        container_name: 'debian'
     },
     {
         "os": "ubuntu-latest",
@@ -34,7 +50,7 @@ const base_variations = [
     }
 ]
 const variations = base_variations.map(variant => ({...common, ...variant,
-    job_name:`JS Puppeteer [${variant.os} | ${common["node-version"]}] version: ${variant.version}]`
+    job_name:`JS Puppeteer [${getOS(variant)} | ${common["node-version"]}] version: ${variant.version}]`
 }))
 console.log(variations)
 module.exports = {

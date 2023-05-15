@@ -10,6 +10,7 @@ runs:
   using: "composite"
   steps:
     - name: Set up Python
+      if: ${{!matrix.use_container }}
       uses: actions/setup-python@v4
       with:
         python-version: ${{ matrix.python-version }}

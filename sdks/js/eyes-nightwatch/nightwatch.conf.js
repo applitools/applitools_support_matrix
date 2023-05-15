@@ -15,7 +15,7 @@ module.exports = {
             webdriver: {
                 port: 4444,
                 default_path_prefix: '/wd/hub',
-                host: 'localhost'
+                host: process.env.SELENIUM_SERVER_HOST || 'localhost'
             },
         },
     },

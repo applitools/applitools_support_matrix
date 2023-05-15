@@ -1,3 +1,5 @@
+'use strict'
+const {getOS} = require('../../../matrix/util')
 const common = {
     "node-version": "18",
     "work_dir": "sdks/js/eyes-playwright",
@@ -31,10 +33,27 @@ const base_variations = [
     {
         "os": "macos-latest",
         "version": "latest@",
-    }
+    },
+    {
+        "os": "ubuntu-latest",
+        "version": "latest@",
+        use_container: true,
+        container: 'artem0tranduil/alpine_runner:latest',
+        container_name: 'alpine',
+        test_command: "npm test"
+    },
+    {
+        "os": "ubuntu-latest",
+        "version": "latest@",
+        use_container: true,
+        container: 'artem0tranduil/debian_runner:latest',
+        container_name: 'debian',
+        test_command: "npm test"
+    },
 ]
-const variations = base_variations.map(variant => ({...common, ...variant,
-    job_name:`JS Playwright [${variant.os} | ${common["node-version"]}] version: ${variant.version}`
+const variations = base_variations.map(variant => ({
+    ...common, ...variant,
+    job_name: `JS Playwright [${getOS(variant)} | ${common["node-version"]}] version: ${variant.version}`
 }))
 console.log(variations)
 module.exports = {

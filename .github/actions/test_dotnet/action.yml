@@ -10,6 +10,7 @@ runs:
   using: "composite"
   steps:
     - name: Setup dotnet
+      if: ${{!matrix.use_container }}
       uses: actions/setup-dotnet@v2
       with:
         dotnet-version: ${{ matrix.dotnet-version }}

@@ -7,11 +7,12 @@ async function setupDriver() {
         capabilities: {
             browserName: 'chrome',
             'goog:chromeOptions': {
-                args: ['headless']
+                args: ['headless','--no-sandbox', '--disable-gpu', '--disable-dev-shm-usage']
             }
         },
         logLevel: 'silent',
-        host: '127.0.0.1'
+        hostname: process.env.SELENIUM_SERVER_HOST || '127.0.0.1',
+        path: '/wd/hub'
     };
     return await remote(chrome);
 }

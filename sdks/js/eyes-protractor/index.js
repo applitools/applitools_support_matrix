@@ -19,11 +19,12 @@ const batch = {
 
 function setupEyes({vg, ...config}) {
     const runner = (vg ? new VisualGridRunner({testConcurrency: 500}) : undefined)
+    const branch = process.env.APPLITOOLS_BRANCH_NAME || 'protractor'
     const configuration = {
         apiKey: process.env.APPLITOOLS_API_KEY,
         batch,
-        parentBranchName: 'protractor',
-        branchName: 'protractor',
+        parentBranchName: branch,
+        branchName: branch,
         dontCloseBatches: true,
         matchTimeout: 0,
         saveNewTests: false,

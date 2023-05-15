@@ -21,6 +21,29 @@ const base_variations = [
         "os": "macos-latest",
     }
 ]
+const containers = [
+    // Alpine can't install native ruby gem dependencies
+    // {
+    // ...common,
+    // os: "ubuntu-latest",
+    // "version": "latest@",
+    // use_selenium: true,
+    // use_container: true,
+    // container: 'artem0tranduil/alpine_runner:latest',
+    // container_name: 'alpine',
+    // job_name: `Ruby Selenium [alpine | 3+ | client version: latest@]`
+    // },
+    {
+    ...common,
+    os: "ubuntu-latest",
+    "version": "latest@",
+    use_selenium: true,
+    use_container: true,
+    container: 'artem0tranduil/debian_ruby_runner:latest',
+    container_name: 'debian',
+    job_name: `Ruby Selenium [debian | 3+ | client version: latest@]`
+    },
+]
 const base_common = base_variations.map(variant => ({...basic, ...variant,}))
 const appium_common = base_common.map(variant => ({...variant, gh_environment: 'appium_latest'})).concat([
     {...common, "ruby-version": "3.2", os: 'ubuntu-latest', version: 'previous@1', gh_environment: 'appium_latest'},
@@ -73,6 +96,16 @@ const variations = base_common
         },
 
     ])
+    .concat([{
+        os: "ubuntu-latest",
+        use_selenium: true,
+        test_command: "bundle exec rake -v",
+        version: "exact@4.1.0",
+        "ruby-version": "2.6",
+        job_name: `Ruby Selenium [ ubuntu-latest | 2.6 | client version: 4.1.0]`,
+        ...common,
+    }])
+    .concat(containers)
     .concat(appium_common.map(variant => ({
         ...variant,
         test_command: "bundle exec rake github:appium -v",

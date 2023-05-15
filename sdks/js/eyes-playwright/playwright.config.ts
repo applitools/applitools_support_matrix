@@ -10,6 +10,7 @@ import { devices } from '@playwright/test';
 /**
  * See https://playwright.dev/docs/test-configuration.
  */
+const executablePath = process.env.PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH;
 const config: PlaywrightTestConfig = {
     testDir: './tests',
     timeout: 60 * 1000,
@@ -33,6 +34,10 @@ const config: PlaywrightTestConfig = {
             name: 'chromium',
             use: {
                 ...devices['Desktop Chrome'],
+                headless: true,
+                launchOptions: executablePath ? {
+                    executablePath
+                } : undefined
             },
         },
 
