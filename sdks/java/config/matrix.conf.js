@@ -19,11 +19,13 @@ const base_variations = [
 ]
 const alpine = {
     use_container: true,
+    container_name: 'alpine',
     container: 'artem0tranduil/alpine_runner:latest',
 }
 
 const debian = {
     use_container: true,
+    container_name: 'debian',
     container: 'artem0tranduil/debian_runner:latest',
 }
 const selenium_package = {

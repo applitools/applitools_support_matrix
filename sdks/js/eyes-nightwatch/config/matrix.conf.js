@@ -15,10 +15,10 @@ const base_variations = [{
     "os": "macos-latest", "version": "latest@",
 }]
 const alpine = {
-    use_container: true, container: 'artem0tranduil/alpine_runner:latest',
+    use_container: true, container: 'artem0tranduil/alpine_runner:latest', container_name: 'alpine'
 }
 const debian = {
-    use_container: true, container: 'artem0tranduil/debian_runner:latest',
+    use_container: true, container: 'artem0tranduil/debian_runner:latest', container_name: 'debian'
 }
 const base_common = base_variations.map(variant => ({...variant, ...common,}))
 const variations = base_common

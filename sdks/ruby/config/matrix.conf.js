@@ -23,6 +23,7 @@ const base_variations = [
 ]
 const containers = [
     // Alpine can't install native ruby gem dependencies
+    // https://github.com/applitools/applitools_support_matrix/actions/runs/4950873182/jobs/8855069590
     // {
     // ...common,
     // os: "ubuntu-latest",

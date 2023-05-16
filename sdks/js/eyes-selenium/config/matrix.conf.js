@@ -34,6 +34,7 @@ const containers = [
         use_container: true,
         use_selenium: true,
         container: 'artem0tranduil/alpine_runner:latest',
+        container_name: 'alpine',
         job_name: `JS Selenium [ alpine | 18 | version: latest@]`,
         test_command: "npm test"
     },
@@ -44,6 +45,7 @@ const containers = [
         use_container: true,
         use_selenium: true,
         container: 'artem0tranduil/debian_runner:latest',
+        container_name: 'debian',
         job_name: `JS Selenium [ debian | 18 | version: latest@]`,
         test_command: "npm test"
     },

@@ -30,11 +30,13 @@ const base_variations = [
 const alpine = {
     use_container: true,
     container: 'artem0tranduil/alpine_runner:latest',
+    container_name: 'alpine',
     branch: 'protractor_container'
 }
 const debian = {
     use_container: true,
-    container: 'artem0tranduil/alpine_runner:latest',
+    container: 'artem0tranduil/debian_runner:latest',
+    container_name: 'debian',
     branch: 'protractor_container'
 }
 const variations = base_variations.map(variant => ({
