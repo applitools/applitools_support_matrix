@@ -2,6 +2,15 @@ name: Test Appium tests
 
 on:
   workflow_dispatch:
+    inputs:
+      orientation:
+        description: "Select device orientation which will be used during the run"
+        required: true
+        default: 'PORTRAIT'
+        type: choice
+        options:
+          - 'PORTRAIT'
+          - 'LANDSCAPE'
 
 permissions:
   contents: write

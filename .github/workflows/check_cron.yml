@@ -15,6 +15,7 @@ jobs:
       web: ${{ steps.matrix.outputs.web}}
       appium: ${{ steps.matrix.outputs.appium}}
       container: ${{ steps.matrix.outputs.container}}
+      orientation: ${{ steps.matrix.outputs.orientation}}
     steps:
       - name: generate uuid
         id: uuid
@@ -25,9 +26,9 @@ jobs:
         id: matrix
         uses: ./.github/actions/setup
         with:
-          work_dir: 'sdks/js/eyes-webdriverio, sdks/js/eyes-testcafe, sdks/js/eyes-storybook, sdks/js/eyes-puppeteer, sdks/js/eyes-protractor, sdks/js/eyes-playwright, sdks/js/eyes-nightwatch, sdks/js/eyes-cypress, sdks/js/eyes-selenium, sdks/python, sdks/java, sdks/dotnet, sdks/ruby'
+#          work_dir: 'sdks/js/eyes-webdriverio, sdks/js/eyes-testcafe, sdks/js/eyes-storybook, sdks/js/eyes-puppeteer, sdks/js/eyes-protractor, sdks/js/eyes-playwright, sdks/js/eyes-nightwatch, sdks/js/eyes-cypress, sdks/js/eyes-selenium, sdks/python, sdks/java, sdks/dotnet, sdks/ruby'
 #          work_dir: 'sdks/ruby'
-#          work_dir: 'sdks/js/eyes-webdriverio'
+          work_dir: 'sdks/js/eyes-webdriverio'
           last_passed: false
   web:
     needs: setup
@@ -78,34 +79,35 @@ jobs:
         uses: ./.github/actions/test_runner
         with:
           lang: ${{matrix.test_runner}}
-#  appium:
-#    needs: setup
-#    strategy:
-#      max-parallel: 8
-#      fail-fast: false
-#      matrix: ${{ fromJson(needs.setup.outputs.appium) }}
-#    runs-on: ${{ matrix.os }}
-#    environment: ${{matrix.gh_environment}}
-#    timeout-minutes: 20
-#    env:
-#      APPLITOOLS_DONT_CLOSE_BATCHES: true
-#      APPLITOOLS_API_KEY: ${{ secrets.APPLITOOLS_API_KEY }}
-#      APPLITOOLS_BATCH_ID: ${{needs.setup.outputs.uuid}}
-#      JS_TESTS_CONFIG_NAME: ${{matrix.js_config}}
-#      SAUCE_USERNAME: ${{secrets.SAUCE_USERNAME}}
-#      SAUCE_ACCESS_KEY: ${{secrets.SAUCE_ACCESS_KEY}}
-#      APPIUM_VERSION: ${{vars.APPIUM_VERSION}}
-#    name: ${{ matrix.job_name }}
-#    defaults:
-#      run:
-#        working-directory: ${{matrix.work_dir}}
-#        shell: bash
-#    steps:
-#      - uses: actions/checkout@v3
-#      - name: Test
-#        uses: ./.github/actions/test_runner
-#        with:
-#          lang: ${{matrix.test_runner}}
+  appium:
+    needs: setup
+    strategy:
+      max-parallel: 8
+      fail-fast: false
+      matrix: ${{ fromJson(needs.setup.outputs.appium) }}
+    runs-on: ${{ matrix.os }}
+    environment: ${{matrix.gh_environment}}
+    timeout-minutes: 20
+    env:
+      APPLITOOLS_DONT_CLOSE_BATCHES: true
+      APPLITOOLS_API_KEY: ${{ secrets.APPLITOOLS_API_KEY }}
+      APPLITOOLS_BATCH_ID: ${{needs.setup.outputs.uuid}}
+      JS_TESTS_CONFIG_NAME: ${{matrix.js_config}}
+      SAUCE_USERNAME: ${{secrets.SAUCE_USERNAME}}
+      SAUCE_ACCESS_KEY: ${{secrets.SAUCE_ACCESS_KEY}}
+      APPIUM_VERSION: ${{vars.APPIUM_VERSION}}
+      MATRIX_DEVICE_ORIENTATION: ${{needs.setup.outputs.orientation}}
+    name: ${{ matrix.job_name }}
+    defaults:
+      run:
+        working-directory: ${{matrix.work_dir}}
+        shell: bash
+    steps:
+      - uses: actions/checkout@v3
+      - name: Test
+        uses: ./.github/actions/test_runner
+        with:
+          lang: ${{matrix.test_runner}}
 #  failing_check:
 #    runs-on: ubuntu-latest
 #    steps:

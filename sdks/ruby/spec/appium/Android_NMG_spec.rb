@@ -17,12 +17,13 @@ RSpec.describe 'Coverage Tests' do
       "appium:automationName": 'UiAutomator2',
       "appium:autoGrantPermissions": true,
       "appium:optionalIntentArguments": args,
+      "appium:orientation": orientation,
       'sauce:options': sauce_options
 
     }
     caps
   }
-  let(:pixel_4) {Applitools::Selenium::AndroidDeviceInfo.new(device_name: AndroidDeviceName::Pixel4, screen_orientation: Orientation::PORTRAIT)}
+  let(:pixel_4) {Applitools::Selenium::AndroidDeviceInfo.new(device_name: AndroidDeviceName::Pixel4, screen_orientation: eyes_orientation)}
 
   it 'Window' do
     eyes.configure do |conf|

@@ -29,6 +29,16 @@ RSpec.shared_context "Common" do
     sauce_options
   }
 
+  let(:orientation) {
+    orientation = ENV.fetch("MATRIX_DEVICE_ORIENTATION", "PORTRAIT")
+    orientation
+  }
+
+  let(:eyes_orientation) {
+    eyes_orientation = orientation == "LANDSCAPE" ? Orientation::LANDSCAPE : Orientation::PORTRAIT
+    eyes_orientation
+  }
+
 
   let(:eyes) {
     eyes = Applitools::Appium::Eyes.new(runner: runner)

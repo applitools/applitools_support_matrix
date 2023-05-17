@@ -1,8 +1,8 @@
-const {Eyes, VisualGridRunner, Target, AndroidDeviceName, AndroidVersion, IosVersion, IosDeviceName, ScreenOrientation} = require("@applitools/eyes-webdriverio")
+const {Eyes, VisualGridRunner, Target, AndroidDeviceName, AndroidVersion, IosVersion, IosDeviceName} = require("@applitools/eyes-webdriverio")
 const {remote} = require('webdriverio');
 const SAUCE_HOSTNAME = "ondemand.us-west-1.saucelabs.com";
 const SAUCE_PORT = 443;
-
+const ORIENTATION = process.env.MATRIX_DEVICE_ORIENTATION || "PORTRAIT";
 async function setupDriver(options) {
     let appium, ufg, platform;
     if (options) {
@@ -70,7 +70,7 @@ function setupEyes({appium, vg, platform, ...config}) {
             ufg.addBrowser({
                 iosDeviceInfo: {
                     deviceName: IosDeviceName.iPhone_8,
-                    screenOrientation: ScreenOrientation.PORTRAIT,
+                    screenOrientation: ORIENTATION.toLowerCase(),
                     iosVersion: IosVersion.LATEST
                 }
             })
@@ -79,7 +79,7 @@ function setupEyes({appium, vg, platform, ...config}) {
             ufg.addBrowser({
                 androidDeviceInfo: {
                     deviceName: AndroidDeviceName.Pixel_5,
-                    screenOrientation: ScreenOrientation.PORTRAIT,
+                    screenOrientation: ORIENTATION.toLowerCase(),
                     androidVersion: AndroidVersion.LATEST
                 }
             })
@@ -124,6 +124,7 @@ function getIOSCaps(ufg) {
     } else {
         caps["appium:app"] = 'storage:filename=awesomeswift_classic.app.zip'
     }
+    setOrientation(caps)
     return caps
 }
 
@@ -145,7 +146,14 @@ function getAndroidCaps(ufg) {
     } else {
         caps["appium:app"] = 'storage:filename=SimpleRandomStock_classic.apk'
     }
+    setOrientation(caps)
     return caps
+}
+
+function setOrientation(caps) {
+    if (ORIENTATION !== undefined) {
+        caps["appium:orientation"] = ORIENTATION;
+    }
 }
 
 module.exports = {

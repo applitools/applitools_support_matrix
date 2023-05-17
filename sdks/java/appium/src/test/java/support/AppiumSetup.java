@@ -6,14 +6,11 @@ import com.applitools.eyes.appium.AppiumRunner;
 import com.applitools.eyes.appium.AppiumVisualGridRunner;
 import com.applitools.eyes.appium.Eyes;
 import com.applitools.eyes.visualgrid.model.*;
-import com.applitools.eyes.visualgrid.services.VisualGridRunner;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.ios.IOSDriver;
 import org.openqa.selenium.MutableCapabilities;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.remote.DesiredCapabilities;
-import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 
@@ -62,11 +59,13 @@ public class AppiumSetup extends GlobalSetup {
         if (showLogs != null && showLogs.equals("true")) {
             eyes.setLogHandler(new StdoutLogHandler((verbose != null && verbose.equals("true"))));
         }
+        ScreenOrientation renderOrientation = ScreenOrientation.LANDSCAPE.toString().equals(orientation) ?
+                ScreenOrientation.LANDSCAPE : ScreenOrientation.PORTRAIT;
         if (UFG) {
-            if(platform == MobilePlatform.iOS) {
-                eyes.configure().addMobileDevice(new IosDeviceInfo(IosDeviceName.iPhone_8, ScreenOrientation.PORTRAIT));
+            if (platform == MobilePlatform.iOS) {
+                eyes.configure().addMobileDevice(new IosDeviceInfo(IosDeviceName.iPhone_8, renderOrientation));
             } else if (platform == MobilePlatform.Android) {
-                eyes.configure().addMobileDevice(new AndroidDeviceInfo(AndroidDeviceName.Pixel_5, ScreenOrientation.PORTRAIT));
+                eyes.configure().addMobileDevice(new AndroidDeviceInfo(AndroidDeviceName.Pixel_5, renderOrientation));
             }
         }
     }
@@ -79,9 +78,11 @@ public class AppiumSetup extends GlobalSetup {
         caps.setCapability("appium:newCommandTimeout", 600);
         caps.setCapability("appium:deviceName", "iPhone 8 Simulator");
         caps.setCapability("appium:automationName", "XCUITest");
+        if (orientation != null) {
+            caps.setCapability("appium:orientation", orientation);
+        }
         MutableCapabilities options = new MutableCapabilities();
-        String appiumVersion = System.getenv("APPIUM_VERSION");
-        if( appiumVersion != null) {
+        if (appiumVersion != null) {
             options.setCapability("appiumVersion", appiumVersion);
         }
         options.setCapability("username", System.getenv("SAUCE_USERNAME"));
@@ -106,9 +107,11 @@ public class AppiumSetup extends GlobalSetup {
         caps.setCapability("appium:automationName", "UiAutomator2");
         caps.setCapability("appium:autoGrantPermissions", true);
         caps.setCapability("appium:newCommandTimeout", 600);
+        if (orientation != null) {
+            caps.setCapability("appium:orientation", orientation);
+        }
         MutableCapabilities options = new MutableCapabilities();
-        String appiumVersion = System.getenv("APPIUM_VERSION");
-        if( appiumVersion != null) {
+        if (appiumVersion != null) {
             options.setCapability("appiumVersion", appiumVersion);
         }
         options.setCapability("username", System.getenv("SAUCE_USERNAME"));

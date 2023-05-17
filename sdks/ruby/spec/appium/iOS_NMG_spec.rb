@@ -16,11 +16,12 @@ RSpec.describe 'Coverage Tests' do
       "appium:deviceName": 'iPhone 8 Simulator',
       "appium:automationName": 'XCUITest',
       "appium:processArguments": args,
+      "appium:orientation": orientation,
       'sauce:options': sauce_options
     }
     caps
   }
-  let(:iphone_8) {Applitools::Selenium::IosDeviceInfo.new(device_name: IosDeviceName::IPhone_8, screen_orientation: Orientation::PORTRAIT)}
+  let(:iphone_8) {Applitools::Selenium::IosDeviceInfo.new(device_name: IosDeviceName::IPhone_8, screen_orientation: eyes_orientation)}
 
   it 'Window' do
     eyes.configure do |conf|

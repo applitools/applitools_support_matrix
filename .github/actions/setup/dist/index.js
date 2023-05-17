@@ -2870,6 +2870,15 @@ setOutput("appium", JSON.stringify(appium));
 const container = {include: include.filter(job => job.use_container)}
 console.log(JSON.stringify(container, null, 3))
 setOutput("container", JSON.stringify(container));
+
+const date = new Date();
+const day = date.getDate();
+
+if (day % 2 === 0) {
+    setOutput("orientation", "PORTRAIT")
+} else {
+    setOutput("orientation", "LANDSCAPE")
+}
 })();
 
 module.exports = __webpack_exports__;

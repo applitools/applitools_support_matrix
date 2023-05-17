@@ -1,5 +1,7 @@
+import os
 from .drivers import *
 from applitools.selenium import BatchInfo, Eyes, StitchMode
+from applitools.common import ScreenOrientation
 from selenium.common.exceptions import WebDriverException
 
 
@@ -7,6 +9,15 @@ from selenium.common.exceptions import WebDriverException
 def batch_info():
     return BatchInfo("Python Support Matrix tests")
 
+@pytest.fixture(scope="session")
+def orientation():
+    orientation = os.getenv("MATRIX_DEVICE_ORIENTATION", "PORTRAIT")
+    return orientation
+
+@pytest.fixture(scope="session")
+def eyes_orientation(orientation):
+    eyes_orientation = ScreenOrientation.LANDSCAPE if orientation == "LANDSCAPE" else ScreenOrientation.PORTRAIT
+    return eyes_orientation
 
 @pytest.fixture(scope="function")
 def stitch_mode():
