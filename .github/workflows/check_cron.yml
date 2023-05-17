@@ -118,6 +118,7 @@ jobs:
     if: always()
     needs: [
         web,
+        appium,
         distros
     ]
     runs-on: ubuntu-latest
