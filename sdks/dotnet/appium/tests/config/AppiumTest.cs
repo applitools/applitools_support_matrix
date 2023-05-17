@@ -146,8 +146,7 @@ namespace Applitools.Support.Matrix.Appium
             orientation = Environment.GetEnvironmentVariable("MATRIX_DEVICE_ORIENTATION");
             if(string.IsNullOrEmpty(orientation))
             {
-                // orientation = "PORTRAIT";
-                orientation = "LANDSCAPE";
+                orientation = "PORTRAIT";
             }
             eyesOrientation = "LANDSCAPE".Equals(orientation, StringComparison.OrdinalIgnoreCase) ? VisualGrid.ScreenOrientation.Landscape : VisualGrid.ScreenOrientation.Portrait;
             driverSetup();

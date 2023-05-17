@@ -17,6 +17,7 @@ jobs:
       web: ${{ steps.matrix.outputs.web}}
       appium: ${{ steps.matrix.outputs.appium}}
       container: ${{ steps.matrix.outputs.container}}
+      orientation: ${{ steps.matrix.outputs.orientation}}
     steps:
       - name: generate uuid
         id: uuid
@@ -95,6 +96,7 @@ jobs:
       SAUCE_USERNAME: ${{secrets.SAUCE_USERNAME}}
       SAUCE_ACCESS_KEY: ${{secrets.SAUCE_ACCESS_KEY}}
       APPIUM_VERSION: ${{vars.APPIUM_VERSION}}
+      MATRIX_DEVICE_ORIENTATION: ${{needs.setup.outputs.orientation}}
     name: ${{ matrix.job_name }}
     defaults:
       run:
