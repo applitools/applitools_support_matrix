@@ -17,7 +17,7 @@ public class UFG : AppiumTest
     public void window()
     {
             var conf = eyes.GetConfiguration();
-            conf.AddMobileDevice(new VisualGrid.IosDeviceInfo(VisualGrid.IosDeviceName.iPhone_8));
+            conf.AddMobileDevice(new VisualGrid.IosDeviceInfo(VisualGrid.IosDeviceName.iPhone_8, eyesOrientation));
             eyes.SetConfiguration(conf);
             eyes.Open(driver, "Applitools Support Matrix", "Appium iOS window - UFG (Dotnet)");
             eyes.Check(Target.Window().Fully(false));

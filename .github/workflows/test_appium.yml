@@ -2,6 +2,15 @@ name: Test Appium tests
 
 on:
   workflow_dispatch:
+    inputs:
+      orientation:
+        description: "Select device orientation which will be used during the run"
+        required: true
+        default: 'PORTRAIT'
+        type: choice
+        options:
+          - 'PORTRAIT'
+          - 'LANDSCAPE'
 
 permissions:
   contents: write
@@ -45,6 +54,7 @@ jobs:
       SAUCE_USERNAME: ${{secrets.SAUCE_USERNAME}}
       SAUCE_ACCESS_KEY: ${{secrets.SAUCE_ACCESS_KEY}}
       APPIUM_VERSION: ${{vars.APPIUM_VERSION}}
+      MATRIX_DEVICE_ORIENTATION: ${{inputs.orientation}}
     name: ${{ matrix.job_name }}
     defaults:
       run:

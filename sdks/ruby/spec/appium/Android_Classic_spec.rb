@@ -13,6 +13,7 @@ RSpec.describe 'Coverage Tests' do
       "appium:app": 'storage:filename=SimpleRandomStock_classic.apk',
       "appium:deviceName": 'Google Pixel 5 GoogleAPI Emulator',
       "appium:automationName": 'UiAutomator2',
+      "appium:orientation": orientation,
       "appium:autoGrantPermissions": true,
       'sauce:options': sauce_options
     }

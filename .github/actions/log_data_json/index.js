@@ -11,6 +11,7 @@ try {
     const chrome_version = core.getInput('chrome_version');
     const chromedriver_version = core.getInput('chromedriver_version');
     const appium_client_lib_version = core.getInput('Appium_client')
+    const orientation = process.env.MATRIX_DEVICE_ORIENTATION
     const data = {
         package: pack,
         version,
@@ -22,6 +23,7 @@ try {
         appium_client_lib_version,
         matrix,
         work_dir,
+        orientation
     }
     console.log(`####[Start_json_data]${JSON.stringify(data)}[End_json_data]####`)
 } catch (error) {

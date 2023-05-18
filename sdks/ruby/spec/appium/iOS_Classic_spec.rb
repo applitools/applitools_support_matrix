@@ -13,6 +13,7 @@ RSpec.describe 'Coverage Tests' do
       "appium:app": 'storage:filename=awesomeswift_classic.app.zip',
       "appium:deviceName": 'iPhone 8 Simulator',
       "appium:automationName": 'XCUITest',
+      "appium:orientation": orientation,
       'sauce:options': sauce_options
     }
     caps

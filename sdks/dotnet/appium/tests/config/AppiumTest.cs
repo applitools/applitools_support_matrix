@@ -23,6 +23,8 @@ namespace Applitools.Support.Matrix.Appium
 
         public static readonly string apiKey = Environment.GetEnvironmentVariable("APPLITOOLS_API_KEY");
         public static readonly string SAUCE_URL = "https://ondemand.us-west-1.saucelabs.com:443/wd/hub";
+        public static string orientation;
+        public static VisualGrid.ScreenOrientation eyesOrientation;
 
         public static readonly StdoutLogHandler logger = new StdoutLogHandler();
 
@@ -74,6 +76,7 @@ namespace Applitools.Support.Matrix.Appium
                 sauceOptions.Add("appiumVersion", appiumVersion);
             }
             AppiumOptions options = new AppiumOptions();
+            options.AddAdditionalCapability("appium:orientation", orientation);
             switch (device)
             {
                 case DeviceTypes.iPhone:
@@ -140,7 +143,12 @@ namespace Applitools.Support.Matrix.Appium
         [SetUp]
         public void TimeSetup()
         {   
-
+            orientation = Environment.GetEnvironmentVariable("MATRIX_DEVICE_ORIENTATION");
+            if(string.IsNullOrEmpty(orientation))
+            {
+                orientation = "PORTRAIT";
+            }
+            eyesOrientation = "LANDSCAPE".Equals(orientation, StringComparison.OrdinalIgnoreCase) ? VisualGrid.ScreenOrientation.Landscape : VisualGrid.ScreenOrientation.Portrait;
             driverSetup();
             initEyes();
         }

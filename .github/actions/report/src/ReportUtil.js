@@ -54,6 +54,7 @@ class ReportUtil {
         // isAppium deprecated
         if (matrix.use_appium || matrix.isAppium) {
             env.push(await this.getAppiumServerVersion(matrix.gh_environment))
+            env.push(`device_orientation: ${object_data.orientation}`)
         }
         if (matrix.use_selenium) {
             env.push(this.formatSeleniumServerVersion(object_data))

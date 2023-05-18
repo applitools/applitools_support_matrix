@@ -23,7 +23,7 @@ public class Android_UFG : AppiumTest
     public void window()
     {
             var conf = eyes.GetConfiguration();
-            conf.AddMobileDevice(new VisualGrid.AndroidDeviceInfo(VisualGrid.AndroidDeviceName.Pixel_5));
+            conf.AddMobileDevice(new VisualGrid.AndroidDeviceInfo(VisualGrid.AndroidDeviceName.Pixel_5, eyesOrientation));
             eyes.SetConfiguration(conf);
             eyes.Open(driver, "Applitools Support Matrix", "Appium Android window - UFG (Dotnet)");
             eyes.Check(Target.Window().Fully(false));
