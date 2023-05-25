@@ -1,5 +1,5 @@
 {
-  "id": "5cf104cd-0631-4e2c-9044-a53c8afaeed7",
+  "id": "cb7b3f5c-a47f-4f25-a0d9-03761e9b262d",
   "data": [
     {
       "title": "Java",
@@ -447,7 +447,7 @@
           "eyes_package": "@applitools/eyes-playwright",
           "test_command": "npm test",
           "os": "ubuntu-latest",
-          "version": "1.34.2",
+          "version": "1.34.3",
           "use_container": true,
           "container": "artem0tranduil/alpine_runner:latest",
           "container_name": "alpine",
