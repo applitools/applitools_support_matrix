@@ -1,5 +1,5 @@
 {
-  "id": "450cac32-edbc-4b57-94b7-dcbb4b9d8e4a",
+  "id": "e99b22fd-620c-4459-ae87-b650da64a74c",
   "data": [
     {
       "title": "Java",
@@ -1836,6 +1836,23 @@
           "passed": true,
           "package": "@storybook/react",
           "matrix_string": "{\"node-version\":\"16\",\"framework_package\":\"@storybook/react\",\"test_runner\":\"js\",\"eyes_package\":\"@applitools/eyes-storybook\",\"test_command\":\"npm test\",\"work_dir\":\"sdks/js/eyes-storybook/latest\",\"os\":\"windows-latest\",\"version\":\"latest@\",\"branch\":\"latest-story\",\"job_name\":\"JS Storybook [windows-latest | 16] version: latest@\",\"matrix_config_dir\":\"sdks/js/eyes-storybook\"}"
+        },
+        {
+          "title": "JS Storybook [macos-latest | 16] version: latest@",
+          "node-version": "16",
+          "framework_package": "@storybook/react",
+          "test_runner": "js",
+          "eyes_package": "@applitools/eyes-storybook",
+          "test_command": "npm test",
+          "work_dir": "sdks/js/eyes-storybook/latest",
+          "os": "macos-latest",
+          "version": "7.0.18",
+          "branch": "latest-story",
+          "job_name": "JS Storybook [macos-latest | 16] version: latest@",
+          "matrix_config_dir": "sdks/js/eyes-storybook",
+          "passed": true,
+          "package": "@storybook/react",
+          "matrix_string": "{\"node-version\":\"16\",\"framework_package\":\"@storybook/react\",\"test_runner\":\"js\",\"eyes_package\":\"@applitools/eyes-storybook\",\"test_command\":\"npm test\",\"work_dir\":\"sdks/js/eyes-storybook/latest\",\"os\":\"macos-latest\",\"version\":\"latest@\",\"branch\":\"latest-story\",\"job_name\":\"JS Storybook [macos-latest | 16] version: latest@\",\"matrix_config_dir\":\"sdks/js/eyes-storybook\"}"
         },
         {
           "title": "JS Storybook [ubuntu-latest | 16] version: major@1",
