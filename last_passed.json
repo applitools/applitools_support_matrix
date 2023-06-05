@@ -1,5 +1,5 @@
 {
-  "id": "21ca7407-01f9-4500-84b9-37994ecb4a7b",
+  "id": "8a78bc96-da02-4e0d-9f86-dc3c35b16451",
   "data": [
     {
       "title": "Java",
@@ -513,24 +513,6 @@
           "matrix_string": "{\"dotnet-version\":\"7.0\",\"test_command\":\"dotnet test --no-build -f net7.0 -- NUnit.NumberOfTestWorkers=1\",\"test_runner\":\"dotnet\",\"os\":\"ubuntu-latest\",\"version\":\"latest@\",\"gh_environment\":\"appium_latest\",\"work_dir\":\"sdks/dotnet/appium\",\"framework_package\":\"Appium.WebDriver\",\"eyes_package\":\"Eyes.Appium\",\"use_appium\":true,\"job_name\":\"Dotnet Appium [ubuntu-latest | 7.0 | version: latest@ | appium_latest]\",\"matrix_config_dir\":\"sdks/dotnet\"}"
         },
         {
-          "title": "Dotnet Appium [windows-latest | 7.0 | version: latest@ | appium_latest]",
-          "dotnet-version": "7.0",
-          "test_command": "dotnet test --no-build -f net7.0 -- NUnit.NumberOfTestWorkers=1",
-          "test_runner": "dotnet",
-          "os": "windows-latest",
-          "version": "4.4.5",
-          "gh_environment": "appium_latest",
-          "work_dir": "sdks/dotnet/appium",
-          "framework_package": "Appium.WebDriver",
-          "eyes_package": "Eyes.Appium",
-          "use_appium": true,
-          "job_name": "Dotnet Appium [windows-latest | 7.0 | version: latest@ | appium_latest]",
-          "matrix_config_dir": "sdks/dotnet",
-          "passed": true,
-          "package": "Appium.WebDriver",
-          "matrix_string": "{\"dotnet-version\":\"7.0\",\"test_command\":\"dotnet test --no-build -f net7.0 -- NUnit.NumberOfTestWorkers=1\",\"test_runner\":\"dotnet\",\"os\":\"windows-latest\",\"version\":\"latest@\",\"gh_environment\":\"appium_latest\",\"work_dir\":\"sdks/dotnet/appium\",\"framework_package\":\"Appium.WebDriver\",\"eyes_package\":\"Eyes.Appium\",\"use_appium\":true,\"job_name\":\"Dotnet Appium [windows-latest | 7.0 | version: latest@ | appium_latest]\",\"matrix_config_dir\":\"sdks/dotnet\"}"
-        },
-        {
           "title": "Dotnet Appium [macos-latest | 7.0 | version: latest@ | appium_latest]",
           "dotnet-version": "7.0",
           "test_command": "dotnet test --no-build -f net7.0 -- NUnit.NumberOfTestWorkers=1",
@@ -547,24 +529,6 @@
           "passed": true,
           "package": "Appium.WebDriver",
           "matrix_string": "{\"dotnet-version\":\"7.0\",\"test_command\":\"dotnet test --no-build -f net7.0 -- NUnit.NumberOfTestWorkers=1\",\"test_runner\":\"dotnet\",\"os\":\"macos-latest\",\"version\":\"latest@\",\"gh_environment\":\"appium_latest\",\"work_dir\":\"sdks/dotnet/appium\",\"framework_package\":\"Appium.WebDriver\",\"eyes_package\":\"Eyes.Appium\",\"use_appium\":true,\"job_name\":\"Dotnet Appium [macos-latest | 7.0 | version: latest@ | appium_latest]\",\"matrix_config_dir\":\"sdks/dotnet\"}"
-        },
-        {
-          "title": "Dotnet Appium [ubuntu-latest | 7.0 | version: previous@1 | appium_latest]",
-          "dotnet-version": "7.0",
-          "test_command": "dotnet test --no-build -f net7.0 -- NUnit.NumberOfTestWorkers=1",
-          "test_runner": "dotnet",
-          "os": "ubuntu-latest",
-          "version": "4.4.0",
-          "gh_environment": "appium_latest",
-          "work_dir": "sdks/dotnet/appium",
-          "framework_package": "Appium.WebDriver",
-          "eyes_package": "Eyes.Appium",
-          "use_appium": true,
-          "job_name": "Dotnet Appium [ubuntu-latest | 7.0 | version: previous@1 | appium_latest]",
-          "matrix_config_dir": "sdks/dotnet",
-          "passed": true,
-          "package": "Appium.WebDriver",
-          "matrix_string": "{\"dotnet-version\":\"7.0\",\"test_command\":\"dotnet test --no-build -f net7.0 -- NUnit.NumberOfTestWorkers=1\",\"test_runner\":\"dotnet\",\"os\":\"ubuntu-latest\",\"version\":\"previous@1\",\"gh_environment\":\"appium_latest\",\"work_dir\":\"sdks/dotnet/appium\",\"framework_package\":\"Appium.WebDriver\",\"eyes_package\":\"Eyes.Appium\",\"use_appium\":true,\"job_name\":\"Dotnet Appium [ubuntu-latest | 7.0 | version: previous@1 | appium_latest]\",\"matrix_config_dir\":\"sdks/dotnet\"}"
         },
         {
           "title": "Dotnet Appium [ubuntu-latest | 7.0 | version: latest@ | appium_previous]",
@@ -1476,26 +1440,6 @@
           "matrix_string": "{\"dotnet-version\":\"7\",\"test_command\":\"dotnet test --no-build -f net7.0 -- NUnit.NumberOfTestWorkers=1\",\"test_runner\":\"dotnet\",\"os\":\"ubuntu-latest\",\"version\":\"exact@3.141.0\",\"use_container\":true,\"container_name\":\"debian\",\"container\":\"artem0tranduil/debian_runner:latest\",\"use_selenium\":true,\"selenium_legacy\":true,\"work_dir\":\"sdks/dotnet/selenium\",\"framework_package\":\"Selenium.WebDriver\",\"eyes_package\":\"Eyes.Selenium\",\"job_name\":\"Dotnet Selenium [debian | 7 | client version: latest@]\",\"matrix_config_dir\":\"sdks/dotnet\"}"
         },
         {
-          "title": "Dotnet Selenium4 [alpine | 7 | client version: latest@]",
-          "dotnet-version": "7",
-          "test_command": "dotnet test --no-build -f net7.0 -- NUnit.NumberOfTestWorkers=1",
-          "test_runner": "dotnet",
-          "os": "ubuntu-latest",
-          "version": "4.9.1",
-          "use_container": true,
-          "container_name": "alpine",
-          "container": "artem0tranduil/alpine_runner:latest",
-          "use_selenium": true,
-          "work_dir": "sdks/dotnet/selenium",
-          "framework_package": "Selenium.WebDriver",
-          "eyes_package": "Eyes.Selenium4",
-          "job_name": "Dotnet Selenium4 [alpine | 7 | client version: latest@]",
-          "matrix_config_dir": "sdks/dotnet",
-          "passed": true,
-          "package": "Selenium.WebDriver",
-          "matrix_string": "{\"dotnet-version\":\"7\",\"test_command\":\"dotnet test --no-build -f net7.0 -- NUnit.NumberOfTestWorkers=1\",\"test_runner\":\"dotnet\",\"os\":\"ubuntu-latest\",\"version\":\"latest@\",\"use_container\":true,\"container_name\":\"alpine\",\"container\":\"artem0tranduil/alpine_runner:latest\",\"use_selenium\":true,\"work_dir\":\"sdks/dotnet/selenium\",\"framework_package\":\"Selenium.WebDriver\",\"eyes_package\":\"Eyes.Selenium4\",\"job_name\":\"Dotnet Selenium4 [alpine | 7 | client version: latest@]\",\"matrix_config_dir\":\"sdks/dotnet\"}"
-        },
-        {
           "title": "Dotnet Selenium4 [debian | 7 | client version: latest@]",
           "dotnet-version": "7",
           "test_command": "dotnet test --no-build -f net7.0 -- NUnit.NumberOfTestWorkers=1",
@@ -2108,7 +2052,7 @@
           "eyes_package": "@applitools/eyes-playwright",
           "test_command": "npx playwright install --with-deps && npm test",
           "os": "ubuntu-latest",
-          "version": "1.35.0-alpha-1685749070000",
+          "version": "1.35.0-alpha-jun-5-2023",
           "legacy_npm_peers": true,
           "job_name": "JS Playwright [ubuntu-latest | 18] version: exact@next",
           "matrix_config_dir": "sdks/js/eyes-playwright",
