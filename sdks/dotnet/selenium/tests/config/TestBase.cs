@@ -14,7 +14,7 @@ namespace Applitools.Support.Matrix.Tests
         public abstract class BaseTest 
     {       
         protected IWebDriver driver;
-        protected EyesRunner runner;
+        protected SeleniumEyesRunner runner;
         protected Eyes eyes;
         
         public static readonly BatchInfo batch = new BatchInfo("Support Matrix");
@@ -46,7 +46,7 @@ namespace Applitools.Support.Matrix.Tests
 
         protected void initEyes()
         {
-            runner = isUFG() ? (EyesRunner)(new VisualGridRunner(10, logger)) : new ClassicRunner(logger);
+            runner = isUFG() ? (SeleniumEyesRunner)(new VisualGridRunner(10, logger)) : new ClassicRunner(logger);
             eyes = new Applitools.Selenium.Eyes(runner, logHandler:logger);
             eyes.Batch = getBatch();
             eyes.StitchMode = getStitchMode();
