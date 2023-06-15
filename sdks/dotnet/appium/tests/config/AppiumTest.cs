@@ -23,6 +23,7 @@ namespace Applitools.Support.Matrix.Appium
 
         public static readonly string apiKey = Environment.GetEnvironmentVariable("APPLITOOLS_API_KEY");
         public static readonly string SAUCE_URL = "https://ondemand.us-west-1.saucelabs.com:443/wd/hub";
+        public static readonly string EYES_SERVER_URL = "https://eyes.applitools.com";
         public static string orientation;
         public static VisualGrid.ScreenOrientation eyesOrientation;
 
@@ -51,7 +52,7 @@ namespace Applitools.Support.Matrix.Appium
         protected void initEyes()
         {
             runner = new ClassicRunner(logger);
-            eyes = new Applitools.Appium.Eyes(runner, logHandler:logger);
+            eyes = new Applitools.Appium.Eyes(runner, serverUri: EYES_SERVER_URL, logHandler:logger);
             eyes.Batch = getBatch();
             eyes.StitchMode = getStitchMode();
             eyes.BranchName = "master";
