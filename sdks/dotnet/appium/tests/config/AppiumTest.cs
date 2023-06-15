@@ -16,7 +16,7 @@ namespace Applitools.Support.Matrix.Appium
         public abstract class AppiumTest 
     {       
         protected RemoteWebDriver driver;
-        protected EyesRunner runner;
+        protected AppiumEyesRunner runner;
         protected Applitools.Appium.Eyes eyes;
         
         public static readonly BatchInfo batch = new BatchInfo("Support Matrix");
@@ -50,7 +50,7 @@ namespace Applitools.Support.Matrix.Appium
 
         protected void initEyes()
         {
-            runner = isUFG() ? (EyesRunner)(new VisualGridRunner(10, logger)) : new ClassicRunner(logger);
+            runner = new ClassicRunner(logger);
             eyes = new Applitools.Appium.Eyes(runner, logHandler:logger);
             eyes.Batch = getBatch();
             eyes.StitchMode = getStitchMode();

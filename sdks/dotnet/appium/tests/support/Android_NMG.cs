@@ -19,7 +19,7 @@ public class Android_UFG : AppiumTest
     }
 
     [Test]
-    // [Ignore("Skipped test due to bad screenshot")]
+    [Ignore("Skipped test because NMG doesn't supported in dotnet")]
     public void window()
     {
             var conf = eyes.GetConfiguration();

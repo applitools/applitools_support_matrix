@@ -14,6 +14,7 @@ public class UFG : AppiumTest
     }
 
     [Test]
+    [Ignore("Skipped test because NMG doesn't supported in dotnet")]
     public void window()
     {
             var conf = eyes.GetConfiguration();
