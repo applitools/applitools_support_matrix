@@ -48,11 +48,9 @@ const path = require("path");
             run_data.push(run_data_info)
         }
 
-        run_data.forEach(suite => {
-            const old = current_last_passed.filter(old_suite => suite.title === old_suite.title)[0]
-            suite.jobs = suite.jobs.map(job => {
-                return job.passed ? job : old.jobs.filter(old_job => old_job.matrix_string === job.matrix_string)[0]
-            })
+        run_data.forEach((job, index,arr) => {
+            const old = current_last_passed.filter(old_job => job.title === old_job.title)[0]
+            if(!job.passed) arr[index] = old;
         })
 
         // Make json file
