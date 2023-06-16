@@ -9747,6 +9747,7 @@ const path = __nccwpck_require__(1017);
         fs.writeFileSync('last_passed.json', JSON.stringify(file, undefined, 2))
         console.log(1)
     } catch (error) {
+        console.log(error.stack)
         core.setFailed(error.message);
     }
 })()

@@ -60,6 +60,7 @@ const path = require("path");
         fs.writeFileSync('last_passed.json', JSON.stringify(file, undefined, 2))
         console.log(1)
     } catch (error) {
+        console.log(error.stack)
         core.setFailed(error.message);
     }
 })()
