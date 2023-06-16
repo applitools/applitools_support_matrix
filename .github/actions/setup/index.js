@@ -15,7 +15,7 @@ if (use_last_passed) {
     const json_string = fs.readFileSync(filePath).toString();
     const last_passed = JSON.parse(json_string)
     dirs.forEach(dir => {
-        const matrix_jobs = last_passed.data.filter(suite => suite.config_path === dir)[0]
+        const matrix_jobs = last_passed.data.filter(job => job.matrix_config_dir === dir)
         const dir_include = matrix_jobs.jobs.map(job => ({
             ...JSON.parse(job.matrix_string),
             version: `exact@${job.version}`
