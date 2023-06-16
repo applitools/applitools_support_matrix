@@ -67,6 +67,7 @@ function filterTestsJobs({name}) {
     return !name.includes("Setup")
         && name !== 'rerun'
         && name !== 'report_generation'
+        && name !== 'gh_pages_updates'
         && !name.includes('email_notification')
 }
 

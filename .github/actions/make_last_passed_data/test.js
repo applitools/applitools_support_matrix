@@ -9,7 +9,7 @@ const path = require("path");
 
 
     // Get jobs data
-    const input_run_id = "5291804154";
+    const input_run_id = "5294153994";
     const run_id = input_run_id && input_run_id.length > 0 ? input_run_id : process.env.GITHUB_RUN_ID
     console.log(`Run id used for this run is [${run_id}]`)
     const pat = process.env.MY_WORK_PAT
@@ -23,7 +23,7 @@ const path = require("path");
     const filePath = path.join(process.cwd(), 'last_passed.json');
     console.log(`Path to the current file stored last passed data => ${filePath}`)
     const json_string = fs.readFileSync(filePath).toString();
-    const current_last_passed = JSON.parse(json_string).data
+    const current_last_passed = JSON.parse(json_string).data.filter(job => job !==null && job.title)
     // Organise and parse raw data Reporting
     const run_data = []
     for (const job of filtered) {
@@ -49,7 +49,7 @@ const path = require("path");
 
     run_data.forEach((job, index, arr) => {
         const old = current_last_passed.filter(old_job => job.title === old_job.title)[0]
-        if (!job.passed) arr[index] = old;
+        if (!job.passed && old) arr[index] = old;
     })
 
     // Make json file

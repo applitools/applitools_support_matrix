@@ -9322,6 +9322,7 @@ function filterTestsJobs({name}) {
     return !name.includes("Setup")
         && name !== 'rerun'
         && name !== 'report_generation'
+        && name !== 'gh_pages_updates'
         && !name.includes('email_notification')
 }
 
@@ -9708,10 +9709,10 @@ const path = __nccwpck_require__(1017);
         const repo = process.env.GITHUB_REPOSITORY.split('/')[1];
         let jobs = await waitForAllCompletedJob({octokit, owner, repo, run_id});
         const filtered = jobs.filter(filterTestsJobs)
-        const filePath = path.join(process.cwd(), 'last_passed.json');
+        const filePath = __nccwpck_require__.ab + "last_passed.json";
         console.log(`Path to the current file stored last passed data => ${filePath}`)
-        const json_string = fs.readFileSync(filePath).toString();
-        const current_last_passed = JSON.parse(json_string).data
+        const json_string = fs.readFileSync(__nccwpck_require__.ab + "last_passed.json").toString();
+        const current_last_passed = JSON.parse(json_string).data.filter(job => job !==null && job.title)
         // Organise and parse raw data Reporting
         const run_data = []
         for (const job of filtered) {
@@ -9737,7 +9738,7 @@ const path = __nccwpck_require__(1017);
 
         run_data.forEach((job, index,arr) => {
             const old = current_last_passed.filter(old_job => job.title === old_job.title)[0]
-            if(!job.passed) arr[index] = old;
+            if (!job.passed && old) arr[index] = old;
         })
 
         // Make json file
