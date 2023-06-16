@@ -28,7 +28,7 @@ const path = require("path");
         // Organise and parse raw data Reporting
         const run_data = []
         for (const job of filtered) {
-            const run_data_info = {}
+            let run_data_info;
             const passed = job.conclusion === 'success'
             const regex = /####\[Start_json_data](.*)\[End_json_data]####/
             const logs = await jobLog({octokit, owner, repo, job_id: job.id})
@@ -36,14 +36,13 @@ const path = require("path");
                 if (regex.test(logs)) {
                     const json_data = JSON.parse(regex.exec(logs)[1])
                     const matrix_data = JSON.parse(json_data.matrix)
-                    run_data_info.jobs.push({
+                    run_data_info = {
                         title: job.name, ...matrix_data,
                         passed,
                         package: json_data.package,
                         version: json_data.version,
                         matrix_string: JSON.stringify(matrix_data)
-                    })
-                    if (!run_data_info.config_path) run_data_info.config_path = matrix_data.matrix_config_dir
+                    }
                 }
             }
             run_data.push(run_data_info)
