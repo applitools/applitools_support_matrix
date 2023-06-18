@@ -10,24 +10,24 @@ const base_variations = [
         os: "ubuntu-latest",
         version: "latest@"
     },
-    // {
-    //     os: "windows-latest",
-    //     version: "latest@"
-    // },
-    // {
-    //     os: "macos-latest",
-    //     version: "latest@"
-    // }
+    {
+        os: "windows-latest",
+        version: "latest@"
+    },
+    {
+        os: "macos-latest",
+        version: "latest@"
+    }
 ]
 const containers = [
-    // {
-    //     "dotnet-version": "7",
-    //     os: "ubuntu-latest",
-    //     version: "latest@",
-    //     use_container: true,
-    //     container_name: 'alpine',
-    //     container: 'artem0tranduil/alpine_runner:latest',
-    // },
+    {
+        "dotnet-version": "7",
+        os: "ubuntu-latest",
+        version: "latest@",
+        use_container: true,
+        container_name: 'alpine',
+        container: 'artem0tranduil/alpine_runner:latest',
+    },
     {
         "dotnet-version": "7",
         os: "ubuntu-latest",
