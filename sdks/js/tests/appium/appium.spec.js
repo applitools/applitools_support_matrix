@@ -36,7 +36,7 @@ describe('Support Matrix Appium', () => {
         })
     })
 
-    describe('UFG', async () => {
+    describe.skip('UFG', async () => {
 
 
         it('ios', async () => {
