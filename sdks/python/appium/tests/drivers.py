@@ -4,7 +4,10 @@ import time
 import pytest
 from appium import webdriver as appium_webdriver
 from applitools.selenium import Eyes
+import urllib3
 from urllib3.exceptions import MaxRetryError
+from appium.webdriver.appium_connection import AppiumConnection
+
 
 @pytest.fixture(scope="function")
 def sauce_options():
@@ -91,11 +94,17 @@ def android(sauce_options, orientation):
 
 
 def start_appium_driver(caps):
+    init_args_for_pool_manage = {
+        'retries': urllib3.util.retry.Retry(total=4, connect=4, read=False)
+    }
+    appium_executor = AppiumConnection(
+        remote_server_addr="https://ondemand.us-west-1.saucelabs.com:443/wd/hub",
+        init_args_for_pool_manage=init_args_for_pool_manage
+    )
+
     try:
-        return appium_webdriver.Remote(command_executor="https://ondemand.us-west-1.saucelabs.com:443/wd/hub",
-                                       desired_capabilities=caps)
+        return appium_webdriver.Remote(appium_executor, desired_capabilities=caps)
     except MaxRetryError:
         print("Tried to initiate driver")
     time.sleep(60)
-    return appium_webdriver.Remote(command_executor="https://ondemand.us-west-1.saucelabs.com:443/wd/hub",
-                                   desired_capabilities=caps)
+    return appium_webdriver.Remote(appium_executor, desired_capabilities=caps)
