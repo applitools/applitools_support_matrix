@@ -95,7 +95,8 @@ def android(sauce_options, orientation):
 
 def start_appium_driver(caps):
     init_args_for_pool_manager = {
-        'retries': urllib3.util.retry.Retry(total=10, connect=6, redirect=6, read=False)
+        'retries': urllib3.util.retry.Retry(total=10, connect=6, redirect=6, read=False),
+        'timeout': 300
     }
     appium_executor = AppiumConnection(
         remote_server_addr="https://ondemand.us-west-1.saucelabs.com:443/wd/hub",
