@@ -1,5 +1,5 @@
 {
-  "id": "e6ee6ede-7ad0-4412-a3e3-00dcb50db570",
+  "id": "eb977f36-cb09-46a2-8611-f28549b7582b",
   "data": [
     {
       "title": "JS WDIO [ alpine | 18 | client version: latest@]",
@@ -1137,7 +1137,7 @@
       "test_runner": "python",
       "os": "ubuntu-latest",
       "version": "2.11.1",
-      "gh_environment": "appium_latest",
+      "gh_environment": "appium_previous",
       "test_command": "pytest",
       "framework_package": "Appium-Python-Client",
       "use_appium": true,
@@ -1146,7 +1146,7 @@
       "matrix_config_dir": "sdks/python",
       "passed": true,
       "package": "Appium-Python-Client",
-      "matrix_string": "{\"python-version\":\"3.10\",\"eyes_package\":\"eyes-selenium\",\"test_runner\":\"python\",\"os\":\"ubuntu-latest\",\"version\":\"latest@\",\"gh_environment\":\"appium_latest\",\"test_command\":\"pytest\",\"framework_package\":\"Appium-Python-Client\",\"use_appium\":true,\"work_dir\":\"sdks/python/appium\",\"job_name\":\"Python Appium [ubuntu-latest | 3.10 | client version latest@]\",\"matrix_config_dir\":\"sdks/python\"}"
+      "matrix_string": "{\"python-version\":\"3.10\",\"eyes_package\":\"eyes-selenium\",\"test_runner\":\"python\",\"os\":\"ubuntu-latest\",\"version\":\"latest@\",\"gh_environment\":\"appium_previous\",\"test_command\":\"pytest\",\"framework_package\":\"Appium-Python-Client\",\"use_appium\":true,\"work_dir\":\"sdks/python/appium\",\"job_name\":\"Python Appium [ubuntu-latest | 3.10 | client version latest@]\",\"matrix_config_dir\":\"sdks/python\"}"
     },
     {
       "title": "Python Appium [ubuntu-latest | 3.10 | client version previous@1]",
