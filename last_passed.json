@@ -1,5 +1,5 @@
 {
-  "id": "eb977f36-cb09-46a2-8611-f28549b7582b",
+  "id": "3fffb082-2988-4fed-ade7-51f8bd9e71d8",
   "data": [
     {
       "title": "JS WDIO [ alpine | 18 | client version: latest@]",
@@ -470,7 +470,7 @@
       "eyes_package": "@applitools/eyes-cypress",
       "test_command": "npm test",
       "os": "ubuntu-latest",
-      "version": "12.15.0",
+      "version": "12.16.0",
       "use_container": true,
       "container": "artem0tranduil/debian_cypress_runner:latest",
       "container_name": "debian",
@@ -1137,7 +1137,7 @@
       "test_runner": "python",
       "os": "ubuntu-latest",
       "version": "2.11.1",
-      "gh_environment": "appium_previous",
+      "gh_environment": "appium_latest",
       "test_command": "pytest",
       "framework_package": "Appium-Python-Client",
       "use_appium": true,
@@ -1146,7 +1146,7 @@
       "matrix_config_dir": "sdks/python",
       "passed": true,
       "package": "Appium-Python-Client",
-      "matrix_string": "{\"python-version\":\"3.10\",\"eyes_package\":\"eyes-selenium\",\"test_runner\":\"python\",\"os\":\"ubuntu-latest\",\"version\":\"latest@\",\"gh_environment\":\"appium_previous\",\"test_command\":\"pytest\",\"framework_package\":\"Appium-Python-Client\",\"use_appium\":true,\"work_dir\":\"sdks/python/appium\",\"job_name\":\"Python Appium [ubuntu-latest | 3.10 | client version latest@]\",\"matrix_config_dir\":\"sdks/python\"}"
+      "matrix_string": "{\"python-version\":\"3.10\",\"eyes_package\":\"eyes-selenium\",\"test_runner\":\"python\",\"os\":\"ubuntu-latest\",\"version\":\"latest@\",\"gh_environment\":\"appium_latest\",\"test_command\":\"pytest\",\"framework_package\":\"Appium-Python-Client\",\"use_appium\":true,\"work_dir\":\"sdks/python/appium\",\"job_name\":\"Python Appium [ubuntu-latest | 3.10 | client version latest@]\",\"matrix_config_dir\":\"sdks/python\"}"
     },
     {
       "title": "Python Appium [ubuntu-latest | 3.10 | client version previous@1]",
@@ -1155,7 +1155,7 @@
       "test_runner": "python",
       "os": "ubuntu-latest",
       "version": "2.11.0",
-      "gh_environment": "appium_previous",
+      "gh_environment": "appium_latest",
       "test_command": "pytest",
       "framework_package": "Appium-Python-Client",
       "use_appium": true,
@@ -1164,7 +1164,7 @@
       "matrix_config_dir": "sdks/python",
       "passed": true,
       "package": "Appium-Python-Client",
-      "matrix_string": "{\"python-version\":\"3.10\",\"eyes_package\":\"eyes-selenium\",\"test_runner\":\"python\",\"os\":\"ubuntu-latest\",\"version\":\"previous@1\",\"gh_environment\":\"appium_previous\",\"test_command\":\"pytest\",\"framework_package\":\"Appium-Python-Client\",\"use_appium\":true,\"work_dir\":\"sdks/python/appium\",\"job_name\":\"Python Appium [ubuntu-latest | 3.10 | client version previous@1]\",\"matrix_config_dir\":\"sdks/python\"}"
+      "matrix_string": "{\"python-version\":\"3.10\",\"eyes_package\":\"eyes-selenium\",\"test_runner\":\"python\",\"os\":\"ubuntu-latest\",\"version\":\"previous@1\",\"gh_environment\":\"appium_latest\",\"test_command\":\"pytest\",\"framework_package\":\"Appium-Python-Client\",\"use_appium\":true,\"work_dir\":\"sdks/python/appium\",\"job_name\":\"Python Appium [ubuntu-latest | 3.10 | client version previous@1]\",\"matrix_config_dir\":\"sdks/python\"}"
     },
     {
       "title": "Java Appium [ubuntu-latest | 8 | client version: latest@ | appium_latest]",
@@ -2053,7 +2053,7 @@
       "eyes_package": "@applitools/eyes-playwright",
       "test_command": "npx playwright install --with-deps && npm test",
       "os": "ubuntu-latest",
-      "version": "1.36.0-alpha-jun-25-2023",
+      "version": "1.36.0-alpha-jun-26-2023",
       "legacy_npm_peers": true,
       "job_name": "JS Playwright [ubuntu-latest | 18] version: exact@next",
       "matrix_config_dir": "sdks/js/eyes-playwright",
@@ -2257,7 +2257,7 @@
       "eyes_package": "@applitools/eyes-cypress",
       "test_command": "npm test",
       "os": "ubuntu-latest",
-      "version": "12.15.0",
+      "version": "12.16.0",
       "job_name": "JS Cypress [ubuntu-latest | 18] version: latest@",
       "matrix_config_dir": "sdks/js/eyes-cypress",
       "passed": true,
@@ -2305,7 +2305,7 @@
       "eyes_package": "@applitools/eyes-cypress",
       "test_command": "npm test",
       "os": "windows-latest",
-      "version": "12.15.0",
+      "version": "12.16.0",
       "job_name": "JS Cypress [windows-latest | 18] version: latest@",
       "matrix_config_dir": "sdks/js/eyes-cypress",
       "passed": true,
@@ -2321,7 +2321,7 @@
       "eyes_package": "@applitools/eyes-cypress",
       "test_command": "npm test",
       "os": "macos-latest",
-      "version": "12.15.0",
+      "version": "12.16.0",
       "job_name": "JS Cypress [macos-latest | 18] version: latest@",
       "matrix_config_dir": "sdks/js/eyes-cypress",
       "passed": true,
