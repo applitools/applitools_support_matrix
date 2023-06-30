@@ -19,7 +19,7 @@ public class UFG : BaseTest
     public async Task window()
     {
         await Page.GotoAsync("https://applitools.github.io/demo/TestPages/FramesTestPage/");
-        eyes.Open(Page, "Applitools Support Matrix", "Playwright Window - UFG", new RectangleSize(width:700, height:460));
+        eyes.Open(Page, "Applitools Support Matrix", "Window - UFG", new RectangleSize(width:700, height:460));
         eyes.Check(Target.Window());
         eyes.Close(true);
     }
@@ -28,7 +28,7 @@ public class UFG : BaseTest
     public async Task region()
     {
         await Page.GotoAsync("https://applitools.github.io/demo/TestPages/FramesTestPage/");
-        eyes.Open(Page, "Applitools Support Matrix", "Playwright Region - UFG", new RectangleSize(width:700, height:460));
+        eyes.Open(Page, "Applitools Support Matrix", "Region - UFG", new RectangleSize(width:700, height:460));
         eyes.Check(Target.Region(new System.Drawing.Rectangle(50, 70, 90, 110)));
         eyes.Close(true);
     }
