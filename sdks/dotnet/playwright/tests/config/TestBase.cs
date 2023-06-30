@@ -72,7 +72,7 @@ namespace Applitools.Support.Matrix.Tests
         }
 
         [SetUp]
-        public async void TimeSetup()
+        public async Task TimeSetup()
         {   
 
             await browserSetup();
@@ -80,7 +80,7 @@ namespace Applitools.Support.Matrix.Tests
         }
       
         [TearDown]
-        public async void TearDown()
+        public async Task TearDown()
         {
             await Page.CloseAsync();
             Playwright.Dispose();
