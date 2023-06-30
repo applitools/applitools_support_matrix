@@ -15,7 +15,7 @@ public class CSS : BaseTest
     }
 
     [Test]
-    public async void window()
+    public async Task window()
     {
         await Page.GotoAsync("https://applitools.github.io/demo/TestPages/FramesTestPage/");
         eyes.Open(Page, "Applitools Support Matrix", "Playwright Window - Classic", new RectangleSize(width:700, height:460));
@@ -24,7 +24,7 @@ public class CSS : BaseTest
     }
 
     [Test]
-    public async void region()
+    public async Task region()
     {
         await Page.GotoAsync("https://applitools.github.io/demo/TestPages/FramesTestPage/");
         eyes.Open(Page, "Applitools Support Matrix", "Playwright Region - Classic", new RectangleSize(width:700, height:460));
@@ -33,7 +33,7 @@ public class CSS : BaseTest
     }
 
     [Test]
-    public async void frame()
+    public async Task frame()
     {
         await Page.GotoAsync("https://applitools.github.io/demo/TestPages/FramesTestPage/");
         eyes.Open(Page, "Applitools Support Matrix", "Playwright Frame - Classic", new RectangleSize(width:700, height:460));

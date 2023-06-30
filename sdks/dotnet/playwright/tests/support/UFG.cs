@@ -15,7 +15,7 @@ public class UFG : BaseTest
     }
 
     [Test]
-    public async void window()
+    public async Task window()
     {
         await Page.GotoAsync("https://applitools.github.io/demo/TestPages/FramesTestPage/");
         eyes.Open(Page, "Applitools Support Matrix", "Playwright Window - UFG", new RectangleSize(width:700, height:460));
@@ -24,7 +24,7 @@ public class UFG : BaseTest
     }
 
     [Test]
-    public async void region()
+    public async Task region()
     {
         await Page.GotoAsync("https://applitools.github.io/demo/TestPages/FramesTestPage/");
         eyes.Open(Page, "Applitools Support Matrix", "Playwright Region - UFG", new RectangleSize(width:700, height:460));
