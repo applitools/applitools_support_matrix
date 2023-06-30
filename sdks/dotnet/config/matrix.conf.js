@@ -61,6 +61,12 @@ const variations = web_common
         eyes_package: "Eyes.Selenium4",
         job_name:`Dotnet Selenium4 [${getOS(variant)} | ${variant["dotnet-version"]} | client version: ${variant.version}]`
     })))
+    .concat(web_common.map(variant => ({...variant,
+        work_dir: 'sdks/dotnet/playwright',
+        framework_package: "Microsoft.Playwright",
+        eyes_package: "Eyes.Playwright",
+        job_name:`Dotnet Playwright [${getOS(variant)} | ${variant["dotnet-version"]} | client version: ${variant.version}]`
+    })))
     .concat(appium_common.map(variant => ({...variant,
         work_dir: 'sdks/dotnet/appium',
         framework_package: "Appium.WebDriver",
