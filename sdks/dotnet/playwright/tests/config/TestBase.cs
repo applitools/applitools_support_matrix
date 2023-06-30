@@ -15,6 +15,7 @@ namespace Applitools.Support.Matrix.Tests
     {       
         protected IPlaywright Playwright;
         protected IBrowser Browser;
+        protected IBrowserContext Context;
         protected IPage Page;
         protected PlaywrightEyesRunner runner;
         protected Eyes eyes;
@@ -42,10 +43,10 @@ namespace Applitools.Support.Matrix.Tests
         protected void initEyes()
         {
             runner = isUFG() ? (PlaywrightEyesRunner)(new VisualGridRunner(10, logger)) : new ClassicRunner(logger);
-            eyes = new Eyes(runner, logHandler:logger);
+            eyes = new Eyes(runner);
             eyes.Batch = getBatch();
             eyes.StitchMode = getStitchMode();
-            eyes.BranchName = "master";
+            eyes.BranchName = "dotnet";
             eyes.ParentBranchName = "master";
             eyes.SaveNewTests = false;
             eyes.HideScrollbars = true;
@@ -57,7 +58,8 @@ namespace Applitools.Support.Matrix.Tests
             Playwright = await Microsoft.Playwright.Playwright.CreateAsync();
             Browser = await Playwright.Chromium
             .LaunchAsync(new BrowserTypeLaunchOptions { Headless = true });
-            Page = await Browser.NewPageAsync();
+            Context = await Browser.NewContextAsync();
+            Page = await Context.NewPageAsync();
 
         }
 
