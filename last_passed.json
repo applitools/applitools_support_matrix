@@ -1,5 +1,5 @@
 {
-  "id": "64cdb31c-3444-4cda-8b89-edae2d5fc9e4",
+  "id": "ccaf9819-c666-474a-ad84-57ab533f6684",
   "data": [
     {
       "title": "JS WDIO Appium [ubuntu-latest | 18 | client version: latest@ | appium_latest ]",
@@ -3000,7 +3000,7 @@
     },
     {
       "title": "Ruby Selenium [ ubuntu-latest | 2.7 | client version: 4.9.0]",
-      "os": "ubuntu-latest",
+      "os": "macos-latest",
       "use_selenium": true,
       "test_command": "bundle exec rake -v",
       "version": "4.9.0",
@@ -3013,7 +3013,7 @@
       "matrix_config_dir": "sdks/ruby",
       "passed": true,
       "package": "selenium-webdriver",
-      "matrix_string": "{\"os\":\"ubuntu-latest\",\"use_selenium\":true,\"test_command\":\"bundle exec rake -v\",\"version\":\"exact@4.9.0\",\"ruby-version\":\"2.7\",\"job_name\":\"Ruby Selenium [ ubuntu-latest | 2.7 | client version: 4.9.0]\",\"work_dir\":\"sdks/ruby\",\"framework_gem\":\"selenium-webdriver\",\"test_runner\":\"ruby\",\"eyes_gem\":\"eyes_selenium\",\"matrix_config_dir\":\"sdks/ruby\"}"
+      "matrix_string": "{\"os\":\"macos-latest\",\"use_selenium\":true,\"test_command\":\"bundle exec rake -v\",\"version\":\"exact@4.9.0\",\"ruby-version\":\"2.7\",\"job_name\":\"Ruby Selenium [ ubuntu-latest | 2.7 | client version: 4.9.0]\",\"work_dir\":\"sdks/ruby\",\"framework_gem\":\"selenium-webdriver\",\"test_runner\":\"ruby\",\"eyes_gem\":\"eyes_selenium\",\"matrix_config_dir\":\"sdks/ruby\"}"
     },
     {
       "title": "Ruby Selenium [ ubuntu-latest | 2.6 | client version: 4.1.0]",
