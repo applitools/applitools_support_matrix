@@ -25,6 +25,7 @@ const alpine = {
 
 const debian = {
     use_container: true,
+    "java-version": "17",
     container_name: 'debian',
     container: 'artem0tranduil/debian_runner:latest',
 }

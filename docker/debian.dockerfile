@@ -25,7 +25,7 @@ RUN wget https://packages.microsoft.com/config/debian/11/packages-microsoft-prod
 
 # Install Java 8, .NET 7, Python latest, Ruby latest, Node.js 18, and Chromium
 RUN apt-get install -y --no-install-recommends \
-    openjdk-11-jdk \
+    openjdk-17-jdk \
     maven \
     dotnet-sdk-7.0 \
     python3 \
@@ -42,6 +42,10 @@ RUN echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" |
     apt-key add - && \
     apt-get update && \
     apt-get install -y google-chrome-stable libxss1
+
+RUN curl https://packages.microsoft.com/keys/microsoft.asc | gpg --yes --dearmor --output /usr/share/keyrings/microsoft.gpg && \
+    sh -c 'echo "deb [arch=amd64 signed-by=/usr/share/keyrings/microsoft.gpg] https://packages.microsoft.com/repos/microsoft-debian-bullseye-prod bullseye main" > /etc/apt/sources.list.d/microsoft.list' && \
+    apt update && apt install -y powershell
 
 # Clean up
 RUN apt-get clean && \
