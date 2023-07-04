@@ -1,5 +1,6 @@
 using System;
 using System.Threading.Tasks;
+using System.IO;
 using Applitools;
 using Applitools.Playwright;
 using Applitools.Playwright.Fluent;
@@ -60,7 +61,7 @@ namespace Applitools.Support.Matrix.Tests
             var execPath = Environment.GetEnvironmentVariable("PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH");
             if(string.IsNullOrEmpty(execPath))
             {
-                options.ExecutablePath = execPath;
+                options.ExecutablePath = Path.GetRelativePath(Directory.GetCurrentDirectory(), execPath);
             }
             Browser = await Playwright.Chromium.LaunchAsync(options);
             Context = await Browser.NewContextAsync();
