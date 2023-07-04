@@ -59,7 +59,7 @@ namespace Applitools.Support.Matrix.Tests
             Playwright = await Microsoft.Playwright.Playwright.CreateAsync();
             var options = new BrowserTypeLaunchOptions { Headless = true };
             var execPath = Environment.GetEnvironmentVariable("PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH");
-            if(string.IsNullOrEmpty(execPath))
+            if(!string.IsNullOrEmpty(execPath))
             {
                 options.ExecutablePath = Path.GetRelativePath(Directory.GetCurrentDirectory(), execPath);
             }
