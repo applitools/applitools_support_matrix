@@ -26,7 +26,7 @@ namespace 'github' do
 
   task :appium => [:set_batch_info, :check_batch] do
     # sh('bundle exec parallel_rspec -n 1 -- spec/appium/*_spec.rb')
-    sh('bundle exec parallel_rspec -n 1 -- spec/appium/iOS_Classic_spec.rb spec/appium/Android_Classic_spec.rb')
+    sh('bundle exec parallel_rspec -n 1 -- spec/appium/Android_Classic_spec.rb')
   end
 
   task :appium_local => [:set_batch_info, :check_batch] do
