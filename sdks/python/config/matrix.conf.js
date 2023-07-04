@@ -32,7 +32,7 @@ const containers = [
         version: "latest@",
         use_container: true,
         container_name: 'debian',
-        container: 'artem0tranduil/debian_runner:latest',
+        container: 'artem0tranduil/debian_runner:3.1.2',
     },
 ]
 const base_common = base_variations.map(variant => ({...common, ...variant,}))

@@ -56,8 +56,13 @@ namespace Applitools.Support.Matrix.Tests
         public async Task browserSetup() 
         {
             Playwright = await Microsoft.Playwright.Playwright.CreateAsync();
-            Browser = await Playwright.Chromium
-            .LaunchAsync(new BrowserTypeLaunchOptions { Headless = true });
+            var options = new BrowserTypeLaunchOptions { Headless = true };
+            var execPath = Environment.GetEnvironmentVariable("PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH");
+            if(string.IsNullOrEmpty(execPath))
+            {
+                options.ExecutablePath = execPath;
+            }
+            Browser = await Playwright.Chromium.LaunchAsync(options);
             Context = await Browser.NewContextAsync();
             Page = await Context.NewPageAsync();
 

@@ -71,7 +71,7 @@ RUN chromedriver --version
 COPY chrome-flaged /usr/local/bin
 RUN chmod +x /usr/local/bin/chrome-flaged
 
-ENV JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64/
+ENV JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64/
 ENV SELENIUM_JAR_PATH=/usr/share/java/selenium-server.jar
 ENV PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH=/usr/bin/google-chrome
 ENV PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=1
