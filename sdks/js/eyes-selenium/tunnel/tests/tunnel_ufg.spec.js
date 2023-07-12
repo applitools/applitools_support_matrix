@@ -44,7 +44,7 @@ describe('Support Matrix CSS', () => {
     })
 
     it('Simple check', async () => {
-        await driver.url("http://localhost:3000")
+        await driver.get("http://localhost:3000")
         await eyes.open(driver, "Support Matrix EC tunnel", "Tunnel check", {
             width: 700,
             height: 460

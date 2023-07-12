@@ -15,6 +15,6 @@
   "scripts": {
     "test": "mocha --config .mocharc.js --exit",
     "start": "node ./bin/www",
-    "ci-test": "npm start & sleep 5 && APPLITOOLS_EG_FRPC_CACHE_DIRECTORY=\"$(pwd)/tunnel_bin\" npm test && ls ./tunnel_bin"
+    "ci-test": "node ./bin/ci.js"
   }
 }
