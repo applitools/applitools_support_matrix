@@ -22,9 +22,9 @@ const base_variations = [
 ]
 const base_common = base_variations.map(variant => ({...common, ...variant}))
 const appium_common = base_common.map(variant => ({...variant, gh_environment: 'appium_latest'})).concat([
-    {...common, os:'ubuntu-latest', version:'previous@1', gh_environment: 'appium_latest'},
-    {...common, os:'ubuntu-latest', version:'latest@', gh_environment: 'appium_previous'},
-    {...common, os:'ubuntu-latest', version:'previous@1', gh_environment: 'appium_previous'},
+    {...common, os: 'ubuntu-latest', version: 'previous@1', gh_environment: 'appium_latest'},
+    {...common, os: 'ubuntu-latest', version: 'latest@', gh_environment: 'appium_previous'},
+    {...common, os: 'ubuntu-latest', version: 'previous@1', gh_environment: 'appium_previous'},
 ])
 const containers = [
     {
@@ -52,27 +52,27 @@ const containers = [
         test_command: "npm test"
     },
 ]
-// const variations = base_common
-//     .map((variant) => ({
-//         ...variant,
-//         use_selenium: true,
-//         test_command: "npm test",
-//         job_name: `JS Selenium [${variant.os} | ${variant["node-version"]} | version: ${variant.version}]`
-//     }))
-//     .concat(appium_common.map(variant => (
-//         {
-//             ...variant,
-//             test_command: "npm run appium",
-//             use_appium: true,
-//             job_name: `JS Appium [${variant.os} | ${variant["node-version"]} | client version: ${variant.version} | ${variant.gh_environment} ] `
-//         })))
-//     .concat(containers)
-const variations = base_common.map((variant) => ({
-    ...variant,
-    test_command: "npm run ci-test",
-    work_dir: "sdks/js/eyes-selenium/tunnel",
-    job_name: `JS Selenium EC_Tunnel [${variant.os} | ${variant["node-version"]} | version: ${variant.version}]`
-}))
+const variations = base_common
+    .map((variant) => ({
+        ...variant,
+        use_selenium: true,
+        test_command: "npm test",
+        job_name: `JS Selenium [${variant.os} | ${variant["node-version"]} | version: ${variant.version}]`
+    }))
+    .concat(appium_common.map(variant => (
+        {
+            ...variant,
+            test_command: "npm run appium",
+            use_appium: true,
+            job_name: `JS Appium [${variant.os} | ${variant["node-version"]} | client version: ${variant.version} | ${variant.gh_environment} ] `
+        })))
+    .concat(containers)
+    .concat(base_common.map((variant) => ({
+        ...variant,
+        test_command: "npm run ci-test",
+        work_dir: "sdks/js/eyes-selenium/tunnel",
+        job_name: `JS Selenium EC_Tunnel [${variant.os} | ${variant["node-version"]} | version: ${variant.version}]`
+    })))
 
 console.log(variations)
 module.exports = {
