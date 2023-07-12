@@ -111,7 +111,7 @@ const variations = base_common
         ...variant,
         use_selenium: false,
         work_dir: "sdks/js/eyes-webdriverio/tunnel",
-        test_command: "npm ci-test",
+        test_command: "npm run ci-test",
         job_name: `JS WDIO EC_tunnel [${variant.os} | ${variant["node-version"]} | version: ${variant.version} ]`
     })))
 console.log(variations)
