@@ -73,24 +73,29 @@ const containers = [
         ...wdio5,
     },
 ]
-const base_common = base_variations.map(variant => ({ ...variant,...common,}))
-const appium_common = base_variations.map(variant => ({...common,...variant, gh_environment: 'appium_latest'})).concat([
-    {...common, os:'ubuntu-latest', version:'previous@1', gh_environment: 'appium_latest'},
-    {...common, os:'ubuntu-latest', version:'latest@', gh_environment: 'appium_previous'},
-    {...common, os:'ubuntu-latest', version:'previous@1', gh_environment: 'appium_previous'},
+const base_common = base_variations.map(variant => ({...variant, ...common,}))
+const appium_common = base_variations.map(variant => ({
+    ...common, ...variant,
+    gh_environment: 'appium_latest'
+})).concat([
+    {...common, os: 'ubuntu-latest', version: 'previous@1', gh_environment: 'appium_latest'},
+    {...common, os: 'ubuntu-latest', version: 'latest@', gh_environment: 'appium_previous'},
+    {...common, os: 'ubuntu-latest', version: 'previous@1', gh_environment: 'appium_previous'},
 ])
 const variations = base_common
     .map(variant => ({...variant, ...wdio}))
     .concat(base_common.map(variant => ({...variant, ...wdio5})))
     .concat(base_common.map(variant => ({...variant, ...wdio6})))
     .concat(base_common.map(variant => ({...variant, ...wdio, "version": "major@1"})))
-    .map(variant => ({...variant, job_name:`JS WDIO [${variant.os} | ${variant["node-version"]} | version: ${variant.version} ]`
+    .map(variant => ({
+        ...variant, job_name: `JS WDIO [${variant.os} | ${variant["node-version"]} | version: ${variant.version} ]`
     }))
-    .concat(appium_common.map(variant => ({...variant, ...wdio,
+    .concat(appium_common.map(variant => ({
+        ...variant, ...wdio,
         use_selenium: false,
         test_command: 'npm run appium',
         use_appium: true,
-        job_name:`JS WDIO Appium [${variant.os} | ${variant["node-version"]} | client version: ${variant.version} | ${variant.gh_environment} ]`
+        job_name: `JS WDIO Appium [${variant.os} | ${variant["node-version"]} | client version: ${variant.version} | ${variant.gh_environment} ]`
     })))
     .concat(containers.map(variant => ({
         ...variant,
@@ -101,6 +106,13 @@ const variations = base_common
         ...variant,
         ...debian,
         job_name: `JS WDIO [ ${debian.container_name} | 18 | client version: ${variant.version}]`
+    })))
+    .concat(base_common.map(variant => ({
+        ...variant,
+        use_selenium: false,
+        work_dir: "sdks/js/eyes-webdriverio/tunnel",
+        test_command: "npm run ci-test",
+        job_name: `JS WDIO EC_tunnel [${variant.os} | ${variant["node-version"]} | version: ${variant.version} ]`
     })))
 console.log(variations)
 module.exports = {
