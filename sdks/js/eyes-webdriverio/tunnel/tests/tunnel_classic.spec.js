@@ -22,9 +22,8 @@ describe('Support Matrix CSS', () => {
         conf.setSaveNewTests(false)
         conf.setStitchMode("CSS")
         eyes.setConfiguration(conf)
-        const url = await eyes.getExecutionCloudUrl();
         // parse EC proxy url to get only it's port
-        const port = parseInt(url.split(":")[2], 10)
+        const port = parseInt(process.env.EC_CLOUD_PORT, 10)
         const chrome = {
             capabilities: {
                 browserName: 'chrome',

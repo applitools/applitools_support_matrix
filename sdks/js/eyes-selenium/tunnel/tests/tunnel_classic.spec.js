@@ -22,13 +22,12 @@ describe('Support Matrix CSS', () => {
         conf.setSaveNewTests(false)
         conf.setStitchMode("CSS")
         eyes.setConfiguration(conf)
-        const url = await eyes.getExecutionCloudUrl();
         const capabilities = {
                 browserName: 'chrome',
                 "applitools:tunnel": true
 
             };
-        driver = await new Builder().withCapabilities(capabilities).usingServer(url).build();
+        driver = await new Builder().withCapabilities(capabilities).usingServer(process.env.EC_CLOUD_URL).build();
     })
 
     afterEach(async () => {

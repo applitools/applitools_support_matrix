@@ -24,9 +24,8 @@ describe('Support Matrix CSS', () => {
         conf.addBrowser({name: "chrome", height: 1080, width: 1920})
         conf.addBrowser({name: "edge", height: 1080, width: 1920})
         eyes.setConfiguration(conf)
-        const url = await eyes.getExecutionCloudUrl();
         // parse EC proxy url to get only it's port
-        const port = parseInt(url.split(":")[2], 10)
+        const port = parseInt(process.env.EC_CLOUD_PORT, 10)
         const chrome = {
             capabilities: {
                 browserName: 'chrome',

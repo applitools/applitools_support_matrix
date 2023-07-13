@@ -24,13 +24,12 @@ describe('Support Matrix CSS', () => {
         conf.addBrowser({name: "chrome", height: 1080, width: 1920})
         conf.addBrowser({name: "edge", height: 1080, width: 1920})
         eyes.setConfiguration(conf)
-        const url = await eyes.getExecutionCloudUrl();
         const capabilities = {
                 browserName: 'chrome',
                 "applitools:tunnel": true
 
             };
-        driver = await new Builder().withCapabilities(capabilities).usingServer(url).build();
+        driver = await new Builder().withCapabilities(capabilities).usingServer(process.env.EC_CLOUD_URL).build();
     })
 
     afterEach(async () => {
