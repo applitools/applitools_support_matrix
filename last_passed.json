@@ -1,5 +1,5 @@
 {
-  "id": "cd406032-a4d4-4087-81fe-41413db5972d",
+  "id": "05d91dd3-2915-4eee-be71-67bcb0765662",
   "data": [
     {
       "title": "JS WDIO [ alpine | 18 | client version: latest@]",
@@ -2437,10 +2437,10 @@
       "title": "JS Selenium [windows-latest | 18 | version: latest@]",
       "node-version": "18",
       "eyes_package": "@applitools/eyes-selenium",
-      "work_dir": "sdks/js/eyes-selenium",
-      "js_config": "eyes-selenium",
+      "js_config": "eyes-selenium/support",
       "framework_package": "selenium-webdriver",
       "test_runner": "js",
+      "work_dir": "sdks/js/eyes-selenium/support",
       "os": "windows-latest",
       "version": "4.10.0",
       "use_selenium": true,
@@ -2449,7 +2449,7 @@
       "matrix_config_dir": "sdks/js/eyes-selenium",
       "passed": true,
       "package": "selenium-webdriver",
-      "matrix_string": "{\"node-version\":\"18\",\"eyes_package\":\"@applitools/eyes-selenium\",\"work_dir\":\"sdks/js/eyes-selenium\",\"js_config\":\"eyes-selenium\",\"framework_package\":\"selenium-webdriver\",\"test_runner\":\"js\",\"os\":\"windows-latest\",\"version\":\"latest@\",\"use_selenium\":true,\"test_command\":\"npm test\",\"job_name\":\"JS Selenium [windows-latest | 18 | version: latest@]\",\"matrix_config_dir\":\"sdks/js/eyes-selenium\"}"
+      "matrix_string": "{\"node-version\":\"18\",\"eyes_package\":\"@applitools/eyes-selenium\",\"js_config\":\"eyes-selenium/support\",\"framework_package\":\"selenium-webdriver\",\"test_runner\":\"js\",\"work_dir\":\"sdks/js/eyes-selenium/support\",\"os\":\"windows-latest\",\"version\":\"latest@\",\"use_selenium\":true,\"test_command\":\"npm test\",\"job_name\":\"JS Selenium [windows-latest | 18 | version: latest@]\",\"matrix_config_dir\":\"sdks/js/eyes-selenium\"}"
     },
     {
       "title": "JS Selenium [macos-latest | 18 | version: latest@]",
