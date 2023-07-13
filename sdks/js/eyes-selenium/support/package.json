@@ -9,9 +9,9 @@
     "selenium-webdriver": "^4.1.0"
   },
   "scripts": {
-    "test": "mocha --config ../.mocharc.js",
-    "test:local": "JS_TESTS_CONFIG_NAME=eyes-selenium mocha --config ../.mocharc.js",
-    "appium": "mocha --config ../.appium.mocharc.js",
-    "appium:local": "JS_TESTS_CONFIG_NAME=eyes-selenium mocha --config ../.appium.mocharc.js"
+    "test": "mocha --config ../../.mocharc.js",
+    "test:local": "JS_TESTS_CONFIG_NAME=eyes-selenium mocha --config ../../.mocharc.js",
+    "appium": "mocha --config ../../.appium.mocharc.js",
+    "appium:local": "JS_TESTS_CONFIG_NAME=eyes-selenium mocha --config ../../.appium.mocharc.js"
   }
 }
