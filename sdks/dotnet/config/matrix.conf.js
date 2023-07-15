@@ -65,7 +65,7 @@ const variations = web_common
         work_dir: 'sdks/dotnet/playwright',
         framework_package: "Microsoft.Playwright",
         eyes_package: "Eyes.Playwright",
-        test_command: "pwsh bin/Debug/net7.0/playwright.ps1 install && dotnet test -f net7.0 -- NUnit.NumberOfTestWorkers=1",
+        test_command: "pwsh bin/Debug/net7.0/playwright.ps1 install chromium && dotnet test -f net7.0 -- NUnit.NumberOfTestWorkers=1",
         job_name:`Dotnet Playwright [${getOS(variant)} | ${variant["dotnet-version"]} | client version: ${variant.version}]`
     })))
     .concat(appium_common.map(variant => ({...variant,
