@@ -1,5 +1,5 @@
 {
-  "id": "397eab99-6524-4f9b-b6ba-1266ba2ed434",
+  "id": "9adbb023-aaf2-47d8-9493-6fc7d54cb174",
   "data": [
     {
       "title": "JS WDIO [ alpine | 18 | client version: latest@]",
@@ -651,7 +651,7 @@
     {
       "title": "Java Playwright [alpine | 8 | latest@]",
       "os": "ubuntu-latest",
-      "version": "1.35.1",
+      "version": "1.36.0",
       "java-version": "8",
       "test_command": "mvn test",
       "test_runner": "java",
