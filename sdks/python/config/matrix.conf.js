@@ -1,7 +1,7 @@
 'use strict'
 const {getOS} = require('../../matrix/util')
 const common = {
-    "python-version": "3.11",
+    "python-version": "3.8",
     eyes_package: "eyes-selenium",
     test_runner: "python"
 }
