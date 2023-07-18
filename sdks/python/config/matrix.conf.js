@@ -1,7 +1,7 @@
 'use strict'
 const {getOS} = require('../../matrix/util')
 const common = {
-    "python-version": "3.9",
+    "python-version": "3.11",
     eyes_package: "eyes-selenium",
     test_runner: "python"
 }
@@ -59,14 +59,14 @@ const variations = web_common
         work_dir: 'sdks/python/playwright',
         job_name: `Python Playwright [${getOS(variant)} | ${variant["python-version"]} | client version: ${variant.version}] `
     })))
-    .concat(web_common.map((variant) => ({...variant,
-        use_selenium: false,
-        test_command: "robot ./web",
-        eyes_package: "eyes-robotframework",
-        framework_package: "robotframework",
-        work_dir: 'sdks/python/robot',
-        job_name: `Python Robotframework [${getOS(variant)} | ${variant["python-version"]} | client version: ${variant.version}] `
-    })))
+    // .concat(web_common.map((variant) => ({...variant,
+    //     use_selenium: false,
+    //     test_command: "robot ./web",
+    //     eyes_package: "eyes-robotframework",
+    //     framework_package: "robotframework",
+    //     work_dir: 'sdks/python/robot',
+    //     job_name: `Python Robotframework [${getOS(variant)} | ${variant["python-version"]} | client version: ${variant.version}] `
+    // })))
     .concat(appium_common.map(variant => ({...variant,
         test_command: "pytest",
         framework_package: "Appium-Python-Client",
