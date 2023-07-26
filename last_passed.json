@@ -1,5 +1,5 @@
 {
-  "id": "4fb4951d-7181-4a9f-87d5-b9abf2d04487",
+  "id": "57d6fce9-72c0-4eaa-b568-9a0ea28494b2",
   "data": [
     {
       "title": "JS WDIO Appium [ubuntu-latest | 18 | client version: latest@ | appium_latest ]",
@@ -1088,7 +1088,7 @@
       "container": "artem0tranduil/alpine_runner:latest",
       "container_name": "alpine",
       "os": "ubuntu-latest",
-      "version": "3.0.1",
+      "version": "3.1.0",
       "job_name": "JS Nightwatch [ alpine | 18 | version: latest@ ]",
       "matrix_config_dir": "sdks/js/eyes-nightwatch",
       "passed": true,
@@ -1108,7 +1108,7 @@
       "container": "artem0tranduil/debian_runner:latest",
       "container_name": "debian",
       "os": "ubuntu-latest",
-      "version": "3.0.1",
+      "version": "3.1.0",
       "job_name": "JS Nightwatch [ debian | 18 | version: latest@ ]",
       "matrix_config_dir": "sdks/js/eyes-nightwatch",
       "passed": true,
@@ -2108,7 +2108,7 @@
       "eyes_package": "@applitools/eyes-playwright",
       "test_command": "npx playwright install --with-deps && npm test",
       "os": "ubuntu-latest",
-      "version": "1.37.0-alpha-jul-25-2023",
+      "version": "1.37.0-alpha-jul-26-2023",
       "legacy_npm_peers": true,
       "job_name": "JS Playwright [ubuntu-latest | 18] version: exact@next",
       "matrix_config_dir": "sdks/js/eyes-playwright",
@@ -2183,7 +2183,7 @@
     {
       "title": "JS Nightwatch [ubuntu-latest | 18] version: latest@",
       "os": "ubuntu-latest",
-      "version": "3.0.1",
+      "version": "3.1.0",
       "node-version": "18",
       "work_dir": "sdks/js/eyes-nightwatch",
       "framework_package": "nightwatch",
@@ -2200,7 +2200,7 @@
     {
       "title": "JS Nightwatch [windows-latest | 18] version: latest@",
       "os": "windows-latest",
-      "version": "3.0.1",
+      "version": "3.1.0",
       "node-version": "18",
       "work_dir": "sdks/js/eyes-nightwatch",
       "framework_package": "nightwatch",
@@ -2217,7 +2217,7 @@
     {
       "title": "JS Nightwatch [macos-latest | 18] version: latest@",
       "os": "macos-latest",
-      "version": "3.0.1",
+      "version": "3.1.0",
       "node-version": "18",
       "work_dir": "sdks/js/eyes-nightwatch",
       "framework_package": "nightwatch",
