@@ -1,5 +1,5 @@
 {
-  "id": "1fc0df95-50bc-468b-a8ea-959ca90edbcb",
+  "id": "5c6af02f-387d-4613-bc5a-0ac6802f75b5",
   "data": [
     {
       "title": "JS WDIO Appium [ubuntu-latest | 18 | client version: latest@ | appium_latest ]",
@@ -122,7 +122,7 @@
       "matrix_string": "{\"node-version\":\"18\",\"use_selenium\":false,\"framework_package\":\"webdriverio\",\"test_runner\":\"js\",\"eyes_package\":\"@applitools/eyes-webdriverio\",\"test_command\":\"npm run appium\",\"os\":\"ubuntu-latest\",\"version\":\"previous@1\",\"gh_environment\":\"appium_previous\",\"work_dir\":\"sdks/js/eyes-webdriverio/7\",\"js_config\":\"eyes-webdriverio/7\",\"use_appium\":true,\"job_name\":\"JS WDIO Appium [ubuntu-latest | 18 | client version: previous@1 | appium_previous ]\",\"matrix_config_dir\":\"sdks/js/eyes-webdriverio\"}"
     },
     {
-      "title": "JS Appium [ubuntu-latest | 18 | client version: latest@ | appium_latest ] ",
+      "title": "JS Appium [ubuntu-latest | 18 | client version: latest@ | appium_latest ]",
       "node-version": "18",
       "eyes_package": "@applitools/eyes-selenium",
       "js_config": "eyes-selenium/support",
@@ -141,7 +141,7 @@
       "matrix_string": "{\"node-version\":\"18\",\"eyes_package\":\"@applitools/eyes-selenium\",\"js_config\":\"eyes-selenium/support\",\"framework_package\":\"selenium-webdriver\",\"test_runner\":\"js\",\"work_dir\":\"sdks/js/eyes-selenium/support\",\"os\":\"ubuntu-latest\",\"version\":\"latest@\",\"gh_environment\":\"appium_latest\",\"test_command\":\"npm run appium\",\"use_appium\":true,\"job_name\":\"JS Appium [ubuntu-latest | 18 | client version: latest@ | appium_latest ] \",\"matrix_config_dir\":\"sdks/js/eyes-selenium\"}"
     },
     {
-      "title": "JS Appium [windows-latest | 18 | client version: latest@ | appium_latest ] ",
+      "title": "JS Appium [windows-latest | 18 | client version: latest@ | appium_latest ]",
       "node-version": "18",
       "eyes_package": "@applitools/eyes-selenium",
       "js_config": "eyes-selenium/support",
@@ -160,7 +160,7 @@
       "matrix_string": "{\"node-version\":\"18\",\"eyes_package\":\"@applitools/eyes-selenium\",\"js_config\":\"eyes-selenium/support\",\"framework_package\":\"selenium-webdriver\",\"test_runner\":\"js\",\"work_dir\":\"sdks/js/eyes-selenium/support\",\"os\":\"windows-latest\",\"version\":\"latest@\",\"gh_environment\":\"appium_latest\",\"test_command\":\"npm run appium\",\"use_appium\":true,\"job_name\":\"JS Appium [windows-latest | 18 | client version: latest@ | appium_latest ] \",\"matrix_config_dir\":\"sdks/js/eyes-selenium\"}"
     },
     {
-      "title": "JS Appium [macos-latest | 18 | client version: latest@ | appium_latest ] ",
+      "title": "JS Appium [macos-latest | 18 | client version: latest@ | appium_latest ]",
       "node-version": "18",
       "eyes_package": "@applitools/eyes-selenium",
       "js_config": "eyes-selenium/support",
@@ -179,7 +179,7 @@
       "matrix_string": "{\"node-version\":\"18\",\"eyes_package\":\"@applitools/eyes-selenium\",\"js_config\":\"eyes-selenium/support\",\"framework_package\":\"selenium-webdriver\",\"test_runner\":\"js\",\"work_dir\":\"sdks/js/eyes-selenium/support\",\"os\":\"macos-latest\",\"version\":\"latest@\",\"gh_environment\":\"appium_latest\",\"test_command\":\"npm run appium\",\"use_appium\":true,\"job_name\":\"JS Appium [macos-latest | 18 | client version: latest@ | appium_latest ] \",\"matrix_config_dir\":\"sdks/js/eyes-selenium\"}"
     },
     {
-      "title": "JS Appium [ubuntu-latest | 18 | client version: previous@1 | appium_latest ] ",
+      "title": "JS Appium [ubuntu-latest | 18 | client version: previous@1 | appium_latest ]",
       "node-version": "18",
       "eyes_package": "@applitools/eyes-selenium",
       "js_config": "eyes-selenium/support",
@@ -198,7 +198,7 @@
       "matrix_string": "{\"node-version\":\"18\",\"eyes_package\":\"@applitools/eyes-selenium\",\"js_config\":\"eyes-selenium/support\",\"framework_package\":\"selenium-webdriver\",\"test_runner\":\"js\",\"work_dir\":\"sdks/js/eyes-selenium/support\",\"os\":\"ubuntu-latest\",\"version\":\"previous@1\",\"gh_environment\":\"appium_latest\",\"test_command\":\"npm run appium\",\"use_appium\":true,\"job_name\":\"JS Appium [ubuntu-latest | 18 | client version: previous@1 | appium_latest ] \",\"matrix_config_dir\":\"sdks/js/eyes-selenium\"}"
     },
     {
-      "title": "JS Appium [ubuntu-latest | 18 | client version: latest@ | appium_previous ] ",
+      "title": "JS Appium [ubuntu-latest | 18 | client version: latest@ | appium_previous ]",
       "node-version": "18",
       "eyes_package": "@applitools/eyes-selenium",
       "js_config": "eyes-selenium/support",
@@ -217,7 +217,7 @@
       "matrix_string": "{\"node-version\":\"18\",\"eyes_package\":\"@applitools/eyes-selenium\",\"js_config\":\"eyes-selenium/support\",\"framework_package\":\"selenium-webdriver\",\"test_runner\":\"js\",\"work_dir\":\"sdks/js/eyes-selenium/support\",\"os\":\"ubuntu-latest\",\"version\":\"latest@\",\"gh_environment\":\"appium_previous\",\"test_command\":\"npm run appium\",\"use_appium\":true,\"job_name\":\"JS Appium [ubuntu-latest | 18 | client version: latest@ | appium_previous ] \",\"matrix_config_dir\":\"sdks/js/eyes-selenium\"}"
     },
     {
-      "title": "JS Appium [ubuntu-latest | 18 | client version: previous@1 | appium_previous ] ",
+      "title": "JS Appium [ubuntu-latest | 18 | client version: previous@1 | appium_previous ]",
       "node-version": "18",
       "eyes_package": "@applitools/eyes-selenium",
       "js_config": "eyes-selenium/support",
@@ -344,7 +344,7 @@
       "matrix_string": "{\"python-version\":\"3.11\",\"eyes_package\":\"eyes-selenium\",\"test_runner\":\"python\",\"os\":\"ubuntu-latest\",\"version\":\"previous@1\",\"gh_environment\":\"appium_previous\",\"test_command\":\"pytest\",\"framework_package\":\"Appium-Python-Client\",\"use_appium\":true,\"work_dir\":\"sdks/python/appium\",\"job_name\":\"Python Appium [ubuntu-latest | 3.11 | client version previous@1]\",\"matrix_config_dir\":\"sdks/python\"}"
     },
     {
-      "title": "Java Appium [ubuntu-latest | 8 | client version: latest@ | appium_latest] ",
+      "title": "Java Appium [ubuntu-latest | 8 | client version: latest@ | appium_latest]",
       "java-version": "8",
       "test_command": "mvn test",
       "test_runner": "java",
@@ -368,7 +368,7 @@
       "matrix_string": "{\"java-version\":\"8\",\"test_command\":\"mvn test\",\"test_runner\":\"java\",\"os\":\"ubuntu-latest\",\"version\":\"latest@\",\"gh_environment\":\"appium_latest\",\"work_dir\":\"sdks/java/appium\",\"framework_package\":{\"groupId\":\"io.appium\",\"artifactId\":\"java-client\"},\"eyes_package\":{\"groupId\":\"com.applitools\",\"artifactId\":\"eyes-appium-java5\"},\"use_appium\":true,\"job_name\":\"Java Appium [ubuntu-latest | 8 | client version: latest@ | appium_latest] \",\"matrix_config_dir\":\"sdks/java\"}"
     },
     {
-      "title": "Java Appium [windows-latest | 8 | client version: latest@ | appium_latest] ",
+      "title": "Java Appium [windows-latest | 8 | client version: latest@ | appium_latest]",
       "java-version": "8",
       "test_command": "mvn test",
       "test_runner": "java",
@@ -392,7 +392,7 @@
       "matrix_string": "{\"java-version\":\"8\",\"test_command\":\"mvn test\",\"test_runner\":\"java\",\"os\":\"windows-latest\",\"version\":\"latest@\",\"gh_environment\":\"appium_latest\",\"work_dir\":\"sdks/java/appium\",\"framework_package\":{\"groupId\":\"io.appium\",\"artifactId\":\"java-client\"},\"eyes_package\":{\"groupId\":\"com.applitools\",\"artifactId\":\"eyes-appium-java5\"},\"use_appium\":true,\"job_name\":\"Java Appium [windows-latest | 8 | client version: latest@ | appium_latest] \",\"matrix_config_dir\":\"sdks/java\"}"
     },
     {
-      "title": "Java Appium [macos-latest | 8 | client version: latest@ | appium_latest] ",
+      "title": "Java Appium [macos-latest | 8 | client version: latest@ | appium_latest]",
       "java-version": "8",
       "test_command": "mvn test",
       "test_runner": "java",
@@ -416,7 +416,7 @@
       "matrix_string": "{\"java-version\":\"8\",\"test_command\":\"mvn test\",\"test_runner\":\"java\",\"os\":\"macos-latest\",\"version\":\"latest@\",\"gh_environment\":\"appium_latest\",\"work_dir\":\"sdks/java/appium\",\"framework_package\":{\"groupId\":\"io.appium\",\"artifactId\":\"java-client\"},\"eyes_package\":{\"groupId\":\"com.applitools\",\"artifactId\":\"eyes-appium-java5\"},\"use_appium\":true,\"job_name\":\"Java Appium [macos-latest | 8 | client version: latest@ | appium_latest] \",\"matrix_config_dir\":\"sdks/java\"}"
     },
     {
-      "title": "Java Appium [ubuntu-latest | 8 | client version: latest@ | appium_previous] ",
+      "title": "Java Appium [ubuntu-latest | 8 | client version: latest@ | appium_previous]",
       "java-version": "8",
       "test_command": "mvn test",
       "test_runner": "java",
@@ -548,7 +548,7 @@
       "matrix_string": "{\"dotnet-version\":\"7.0\",\"test_command\":\"dotnet test -f net7.0 -- NUnit.NumberOfTestWorkers=1\",\"test_runner\":\"dotnet\",\"os\":\"ubuntu-latest\",\"version\":\"previous@1\",\"gh_environment\":\"appium_previous\",\"work_dir\":\"sdks/dotnet/appium\",\"framework_package\":\"Appium.WebDriver\",\"eyes_package\":\"Eyes.Appium\",\"use_appium\":true,\"job_name\":\"Dotnet Appium [ubuntu-latest | 7.0 | version: previous@1 | appium_previous]\",\"matrix_config_dir\":\"sdks/dotnet\"}"
     },
     {
-      "title": "Ruby Appium [ubuntu-latest | 3.2 | client version: latest@ | appium_latest] ",
+      "title": "Ruby Appium [ubuntu-latest | 3.2 | client version: latest@ | appium_latest]",
       "version": "13.0.1",
       "ruby-version": "3.2",
       "work_dir": "sdks/ruby",
@@ -566,7 +566,7 @@
       "matrix_string": "{\"version\":\"latest@\",\"ruby-version\":\"3.2\",\"work_dir\":\"sdks/ruby\",\"framework_gem\":\"appium_lib\",\"test_runner\":\"ruby\",\"eyes_gem\":\"eyes_appium\",\"os\":\"ubuntu-latest\",\"gh_environment\":\"appium_latest\",\"test_command\":\"bundle exec rake github:appium -v\",\"use_appium\":true,\"job_name\":\"Ruby Appium [ubuntu-latest | 3.2 | client version: latest@ | appium_latest] \",\"matrix_config_dir\":\"sdks/ruby\"}"
     },
     {
-      "title": "Ruby Appium [windows-latest | 3.2 | client version: latest@ | appium_latest] ",
+      "title": "Ruby Appium [windows-latest | 3.2 | client version: latest@ | appium_latest]",
       "version": "13.0.1",
       "ruby-version": "3.2",
       "work_dir": "sdks/ruby",
@@ -584,7 +584,7 @@
       "matrix_string": "{\"version\":\"latest@\",\"ruby-version\":\"3.2\",\"work_dir\":\"sdks/ruby\",\"framework_gem\":\"appium_lib\",\"test_runner\":\"ruby\",\"eyes_gem\":\"eyes_appium\",\"os\":\"windows-latest\",\"gh_environment\":\"appium_latest\",\"test_command\":\"bundle exec rake github:appium -v\",\"use_appium\":true,\"job_name\":\"Ruby Appium [windows-latest | 3.2 | client version: latest@ | appium_latest] \",\"matrix_config_dir\":\"sdks/ruby\"}"
     },
     {
-      "title": "Ruby Appium [macos-latest | 3.2 | client version: latest@ | appium_latest] ",
+      "title": "Ruby Appium [macos-latest | 3.2 | client version: latest@ | appium_latest]",
       "version": "13.0.1",
       "ruby-version": "3.2",
       "work_dir": "sdks/ruby",
@@ -602,7 +602,7 @@
       "matrix_string": "{\"version\":\"latest@\",\"ruby-version\":\"3.2\",\"work_dir\":\"sdks/ruby\",\"framework_gem\":\"appium_lib\",\"test_runner\":\"ruby\",\"eyes_gem\":\"eyes_appium\",\"os\":\"macos-latest\",\"gh_environment\":\"appium_latest\",\"test_command\":\"bundle exec rake github:appium -v\",\"use_appium\":true,\"job_name\":\"Ruby Appium [macos-latest | 3.2 | client version: latest@ | appium_latest] \",\"matrix_config_dir\":\"sdks/ruby\"}"
     },
     {
-      "title": "Ruby Appium [ubuntu-latest | 3.2 | client version: previous@1 | appium_latest] ",
+      "title": "Ruby Appium [ubuntu-latest | 3.2 | client version: previous@1 | appium_latest]",
       "work_dir": "sdks/ruby",
       "framework_gem": "appium_lib",
       "test_runner": "ruby",
@@ -620,7 +620,7 @@
       "matrix_string": "{\"work_dir\":\"sdks/ruby\",\"framework_gem\":\"appium_lib\",\"test_runner\":\"ruby\",\"eyes_gem\":\"eyes_appium\",\"ruby-version\":\"3.2\",\"os\":\"ubuntu-latest\",\"version\":\"previous@1\",\"gh_environment\":\"appium_latest\",\"test_command\":\"bundle exec rake github:appium -v\",\"use_appium\":true,\"job_name\":\"Ruby Appium [ubuntu-latest | 3.2 | client version: previous@1 | appium_latest] \",\"matrix_config_dir\":\"sdks/ruby\"}"
     },
     {
-      "title": "Ruby Appium [ubuntu-latest | 3.2 | client version: latest@ | appium_previous] ",
+      "title": "Ruby Appium [ubuntu-latest | 3.2 | client version: latest@ | appium_previous]",
       "work_dir": "sdks/ruby",
       "framework_gem": "appium_lib",
       "test_runner": "ruby",
@@ -638,7 +638,7 @@
       "matrix_string": "{\"work_dir\":\"sdks/ruby\",\"framework_gem\":\"appium_lib\",\"test_runner\":\"ruby\",\"eyes_gem\":\"eyes_appium\",\"ruby-version\":\"3.2\",\"os\":\"ubuntu-latest\",\"version\":\"latest@\",\"gh_environment\":\"appium_previous\",\"test_command\":\"bundle exec rake github:appium -v\",\"use_appium\":true,\"job_name\":\"Ruby Appium [ubuntu-latest | 3.2 | client version: latest@ | appium_previous] \",\"matrix_config_dir\":\"sdks/ruby\"}"
     },
     {
-      "title": "Ruby Appium [ubuntu-latest | 3.2 | client version: previous@1 | appium_previous] ",
+      "title": "Ruby Appium [ubuntu-latest | 3.2 | client version: previous@1 | appium_previous]",
       "work_dir": "sdks/ruby",
       "framework_gem": "appium_lib",
       "test_runner": "ruby",
@@ -2108,7 +2108,7 @@
       "eyes_package": "@applitools/eyes-playwright",
       "test_command": "npx playwright install --with-deps && npm test",
       "os": "ubuntu-latest",
-      "version": "1.37.0-alpha-jul-28-2023",
+      "version": "1.37.0-alpha-jul-29-2023",
       "legacy_npm_peers": true,
       "job_name": "JS Playwright [ubuntu-latest | 18] version: exact@next",
       "matrix_config_dir": "sdks/js/eyes-playwright",
@@ -2521,7 +2521,7 @@
       "matrix_string": "{\"node-version\":\"18\",\"eyes_package\":\"@applitools/eyes-selenium\",\"js_config\":\"eyes-selenium/support\",\"framework_package\":\"selenium-webdriver\",\"test_runner\":\"js\",\"work_dir\":\"sdks/js/eyes-selenium/tunnel\",\"os\":\"macos-latest\",\"version\":\"latest@\",\"test_command\":\"npm run ci-test\",\"job_name\":\"JS Selenium EC_Tunnel [macos-latest | 18 | version: latest@]\",\"matrix_config_dir\":\"sdks/js/eyes-selenium\"}"
     },
     {
-      "title": "Python Selenium [ubuntu-latest | 3.11 | client version: latest@] ",
+      "title": "Python Selenium [ubuntu-latest | 3.11 | client version: latest@]",
       "python-version": "3.11",
       "eyes_package": "eyes-selenium",
       "test_runner": "python",
@@ -2538,7 +2538,7 @@
       "matrix_string": "{\"python-version\":\"3.11\",\"eyes_package\":\"eyes-selenium\",\"test_runner\":\"python\",\"os\":\"ubuntu-latest\",\"version\":\"latest@\",\"use_selenium\":true,\"test_command\":\"pytest -n 2\",\"framework_package\":\"selenium\",\"work_dir\":\"sdks/python/selenium\",\"job_name\":\"Python Selenium [ubuntu-latest | 3.11 | client version: latest@] \",\"matrix_config_dir\":\"sdks/python\"}"
     },
     {
-      "title": "Python Selenium [windows-latest | 3.11 | client version: latest@] ",
+      "title": "Python Selenium [windows-latest | 3.11 | client version: latest@]",
       "python-version": "3.11",
       "eyes_package": "eyes-selenium",
       "test_runner": "python",
@@ -2555,7 +2555,7 @@
       "matrix_string": "{\"python-version\":\"3.11\",\"eyes_package\":\"eyes-selenium\",\"test_runner\":\"python\",\"os\":\"windows-latest\",\"version\":\"latest@\",\"use_selenium\":true,\"test_command\":\"pytest -n 2\",\"framework_package\":\"selenium\",\"work_dir\":\"sdks/python/selenium\",\"job_name\":\"Python Selenium [windows-latest | 3.11 | client version: latest@] \",\"matrix_config_dir\":\"sdks/python\"}"
     },
     {
-      "title": "Python Selenium [macos-latest | 3.11 | client version: latest@] ",
+      "title": "Python Selenium [macos-latest | 3.11 | client version: latest@]",
       "python-version": "3.11",
       "eyes_package": "eyes-selenium",
       "test_runner": "python",
@@ -2572,7 +2572,7 @@
       "matrix_string": "{\"python-version\":\"3.11\",\"eyes_package\":\"eyes-selenium\",\"test_runner\":\"python\",\"os\":\"macos-latest\",\"version\":\"latest@\",\"use_selenium\":true,\"test_command\":\"pytest -n 2\",\"framework_package\":\"selenium\",\"work_dir\":\"sdks/python/selenium\",\"job_name\":\"Python Selenium [macos-latest | 3.11 | client version: latest@] \",\"matrix_config_dir\":\"sdks/python\"}"
     },
     {
-      "title": "Python Playwright [ubuntu-latest | 3.11 | client version: latest@] ",
+      "title": "Python Playwright [ubuntu-latest | 3.11 | client version: latest@]",
       "python-version": "3.11",
       "eyes_package": "eyes-playwright",
       "test_runner": "python",
@@ -2589,7 +2589,7 @@
       "matrix_string": "{\"python-version\":\"3.11\",\"eyes_package\":\"eyes-playwright\",\"test_runner\":\"python\",\"os\":\"ubuntu-latest\",\"version\":\"latest@\",\"use_selenium\":false,\"test_command\":\"playwright install && pytest -n 2\",\"framework_package\":\"playwright\",\"work_dir\":\"sdks/python/playwright\",\"job_name\":\"Python Playwright [ubuntu-latest | 3.11 | client version: latest@] \",\"matrix_config_dir\":\"sdks/python\"}"
     },
     {
-      "title": "Python Playwright [windows-latest | 3.11 | client version: latest@] ",
+      "title": "Python Playwright [windows-latest | 3.11 | client version: latest@]",
       "python-version": "3.11",
       "eyes_package": "eyes-playwright",
       "test_runner": "python",
@@ -2606,7 +2606,7 @@
       "matrix_string": "{\"python-version\":\"3.11\",\"eyes_package\":\"eyes-playwright\",\"test_runner\":\"python\",\"os\":\"windows-latest\",\"version\":\"latest@\",\"use_selenium\":false,\"test_command\":\"playwright install && pytest -n 2\",\"framework_package\":\"playwright\",\"work_dir\":\"sdks/python/playwright\",\"job_name\":\"Python Playwright [windows-latest | 3.11 | client version: latest@] \",\"matrix_config_dir\":\"sdks/python\"}"
     },
     {
-      "title": "Python Playwright [macos-latest | 3.11 | client version: latest@] ",
+      "title": "Python Playwright [macos-latest | 3.11 | client version: latest@]",
       "python-version": "3.11",
       "eyes_package": "eyes-playwright",
       "test_runner": "python",
@@ -2623,7 +2623,7 @@
       "matrix_string": "{\"python-version\":\"3.11\",\"eyes_package\":\"eyes-playwright\",\"test_runner\":\"python\",\"os\":\"macos-latest\",\"version\":\"latest@\",\"use_selenium\":false,\"test_command\":\"playwright install && pytest -n 2\",\"framework_package\":\"playwright\",\"work_dir\":\"sdks/python/playwright\",\"job_name\":\"Python Playwright [macos-latest | 3.11 | client version: latest@] \",\"matrix_config_dir\":\"sdks/python\"}"
     },
     {
-      "title": "Python Robotframework [ubuntu-latest | 3.11 | client version: latest@] ",
+      "title": "Python Robotframework [ubuntu-latest | 3.11 | client version: latest@]",
       "python-version": "3.11",
       "eyes_package": "eyes-robotframework",
       "test_runner": "python",
@@ -2640,7 +2640,7 @@
       "matrix_string": "{\"python-version\":\"3.11\",\"eyes_package\":\"eyes-robotframework\",\"test_runner\":\"python\",\"os\":\"ubuntu-latest\",\"version\":\"latest@\",\"use_selenium\":false,\"test_command\":\"robot ./web\",\"framework_package\":\"robotframework\",\"work_dir\":\"sdks/python/robot\",\"job_name\":\"Python Robotframework [ubuntu-latest | 3.11 | client version: latest@] \",\"matrix_config_dir\":\"sdks/python\"}"
     },
     {
-      "title": "Python Robotframework [windows-latest | 3.11 | client version: latest@] ",
+      "title": "Python Robotframework [windows-latest | 3.11 | client version: latest@]",
       "python-version": "3.11",
       "eyes_package": "eyes-robotframework",
       "test_runner": "python",
@@ -2657,7 +2657,7 @@
       "matrix_string": "{\"python-version\":\"3.11\",\"eyes_package\":\"eyes-robotframework\",\"test_runner\":\"python\",\"os\":\"windows-latest\",\"version\":\"latest@\",\"use_selenium\":false,\"test_command\":\"robot ./web\",\"framework_package\":\"robotframework\",\"work_dir\":\"sdks/python/robot\",\"job_name\":\"Python Robotframework [windows-latest | 3.11 | client version: latest@] \",\"matrix_config_dir\":\"sdks/python\"}"
     },
     {
-      "title": "Python Robotframework [macos-latest | 3.11 | client version: latest@] ",
+      "title": "Python Robotframework [macos-latest | 3.11 | client version: latest@]",
       "python-version": "3.11",
       "eyes_package": "eyes-robotframework",
       "test_runner": "python",
@@ -2965,7 +2965,7 @@
       "matrix_string": "{\"dotnet-version\":\"7.0\",\"test_command\":\"pwsh bin/Debug/net7.0/playwright.ps1 install chromium && dotnet test -f net7.0 -- NUnit.NumberOfTestWorkers=1\",\"test_runner\":\"dotnet\",\"os\":\"macos-latest\",\"version\":\"latest@\",\"work_dir\":\"sdks/dotnet/playwright\",\"framework_package\":\"Microsoft.Playwright\",\"eyes_package\":\"Eyes.Playwright\",\"job_name\":\"Dotnet Playwright [macos-latest | 7.0 | client version: latest@]\",\"matrix_config_dir\":\"sdks/dotnet\"}"
     },
     {
-      "title": "Ruby Selenium [ubuntu-latest | 3.2 | client version: latest@] ",
+      "title": "Ruby Selenium [ubuntu-latest | 3.2 | client version: latest@]",
       "version": "4.10.0",
       "ruby-version": "3.2",
       "work_dir": "sdks/ruby",
@@ -2982,7 +2982,7 @@
       "matrix_string": "{\"version\":\"latest@\",\"ruby-version\":\"3.2\",\"work_dir\":\"sdks/ruby\",\"framework_gem\":\"selenium-webdriver\",\"test_runner\":\"ruby\",\"eyes_gem\":\"eyes_selenium\",\"os\":\"ubuntu-latest\",\"use_selenium\":true,\"test_command\":\"bundle exec rake -v\",\"job_name\":\"Ruby Selenium [ubuntu-latest | 3.2 | client version: latest@] \",\"matrix_config_dir\":\"sdks/ruby\"}"
     },
     {
-      "title": "Ruby Selenium [windows-latest | 3.2 | client version: latest@] ",
+      "title": "Ruby Selenium [windows-latest | 3.2 | client version: latest@]",
       "version": "4.10.0",
       "ruby-version": "3.2",
       "work_dir": "sdks/ruby",
@@ -2999,7 +2999,7 @@
       "matrix_string": "{\"version\":\"latest@\",\"ruby-version\":\"3.2\",\"work_dir\":\"sdks/ruby\",\"framework_gem\":\"selenium-webdriver\",\"test_runner\":\"ruby\",\"eyes_gem\":\"eyes_selenium\",\"os\":\"windows-latest\",\"use_selenium\":true,\"test_command\":\"bundle exec rake -v\",\"job_name\":\"Ruby Selenium [windows-latest | 3.2 | client version: latest@] \",\"matrix_config_dir\":\"sdks/ruby\"}"
     },
     {
-      "title": "Ruby Selenium [macos-latest | 3.2 | client version: latest@] ",
+      "title": "Ruby Selenium [macos-latest | 3.2 | client version: latest@]",
       "version": "4.10.0",
       "ruby-version": "3.2",
       "work_dir": "sdks/ruby",
