@@ -1,5 +1,5 @@
 {
-  "id": "5c6af02f-387d-4613-bc5a-0ac6802f75b5",
+  "id": "3d3a9030-0ffe-4618-a944-6a269d0fffad",
   "data": [
     {
       "title": "JS WDIO Appium [ubuntu-latest | 18 | client version: latest@ | appium_latest ]",
@@ -2108,7 +2108,7 @@
       "eyes_package": "@applitools/eyes-playwright",
       "test_command": "npx playwright install --with-deps && npm test",
       "os": "ubuntu-latest",
-      "version": "1.37.0-alpha-jul-29-2023",
+      "version": "1.37.0-alpha-jul-30-2023",
       "legacy_npm_peers": true,
       "job_name": "JS Playwright [ubuntu-latest | 18] version: exact@next",
       "matrix_config_dir": "sdks/js/eyes-playwright",
