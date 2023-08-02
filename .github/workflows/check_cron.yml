@@ -115,7 +115,7 @@ jobs:
 #         sleep 60
 #         exit 1
   report_generation:
-    if: always()
+    if: ${{ success() || (failure() && github.run_attempt == 3 )}}
     needs: [
         web,
         appium,
