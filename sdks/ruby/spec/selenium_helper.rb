@@ -11,7 +11,7 @@ RSpec.shared_context "Common" do
   }
   let(:driver) {
     url = ENV['SELENIUM_SERVER_URL'] || 'http://localhost:4444/wd/hub'
-    driver = Selenium::WebDriver.for :remote, capabilities: caps, url: url
+    driver = Selenium::WebDriver.for :remote, options: options, url: url
     driver
   }
   let(:ufg) { false }
