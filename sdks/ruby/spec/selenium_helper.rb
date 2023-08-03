@@ -1,16 +1,17 @@
 require 'eyes_selenium'
 
 RSpec.shared_context "Common" do
-  let(:caps) {
-    caps = Selenium::WebDriver::Remote::Capabilities.chrome
-    caps['goog:chromeOptions'] = {
-      args: %w[headless --no-sandbox --disable-gpu --disable-dev-shm-usage]
-    }
-    caps
+  let(:options) {
+    options = Selenium::WebDriver::Chrome::Options.new
+    options.add_argument('headless')
+    options.add_argument('--no-sandbox')
+    options.add_argument('--disable-gpu')
+    options.add_argument('--disable-dev-shm-usage')
+    options
   }
   let(:driver) {
     url = ENV['SELENIUM_SERVER_URL'] || 'http://localhost:4444/wd/hub'
-    driver = Selenium::WebDriver.for :remote, capabilities: caps, url: url
+    driver = Selenium::WebDriver.for :remote, options: options, url: url
     driver
   }
   let(:ufg) { false }
