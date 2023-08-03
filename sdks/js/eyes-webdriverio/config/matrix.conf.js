@@ -5,7 +5,7 @@ const common = {
     "test_runner": "js",
     "eyes_package": "@applitools/eyes-webdriverio",
     test_command: "npm test",
-    "version": "exact@8.14.0",
+    "version": "exact@8.14.1",
 }
 
 const wdio5 = {
