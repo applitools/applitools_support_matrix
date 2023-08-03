@@ -11,7 +11,7 @@ const {shellCommand} = require("../../util/common");
     }
 
     function remote({version, packageName, legacyNpmPeers, cwd}) {
-        let command = `npm install ${packageName}@${version}`
+        let command = `npm install ${packageName}@${version} -E`
         if (legacyNpmPeers) command += ' --legacy-peer-deps'
         shellCommand(command, cwd)
         const ls = shellCommand(`npm list`, cwd)
