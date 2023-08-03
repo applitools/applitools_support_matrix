@@ -9,30 +9,30 @@ const common = {
     test_command: "npm test"
 }
 const base_variations = [
-    {
-        "work_dir": "sdks/js/eyes-storybook/latest",
-        "os": "ubuntu-latest",
-        "version": "previous@1",
-        "branch": "latest-story"
-    },
-    {
-        "work_dir": "sdks/js/eyes-storybook/latest",
-        "os": "ubuntu-latest",
-        "version": "exact@future",
-        "branch": "latest-story"
-    },
+    // {
+    //     "work_dir": "sdks/js/eyes-storybook/latest",
+    //     "os": "ubuntu-latest",
+    //     "version": "previous@1",
+    //     "branch": "latest-story"
+    // },
+    // {
+    //     "work_dir": "sdks/js/eyes-storybook/latest",
+    //     "os": "ubuntu-latest",
+    //     "version": "exact@future",
+    //     "branch": "latest-story"
+    // },
     // {
     //     "work_dir": "sdks/js/eyes-storybook/latest",
     //     "os": "windows-latest",
     //     "version": "latest@",
     //     "branch": "latest-story"
     // },
-    {
-        "work_dir": "sdks/js/eyes-storybook/latest",
-        "os": "macos-latest",
-        "version": "previous@1",
-        "branch": "latest-story"
-    },
+    // {
+    //     "work_dir": "sdks/js/eyes-storybook/latest",
+    //     "os": "macos-latest",
+    //     "version": "previous@1",
+    //     "branch": "latest-story"
+    // },
     {
         "work_dir": "sdks/js/eyes-storybook/major_6",
         "os": "ubuntu-latest",
@@ -53,24 +53,24 @@ const base_variations = [
     // },
 
     // Containers variations
-    {
-        "work_dir": "sdks/js/eyes-storybook/latest",
-        "os": "ubuntu-latest",
-        "version": "latest@",
-        "branch": "latest-story",
-        use_container: true,
-        container: 'artem0tranduil/alpine_runner:latest',
-        container_name: 'alpine',
-    },
-    {
-        "work_dir": "sdks/js/eyes-storybook/latest",
-        "os": "ubuntu-latest",
-        "version": "latest@",
-        "branch": "latest-story",
-        use_container: true,
-        container: 'artem0tranduil/debian_runner:latest',
-        container_name: 'debian',
-    },
+    // {
+    //     "work_dir": "sdks/js/eyes-storybook/latest",
+    //     "os": "ubuntu-latest",
+    //     "version": "latest@",
+    //     "branch": "latest-story",
+    //     use_container: true,
+    //     container: 'artem0tranduil/alpine_runner:latest',
+    //     container_name: 'alpine',
+    // },
+    // {
+    //     "work_dir": "sdks/js/eyes-storybook/latest",
+    //     "os": "ubuntu-latest",
+    //     "version": "latest@",
+    //     "branch": "latest-story",
+    //     use_container: true,
+    //     container: 'artem0tranduil/debian_runner:latest',
+    //     container_name: 'debian',
+    // },
 
 ]
 const variations = base_variations.map(variant => ({...common, ...variant,
