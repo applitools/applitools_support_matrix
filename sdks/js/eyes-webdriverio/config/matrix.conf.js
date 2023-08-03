@@ -4,7 +4,8 @@ const common = {
     "framework_package": "webdriverio",
     "test_runner": "js",
     "eyes_package": "@applitools/eyes-webdriverio",
-    test_command: "npm test"
+    test_command: "npm test",
+    "version": "exact@8.13.13",
 }
 
 const wdio5 = {
@@ -26,15 +27,12 @@ const wdio = {
 const base_variations = [
     {
         "os": "ubuntu-latest",
-        "version": "latest@",
     },
     {
         "os": "windows-latest",
-        "version": "latest@",
     },
     {
         "os": "macos-latest",
-        "version": "latest@",
     }
 ]
 
@@ -87,9 +85,9 @@ const variations = base_common
     // .concat(base_common.map(variant => ({...variant, ...wdio5})))
     // .concat(base_common.map(variant => ({...variant, ...wdio6})))
     // .concat(base_common.map(variant => ({...variant, ...wdio, "version": "major@1"})))
-    // .map(variant => ({
-    //     ...variant, job_name: `JS WDIO [${variant.os} | ${variant["node-version"]} | version: ${variant.version} ]`
-    // }))
+    .map(variant => ({
+        ...variant, job_name: `JS WDIO [${variant.os} | ${variant["node-version"]} | version: ${variant.version} ]`
+    }))
     // .concat(appium_common.map(variant => ({
     //     ...variant, ...wdio,
     //     use_selenium: false,
