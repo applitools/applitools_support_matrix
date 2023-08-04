@@ -63,7 +63,7 @@ runs:
     - name: Print installed packages
       shell: bash
       working-directory: ${{matrix.work_dir}}
-      run: npm ls
+      run: npm ls && cat package.json
     - name: Run tests
       shell: bash
       working-directory: ${{matrix.work_dir}}

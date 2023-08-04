@@ -3,8 +3,6 @@ export const parameters = {
     storySort: {
       order: [
         'Button',
-        'Header',
-        'Demo'
       ]
     },
   },

@@ -3,7 +3,7 @@ const {getOS} = require('../../../matrix/util')
 
 const common = {
     "node-version": "16",
-    "framework_package": "@storybook/react",
+    "framework_package": "storybook",
     "test_runner": "js",
     "eyes_package": "@applitools/eyes-storybook",
     test_command: "npm test"
@@ -37,12 +37,14 @@ const base_variations = [
         "work_dir": "sdks/js/eyes-storybook/major_6",
         "os": "ubuntu-latest",
         "version": "major@1",
+        "framework_package": "@storybook/react",
         "branch": "minus-story"
     },
     {
         "work_dir": "sdks/js/eyes-storybook/major_6",
         "os": "macos-latest",
         "version": "major@1",
+        "framework_package": "@storybook/react",
         "branch": "minus-story"
     },
     // {

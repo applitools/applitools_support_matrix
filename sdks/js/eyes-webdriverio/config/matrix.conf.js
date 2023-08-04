@@ -4,7 +4,8 @@ const common = {
     "framework_package": "webdriverio",
     "test_runner": "js",
     "eyes_package": "@applitools/eyes-webdriverio",
-    test_command: "npm test"
+    test_command: "npm test",
+    "version": "latest@",
 }
 
 const wdio5 = {
@@ -26,15 +27,12 @@ const wdio = {
 const base_variations = [
     {
         "os": "ubuntu-latest",
-        "version": "latest@",
     },
     {
         "os": "windows-latest",
-        "version": "latest@",
     },
     {
         "os": "macos-latest",
-        "version": "latest@",
     }
 ]
 

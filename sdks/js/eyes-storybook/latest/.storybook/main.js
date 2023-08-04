@@ -1,11 +1,15 @@
 module.exports = {
-  stories: ['../stories/**/*.stories.jsx'],
+  stories: ['../src/**/*.stories.jsx'],
   // stories: [],
   framework: {
     name: '@storybook/react-webpack5',
-    options: {}
+    options: {
+      defaultName: 'Make the name for the story'
+    }
   },
+  addons: [`@storybook/preset-create-react-app`],
   docs: {
-    autodocs: true
+    autodocs: 'tag',
+    defaultName: 'Documentation',
   }
 };
