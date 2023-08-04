@@ -14,12 +14,13 @@ export default {
     }
 };
 
-const Template = (args) => <Header {...args} />;
+export const LoggedIn = {
+    args: {
+        user:{}
+    }
 
-export const LoggedIn = Template.bind({});
-LoggedIn.args = {
-    user: {},
 };
 
-export const LoggedOut = Template.bind({});
-LoggedOut.args = {};
+export const LoggedOut = {
+    args: {}
+}
