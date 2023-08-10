@@ -1,5 +1,5 @@
 {
-  "id": "18ebe910-0379-4791-a703-29b71575ad13",
+  "id": "a2eaeef6-e15c-4173-8048-67aa6794fc44",
   "data": [
     {
       "title": "JS WDIO [ alpine | 18 | client version: latest@]",
@@ -2108,7 +2108,7 @@
       "eyes_package": "@applitools/eyes-playwright",
       "test_command": "npx playwright install --with-deps && npm test",
       "os": "ubuntu-latest",
-      "version": "1.37.0-alpha-aug-9-2023",
+      "version": "1.38.0-alpha-aug-10-2023",
       "legacy_npm_peers": true,
       "job_name": "JS Playwright [ubuntu-latest | 18] version: exact@next",
       "matrix_config_dir": "sdks/js/eyes-playwright",
