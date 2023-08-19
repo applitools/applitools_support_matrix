@@ -22,12 +22,6 @@ const debian = {
 }
 const base_common = base_variations.map(variant => ({...variant, ...common,}))
 const variations = base_common
-    .concat(base_common.map(variant => ({
-        ...variant,
-        version: 'exact@1.7.13',
-        selenium_legacy: true,
-        test_command: "npm run nightwatch1 && USE_UFG=true npm run nightwatch1"
-    })))
     .concat([{...common, os: "ubuntu-latest", version: "exact@alpha", legacy_npm_peers: true}])
     .map(variant => ({
         ...variant, job_name: `JS Nightwatch [${variant.os} | ${common["node-version"]}] version: ${variant.version}`
