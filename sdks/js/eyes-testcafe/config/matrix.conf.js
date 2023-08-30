@@ -17,6 +17,7 @@ const base_variations = [
     {
         "os": "windows-latest",
         "version": "major@1",
+        test_command: 'npm run test:windows'
     },
     {
         "os": "ubuntu-latest",

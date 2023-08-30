@@ -6,7 +6,8 @@
     "testcafe": "^1.20.0"
   },
   "scripts": {
-    "test": "testcafe --list-browsers && testcafe chrome:headless ./tests/* --disable-screenshots",
+    "test": "testcafe chrome:headless ./tests/* --disable-screenshots",
+    "test:windows": "testcafe edge:headless ./tests/* --disable-screenshots",
     "test:alpine": "testcafe chromium:headless ./tests/* --disable-screenshots path:/usr/bin/chromium-browser"
   }
 }
