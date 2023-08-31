@@ -32,6 +32,7 @@ module.exports = {
         dontCloseBatches: true,
         branchName: 'master',
         parentBranchName: 'master',
-        // enableEyesLogs: true
+        enableEyesLogs: true,
+        saveNewTests: false,
     }
 }
