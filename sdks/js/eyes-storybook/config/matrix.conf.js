@@ -33,20 +33,20 @@ const base_variations = [
         "version": "latest@",
         "branch": "latest-story"
     },
-    {
-        "work_dir": "sdks/js/eyes-storybook/major_6",
-        "os": "ubuntu-latest",
-        "version": "major@1",
-        "framework_package": "@storybook/react",
-        "branch": "minus-story"
-    },
-    {
-        "work_dir": "sdks/js/eyes-storybook/major_6",
-        "os": "macos-latest",
-        "version": "major@1",
-        "framework_package": "@storybook/react",
-        "branch": "minus-story"
-    },
+    // {
+    //     "work_dir": "sdks/js/eyes-storybook/major_6",
+    //     "os": "ubuntu-latest",
+    //     "version": "major@1",
+    //     "framework_package": "@storybook/react",
+    //     "branch": "minus-story"
+    // },
+    // {
+    //     "work_dir": "sdks/js/eyes-storybook/major_6",
+    //     "os": "macos-latest",
+    //     "version": "major@1",
+    //     "framework_package": "@storybook/react",
+    //     "branch": "minus-story"
+    // },
     // {
     //     "work_dir": "sdks/js/eyes-storybook/major_6",
     //     "os": "windows-latest",
