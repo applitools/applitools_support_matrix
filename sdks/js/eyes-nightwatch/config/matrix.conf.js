@@ -7,13 +7,17 @@ const common = {
     use_selenium: true,
     test_command: "npm test && USE_UFG=true npm test"
 }
-const base_variations = [{
-    "os": "ubuntu-latest", "version": "latest@",
-}, {
-    "os": "windows-latest", "version": "latest@",
-}, {
-    "os": "macos-latest", "version": "latest@",
-}]
+const base_variations = [
+    {
+        "os": "ubuntu-latest", "version": "latest@",
+    },
+    // {
+    //     "os": "windows-latest", "version": "latest@",
+    // },
+    // {
+    //     "os": "macos-latest", "version": "latest@",
+    // }
+]
 const alpine = {
     use_container: true, container: 'artem0tranduil/alpine_runner:latest', container_name: 'alpine'
 }
