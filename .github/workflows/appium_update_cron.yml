@@ -37,46 +37,6 @@ jobs:
         uses: ./.github/actions/update_github_vars
         with:
           token: ${{secrets.PAT}}
-  update_ios_nmg_app:
-    runs-on: ubuntu-latest
-    timeout-minutes: 8
-    name: Update ios nmg app
-    env:
-      APP_NAME: "awesomeswift_nmg.app.zip"
-    defaults:
-      run:
-        shell: bash
-    steps:
-      - name: Download clean app
-        run: |
-          echo "Start update script"
-          curl -L -o awesomeswift.app.zip "https://drive.google.com/uc?export=download&id=1xu9hfo5rZ101hZoDzA9HMZ8dtW0R5-4K"
-      - name: Prepare apps
-        run: |
-          unzip awesomeswift.app.zip
-          ls -lh
-          curl -O https://raw.githubusercontent.com/applitools/applitoolsify/main/applitoolsify.py
-          python applitoolsify.py ./awesomeswift.app ios_nmg
-          mv awesomeswift.app awesomeswift_nmg.app
-          zip -r awesomeswift_nmg.app.zip awesomeswift_nmg.app
-          ls -lh
-      - name: Remove previous versions of app on Sauce
-        run: |
-          FILE_IDS=$(curl -s -u $SAUCE_USERNAME:$SAUCE_ACCESS_KEY "https://api.us-west-1.saucelabs.com/v1/storage/files?name=$APP_NAME" | jq -r '.items[].id')
-
-          for FILE_ID in $FILE_IDS; do
-            echo "Deleting app with ID: $FILE_ID"
-            curl -s -X DELETE -u $SAUCE_USERNAME:$SAUCE_ACCESS_KEY "https://api.us-west-1.saucelabs.com/v1/storage/files/$FILE_ID"
-          done
-
-          echo "All matching apps have been deleted."
-      - name: Upload to Sauce
-        run: |
-          echo $APP_NAME
-          curl -v -u "$SAUCE_USERNAME:$SAUCE_ACCESS_KEY" --location \
-          --request POST 'https://api.us-west-1.saucelabs.com/v1/storage/upload' \
-          --form "payload=@./$APP_NAME" \
-          --form "name=$APP_NAME"
   update_ios_classic_app:
     runs-on: ubuntu-latest
     timeout-minutes: 8
@@ -90,15 +50,9 @@ jobs:
       - name: Download clean app
         run: |
           echo "Start update script"
-          curl -L -o awesomeswift.app.zip "https://drive.google.com/uc?export=download&id=1xu9hfo5rZ101hZoDzA9HMZ8dtW0R5-4K"
+          curl -L -o awesomeswift_classic.app.zip "https://drive.google.com/uc?export=download&id=1nCPvWeUIqd4yf64NTmxMpGd02GnxP6ay"
       - name: Prepare apps
         run: |
-          unzip awesomeswift.app.zip
-          ls -lh
-          curl -O https://raw.githubusercontent.com/applitools/applitoolsify/main/applitoolsify.py
-          python applitoolsify.py ./awesomeswift.app ios_classic
-          mv awesomeswift.app awesomeswift_classic.app
-          zip -r awesomeswift_classic.app.zip awesomeswift_classic.app
           ls -lh
       - name: Remove previous versions of app on Sauce
         run: |
@@ -118,45 +72,6 @@ jobs:
           --form "payload=@./$APP_NAME" \
           --form "name=$APP_NAME"
 
-  update_android_nmg_apps:
-    runs-on: ubuntu-latest
-    timeout-minutes: 15
-    name: Update android nmg app
-    env:
-      APP_NAME: "SimpleRandomStock_nmg.apk"
-    defaults:
-      run:
-        shell: bash
-    steps:
-      - name: Download clean app
-        run: |
-          echo "Start update script"     
-          curl -L -o SimpleRandomStock.apk "https://drive.google.com/uc?export=download&confirm=no_antivirus&id=16M_Fu4OfTHFMi3bQsaFyrbj-kYXoxwOl"
-      - name: Prepare apps
-        run: |
-          curl -L -o applitoolsify_android "https://applitools.jfrog.io/artifactory/nmg/android/instrumentation/release/applitoolsify-Linux"
-          ls -lh
-          chmod +x applitoolsify_android
-          ./applitoolsify_android SimpleRandomStock.apk
-          mv ./dist/ready.apk "$APP_NAME"
-          ls -lh
-      - name: Remove previous versions of app on Sauce
-        run: |
-          FILE_IDS=$(curl -s -u $SAUCE_USERNAME:$SAUCE_ACCESS_KEY "https://api.us-west-1.saucelabs.com/v1/storage/files?name=$APP_NAME" | jq -r '.items[].id')
-          
-          for FILE_ID in $FILE_IDS; do
-            echo "Deleting app with ID: $FILE_ID"
-            curl -s -X DELETE -u $SAUCE_USERNAME:$SAUCE_ACCESS_KEY "https://api.us-west-1.saucelabs.com/v1/storage/files/$FILE_ID"
-          done
-          
-          echo "All matching apps have been deleted."
-      - name: Upload to Sauce
-        run: |
-          echo $APP_NAME
-          curl -v -u "$SAUCE_USERNAME:$SAUCE_ACCESS_KEY" --location \
-          --request POST 'https://api.us-west-1.saucelabs.com/v1/storage/upload' \
-          --form "payload=@./$APP_NAME" \
-          --form "name=$APP_NAME"
   update_android_classic_apps:
     runs-on: ubuntu-latest
     timeout-minutes: 15
