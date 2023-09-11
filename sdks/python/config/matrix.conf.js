@@ -38,10 +38,10 @@ const containers = [
 const base_common = base_variations.map(variant => ({...common, ...variant,}))
 const web_common = base_common.concat(containers.map(variant => ({...common, ...variant})))
 const appium_common = base_common.map(variant => ({...variant, gh_environment: 'appium_latest'})).concat([
-    {...common, os:'ubuntu-latest', version:'previous@1', gh_environment: 'appium_latest'},
+    {...common, os:'ubuntu-latest', version:'major@1', gh_environment: 'appium_latest'},
     {...common, os:'ubuntu-latest', version:'latest@', gh_environment: 'appium_previous'},
-    {...common, os:'ubuntu-latest', version:'previous@1', gh_environment: 'appium_previous'},
-]).filter(vr => vr.version === 'previous@1')
+    {...common, os:'ubuntu-latest', version:'major@1', gh_environment: 'appium_previous'},
+]).filter(vr => vr.version === 'major@1')
 const variations = web_common
     .map((variant) => ({...variant,
         use_selenium: true,
