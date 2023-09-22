@@ -22,6 +22,10 @@ const latest_variations = [
         "version": "major@2",
     },
     {
+        "os": "ubuntu-latest",
+        "version": "major@3",
+    },
+    {
         "os": "windows-latest",
         "version": "latest@",
     },
