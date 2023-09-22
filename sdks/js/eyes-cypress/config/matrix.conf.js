@@ -50,6 +50,11 @@ const latest_variations = [
 const old_variations = [
     {
         "os": "ubuntu-latest",
+        "node-version": "20",
+        "version": "exact@9.7.0",
+    },
+    {
+        "os": "ubuntu-latest",
         "version": "exact@9.7.0",
     },
     {
@@ -57,6 +62,7 @@ const old_variations = [
         "node-version": "16",
         "version": "exact@8.7.0",
     },
+
 ]
 
 
