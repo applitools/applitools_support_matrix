@@ -80,6 +80,7 @@ jobs:
       APPLITOOLS_API_KEY: ${{ secrets.APPLITOOLS_API_KEY }}
       APPLITOOLS_BATCH_ID: ${{needs.setup.outputs.uuid}}
       APPLITOOLS_BRANCH_NAME: ${{matrix.branch}}
+      APPLITOOLS_SHOW_LOGS: true
       JS_TESTS_CONFIG_NAME: ${{ matrix.js_config}}
       SAUCE_USERNAME: ${{secrets.SAUCE_USERNAME}}
       SAUCE_ACCESS_KEY: ${{secrets.SAUCE_ACCESS_KEY}}

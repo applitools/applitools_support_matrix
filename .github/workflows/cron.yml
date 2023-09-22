@@ -8,6 +8,9 @@ on:
 permissions:
   contents: write
 
+env:
+  APPLITOOLS_SHOW_LOGS: true
+
 jobs:
   setup:
     name: Setup
