@@ -1,11 +1,26 @@
 const common = {
-    "java-version": "8",
+    "java-version": "11",
     test_command: "mvn test",
     "test_runner": "java"
 }
 const base_variations = [
     {
         "os": "ubuntu-latest",
+        version: "latest@"
+    },
+    {
+        "os": "ubuntu-latest",
+        "java-version": "8",
+        version: "latest@"
+    },
+    {
+        "os": "ubuntu-latest",
+        "java-version": "17",
+        version: "latest@"
+    },
+    {
+        "os": "ubuntu-latest",
+        "java-version": "21",
         version: "latest@"
     },
     {
