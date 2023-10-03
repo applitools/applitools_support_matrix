@@ -47,12 +47,12 @@ const base_variations = [
         "framework_package": "@storybook/react",
         "branch": "minus-story"
     },
-    {
-        "work_dir": "sdks/js/eyes-storybook/major_6",
-        "os": "windows-latest",
-        "version": "major@1",
-        "branch": "minus-story"
-    },
+    // {
+    //     "work_dir": "sdks/js/eyes-storybook/major_6",
+    //     "os": "windows-latest",
+    //     "version": "major@1",
+    //     "branch": "minus-story"
+    // },
 
     // Containers variations
     {
