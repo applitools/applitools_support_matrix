@@ -58,6 +58,9 @@ jobs:
         run: |
           echo "uuid=$(uuidgen)" >> $GITHUB_OUTPUT
       - uses: actions/checkout@v3
+        with:
+          repository: applitools/applitools_support_matrix
+          ref: ${{inputs.checkout_ref}}
       - name: generate matrix
         id: matrix
         uses: ./.github/actions/setup
@@ -84,6 +87,9 @@ jobs:
         shell: bash
     steps:
       - uses: actions/checkout@v3
+        with:
+          repository: applitools/applitools_support_matrix
+          ref: ${{inputs.checkout_ref}}
       - name: Test
         uses: ./.github/actions/test_runner
         with:
@@ -109,6 +115,9 @@ jobs:
         shell: bash
     steps:
       - uses: actions/checkout@v3
+        with:
+          repository: applitools/applitools_support_matrix
+          ref: ${{inputs.checkout_ref}}
       - name: Test
         uses: ./.github/actions/test_runner
         with:
@@ -138,6 +147,9 @@ jobs:
 #        shell: bash
 #    steps:
 #      - uses: actions/checkout@v3
+#        with:
+#          repository: applitools/applitools_support_matrix
+#          ref: ${{inputs.checkout_ref}}
 #      - name: Test
 #        uses: ./.github/actions/test_runner
 #        with:
