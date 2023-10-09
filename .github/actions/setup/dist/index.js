@@ -2768,9 +2768,10 @@ function prepareInclude(sdk_versions_json, dirs, use_last_passed) {
 }
 
 function prepareVersionsJson(sdk_versions_json) {
-    const checked = sdk_versions_json.filter(sdk => DIR_MAP.has(sdk.name))
-    if(checked.length < sdk_versions_json.length) {
-        sdk_versions_json.filter(sdk => !DIR_MAP.has(sdk.name)).forEach(sdk => {
+    const sdk_versions =  JSON.parse(sdk_versions_json)
+    const checked = sdk_versions.filter(sdk => DIR_MAP.has(sdk.name))
+    if(checked.length < sdk_versions.length) {
+        sdk_versions.filter(sdk => !DIR_MAP.has(sdk.name)).forEach(sdk => {
             console.error(`SDK with name ${sdk.name} doesn't have mapping so there support matrix tests wasn't executed for it.`)
         })
         throw new Error("There are was passed unsupported sdk name")
