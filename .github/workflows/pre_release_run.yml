@@ -1,7 +1,6 @@
 name: Pre release workflow
 
 on:
-  push:
   workflow_dispatch:
     inputs:
       last_passed:
