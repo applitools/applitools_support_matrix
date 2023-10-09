@@ -1,4 +1,4 @@
-name: JS framework group
+name: Pre release workflow
 
 on:
   push:
