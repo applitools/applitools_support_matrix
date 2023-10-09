@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "ncc build -a index.js"
+    "build": "ncc build index.js"
   },
   "keywords": [],
   "author": "",

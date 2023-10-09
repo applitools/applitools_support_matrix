@@ -1,5 +1,5 @@
 const {getInput, getBooleanInput, setOutput} = require("@actions/core");
-const {prepareInclude} = require("src/util")
+const {prepareInclude} = require("./src/util")
 
 
 const work_dir = getInput('work_dir');
