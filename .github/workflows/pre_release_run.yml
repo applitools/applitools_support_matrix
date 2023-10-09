@@ -14,20 +14,22 @@ on:
         default: '{name: "js/eyes-cypress", version: "exact@3.36.2"}'
         required: true
   workflow_call:
-    last_passed:
-      description: 'choose which version of the frameworks should be used (latest | last passed)'
-      default: false
-      required: true
-      type: boolean
-    sdk_versions_json:
-      description: 'Set the sdks which should be test in support matrix'
-      default: '{name: "js/eyes-cypress", version: "exact@3.36.2"}'
-      required: true
-    checkout_ref:
-      description: 'set ref when used from the another repo'
-      default: 'ci_integration'
-      required: false
-      type: string
+    inputs:
+      last_passed:
+        description: 'choose which version of the frameworks should be used (latest | last passed)'
+        default: false
+        required: true
+        type: boolean
+      sdk_versions_json:
+        description: 'Set the sdks which should be test in support matrix'
+        default: '{name: "js/eyes-cypress", version: "exact@3.36.2"}'
+        required: true
+      checkout_ref:
+        description: 'set ref when used from the another repo'
+        default: 'ci_integration'
+        required: false
+        type: string
+
     secrets:
       APPLITOOLS_API_KEY:
         required: true
