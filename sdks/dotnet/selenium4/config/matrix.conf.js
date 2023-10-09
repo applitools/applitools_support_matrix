@@ -1,0 +1,15 @@
+'use strict'
+const {web_common, getOS} = require("../../config/dotnet_common")
+const variations = web_common
+    .map(variant => ({
+        ...variant,
+        use_selenium: true,
+        work_dir: 'sdks/dotnet/selenium4',
+        framework_package: "Selenium.WebDriver",
+        eyes_package: "Eyes.Selenium4",
+        job_name: `Dotnet Selenium4 [${getOS(variant)} | ${variant["dotnet-version"]} | client version: ${variant.version}]`
+    }))
+console.log(variations)
+module.exports = {
+    "include": variations
+}

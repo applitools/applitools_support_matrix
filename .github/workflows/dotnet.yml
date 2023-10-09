@@ -60,7 +60,7 @@ jobs:
         id: matrix
         uses: ./.github/actions/setup
         with:
-          work_dir: 'sdks/dotnet'
+          work_dir: 'sdks/dotnet/selenium, sdks/dotnet/selenium4, sdks/dotnet/appium, sdks/dotnet/playwright'
           last_passed: ${{inputs.last_passed}}
   test:
     needs: setup
