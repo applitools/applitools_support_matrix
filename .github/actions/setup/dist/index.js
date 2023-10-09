@@ -2688,6 +2688,14 @@ exports["default"] = _default;
 
 /***/ }),
 
+/***/ 321:
+/***/ ((module) => {
+
+module.exports = eval("require")("src/util");
+
+
+/***/ }),
+
 /***/ 491:
 /***/ ((module) => {
 
@@ -2818,41 +2826,22 @@ var __webpack_exports__ = {};
 // This entry need to be wrapped in an IIFE because it need to be isolated against other modules in the chunk.
 (() => {
 const {getInput, getBooleanInput, setOutput} = __nccwpck_require__(136);
-const path = __nccwpck_require__(17)
-const fs = __nccwpck_require__(147)
+const {prepareInclude} = __nccwpck_require__(321)
+
 
 const work_dir = getInput('work_dir');
+const sdk_versions_json = getInput('sdk_versions_json')
 const use_last_passed = getBooleanInput('last_passed');
 let matrix;
 
-const dirs = work_dir.split(', ')
-
-
-let include = [];
-if (use_last_passed) {
-    const filePath = path.join(process.cwd(), 'last_passed.json');
-    const json_string = fs.readFileSync(filePath).toString();
-    const last_passed = JSON.parse(json_string)
-    dirs.forEach(dir => {
-        const matrix_jobs = last_passed.data.filter(job => job.matrix_config_dir === dir)
-        const dir_include = matrix_jobs.map(job => ({
-            ...JSON.parse(job.matrix_string),
-            version: `exact@${job.version}`
-        }))
-        include = include.concat(dir_include)
-    })
-
-
-} else {
-    // Adding hardcoded string is required for ncc to build it properly into 1 file
-    const fileName = `matrix.conf.js`;
-    dirs.forEach(dir => {
-        const filePath = path.join(process.cwd(), dir, 'config', fileName)
-        console.log(`Filepath value: ${filePath}`)
-        const readedFile = require(filePath)
-        include = include.concat(readedFile.include.map(matrix_data => ({...matrix_data, matrix_config_dir: dir})))
-    })
+if(!work_dir && !sdk_versions_json) {
+    throw new Error("Missing input for required sdks to test")
 }
+
+let dirs = work_dir.split(', ')
+
+
+let include = prepareInclude(sdk_versions_json,dirs,use_last_passed);
 
 
 matrix = {include}
@@ -2879,6 +2868,7 @@ if (day % 2 === 0) {
 } else {
     setOutput("orientation", "LANDSCAPE")
 }
+
 })();
 
 module.exports = __webpack_exports__;
