@@ -2769,6 +2769,7 @@ function prepareInclude(sdk_versions_json, dirs, use_last_passed) {
 
 function prepareVersionsJson(sdk_versions_json) {
     const sdk_versions =  JSON.parse(sdk_versions_json)
+    if(!Array.isArray(sdk_versions)) throw new Error("Input should be an Array")
     const checked = sdk_versions.filter(sdk => DIR_MAP.has(sdk.name))
     if(checked.length < sdk_versions.length) {
         sdk_versions.filter(sdk => !DIR_MAP.has(sdk.name)).forEach(sdk => {
