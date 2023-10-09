@@ -65,8 +65,8 @@ jobs:
         id: matrix
         uses: ./.github/actions/setup
         with:
-          work_dir:
-          last_passed: false
+          sdk_versions_json: ${{inputs.sdk_versions_json}}
+          last_passed: ${{inputs.last_passed}}
   web:
     needs: setup
     strategy:
