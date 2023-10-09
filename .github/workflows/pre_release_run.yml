@@ -24,6 +24,7 @@ on:
         description: 'Set the sdks which should be test in support matrix'
         default: '{name: "js/eyes-cypress", version: "exact@3.36.2"}'
         required: true
+        type: string
       checkout_ref:
         description: 'set ref when used from the another repo'
         default: 'ci_integration'
