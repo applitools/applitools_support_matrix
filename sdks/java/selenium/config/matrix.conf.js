@@ -1,5 +1,6 @@
 const {base_common, alpine, debian, selenium_package, common} = require("../../config/java_common")
 const variations = base_common
+    .filter(variant => variant["java-version"]!=="8")
     .map((variant) => ({
         ...variant,
         ...selenium_package,
@@ -14,7 +15,7 @@ const variations = base_common
             ...common,
             ...alpine,
             ...selenium_package,
-            job_name: `Java Selenium [alpine | 8 | latest@]`
+            job_name: `Java Selenium [alpine | 11 | latest@]`
         },
         {
             os: "ubuntu-latest",
@@ -23,7 +24,7 @@ const variations = base_common
             ...common,
             ...debian,
             ...selenium_package,
-            job_name: `Java Selenium [debian | 8 | latest@]`
+            job_name: `Java Selenium [debian | 17 | latest@]`
         },
     ])
 console.log(variations)
