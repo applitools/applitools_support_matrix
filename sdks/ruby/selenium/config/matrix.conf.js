@@ -50,7 +50,7 @@ const variations = base_common
             selenium_legacy: true,
             version: "exact@4.1.0",
             "ruby-version": "2.6",
-            job_name: `Ruby Selenium [ ubuntu-latest | 2.6 | client version: 4.1.0]`,
+            job_name: `Ruby Selenium [ ubuntu-latest | 2.6 | client version: 4.1.0 | Selenium Server 3]`,
             ...common,
             ...selenium,
         }
