@@ -60,7 +60,7 @@ jobs:
         id: matrix
         uses: ./.github/actions/setup
         with:
-          work_dir: 'sdks/ruby'
+          work_dir: 'sdks/ruby/selenium, sdks/ruby/appium'
           last_passed: ${{inputs.last_passed}}
   test:
     needs: setup
