@@ -60,7 +60,7 @@ jobs:
         id: matrix
         uses: ./.github/actions/setup
         with:
-          work_dir: 'sdks/java'
+          work_dir: 'sdks/java/selenium, sdks/java/appium, sdks/java/playwright'
           last_passed: ${{inputs.last_passed}}
   test:
     needs: setup

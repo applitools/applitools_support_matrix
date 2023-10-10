@@ -54,19 +54,31 @@ function prepareInclude(sdk_versions_json, dirs, use_last_passed) {
 }
 
 function prepareVersionsJson(sdk_versions_json) {
-    const sdk_versions =  JSON.parse(sdk_versions_json)
-    if(!Array.isArray(sdk_versions)) throw new Error("Input should be an Array")
+    const sdk_versions = JSON.parse(sdk_versions_json)
+    if (!Array.isArray(sdk_versions)) throw new Error("Input should be an Array")
     const checked = sdk_versions.filter(sdk => DIR_MAP.has(sdk.name))
-    if(checked.length < sdk_versions.length) {
+    if (checked.length < sdk_versions.length) {
         sdk_versions.filter(sdk => !DIR_MAP.has(sdk.name)).forEach(sdk => {
             console.error(`SDK with name ${sdk.name} doesn't have mapping so there support matrix tests wasn't executed for it.`)
         })
         throw new Error("There are was passed unsupported sdk name")
     }
-    return checked.map(sdk => ({
-        dir: DIR_MAP.get(sdk.name),
-        eyes_version: sdk.version
-    }))
+    let result = []
+
+    checked.forEach(sdk => {
+        let dirs = DIR_MAP.get(sdk.name)
+        if (!Array.isArray(dirs)) dirs = [dirs];
+
+        dirs.forEach(dir => {
+            result.push({
+                dir,
+                eyes_version: sdk.version
+            })
+        })
+
+    })
+
+    return result;
 
 }
 

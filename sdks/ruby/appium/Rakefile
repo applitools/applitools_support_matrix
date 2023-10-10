@@ -5,7 +5,7 @@ require 'rake/clean'
 require 'securerandom'
 
 
-task :default => ['github:test']
+task default: ['github:appium']
 
 namespace 'github' do
   task :set_batch_info do
@@ -20,32 +20,28 @@ namespace 'github' do
     sh("echo \"Batch NAME: #{ENV['APPLITOOLS_BATCH_NAME']}\"")
   end
 
-  task :test => [:set_batch_info, :check_batch] do
-    sh('bundle exec parallel_rspec -n 2 -- spec/selenium/*_spec.rb')
-  end
-
-  task :appium => [:set_batch_info, :check_batch] do
+  task appium: [:set_batch_info, :check_batch] do
     # sh('bundle exec parallel_rspec -n 1 -- spec/appium/*_spec.rb')
     sh('bundle exec parallel_rspec -n 1 -- spec/appium/iOS_Classic_spec.rb spec/appium/Android_Classic_spec.rb')
   end
 
-  task :appium_local => [:set_batch_info, :check_batch] do
+  task appium_local: [:set_batch_info, :check_batch] do
     sh('bundle exec parallel_rspec -n 4 -- spec/appium/*_spec.rb')
   end
 
-  task :android_classic => [:set_batch_info, :check_batch] do
+  task android_classic: [:set_batch_info, :check_batch] do
     sh('bundle exec parallel_rspec -n 1 -- spec/appium/Android_Classic_spec.rb')
   end
 
-  task :android_nmg => [:set_batch_info, :check_batch] do
+  task android_nmg: [:set_batch_info, :check_batch] do
     sh('bundle exec parallel_rspec -n 1 -- spec/appium/Android_NMG_spec.rb')
   end
 
-  task :ios_classic => [:set_batch_info, :check_batch] do
+  task ios_classic: [:set_batch_info, :check_batch] do
     sh('bundle exec parallel_rspec -n 1 -- spec/appium/iOS_Classic_spec.rb')
   end
 
-  task :ios_nmg => [:set_batch_info, :check_batch] do
+  task ios_nmg: [:set_batch_info, :check_batch] do
     sh('bundle exec parallel_rspec -n 1 -- spec/appium/iOS_NMG_spec.rb')
   end
 end

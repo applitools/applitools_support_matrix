@@ -4,7 +4,7 @@ FROM alpine:latest
 # Update repositories and install required packages
 RUN apk update && \
     apk add --no-cache \
-        openjdk8 \
+        openjdk11 \
         maven \
         nodejs \
         npm \
@@ -45,7 +45,7 @@ RUN chmod +x /usr/local/bin/chromium-flaged
 
 # Set the necessary environment variables
 ENV DOTNET_SYSTEM_GLOBALIZATION_INVARIANT=true
-ENV JAVA_HOME="/usr/lib/jvm/java-1.8-openjdk"
+ENV JAVA_HOME="/usr/lib/jvm/java-11-openjdk"
 # Set Puppeteer env var to run in alpine
 ENV PUPPETEER_EXECUTABLE_PATH="/usr/local/bin/chromium-flaged"
 # Set Pleywright env var to run in alpine
@@ -58,6 +58,7 @@ ENV SELENIUM_JAR_PATH /usr/share/java/selenium-server.jar
 
 # Test the installed software
 RUN java -version && \
+    which java && \
     mvn -version && \
     dotnet --version && \
     node -v && \

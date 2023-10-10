@@ -20,6 +20,8 @@ runs:
       if: ${{matrix.use_selenium }}
       id: selenium
       uses: ./.github/actions/start_selenium
+      with:
+        legacy: ${{matrix.selenium_legacy}}
     - name: Update pom for the eyes dependency
       id: eyes
       uses: ./.github/actions/update_pom_deps

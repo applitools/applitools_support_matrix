@@ -8,8 +8,17 @@ map.set('js/eyes-playwright', 'sdks/js/eyes-playwright');
 map.set('js/eyes-nightwatch', 'sdks/js/eyes-nightwatch');
 map.set('js/eyes-cypress', 'sdks/js/eyes-cypress');
 map.set('js/eyes-selenium', 'sdks/js/eyes-selenium');
-map.set('java', 'sdks/java');
-map.set('dotnet', 'sdks/dotnet');
-map.set('python', 'sdks/python');
-map.set('ruby', 'sdks/ruby');
+map.set('python/eyes-selenium', ['sdks/python/selenium', 'sdks/python/appium'])
+map.set('python/eyes-robotframework', 'sdks/python/robot')
+map.set('python/eyes-playwright', 'sdks/python/playwright')
+map.set('java/eyes-selenium-java5', 'sdks/java/selenium')
+map.set('java/eyes-appium-java5', 'sdks/java/appium')
+map.set('java/eyes-playwright-java5', 'sdks/java/playwright')
+map.set('dotnet/selenium', 'sdks/dotnet/selenium')
+map.set('dotnet/selenium4', 'sdks/dotnet/selenium4')
+map.set('dotnet/appium', 'sdks/dotnet/appium')
+map.set('dotnet/playwright', 'sdks/dotnet/playwright')
+map.set('ruby/selenium', 'sdks/ruby/selenium')
+map.set('ruby/appium', 'sdks/ruby/appium')
+
 module.exports = map

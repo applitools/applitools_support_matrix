@@ -2701,10 +2701,19 @@ map.set('js/eyes-playwright', 'sdks/js/eyes-playwright');
 map.set('js/eyes-nightwatch', 'sdks/js/eyes-nightwatch');
 map.set('js/eyes-cypress', 'sdks/js/eyes-cypress');
 map.set('js/eyes-selenium', 'sdks/js/eyes-selenium');
-map.set('java', 'sdks/java');
-map.set('dotnet', 'sdks/dotnet');
-map.set('python', 'sdks/python');
-map.set('ruby', 'sdks/ruby');
+map.set('python/eyes-selenium', ['sdks/python/selenium', 'sdks/python/appium'])
+map.set('python/eyes-robotframework', 'sdks/python/robot')
+map.set('python/eyes-playwright', 'sdks/python/playwright')
+map.set('java/eyes-selenium-java5', 'sdks/java/selenium')
+map.set('java/eyes-appium-java5', 'sdks/java/appium')
+map.set('java/eyes-playwright-java5', 'sdks/java/playwright')
+map.set('dotnet/selenium', 'sdks/dotnet/selenium')
+map.set('dotnet/selenium4', 'sdks/dotnet/selenium4')
+map.set('dotnet/appium', 'sdks/dotnet/appium')
+map.set('dotnet/playwright', 'sdks/dotnet/playwright')
+map.set('ruby/selenium', 'sdks/ruby/selenium')
+map.set('ruby/appium', 'sdks/ruby/appium')
+
 module.exports = map
 
 /***/ }),
@@ -2768,19 +2777,31 @@ function prepareInclude(sdk_versions_json, dirs, use_last_passed) {
 }
 
 function prepareVersionsJson(sdk_versions_json) {
-    const sdk_versions =  JSON.parse(sdk_versions_json)
-    if(!Array.isArray(sdk_versions)) throw new Error("Input should be an Array")
+    const sdk_versions = JSON.parse(sdk_versions_json)
+    if (!Array.isArray(sdk_versions)) throw new Error("Input should be an Array")
     const checked = sdk_versions.filter(sdk => DIR_MAP.has(sdk.name))
-    if(checked.length < sdk_versions.length) {
+    if (checked.length < sdk_versions.length) {
         sdk_versions.filter(sdk => !DIR_MAP.has(sdk.name)).forEach(sdk => {
             console.error(`SDK with name ${sdk.name} doesn't have mapping so there support matrix tests wasn't executed for it.`)
         })
         throw new Error("There are was passed unsupported sdk name")
     }
-    return checked.map(sdk => ({
-        dir: DIR_MAP.get(sdk.name),
-        eyes_version: sdk.version
-    }))
+    let result = []
+
+    checked.forEach(sdk => {
+        let dirs = DIR_MAP.get(sdk.name)
+        if (!Array.isArray(dirs)) dirs = [dirs];
+
+        dirs.forEach(dir => {
+            result.push({
+                dir,
+                eyes_version: sdk.version
+            })
+        })
+
+    })
+
+    return result;
 
 }
 

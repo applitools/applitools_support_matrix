@@ -61,7 +61,7 @@ jobs:
         id: matrix
         uses: ./.github/actions/setup
         with:
-          work_dir: 'sdks/python'
+          work_dir: 'sdks/python/selenium, sdks/python/appium, sdks/python/robot, sdks/python/playwright'
           last_passed: ${{inputs.last_passed}}
   test:
     needs: setup
