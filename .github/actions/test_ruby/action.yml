@@ -19,6 +19,8 @@ runs:
       if: ${{matrix.use_selenium }}
       id: selenium
       uses: ./.github/actions/start_selenium
+      with:
+        legacy: ${{matrix.selenium_legacy}}
     - name: Framework gem install
       id: install
       uses: ./.github/actions/update_gemfile
