@@ -3,6 +3,7 @@ const {base_common, containers, common} = require("../../config/ruby_common")
 const selenium = {
     use_selenium: true,
     test_command: "bundle exec rake -v",
+    work_dir: "sdks/ruby/selenium",
 }
 
 const variations = base_common

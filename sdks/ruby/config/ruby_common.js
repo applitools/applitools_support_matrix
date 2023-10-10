@@ -1,7 +1,6 @@
 'use strict';
 
 const common = {
-    "work_dir": "sdks/ruby",
     "framework_gem": "selenium-webdriver",
     "test_runner": "ruby",
     test_command: "bundle exec rake -v",
@@ -39,6 +38,7 @@ const containers = [
     // },
     {
         ...common,
+        work_dir: "sdks/ruby/selenium",
         os: "ubuntu-latest",
         "version": "latest@",
         use_selenium: true,
