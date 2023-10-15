@@ -10,11 +10,6 @@ const base_variations = [
     },
     {
         "os": "ubuntu-latest",
-        "java-version": "8",
-        version: "latest@"
-    },
-    {
-        "os": "ubuntu-latest",
         "java-version": "17",
         version: "latest@"
     },
