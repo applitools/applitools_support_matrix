@@ -9,6 +9,13 @@ inputs:
 runs:
   using: "composite"
   steps:
+    - name: Set up Java
+      if: ${{!matrix.use_container && matrix.use_selenium && !matrix.selenium_legacy }}
+      uses: actions/setup-java@v3
+      with:
+        distribution: 'temurin'
+        java-version: '11'
+        cache: 'maven'
     - name: Setup dotnet
       if: ${{!matrix.use_container }}
       uses: actions/setup-dotnet@v2
