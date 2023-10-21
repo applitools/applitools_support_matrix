@@ -4,7 +4,7 @@ const puppeteer = require('puppeteer')
 async function setupDriver() {
     // Use Chrome browser
     browser = await puppeteer.launch({
-        headless: 'new',
+        headless: true,
         args: ["--no-sandbox", "--disable-gpu", "--disable-dev-shm-usage"]
     })
     page = await browser.newPage();
