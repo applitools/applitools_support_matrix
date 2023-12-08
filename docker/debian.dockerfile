@@ -54,17 +54,18 @@ RUN apt-get clean && \
 RUN gem install bundler
 RUN bundle config --global silence_root_warning 1
 
-# Copy the scripts to the Docker image
+# Copy and Run Selenium Server script to the Docker image
 COPY install_selenium.sh /tmp/
-COPY install_chromedriver.sh /tmp/
-
-# Make the scripts executable
 RUN chmod +x /tmp/install_selenium.sh
-RUN chmod +x /tmp/install_chromedriver.sh
-
-# Run the script to download the latest Selenium Standalone Server
 RUN  /tmp/install_selenium.sh
+
+
+# Copy and Run Chromedriver script to the Docker image
+COPY install_chromedriver.sh /tmp/
+RUN chmod +x /tmp/install_chromedriver.sh
 RUN  /tmp/install_chromedriver.sh
+
+
 # Check installed chromedriver
 RUN chromedriver --version
 
