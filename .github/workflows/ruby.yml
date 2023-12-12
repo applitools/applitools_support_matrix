@@ -95,4 +95,6 @@ jobs:
           lang: ${{matrix.test_runner}}
           eyes_version: ${{inputs.eyes_version}}
       - name: Log
-        run:  cat universal.log
+        run: | 
+          cd $(node -e 'console.log(path.resolve(os.tmpdir(),"applitools-logs"))'
+          cat $(ls)
