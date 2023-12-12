@@ -3,7 +3,7 @@ require 'eyes_selenium'
 RSpec.shared_context "Common" do
   let(:options) {
     options = Selenium::WebDriver::Chrome::Options.new
-    options.add_argument('headless')
+    options.add_argument('--headless=new')
     options.add_argument('--no-sandbox')
     options.add_argument('--disable-gpu')
     options.add_argument('--disable-dev-shm-usage')
@@ -29,8 +29,8 @@ RSpec.shared_context "Common" do
     eyes.configure do |conf|
       # conf.batch = $run_batch
       conf.api_key = ENV['APPLITOOLS_API_KEY']
-      conf.branch_name = 'master'
-      conf.parent_branch_name = 'master'
+      conf.branch_name = 'ruby'
+      conf.parent_branch_name = 'ruby'
       conf.save_new_tests = false
       conf.hide_caret = true
     end

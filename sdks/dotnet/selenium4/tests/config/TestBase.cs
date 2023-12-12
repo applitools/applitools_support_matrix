@@ -19,7 +19,7 @@ namespace Applitools.Support.Matrix.Tests
         
         public static readonly BatchInfo batch = new BatchInfo("Support Matrix");
         public static readonly bool CI = Environment.GetEnvironmentVariable("CI") == "true";
-        public static readonly string LOCAL_SELENIUM_URL = Environment.GetEnvironmentVariable("SELENIUM_SERVER_URL") ?? "http://localhost:4444/wd/hub";
+        public static readonly string LOCAL_SELENIUM_URL = Environment.GetEnvironmentVariable("SELENIUM_SERVER_URL") ?? "http://localhost:4444";
         public static readonly string LOCAL_FIREFOX_URL = "http://localhost:4445/wd/hub";
 
         public static readonly StdoutLogHandler logger = new StdoutLogHandler();

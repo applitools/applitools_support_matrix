@@ -75,6 +75,8 @@ jobs:
       APPLITOOLS_API_KEY: ${{ secrets.APPLITOOLS_API_KEY }}
       APPLITOOLS_BATCH_ID: ${{needs.setup.outputs.uuid}}
       APPLITOOLS_BRANCH_NAME: ${{matrix.branch}}
+      APPLITOOLS_SHOW_LOGS: true
+      APPLITOOLS_LOG_FILE: ${{ format('{0}/{1}/{2}', github.workspace, matrix.work_dir, 'universal.log') }}
       SAUCE_USERNAME: ${{secrets.SAUCE_USERNAME}}
       SAUCE_ACCESS_KEY: ${{secrets.SAUCE_ACCESS_KEY}}
     defaults:
@@ -92,3 +94,5 @@ jobs:
         with:
           lang: ${{matrix.test_runner}}
           eyes_version: ${{inputs.eyes_version}}
+      - name: Log
+        run:  cat universal.log
