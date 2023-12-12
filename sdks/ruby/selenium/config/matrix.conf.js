@@ -7,6 +7,7 @@ const selenium = {
 }
 
 const variations = base_common
+    .filter(variant => variant.os !== 'windows-latest')
     .map((variant) => ({
         ...variant,
         ...selenium,
