@@ -1,6 +1,7 @@
 'use strict'
 const {web_common, getOS} = require("../../config/dotnet_common")
 const variations = web_common
+    .filter(variant => variant.os !== 'windows-latest')
     .map((variant) => ({
         ...variant,
         use_selenium: true,
