@@ -1,9 +1,26 @@
 require 'eyes_selenium'
 
 RSpec.shared_context "Common" do
+
+  let(:legacy) {
+    legacy_version = Gem::Version.new('4.9.0')
+    actual_version = Gem.loaded_specs['selenium-webdriver'].version
+    legacy = actual_version <= legacy_version
+    if legacy
+      puts 'Legacy'
+    else
+      puts 'New'
+    end
+    legacy
+  }
+
   let(:options) {
     options = Selenium::WebDriver::Chrome::Options.new
-    options.add_argument('--headless=new')
+    if legacy
+      options.add_argument('headless')
+    else
+      options.add_argument('--headless=new')
+    end
     options.add_argument('--no-sandbox')
     options.add_argument('--disable-gpu')
     options.add_argument('--disable-dev-shm-usage')
@@ -29,8 +46,13 @@ RSpec.shared_context "Common" do
     eyes.configure do |conf|
       # conf.batch = $run_batch
       conf.api_key = ENV['APPLITOOLS_API_KEY']
-      conf.branch_name = 'ruby'
-      conf.parent_branch_name = 'ruby'
+      if legacy
+        conf.branch_name = 'master'
+        conf.parent_branch_name = 'master'
+      else
+        conf.branch_name = 'ruby'
+        conf.parent_branch_name = 'ruby'
+      end
       conf.save_new_tests = false
       conf.hide_caret = true
     end
