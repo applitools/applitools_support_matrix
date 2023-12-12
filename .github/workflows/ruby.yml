@@ -96,5 +96,5 @@ jobs:
           eyes_version: ${{inputs.eyes_version}}
       - name: Log
         run: | 
-          cd $(node -e 'console.log(path.resolve(os.tmpdir(),"applitools-logs"))'
+          cd $(node -e 'console.log(path.resolve(os.tmpdir(),"applitools-logs"))')
           cat $(ls)
