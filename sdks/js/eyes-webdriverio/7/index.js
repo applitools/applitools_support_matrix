@@ -28,7 +28,7 @@ async function setupDriver(options) {
             capabilities: {
                 browserName: 'chrome',
                 'goog:chromeOptions': {
-                    args: ['headless','--no-sandbox', '--disable-gpu', '--disable-dev-shm-usage']
+                    args: ['--headless=new','--no-sandbox', '--disable-gpu', '--disable-dev-shm-usage']
                 }
             },
             logLevel: 'silent',
@@ -58,8 +58,8 @@ function setupEyes({appium, vg, platform, ...config}) {
     const configuration = {
         apiKey: process.env.APPLITOOLS_API_KEY,
         batch,
-        parentBranchName: 'master',
-        branchName: 'master',
+        parentBranchName: 'ruby',
+        branchName: 'ruby',
         dontCloseBatches: true,
         matchTimeout: 0,
         saveNewTests: false,
