@@ -124,6 +124,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+      - name: Wait for runs data to update in github api
+        run: sleep 300
       - name: Report generation
         uses: ./.github/actions/report
         with:
