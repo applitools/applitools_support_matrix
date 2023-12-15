@@ -207,7 +207,7 @@ jobs:
                        Link to the test report is => https://applitools.github.io/applitools_support_matrix/ <br>
                        See attachments for the report to the results
             attachments: report.html
-            to: yarden.ingber@applitools.com, artem.borodavka@applitools.com, adam.carmi@applitools.com, ben.babayoff@applitools.com
+            to: yarden.ingber@applitools.com, artem.borodavka@applitools.com, adam.carmi@applitools.com, ben.babayoff@applitools.com, amit.zur@applitools.com, daniel.puterman@applitools.com
             from: Artem
   email_notification_success:
     needs: report_generation
@@ -231,7 +231,7 @@ jobs:
             Link to the test report is => https://applitools.github.io/applitools_support_matrix/ <br>
             See attachments for the report to the results
           attachments: report.html
-          to: yarden.ingber@applitools.com, artem.borodavka@applitools.com, adam.carmi@applitools.com, ben.babayoff@applitools.com
+          to: yarden.ingber@applitools.com, artem.borodavka@applitools.com, adam.carmi@applitools.com, ben.babayoff@applitools.com, amit.zur@applitools.com, daniel.puterman@applitools.com
           from: Artem
   rerun:
     if: failure()
