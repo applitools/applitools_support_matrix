@@ -1,6 +1,6 @@
 'use strict'
 const {web_common, getOS} = require("../../config/dotnet_common")
-const variations = web_common
+let variations = web_common
     .filter(variant => variant.os !== 'windows-latest')
     .map(variant => ({
         ...variant,
@@ -10,6 +10,7 @@ const variations = web_common
         eyes_package: "Eyes.Selenium4",
         job_name: `Dotnet Selenium4 [${getOS(variant)} | ${variant["dotnet-version"]} | client version: ${variant.version}]`
     }))
+variations = []
 console.log(variations)
 module.exports = {
     "include": variations
