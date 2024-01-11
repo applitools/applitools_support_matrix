@@ -82,18 +82,13 @@ jobs:
       run:
         shell: bash
     steps:
-      - name: Set up Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: 3.11
       - name: Download clean app
         run: |
           echo "Start update script"
-          pip install gdown
-          gdown  "https://drive.google.com/uc?confirm=t&id=16M_Fu4OfTHFMi3bQsaFyrbj-kYXoxwOl" -O SimpleRandomStock.apk
-          # curl -L -o SimpleRandomStock.apk "https://drive.google.com/uc?export=download&confirm=no_antivirus&id=16M_Fu4OfTHFMi3bQsaFyrbj-kYXoxwOl"
+          curl -L -o SimpleRandomStock.apk.zip "https://drive.google.com/uc?export=download&confirm=no_antivirus&id=1UIthKNkYHfbTyrUdccZrwR2dt2KXK8O3"
       - name: Prepare apps
         run: |
+          unzip SimpleRandomStock.apk.zip
           mv SimpleRandomStock.apk "$APP_NAME"
           ls -lh
       - name: Remove previous versions of app on Sauce
