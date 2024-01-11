@@ -90,7 +90,7 @@ jobs:
         run: |
           echo "Start update script"
           pip install gdown
-          gdown  "https://drive.google.com/uc?confirm=no_antivirus&id=16M_Fu4OfTHFMi3bQsaFyrbj-kYXoxwOl" -O SimpleRandomStock.apk
+          gdown  "https://drive.google.com/uc?confirm=t&id=16M_Fu4OfTHFMi3bQsaFyrbj-kYXoxwOl" -O SimpleRandomStock.apk
           # curl -L -o SimpleRandomStock.apk "https://drive.google.com/uc?export=download&confirm=no_antivirus&id=16M_Fu4OfTHFMi3bQsaFyrbj-kYXoxwOl"
       - name: Prepare apps
         run: |
