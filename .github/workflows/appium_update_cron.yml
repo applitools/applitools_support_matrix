@@ -82,10 +82,16 @@ jobs:
       run:
         shell: bash
     steps:
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: 3.11
       - name: Download clean app
         run: |
-          echo "Start update script"     
-          curl -L -o SimpleRandomStock.apk "https://drive.google.com/uc?export=download&confirm=no_antivirus&id=16M_Fu4OfTHFMi3bQsaFyrbj-kYXoxwOl"
+          echo "Start update script"
+          pip install gdown
+          gdown  "https://drive.google.com/uc?export=download&confirm=no_antivirus&id=16M_Fu4OfTHFMi3bQsaFyrbj-kYXoxwOl" -O SimpleRandomStock.apk
+          # curl -L -o SimpleRandomStock.apk "https://drive.google.com/uc?export=download&confirm=no_antivirus&id=16M_Fu4OfTHFMi3bQsaFyrbj-kYXoxwOl"
       - name: Prepare apps
         run: |
           mv SimpleRandomStock.apk "$APP_NAME"
