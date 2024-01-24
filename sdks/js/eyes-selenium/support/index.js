@@ -30,8 +30,7 @@ async function setupDriver(options) {
     } else {
         // Use Chrome browser
         const options = new chrome.Options();
-        options.headless();
-        options.addArguments("--no-sandbox", "--disable-gpu", "--disable-dev-shm-usage")
+        options.addArguments("--no-sandbox", "--disable-gpu", "--disable-dev-shm-usage", "--headless")
 
         const builder = new Builder()
             .forBrowser('chrome')
