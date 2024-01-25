@@ -14,7 +14,8 @@ function install({source, version, packageName, cwd}) {
 function remote({version, packageName, cwd}) {
     const gemfilePath = path.join(cwd, "Gemfile")
     let gemfile = fs.readFileSync(gemfilePath).toString()
-    const reg = new RegExp(`^.*${packageName}.*$`, 'gm')
+    // gemfiles should be updated to the single quoted
+    const reg = new RegExp(`^.*'${packageName}'.*$`, 'gm')
     const newGemString = `gem '${packageName}', '${version}'`
     if (reg.test(gemfile)) {
         gemfile = gemfile.replace(reg, newGemString)

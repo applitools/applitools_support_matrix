@@ -1,10 +1,10 @@
 source 'https://rubygems.org'
 
-gem "eyes_selenium"
-gem "eyes_appium"
-gem "rspec"
-gem "parallel_tests"
-gem "ffi"
+gem 'eyes_selenium'
+gem 'eyes_appium'
+gem 'rspec'
+gem 'parallel_tests'
+gem 'ffi'
 gem 'rake'
 gem 'appium_lib_core', '7.3.2'
 gem 'eventmachine', '1.2.7', git: 'https://github.com/eventmachine/eventmachine.git', tag: 'v1.2.7'
