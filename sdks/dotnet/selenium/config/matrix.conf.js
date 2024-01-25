@@ -11,7 +11,6 @@ let variations = web_common
         eyes_package: "Eyes.Selenium",
         job_name: `Dotnet Selenium [${getOS(variant)} | ${variant["dotnet-version"]} | client version: ${variant.version}]`
     }))
-variations = []
 console.log(variations)
 module.exports = {
     "include": variations
