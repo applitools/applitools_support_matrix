@@ -5,7 +5,7 @@ const appium_common = base_common.map(variant => ({...variant, gh_environment: '
     {...common, "ruby-version": "3.2", os: 'ubuntu-latest', version: 'latest@', gh_environment: 'appium_previous'},
     {...common, "ruby-version": "3.2", os: 'ubuntu-latest', version: 'previous@1', gh_environment: 'appium_previous'},
 ])
-const variations = appium_common.map(variant => ({
+const variations = appium_common.filter(variant => variant.version !== 'latest@').map(variant => ({
         ...variant,
         eyes_gem: "eyes_appium",
         use_appium: true,
