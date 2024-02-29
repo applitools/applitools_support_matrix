@@ -140,20 +140,20 @@ jobs:
           git reset --hard
           git pull
           git status
-      - name: Last passed data update
-        uses: ./.github/actions/make_last_passed_data
-        with:
-          token: ${{secrets.PAT}}
-          run_id: ${{github.event.inputs.run_id}}
-      - name: Commit files
-        run: |
-          pwd
-          sleep 20
-          ls
-          cat last_passed.json
-          git add last_passed.json
-          git commit -m "Update last_passed.json file with the latest data"
-          git push
+      # - name: Last passed data update
+      #   uses: ./.github/actions/make_last_passed_data
+      #   with:
+      #     token: ${{secrets.PAT}}
+      #     run_id: ${{github.event.inputs.run_id}}
+      # - name: Commit files
+      #   run: |
+      #     pwd
+      #     sleep 20
+      #     ls
+      #     cat last_passed.json
+      #     git add last_passed.json
+      #     git commit -m "Update last_passed.json file with the latest data"
+      #     git push
   gh_pages_updates:
     if: ${{ success() || (failure() && github.run_attempt == 3 )}}
     needs: report_generation
