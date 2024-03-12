@@ -2,7 +2,7 @@
 const {getOS} = require('../../../matrix/util')
 
 const common = {
-    "node-version": "16",
+    "node-version": "20",
     "framework_package": "storybook",
     "test_runner": "js",
     "eyes_package": "@applitools/eyes-storybook",
