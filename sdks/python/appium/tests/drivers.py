@@ -7,7 +7,8 @@ from applitools.selenium import Eyes
 import urllib3
 from urllib3.exceptions import MaxRetryError
 from appium.webdriver.appium_connection import AppiumConnection
-
+from appium.options.android import UiAutomator2Options
+from appium.options.ios import XCUITestOptions
 
 @pytest.fixture(scope="function")
 def sauce_options():
@@ -35,7 +36,7 @@ def ios(sauce_options, orientation):
         "appium:orientation": orientation,
         'sauce:options': sauce_options
     }
-    return start_appium_driver(caps)
+    return start_appium_driver(XCUITestOptions().load_capabilities(caps))
 
 
 @pytest.fixture(scope="function")
@@ -89,11 +90,11 @@ def android(sauce_options, orientation):
         "appium:orientation": orientation,
         'sauce:options': sauce_options
     }
-    return start_appium_driver(caps)
+    return start_appium_driver(UiAutomator2Options().load_capabilities(caps))
 
 
 
-def start_appium_driver(caps):
+def start_appium_driver(options):
 
     urllib3.util.retry.Retry.DEFAULT = urllib3.util.retry.Retry(10)
     appium_executor = AppiumConnection(
@@ -101,8 +102,8 @@ def start_appium_driver(caps):
     )
 
     try:
-        return appium_webdriver.Remote(appium_executor, desired_capabilities=caps)
+        return appium_webdriver.Remote(appium_executor, options=options)
     except MaxRetryError:
         print("Tried to initiate driver")
     time.sleep(60)
-    return appium_webdriver.Remote(appium_executor, desired_capabilities=caps)
+    return appium_webdriver.Remote(appium_executor, options=options)
