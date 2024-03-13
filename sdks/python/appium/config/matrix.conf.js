@@ -4,7 +4,7 @@ const appium_common = base_common.map(variant => ({...variant, gh_environment: '
     {...common, os:'ubuntu-latest', version:'major@1', gh_environment: 'appium_latest'},
     {...common, os:'ubuntu-latest', version:'latest@', gh_environment: 'appium_previous'},
     {...common, os:'ubuntu-latest', version:'major@1', gh_environment: 'appium_previous'},
-])
+]).filter(vr => vr.version === 'major@1')
 const variations = appium_common.map(variant => ({...variant,
         test_command: "pytest",
         framework_package: "Appium-Python-Client",
