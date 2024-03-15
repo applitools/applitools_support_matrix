@@ -29,7 +29,7 @@ const base_variations = [
     // },
     {
         "work_dir": "sdks/js/eyes-storybook/latest",
-        "os": "macos-latest",
+        "os": "macos-13",
         "version": "latest@",
         "branch": "latest-story"
     },
@@ -41,7 +41,7 @@ const base_variations = [
     },
     {
         "work_dir": "sdks/js/eyes-storybook/latest",
-        "os": "macos-latest",
+        "os": "macos-13",
         "version": "major@1",
         "branch": "latest-story"
     },
@@ -54,7 +54,7 @@ const base_variations = [
     },
     {
         "work_dir": "sdks/js/eyes-storybook/major_6",
-        "os": "macos-latest",
+        "os": "macos-13",
         "version": "major@2",
         "framework_package": "@storybook/react",
         "branch": "minus-story"
