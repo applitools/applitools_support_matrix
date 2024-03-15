@@ -21,12 +21,12 @@ const base_variations = [
         "version": "exact@future",
         "branch": "latest-story"
     },
-    // {
-    //     "work_dir": "sdks/js/eyes-storybook/latest",
-    //     "os": "windows-latest",
-    //     "version": "latest@",
-    //     "branch": "latest-story"
-    // },
+    {
+        "work_dir": "sdks/js/eyes-storybook/latest",
+        "os": "windows-latest",
+        "version": "latest@",
+        "branch": "latest-story"
+    },
     {
         "work_dir": "sdks/js/eyes-storybook/latest",
         "os": "macos-13",
@@ -59,12 +59,12 @@ const base_variations = [
         "framework_package": "@storybook/react",
         "branch": "minus-story"
     },
-    // {
-    //     "work_dir": "sdks/js/eyes-storybook/major_6",
-    //     "os": "windows-latest",
-    //     "version": "major@1",
-    //     "branch": "minus-story"
-    // },
+    {
+        "work_dir": "sdks/js/eyes-storybook/major_6",
+        "os": "windows-latest",
+        "version": "major@1",
+        "branch": "minus-story"
+    },
 
     // Containers variations
     {
