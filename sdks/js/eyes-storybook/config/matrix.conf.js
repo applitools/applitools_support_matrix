@@ -90,9 +90,6 @@ const base_variations = [
 const variations = base_variations.map(variant => ({...common, ...variant,
     job_name:`JS Storybook [${getOS(variant)} | ${common["node-version"]}] version: ${variant.version}`
 }))
-.concat(base_variations.map(variant => ({...common, ...variant, "node-version": '18',
-    job_name:`JS Storybook [${getOS(variant)} | 18 ] version: ${variant.version}`
-})))
 console.log(variations)
 module.exports = {
     "include": variations
