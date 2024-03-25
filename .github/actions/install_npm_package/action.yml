@@ -13,6 +13,9 @@ inputs:
   version:
     description: "Install version specified in input"
     required: false
+  sub_packages:
+    description: "Other packages which should have same version as main package"
+    required: false
 runs:
   using: "node20"
   main: "dist/index.js"
