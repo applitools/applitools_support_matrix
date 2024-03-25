@@ -2715,7 +2715,7 @@ const fs = __nccwpck_require__(561)
                 packageJson.dependencies[subPackageName] = version
             })
         }
-        savePackageJson({packageJson, cwd})
+        savePackageJson({json:packageJson, cwd})
         let command = `npm install`
         if (legacyNpmPeers) command += ' --legacy-peer-deps'
         shellCommand(command, cwd)

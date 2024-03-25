@@ -22,7 +22,7 @@ const fs = require("node:fs")
                 packageJson.dependencies[subPackageName] = version
             })
         }
-        savePackageJson({packageJson, cwd})
+        savePackageJson({json:packageJson, cwd})
         let command = `npm install`
         if (legacyNpmPeers) command += ' --legacy-peer-deps'
         shellCommand(command, cwd)
