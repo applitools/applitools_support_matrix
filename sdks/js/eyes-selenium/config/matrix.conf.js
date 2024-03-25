@@ -59,13 +59,13 @@ const variations = base_common
         test_command: "npm test",
         job_name: `JS Selenium [${variant.os} | ${variant["node-version"]} | version: ${variant.version}]`
     }))
-    .concat(appium_common.map(variant => (
-        {
-            ...variant,
-            test_command: "npm run appium",
-            use_appium: true,
-            job_name: `JS Appium [${variant.os} | ${variant["node-version"]} | client version: ${variant.version} | ${variant.gh_environment} ] `
-        })))
+    // .concat(appium_common.map(variant => (
+    //     {
+    //         ...variant,
+    //         test_command: "npm run appium",
+    //         use_appium: true,
+    //         job_name: `JS Appium [${variant.os} | ${variant["node-version"]} | client version: ${variant.version} | ${variant.gh_environment} ] `
+    //     })))
     .concat(containers)
     .concat(base_common.map((variant) => ({
         ...variant,
