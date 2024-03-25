@@ -13,6 +13,8 @@ const fs = require("node:fs")
 
     function remote({version, packageName, legacyNpmPeers, cwd, subPackages}) {
         const packageJson = readPackageJson({cwd})
+        console.log(cwd)
+        console.log(packageJson)
         packageJson.dependencies[packageName] = version
         if(subPackages) {
             const arr = parseSubPackages(subPackages)
