@@ -2708,11 +2708,11 @@ const fs = __nccwpck_require__(561)
         const packageJson = readPackageJson({cwd})
         console.log(cwd)
         console.log(packageJson)
-        packageJson.dependencies[packageName] = version
+        packageJson.dependencies[packageName] = version.toString()
         if(subPackages) {
             const arr = parseSubPackages(subPackages)
             arr.forEach(subPackageName => {
-                packageJson.dependencies[subPackageName] = version
+                packageJson.dependencies[subPackageName] = version.toString()
             })
         }
         savePackageJson({json:packageJson, cwd})

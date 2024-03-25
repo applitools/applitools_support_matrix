@@ -15,11 +15,11 @@ const fs = require("node:fs")
         const packageJson = readPackageJson({cwd})
         console.log(cwd)
         console.log(packageJson)
-        packageJson.dependencies[packageName] = version
+        packageJson.dependencies[packageName] = version.toString()
         if(subPackages) {
             const arr = parseSubPackages(subPackages)
             arr.forEach(subPackageName => {
-                packageJson.dependencies[subPackageName] = version
+                packageJson.dependencies[subPackageName] = version.toString()
             })
         }
         savePackageJson({json:packageJson, cwd})
