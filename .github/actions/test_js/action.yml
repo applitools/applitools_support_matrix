@@ -34,6 +34,7 @@ runs:
         version: ${{matrix.version}}
         working-directory: ${{matrix.work_dir}}
         legacy_npm_peers: ${{matrix.legacy_npm_peers }}
+        sub_packages: ${{matrix.sub_packages}}
     - name: Eyes SDK js package install
       id: eyes
       uses: ./.github/actions/install_npm_package

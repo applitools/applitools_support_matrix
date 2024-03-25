@@ -4,6 +4,7 @@ const {getOS} = require('../../../matrix/util')
 const common = {
     "node-version": "20",
     "framework_package": "storybook",
+    "sub_packages": "@storybook/preset-create-react-app,@storybook/react-webpack5",
     "test_runner": "js",
     "eyes_package": "@applitools/eyes-storybook",
     test_command: "npm test"
@@ -50,20 +51,23 @@ const base_variations = [
         "os": "ubuntu-latest",
         "version": "major@2",
         "framework_package": "@storybook/react",
-        "branch": "minus-story"
+        "branch": "minus-story",
+        "sub_packages": undefined
     },
     {
         "work_dir": "sdks/js/eyes-storybook/major_6",
         "os": "macos-13",
         "version": "major@2",
         "framework_package": "@storybook/react",
-        "branch": "minus-story"
+        "branch": "minus-story",
+        "sub_packages": undefined
     },
     {
         "work_dir": "sdks/js/eyes-storybook/major_6",
         "os": "windows-latest",
         "version": "major@1",
-        "branch": "minus-story"
+        "branch": "minus-story",
+        "sub_packages": undefined
     },
 
     // Containers variations
